@@ -1,0 +1,369 @@
+{
+  "title": "I-131 — Application for Travel Document (Advance Parole)",
+  "sections": {
+    "tipo_pedido": "Part 1 — Application Type",
+    "info_pessoal": "Part 2 — Information About You",
+    "info_biografica": "Part 3 — Biographic Information",
+    "historico": "Part 4 — Travel Document History",
+    "viagem": "Part 7 — About Your Proposed Travel",
+    "contato_assinatura": "Part 10 — Applicant's Contact Information and Signature",
+    "interprete": "Part 11 — Interpreter (if applicable)",
+    "preparador": "Part 12 — Preparer (if someone filled this out for you)"
+  },
+  "questions": {
+    "i131_confirma_i485": {
+      "label": "Is this Advance Parole (travel authorization) request based on a pending Form I-485 (Adjustment of Status)?",
+      "hint": "This tool covers specifically this scenario (the most common one for the Green Card AOS package). If your Advance Parole is for a different reason (current parolee, TPS, pending asylum, CNMI, etc.), talk to our team -- those other reasons aren't automated here.",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "i131_recibo_i485": {
+      "label": "Your Form I-485 receipt number (if filing the I-131 separately from the I-485)",
+      "hint": "Leave blank if filing the I-131 together (concurrent filing) with the I-485."
+    },
+    "nome_sobrenome": {
+      "label": "Last name"
+    },
+    "nome_nome": {
+      "label": "First name"
+    },
+    "nome_meio": {
+      "label": "Middle name (if any)"
+    },
+    "outro_nome1_sobrenome": {
+      "label": "Other name used 1 — Last name"
+    },
+    "outro_nome1_nome": {
+      "label": "Other name used 1 — First name"
+    },
+    "outro_nome1_meio": {
+      "label": "Other name used 1 — Middle name"
+    },
+    "outro_nome2_sobrenome": {
+      "label": "Other name used 2 — Last name"
+    },
+    "outro_nome2_nome": {
+      "label": "Other name used 2 — First name"
+    },
+    "outro_nome2_meio": {
+      "label": "Other name used 2 — Middle name"
+    },
+    "outro_nome3_sobrenome": {
+      "label": "Other name used 3 — Last name"
+    },
+    "outro_nome3_nome": {
+      "label": "Other name used 3 — First name"
+    },
+    "outro_nome3_meio": {
+      "label": "Other name used 3 — Middle name"
+    },
+    "endereco_correspondencia_cuidado_de": {
+      "label": "Mailing address — In Care Of Name (if any)",
+      "hint": "Only fill this in if your mail is delivered care of another person (e.g. a friend, relative, or attorney) — enter their name. If mail comes straight to you, leave blank."
+    },
+    "endereco_correspondencia_rua": {
+      "label": "Mailing address — Street number and name"
+    },
+    "endereco_correspondencia_tipo_unidade": {
+      "label": "Mailing address — Unit type",
+      "options": {
+        "ste": "Suite (STE)",
+        "apt": "Apartment (APT)",
+        "flr": "Floor (FLR)"
+      }
+    },
+    "endereco_correspondencia_numero_unidade": {
+      "label": "Mailing address — Unit number"
+    },
+    "endereco_correspondencia_cidade": {
+      "label": "Mailing address — City or town"
+    },
+    "endereco_correspondencia_estado": {
+      "label": "Mailing address — State (U.S.)"
+    },
+    "endereco_correspondencia_cep": {
+      "label": "Mailing address — ZIP code (U.S.)"
+    },
+    "endereco_correspondencia_codigo_postal_intl": {
+      "label": "Mailing address — Postal code (outside the U.S.)"
+    },
+    "endereco_correspondencia_provincia": {
+      "label": "Mailing address — Province/State (outside the U.S.)"
+    },
+    "endereco_correspondencia_pais": {
+      "label": "Mailing address — Country"
+    },
+    "endereco_fisico_cuidado_de": {
+      "label": "Current physical address (if different from mailing) — In Care Of Name",
+      "hint": "Only fill this in if you live at this physical address care of another person (e.g. a friend, relative, or attorney whose home this is, who receives mail there on your behalf) — enter their name. If you live at this address under your own name, leave this blank."
+    },
+    "endereco_fisico_rua": {
+      "label": "Current physical address — Street number and name"
+    },
+    "endereco_fisico_tipo_unidade": {
+      "label": "Current physical address — Unit type",
+      "options": {
+        "ste": "Suite (STE)",
+        "apt": "Apartment (APT)",
+        "flr": "Floor (FLR)"
+      }
+    },
+    "endereco_fisico_numero_unidade": {
+      "label": "Current physical address — Unit number"
+    },
+    "endereco_fisico_cidade": {
+      "label": "Current physical address — City or town"
+    },
+    "endereco_fisico_estado": {
+      "label": "Current physical address — State (U.S.)"
+    },
+    "endereco_fisico_cep": {
+      "label": "Current physical address — ZIP code (U.S.)"
+    },
+    "endereco_fisico_codigo_postal_intl": {
+      "label": "Current physical address — Postal code (outside the U.S.)"
+    },
+    "endereco_fisico_provincia": {
+      "label": "Current physical address — Province/State (outside the U.S.)"
+    },
+    "endereco_fisico_pais": {
+      "label": "Current physical address — Country"
+    },
+    "numero_a": {
+      "label": "Alien Registration Number (A-Number, if any)",
+      "hint": "Format A-XXXXXXXXX. Leave blank if you've never received one."
+    },
+    "pais_nascimento": {
+      "label": "Country of birth"
+    },
+    "pais_cidadania": {
+      "label": "Country of citizenship/nationality"
+    },
+    "sexo": {
+      "label": "Sex",
+      "options": {
+        "F": "Female",
+        "M": "Male"
+      }
+    },
+    "data_nascimento": {
+      "label": "Date of birth"
+    },
+    "ssn": {
+      "label": "Social Security Number (SSN, if any)"
+    },
+    "uscis_online_account": {
+      "label": "Your USCIS online account number (if any)",
+      "hint": "12 digits, no dashes. This is your myaccount.uscis.gov account number, not a case receipt number. Leave blank if you've never created that account."
+    },
+    "classe_admissao": {
+      "label": "Current class of admission (if any)",
+      "hint": "The status code you were last admitted to the U.S. under (e.g. B2, F1) — check your Form I-94."
+    },
+    "numero_i94": {
+      "label": "Your most recent Form I-94 number (if any)",
+      "hint": "Look up or download your I-94 at i94.cbp.dhs.gov — the official record of your U.S. entry. 11 digits."
+    },
+    "data_expiracao_i94": {
+      "label": "Expiration date of your authorized stay on your I-94 (if any)",
+      "hint": "The date until which you're authorized to stay in the U.S. under your current status — also on i94.cbp.dhs.gov. If you have a pending adjustment of status (I-485), this date may already have passed; that's usually not a problem for Advance Parole, but confirm with our team."
+    },
+    "etnia": {
+      "label": "Ethnicity",
+      "options": {
+        "NH": "Not Hispanic or Latino",
+        "H": "Hispanic or Latino"
+      },
+      "hint": "An official U.S. government category, separate from \"race\" (next question) — this only asks whether you identify as Hispanic/Latino (Spanish or Latin American cultural/linguistic origin), regardless of race. Most non-Hispanic Brazilians select \"Not Hispanic or Latino\" here."
+    },
+    "raca_negro": {
+      "label": "Race: Black or African American",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Race: Native Hawaiian or Other Pacific Islander",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Race: American Indian or Alaska Native",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Race: Asian",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_branco": {
+      "label": "Race: White",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "altura_pes": {
+      "label": "Height — feet",
+      "hint": "A number between 2 and 8."
+    },
+    "altura_polegadas": {
+      "label": "Height — inches",
+      "hint": "A number between 0 and 11."
+    },
+    "peso": {
+      "label": "Weight in pounds (lb)"
+    },
+    "cor_olhos": {
+      "label": "Eye color",
+      "options": {
+        "azul": "Blue",
+        "verde": "Green",
+        "avela": "Hazel",
+        "rosa": "Pink",
+        "marrom_avermelhado": "Maroon",
+        "castanho": "Brown",
+        "preto": "Black",
+        "outro": "Other",
+        "cinza": "Gray"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Hair color",
+      "options": {
+        "careca": "Bald (no hair)",
+        "loiro": "Blond",
+        "grisalho": "Gray",
+        "arenoso": "Sandy",
+        "outro": "Other",
+        "branco": "White",
+        "ruivo": "Red",
+        "castanho": "Brown",
+        "preto": "Black"
+      }
+    },
+    "historico_processo_remocao": {
+      "label": "Have you (or the person who will receive the document) ever been in exclusion, deportation, removal, or rescission proceedings?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "\"Removal proceedings\" is the immigration court process that can end in deportation — different from simply being out of status. Answer \"Yes\" if you were ever issued a Notice to Appear (NTA) or had a hearing, even if the case was later closed or you won. If unsure, answer \"Yes\" and confirm with our team before submitting — this can affect your eligibility."
+    },
+    "historico_reentry_refugee_emitido": {
+      "label": "Have you ever been issued a Reentry Permit or Refugee Travel Document before?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A Reentry Permit and a Refugee Travel Document are OTHER types of travel document, different from the Advance Parole you're applying for now. This question is about your history — answer \"Yes\" only if you've specifically had one of these two documents before (not Advance Parole, asked next)."
+    },
+    "historico_reentry_refugee_data": {
+      "label": "Date that document was issued"
+    },
+    "historico_reentry_refugee_situacao": {
+      "label": "Current status of that document (attached, lost, stolen, damaged/destroyed, still in your possession, etc.)"
+    },
+    "historico_advance_parole_emitido": {
+      "label": "Have you ever been issued an Advance Parole Document before?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" if you've had an Advance Parole approved in any prior application (even from a different case) — don't confuse this with your I-94 or visa."
+    },
+    "historico_advance_parole_data": {
+      "label": "Date that Advance Parole was issued"
+    },
+    "historico_advance_parole_situacao": {
+      "label": "Current status of that Advance Parole (attached, lost, stolen, damaged/destroyed, still in your possession, etc.)"
+    },
+    "historico_solicitando_substituicao": {
+      "label": "Are you requesting a replacement Reentry Permit, Refugee Travel Document, Advance Parole Document, or TPS Travel Authorization Document?",
+      "hint": "If yes, talk to our team for the specific replacement details — this tool covers the initial Advance Parole request, not the full replacement flow.",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "viagem_data_partida": {
+      "label": "Intended date of departure"
+    },
+    "viagem_proposito": {
+      "label": "Purpose of the trip",
+      "hint": "Briefly explain the reason for the trip (e.g. visiting family, business, tourism)."
+    },
+    "viagem_paises": {
+      "label": "Countries you intend to visit"
+    },
+    "viagem_quantidade_viagens": {
+      "label": "How many trips do you intend to use this document for?",
+      "options": {
+        "O": "One trip",
+        "M": "More than one trip"
+      },
+      "hint": "\"One trip\" authorizes a single exit and return; once used, the document becomes invalid even if the printed expiration date hasn't passed yet. \"More than one trip\" lets you leave and return as many times as needed while the document is valid. If you're not sure how many times you'll travel, multiple trips is usually the safer choice."
+    },
+    "viagem_duracao_esperada": {
+      "label": "Expected length of the trip (in days)"
+    },
+    "contato_telefone": {
+      "label": "Your daytime phone number"
+    },
+    "contato_celular": {
+      "label": "Your mobile phone (if any)"
+    },
+    "contato_email": {
+      "label": "Your email (if any)"
+    },
+    "interprete_sobrenome": {
+      "label": "Interpreter's last name"
+    },
+    "interprete_nome": {
+      "label": "Interpreter's first name"
+    },
+    "interprete_empresa": {
+      "label": "Interpreter's business/organization (if any)"
+    },
+    "interprete_telefone": {
+      "label": "Interpreter's daytime phone number"
+    },
+    "interprete_celular": {
+      "label": "Interpreter's mobile phone (if any)"
+    },
+    "interprete_email": {
+      "label": "Interpreter's email (if any)"
+    },
+    "interprete_idioma": {
+      "label": "Language the interpreter is fluent in (besides English)"
+    },
+    "preparador_sobrenome": {
+      "label": "Preparer's last name"
+    },
+    "preparador_nome": {
+      "label": "Preparer's first name"
+    },
+    "preparador_empresa": {
+      "label": "Preparer's business/organization (if any)"
+    },
+    "preparador_telefone": {
+      "label": "Preparer's daytime phone number"
+    },
+    "preparador_celular": {
+      "label": "Preparer's mobile phone (if any)"
+    },
+    "preparador_email": {
+      "label": "Preparer's email (if any)"
+    }
+  }
+}

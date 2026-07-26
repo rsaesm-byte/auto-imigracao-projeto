@@ -1,0 +1,3535 @@
+{
+  "_source": "https://www.uscis.gov/sites/default/files/document/questions-and-answers/2025-Civics-Test-128-Questions-and-Answers.pdf (M-1778, 09/25), fetched 2026-07-22",
+  "_note": "English question/answer text is verbatim from the official USCIS PDF -- do not paraphrase it, since it is literally what is asked and accepted at the naturalization interview. Portuguese fields are a comprehension aid only.",
+  "questions": [
+    {
+      "id": 1,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "What is the form of government of the United States?",
+      "question_pt": "Qual é a forma de governo dos Estados Unidos?",
+      "answers": [
+        "Republic",
+        "Constitution-based federal republic",
+        "Representative democracy"
+      ],
+      "answers_pt": [
+        "República",
+        "República federal baseada na Constituição",
+        "Democracia representativa"
+      ],
+      "mc_correct": "Republic",
+      "mc_options": [
+        "Capitalism",
+        "Republic",
+        "Declaration of Independence",
+        "Forms the government"
+      ]
+    },
+    {
+      "id": 2,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "What is the supreme law of the land?",
+      "question_pt": "Qual é a lei suprema do país?",
+      "answers": [
+        "(U.S.) Constitution"
+      ],
+      "answers_pt": [
+        "A Constituição (dos EUA)"
+      ],
+      "mc_correct": "(U.S.) Constitution",
+      "mc_options": [
+        "Amendments",
+        "(U.S.) Constitution",
+        "Forms the government",
+        "Everyone must follow the law."
+      ]
+    },
+    {
+      "id": 3,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "Name one thing the U.S. Constitution does.",
+      "question_pt": "Cite uma coisa que a Constituição dos EUA faz.",
+      "answers": [
+        "Forms the government",
+        "Defines powers of government",
+        "Defines the parts of government",
+        "Protects the rights of the people"
+      ],
+      "answers_pt": [
+        "Forma o governo",
+        "Define os poderes do governo",
+        "Define as partes do governo",
+        "Protege os direitos do povo"
+      ],
+      "mc_correct": "Forms the government",
+      "mc_options": [
+        "Forms the government",
+        "Declaration of Independence",
+        "Self-government",
+        "(The basic) rights of Americans"
+      ]
+    },
+    {
+      "id": 4,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "The U.S. Constitution starts with the words \"We the People.\" What does \"We the People\" mean?",
+      "question_pt": "A Constituição dos EUA começa com as palavras \"We the People\" (Nós, o Povo). O que isso significa?",
+      "answers": [
+        "Self-government",
+        "Popular sovereignty",
+        "Consent of the governed",
+        "People should govern themselves",
+        "(Example of) social contract"
+      ],
+      "answers_pt": [
+        "Autogoverno",
+        "Soberania popular",
+        "Consentimento dos governados",
+        "O povo deve governar a si mesmo",
+        "(Exemplo de) contrato social"
+      ],
+      "mc_correct": "Self-government",
+      "mc_options": [
+        "Republic",
+        "It says America is free from British control.",
+        "Self-government",
+        "Forms the government"
+      ]
+    },
+    {
+      "id": 5,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "How are changes made to the U.S. Constitution?",
+      "question_pt": "Como são feitas mudanças na Constituição dos EUA?",
+      "answers": [
+        "Amendments",
+        "The amendment process"
+      ],
+      "answers_pt": [
+        "Emendas",
+        "O processo de emenda"
+      ],
+      "mc_correct": "Amendments",
+      "mc_options": [
+        "Amendments",
+        "Equality",
+        "Declaration of Independence",
+        "So one part does not become too powerful"
+      ]
+    },
+    {
+      "id": 6,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "What does the Bill of Rights protect?",
+      "question_pt": "O que a Declaração de Direitos (Bill of Rights) protege?",
+      "answers": [
+        "(The basic) rights of Americans",
+        "(The basic) rights of people living in the United States"
+      ],
+      "answers_pt": [
+        "Os direitos básicos dos americanos",
+        "Os direitos básicos de quem vive nos EUA"
+      ],
+      "mc_correct": "(The basic) rights of Americans",
+      "mc_options": [
+        "Capitalism",
+        "Self-government",
+        "(The basic) rights of Americans",
+        "(U.S.) Constitution"
+      ]
+    },
+    {
+      "id": 7,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "How many amendments does the U.S. Constitution have?",
+      "question_pt": "Quantas emendas tem a Constituição dos EUA?",
+      "answers": [
+        "Twenty-seven (27)"
+      ],
+      "answers_pt": [
+        "Vinte e sete (27)"
+      ],
+      "mc_correct": "Twenty-seven (27)",
+      "mc_options": [
+        "Twenty-seven (27)",
+        "Equality",
+        "So one part does not become too powerful",
+        "Everyone must follow the law."
+      ]
+    },
+    {
+      "id": 8,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "Why is the Declaration of Independence important?",
+      "question_pt": "Por que a Declaração de Independência é importante?",
+      "answers": [
+        "It says America is free from British control.",
+        "It says all people are created equal.",
+        "It identifies inherent rights.",
+        "It identifies individual freedoms."
+      ],
+      "answers_pt": [
+        "Diz que a América está livre do controle britânico.",
+        "Diz que todas as pessoas são criadas iguais.",
+        "Identifica direitos inerentes.",
+        "Identifica liberdades individuais."
+      ],
+      "mc_correct": "It says America is free from British control.",
+      "mc_options": [
+        "It says America is free from British control.",
+        "So one part does not become too powerful",
+        "Amendments",
+        "Republic"
+      ]
+    },
+    {
+      "id": 9,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "What founding document said the American colonies were free from Britain?",
+      "question_pt": "Qual documento fundador declarou que as colônias americanas estavam livres da Grã-Bretanha?",
+      "answers": [
+        "Declaration of Independence"
+      ],
+      "answers_pt": [
+        "Declaração de Independência"
+      ],
+      "mc_correct": "Declaration of Independence",
+      "mc_options": [
+        "It says America is free from British control.",
+        "Amendments",
+        "Declaration of Independence",
+        "Self-government"
+      ]
+    },
+    {
+      "id": 10,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "Name two important ideas from the Declaration of Independence and the U.S. Constitution.",
+      "question_pt": "Cite duas ideias importantes da Declaração de Independência e da Constituição dos EUA.",
+      "answers": [
+        "Equality",
+        "Liberty",
+        "Social contract",
+        "Natural rights",
+        "Limited government",
+        "Self-government"
+      ],
+      "answers_pt": [
+        "Igualdade",
+        "Liberdade",
+        "Contrato social",
+        "Direitos naturais",
+        "Governo limitado",
+        "Autogoverno"
+      ],
+      "mc_correct": "Equality",
+      "mc_options": [
+        "Capitalism",
+        "Equality",
+        "It says America is free from British control.",
+        "(The basic) rights of Americans"
+      ]
+    },
+    {
+      "id": 11,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "The words \"Life, Liberty, and the pursuit of Happiness\" are in what founding document?",
+      "question_pt": "As palavras \"Life, Liberty, and the pursuit of Happiness\" (Vida, Liberdade e a busca da Felicidade) estão em qual documento fundador?",
+      "answers": [
+        "Declaration of Independence"
+      ],
+      "answers_pt": [
+        "Declaração de Independência"
+      ],
+      "mc_correct": "Declaration of Independence",
+      "mc_options": [
+        "So one part does not become too powerful",
+        "(The basic) rights of Americans",
+        "Declaration of Independence",
+        "Amendments"
+      ]
+    },
+    {
+      "id": 12,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "What is the economic system of the United States?",
+      "question_pt": "Qual é o sistema econômico dos Estados Unidos?",
+      "answers": [
+        "Capitalism",
+        "Free market economy"
+      ],
+      "answers_pt": [
+        "Capitalismo",
+        "Economia de livre mercado"
+      ],
+      "mc_correct": "Capitalism",
+      "mc_options": [
+        "Everyone must follow the law.",
+        "Amendments",
+        "So one part does not become too powerful",
+        "Capitalism"
+      ]
+    },
+    {
+      "id": 13,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "What is the rule of law?",
+      "question_pt": "O que é o \"rule of law\" (Estado de Direito)?",
+      "answers": [
+        "Everyone must follow the law.",
+        "Leaders must obey the law.",
+        "Government must obey the law.",
+        "No one is above the law."
+      ],
+      "answers_pt": [
+        "Todos devem seguir a lei.",
+        "Os líderes devem obedecer a lei.",
+        "O governo deve obedecer a lei.",
+        "Ninguém está acima da lei."
+      ],
+      "mc_correct": "Everyone must follow the law.",
+      "mc_options": [
+        "Capitalism",
+        "Everyone must follow the law.",
+        "Declaration of Independence",
+        "Equality"
+      ]
+    },
+    {
+      "id": 14,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "Many documents influenced the U.S. Constitution. Name one.",
+      "question_pt": "Muitos documentos influenciaram a Constituição dos EUA. Cite um.",
+      "answers": [
+        "Declaration of Independence",
+        "Articles of Confederation",
+        "Federalist Papers",
+        "Anti-Federalist Papers",
+        "Virginia Declaration of Rights",
+        "Fundamental Orders of Connecticut",
+        "Mayflower Compact",
+        "Iroquois Great Law of Peace"
+      ],
+      "answers_pt": [
+        "Declaração de Independência",
+        "Artigos da Confederação",
+        "Os Artigos Federalistas (Federalist Papers)",
+        "Os Artigos Antifederalistas",
+        "Declaração de Direitos da Virgínia",
+        "Ordens Fundamentais de Connecticut",
+        "Pacto do Mayflower",
+        "Grande Lei da Paz Iroquesa"
+      ],
+      "mc_correct": "Declaration of Independence",
+      "mc_options": [
+        "Declaration of Independence",
+        "Amendments",
+        "Self-government",
+        "It says America is free from British control."
+      ]
+    },
+    {
+      "id": 15,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "A: Principles of American Government",
+      "subsection_pt": "A: Princípios do Governo Americano",
+      "question": "There are three branches of government. Why?",
+      "question_pt": "Existem três poderes/ramos do governo. Por quê?",
+      "answers": [
+        "So one part does not become too powerful",
+        "Checks and balances",
+        "Separation of powers"
+      ],
+      "answers_pt": [
+        "Para que uma parte não se torne poderosa demais",
+        "Freios e contrapesos (checks and balances)",
+        "Separação de poderes"
+      ],
+      "mc_correct": "So one part does not become too powerful",
+      "mc_options": [
+        "Everyone must follow the law.",
+        "Amendments",
+        "So one part does not become too powerful",
+        "Self-government"
+      ]
+    },
+    {
+      "id": 16,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Name the three branches of government.",
+      "question_pt": "Cite os três poderes/ramos do governo.",
+      "answers": [
+        "Legislative, executive, and judicial",
+        "Congress, president, and the courts"
+      ],
+      "answers_pt": [
+        "Legislativo, executivo e judiciário",
+        "Congresso, presidente e tribunais"
+      ],
+      "mc_correct": "Legislative, executive, and judicial",
+      "mc_options": [
+        "The Vice President (of the United States)",
+        "Legislative, executive, and judicial",
+        "It decides who is elected president.",
+        "(It states that the) powers not given to the federal government belong to the states or to the people."
+      ]
+    },
+    {
+      "id": 17,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "The President of the United States is in charge of which branch of government?",
+      "question_pt": "O Presidente dos EUA é o chefe de qual poder do governo?",
+      "answers": [
+        "Executive branch"
+      ],
+      "answers_pt": [
+        "Poder Executivo"
+      ],
+      "mc_correct": "Executive branch",
+      "mc_options": [
+        "Executive branch",
+        "(For) life",
+        "Equal representation (for small states)",
+        "Senate and House (of Representatives)"
+      ]
+    },
+    {
+      "id": 18,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What part of the federal government writes laws?",
+      "question_pt": "Qual parte do governo federal escreve as leis?",
+      "answers": [
+        "(U.S.) Congress",
+        "(U.S. or national) legislature",
+        "Legislative branch"
+      ],
+      "answers_pt": [
+        "O Congresso (dos EUA)",
+        "O legislativo (nacional)",
+        "O Poder Legislativo"
+      ],
+      "mc_correct": "(U.S.) Congress",
+      "mc_options": [
+        "(U.S.) Congress",
+        "Senate and House (of Representatives)",
+        "Reviews laws",
+        "(For) life"
+      ]
+    },
+    {
+      "id": 19,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What are the two parts of the U.S. Congress?",
+      "question_pt": "Quais são as duas partes do Congresso dos EUA?",
+      "answers": [
+        "Senate and House (of Representatives)"
+      ],
+      "answers_pt": [
+        "Senado e Câmara dos Deputados (House of Representatives)"
+      ],
+      "mc_correct": "Senate and House (of Representatives)",
+      "mc_options": [
+        "To be independent (of politics)",
+        "Supreme Court",
+        "Senate and House (of Representatives)",
+        "Reviews laws"
+      ]
+    },
+    {
+      "id": 20,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Name one power of the U.S. Congress.",
+      "question_pt": "Cite um poder do Congresso dos EUA.",
+      "answers": [
+        "Writes laws",
+        "Declares war",
+        "Makes the federal budget"
+      ],
+      "answers_pt": [
+        "Escreve leis",
+        "Declara guerra",
+        "Elabora o orçamento federal"
+      ],
+      "mc_correct": "Writes laws",
+      "mc_options": [
+        "Writes laws",
+        "Signs bills into law",
+        "Print paper money",
+        "To be independent (of politics)"
+      ]
+    },
+    {
+      "id": 21,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How many U.S. senators are there?",
+      "question_pt": "Quantos senadores dos EUA existem?",
+      "answers": [
+        "One hundred (100)"
+      ],
+      "answers_pt": [
+        "Cem (100)"
+      ],
+      "mc_correct": "One hundred (100)",
+      "mc_options": [
+        "One hundred (100)",
+        "Nine (9)",
+        "Six (6) years",
+        "Four hundred thirty-five (435)"
+      ]
+    },
+    {
+      "id": 22,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How long is a term for a U.S. senator?",
+      "question_pt": "Qual é a duração do mandato de um senador dos EUA?",
+      "answers": [
+        "Six (6) years"
+      ],
+      "answers_pt": [
+        "Seis (6) anos"
+      ],
+      "mc_correct": "Six (6) years",
+      "mc_options": [
+        "Six (6) years",
+        "Five (5)",
+        "Four hundred thirty-five (435)",
+        "One hundred (100)"
+      ]
+    },
+    {
+      "id": 23,
+      "starred": false,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who is one of your state's U.S. senators now?",
+      "question_pt": "Quem é um dos senadores dos EUA pelo seu estado atualmente?",
+      "answers": [
+        "Answers will vary. District of Columbia residents and residents of U.S. territories should answer that D.C. (or the territory where the applicant lives) has no U.S. senators."
+      ],
+      "answers_pt": [
+        "A resposta varia conforme o seu estado — pesquise quem representa o estado onde você mora. Moradores de D.C. ou de territórios dos EUA devem responder que não têm senadores."
+      ]
+    },
+    {
+      "id": 24,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How many voting members are in the House of Representatives?",
+      "question_pt": "Quantos membros com direito a voto tem a Câmara dos Deputados?",
+      "answers": [
+        "Four hundred thirty-five (435)"
+      ],
+      "answers_pt": [
+        "Quatrocentos e trinta e cinco (435)"
+      ],
+      "mc_correct": "Four hundred thirty-five (435)",
+      "mc_options": [
+        "Nine (9)",
+        "Two (2)",
+        "One hundred (100)",
+        "Four hundred thirty-five (435)"
+      ]
+    },
+    {
+      "id": 25,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How long is a term for a member of the House of Representatives?",
+      "question_pt": "Qual é a duração do mandato de um membro da Câmara dos Deputados?",
+      "answers": [
+        "Two (2) years"
+      ],
+      "answers_pt": [
+        "Dois (2) anos"
+      ],
+      "mc_correct": "Two (2) years",
+      "mc_options": [
+        "Five (5)",
+        "Four (4) years",
+        "Two (2)",
+        "Two (2) years"
+      ]
+    },
+    {
+      "id": 26,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Why do U.S. representatives serve shorter terms than U.S. senators?",
+      "question_pt": "Por que os deputados federais têm mandatos mais curtos que os senadores?",
+      "answers": [
+        "To more closely follow public opinion"
+      ],
+      "answers_pt": [
+        "Para acompanhar mais de perto a opinião pública"
+      ],
+      "mc_correct": "To more closely follow public opinion",
+      "mc_options": [
+        "Citizens in their (congressional) district",
+        "Advises the President (of the United States)",
+        "To more closely follow public opinion",
+        "(Because of) the state's population"
+      ]
+    },
+    {
+      "id": 27,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How many senators does each state have?",
+      "question_pt": "Quantos senadores cada estado tem?",
+      "answers": [
+        "Two (2)"
+      ],
+      "answers_pt": [
+        "Dois (2)"
+      ],
+      "mc_correct": "Two (2)",
+      "mc_options": [
+        "Nine (9)",
+        "Two (2)",
+        "Two (2) years",
+        "Six (6) years"
+      ]
+    },
+    {
+      "id": 28,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Why does each state have two senators?",
+      "question_pt": "Por que cada estado tem dois senadores?",
+      "answers": [
+        "Equal representation (for small states)",
+        "The Great Compromise (Connecticut Compromise)"
+      ],
+      "answers_pt": [
+        "Representação igualitária (para estados pequenos)",
+        "O Grande Acordo (Compromisso de Connecticut)"
+      ],
+      "mc_correct": "Equal representation (for small states)",
+      "mc_options": [
+        "Attorney General",
+        "Equal representation (for small states)",
+        "(For) life",
+        "Writes laws"
+      ]
+    },
+    {
+      "id": 29,
+      "starred": false,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Name your U.S. representative.",
+      "question_pt": "Cite o nome do seu deputado federal (U.S. representative).",
+      "answers": [
+        "Answers will vary. Residents of territories with nonvoting Delegates or Resident Commissioners may provide the name of that Delegate or Commissioner. Also acceptable is any statement that the territory has no (voting) representatives in Congress."
+      ],
+      "answers_pt": [
+        "A resposta varia conforme o seu distrito eleitoral — pesquise quem representa a sua região."
+      ]
+    },
+    {
+      "id": 30,
+      "starred": true,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is the name of the Speaker of the House of Representatives now?",
+      "question_pt": "Qual é o nome do(a) atual Speaker da Câmara dos Deputados?",
+      "answers": [
+        "Visit uscis.gov/citizenship/testupdates for the name of the Speaker of the House of Representatives."
+      ],
+      "answers_pt": [
+        "Consulte uscis.gov/citizenship/testupdates para o nome atualizado."
+      ]
+    },
+    {
+      "id": 31,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who does a U.S. senator represent?",
+      "question_pt": "Quem um senador dos EUA representa?",
+      "answers": [
+        "Citizens of their state",
+        "People of their state"
+      ],
+      "answers_pt": [
+        "Os cidadãos do seu estado",
+        "O povo do seu estado"
+      ],
+      "mc_correct": "Citizens of their state",
+      "mc_options": [
+        "Executive branch",
+        "Supreme Court",
+        "Citizens of their state",
+        "Provide schooling and education"
+      ]
+    },
+    {
+      "id": 32,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who elects U.S. senators?",
+      "question_pt": "Quem elege os senadores dos EUA?",
+      "answers": [
+        "Citizens from their state"
+      ],
+      "answers_pt": [
+        "Os cidadãos do respectivo estado"
+      ],
+      "mc_correct": "Citizens from their state",
+      "mc_options": [
+        "Citizens from their state",
+        "The President (of the United States)",
+        "Provide schooling and education",
+        "It decides who is elected president."
+      ]
+    },
+    {
+      "id": 33,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who does a member of the House of Representatives represent?",
+      "question_pt": "Quem um membro da Câmara dos Deputados representa?",
+      "answers": [
+        "Citizens in their (congressional) district",
+        "Citizens in their district",
+        "People from their (congressional) district",
+        "People in their district"
+      ],
+      "answers_pt": [
+        "Os cidadãos do seu distrito eleitoral",
+        "O povo do seu distrito"
+      ],
+      "mc_correct": "Citizens in their (congressional) district",
+      "mc_options": [
+        "Citizens in their (congressional) district",
+        "The President (of the United States)",
+        "Signs bills into law",
+        "Reviews laws"
+      ]
+    },
+    {
+      "id": 34,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who elects members of the House of Representatives?",
+      "question_pt": "Quem elege os membros da Câmara dos Deputados?",
+      "answers": [
+        "Citizens from their (congressional) district"
+      ],
+      "answers_pt": [
+        "Os cidadãos do respectivo distrito eleitoral"
+      ],
+      "mc_correct": "Citizens from their (congressional) district",
+      "mc_options": [
+        "Citizens in their (congressional) district",
+        "To more closely follow public opinion",
+        "Citizens from their (congressional) district",
+        "Attorney General"
+      ]
+    },
+    {
+      "id": 35,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Some states have more representatives than other states. Why?",
+      "question_pt": "Alguns estados têm mais deputados que outros. Por quê?",
+      "answers": [
+        "(Because of) the state's population",
+        "(Because) they have more people",
+        "(Because) some states have more people"
+      ],
+      "answers_pt": [
+        "Por causa da população do estado",
+        "Porque têm mais habitantes"
+      ],
+      "mc_correct": "(Because of) the state's population",
+      "mc_options": [
+        "Citizens of their state",
+        "(For) life",
+        "(Because of) the state's population",
+        "Reviews laws"
+      ]
+    },
+    {
+      "id": 36,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "The President of the United States is elected for how many years?",
+      "question_pt": "Por quantos anos o Presidente dos EUA é eleito?",
+      "answers": [
+        "Four (4) years"
+      ],
+      "answers_pt": [
+        "Quatro (4) anos"
+      ],
+      "mc_correct": "Four (4) years",
+      "mc_options": [
+        "Four (4) years",
+        "One hundred (100)",
+        "Five (5)",
+        "Four hundred thirty-five (435)"
+      ]
+    },
+    {
+      "id": 37,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "The President of the United States can serve only two terms. Why?",
+      "question_pt": "O Presidente dos EUA só pode cumprir dois mandatos. Por quê?",
+      "answers": [
+        "(Because of) the 22nd Amendment",
+        "To keep the president from becoming too powerful"
+      ],
+      "answers_pt": [
+        "Por causa da 22ª Emenda",
+        "Para evitar que o presidente se torne poderoso demais"
+      ],
+      "mc_correct": "(Because of) the 22nd Amendment",
+      "mc_options": [
+        "(Because of) the 22nd Amendment",
+        "Supreme Court",
+        "(For) life",
+        "Legislative, executive, and judicial"
+      ]
+    },
+    {
+      "id": 38,
+      "starred": true,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is the name of the President of the United States now?",
+      "question_pt": "Qual é o nome do atual Presidente dos EUA?",
+      "answers": [
+        "Visit uscis.gov/citizenship/testupdates for the name of the President of the United States."
+      ],
+      "answers_pt": [
+        "Consulte uscis.gov/citizenship/testupdates para o nome atualizado."
+      ]
+    },
+    {
+      "id": 39,
+      "starred": true,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is the name of the Vice President of the United States now?",
+      "question_pt": "Qual é o nome do atual Vice-Presidente dos EUA?",
+      "answers": [
+        "Visit uscis.gov/citizenship/testupdates for the name of the Vice President of the United States."
+      ],
+      "answers_pt": [
+        "Consulte uscis.gov/citizenship/testupdates para o nome atualizado."
+      ]
+    },
+    {
+      "id": 40,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "If the president can no longer serve, who becomes president?",
+      "question_pt": "Se o presidente não puder mais exercer o cargo, quem se torna presidente?",
+      "answers": [
+        "The Vice President (of the United States)"
+      ],
+      "answers_pt": [
+        "O Vice-Presidente (dos EUA)"
+      ],
+      "mc_correct": "The Vice President (of the United States)",
+      "mc_options": [
+        "Signs bills into law",
+        "Advises the President (of the United States)",
+        "The Vice President (of the United States)",
+        "Citizens from their state"
+      ]
+    },
+    {
+      "id": 41,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Name one power of the president.",
+      "question_pt": "Cite um poder do presidente.",
+      "answers": [
+        "Signs bills into law",
+        "Vetoes bills",
+        "Enforces laws",
+        "Commander in Chief (of the military)",
+        "Chief diplomat",
+        "Appoints federal judges"
+      ],
+      "answers_pt": [
+        "Sanciona projetos de lei",
+        "Veta projetos de lei",
+        "Faz cumprir as leis",
+        "Comandante-chefe (das forças armadas)",
+        "Diplomata-chefe",
+        "Nomeia juízes federais"
+      ],
+      "mc_correct": "Signs bills into law",
+      "mc_options": [
+        "Senate and House (of Representatives)",
+        "(For) life",
+        "Signs bills into law",
+        "(Because of) the 22nd Amendment"
+      ]
+    },
+    {
+      "id": 42,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who is Commander in Chief of the U.S. military?",
+      "question_pt": "Quem é o comandante-chefe das forças armadas dos EUA?",
+      "answers": [
+        "The President (of the United States)"
+      ],
+      "answers_pt": [
+        "O Presidente (dos EUA)"
+      ],
+      "mc_correct": "The President (of the United States)",
+      "mc_options": [
+        "The Vice President (of the United States)",
+        "The President (of the United States)",
+        "Signs bills into law",
+        "Executive branch"
+      ]
+    },
+    {
+      "id": 43,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who signs bills to become laws?",
+      "question_pt": "Quem assina os projetos de lei para que se tornem lei?",
+      "answers": [
+        "The President (of the United States)"
+      ],
+      "answers_pt": [
+        "O Presidente (dos EUA)"
+      ],
+      "mc_correct": "The President (of the United States)",
+      "mc_options": [
+        "(U.S.) Congress",
+        "The President (of the United States)",
+        "Writes laws",
+        "(Because of) the 22nd Amendment"
+      ]
+    },
+    {
+      "id": 44,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who vetoes bills?",
+      "question_pt": "Quem tem o poder de vetar projetos de lei?",
+      "answers": [
+        "The President (of the United States)"
+      ],
+      "answers_pt": [
+        "O Presidente (dos EUA)"
+      ],
+      "mc_correct": "The President (of the United States)",
+      "mc_options": [
+        "To be independent (of politics)",
+        "Reviews laws",
+        "The President (of the United States)",
+        "(For) life"
+      ]
+    },
+    {
+      "id": 45,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who appoints federal judges?",
+      "question_pt": "Quem nomeia os juízes federais?",
+      "answers": [
+        "The President (of the United States)"
+      ],
+      "answers_pt": [
+        "O Presidente (dos EUA)"
+      ],
+      "mc_correct": "The President (of the United States)",
+      "mc_options": [
+        "The President (of the United States)",
+        "Writes laws",
+        "Reviews laws",
+        "Senate and House (of Representatives)"
+      ]
+    },
+    {
+      "id": 46,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "The executive branch has many parts. Name one.",
+      "question_pt": "O Poder Executivo tem várias partes. Cite uma.",
+      "answers": [
+        "President (of the United States)",
+        "Cabinet",
+        "Federal departments and agencies"
+      ],
+      "answers_pt": [
+        "O Presidente (dos EUA)",
+        "O Gabinete (Cabinet)",
+        "Departamentos e agências federais"
+      ],
+      "mc_correct": "President (of the United States)",
+      "mc_options": [
+        "President (of the United States)",
+        "To be independent (of politics)",
+        "Reviews laws",
+        "(Because of) the state's population"
+      ]
+    },
+    {
+      "id": 47,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What does the President's Cabinet do?",
+      "question_pt": "O que o Gabinete do Presidente faz?",
+      "answers": [
+        "Advises the President (of the United States)"
+      ],
+      "answers_pt": [
+        "Aconselha o Presidente (dos EUA)"
+      ],
+      "mc_correct": "Advises the President (of the United States)",
+      "mc_options": [
+        "Equal representation (for small states)",
+        "(Because of) the state's population",
+        "Advises the President (of the United States)",
+        "It decides who is elected president."
+      ]
+    },
+    {
+      "id": 48,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What are two Cabinet-level positions?",
+      "question_pt": "Cite dois cargos de nível de Gabinete.",
+      "answers": [
+        "Attorney General",
+        "Secretary of Agriculture",
+        "Secretary of Commerce",
+        "Secretary of Education",
+        "Secretary of Energy",
+        "Secretary of Health and Human Services",
+        "Secretary of Homeland Security",
+        "Secretary of Housing and Urban Development",
+        "Secretary of the Interior",
+        "Secretary of Labor",
+        "Secretary of State",
+        "Secretary of Transportation",
+        "Secretary of the Treasury",
+        "Secretary of Veterans Affairs",
+        "Secretary of War (Defense)",
+        "Vice-President",
+        "Administrator of the Environmental Protection Agency",
+        "Administrator of the Small Business Administration",
+        "Director of the Central Intelligence Agency",
+        "Director of the Office of Management and Budget",
+        "Director of National Intelligence",
+        "United States Trade Representative"
+      ],
+      "answers_pt": [
+        "Procurador-Geral (Attorney General)",
+        "Secretário da Agricultura",
+        "Secretário do Comércio",
+        "Secretário da Educação",
+        "Secretário de Energia",
+        "Secretário de Saúde e Serviços Humanos",
+        "Secretário de Segurança Interna",
+        "Secretário de Habitação e Desenvolvimento Urbano",
+        "Secretário do Interior",
+        "Secretário do Trabalho",
+        "Secretário de Estado",
+        "Secretário de Transportes",
+        "Secretário do Tesouro",
+        "Secretário de Assuntos dos Veteranos",
+        "Secretário de Guerra (Defesa)",
+        "Vice-Presidente",
+        "Administrador da Agência de Proteção Ambiental",
+        "Administrador da Small Business Administration",
+        "Diretor da CIA",
+        "Diretor do Escritório de Administração e Orçamento",
+        "Diretor de Inteligência Nacional",
+        "Representante de Comércio dos EUA"
+      ],
+      "mc_correct": "Attorney General",
+      "mc_options": [
+        "Attorney General",
+        "(For) life",
+        "(It states that the) powers not given to the federal government belong to the states or to the people.",
+        "Citizens in their (congressional) district"
+      ]
+    },
+    {
+      "id": 49,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Why is the Electoral College important?",
+      "question_pt": "Por que o Colégio Eleitoral é importante?",
+      "answers": [
+        "It decides who is elected president.",
+        "It provides a compromise between the popular election of the president and congressional selection."
+      ],
+      "answers_pt": [
+        "Decide quem é eleito presidente.",
+        "Representa um meio-termo entre a eleição popular do presidente e a escolha pelo Congresso."
+      ],
+      "mc_correct": "It decides who is elected president.",
+      "mc_options": [
+        "Reviews laws",
+        "The Vice President (of the United States)",
+        "Citizens from their (congressional) district",
+        "It decides who is elected president."
+      ]
+    },
+    {
+      "id": 50,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is one part of the judicial branch?",
+      "question_pt": "Cite uma parte do Poder Judiciário.",
+      "answers": [
+        "Supreme Court",
+        "Federal Courts"
+      ],
+      "answers_pt": [
+        "Suprema Corte",
+        "Tribunais federais"
+      ],
+      "mc_correct": "Supreme Court",
+      "mc_options": [
+        "Supreme Court",
+        "Legislative, executive, and judicial",
+        "Citizens in their (congressional) district",
+        "Equal representation (for small states)"
+      ]
+    },
+    {
+      "id": 51,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What does the judicial branch do?",
+      "question_pt": "O que o Poder Judiciário faz?",
+      "answers": [
+        "Reviews laws",
+        "Explains laws",
+        "Resolves disputes (disagreements) about the law",
+        "Decides if a law goes against the (U.S.) Constitution"
+      ],
+      "answers_pt": [
+        "Revisa as leis",
+        "Explica as leis",
+        "Resolve disputas sobre a lei",
+        "Decide se uma lei vai contra a Constituição"
+      ],
+      "mc_correct": "Reviews laws",
+      "mc_options": [
+        "Reviews laws",
+        "Citizens in their (congressional) district",
+        "Print paper money",
+        "(It states that the) powers not given to the federal government belong to the states or to the people."
+      ]
+    },
+    {
+      "id": 52,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is the highest court in the United States?",
+      "question_pt": "Qual é o tribunal mais alto dos Estados Unidos?",
+      "answers": [
+        "Supreme Court"
+      ],
+      "answers_pt": [
+        "Suprema Corte"
+      ],
+      "mc_correct": "Supreme Court",
+      "mc_options": [
+        "(Because of) the state's population",
+        "Signs bills into law",
+        "The Vice President (of the United States)",
+        "Supreme Court"
+      ]
+    },
+    {
+      "id": 53,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How many seats are on the Supreme Court?",
+      "question_pt": "Quantos assentos tem a Suprema Corte?",
+      "answers": [
+        "Nine (9)"
+      ],
+      "answers_pt": [
+        "Nove (9)"
+      ],
+      "mc_correct": "Nine (9)",
+      "mc_options": [
+        "Four (4) years",
+        "Nine (9)",
+        "Two (2)",
+        "One hundred (100)"
+      ]
+    },
+    {
+      "id": 54,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How many Supreme Court justices are usually needed to decide a case?",
+      "question_pt": "Quantos juízes da Suprema Corte normalmente são necessários para decidir um caso?",
+      "answers": [
+        "Five (5)"
+      ],
+      "answers_pt": [
+        "Cinco (5)"
+      ],
+      "mc_correct": "Five (5)",
+      "mc_options": [
+        "Five (5)",
+        "Nine (9)",
+        "Six (6) years",
+        "Four hundred thirty-five (435)"
+      ]
+    },
+    {
+      "id": 55,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "How long do Supreme Court justices serve?",
+      "question_pt": "Por quanto tempo os juízes da Suprema Corte servem?",
+      "answers": [
+        "(For) life",
+        "Lifetime appointment",
+        "(Until) retirement"
+      ],
+      "answers_pt": [
+        "Vitaliciamente",
+        "Nomeação vitalícia",
+        "Até se aposentarem"
+      ],
+      "mc_correct": "(For) life",
+      "mc_options": [
+        "Advises the President (of the United States)",
+        "(For) life",
+        "(U.S.) Congress",
+        "Citizens of their state"
+      ]
+    },
+    {
+      "id": 56,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Supreme Court justices serve for life. Why?",
+      "question_pt": "Os juízes da Suprema Corte servem vitaliciamente. Por quê?",
+      "answers": [
+        "To be independent (of politics)",
+        "To limit outside (political) influence"
+      ],
+      "answers_pt": [
+        "Para serem independentes (da política)",
+        "Para limitar influência política externa"
+      ],
+      "mc_correct": "To be independent (of politics)",
+      "mc_options": [
+        "Legislative, executive, and judicial",
+        "The President (of the United States)",
+        "Citizens in their (congressional) district",
+        "To be independent (of politics)"
+      ]
+    },
+    {
+      "id": 57,
+      "starred": false,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who is the Chief Justice of the United States now?",
+      "question_pt": "Quem é o atual Chief Justice (Presidente) da Suprema Corte?",
+      "answers": [
+        "Visit uscis.gov/citizenship/testupdates for the name of the Chief Justice of the United States."
+      ],
+      "answers_pt": [
+        "Consulte uscis.gov/citizenship/testupdates para o nome atualizado."
+      ]
+    },
+    {
+      "id": 58,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Name one power that is only for the federal government.",
+      "question_pt": "Cite um poder que é exclusivo do governo federal.",
+      "answers": [
+        "Print paper money",
+        "Mint coins",
+        "Declare war",
+        "Create an army",
+        "Make treaties",
+        "Set foreign policy"
+      ],
+      "answers_pt": [
+        "Imprimir papel-moeda",
+        "Cunhar moedas",
+        "Declarar guerra",
+        "Criar um exército",
+        "Fazer tratados",
+        "Definir a política externa"
+      ],
+      "mc_correct": "Print paper money",
+      "mc_options": [
+        "To more closely follow public opinion",
+        "(For) life",
+        "Equal representation (for small states)",
+        "Print paper money"
+      ]
+    },
+    {
+      "id": 59,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Name one power that is only for the states.",
+      "question_pt": "Cite um poder que é exclusivo dos estados.",
+      "answers": [
+        "Provide schooling and education",
+        "Provide protection (police)",
+        "Provide safety (fire departments)",
+        "Give a driver's license",
+        "Approve zoning and land use"
+      ],
+      "answers_pt": [
+        "Prover educação escolar",
+        "Prover proteção (polícia)",
+        "Prover segurança (bombeiros)",
+        "Emitir carteira de motorista",
+        "Aprovar zoneamento e uso do solo"
+      ],
+      "mc_correct": "Provide schooling and education",
+      "mc_options": [
+        "(For) life",
+        "Senate and House (of Representatives)",
+        "Provide schooling and education",
+        "It decides who is elected president."
+      ]
+    },
+    {
+      "id": 60,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is the purpose of the 10th Amendment?",
+      "question_pt": "Qual é o propósito da 10ª Emenda?",
+      "answers": [
+        "(It states that the) powers not given to the federal government belong to the states or to the people."
+      ],
+      "answers_pt": [
+        "Estabelece que os poderes não concedidos ao governo federal pertencem aos estados ou ao povo."
+      ],
+      "mc_correct": "(It states that the) powers not given to the federal government belong to the states or to the people.",
+      "mc_options": [
+        "(It states that the) powers not given to the federal government belong to the states or to the people.",
+        "President (of the United States)",
+        "Supreme Court",
+        "(Because of) the state's population"
+      ]
+    },
+    {
+      "id": 61,
+      "starred": true,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "Who is the governor of your state now?",
+      "question_pt": "Quem é o atual governador do seu estado?",
+      "answers": [
+        "Answers will vary. District of Columbia residents should answer that D.C. does not have a governor."
+      ],
+      "answers_pt": [
+        "A resposta varia conforme o seu estado — pesquise quem é o governador atual. Moradores de D.C. devem responder que D.C. não tem governador."
+      ]
+    },
+    {
+      "id": 62,
+      "starred": false,
+      "dynamic": true,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "B: System of Government",
+      "subsection_pt": "B: Sistema de Governo",
+      "question": "What is the capital of your state?",
+      "question_pt": "Qual é a capital do seu estado?",
+      "answers": [
+        "Answers will vary. District of Columbia residents should answer that D.C. is not a state and does not have a capital. Residents of U.S. territories should name the capital of the territory."
+      ],
+      "answers_pt": [
+        "A resposta varia conforme o seu estado. Moradores de D.C. devem responder que D.C. não é um estado e não tem capital."
+      ]
+    },
+    {
+      "id": 63,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "There are four amendments to the U.S. Constitution about who can vote. Describe one of them.",
+      "question_pt": "Existem quatro emendas à Constituição dos EUA sobre quem pode votar. Descreva uma delas.",
+      "answers": [
+        "Citizens eighteen (18) and older (can vote).",
+        "You don't have to pay (a poll tax) to vote.",
+        "Any citizen can vote. (Women and men can vote.)",
+        "A male citizen of any race (can vote)."
+      ],
+      "answers_pt": [
+        "Cidadãos com 18 anos ou mais (podem votar).",
+        "Não é preciso pagar (uma taxa eleitoral) para votar.",
+        "Qualquer cidadão pode votar (homens e mulheres).",
+        "Um cidadão homem de qualquer raça (pode votar)."
+      ],
+      "mc_correct": "Citizens eighteen (18) and older (can vote).",
+      "mc_options": [
+        "Citizens eighteen (18) and older (can vote).",
+        "Give up loyalty to other countries",
+        "The United States",
+        "Be born in the United States, under the conditions set by the 14th Amendment"
+      ]
+    },
+    {
+      "id": 64,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "Who can vote in federal elections, run for federal office, and serve on a jury in the United States?",
+      "question_pt": "Quem pode votar em eleições federais, concorrer a cargos federais e servir em um júri nos EUA?",
+      "answers": [
+        "Citizens",
+        "Citizens of the United States",
+        "U.S. citizens"
+      ],
+      "answers_pt": [
+        "Cidadãos",
+        "Cidadãos dos Estados Unidos"
+      ],
+      "mc_correct": "Citizens",
+      "mc_options": [
+        "Required by law",
+        "The United States",
+        "Citizens",
+        "Be born in the United States, under the conditions set by the 14th Amendment"
+      ]
+    },
+    {
+      "id": 65,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "What are three rights of everyone living in the United States?",
+      "question_pt": "Cite três direitos de todos que vivem nos Estados Unidos.",
+      "answers": [
+        "Freedom of expression",
+        "Freedom of speech",
+        "Freedom of assembly",
+        "Freedom to petition the government",
+        "Freedom of religion",
+        "The right to bear arms"
+      ],
+      "answers_pt": [
+        "Liberdade de expressão",
+        "Liberdade de fala",
+        "Liberdade de reunião",
+        "Direito de peticionar ao governo",
+        "Liberdade religiosa",
+        "Direito de portar armas"
+      ],
+      "mc_correct": "Freedom of expression",
+      "mc_options": [
+        "Citizens",
+        "Freedom of expression",
+        "Required by law",
+        "Be born in the United States, under the conditions set by the 14th Amendment"
+      ]
+    },
+    {
+      "id": 66,
+      "starred": true,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "What do we show loyalty to when we say the Pledge of Allegiance?",
+      "question_pt": "A que mostramos lealdade quando fazemos o Juramento à Bandeira (Pledge of Allegiance)?",
+      "answers": [
+        "The United States",
+        "The flag"
+      ],
+      "answers_pt": [
+        "Aos Estados Unidos",
+        "À bandeira"
+      ],
+      "mc_correct": "The United States",
+      "mc_options": [
+        "The United States",
+        "Be born in the United States, under the conditions set by the 14th Amendment",
+        "Required by law",
+        "Freedom of expression"
+      ]
+    },
+    {
+      "id": 67,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "Name two promises that new citizens make in the Oath of Allegiance.",
+      "question_pt": "Cite duas promessas que novos cidadãos fazem no Juramento de Fidelidade (Oath of Allegiance).",
+      "answers": [
+        "Give up loyalty to other countries",
+        "Defend the (U.S.) Constitution",
+        "Obey the laws of the United States",
+        "Serve in the military (if needed)",
+        "Serve (help, do important work for) the nation (if needed)",
+        "Be loyal to the United States"
+      ],
+      "answers_pt": [
+        "Renunciar à lealdade a outros países",
+        "Defender a Constituição (dos EUA)",
+        "Obedecer às leis dos Estados Unidos",
+        "Servir nas forças armadas (se necessário)",
+        "Servir a nação (se necessário)",
+        "Ser leal aos Estados Unidos"
+      ],
+      "mc_correct": "Give up loyalty to other countries",
+      "mc_options": [
+        "Citizens",
+        "Vote",
+        "Citizens eighteen (18) and older (can vote).",
+        "Give up loyalty to other countries"
+      ]
+    },
+    {
+      "id": 68,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "How can people become United States citizens?",
+      "question_pt": "Como uma pessoa pode se tornar cidadã dos Estados Unidos?",
+      "answers": [
+        "Be born in the United States, under the conditions set by the 14th Amendment",
+        "Naturalize",
+        "Derive citizenship (under conditions set by Congress)"
+      ],
+      "answers_pt": [
+        "Nascendo nos EUA, sob as condições da 14ª Emenda",
+        "Naturalizando-se",
+        "Adquirindo cidadania derivada (sob condições definidas pelo Congresso)"
+      ],
+      "mc_correct": "Be born in the United States, under the conditions set by the 14th Amendment",
+      "mc_options": [
+        "Freedom of expression",
+        "The United States",
+        "Give up loyalty to other countries",
+        "Be born in the United States, under the conditions set by the 14th Amendment"
+      ]
+    },
+    {
+      "id": 69,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "What are two examples of civic participation in the United States?",
+      "question_pt": "Cite dois exemplos de participação cívica nos Estados Unidos.",
+      "answers": [
+        "Vote",
+        "Run for office",
+        "Join a political party",
+        "Help with a campaign",
+        "Join a civic group",
+        "Join a community group",
+        "Give an elected official your opinion (on an issue)",
+        "Contact elected officials",
+        "Support or oppose an issue or policy",
+        "Write to a newspaper"
+      ],
+      "answers_pt": [
+        "Votar",
+        "Concorrer a um cargo",
+        "Filiar-se a um partido político",
+        "Ajudar em uma campanha",
+        "Participar de um grupo cívico",
+        "Participar de um grupo comunitário",
+        "Dar sua opinião a um representante eleito",
+        "Contatar representantes eleitos",
+        "Apoiar ou se opor a uma questão/política",
+        "Escrever para um jornal"
+      ],
+      "mc_correct": "Vote",
+      "mc_options": [
+        "Citizens",
+        "Be born in the United States, under the conditions set by the 14th Amendment",
+        "Citizens eighteen (18) and older (can vote).",
+        "Vote"
+      ]
+    },
+    {
+      "id": 70,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "What is one way Americans can serve their country?",
+      "question_pt": "Cite uma forma de os americanos servirem seu país.",
+      "answers": [
+        "Vote",
+        "Pay taxes",
+        "Obey the law",
+        "Serve in the military",
+        "Run for office",
+        "Work for local, state, or federal government"
+      ],
+      "answers_pt": [
+        "Votar",
+        "Pagar impostos",
+        "Obedecer à lei",
+        "Servir nas forças armadas",
+        "Concorrer a um cargo",
+        "Trabalhar para o governo local, estadual ou federal"
+      ],
+      "mc_correct": "Vote",
+      "mc_options": [
+        "Vote",
+        "Give up loyalty to other countries",
+        "Be born in the United States, under the conditions set by the 14th Amendment",
+        "Required by law"
+      ]
+    },
+    {
+      "id": 71,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "Why is it important to pay federal taxes?",
+      "question_pt": "Por que é importante pagar impostos federais?",
+      "answers": [
+        "Required by law",
+        "All people pay to fund the federal government",
+        "Required by the (U.S.) Constitution (16th Amendment)",
+        "Civic duty"
+      ],
+      "answers_pt": [
+        "É exigido por lei",
+        "Todos pagam para financiar o governo federal",
+        "É exigido pela Constituição (16ª Emenda)",
+        "É um dever cívico"
+      ],
+      "mc_correct": "Required by law",
+      "mc_options": [
+        "Required by law",
+        "The United States",
+        "Be born in the United States, under the conditions set by the 14th Amendment",
+        "Vote"
+      ]
+    },
+    {
+      "id": 72,
+      "starred": false,
+      "dynamic": false,
+      "section": "American Government",
+      "section_pt": "Governo Americano",
+      "subsection": "C: Rights and Responsibilities",
+      "subsection_pt": "C: Direitos e Responsabilidades",
+      "question": "It is important for all men age 18 through 25 to register for the Selective Service. Name one reason why.",
+      "question_pt": "É importante que todo homem entre 18 e 25 anos se registre no Selective Service. Cite um motivo.",
+      "answers": [
+        "Required by law",
+        "Civic duty",
+        "Makes the draft fair, if needed"
+      ],
+      "answers_pt": [
+        "É exigido por lei",
+        "É um dever cívico",
+        "Torna o alistamento justo, se necessário"
+      ],
+      "mc_correct": "Required by law",
+      "mc_options": [
+        "Give up loyalty to other countries",
+        "The United States",
+        "Required by law",
+        "Vote"
+      ]
+    },
+    {
+      "id": 73,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "The colonists came to America for many reasons. Name one.",
+      "question_pt": "Os colonos vieram para a América por vários motivos. Cite um.",
+      "answers": [
+        "Freedom",
+        "Political liberty",
+        "Religious freedom",
+        "Economic opportunity",
+        "Escape persecution"
+      ],
+      "answers_pt": [
+        "Liberdade",
+        "Liberdade política",
+        "Liberdade religiosa",
+        "Oportunidade econômica",
+        "Escapar de perseguição"
+      ],
+      "mc_correct": "Freedom",
+      "mc_options": [
+        "New Hampshire",
+        "Africans",
+        "Freedom",
+        "American Revolution"
+      ]
+    },
+    {
+      "id": 74,
+      "starred": true,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Who lived in America before the Europeans arrived?",
+      "question_pt": "Quem vivia na América antes da chegada dos europeus?",
+      "answers": [
+        "American Indians",
+        "Native Americans"
+      ],
+      "answers_pt": [
+        "Índios americanos",
+        "Nativos americanos"
+      ],
+      "mc_correct": "American Indians",
+      "mc_options": [
+        "New Hampshire",
+        "(Battle of) Bunker Hill",
+        "American Indians",
+        "Writer of the Declaration of Independence"
+      ]
+    },
+    {
+      "id": 75,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "What group of people was taken and sold as slaves?",
+      "question_pt": "Que grupo de pessoas foi capturado e vendido como escravo?",
+      "answers": [
+        "Africans",
+        "People from Africa"
+      ],
+      "answers_pt": [
+        "Africanos",
+        "Pessoas da África"
+      ],
+      "mc_correct": "Africans",
+      "mc_options": [
+        "(James) Madison",
+        "They helped people understand the (U.S.) Constitution.",
+        "(Battle of) Bunker Hill",
+        "Africans"
+      ]
+    },
+    {
+      "id": 76,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "What war did the Americans fight to win independence from Britain?",
+      "question_pt": "Qual guerra os americanos travaram para conquistar a independência da Grã-Bretanha?",
+      "answers": [
+        "American Revolution",
+        "The (American) Revolutionary War",
+        "War for (American) Independence"
+      ],
+      "answers_pt": [
+        "Revolução Americana",
+        "Guerra Revolucionária (Americana)",
+        "Guerra da Independência (Americana)"
+      ],
+      "mc_correct": "American Revolution",
+      "mc_options": [
+        "(James) Madison",
+        "American Revolution",
+        "New Hampshire",
+        "Writer of the Declaration of Independence"
+      ]
+    },
+    {
+      "id": 77,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Name one reason why the Americans declared independence from Britain.",
+      "question_pt": "Cite um motivo pelo qual os americanos declararam independência da Grã-Bretanha.",
+      "answers": [
+        "High taxes",
+        "Taxation without representation",
+        "British soldiers stayed in Americans' houses (boarding, quartering)",
+        "They did not have self-government",
+        "Boston Massacre",
+        "Boston Tea Party (Tea Act)",
+        "Stamp Act",
+        "Sugar Act",
+        "Townshend Acts",
+        "Intolerable (Coercive) Acts"
+      ],
+      "answers_pt": [
+        "Impostos altos",
+        "Taxação sem representação",
+        "Soldados britânicos alojados à força em casas americanas",
+        "Não tinham autogoverno",
+        "Massacre de Boston",
+        "Boston Tea Party (Lei do Chá)",
+        "Lei do Selo (Stamp Act)",
+        "Lei do Açúcar",
+        "Leis Townshend",
+        "Leis Intoleráveis (Coercitivas)"
+      ],
+      "mc_correct": "High taxes",
+      "mc_options": [
+        "High taxes",
+        "Freedom",
+        "(Thomas) Jefferson",
+        "They helped people understand the (U.S.) Constitution."
+      ]
+    },
+    {
+      "id": 78,
+      "starred": true,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Who wrote the Declaration of Independence?",
+      "question_pt": "Quem escreveu a Declaração de Independência?",
+      "answers": [
+        "(Thomas) Jefferson"
+      ],
+      "answers_pt": [
+        "Thomas Jefferson"
+      ],
+      "mc_correct": "(Thomas) Jefferson",
+      "mc_options": [
+        "Writer of the Declaration of Independence",
+        "(Thomas) Jefferson",
+        "\"Father of the Constitution\"",
+        "They helped people understand the (U.S.) Constitution."
+      ]
+    },
+    {
+      "id": 79,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "When was the Declaration of Independence adopted?",
+      "question_pt": "Quando a Declaração de Independência foi adotada?",
+      "answers": [
+        "July 4, 1776"
+      ],
+      "answers_pt": [
+        "4 de julho de 1776"
+      ],
+      "mc_correct": "July 4, 1776",
+      "mc_options": [
+        "(James) Madison",
+        "July 4, 1776",
+        "\"Father of Our Country\"",
+        "(Battle of) Bunker Hill"
+      ]
+    },
+    {
+      "id": 80,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "The American Revolution had many important events. Name one.",
+      "question_pt": "A Revolução Americana teve vários eventos importantes. Cite um.",
+      "answers": [
+        "(Battle of) Bunker Hill",
+        "Declaration of Independence",
+        "Washington Crossing the Delaware (Battle of Trenton)",
+        "(Battle of) Saratoga",
+        "Valley Forge (Encampment)",
+        "(Battle of) Yorktown (British surrender at Yorktown)"
+      ],
+      "answers_pt": [
+        "Batalha de Bunker Hill",
+        "Declaração de Independência",
+        "Washington atravessando o Delaware (Batalha de Trenton)",
+        "Batalha de Saratoga",
+        "Acampamento de Valley Forge",
+        "Batalha de Yorktown (rendição britânica)"
+      ],
+      "mc_correct": "(Battle of) Bunker Hill",
+      "mc_options": [
+        "First Secretary of the Treasury",
+        "Africans",
+        "(Battle of) Bunker Hill",
+        "\"Father of the Constitution\""
+      ]
+    },
+    {
+      "id": 81,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "There were 13 original states. Name five.",
+      "question_pt": "Havia 13 estados originais. Cite cinco.",
+      "answers": [
+        "New Hampshire",
+        "Massachusetts",
+        "Rhode Island",
+        "Connecticut",
+        "New York",
+        "New Jersey",
+        "Pennsylvania",
+        "Delaware",
+        "Maryland",
+        "Virginia",
+        "North Carolina",
+        "South Carolina",
+        "Georgia"
+      ],
+      "answers_pt": [
+        "New Hampshire, Massachusetts, Rhode Island, Connecticut, New York, New Jersey, Pennsylvania, Delaware, Maryland, Virginia, Carolina do Norte, Carolina do Sul, Geórgia (cite cinco)"
+      ],
+      "mc_correct": "New Hampshire",
+      "mc_options": [
+        "First Secretary of the Treasury",
+        "High taxes",
+        "\"Father of Our Country\"",
+        "New Hampshire"
+      ]
+    },
+    {
+      "id": 82,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "What founding document was written in 1787?",
+      "question_pt": "Qual documento fundador foi escrito em 1787?",
+      "answers": [
+        "(U.S.) Constitution"
+      ],
+      "answers_pt": [
+        "A Constituição (dos EUA)"
+      ],
+      "mc_correct": "(U.S.) Constitution",
+      "mc_options": [
+        "(U.S.) Constitution",
+        "American Indians",
+        "(Thomas) Jefferson",
+        "Writer of the Declaration of Independence"
+      ]
+    },
+    {
+      "id": 83,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "The Federalist Papers supported the passage of the U.S. Constitution. Name one of the writers.",
+      "question_pt": "Os Artigos Federalistas (Federalist Papers) apoiaram a aprovação da Constituição dos EUA. Cite um dos autores.",
+      "answers": [
+        "(James) Madison",
+        "(Alexander) Hamilton",
+        "(John) Jay",
+        "Publius"
+      ],
+      "answers_pt": [
+        "James Madison",
+        "Alexander Hamilton",
+        "John Jay",
+        "Publius (pseudônimo)"
+      ],
+      "mc_correct": "(James) Madison",
+      "mc_options": [
+        "(James) Madison",
+        "Freedom",
+        "New Hampshire",
+        "Founded the first free public libraries"
+      ]
+    },
+    {
+      "id": 84,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Why were the Federalist Papers important?",
+      "question_pt": "Por que os Artigos Federalistas foram importantes?",
+      "answers": [
+        "They helped people understand the (U.S.) Constitution.",
+        "They supported passing the (U.S.) Constitution."
+      ],
+      "answers_pt": [
+        "Ajudaram as pessoas a entender a Constituição.",
+        "Apoiaram a aprovação da Constituição."
+      ],
+      "mc_correct": "They helped people understand the (U.S.) Constitution.",
+      "mc_options": [
+        "Writer of the Declaration of Independence",
+        "They helped people understand the (U.S.) Constitution.",
+        "High taxes",
+        "(Battle of) Bunker Hill"
+      ]
+    },
+    {
+      "id": 85,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Benjamin Franklin is famous for many things. Name one.",
+      "question_pt": "Benjamin Franklin é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "Founded the first free public libraries",
+        "First Postmaster General of the United States",
+        "Helped write the Declaration of Independence",
+        "Inventor",
+        "U.S. diplomat"
+      ],
+      "answers_pt": [
+        "Fundou as primeiras bibliotecas públicas gratuitas",
+        "Primeiro Diretor-Geral dos Correios dos EUA",
+        "Ajudou a escrever a Declaração de Independência",
+        "Inventor",
+        "Diplomata americano"
+      ],
+      "mc_correct": "Founded the first free public libraries",
+      "mc_options": [
+        "(James) Madison",
+        "They helped people understand the (U.S.) Constitution.",
+        "(Battle of) Bunker Hill",
+        "Founded the first free public libraries"
+      ]
+    },
+    {
+      "id": 86,
+      "starred": true,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "George Washington is famous for many things. Name one.",
+      "question_pt": "George Washington é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "\"Father of Our Country\"",
+        "First president of the United States",
+        "General of the Continental Army",
+        "President of the Constitutional Convention"
+      ],
+      "answers_pt": [
+        "\"Pai da Nação\"",
+        "Primeiro presidente dos EUA",
+        "General do Exército Continental",
+        "Presidente da Convenção Constitucional"
+      ],
+      "mc_correct": "\"Father of Our Country\"",
+      "mc_options": [
+        "Africans",
+        "New Hampshire",
+        "\"Father of Our Country\"",
+        "(Battle of) Bunker Hill"
+      ]
+    },
+    {
+      "id": 87,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Thomas Jefferson is famous for many things. Name one.",
+      "question_pt": "Thomas Jefferson é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "Writer of the Declaration of Independence",
+        "Third president of the United States",
+        "Doubled the size of the United States (Louisiana Purchase)",
+        "First Secretary of State",
+        "Founded the University of Virginia",
+        "Writer of the Virginia Statute on Religious Freedom"
+      ],
+      "answers_pt": [
+        "Autor da Declaração de Independência",
+        "Terceiro presidente dos EUA",
+        "Dobrou o tamanho dos EUA (Compra da Louisiana)",
+        "Primeiro Secretário de Estado",
+        "Fundou a Universidade da Virgínia",
+        "Autor do Estatuto da Virgínia sobre Liberdade Religiosa"
+      ],
+      "mc_correct": "Writer of the Declaration of Independence",
+      "mc_options": [
+        "High taxes",
+        "Writer of the Declaration of Independence",
+        "\"Father of the Constitution\"",
+        "(Thomas) Jefferson"
+      ]
+    },
+    {
+      "id": 88,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "James Madison is famous for many things. Name one.",
+      "question_pt": "James Madison é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "\"Father of the Constitution\"",
+        "Fourth president of the United States",
+        "President during the War of 1812",
+        "One of the writers of the Federalist Papers"
+      ],
+      "answers_pt": [
+        "\"Pai da Constituição\"",
+        "Quarto presidente dos EUA",
+        "Presidente durante a Guerra de 1812",
+        "Um dos autores dos Artigos Federalistas"
+      ],
+      "mc_correct": "\"Father of the Constitution\"",
+      "mc_options": [
+        "\"Father of the Constitution\"",
+        "Writer of the Declaration of Independence",
+        "Freedom",
+        "(Thomas) Jefferson"
+      ]
+    },
+    {
+      "id": 89,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "A: Colonial Period and Independence",
+      "subsection_pt": "A: Período Colonial e Independência",
+      "question": "Alexander Hamilton is famous for many things. Name one.",
+      "question_pt": "Alexander Hamilton é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "First Secretary of the Treasury",
+        "One of the writers of the Federalist Papers",
+        "Helped establish the First Bank of the United States",
+        "Aide to General George Washington",
+        "Member of the Continental Congress"
+      ],
+      "answers_pt": [
+        "Primeiro Secretário do Tesouro",
+        "Um dos autores dos Artigos Federalistas",
+        "Ajudou a fundar o Primeiro Banco dos Estados Unidos",
+        "Ajudante do General George Washington",
+        "Membro do Congresso Continental"
+      ],
+      "mc_correct": "First Secretary of the Treasury",
+      "mc_options": [
+        "First Secretary of the Treasury",
+        "(Thomas) Jefferson",
+        "\"Father of the Constitution\"",
+        "\"Father of Our Country\""
+      ]
+    },
+    {
+      "id": 90,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "What territory did the United States buy from France in 1803?",
+      "question_pt": "Que território os Estados Unidos compraram da França em 1803?",
+      "answers": [
+        "Louisiana Territory",
+        "Louisiana"
+      ],
+      "answers_pt": [
+        "O Território da Louisiana",
+        "Louisiana"
+      ],
+      "mc_correct": "Louisiana Territory",
+      "mc_options": [
+        "Freed the slaves",
+        "Louisiana Territory",
+        "(Battle of) Fort Sumter",
+        "14th Amendment"
+      ]
+    },
+    {
+      "id": 91,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "Name one war fought by the United States in the 1800s.",
+      "question_pt": "Cite uma guerra travada pelos Estados Unidos no século XIX.",
+      "answers": [
+        "War of 1812",
+        "Mexican-American War",
+        "Civil War",
+        "Spanish-American War"
+      ],
+      "answers_pt": [
+        "Guerra de 1812",
+        "Guerra Mexicano-Americana",
+        "Guerra Civil",
+        "Guerra Hispano-Americana"
+      ],
+      "mc_correct": "War of 1812",
+      "mc_options": [
+        "Freed the slaves",
+        "(Battle of) Fort Sumter",
+        "After the Civil War",
+        "War of 1812"
+      ]
+    },
+    {
+      "id": 92,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "Name the U.S. war between the North and the South.",
+      "question_pt": "Cite a guerra americana entre o Norte e o Sul.",
+      "answers": [
+        "The Civil War"
+      ],
+      "answers_pt": [
+        "A Guerra Civil"
+      ],
+      "mc_correct": "The Civil War",
+      "mc_options": [
+        "Louisiana Territory",
+        "Susan B. Anthony",
+        "The Civil War",
+        "Freed the slaves (Emancipation Proclamation)"
+      ]
+    },
+    {
+      "id": 93,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "The Civil War had many important events. Name one.",
+      "question_pt": "A Guerra Civil teve vários eventos importantes. Cite um.",
+      "answers": [
+        "(Battle of) Fort Sumter",
+        "Emancipation Proclamation",
+        "(Battle of) Vicksburg",
+        "(Battle of) Gettysburg",
+        "Sherman's March",
+        "(Surrender at) Appomattox",
+        "(Battle of) Antietam/Sharpsburg",
+        "Lincoln was assassinated."
+      ],
+      "answers_pt": [
+        "Batalha de Fort Sumter",
+        "Proclamação de Emancipação",
+        "Batalha de Vicksburg",
+        "Batalha de Gettysburg",
+        "Marcha de Sherman",
+        "Rendição em Appomattox",
+        "Batalha de Antietam/Sharpsburg",
+        "Assassinato de Lincoln"
+      ],
+      "mc_correct": "(Battle of) Fort Sumter",
+      "mc_options": [
+        "Freed the slaves (Emancipation Proclamation)",
+        "(Battle of) Fort Sumter",
+        "Susan B. Anthony",
+        "Freed the slaves"
+      ]
+    },
+    {
+      "id": 94,
+      "starred": true,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "Abraham Lincoln is famous for many things. Name one.",
+      "question_pt": "Abraham Lincoln é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "Freed the slaves (Emancipation Proclamation)",
+        "Saved (or preserved) the Union",
+        "Led the United States during the Civil War",
+        "16th president of the United States",
+        "Delivered the Gettysburg Address"
+      ],
+      "answers_pt": [
+        "Libertou os escravos (Proclamação de Emancipação)",
+        "Salvou (preservou) a União",
+        "Liderou os EUA durante a Guerra Civil",
+        "16º presidente dos EUA",
+        "Proferiu o Discurso de Gettysburg"
+      ],
+      "mc_correct": "Freed the slaves (Emancipation Proclamation)",
+      "mc_options": [
+        "Susan B. Anthony",
+        "Freed the slaves (Emancipation Proclamation)",
+        "(Battle of) Fort Sumter",
+        "After the Civil War"
+      ]
+    },
+    {
+      "id": 95,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "What did the Emancipation Proclamation do?",
+      "question_pt": "O que a Proclamação de Emancipação fez?",
+      "answers": [
+        "Freed the slaves",
+        "Freed slaves in the Confederacy",
+        "Freed slaves in the Confederate states",
+        "Freed slaves in most Southern states"
+      ],
+      "answers_pt": [
+        "Libertou os escravos",
+        "Libertou os escravos na Confederação",
+        "Libertou os escravos nos estados confederados"
+      ],
+      "mc_correct": "Freed the slaves",
+      "mc_options": [
+        "Freed the slaves",
+        "After the Civil War",
+        "14th Amendment",
+        "The Civil War"
+      ]
+    },
+    {
+      "id": 96,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "What U.S. war ended slavery?",
+      "question_pt": "Qual guerra americana pôs fim à escravidão?",
+      "answers": [
+        "The Civil War"
+      ],
+      "answers_pt": [
+        "A Guerra Civil"
+      ],
+      "mc_correct": "The Civil War",
+      "mc_options": [
+        "Freed the slaves",
+        "14th Amendment",
+        "Louisiana Territory",
+        "The Civil War"
+      ]
+    },
+    {
+      "id": 97,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "What amendment says all persons born or naturalized in the United States, and subject to the jurisdiction thereof, are U.S. citizens?",
+      "question_pt": "Qual emenda diz que todas as pessoas nascidas ou naturalizadas nos Estados Unidos, e sujeitas à sua jurisdição, são cidadãs americanas?",
+      "answers": [
+        "14th Amendment"
+      ],
+      "answers_pt": [
+        "14ª Emenda"
+      ],
+      "mc_correct": "14th Amendment",
+      "mc_options": [
+        "The Civil War",
+        "Louisiana Territory",
+        "14th Amendment",
+        "(Battle of) Fort Sumter"
+      ]
+    },
+    {
+      "id": 98,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "When did all men get the right to vote?",
+      "question_pt": "Quando todos os homens conquistaram o direito de voto?",
+      "answers": [
+        "After the Civil War",
+        "During Reconstruction",
+        "(With the) 15th Amendment",
+        "1870"
+      ],
+      "answers_pt": [
+        "Depois da Guerra Civil",
+        "Durante a Reconstrução",
+        "Com a 15ª Emenda",
+        "1870"
+      ],
+      "mc_correct": "After the Civil War",
+      "mc_options": [
+        "Freed the slaves (Emancipation Proclamation)",
+        "Susan B. Anthony",
+        "14th Amendment",
+        "After the Civil War"
+      ]
+    },
+    {
+      "id": 99,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "B: 1800s",
+      "subsection_pt": "B: Século XIX",
+      "question": "Name one leader of the women's rights movement in the 1800s.",
+      "question_pt": "Cite uma líder do movimento pelos direitos das mulheres no século XIX.",
+      "answers": [
+        "Susan B. Anthony",
+        "Elizabeth Cady Stanton",
+        "Sojourner Truth",
+        "Harriet Tubman",
+        "Lucretia Mott",
+        "Lucy Stone"
+      ],
+      "answers_pt": [
+        "Susan B. Anthony",
+        "Elizabeth Cady Stanton",
+        "Sojourner Truth",
+        "Harriet Tubman",
+        "Lucretia Mott",
+        "Lucy Stone"
+      ],
+      "mc_correct": "Susan B. Anthony",
+      "mc_options": [
+        "Louisiana Territory",
+        "Freed the slaves (Emancipation Proclamation)",
+        "(Battle of) Fort Sumter",
+        "Susan B. Anthony"
+      ]
+    },
+    {
+      "id": 100,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Name one war fought by the United States in the 1900s.",
+      "question_pt": "Cite uma guerra travada pelos Estados Unidos no século XX.",
+      "answers": [
+        "World War I",
+        "World War II",
+        "Korean War",
+        "Vietnam War",
+        "(Persian) Gulf War"
+      ],
+      "answers_pt": [
+        "Primeira Guerra Mundial",
+        "Segunda Guerra Mundial",
+        "Guerra da Coreia",
+        "Guerra do Vietnã",
+        "Guerra do Golfo"
+      ],
+      "mc_correct": "World War I",
+      "mc_options": [
+        "Communism",
+        "(Franklin) Roosevelt",
+        "Soviet Union",
+        "World War I"
+      ]
+    },
+    {
+      "id": 101,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Why did the United States enter World War I?",
+      "question_pt": "Por que os Estados Unidos entraram na Primeira Guerra Mundial?",
+      "answers": [
+        "Because Germany attacked U.S. (civilian) ships",
+        "To support the Allied Powers (England, France, Italy, and Russia)",
+        "To oppose the Central Powers (Germany, Austria-Hungary, the Ottoman Empire, and Bulgaria)"
+      ],
+      "answers_pt": [
+        "Porque a Alemanha atacou navios (civis) americanos",
+        "Para apoiar os Aliados (Inglaterra, França, Itália e Rússia)",
+        "Para se opor às Potências Centrais (Alemanha, Áustria-Hungria, Império Otomano e Bulgária)"
+      ],
+      "mc_correct": "Because Germany attacked U.S. (civilian) ships",
+      "mc_options": [
+        "(Franklin) Roosevelt",
+        "Fought to end racial discrimination",
+        "Because Germany attacked U.S. (civilian) ships",
+        "Longest economic recession in modern history"
+      ]
+    },
+    {
+      "id": 102,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "When did all women get the right to vote?",
+      "question_pt": "Quando todas as mulheres conquistaram o direito de voto?",
+      "answers": [
+        "1920",
+        "After World War I",
+        "(With the) 19th Amendment"
+      ],
+      "answers_pt": [
+        "1920",
+        "Depois da Primeira Guerra Mundial",
+        "Com a 19ª Emenda"
+      ],
+      "mc_correct": "1920",
+      "mc_options": [
+        "1920",
+        "Fought for civil rights",
+        "To stop the spread of communism",
+        "Soviet Union"
+      ]
+    },
+    {
+      "id": 103,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "What was the Great Depression?",
+      "question_pt": "O que foi a Grande Depressão?",
+      "answers": [
+        "Longest economic recession in modern history"
+      ],
+      "answers_pt": [
+        "A recessão econômica mais longa da história moderna"
+      ],
+      "mc_correct": "Longest economic recession in modern history",
+      "mc_options": [
+        "Apache",
+        "To stop the spread of communism",
+        "Fought for civil rights",
+        "Longest economic recession in modern history"
+      ]
+    },
+    {
+      "id": 104,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "When did the Great Depression start?",
+      "question_pt": "Quando a Grande Depressão começou?",
+      "answers": [
+        "The Great Crash (1929)",
+        "Stock market crash of 1929"
+      ],
+      "answers_pt": [
+        "A Grande Quebra (1929)",
+        "A quebra da bolsa de valores de 1929"
+      ],
+      "mc_correct": "The Great Crash (1929)",
+      "mc_options": [
+        "Longest economic recession in modern history",
+        "To force the Iraqi military from Kuwait",
+        "Soviet Union",
+        "The Great Crash (1929)"
+      ]
+    },
+    {
+      "id": 105,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Who was president during the Great Depression and World War II?",
+      "question_pt": "Quem foi presidente durante a Grande Depressão e a Segunda Guerra Mundial?",
+      "answers": [
+        "(Franklin) Roosevelt"
+      ],
+      "answers_pt": [
+        "Franklin Roosevelt"
+      ],
+      "mc_correct": "(Franklin) Roosevelt",
+      "mc_options": [
+        "To stop the spread of communism",
+        "Because Germany attacked U.S. (civilian) ships",
+        "Fought for civil rights",
+        "(Franklin) Roosevelt"
+      ]
+    },
+    {
+      "id": 106,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Why did the United States enter World War II?",
+      "question_pt": "Por que os Estados Unidos entraram na Segunda Guerra Mundial?",
+      "answers": [
+        "(Bombing of) Pearl Harbor",
+        "Japanese attacked Pearl Harbor",
+        "To support the Allied Powers (England, France, and Russia)",
+        "To oppose the Axis Powers (Germany, Italy, and Japan)"
+      ],
+      "answers_pt": [
+        "Bombardeio de Pearl Harbor",
+        "O Japão atacou Pearl Harbor",
+        "Para apoiar os Aliados (Inglaterra, França e Rússia)",
+        "Para se opor ao Eixo (Alemanha, Itália e Japão)"
+      ],
+      "mc_correct": "(Bombing of) Pearl Harbor",
+      "mc_options": [
+        "(Bombing of) Pearl Harbor",
+        "Fought to end racial discrimination",
+        "Because Germany attacked U.S. (civilian) ships",
+        "Soviet Union"
+      ]
+    },
+    {
+      "id": 107,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Dwight Eisenhower is famous for many things. Name one.",
+      "question_pt": "Dwight Eisenhower é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "General during World War II",
+        "President at the end of (during) the Korean War",
+        "34th president of the United States",
+        "Signed the Federal-Aid Highway Act of 1956 (Created the Interstate System)"
+      ],
+      "answers_pt": [
+        "General na Segunda Guerra Mundial",
+        "Presidente durante a Guerra da Coreia",
+        "34º presidente dos EUA",
+        "Assinou a Lei Rodoviária Federal de 1956 (criou o sistema de rodovias interestaduais)"
+      ],
+      "mc_correct": "General during World War II",
+      "mc_options": [
+        "General during World War II",
+        "(Franklin) Roosevelt",
+        "Apache",
+        "Soviet Union"
+      ]
+    },
+    {
+      "id": 108,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Who was the United States' main rival during the Cold War?",
+      "question_pt": "Qual foi o principal rival dos Estados Unidos durante a Guerra Fria?",
+      "answers": [
+        "Soviet Union",
+        "USSR",
+        "Russia"
+      ],
+      "answers_pt": [
+        "União Soviética",
+        "URSS",
+        "Rússia"
+      ],
+      "mc_correct": "Soviet Union",
+      "mc_options": [
+        "General during World War II",
+        "(Global) War on Terror",
+        "Fought for civil rights",
+        "Soviet Union"
+      ]
+    },
+    {
+      "id": 109,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "During the Cold War, what was one main concern of the United States?",
+      "question_pt": "Durante a Guerra Fria, qual era uma das principais preocupações dos EUA?",
+      "answers": [
+        "Communism",
+        "Nuclear war"
+      ],
+      "answers_pt": [
+        "Comunismo",
+        "Guerra nuclear"
+      ],
+      "mc_correct": "Communism",
+      "mc_options": [
+        "Soviet Union",
+        "Communism",
+        "Light bulb",
+        "To stop the spread of communism"
+      ]
+    },
+    {
+      "id": 110,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Why did the United States enter the Korean War?",
+      "question_pt": "Por que os Estados Unidos entraram na Guerra da Coreia?",
+      "answers": [
+        "To stop the spread of communism"
+      ],
+      "answers_pt": [
+        "Para impedir a expansão do comunismo"
+      ],
+      "mc_correct": "To stop the spread of communism",
+      "mc_options": [
+        "(Global) War on Terror",
+        "Longest economic recession in modern history",
+        "To stop the spread of communism",
+        "Apache"
+      ]
+    },
+    {
+      "id": 111,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Why did the United States enter the Vietnam War?",
+      "question_pt": "Por que os Estados Unidos entraram na Guerra do Vietnã?",
+      "answers": [
+        "To stop the spread of communism"
+      ],
+      "answers_pt": [
+        "Para impedir a expansão do comunismo"
+      ],
+      "mc_correct": "To stop the spread of communism",
+      "mc_options": [
+        "(Bombing of) Pearl Harbor",
+        "To stop the spread of communism",
+        "Terrorists attacked the United States",
+        "To force the Iraqi military from Kuwait"
+      ]
+    },
+    {
+      "id": 112,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "What did the civil rights movement do?",
+      "question_pt": "O que o movimento pelos direitos civis fez?",
+      "answers": [
+        "Fought to end racial discrimination"
+      ],
+      "answers_pt": [
+        "Lutou para acabar com a discriminação racial"
+      ],
+      "mc_correct": "Fought to end racial discrimination",
+      "mc_options": [
+        "To force the Iraqi military from Kuwait",
+        "Light bulb",
+        "Fought to end racial discrimination",
+        "Terrorists attacked the United States"
+      ]
+    },
+    {
+      "id": 113,
+      "starred": true,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Martin Luther King, Jr. is famous for many things. Name one.",
+      "question_pt": "Martin Luther King, Jr. é famoso por várias coisas. Cite uma.",
+      "answers": [
+        "Fought for civil rights",
+        "Worked for equality for all Americans",
+        "Worked to ensure that people would \"not be judged by the color of their skin, but by the content of their character\""
+      ],
+      "answers_pt": [
+        "Lutou pelos direitos civis",
+        "Trabalhou pela igualdade de todos os americanos",
+        "Trabalhou para que as pessoas fossem \"julgadas não pela cor da pele, mas pelo conteúdo de seu caráter\""
+      ],
+      "mc_correct": "Fought for civil rights",
+      "mc_options": [
+        "Longest economic recession in modern history",
+        "Fought for civil rights",
+        "To force the Iraqi military from Kuwait",
+        "(Franklin) Roosevelt"
+      ]
+    },
+    {
+      "id": 114,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Why did the United States enter the Persian Gulf War?",
+      "question_pt": "Por que os Estados Unidos entraram na Guerra do Golfo?",
+      "answers": [
+        "To force the Iraqi military from Kuwait"
+      ],
+      "answers_pt": [
+        "Para forçar a retirada do exército iraquiano do Kuwait"
+      ],
+      "mc_correct": "To force the Iraqi military from Kuwait",
+      "mc_options": [
+        "World War I",
+        "Terrorists attacked the United States",
+        "Communism",
+        "To force the Iraqi military from Kuwait"
+      ]
+    },
+    {
+      "id": 115,
+      "starred": true,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "What major event happened on September 11, 2001 in the United States?",
+      "question_pt": "Que grande evento aconteceu em 11 de setembro de 2001 nos Estados Unidos?",
+      "answers": [
+        "Terrorists attacked the United States",
+        "Terrorists took over two planes and crashed them into the World Trade Center in New York City",
+        "Terrorists took over a plane and crashed into the Pentagon in Arlington, Virginia",
+        "Terrorists took over a plane originally aimed at Washington, D.C., and crashed in a field in Pennsylvania"
+      ],
+      "answers_pt": [
+        "Terroristas atacaram os Estados Unidos",
+        "Terroristas sequestraram dois aviões e os lançaram contra o World Trade Center em Nova York",
+        "Terroristas sequestraram um avião e o lançaram contra o Pentágono, na Virgínia",
+        "Terroristas sequestraram um avião com destino a Washington, D.C., que caiu em um campo na Pensilvânia"
+      ],
+      "mc_correct": "Terrorists attacked the United States",
+      "mc_options": [
+        "Fought for civil rights",
+        "Light bulb",
+        "Communism",
+        "Terrorists attacked the United States"
+      ]
+    },
+    {
+      "id": 116,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Name one U.S. military conflict after the September 11, 2001 attacks.",
+      "question_pt": "Cite um conflito militar americano depois dos ataques de 11 de setembro de 2001.",
+      "answers": [
+        "(Global) War on Terror",
+        "War in Afghanistan",
+        "War in Iraq"
+      ],
+      "answers_pt": [
+        "Guerra ao Terror (global)",
+        "Guerra no Afeganistão",
+        "Guerra no Iraque"
+      ],
+      "mc_correct": "(Global) War on Terror",
+      "mc_options": [
+        "Fought for civil rights",
+        "Because Germany attacked U.S. (civilian) ships",
+        "(Global) War on Terror",
+        "Apache"
+      ]
+    },
+    {
+      "id": 117,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Name one American Indian tribe in the United States.",
+      "question_pt": "Cite uma tribo indígena americana dos Estados Unidos.",
+      "answers": [
+        "Apache",
+        "Blackfeet",
+        "Cayuga",
+        "Cherokee",
+        "Cheyenne",
+        "Chippewa",
+        "Choctaw",
+        "Creek",
+        "Crow",
+        "Hopi",
+        "Huron",
+        "Inupiat",
+        "Lakota",
+        "Mohawk",
+        "Mohegan",
+        "Navajo",
+        "Oneida",
+        "Onondaga",
+        "Pueblo",
+        "Seminole",
+        "Seneca",
+        "Shawnee",
+        "Sioux",
+        "Teton",
+        "Tuscarora"
+      ],
+      "answers_pt": [
+        "Apache, Blackfeet, Cayuga, Cherokee, Cheyenne, Chippewa, Choctaw, Creek, Crow, Hopi, Huron, Inupiat, Lakota, Mohawk, Mohegan, Navajo, Oneida, Onondaga, Pueblo, Seminole, Seneca, Shawnee, Sioux, Teton, Tuscarora (cite uma). Lista completa em bia.gov."
+      ],
+      "mc_correct": "Apache",
+      "mc_options": [
+        "Apache",
+        "Fought to end racial discrimination",
+        "World War I",
+        "To stop the spread of communism"
+      ]
+    },
+    {
+      "id": 118,
+      "starred": false,
+      "dynamic": false,
+      "section": "American History",
+      "section_pt": "História Americana",
+      "subsection": "C: Recent American History and Other Important Historical Information",
+      "subsection_pt": "C: História Americana Recente e Outras Informações Históricas Importantes",
+      "question": "Name one example of an American innovation.",
+      "question_pt": "Cite um exemplo de inovação americana.",
+      "answers": [
+        "Light bulb",
+        "Automobile (cars, internal combustion engine)",
+        "Skyscrapers",
+        "Airplane",
+        "Assembly line",
+        "Landing on the moon",
+        "Integrated circuit (IC)"
+      ],
+      "answers_pt": [
+        "Lâmpada elétrica",
+        "Automóvel (motor de combustão interna)",
+        "Arranha-céus",
+        "Avião",
+        "Linha de montagem",
+        "Pouso na Lua",
+        "Circuito integrado"
+      ],
+      "mc_correct": "Light bulb",
+      "mc_options": [
+        "Light bulb",
+        "Communism",
+        "(Franklin) Roosevelt",
+        "Because Germany attacked U.S. (civilian) ships"
+      ]
+    },
+    {
+      "id": 119,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "A: Symbols",
+      "subsection_pt": "A: Símbolos",
+      "question": "What is the capital of the United States?",
+      "question_pt": "Qual é a capital dos Estados Unidos?",
+      "answers": [
+        "Washington, D.C."
+      ],
+      "answers_pt": [
+        "Washington, D.C."
+      ],
+      "mc_correct": "Washington, D.C.",
+      "mc_options": [
+        "The Star-Spangled Banner",
+        "(Because there is) one star for each state",
+        "Washington, D.C.",
+        "New York (Harbor)"
+      ]
+    },
+    {
+      "id": 120,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "A: Symbols",
+      "subsection_pt": "A: Símbolos",
+      "question": "Where is the Statue of Liberty?",
+      "question_pt": "Onde fica a Estátua da Liberdade?",
+      "answers": [
+        "New York (Harbor)",
+        "Liberty Island (Also acceptable: New Jersey, near New York City, on the Hudson River)"
+      ],
+      "answers_pt": [
+        "Porto de Nova York",
+        "Liberty Island (também aceito: Nova Jersey, perto de Nova York, no Rio Hudson)"
+      ],
+      "mc_correct": "New York (Harbor)",
+      "mc_options": [
+        "New York (Harbor)",
+        "(Because there is) one star for each state",
+        "The Star-Spangled Banner",
+        "Washington, D.C."
+      ]
+    },
+    {
+      "id": 121,
+      "starred": true,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "A: Symbols",
+      "subsection_pt": "A: Símbolos",
+      "question": "Why does the flag have 13 stripes?",
+      "question_pt": "Por que a bandeira tem 13 listras?",
+      "answers": [
+        "(Because there were) 13 original colonies",
+        "(Because the stripes) represent the original colonies"
+      ],
+      "answers_pt": [
+        "Porque havia 13 colônias originais",
+        "As listras representam as colônias originais"
+      ],
+      "mc_correct": "(Because there were) 13 original colonies",
+      "mc_options": [
+        "New York (Harbor)",
+        "(Because there were) 13 original colonies",
+        "(Because there is) one star for each state",
+        "The Star-Spangled Banner"
+      ]
+    },
+    {
+      "id": 122,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "A: Symbols",
+      "subsection_pt": "A: Símbolos",
+      "question": "Why does the flag have 50 stars?",
+      "question_pt": "Por que a bandeira tem 50 estrelas?",
+      "answers": [
+        "(Because there is) one star for each state",
+        "(Because) each star represents a state",
+        "(Because there are) 50 states"
+      ],
+      "answers_pt": [
+        "Uma estrela para cada estado",
+        "Cada estrela representa um estado",
+        "Porque há 50 estados"
+      ],
+      "mc_correct": "(Because there is) one star for each state",
+      "mc_options": [
+        "(Because there were) 13 original colonies",
+        "Washington, D.C.",
+        "New York (Harbor)",
+        "(Because there is) one star for each state"
+      ]
+    },
+    {
+      "id": 123,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "A: Symbols",
+      "subsection_pt": "A: Símbolos",
+      "question": "What is the name of the national anthem?",
+      "question_pt": "Qual é o nome do hino nacional?",
+      "answers": [
+        "The Star-Spangled Banner"
+      ],
+      "answers_pt": [
+        "The Star-Spangled Banner"
+      ],
+      "mc_correct": "The Star-Spangled Banner",
+      "mc_options": [
+        "New York (Harbor)",
+        "The Star-Spangled Banner",
+        "(Because there were) 13 original colonies",
+        "Washington, D.C."
+      ]
+    },
+    {
+      "id": 124,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "A: Symbols",
+      "subsection_pt": "A: Símbolos",
+      "question": "The Nation's first motto was \"E Pluribus Unum.\" What does that mean?",
+      "question_pt": "O primeiro lema da nação foi \"E Pluribus Unum\". O que isso significa?",
+      "answers": [
+        "Out of many, one",
+        "We all become one"
+      ],
+      "answers_pt": [
+        "De muitos, um só",
+        "Todos nos tornamos um"
+      ],
+      "mc_correct": "Out of many, one",
+      "mc_options": [
+        "Out of many, one",
+        "(Because there is) one star for each state",
+        "Washington, D.C.",
+        "(Because there were) 13 original colonies"
+      ]
+    },
+    {
+      "id": 125,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "B: Holidays",
+      "subsection_pt": "B: Feriados",
+      "question": "What is Independence Day?",
+      "question_pt": "O que é o Dia da Independência?",
+      "answers": [
+        "A holiday to celebrate U.S. independence (from Britain)",
+        "The country's birthday"
+      ],
+      "answers_pt": [
+        "Um feriado para celebrar a independência dos EUA (da Grã-Bretanha)",
+        "O aniversário do país"
+      ],
+      "mc_correct": "A holiday to celebrate U.S. independence (from Britain)",
+      "mc_options": [
+        "A holiday to honor people in the (U.S.) military",
+        "New Year's Day",
+        "A holiday to honor soldiers who died in military service",
+        "A holiday to celebrate U.S. independence (from Britain)"
+      ]
+    },
+    {
+      "id": 126,
+      "starred": true,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "B: Holidays",
+      "subsection_pt": "B: Feriados",
+      "question": "Name three national U.S. holidays.",
+      "question_pt": "Cite três feriados nacionais americanos.",
+      "answers": [
+        "New Year's Day",
+        "Martin Luther King, Jr. Day",
+        "Presidents Day (Washington's Birthday)",
+        "Memorial Day",
+        "Juneteenth",
+        "Independence Day",
+        "Labor Day",
+        "Columbus Day",
+        "Veterans Day",
+        "Thanksgiving Day",
+        "Christmas Day"
+      ],
+      "answers_pt": [
+        "Ano Novo, Dia de Martin Luther King Jr., Dia dos Presidentes, Memorial Day, Juneteenth, Dia da Independência, Dia do Trabalho, Dia de Colombo, Dia dos Veteranos, Ação de Graças, Natal (cite três)"
+      ],
+      "mc_correct": "New Year's Day",
+      "mc_options": [
+        "A holiday to celebrate U.S. independence (from Britain)",
+        "A holiday to honor people in the (U.S.) military",
+        "New Year's Day",
+        "A holiday to honor soldiers who died in military service"
+      ]
+    },
+    {
+      "id": 127,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "B: Holidays",
+      "subsection_pt": "B: Feriados",
+      "question": "What is Memorial Day?",
+      "question_pt": "O que é o Memorial Day?",
+      "answers": [
+        "A holiday to honor soldiers who died in military service"
+      ],
+      "answers_pt": [
+        "Um feriado para homenagear soldados mortos em serviço militar"
+      ],
+      "mc_correct": "A holiday to honor soldiers who died in military service",
+      "mc_options": [
+        "A holiday to honor people in the (U.S.) military",
+        "A holiday to honor soldiers who died in military service",
+        "New Year's Day",
+        "A holiday to celebrate U.S. independence (from Britain)"
+      ]
+    },
+    {
+      "id": 128,
+      "starred": false,
+      "dynamic": false,
+      "section": "Symbols and Holidays",
+      "section_pt": "Símbolos e Feriados",
+      "subsection": "B: Holidays",
+      "subsection_pt": "B: Feriados",
+      "question": "What is Veterans Day?",
+      "question_pt": "O que é o Veterans Day?",
+      "answers": [
+        "A holiday to honor people in the (U.S.) military",
+        "A holiday to honor people who have served (in the U.S. military)"
+      ],
+      "answers_pt": [
+        "Um feriado para homenagear militares",
+        "Um feriado para homenagear quem serviu nas forças armadas"
+      ],
+      "mc_correct": "A holiday to honor people in the (U.S.) military",
+      "mc_options": [
+        "A holiday to honor soldiers who died in military service",
+        "A holiday to honor people in the (U.S.) military",
+        "A holiday to celebrate U.S. independence (from Britain)",
+        "New Year's Day"
+      ]
+    }
+  ]
+}

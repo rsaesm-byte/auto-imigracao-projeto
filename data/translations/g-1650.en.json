@@ -1,0 +1,29 @@
+{
+  "title": "G-1650 — Authorization for ACH Transactions",
+  "sections": {
+    "requerente": "About the Applicant/Petitioner",
+    "titular": "About the Bank Account Holder",
+    "pagamento": "Account and Payment Details"
+  },
+  "questions": {
+    "g1650_sobrenome": {"label": "Last name of the applicant, petitioner, or requester"},
+    "g1650_nome": {"label": "First name of the applicant, petitioner, or requester"},
+    "g1650_nome_meio": {"label": "Middle name (if any)"},
+
+    "g1650_tipo_conta": {"label": "Is the bank account personal or business?", "options": {
+      "pessoal": "Personal account",
+      "negocio": "Business account"
+    }},
+    "g1650_titular_sobrenome": {"label": "Account holder's last name (as it appears on the account)", "hint": "Can be different from the applicant — for example, when a family member pays the fee."},
+    "g1650_titular_nome": {"label": "Account holder's first name"},
+    "g1650_titular_nome_meio": {"label": "Account holder's middle name (if any)"},
+    "g1650_nome_empresa": {"label": "Name of the business that holds the account"},
+
+    "g1650_tipo_conta_bancaria": {"label": "Is the bank account checking or savings?", "options": {
+      "corrente": "Checking Account",
+      "poupanca": "Savings Account"
+    }},
+    "g1650_nome_banco": {"label": "Bank name"},
+    "g1650_valor_autorizado": {"label": "Authorized payment amount (in dollars, no cents)", "hint": "Double-check the exact fee amount before filling this in — it's what will be debited from the account."}
+  }
+}

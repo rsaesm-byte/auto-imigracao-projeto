@@ -1,0 +1,901 @@
+{
+  "form": "I-131",
+  "title": "I-131 — Application for Travel Document (Advance Parole)",
+  "description": "Autorização de viagem (Advance Parole) para quem tem um Formulário I-485 (Ajuste de Status) pendente e precisa viajar para fora dos Estados Unidos sem abandonar o pedido de green card.",
+  "sections": [
+    {
+      "id": "tipo_pedido",
+      "title": "Parte 1 — Tipo de Pedido"
+    },
+    {
+      "id": "info_pessoal",
+      "title": "Parte 2 — Informações Sobre Você"
+    },
+    {
+      "id": "info_biografica",
+      "title": "Parte 3 — Informações Biográficas"
+    },
+    {
+      "id": "historico",
+      "title": "Parte 4 — Histórico de Documentos de Viagem"
+    },
+    {
+      "id": "viagem",
+      "title": "Parte 7 — Sobre a Viagem Planejada"
+    },
+    {
+      "id": "contato_assinatura",
+      "title": "Parte 10 — Contato e Assinatura do Requerente"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 11 — Intérprete (se aplicável)"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 12 — Preparador (se alguém preencheu por você)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "i131_confirma_i485",
+      "section": "tipo_pedido",
+      "label": "Este pedido de Advance Parole (autorização de viagem) é baseado em um Formulário I-485 (Ajuste de Status) pendente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Esta ferramenta cobre especificamente esse cenário (o mais comum para o pacote Green Card AOS). Se o seu Advance Parole for por outro motivo (parolee atual, TPS, asilo pendente, CNMI, etc.), fale com nossa equipe -- esses outros motivos não estão automatizados aqui."
+    },
+    {
+      "id": "i131_recibo_i485",
+      "section": "tipo_pedido",
+      "label": "Número de recibo do seu Formulário I-485 (se estiver protocolando o I-131 separadamente do I-485)",
+      "type": "text",
+      "required": false,
+      "hint": "Deixe em branco se estiver protocolando o I-131 junto (concurrent filing) com o I-485.",
+      "show_if": {
+        "question": "i131_confirma_i485",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "nome_sobrenome",
+      "section": "info_pessoal",
+      "label": "Sobrenome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_nome",
+      "section": "info_pessoal",
+      "label": "Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_meio",
+      "section": "info_pessoal",
+      "label": "Nome do meio (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome1_sobrenome",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 1 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome1_nome",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 1 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome1_meio",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_sobrenome",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 2 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_nome",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 2 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_meio",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_sobrenome",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 3 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_nome",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 3 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_meio",
+      "section": "info_pessoal",
+      "label": "Outro nome usado 3 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_cuidado_de",
+      "section": "info_pessoal",
+      "hint": "Só preencha se a correspondência for entregue aos cuidados de outra pessoa (ex.: um amigo, familiar ou advogado) — digite o nome dela. Se a correspondência chega direto no seu nome, deixe em branco.",
+      "label": "Endereço de correspondência — Em cuidado de (In Care Of, se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_rua",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_correspondencia_tipo_unidade",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "ste",
+          "label": "Suite (STE)"
+        },
+        {
+          "value": "apt",
+          "label": "Apartamento (APT)"
+        },
+        {
+          "value": "flr",
+          "label": "Andar (FLR)"
+        }
+      ]
+    },
+    {
+      "id": "endereco_correspondencia_numero_unidade",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_cidade",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_correspondencia_estado",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Estado (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_cep",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — CEP (ZIP code, EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_codigo_postal_intl",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Código postal (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_provincia",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — Província/Estado (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_correspondencia_pais",
+      "section": "info_pessoal",
+      "label": "Endereço de correspondência — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_cuidado_de",
+      "section": "info_pessoal",
+      "hint": "Só preencha se você mora nesse endereço físico aos cuidados de outra pessoa (ex.: um amigo, familiar ou advogado cuja casa é essa, e que recebe correspondência ali em seu nome) — digite o nome dela. Se você mora nesse endereço no seu próprio nome, deixe em branco.",
+      "label": "Endereço físico atual (se diferente do de correspondência) — Em cuidado de",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_rua",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_tipo_unidade",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "ste",
+          "label": "Suite (STE)"
+        },
+        {
+          "value": "apt",
+          "label": "Apartamento (APT)"
+        },
+        {
+          "value": "flr",
+          "label": "Andar (FLR)"
+        }
+      ]
+    },
+    {
+      "id": "endereco_fisico_numero_unidade",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_cidade",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_estado",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Estado (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_cep",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — CEP (ZIP code, EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_codigo_postal_intl",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Código postal (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_provincia",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — Província/Estado (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_fisico_pais",
+      "section": "info_pessoal",
+      "label": "Endereço físico atual — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "numero_a",
+      "section": "info_pessoal",
+      "label": "Número de Registro de Estrangeiro (A-Number, se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "Formato A-XXXXXXXXX. Deixe em branco se você nunca recebeu um."
+    },
+    {
+      "id": "pais_nascimento",
+      "section": "info_pessoal",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pais_cidadania",
+      "section": "info_pessoal",
+      "label": "País de cidadania/nacionalidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sexo",
+      "section": "info_pessoal",
+      "label": "Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "F",
+          "label": "Feminino"
+        },
+        {
+          "value": "M",
+          "label": "Masculino"
+        }
+      ]
+    },
+    {
+      "id": "data_nascimento",
+      "section": "info_pessoal",
+      "label": "Data de nascimento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "ssn",
+      "section": "info_pessoal",
+      "label": "Número de Seguro Social (SSN, se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "uscis_online_account",
+      "section": "info_pessoal",
+      "hint": "12 dígitos, sem traços. É o número da sua conta em myaccount.uscis.gov, não o número de recibo de nenhum processo. Deixe em branco se você nunca criou essa conta.",
+      "label": "Número da sua conta online da USCIS (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "classe_admissao",
+      "section": "info_pessoal",
+      "label": "Classe de admissão atual (se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "O código de status em que você foi admitido pela última vez nos EUA (ex: B2, F1) — confira no seu Formulário I-94."
+    },
+    {
+      "id": "numero_i94",
+      "section": "info_pessoal",
+      "hint": "Consulte ou baixe seu I-94 em i94.cbp.dhs.gov — é o registro oficial de entrada nos EUA. 11 dígitos.",
+      "label": "Número do seu Formulário I-94 mais recente (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_expiracao_i94",
+      "section": "info_pessoal",
+      "hint": "A data limite até quando você está autorizado a ficar nos EUA no seu status atual — também disponível em i94.cbp.dhs.gov. Se estiver com pedido de ajuste de status (I-485) pendente, essa data pode já ter passado; isso normalmente não é problema para o Advance Parole, mas confirme com a equipe.",
+      "label": "Data de expiração da estadia autorizada no seu I-94 (se houver)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "etnia",
+      "section": "info_biografica",
+      "hint": "Categoria oficial do governo dos EUA, separada de \"raça\" (pergunta seguinte) — pergunta apenas se você se identifica como hispânico/latino (de origem cultural/linguística espanhola ou latino-americana), independentemente da sua raça. A maioria dos brasileiros não-hispânicos marca \"Não hispânico ou latino\" aqui.",
+      "label": "Etnia",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "NH",
+          "label": "Não hispânico ou latino"
+        },
+        {
+          "value": "H",
+          "label": "Hispânico ou latino"
+        }
+      ]
+    },
+    {
+      "id": "raca_negro",
+      "section": "info_biografica",
+      "label": "Raça: Negro ou Afro-americano",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_havaiano_pacifico",
+      "section": "info_biografica",
+      "label": "Raça: Havaiano Nativo ou outra Ilha do Pacífico",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_indigena_americano",
+      "section": "info_biografica",
+      "label": "Raça: Indígena Americano ou Nativo do Alasca",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_asiatico",
+      "section": "info_biografica",
+      "label": "Raça: Asiático",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_branco",
+      "section": "info_biografica",
+      "label": "Raça: Branco",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "altura_pes",
+      "section": "info_biografica",
+      "label": "Altura — pés",
+      "type": "text",
+      "required": true,
+      "hint": "Um número entre 2 e 8."
+    },
+    {
+      "id": "altura_polegadas",
+      "section": "info_biografica",
+      "label": "Altura — polegadas",
+      "type": "text",
+      "required": true,
+      "hint": "Um número entre 0 e 11."
+    },
+    {
+      "id": "peso",
+      "section": "info_biografica",
+      "label": "Peso em libras (lb)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "cor_olhos",
+      "section": "info_biografica",
+      "label": "Cor dos olhos",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "azul",
+          "label": "Azul"
+        },
+        {
+          "value": "verde",
+          "label": "Verde"
+        },
+        {
+          "value": "avela",
+          "label": "Avelã"
+        },
+        {
+          "value": "rosa",
+          "label": "Rosa"
+        },
+        {
+          "value": "marrom_avermelhado",
+          "label": "Marrom-avermelhado (Maroon)"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "preto",
+          "label": "Preto"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        },
+        {
+          "value": "cinza",
+          "label": "Cinza"
+        }
+      ]
+    },
+    {
+      "id": "cor_cabelo",
+      "section": "info_biografica",
+      "label": "Cor do cabelo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "careca",
+          "label": "Careca (sem cabelo)"
+        },
+        {
+          "value": "loiro",
+          "label": "Loiro"
+        },
+        {
+          "value": "grisalho",
+          "label": "Grisalho"
+        },
+        {
+          "value": "arenoso",
+          "label": "Arenoso"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        },
+        {
+          "value": "branco",
+          "label": "Branco"
+        },
+        {
+          "value": "ruivo",
+          "label": "Ruivo"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "preto",
+          "label": "Preto"
+        }
+      ]
+    },
+    {
+      "id": "historico_processo_remocao",
+      "section": "historico",
+      "hint": "\"Processo de remoção\" é o processo judicial de imigração que pode terminar em deportação — diferente de simplesmente estar fora de status. Responda \"Sim\" se você já recebeu uma notificação para comparecer numa corte de imigração (NTA) ou já teve uma audiência, mesmo que o caso tenha sido arquivado ou você tenha vencido. Em caso de dúvida, responda \"Sim\" e confirme com a equipe antes de enviar — isso pode afetar sua elegibilidade.",
+      "label": "Você (ou a pessoa que vai receber o documento) já esteve em processo de exclusão, deportação, remoção, ou rescisão?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "historico_reentry_refugee_emitido",
+      "section": "historico",
+      "hint": "Reentry Permit e Refugee Travel Document são OUTROS tipos de documento de viagem, diferentes do Advance Parole que você está pedindo agora. Essa pergunta é sobre o seu histórico — responda \"Sim\" só se você já teve um desses dois documentos especificamente (não o Advance Parole, perguntado a seguir).",
+      "label": "Você já recebeu um Reentry Permit ou Refugee Travel Document antes?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "historico_reentry_refugee_data",
+      "section": "historico",
+      "label": "Data em que esse documento foi emitido",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "historico_reentry_refugee_emitido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "historico_reentry_refugee_situacao",
+      "section": "historico",
+      "label": "Situação atual desse documento (anexado, perdido, roubado, danificado/destruído, ainda em sua posse, etc.)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "historico_reentry_refugee_emitido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "historico_advance_parole_emitido",
+      "section": "historico",
+      "hint": "Responda \"Sim\" se você já teve um Advance Parole aprovado em algum pedido anterior (mesmo de um caso diferente do atual) — não confunda com o I-94 ou visto.",
+      "label": "Você já recebeu um Advance Parole Document antes?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "historico_advance_parole_data",
+      "section": "historico",
+      "label": "Data em que esse Advance Parole foi emitido",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "historico_advance_parole_emitido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "historico_advance_parole_situacao",
+      "section": "historico",
+      "label": "Situação atual desse Advance Parole (anexado, perdido, roubado, danificado/destruído, ainda em sua posse, etc.)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "historico_advance_parole_emitido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "historico_solicitando_substituicao",
+      "section": "historico",
+      "label": "Você está solicitando a substituição de um Reentry Permit, Refugee Travel Document, Advance Parole Document, ou TPS Travel Authorization Document?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Se sim, fale com nossa equipe para os detalhes específicos de substituição — esta ferramenta cobre o pedido inicial de Advance Parole, não o fluxo completo de substituição."
+    },
+    {
+      "id": "viagem_data_partida",
+      "section": "viagem",
+      "label": "Data pretendida de partida",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "viagem_proposito",
+      "section": "viagem",
+      "label": "Propósito da viagem",
+      "type": "text",
+      "required": true,
+      "hint": "Explique brevemente o motivo da viagem (ex: visitar família, negócios, turismo)."
+    },
+    {
+      "id": "viagem_paises",
+      "section": "viagem",
+      "label": "Países que pretende visitar",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "viagem_quantidade_viagens",
+      "section": "viagem",
+      "hint": "\"Uma viagem\" autoriza só uma saída e retorno; depois de usado, o documento perde a validade mesmo que a data de expiração impressa ainda não tenha chegado. \"Múltiplas viagens\" permite sair e voltar quantas vezes precisar enquanto o documento estiver válido. Se não tem certeza de quantas vezes vai viajar, múltiplas viagens costuma ser mais seguro.",
+      "label": "Quantas viagens você pretende fazer com este documento?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "O",
+          "label": "Uma viagem"
+        },
+        {
+          "value": "M",
+          "label": "Mais de uma viagem"
+        }
+      ]
+    },
+    {
+      "id": "viagem_duracao_esperada",
+      "section": "viagem",
+      "label": "Duração esperada da viagem (em dias)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "contato_telefone",
+      "section": "contato_assinatura",
+      "label": "Seu telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "contato_celular",
+      "section": "contato_assinatura",
+      "label": "Seu celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "contato_email",
+      "section": "contato_assinatura",
+      "label": "Seu e-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_sobrenome",
+      "section": "interprete",
+      "label": "Sobrenome do intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_nome",
+      "section": "interprete",
+      "label": "Nome do intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_empresa",
+      "section": "interprete",
+      "label": "Empresa/organização do intérprete (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_telefone",
+      "section": "interprete",
+      "label": "Telefone diurno do intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_celular",
+      "section": "interprete",
+      "label": "Celular do intérprete (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_email",
+      "section": "interprete",
+      "label": "E-mail do intérprete (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_idioma",
+      "section": "interprete",
+      "label": "Idioma em que o intérprete é fluente (além do inglês)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_sobrenome",
+      "section": "preparador",
+      "label": "Sobrenome do preparador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_nome",
+      "section": "preparador",
+      "label": "Nome do preparador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_empresa",
+      "section": "preparador",
+      "label": "Empresa/organização do preparador (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_telefone",
+      "section": "preparador",
+      "label": "Telefone diurno do preparador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_celular",
+      "section": "preparador",
+      "label": "Celular do preparador (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_email",
+      "section": "preparador",
+      "label": "E-mail do preparador (se houver)",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

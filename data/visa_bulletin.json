@@ -1,0 +1,40 @@
+{
+  "_source": "Departamento de Estado dos EUA bloqueia fetch automatizado direto (mesmo padrão do uscis.gov nesta ferramenta) -- dados de 'Dates for Filing' cruzados entre boundless.com/blog/visa-bulletin e kodemlaw.com/visa-bulletin (bateram exatamente nas colunas 'All Other Areas'). Dados de 'Final Action Dates' vieram de kodemlaw.com/visa-bulletin, com F2A também cross-checado em bizlegalservices.com (2026-07-23), ambos batendo em 22-Jul-26 (todos os países) / 22-Jul-25 (México). A determinação de qual tabela vale para protocolar o I-485 este mês foi confirmada direto na página oficial do USCIS (uscis.gov/.../adjustment-of-status-filing-charts-from-the-visa-bulletin) via curl com User-Agent de navegador -- WebFetch e curl são bloqueados (403) no travel.state.gov em si.",
+  "_fetched": "2026-07-26",
+  "_note": "O Boletim de Vistos muda TODO MÊS -- este arquivo precisa ser atualizado mensalmente (por volta do dia 8-15 do mês anterior, quando o Departamento de Estado publica o boletim do mês seguinte). Ver lembrete agendado. Escopo: só categorias familiares (Family-Sponsored), já que o I-130 desta ferramenta só cobre patrocínio familiar, nunca por emprego.",
+
+  "current_month": "2026-08",
+  "previous_month": "2026-07",
+
+  "family_filing_chart_in_use": "dates_for_filing",
+  "_family_filing_chart_in_use_note": "Determinação oficial do USCIS para agosto/2026: use a tabela 'Dates for Filing' (mais generosa) para saber se já pode protocolar o I-485 com base familiar. Essa determinação é reavaliada e pode mudar todo mês -- reconfirmar na página oficial acima ao atualizar este arquivo.",
+
+  "dates_for_filing": {
+    "current_month": {
+      "F1":  {"all": "2019-06-15", "china": "2019-06-15", "india": "2019-06-15", "mexico": "2008-12-01", "philippines": "2015-04-22"},
+      "F2A": {"all": "current",    "china": "current",    "india": "current",    "mexico": "current",    "philippines": "current"},
+      "F2B": {"all": "2019-01-01", "china": "2019-01-01", "india": "2019-01-01", "mexico": "2010-05-15", "philippines": "2013-10-01"},
+      "F3":  {"all": "2013-03-01", "china": "2013-03-01", "india": "2013-03-01", "mexico": "2001-07-15", "philippines": "2006-08-08"},
+      "F4":  {"all": "2010-06-22", "china": "2010-06-22", "india": "2006-12-15", "mexico": "2001-04-30", "philippines": "2008-03-22"}
+    },
+    "previous_month": {
+      "F1":  {"all": "2019-01-01", "china": "2019-01-01", "india": "2019-01-01", "mexico": "2008-10-01", "philippines": "2015-04-22"},
+      "F2A": {"all": "current",    "china": "current",    "india": "current",    "mexico": "current",    "philippines": "current"},
+      "F2B": {"all": "2018-06-08", "china": "2018-06-08", "india": "2018-06-08", "mexico": "2010-05-15", "philippines": "2013-10-01"},
+      "F3":  {"all": "2012-12-08", "china": "2012-12-08", "india": "2012-12-08", "mexico": "2001-07-15", "philippines": "2006-08-08"},
+      "F4":  {"all": "2010-03-01", "china": "2010-03-01", "india": "2006-12-15", "mexico": "2001-04-30", "philippines": "2008-03-22"}
+    }
+  },
+
+  "final_action_dates": {
+    "_note": "Cobertura parcial -- só as colunas confirmadas por pelo menos uma fonte foram preenchidas; 'null' significa 'não confirmado, consulte o boletim oficial' em vez de um chute. Não é a tabela usada para protocolar este mês (ver family_filing_chart_in_use acima), só informativa (quando o visto será de fato aprovado).",
+    "current_month": {
+      "F1":  {"all": "2018-12-15", "china": null, "india": null, "mexico": null, "philippines": null},
+      "F2A": {"all": "2026-07-22", "china": null, "india": null, "mexico": "2025-07-22", "philippines": null},
+      "F2B": {"all": "2018-01-01", "china": null, "india": null, "mexico": null, "philippines": null},
+      "F3":  {"all": "2012-05-15", "china": null, "india": null, "mexico": null, "philippines": null},
+      "F4":  {"all": "2009-09-01", "china": null, "india": null, "mexico": null, "philippines": null}
+    },
+    "previous_month": null
+  }
+}

@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ t('civics_questions_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<p style="margin-bottom:18px;">
+  <a href="{{ url_for('civics.index') }}" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">
+    {{ icon('arrow-left', 14) }} {{ t('civics_back_to_index') }}
+  </a>
+</p>
+
+<section class="hero-landing compact" style="padding:24px 28px 28px;">
+  <h1 class="hero-title" style="font-size:1.7rem;">{{ t('civics_questions_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:680px;">{{ t('civics_questions_subtitle') }}</p>
+</section>
+
+{% for group in groups %}
+<div class="card">
+  <h2 style="margin-bottom:2px;">{{ group.section_pt }} <span class="muted" style="font-weight:400;font-size:0.85em;">— {{ group.section }}</span></h2>
+  <p class="muted" style="margin:0 0 18px;font-size:0.9rem;">{{ group.subsection_pt }} — {{ group.subsection }}</p>
+  {% for q in group.questions %}
+  <div class="civics-q-item">
+    <p class="civics-q-num">{{ q.id }}{% if q.starred %} <span title="65/20">★</span>{% endif %}</p>
+    <div>
+      <p class="civics-q-en">{{ q.question }}</p>
+      <p class="muted civics-q-pt">{{ q.question_pt }}</p>
+      <ul class="service-bullets" style="margin-top:8px;">
+        {% for a in q.answers %}<li>{{ a }}</li>{% endfor %}
+      </ul>
+      <p class="muted civics-q-pt" style="margin-top:2px;">{{ q.answers_pt|join(" · ") }}</p>
+      {% if q.dynamic %}<p class="elig-msg tone-info" style="margin-top:8px;">{{ t('civics_dynamic_note') }}</p>{% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endfor %}
+
+<footer class="site-footer">
+  <p>{{ t('civics_source_note') }}</p>
+</footer>
+{% endblock %}

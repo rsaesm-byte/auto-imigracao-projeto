@@ -1,0 +1,191 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_illustrations.html" import journey_illustration %}
+{% block title %}{{ t('landing_title') }}{% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block top_accent %}
+<div class="flag-bar" aria-hidden="true">
+  <span class="navy"></span><span class="red"></span><span class="navy"></span>
+</div>
+{% endblock %}
+{% block content %}
+
+<section class="hero-landing">
+  <div class="hero-landing-grid">
+    <div class="hero-landing-text">
+      <p class="eyebrow"><span class="eyebrow-star">★</span> {{ t('hero_eyebrow') }}</p>
+      <h1 class="hero-title">{{ t('hero_title_1') }}<br>{{ t('hero_title_2') }}</h1>
+      <p class="hero-subtitle">{{ t('hero_subtitle') }}</p>
+      <div class="hero-ctas">
+        <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('cta_signup') }}</a>
+        <a class="btn secondary" href="{{ url_for('auth.login') }}">{{ t('cta_login') }}</a>
+      </div>
+    </div>
+    <div class="hero-landing-art">
+      {{ journey_illustration() }}
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <h2 class="section-title">{{ t('stats_title') }}</h2>
+  <div class="stats-grid">
+    <div class="stat-tile reveal" style="transition-delay:0ms;">
+      <span class="stat-number">{{ t('stat_years_number') }}</span>
+      <span class="stat-label">{{ t('stat_years_label') }}</span>
+    </div>
+    <div class="stat-tile reveal" style="transition-delay:70ms;">
+      <span class="stat-number">{{ t('stat_clients_number') }}</span>
+      <span class="stat-label">{{ t('stat_clients_label') }}</span>
+    </div>
+    <div class="stat-tile reveal" style="transition-delay:140ms;">
+      <span class="stat-number">{{ t('stat_forms_number') }}</span>
+      <span class="stat-label">{{ t('stat_forms_label') }}</span>
+    </div>
+    <div class="stat-tile reveal" style="transition-delay:210ms;">
+      <span class="stat-number">{{ t('stat_bilingual_number') }}</span>
+      <span class="stat-label">{{ t('stat_bilingual_label') }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <h2 class="section-title">{{ t('how_it_works_title') }}</h2>
+  <div class="steps-grid">
+    <div class="step-card reveal" style="transition-delay:0ms;">
+      <div class="step-num">{{ icon('document', 16) }}</div>
+      <h3>{{ t('step1_title') }}</h3>
+      <p class="muted">{{ t('step1_body') }}</p>
+    </div>
+    <div class="step-card reveal" style="transition-delay:90ms;">
+      <div class="step-num">{{ icon('check-circle', 16) }}</div>
+      <h3>{{ t('step2_title') }}</h3>
+      <p class="muted">{{ t('step2_body') }}</p>
+    </div>
+    <div class="step-card reveal" style="transition-delay:180ms;">
+      <div class="step-num">{{ icon('download', 16) }}</div>
+      <h3>{{ t('step3_title') }}</h3>
+      <p class="muted">{{ t('step3_body') }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <h2 class="section-title">{{ t('forms_title') }}</h2>
+  <div class="form-grid">
+    {% for form in catalog %}
+    <div class="form-tile reveal {{ 'disabled' if not form.enabled and not form.reference }}" style="transition-delay:{{ (loop.index0 % 6) * 45 }}ms;">
+      <span class="slug">{{ form.slug|upper }}</span>
+      {% if form.reference %}
+        <span class="badge in_progress" style="float:right;">{{ t('badge_reference') }}</span>
+      {% elif form.enabled %}
+        <span class="badge completed" style="float:right;">{{ t('badge_available') }}</span>
+      {% else %}
+        <span class="badge in_progress" style="float:right;">{{ t('badge_soon') }}</span>
+      {% endif %}
+      <div class="name">{{ form.name }}</div>
+      {% if form.reference %}
+        <p class="muted" style="font-size:0.82rem;margin:6px 0 10px;">{{ form.reference_note }}</p>
+        <a class="btn secondary" style="font-size:0.82rem;padding:6px 12px;margin-right:6px;"
+           href="{{ url_for('wizard.reference_pdf', slug=form.slug) }}">{{ t('reference_download_pdf') }}</a>
+        {% if form.civil_surgeon_url %}
+        <a class="btn secondary" style="font-size:0.82rem;padding:6px 12px;"
+           href="{{ form.civil_surgeon_url }}" target="_blank" rel="noopener noreferrer">{{ t('reference_find_doctor') }}</a>
+        {% endif %}
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section-block">
+  <h2 class="section-title">{{ t('free_tools_title') }}</h2>
+  <p class="muted" style="text-align:center;margin:-16px 0 24px;">{{ t('free_tools_subtitle') }}</p>
+  <div class="form-grid">
+    <a class="form-tile reveal" style="transition-delay:0ms;" href="{{ url_for('eligibility.index') }}">
+      <div class="why-icon" style="margin-bottom:10px;">{{ icon('shield-check', 18) }}</div>
+      <div class="name">{{ t('free_tool_eligibility_title') }}</div>
+      <p class="muted" style="font-size:0.82rem;margin:6px 0 0;">{{ t('free_tool_eligibility_desc') }}</p>
+    </a>
+    <a class="form-tile reveal" style="transition-delay:45ms;" href="{{ url_for('civics.index') }}">
+      <div class="why-icon" style="margin-bottom:10px;">{{ icon('list-check', 18) }}</div>
+      <div class="name">{{ t('free_tool_civics_title') }}</div>
+      <p class="muted" style="font-size:0.82rem;margin:6px 0 0;">{{ t('free_tool_civics_desc') }}</p>
+    </a>
+    <a class="form-tile reveal" style="transition-delay:90ms;" href="{{ url_for('medical_exam.index') }}">
+      <div class="why-icon" style="margin-bottom:10px;">{{ icon('info', 18) }}</div>
+      <div class="name">{{ t('free_tool_medical_title') }}</div>
+      <p class="muted" style="font-size:0.82rem;margin:6px 0 0;">{{ t('free_tool_medical_desc') }}</p>
+    </a>
+    <a class="form-tile reveal" style="transition-delay:135ms;" href="{{ url_for('income_calculator.index') }}">
+      <div class="why-icon" style="margin-bottom:10px;">{{ icon('sparkle', 18) }}</div>
+      <div class="name">{{ t('free_tool_income_title') }}</div>
+      <p class="muted" style="font-size:0.82rem;margin:6px 0 0;">{{ t('free_tool_income_desc') }}</p>
+    </a>
+    <a class="form-tile reveal" style="transition-delay:180ms;" href="{{ url_for('visa_bulletin.index') }}">
+      <div class="why-icon" style="margin-bottom:10px;">{{ icon('calendar', 18) }}</div>
+      <div class="name">{{ t('free_tool_visa_bulletin_title') }}</div>
+      <p class="muted" style="font-size:0.82rem;margin:6px 0 0;">{{ t('free_tool_visa_bulletin_desc') }}</p>
+    </a>
+  </div>
+</section>
+
+<section class="section-block">
+  <h2 class="section-title">{{ t('why_title') }}</h2>
+  <div class="why-grid">
+    <div class="why-item reveal" style="transition-delay:0ms;">
+      <div class="why-icon">{{ icon('globe', 20) }}</div>
+      <h3>{{ t('why1_title') }}</h3>
+      <p class="muted">{{ t('why1_body') }}</p>
+    </div>
+    <div class="why-item reveal" style="transition-delay:60ms;">
+      <div class="why-icon">{{ icon('list-check', 20) }}</div>
+      <h3>{{ t('why2_title') }}</h3>
+      <p class="muted">{{ t('why2_body') }}</p>
+    </div>
+    <div class="why-item reveal" style="transition-delay:120ms;">
+      <div class="why-icon">{{ icon('shield-check', 20) }}</div>
+      <h3>{{ t('why3_title') }}</h3>
+      <p class="muted">{{ t('why3_body') }}</p>
+    </div>
+    <div class="why-item reveal" style="transition-delay:180ms;">
+      <div class="why-icon">{{ icon('save-cloud', 20) }}</div>
+      <h3>{{ t('why4_title') }}</h3>
+      <p class="muted">{{ t('why4_body') }}</p>
+    </div>
+    <div class="why-item reveal" style="transition-delay:240ms;">
+      <div class="why-icon">{{ icon('sparkle', 20) }}</div>
+      <h3>{{ t('why5_title') }}</h3>
+      <p class="muted">{{ t('why5_body') }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="section-block">
+  <h2 class="section-title">{{ icon('megaphone', 20) }} {{ t('news_title') }}</h2>
+  <p class="muted" style="text-align:center;margin:-16px 0 24px;">{{ t('news_subtitle') }}</p>
+  {% if news_items %}
+  <div class="news-list">
+    {% for item in news_items %}
+    <a class="news-item reveal" style="transition-delay:{{ (loop.index0 % 6) * 45 }}ms;" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">
+      <div class="news-date">
+        {% if item.pub_date %}{{ item.pub_date.strftime("%m/%d/%Y") if get_lang() == "en" else item.pub_date.strftime("%d/%m/%Y") }}{% endif %}
+      </div>
+      <div class="news-title">{{ item.title }}</div>
+      <div class="news-link">{{ t('news_read_more') }}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p class="muted" style="text-align:center;">{{ t('news_empty') }}</p>
+  {% endif %}
+</section>
+
+<section class="card hero reveal" style="text-align:center;">
+  <h1 style="font-size:1.4rem;">{{ t('final_cta_title') }}</h1>
+  <p style="opacity:0.92;">{{ t('final_cta_subtitle') }}</p>
+  <a class="btn secondary" style="background:white;margin-top:8px;"
+     href="{{ url_for('auth.signup') }}">{{ t('cta_signup') }}</a>
+</section>
+
+{% endblock %}

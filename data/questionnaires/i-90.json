@@ -1,0 +1,1370 @@
+{
+  "form": "I-90",
+  "title": "Substituição do Cartão de Residente Permanente (Green Card) — I-90",
+  "description": "Preencha todas as perguntas. Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA.",
+  "sections": [
+    {
+      "id": "basico",
+      "title": "Parte 1 — Informações sobre Você"
+    },
+    {
+      "id": "enderecos",
+      "title": "Parte 1 — Endereços"
+    },
+    {
+      "id": "adicional",
+      "title": "Parte 1 — Informações Adicionais"
+    },
+    {
+      "id": "tipo_aplicacao",
+      "title": "Parte 2 — Tipo de Aplicação"
+    },
+    {
+      "id": "processamento",
+      "title": "Parte 3 — Informações de Processamento"
+    },
+    {
+      "id": "biografico",
+      "title": "Parte 3 — Informações Biográficas"
+    },
+    {
+      "id": "acomodacoes",
+      "title": "Parte 4 — Acomodações para Deficiência"
+    },
+    {
+      "id": "assinatura",
+      "title": "Parte 5 — Declaração do(a) Requerente"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 6 — Intérprete"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 7 — Preparador(a)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_sobrenome",
+      "section": "basico",
+      "label": "Sobrenome (seu cartão será emitido com este nome)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_nome",
+      "section": "basico",
+      "label": "Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_meio",
+      "section": "basico",
+      "label": "Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "alien_number",
+      "section": "basico",
+      "label": "Número de Estrangeiro (A-Number)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "uscis_online",
+      "section": "basico",
+      "label": "Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "nome_mudou",
+      "section": "basico",
+      "label": "Seu nome mudou legalmente desde a emissão do seu cartão de residente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        },
+        {
+          "value": "nao_aplicavel",
+          "label": "Não aplicável — nunca recebi meu cartão anterior"
+        }
+      ]
+    },
+    {
+      "id": "nome_cartao_anterior_sobrenome",
+      "section": "basico",
+      "label": "Nome exatamente como impresso no seu cartão atual — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "nome_mudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "nome_cartao_anterior_nome",
+      "section": "basico",
+      "label": "Nome exatamente como impresso no seu cartão atual — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "nome_mudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "nome_cartao_anterior_meio",
+      "section": "basico",
+      "label": "Nome exatamente como impresso no seu cartão atual — Nome do meio",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "nome_mudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "end_correio_cuidados_de",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_rua",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "end_correio_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_estado",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cep",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_provincia",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_codigo_postal",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_pais",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_fisico_rua",
+      "section": "enderecos",
+      "label": "Endereço físico (se diferente do de correspondência) — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_cidade",
+      "section": "enderecos",
+      "label": "Endereço físico — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_estado",
+      "section": "enderecos",
+      "label": "Endereço físico — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_cep",
+      "section": "enderecos",
+      "label": "Endereço físico — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_provincia",
+      "section": "enderecos",
+      "label": "Endereço físico — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_codigo_postal",
+      "section": "enderecos",
+      "label": "Endereço físico — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_pais",
+      "section": "enderecos",
+      "label": "Endereço físico — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sexo",
+      "section": "adicional",
+      "label": "Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "data_nascimento",
+      "section": "adicional",
+      "label": "Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "cidade_nascimento",
+      "section": "adicional",
+      "label": "Cidade/Vila de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pais_nascimento",
+      "section": "adicional",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "mae_nome",
+      "section": "adicional",
+      "label": "Nome da mãe (primeiro nome)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai_nome",
+      "section": "adicional",
+      "label": "Nome do pai (primeiro nome)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "classe_admissao",
+      "section": "adicional",
+      "label": "Classe de admissão",
+      "type": "text",
+      "required": false,
+      "hint": "Código de 3 caracteres que mostra a categoria pela qual você virou residente permanente (ex.: IR1 = cônjuge de cidadão americano, CR1 = mesma coisa mas condicional). Encontre no seu Green Card atual (seção \"Category\"), no aviso de aprovação do I-485, ou no visto de imigrante."
+    },
+    {
+      "id": "data_admissao",
+      "section": "adicional",
+      "label": "Data de admissão (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "hint": "Data em que você se tornou residente permanente pela primeira vez — está no seu Green Card atual ou no aviso de aprovação do I-485."
+    },
+    {
+      "id": "ssn",
+      "section": "adicional",
+      "label": "Número do Seguro Social (SSN), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "meu_status",
+      "section": "tipo_aplicacao",
+      "label": "Meu status é:",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "residente_permanente",
+          "label": "Residente Permanente Legal"
+        },
+        {
+          "value": "residente_comutante",
+          "label": "Residente Permanente em Status de Comutante"
+        },
+        {
+          "value": "residente_condicional",
+          "label": "Residente Permanente Condicional"
+        }
+      ],
+      "hint": "\"Comutante\" é quem mora fora dos EUA (geralmente Canadá ou México) mas trabalha nos EUA como residente permanente, sem morar lá em tempo integral — situação rara. \"Condicional\" é residência permanente com validade de só 2 anos (baseada em casamento recente ou investimento) — confira a validade no seu cartão atual. Se seu cartão diz 10 anos e você mora nos EUA, é \"Residente Permanente Legal\"."
+    },
+    {
+      "id": "motivo_secao_a",
+      "section": "tipo_aplicacao",
+      "label": "Se você é Residente Permanente ou Comutante — motivo da aplicação:",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "perdido_roubado_destruido",
+          "label": "Meu cartão anterior foi perdido, roubado ou destruído"
+        },
+        {
+          "value": "emitido_nao_recebido",
+          "label": "Meu cartão anterior foi emitido mas nunca recebido"
+        },
+        {
+          "value": "mutilado",
+          "label": "Meu cartão atual foi mutilado"
+        },
+        {
+          "value": "erro_dhs",
+          "label": "Meu cartão atual tem dados incorretos por erro do DHS"
+        },
+        {
+          "value": "biografia_mudou",
+          "label": "Meu nome ou outra informação biográfica mudou legalmente"
+        },
+        {
+          "value": "cartao_expirado",
+          "label": "Meu cartão atual já expirou ou vai expirar em até 6 meses"
+        },
+        {
+          "value": "14anos_expira_apos_16",
+          "label": "Completei 14 anos e estou me registrando (cartão expira APÓS os 16 anos)"
+        },
+        {
+          "value": "14anos_expira_antes_16",
+          "label": "Completei 14 anos e estou me registrando (cartão expira ANTES dos 16 anos)"
+        },
+        {
+          "value": "residente_tomando_status_comutante",
+          "label": "Sou residente permanente passando para status de comutante"
+        },
+        {
+          "value": "comutante_tomando_residencia",
+          "label": "Sou comutante passando a residir efetivamente nos EUA"
+        },
+        {
+          "value": "convertido_automaticamente",
+          "label": "Fui convertido(a) automaticamente para status de residente permanente"
+        },
+        {
+          "value": "outro_edicao_anterior",
+          "label": "Tenho uma edição anterior do cartão, ou outro motivo não listado"
+        }
+      ],
+      "hint": "Escolha a opção mais próxima da sua situação. As duas últimas opções (\"completei 14 anos...\") são só para crianças que já tinham Green Card antes dos 14 anos e agora precisam atualizar foto/assinatura."
+    },
+    {
+      "id": "motivo_comutante_local_poe",
+      "section": "tipo_aplicacao",
+      "label": "Se comutante passando a residir nos EUA: cidade e estado do seu Porto de Entrada (POE)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "motivo_secao_a",
+        "equals": "comutante_tomando_residencia"
+      },
+      "hint": "Só se aplica se você escolheu uma opção de comutante acima. \"Porto de Entrada\" é o local (cidade/posto de fronteira) por onde você entra regularmente nos EUA para trabalhar."
+    },
+    {
+      "id": "motivo_secao_b",
+      "section": "tipo_aplicacao",
+      "label": "Se você é Residente Permanente Condicional — motivo da aplicação:",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "perdido_roubado_destruido",
+          "label": "Meu cartão anterior foi perdido, roubado ou destruído"
+        },
+        {
+          "value": "emitido_nao_recebido",
+          "label": "Meu cartão anterior foi emitido mas nunca recebido"
+        },
+        {
+          "value": "mutilado",
+          "label": "Meu cartão atual foi mutilado"
+        },
+        {
+          "value": "erro_dhs",
+          "label": "Meu cartão atual tem dados incorretos por erro do DHS"
+        },
+        {
+          "value": "biografia_mudou",
+          "label": "Meu nome ou outra informação biográfica mudou legalmente"
+        }
+      ],
+      "hint": "Só aparece se seu cartão atual diz \"residente condicional\" (validade de 2 anos). Atenção: se você está tentando REMOVER as condições do seu Green Card (por exemplo, após 2 anos de casamento), este NÃO é o formulário certo -- isso é feito pelo Formulário I-751, não pelo I-90. Use esta seção só se seu cartão condicional foi perdido, roubado, danificado, tem erro do DHS, ou seus dados biográficos mudaram."
+    },
+    {
+      "id": "local_aplicou_visto",
+      "section": "processamento",
+      "label": "Local onde você solicitou o visto de imigrante ou ajuste de status",
+      "type": "text",
+      "required": false,
+      "hint": "Cidade/país do consulado americano onde você solicitou o visto de imigrante, OU cidade/escritório do USCIS onde seu ajuste de status (I-485) foi protocolado."
+    },
+    {
+      "id": "local_emitido_visto",
+      "section": "processamento",
+      "label": "Local onde seu visto de imigrante foi emitido, ou escritório do USCIS onde o ajuste de status foi concedido",
+      "type": "text",
+      "required": false,
+      "hint": "Cidade/país do consulado americano que emitiu seu visto de imigrante, OU escritório do USCIS que aprovou seu ajuste de status (I-485)."
+    },
+    {
+      "id": "ja_esteve_processo_remocao",
+      "section": "processamento",
+      "label": "Você já esteve em processo de exclusão, deportação ou remoção, ou já foi ordenado a deixar os EUA?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "\"Processo de remoção/deportação\" é o processo judicial de imigração que pode terminar com ordem de deixar os EUA -- inclui audiências no tribunal de imigração (EOIR), mesmo que o processo tenha sido encerrado ou você tenha vencido o caso. Responda com base na sua história completa, mesmo de anos atrás. Se tiver dúvida, confirme com a equipe antes de responder -- uma resposta incorreta aqui pode ter consequências sérias."
+    },
+    {
+      "id": "abandonou_status",
+      "section": "processamento",
+      "label": "Desde que se tornou residente permanente, você já apresentou o Formulário I-407 (abandono de status) ou foi determinado que abandonou seu status?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Formulário I-407 é usado para desistir voluntariamente do Green Card. \"Determinado que abandonou\" inclui casos em que um oficial de fronteira já decidiu que você perdeu o status por ficar tempo demais fora dos EUA sem os documentos certos (ex.: sem Reentry Permit em viagem longa). Se tiver dúvida, confirme com a equipe."
+    },
+    {
+      "id": "porto_entrada",
+      "section": "processamento",
+      "label": "Porto de Entrada onde foi admitido nos EUA (se entrou com visto de imigrante)",
+      "type": "text",
+      "required": false,
+      "hint": "O aeroporto, posto de fronteira ou porto marítimo dos EUA onde você foi admitido oficialmente como residente permanente pela primeira vez (carimbo no passaporte ou registro do I-94, em i94.cbp.dhs.gov)."
+    },
+    {
+      "id": "destino_eua_admissao",
+      "section": "processamento",
+      "label": "Destino nos EUA no momento da admissão — Cidade e Estado",
+      "type": "text",
+      "required": false,
+      "hint": "Cidade e estado que você declarou como seu destino nos EUA no momento em que entrou como residente permanente (pode ser diferente de onde você mora hoje)."
+    },
+    {
+      "id": "altura_pes",
+      "section": "biografico",
+      "label": "Altura — pés",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "altura_polegadas",
+      "section": "biografico",
+      "label": "Altura — polegadas",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "peso",
+      "section": "biografico",
+      "label": "Peso em libras (lb)",
+      "type": "text",
+      "required": true,
+      "hint": "Só números, ex: 155. Será dividido automaticamente nos 3 campos do PDF."
+    },
+    {
+      "id": "etnia",
+      "section": "biografico",
+      "hint": "Categoria oficial do governo dos EUA, separada de \"raça\" (perguntas seguintes) — pergunta apenas se você se identifica como hispânico/latino, independentemente da sua raça. A maioria dos brasileiros não-hispânicos marca \"Não hispânico ou latino\" aqui.",
+      "label": "Etnia",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "hispanico",
+          "label": "Hispânico ou Latino"
+        },
+        {
+          "value": "nao_hispanico",
+          "label": "Não Hispânico ou Latino"
+        }
+      ]
+    },
+    {
+      "id": "raca_branco",
+      "section": "biografico",
+      "label": "Raça: Branco",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_negro",
+      "section": "biografico",
+      "label": "Raça: Negro ou Afro-americano",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_asiatico",
+      "section": "biografico",
+      "label": "Raça: Asiático",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_indigena_americano",
+      "section": "biografico",
+      "label": "Raça: Indígena Americano ou Nativo do Alasca",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_havaiano_pacifico",
+      "section": "biografico",
+      "label": "Raça: Havaiano Nativo ou outra Ilha do Pacífico",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "cor_olhos",
+      "section": "biografico",
+      "label": "Cor dos olhos",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "azul",
+          "label": "Azul"
+        },
+        {
+          "value": "verde",
+          "label": "Verde"
+        },
+        {
+          "value": "avela",
+          "label": "Avelã"
+        },
+        {
+          "value": "rosa",
+          "label": "Rosa"
+        },
+        {
+          "value": "marrom_avermelhado",
+          "label": "Marrom-avermelhado (Maroon)"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "preto",
+          "label": "Preto"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        },
+        {
+          "value": "cinza",
+          "label": "Cinza"
+        }
+      ]
+    },
+    {
+      "id": "cor_cabelo",
+      "section": "biografico",
+      "label": "Cor do cabelo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "careca",
+          "label": "Careca (sem cabelo)"
+        },
+        {
+          "value": "loiro",
+          "label": "Loiro"
+        },
+        {
+          "value": "grisalho",
+          "label": "Grisalho"
+        },
+        {
+          "value": "arenoso",
+          "label": "Arenoso"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        },
+        {
+          "value": "branco",
+          "label": "Branco"
+        },
+        {
+          "value": "ruivo",
+          "label": "Ruivo"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "preto",
+          "label": "Preto"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_solicitada",
+      "section": "acomodacoes",
+      "label": "Você está solicitando alguma acomodação por deficiência/incapacidade?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Opcional. Pedir uma acomodação (ex.: intérprete de libras, formulário em Braille) não afeta a análise do seu pedido -- é só pra garantir acessibilidade na entrevista/processo, se houver."
+    },
+    {
+      "id": "acomodacao_surdo",
+      "section": "acomodacoes",
+      "label": "Sou surdo(a) ou tenho dificuldade auditiva e solicito acomodação",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_solicitada",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_surdo_detalhe",
+      "section": "acomodacoes",
+      "label": "Detalhe a acomodação solicitada (ex: idioma de sinais)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_surdo",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acomodacao_cego",
+      "section": "acomodacoes",
+      "label": "Sou cego(a) ou tenho baixa visão e solicito acomodação",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_solicitada",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_cego_detalhe",
+      "section": "acomodacoes",
+      "label": "Detalhe a acomodação solicitada",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_cego",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acomodacao_outra",
+      "section": "acomodacoes",
+      "label": "Tenho outro tipo de deficiência/incapacidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_solicitada",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_outra_detalhe",
+      "section": "acomodacoes",
+      "label": "Descreva a natureza da deficiência e a acomodação solicitada",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_outra",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "leu_ingles",
+      "section": "assinatura",
+      "label": "Declaração do(a) requerente",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Eu leio e entendo inglês, e li e entendi todas as perguntas e instruções desta aplicação e minhas respostas"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "O(a) intérprete indicado(a) na Parte 6 leu para mim, em um idioma que domino, todas as perguntas e instruções e minhas respostas"
+        }
+      ],
+      "hint": "Se você não lê/entende inglês fluentemente, é necessário um intérprete (ver Parte 6) que leia e traduza o formulário pra você antes de assinar -- não é sobre saber falar inglês no dia a dia, é sobre entender de fato o que está assinando."
+    },
+    {
+      "id": "idioma_interprete",
+      "section": "assinatura",
+      "label": "Em qual idioma o(a) intérprete leu o formulário para você?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "preparador_ajudou",
+      "section": "assinatura",
+      "label": "Alguém preparou este formulário para você, a seu pedido e com base apenas nas informações que você forneceu?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, eu mesmo(a) preenchi"
+        }
+      ],
+      "hint": "Refere-se a alguém que preencheu o formulário POR você (ex.: consultor, advogado, amigo digitando), baseado só nas informações que você deu -- não muda a resposta se você mesmo(a) digitou mas alguém te ajudou a entender as perguntas."
+    },
+    {
+      "id": "preparador_nome",
+      "section": "assinatura",
+      "label": "Nome do(a) preparador(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "telefone",
+      "section": "assinatura",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "celular",
+      "section": "assinatura",
+      "label": "Telefone celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "email",
+      "section": "assinatura",
+      "label": "E-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_assinatura",
+      "section": "assinatura",
+      "label": "Data da assinatura (preenchido no dia do protocolo, MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Intérprete — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Intérprete — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_organizacao",
+      "section": "interprete",
+      "label": "Intérprete — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_rua",
+      "section": "interprete",
+      "label": "Intérprete — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_tipo_unidade",
+      "section": "interprete",
+      "label": "Intérprete — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "int_end_num_unidade",
+      "section": "interprete",
+      "label": "Intérprete — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cidade",
+      "section": "interprete",
+      "label": "Intérprete — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_estado",
+      "section": "interprete",
+      "label": "Intérprete — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cep",
+      "section": "interprete",
+      "label": "Intérprete — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_provincia",
+      "section": "interprete",
+      "label": "Intérprete — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_codigo_postal",
+      "section": "interprete",
+      "label": "Intérprete — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_pais",
+      "section": "interprete",
+      "label": "Intérprete — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Intérprete — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_celular",
+      "section": "interprete",
+      "label": "Intérprete — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "Intérprete — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Intérprete — Idioma em que é fluente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Intérprete — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Preparador(a) — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Preparador(a) — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_organizacao",
+      "section": "preparador",
+      "label": "Preparador(a) — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_rua",
+      "section": "preparador",
+      "label": "Preparador(a) — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_tipo_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "prep_end_num_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cidade",
+      "section": "preparador",
+      "label": "Preparador(a) — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_estado",
+      "section": "preparador",
+      "label": "Preparador(a) — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cep",
+      "section": "preparador",
+      "label": "Preparador(a) — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_provincia",
+      "section": "preparador",
+      "label": "Preparador(a) — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_codigo_postal",
+      "section": "preparador",
+      "label": "Preparador(a) — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_pais",
+      "section": "preparador",
+      "label": "Preparador(a) — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Preparador(a) — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_celular",
+      "section": "preparador",
+      "label": "Preparador(a) — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "Preparador(a) — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Preparador(a) — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    }
+  ]
+}

@@ -1,0 +1,228 @@
+{
+  "hero_tagline": "Guia completo sobre o exame médico de imigração — quem faz, o que inclui, quanto custa e como funciona, tanto para o Ajuste de Status (Formulário I-693) quanto para o Processamento Consular. Não realizamos nem preenchemos nenhum dos dois — reunimos aqui o máximo de informação oficial para você chegar preparado(a).",
+  "hero_tagline_en": "A complete guide to the immigration medical exam — who performs it, what it includes, what it costs, and how it works, for both Adjustment of Status (Form I-693) and Consular Processing. We don't perform or fill out either one — we've gathered as much official information as possible here so you can arrive prepared.",
+
+  "aos": {
+    "title": "Ajuste de Status — Formulário I-693",
+    "title_en": "Adjustment of Status — Form I-693",
+    "intro": "Quem está ajustando status dentro dos Estados Unidos (Formulário I-485) precisa, na maioria dos casos, do Formulário I-693 — o relatório oficial do exame médico de imigração. Ele só pode ser completado por um médico credenciado pela USCIS, chamado \"civil surgeon\". Não preenchemos este formulário: essa etapa é feita diretamente entre você e o médico credenciado.",
+    "intro_en": "Most people adjusting status inside the United States (Form I-485) need Form I-693 — the official immigration medical exam report. It can only be completed by a USCIS-designated doctor, called a \"civil surgeon.\" We don't fill out this form — that step happens directly between you and the credentialed doctor.",
+    "who_performs": [
+      "Apenas um médico designado pela USCIS como \"civil surgeon\" pode completar o I-693 — seu médico de família, mesmo que seja um médico excelente, não pode fazer isso a menos que também tenha essa credencial específica.",
+      "Exceção (\"blanket designation\"): médicos militares em unidades de tratamento das Forças Armadas dos EUA são automaticamente reconhecidos como civil surgeons para veteranos, militares e dependentes designados; e todos os departamentos de saúde estadual/local são reconhecidos como civil surgeons para completar a parte de vacinação de refugiados."
+    ],
+    "who_performs_en": [
+      "Only a doctor designated by USCIS as a \"civil surgeon\" can complete Form I-693 — your regular family doctor cannot do this, no matter how good they are, unless they also hold that specific USCIS credential.",
+      "Exception (\"blanket designation\"): military physicians at U.S. Armed Forces treatment facilities are automatically recognized as civil surgeons for veterans, service members, and designated dependents; and all state and local health departments are recognized as civil surgeons for completing the vaccination portion for refugees."
+    ],
+    "exam_includes": [
+      "Revisão do histórico médico (hospitalizações, internações, eventos de saúde relevantes)",
+      "Exame físico: olhos, ouvidos, nariz, garganta, extremidades, coração, pulmões, abdômen, linfonodos e pele",
+      "Radiografia de tórax e exame de sangue para sífilis (a partir de 18 anos; crianças costumam ser dispensadas), além de teste para gonorreia dependendo da idade, conforme exigido pelo CDC",
+      "Avaliação de saúde mental: raciocínio, compreensão, julgamento, humor e comportamento",
+      "Revisão e, se necessário, administração das vacinas exigidas, seguindo o calendário do CDC"
+    ],
+    "exam_includes_en": [
+      "Medical history review (hospitalizations, institutional stays, relevant health events)",
+      "Physical examination: eyes, ears, nose, throat, extremities, heart, lungs, abdomen, lymph nodes, and skin",
+      "Chest X-ray and a blood test for syphilis (age 18+; children are usually exempt), plus a gonorrhea test depending on age, as required by the CDC",
+      "Mental health assessment: reasoning, comprehension, judgment, mood, and behavior",
+      "Review — and administration, if needed — of the required vaccines, following the CDC's schedule"
+    ],
+    "vaccines": [
+      "Sarampo, caxumba e rubéola (MMR)", "Poliomielite", "Difteria, tétano e pertússis (Tdap/DTaP)",
+      "Haemophilus influenzae tipo B (Hib)", "Hepatite A", "Hepatite B", "Varicela (catapora)",
+      "Influenza (gripe)", "Pneumocócica", "Rotavírus", "Meningocócica"
+    ],
+    "vaccines_en": [
+      "Measles, mumps, and rubella (MMR)", "Polio", "Diphtheria, tetanus, and pertussis (Tdap/DTaP)",
+      "Haemophilus influenzae type B (Hib)", "Hepatitis A", "Hepatitis B", "Varicella (chickenpox)",
+      "Influenza (flu)", "Pneumococcal", "Rotavirus", "Meningococcal"
+    ],
+    "vaccines_note": "A vacina de COVID-19 deixou de ser exigida a partir de 22/01/2025. Há isenções: \"blanket waiver\" quando uma vacina é medicamente inadequada ou não é rotineiramente disponível (sem formulário próprio), e isenção individual por objeção religiosa/moral sincera a TODAS as vacinas (exige Formulário I-601 e taxa de $1.050).",
+    "vaccines_note_en": "The COVID-19 vaccine stopped being required as of 01/22/2025. Waivers exist: a \"blanket waiver\" when a vaccine is medically inappropriate or not routinely available (no form needed), and an individual waiver for a sincere religious/moral objection to ALL vaccines (requires Form I-601 and a $1,050 fee).",
+    "documents_to_bring": [
+      "Identificação com foto emitida pelo governo (passaporte válido ou carteira de motorista); menores de 14 anos podem apresentar certidão de nascimento com tradução",
+      "Registro de vacinação/imunização que você já tenha",
+      "Lista de medicamentos atuais",
+      "Comprovantes de tratamento anterior de tuberculose ou sífilis, se houver",
+      "Documentação de tratamento de saúde mental ou dependência química, se houver",
+      "Cartão do plano de saúde (pergunte antes se o civil surgeon aceita seu convênio — muitos planos não cobrem todas as partes do exame)",
+      "Forma de pagamento (confirme com o consultório quais são aceitas)"
+    ],
+    "documents_to_bring_en": [
+      "Government-issued photo ID (valid passport or driver's license); applicants 14 or younger can bring a birth certificate with translation",
+      "Any vaccination/immunization records you already have",
+      "A current list of medications",
+      "Proof of prior tuberculosis or syphilis treatment, if any",
+      "Documentation of mental health or substance-abuse treatment, if any",
+      "Health insurance card (ask beforehand whether the civil surgeon accepts your plan — many plans don't cover every part of the exam)",
+      "Payment (confirm with the office which methods they accept)"
+    ],
+    "sealed_envelope": [
+      "O civil surgeon entrega o I-693 assinado dentro de um envelope selado. Não aceite o formulário se o envelope já estiver aberto.",
+      "Se você vai protocolar o I-485 online: abra o envelope você mesmo(a) e envie a cópia do I-693 junto com o pacote — mas guarde o formulário original e o envelope até a USCIS decidir seu caso; ela pode pedir para ver o original numa entrevista.",
+      "Se você vai protocolar o I-485 por correio: envie o I-693 dentro do envelope selado original, sem abrir.",
+      "A USCIS não aceita o I-693 se o envelope tiver sido aberto ou alterado — nesse caso, normalmente é preciso repetir o exame."
+    ],
+    "sealed_envelope_en": [
+      "The civil surgeon gives you the signed I-693 inside a sealed envelope. Don't accept the form if the envelope is already open.",
+      "If you're filing Form I-485 online: open the envelope yourself and upload a copy of the I-693 with your package — but keep the original form and envelope until USCIS decides your case; they may ask to see the original at an interview.",
+      "If you're filing Form I-485 by mail: submit the I-693 inside the original sealed envelope, unopened.",
+      "USCIS will not accept Form I-693 if the envelope has been opened or altered — you would typically need to repeat the entire exam."
+    ],
+    "validity": [
+      "Desde a mudança de regra em vigor a partir de 11/06/2025: o I-693 permanece válido enquanto o seu I-485 estiver pendente na USCIS — não há mais uma data fixa de expiração contada a partir do exame.",
+      "O I-693 perde a validade se o I-485 associado for retirado ou negado — nesse caso, um novo exame é necessário para um novo pedido.",
+      "Desde 02/12/2024, você deve enviar o I-693 (ou uma versão parcial, em casos específicos) junto com o próprio I-485 — caso contrário a USCIS pode rejeitar o pedido.",
+      "Casos com I-693 parcial (só as Partes 1–5, 7 e 10 — Registro de Vacinação): refugiados/asilados que já fizeram exame com painel médico no exterior; certos titulares de visto K (cônjuge/filho(a) de cidadão americano ou de noivo(a)) cujo registro de vacinação do exame no exterior não estava completo, feito até 1 ano antes do protocolo; e nacionais afegãos admitidos pela Operation Allies Welcome."
+    ],
+    "validity_en": [
+      "Under the rule change in effect since 06/11/2025: Form I-693 stays valid for as long as your I-485 remains pending with USCIS — there's no longer a fixed expiration date counted from the exam date.",
+      "Form I-693 becomes invalid if the associated I-485 is withdrawn or denied — a new exam is then required for a new application.",
+      "Since 12/02/2024, you must submit Form I-693 (or a partial version, in specific cases) together with the I-485 itself — otherwise USCIS may reject the application.",
+      "Cases eligible for a partial I-693 (only Parts 1–5, 7, and 10 — Vaccination Record): refugees/asylees who already completed a panel-physician exam abroad; certain K-visa holders (spouse/child of a U.S. citizen or of a fiancé(e)) whose overseas exam's vaccination record wasn't complete, done within 1 year before filing; and Afghan nationals admitted under Operation Allies Welcome."
+    ],
+    "cost": "Não há taxa de protocolo à USCIS pelo I-693 em si — o custo é a consulta/exame cobrado diretamente pelo civil surgeon, e varia bastante por região (tipicamente entre $100 e $400 ou mais). É comum vale a pena ligar para mais de um médico credenciado para comparar preços antes de agendar.",
+    "cost_en": "There's no USCIS filing fee for Form I-693 itself — the cost is the consultation/exam charged directly by the civil surgeon, and it varies significantly by region (typically $100 to $400 or more). It's common — and worthwhile — to call a few credentialed doctors to compare prices before booking.",
+    "how_to_find": "Use a ferramenta oficial \"Find a Civil Surgeon\" da USCIS para localizar um médico credenciado por endereço, cidade, estado ou CEP — é possível filtrar por idioma falado e sexo do médico.",
+    "how_to_find_en": "Use USCIS's official \"Find a Civil Surgeon\" tool to locate a credentialed doctor by address, city, state, or ZIP code — you can filter by language spoken and doctor's sex.",
+    "how_to_find_url": "https://www.uscis.gov/tools/find-a-civil-surgeon"
+  },
+
+  "consular": {
+    "title": "Processamento Consular — Exame com o Painel Médico",
+    "title_en": "Consular Processing — Panel Physician Exam",
+    "intro": "Quem está fazendo o Green Card pelo processamento consular (fora dos Estados Unidos) também precisa de um exame médico de imigração — mas esse exame NÃO usa o Formulário I-693. Ele é feito por um \"panel physician\", médico credenciado pelo Departamento de Estado especificamente para o consulado/embaixada responsável pelo seu caso. Os detalhes exatos (formulários usados, validade, preço) variam de posto para posto — o que está aqui é a visão geral; sempre confirme as instruções específicas do seu consulado.",
+    "intro_en": "Anyone going through consular processing (outside the United States) for a Green Card also needs an immigration medical exam — but that exam does NOT use Form I-693. It's performed by a \"panel physician,\" a doctor credentialed by the State Department specifically for the embassy/consulate handling your case. Exact details (which forms are used, validity, price) vary by post — what's here is the general picture; always confirm the specific instructions from your consulate.",
+    "who_performs": [
+      "Somente o \"panel physician\" aprovado pelo consulado/embaixada responsável pode fazer o exame — médicos de outros postos ou médicos particulares não são aceitos, mesmo que sejam excelentes profissionais.",
+      "Se o seu caso for transferido de um posto para outro, geralmente não é possível reaproveitar um exame feito no posto anterior — é preciso repetir com o painel médico do novo posto."
+    ],
+    "who_performs_en": [
+      "Only the panel physician approved by the specific embassy/consulate handling your case can perform the exam — physicians from other posts or private doctors are not accepted, no matter how qualified.",
+      "If your case is transferred from one post to another, an exam done at the previous post generally cannot be reused — you need to repeat it with the new post's panel physician."
+    ],
+    "scheduling": [
+      "O National Visa Center (NVC) ou o próprio consulado envia as instruções de agendamento (geralmente pelo CEAC e/ou e-mail) junto com a carta de entrevista.",
+      "\"Sem exame médico, sem entrevista\": se o resultado não estiver pronto até a data da entrevista, ela precisa ser remarcada — por isso é importante agendar o exame com antecedência (alguns postos recomendam pelo menos 5 dias úteis antes da entrevista).",
+      "O exame deve ser feito ANTES da entrevista consular."
+    ],
+    "scheduling_en": [
+      "The National Visa Center (NVC) or the consulate itself sends scheduling instructions (usually via CEAC and/or email) along with the interview letter.",
+      "\"No medical exam, no interview\": if results aren't ready by the interview date, it has to be rescheduled — so it's important to book the exam ahead of time (some posts recommend at least 5 business days before the interview).",
+      "The exam must be completed BEFORE the consular interview."
+    ],
+    "exam_includes": [
+      "Mesma lógica geral do exame de AOS: histórico médico, exame físico completo, avaliação de saúde mental, exames de doenças transmissíveis (tuberculose, sífilis, gonorreia conforme idade) e revisão/aplicação de vacinas.",
+      "Formulários usados pelo painel médico: tradicionalmente DS-2054 (relatório principal) mais DS-3025 (vacinação), DS-3026 (radiografia de tórax) e DS-3030 (histórico/exame suplementar) — NÃO o I-693.",
+      "Muitos postos já usam o sistema eletrônico \"eMedical\" (eMed): o painel médico envia o resultado direto para o Departamento de Estado pela internet, sem envelope físico e sem precisar levar nada extra à entrevista."
+    ],
+    "exam_includes_en": [
+      "Same general scope as the AOS exam: medical history, full physical exam, mental health assessment, communicable-disease testing (tuberculosis, syphilis, gonorrhea depending on age), and vaccine review/administration.",
+      "Forms used by the panel physician: traditionally DS-2054 (main report) plus DS-3025 (vaccination), DS-3026 (chest X-ray), and DS-3030 (supplemental history/exam) — NOT Form I-693.",
+      "Many posts now use the electronic \"eMedical\" (eMed) system: the panel physician submits results directly to the State Department online, with no physical envelope and nothing extra to bring to the interview."
+    ],
+    "vaccines_note": "A lista de vacinas exigidas é a mesma do exame de AOS (veja a seção do I-693 acima) — sarampo/caxumba/rubéola, poliomielite, DTaP/Tdap, Hib, hepatite A e B, varicela, influenza, pneumocócica, rotavírus e meningocócica. O painel médico pode indicar isenções quando uma vacina não for medicamente apropriada.",
+    "vaccines_note_en": "The required vaccine list is the same as for the AOS exam (see the I-693 section above) — measles/mumps/rubella, polio, DTaP/Tdap, Hib, hepatitis A and B, varicella, influenza, pneumococcal, rotavirus, and meningococcal. The panel physician can note exemptions when a vaccine isn't medically appropriate.",
+    "documents_to_bring": [
+      "Passaporte com pelo menos 6 meses de validade",
+      "Fotos no padrão exigido (geralmente 4 fotos 1,5 x 2 polegadas, tiradas nos últimos 6 meses) — confirme o padrão exato com o seu posto",
+      "Página de confirmação do DS-260 (ou DS-160, conforme o caso)",
+      "Carta de agendamento da entrevista, emitida pelo NVC ou pela seção consular",
+      "Registro de vacinação que você já tenha",
+      "Histórico médico: nomes e composição de medicamentos em uso; documentação de doenças, cirurgias, traumas ou condições físicas/mentais anteriores",
+      "Registro criminal ou judicial, se houver"
+    ],
+    "documents_to_bring_en": [
+      "Passport valid for at least 6 more months",
+      "Photos in the required format (typically 4 photos, 1.5 x 2 inches, taken within the last 6 months) — confirm the exact spec with your post",
+      "DS-260 (or DS-160, as applicable) confirmation page",
+      "Interview appointment letter issued by the NVC or the consular section",
+      "Any vaccination records you already have",
+      "Medical history: names and composition of current medications; documentation of any prior illnesses, major surgeries, trauma, or physical/mental conditions",
+      "Criminal or court records, if any"
+    ],
+    "sealed_envelope": [
+      "Em postos que ainda usam papel: o painel médico entrega o resultado em envelope selado para você levar à entrevista, ou envia direto ao consulado — nos dois casos, não abra o envelope.",
+      "Em postos com eMedical: o resultado vai direto ao Departamento de Estado pela internet — não é preciso levar nada físico à entrevista."
+    ],
+    "sealed_envelope_en": [
+      "At posts still using paper: the panel physician either gives you the result in a sealed envelope to bring to the interview, or sends it directly to the consulate — either way, don't open the envelope.",
+      "At posts using eMedical: the result goes straight to the State Department online — there's nothing physical to bring to the interview."
+    ],
+    "validity": [
+      "A validade típica citada por postos consulares é de cerca de 6 meses a partir da data do exame — mas isso VARIA por posto, então confirme o prazo exato com o consulado responsável pelo seu caso.",
+      "O exame precisa estar válido tanto no dia da entrevista quanto no dia em que você efetivamente entra nos Estados Unidos com o visto — não apenas no momento da entrevista.",
+      "Se o exame expirar antes da viagem, a situação pode se complicar (às vezes é necessário um novo exame, e em alguns casos até devolver o visto para reemissão) — fale com o consulado com antecedência se isso for um risco no seu caso.",
+      "Diferente do I-693, os resultados do exame consular são considerados registro protegido de visto (INA 222(f)) e normalmente não podem ser copiados/liberados para o próprio requerente depois."
+    ],
+    "validity_en": [
+      "Consular posts commonly cite a validity of around 6 months from the exam date — but this VARIES by post, so confirm the exact timeframe with the consulate handling your case.",
+      "The exam must remain valid both on the interview date and on the date you actually enter the United States on the visa — not just at the time of the interview.",
+      "If the exam expires before travel, things can get complicated (sometimes a new exam is needed, and in some cases even returning the visa for reissuance) — talk to the consulate ahead of time if this is a risk in your case.",
+      "Unlike Form I-693, consular exam results are treated as a protected visa record (INA 222(f)) and generally cannot be copied or released back to the applicant afterward."
+    ],
+    "cost": "Não existe uma tabela única do Departamento de Estado — o preço é definido pelo próprio painel médico e varia muito por país e por faixa etária (postos costumam publicar sua própria tabela). Sempre confirme o valor atual direto com o painel médico do seu posto antes de agendar.",
+    "cost_en": "There's no single State Department price table — the fee is set by each panel physician and varies a lot by country and age bracket (posts usually publish their own fee schedule). Always confirm the current price directly with your post's panel physician before booking.",
+    "how_to_find": "Não existe uma ferramenta central única (como a da USCIS) para o processamento consular — o NVC envia as instruções específicas do seu posto junto com a carta de entrevista, e cada embaixada/consulado publica sua própria lista de painel médico aprovado no site oficial daquele posto (acessível a partir da lista de postos em travel.state.gov).",
+    "how_to_find_en": "There's no single central tool (like USCIS's) for consular processing — the NVC sends post-specific instructions along with the interview letter, and each embassy/consulate publishes its own approved panel physician list on that post's official website (reachable from the post list on travel.state.gov)."
+  },
+
+  "comparison_table": [
+    {"aspect": "Quem faz", "aspect_en": "Who performs it", "aos": "Civil surgeon (credenciado pela USCIS)", "aos_en": "Civil surgeon (USCIS-designated)", "consular": "Panel physician (credenciado pelo consulado/embaixada)", "consular_en": "Panel physician (embassy/consulate-approved)"},
+    {"aspect": "Formulário", "aspect_en": "Form", "aos": "I-693", "aos_en": "I-693", "consular": "DS-2054 + DS-3025/3026/3030 (ou eMedical eletrônico)", "consular_en": "DS-2054 + DS-3025/3026/3030 (or electronic eMedical)"},
+    {"aspect": "Quando é feito", "aspect_en": "When", "aos": "Enviado junto com o I-485", "aos_en": "Submitted together with the I-485", "consular": "Concluído antes da entrevista consular", "consular_en": "Completed before the consular interview"},
+    {"aspect": "Resultado", "aspect_en": "Results", "aos": "Envelope selado entregue a você", "aos_en": "Sealed envelope given to you", "consular": "Envelope selado, envio direto ao consulado, ou eMedical eletrônico", "consular_en": "Sealed envelope, sent directly to the consulate, or electronic eMedical"},
+    {"aspect": "Validade", "aspect_en": "Validity", "aos": "Enquanto o I-485 estiver pendente", "aos_en": "For as long as the I-485 is pending", "consular": "Tipicamente ~6 meses (varia por posto)", "consular_en": "Typically ~6 months (varies by post)"},
+    {"aspect": "Custo", "aspect_en": "Cost", "aos": "Definido pelo civil surgeon, sem taxa à USCIS", "aos_en": "Set by the civil surgeon, no USCIS fee", "consular": "Definido pelo painel médico, sem taxa fixa do DOS", "consular_en": "Set by the panel physician, no fixed DOS fee"},
+    {"aspect": "Como encontrar", "aspect_en": "How to find", "aos": "Ferramenta oficial da USCIS", "aos_en": "USCIS's official tool", "consular": "Instruções do NVC / site do posto responsável", "consular_en": "NVC instructions / the responsible post's website"}
+  ],
+
+  "faq": [
+    {
+      "q": "Posso usar o meu próprio médico de confiança?",
+      "q_en": "Can I use my own trusted doctor?",
+      "a": "Em geral, não. Para AOS, precisa ser um civil surgeon credenciado pela USCIS; para processamento consular, precisa ser o panel physician aprovado pelo posto responsável pelo seu caso. As únicas exceções são as \"blanket designations\" (médicos militares e departamentos de saúde estadual/local, no caso do I-693).",
+      "a_en": "Generally, no. For AOS, it must be a civil surgeon designated by USCIS; for consular processing, it must be the panel physician approved by the post handling your case. The only exceptions are the \"blanket designations\" (military physicians and state/local health departments, for Form I-693)."
+    },
+    {
+      "q": "O que acontece se eu abrir o envelope selado por engano?",
+      "q_en": "What happens if I accidentally open the sealed envelope?",
+      "a": "A USCIS ou o consulado normalmente não aceitam um envelope aberto ou alterado, e o caminho mais comum é repetir o exame do zero. Nunca abra o envelope por curiosidade — peça uma cópia dos resultados ao médico antes de ele selar, se quiser guardar para você.",
+      "a_en": "USCIS or the consulate generally won't accept an opened or altered envelope, and the usual path is repeating the entire exam. Never open the envelope out of curiosity — ask the doctor for a copy of your results before they seal it, if you want one for yourself."
+    },
+    {
+      "q": "Esta ferramenta preenche o I-693 ou agenda o exame consular para mim?",
+      "q_en": "Does this tool fill out Form I-693 or schedule the consular exam for me?",
+      "a": "Não. Nenhum dos dois exames é preenchido ou agendado por nós — essa etapa é feita diretamente entre você e o médico credenciado (civil surgeon) ou o painel médico do seu consulado. Disponibilizamos o PDF oficial do I-693 em branco só para você conhecer o documento com antecedência, e reunimos aqui o máximo de informação para te ajudar a chegar preparado(a).",
+      "a_en": "No. Neither exam is filled out or scheduled by us — that step happens directly between you and the credentialed civil surgeon, or your consulate's panel physician. We provide the blank official I-693 PDF just so you can see the document ahead of time, and we've gathered as much information as possible here to help you arrive prepared."
+    },
+    {
+      "q": "Meu I-485 foi negado. Preciso fazer o exame de novo?",
+      "q_en": "My I-485 was denied. Do I need to redo the exam?",
+      "a": "Sim — o I-693 perde a validade se o I-485 associado for negado ou retirado. Um novo pedido vai exigir um novo exame médico.",
+      "a_en": "Yes — Form I-693 becomes invalid if the associated I-485 is denied or withdrawn. A new application will require a new medical exam."
+    },
+    {
+      "q": "Quanto custa o exame?",
+      "q_en": "How much does the exam cost?",
+      "a": "Não há um valor fixo do governo em nenhum dos dois casos. Para AOS, cada civil surgeon define o próprio preço (normalmente entre $100 e $400 ou mais); para processamento consular, cada painel médico do posto responsável define o seu, variando por país e faixa etária. Vale sempre confirmar o valor atual antes de agendar."
+      ,
+      "a_en": "There's no fixed government price in either case. For AOS, each civil surgeon sets their own price (typically $100 to $400 or more); for consular processing, each post's panel physician sets theirs, varying by country and age bracket. It's always worth confirming the current price before booking."
+    }
+  ],
+
+  "references": [
+    {"label": "USCIS — Formulário I-693 (página oficial)", "label_en": "USCIS — Form I-693 (official page)", "url": "https://www.uscis.gov/i-693"},
+    {"label": "USCIS — Ferramenta \"Find a Civil Surgeon\"", "label_en": "USCIS — \"Find a Civil Surgeon\" tool", "url": "https://www.uscis.gov/tools/find-a-civil-surgeon"},
+    {"label": "CitizenPath — Immigration Medical Exam: Complete Overview", "label_en": "CitizenPath — Immigration Medical Exam: Complete Overview", "url": "https://citizenpath.com/immigration-medical-exam/"},
+    {"label": "Windermere Medical — What Is Form I-693?", "label_en": "Windermere Medical — What Is Form I-693?", "url": "https://windermeremedical.com/what-is-form-i-693/"},
+    {"label": "U.S. Embassy no Reino Unido — FAQ do exame médico de visto de imigrante (exemplo de instruções por posto)", "label_en": "U.S. Embassy in the United Kingdom — Immigrant visa medical exam FAQ (example of post-specific instructions)", "url": "https://uk.usembassy.gov/immigrant-visas-faqs-medical-examination/"},
+    {"label": "U.S. Embassy na Tailândia — Instruções de exame médico (exemplo com eMedical e formulários DS)", "label_en": "U.S. Embassy in Thailand — Medical exam instructions (example with eMedical and DS forms)", "url": "https://th.usembassy.gov/immigrant-visas-instructions-for-medical-examination/"},
+    {"label": "Travel.State.gov — Processo de Visto de Imigrante (para achar as instruções do seu posto específico)", "label_en": "Travel.State.gov — The Immigrant Visa Process (to find your specific post's instructions)", "url": "https://travel.state.gov/content/travel/en/us-visas/immigrate/the-immigrant-visa-process.html"}
+  ],
+
+  "legal_note": "Não somos um escritório de advocacia e não prestamos assessoria jurídica. Esta página organiza informação pública sobre o exame médico de imigração para ajudar você a se preparar — ela não substitui as instruções oficiais do seu caso específico (as da USCIS para ajuste de status, ou as do consulado/embaixada responsável para processamento consular), que sempre têm prioridade se houver qualquer diferença.",
+  "legal_note_en": "We are not a law firm and do not provide legal advice. This page organizes public information about the immigration medical exam to help you prepare — it does not replace the official instructions for your specific case (USCIS's for adjustment of status, or the responsible consulate/embassy's for consular processing), which always take priority if there's ever a difference."
+}

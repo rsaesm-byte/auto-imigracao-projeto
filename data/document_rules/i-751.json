@@ -1,0 +1,101 @@
+{
+  "form": "I-751",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-751 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). Sempre confira as instruções oficiais do formulário para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Based on the official Form I-751 instructions and multiple immigration-advocacy sources cross-checked in this session (uscis.gov blocked direct fetching). Always check the official form instructions for your specific case before filing.",
+  "always": [
+    {
+      "label": "Cópia (frente e verso) do seu Cartão de Residente Permanente condicional",
+      "label_en": "Copy (front and back) of your Conditional Permanent Resident Card"
+    },
+    {
+      "label": "Documentos em outro idioma que não o inglês precisam de tradução completa certificada",
+      "label_en": "Documents in a language other than English need a full certified translation"
+    }
+  ],
+  "rules": [
+    {
+      "questions": ["base_peticao_conjunta"],
+      "equals_any": ["conjuge", "pai_padrasto"],
+      "documents": [
+        {
+          "label": "Evidência de que o casamento (seu, ou do seu pai/mãe com o(a) padrasto/madrasta) é verdadeiro (bona fide) e contínuo: certidões de nascimento de filhos nascidos durante o casamento, contrato de aluguel ou escritura mostrando residência/propriedade conjunta, extratos bancários ou registros financeiros conjuntos, apólices de seguro com o cônjuge como beneficiário, declarações de terceiros com conhecimento pessoal do relacionamento",
+          "label_en": "Evidence that the marriage (yours, or your parent's to the stepparent) is bona fide and ongoing: birth certificates of children born during the marriage, lease or deed showing joint residence/property, joint bank statements or financial records, insurance policies naming the spouse as beneficiary, affidavits from third parties with personal knowledge of the relationship"
+        },
+        {
+          "label": "Fotos do casal e da família ao longo dos 2 anos de residência condicional",
+          "label_en": "Photos of the couple and family throughout the 2 years of conditional residence"
+        }
+      ]
+    },
+    {
+      "questions": ["base_dispensa"],
+      "equals": "conjuge_falecido",
+      "documents": [
+        {
+          "label": "Certidão de óbito do(a) cônjuge",
+          "label_en": "Spouse's death certificate"
+        },
+        {
+          "label": "As mesmas evidências de casamento verdadeiro (bona fide) do item conjunto: contas conjuntas, contrato de aluguel/escritura, fotos, declarações de terceiros",
+          "label_en": "The same bona fide marriage evidence as for the joint-filing item: joint accounts, lease/deed, photos, third-party affidavits"
+        }
+      ]
+    },
+    {
+      "questions": ["base_dispensa"],
+      "equals": "casamento_terminado_divorcio",
+      "documents": [
+        {
+          "label": "Sentença final de divórcio ou anulação",
+          "label_en": "Final divorce decree or annulment order"
+        },
+        {
+          "label": "Declaração pessoal detalhando o histórico do relacionamento e os motivos que levaram ao fim do casamento",
+          "label_en": "Personal statement detailing the history of the relationship and the reasons that led to the end of the marriage"
+        },
+        {
+          "label": "Evidência de que o casamento foi verdadeiro (bona fide) enquanto durou: contrato de aluguel conjunto, contas conjuntas, fotos, declarações de terceiros",
+          "label_en": "Evidence that the marriage was bona fide while it lasted: joint lease, joint accounts, photos, third-party affidavits"
+        }
+      ]
+    },
+    {
+      "questions": ["base_dispensa"],
+      "equals": "vitima_violencia_conjuge",
+      "documents": [
+        {
+          "label": "Evidência do abuso: boletins de ocorrência, ordens de restrição/proteção, laudos médicos, cartas de terapeutas/conselheiros, mensagens ou registros mostrando controle ou ameaças, declarações de testemunhas",
+          "label_en": "Evidence of the abuse: police reports, protective/restraining orders, medical reports, letters from therapists/counselors, messages or records showing control or threats, witness statements"
+        },
+        {
+          "label": "Evidência de que o casamento foi verdadeiro (bona fide): contas conjuntas, contrato de aluguel, fotos",
+          "label_en": "Evidence that the marriage was bona fide: joint accounts, lease, photos"
+        }
+      ]
+    },
+    {
+      "questions": ["base_dispensa"],
+      "equals": "vitima_violencia_padrasto",
+      "documents": [
+        {
+          "label": "Evidência do abuso: boletins de ocorrência, ordens de restrição/proteção, laudos médicos, cartas de terapeutas/conselheiros, declarações de testemunhas",
+          "label_en": "Evidence of the abuse: police reports, protective/restraining orders, medical reports, letters from therapists/counselors, witness statements"
+        }
+      ]
+    },
+    {
+      "questions": ["base_dispensa"],
+      "equals": "dificuldade_extrema",
+      "documents": [
+        {
+          "label": "Evidência da dificuldade extrema que resultaria da remoção — deve se referir a fatores surgidos durante o período de residência condicional: laudos médicos, comprovação de dependência financeira, documentação sobre condições no país de origem, vínculos comunitários desenvolvidos, cartas de apoio",
+          "label_en": "Evidence of the extreme hardship that would result from removal — must relate to factors arising during the period of conditional residence: medical reports, proof of financial dependency, documentation on conditions in the home country, community ties developed, letters of support"
+        },
+        {
+          "label": "Evidência de que o casamento foi verdadeiro (bona fide) enquanto durou",
+          "label_en": "Evidence that the marriage was bona fide while it lasted"
+        }
+      ]
+    }
+  ]
+}

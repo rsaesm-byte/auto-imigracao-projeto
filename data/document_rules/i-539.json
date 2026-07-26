@@ -1,0 +1,153 @@
+{
+  "form": "I-539",
+  "confidence_note": "Extraído diretamente do checklist de documentos usado pela equipe (pasta \"checklist I-539\", um arquivo por serviço: EOS, COS B2, COS F1, COS F2) — não é uma lista genérica pesquisada externamente. Sempre confira as instruções oficiais do formulário e o feedback da equipe para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Extracted directly from the team's own document checklist (one file per service: EOS, COS B2, COS F1, COS F2) — not a generic externally researched list. Always check the form's official instructions and the team's feedback for your specific case before filing.",
+  "always": [
+    {
+      "label": "Seu passaporte e visto (páginas de identificação e vistos)",
+      "label_en": "Your passport and visa (biographic pages and visas)"
+    },
+    {
+      "label": "Passaporte e visto dos dependentes incluídos nesta aplicação (se houver)",
+      "label_en": "Passport and visa of any dependents included in this application (if any)"
+    },
+    {
+      "label": "Certidão de nascimento dos dependentes (filhos) ou certidão de casamento (se aplicável)",
+      "label_en": "Birth certificate of dependents (children) or marriage certificate (if applicable)"
+    },
+    {
+      "label": "Seu e-mail pessoal, telefone nos EUA e telefone no país de origem",
+      "label_en": "Your personal email, U.S. phone number, and home-country phone number"
+    },
+    {
+      "label": "Seu endereço completo nos EUA (com complemento — apto/bloco/suite — e CEP)",
+      "label_en": "Your complete U.S. address (including apt/unit/suite and ZIP code)"
+    },
+    {
+      "label": "Recibos de extensões ou mudanças de status anteriores, se houver (aprovação, ou recibo de protocolo se ainda pendente)",
+      "label_en": "Receipts from prior extensions or changes of status, if any (approval notice, or filing receipt if still pending)"
+    },
+    {
+      "label": "Extratos bancários dos últimos 3 meses",
+      "label_en": "Bank statements from the last 3 months",
+      "note": "Comprovante de suporte financeiro para o período de permanência temporária nos EUA. Cada extrato deve mostrar: nome completo do titular, número da conta e da agência, saldo disponível atual, e transações recentes. Contas de investimento também são aceitas, desde que o extrato mostre claramente que o saldo está disponível para resgate a qualquer momento (algumas escolas não aceitam esse tipo para o caso de estudante — confirme com a equipe). Se o extrato não estiver no seu nome, é necessário usar a Carta de Patrocínio (preenchida no formulário \"I-539 — Cartas Complementares\" deste site) e anexar documento com foto do patrocinador.",
+      "note_en": "Proof of financial support for the temporary stay period. Each statement must show: full account holder name, account and routing/branch information, current available balance, and recent transactions. Investment account statements are also accepted, as long as they clearly show the balance is available for withdrawal at any time (some schools do not accept this type for student cases — confirm with the team). If the statement is not in your name, a Sponsorship Letter is required (collected via the \"I-539 — Cartas Complementares\" form on this site), along with a photo ID of the sponsor."
+    },
+    {
+      "label": "Comprovante de endereço recente no país de origem",
+      "label_en": "Recent proof of address in your home country",
+      "note": "Documentos aceitos: contas de água/luz, telefone celular, internet, taxa de condomínio, extrato de cartão de crédito, telefone fixo. Deve mostrar nome completo e endereço completo, e ser recente (mês atual ou anterior). Se não estiver no seu nome, é necessário usar a Carta de Endereço (preenchida no formulário \"I-539 — Cartas Complementares\" deste site).",
+      "note_en": "Accepted documents: utility bills (water/electricity), cell phone bill, internet bill, condo/HOA fee, credit card statement, landline phone bill. Must show full name and complete address, and be recent (current or prior month). If not in your name, an Address Letter is required (collected via the \"I-539 — Cartas Complementares\" form on this site)."
+    },
+    {
+      "label": "Diploma e histórico escolar do Ensino Médio (ou formação superior, se houver)",
+      "label_en": "High school diploma and transcript (or higher education diploma, if any)",
+      "note": "Documentos aceitos: Diploma de Ensino Médio ou equivalente (com histórico), Diploma de Associado/Técnico, ou Diploma de Bacharel/Superior. Deve mostrar nome completo, nome da instituição, diploma/certificação concedida e data de conclusão.",
+      "note_en": "Accepted documents: High School Diploma or equivalent (with transcript), Associate's/Technical Diploma, or Bachelor's/higher degree. Must show full name, institution name, diploma/certification awarded, and completion date."
+    },
+    {
+      "label": "Comprovante de vínculo profissional/comercial no país de origem: CNPJ, contrato social, MEI, OU carta de empregador (se não tiver empresa própria), OU carta de responsável pela empresa (se tiver empresa própria)",
+      "label_en": "Proof of professional/business ties in your home country: business registration (CNPJ), articles of incorporation, sole-proprietorship registration, OR an employer letter (if you have no business of your own), OR a business-caretaker letter (if you do have your own business)",
+      "note": "As cartas de empregador e de responsável pela empresa são preparadas no formulário \"I-539 — Cartas Complementares\" deste site, a partir dos dados que você fornecer.",
+      "note_en": "The employer letter and the business-caretaker letter are prepared through the \"I-539 — Cartas Complementares\" form on this site, using the information you provide."
+    },
+    {
+      "label": "Informações para a carta narrativa pessoal (motivação, histórico nos EUA, planos, etc.)",
+      "label_en": "Information for your personal narrative letter (motivation, history in the U.S., plans, etc.)",
+      "note": "Coletado por um questionário específico — Formulário \"I-539 — Cartas Complementares\" deste site — não faz parte do questionário do I-539 em si.",
+      "note_en": "Collected through a dedicated questionnaire — the \"I-539 — Cartas Complementares\" form on this site — separate from the main I-539 questionnaire."
+    },
+    {
+      "label": "Perguntas de antecedentes/segurança respondidas com atenção",
+      "label_en": "Background/security questions answered carefully",
+      "note": "Já fazem parte da Parte 4 do questionário principal do I-539 neste site — revise suas respostas com cuidado antes de gerar o PDF, pois toda resposta \"Sim\" normalmente exige documentação e explicação adicional.",
+      "note_en": "Already part of Part 4 of the main I-539 questionnaire on this site — review your answers carefully before generating the PDF, since any \"Yes\" answer typically requires additional documentation and explanation."
+    },
+    {
+      "label": "Orçamento e providência de tradução certificada para documentos de suporte que não estejam em inglês",
+      "label_en": "Budget and arrangement for certified translation of any supporting documents not in English",
+      "note": "Qualquer documento enviado ao USCIS que não esteja em inglês precisa de tradução completa e certificada (documento original + versão traduzida + certificado de tradução do tradutor).",
+      "note_en": "Any document submitted to USCIS that is not in English must include a full certified translation (original document + translated version + the translator's certificate of translation)."
+    },
+    {
+      "label": "Ler e assinar os termos de prestação de serviços com a equipe",
+      "label_en": "Read and sign the service agreement with the team"
+    }
+  ],
+  "rules": [
+    {
+      "questions": ["servico"],
+      "equals": "cos_b2",
+      "documents": [
+        {
+          "label": "Cópia completa de todas as páginas do seu Formulário DS-2019 (se aplicável — programa de intercâmbio, ex.: Au Pair/J-1)",
+          "label_en": "Complete copy of all pages of your Form DS-2019 (if applicable — exchange program, e.g., Au Pair/J-1)",
+          "note": "Deve incluir todas as páginas do DS-2019 original, com datas de início e término do programa, e quaisquer renovações/extensões (mesmo já encerradas) — essencial para comprovar sua permanência anterior nos EUA.",
+          "note_en": "Must include all pages of the original DS-2019, with the program's start and end dates, and any renewals/extensions (even already-ended ones) — essential to document your prior stay in the U.S."
+        }
+      ]
+    },
+    {
+      "questions": ["servico"],
+      "equals": "cos_f1",
+      "documents": [
+        {
+          "label": "Inscrição na escola/faculdade — nome da instituição, campus e horário pretendido",
+          "label_en": "School/college enrollment — institution name, campus, and intended schedule"
+        },
+        {
+          "label": "Se já matriculado(a): cópia do I-20 (incluindo versões anteriores, se houver), carta de aceitação, e comprovante de pagamento da taxa SEVIS (se já paga)",
+          "label_en": "If already enrolled: copy of the I-20 (including prior versions, if any), acceptance letter, and proof of SEVIS fee payment (if already paid)",
+          "note": "Algumas escolas exigem que os extratos bancários sejam impressos e carimbados pelo gerente do banco — confirme com a instituição.",
+          "note_en": "Some schools require bank statements to be printed and stamped by the bank manager — confirm with the institution."
+        },
+        {
+          "label": "Se o patrocinador financeiro for cidadão americano ou residente permanente: Formulário I-134 (Declaração de Apoio Financeiro) preenchido por ele",
+          "label_en": "If the financial sponsor is a U.S. citizen or permanent resident: Form I-134 (Declaration of Financial Support) completed by them",
+          "note": "Formulário oficial em uscis.gov/i-134 — demonstra que o patrocinador tem capacidade financeira para sustentar o requerente sem que ele se torne um encargo público.",
+          "note_en": "Official form at uscis.gov/i-134 — demonstrates the sponsor has the financial capacity to support the applicant without them becoming a public charge."
+        }
+      ]
+    },
+    {
+      "questions": ["servico"],
+      "equals": "cos_f2",
+      "documents": [
+        {
+          "label": "Todos os seus I-20s anteriores (se você já teve status F-1, desde sua chegada aos EUA)",
+          "label_en": "All of your prior I-20s (if you previously held F-1 status, since your arrival in the U.S.)"
+        },
+        {
+          "label": "Todos os I-20s anteriores do titular F-1/estudante principal (a pessoa da qual você se tornará dependente)",
+          "label_en": "All prior I-20s of the principal F-1 student (the person you will become a dependent of)"
+        },
+        {
+          "label": "Comprovante de pagamento da taxa SEVIS — seu (se houver) e do titular F-1",
+          "label_en": "Proof of SEVIS fee payment — yours (if any) and the principal F-1 student's"
+        },
+        {
+          "label": "I-20 atualizado do titular F-1/estudante principal, com seu nome constando como dependente F-2",
+          "label_en": "Updated I-20 of the principal F-1 student, listing your name as the F-2 dependent"
+        },
+        {
+          "label": "Se o titular (F-1 principal) já solicitou extensão ou mudança de status: comprovante dessa solicitação (aprovação, ou recibo se ainda pendente)",
+          "label_en": "If the principal F-1 student has previously requested an extension or change of status: proof of that request (approval notice, or receipt if still pending)"
+        }
+      ]
+    },
+    {
+      "questions": ["numero_pessoas"],
+      "equals": "com_familia",
+      "documents": [
+        {
+          "label": "Formulário I-539A preenchido e assinado separadamente para cada cônjuge/filho(a) incluído nesta aplicação",
+          "label_en": "Separate completed and signed Form I-539A for each spouse/child included in this application"
+        },
+        {
+          "label": "Certidão de casamento (para cônjuge) e/ou certidões de nascimento (para filhos(as)) provando a relação com cada co-requerente",
+          "label_en": "Marriage certificate (for spouse) and/or birth certificates (for children) proving the relationship to each co-applicant"
+        }
+      ]
+    }
+  ]
+}

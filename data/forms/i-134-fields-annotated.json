@@ -1,0 +1,2290 @@
+[
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[0].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[1].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[2].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[3].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[4].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[5].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[6].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[7].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[8].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#pageSet[0].Page1[9].PDF417BarCode1[0]",
+    "type": "text",
+    "leaf": "PDF417BarCode1",
+    "tooltips": []
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt3Line17[0]",
+    "type": "checkbox",
+    "leaf": "Pt3Line17",
+    "tooltips": [
+      "Part 1.  Basis for Filing. 1. I am filing this form on behalf of: Check this box for Another individual who is the beneficiary.  (Complete Parts 2. - 3. and Parts 5. - 8. Skip Part 4.)",
+      "Part 1.  Basis for Filing. 1. I am filing this form on behalf of: Check this box for Myself as the beneficiary (Complete Parts 2., 4., and 7 - 8. Skip Parts 3., 5., and 6.) ."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt3Line17[1]",
+    "type": "checkbox",
+    "leaf": "Pt3Line17",
+    "tooltips": [
+      "Part 1.  Basis for Filing. 1. I am filing this form on behalf of: Check this box for Another individual who is the beneficiary.  (Complete Parts 2. - 3. and Parts 5. - 8. Skip Part 4.)",
+      "Part 1.  Basis for Filing. 1. I am filing this form on behalf of: Check this box for Myself as the beneficiary (Complete Parts 2., 4., and 7 - 8. Skip Parts 3., 5., and 6.) ."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt1Line1_MiddleName[0]",
+    "type": "text",
+    "leaf": "Pt1Line1_MiddleName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  1. Current Legal Name (Do not provide a nickname). Enter Middle Name.",
+      "Part 8.  Additional Information.  If you need extra space to provide any additional information within this declaration, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this declaration or attach a separate sheet of paper.  Type or print your name and A-Number at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. No Entry  1. Middle Name (pre-populated from page 1)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt1Line1_GivenName[0]",
+    "type": "text",
+    "leaf": "Pt1Line1_GivenName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  1. Current Legal Name (Do not provide a nickname). Enter Given Name (Last Name).",
+      "Part 8.  Additional Information.  If you need extra space to provide any additional information within this declaration, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this declaration or attach a separate sheet of paper.  Type or print your name and A-Number at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. No Entry  1. Given Name (First Name) (pre-populated from page 1)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt1Line1_FamilyName[0]",
+    "type": "text",
+    "leaf": "Pt1Line1_FamilyName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  All filiers must complete Part 2.  1.  Current Legal Name (Do not provide a nickname). Enter Family Name (Last Name)",
+      "Part 8.  Additional Information.  If you need extra space to provide any additional information within this declaration, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this declaration or attach a separate sheet of paper.  Type or print your name and A-Number at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. No Entry  2. Family Name (Last Name) (pre-populated from page 1)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].P1_Line3_MiddleName2[0]",
+    "type": "text",
+    "leaf": "P1_Line3_MiddleName2",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Row 2. Enter Middle Name.",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Middle Name if applicable."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].P1_Line3_GivenName2[0]",
+    "type": "text",
+    "leaf": "P1_Line3_GivenName2",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Row 2. Enter Given Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].P1_Line3_FamilyName2[0]",
+    "type": "text",
+    "leaf": "P1_Line3_FamilyName2",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Provide all other names you have ever used, including aliases, maiden name, and nicknames.  If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Family Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].P1_Line3_MiddleName1[0]",
+    "type": "text",
+    "leaf": "P1_Line3_MiddleName1",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary 2. Other Names Used. Row 1. Enter Middle Name.",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 1. Enter Middle Name if applicable."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].P1_Line3_GivenName1[0]",
+    "type": "text",
+    "leaf": "P1_Line3_GivenName1",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary 2. Other Names Used. Row 1. Enter Given Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 1. Enter Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].P1_Line3_FamilyName1[0]",
+    "type": "text",
+    "leaf": "P1_Line3_FamilyName1",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Provide all other names you have ever used, including aliases, maiden name, and nicknames.  If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 1. Enter Family Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information.  Row 1. Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_InCareOfName[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_InCareOfName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the In Care of Name (if any).",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address. Enter the In Care of Name (if any).",
+      "Part 2. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the In Care of Name (if any)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_StreetName[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_StreetName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Street Number and Name.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address. Enter the Street Number and Name.",
+      "Part 3.  Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the Street Number and Name."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Line3_Unit[0]",
+    "type": "checkbox",
+    "leaf": "Part2_Line3_Unit",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  Check this box for Apartment.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Check this box for Suite.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Line3_Unit[1]",
+    "type": "checkbox",
+    "leaf": "Part2_Line3_Unit",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  Check this box for Apartment.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Check this box for Suite.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Line3_Unit[2]",
+    "type": "checkbox",
+    "leaf": "Part2_Line3_Unit",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  Check this box for Apartment.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Check this box for Suite.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Line3_Number[0]",
+    "type": "text",
+    "leaf": "Part2_Line3_Number",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Apartment, Suite, or Floor Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_City[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_City",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  Enter the City or Town.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Enter the City or Town.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the City or Town."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_State[0]",
+    "type": "choice",
+    "leaf": "Part2_Item11_State",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  For U. S. Address. select the State from the list of States.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  select the State from the list of States.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. For U. S. Address. select the State from the list of States."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_ZipCode[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_ZipCode",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  For U. S. Address. Enter the 5 digit Zip Code.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Enter the 5 digit Zip Code.",
+      "Part 2. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. For U. S. Address.  Enter the 5 digit Zip Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_Province[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_Province",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Province.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address  .Enter the Province.",
+      "Part 3.  Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Province."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_PostalCode[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_PostalCode",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Postal Code.",
+      "Part 2. Information about the Beneficiary.  9. Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.    Enter the Postal Code.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Postal Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Part2_Item11_Country[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_Country",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Country.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.    Enter the Country.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Country."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt2_Line4_CB[0]",
+    "type": "checkbox",
+    "leaf": "Pt2_Line4_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 4.  Is your current mailing address the same as your current physical address?  Select Yes.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 4.  Is your current mailing address the same as your current physical address?  Select No.    If you answered \"No\" to Item Number 4., provide your current physical address in Item Number 5."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].#subform[0].Pt2_Line4_CB[1]",
+    "type": "checkbox",
+    "leaf": "Pt2_Line4_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 4.  Is your current mailing address the same as your current physical address?  Select Yes.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 4.  Is your current mailing address the same as your current physical address?  Select No.    If you answered \"No\" to Item Number 4., provide your current physical address in Item Number 5."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_InCareOfName[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_InCareOfName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the In Care of Name (if any).",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address. Enter the In Care of Name (if any).",
+      "Part 2. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the In Care of Name (if any)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_StreetName[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_StreetName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Street Number and Name.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address. Enter the Street Number and Name.",
+      "Part 3.  Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the Street Number and Name."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Line5_Unit[0]",
+    "type": "checkbox",
+    "leaf": "Part2_Line5_Unit",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Check this box for Apartment.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Check this box for Suite.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.   Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Line5_Unit[1]",
+    "type": "checkbox",
+    "leaf": "Part2_Line5_Unit",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Check this box for Apartment.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Check this box for Suite.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.   Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Line5_Unit[2]",
+    "type": "checkbox",
+    "leaf": "Part2_Line5_Unit",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Check this box for Apartment.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Check this box for Suite.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.   Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Line5_Number[0]",
+    "type": "text",
+    "leaf": "Part2_Line5_Number",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.   Enter the Apartment, Suite, or Floor Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_City[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_City",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  Enter the City or Town.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Enter the City or Town.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the City or Town."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_State[0]",
+    "type": "choice",
+    "leaf": "Part2_Item11_State",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  For U. S. Address. select the State from the list of States.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  select the State from the list of States.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. For U. S. Address. select the State from the list of States."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_ZipCode[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_ZipCode",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  For U. S. Address. Enter the 5 digit Zip Code.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Enter the 5 digit Zip Code.",
+      "Part 2. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. For U. S. Address.  Enter the 5 digit Zip Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_Province[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_Province",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Province.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address  .Enter the Province.",
+      "Part 3.  Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Province."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_PostalCode[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_PostalCode",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Postal Code.",
+      "Part 2. Information about the Beneficiary.  9. Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.    Enter the Postal Code.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Postal Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].sfPhysicalAddress[0].Part2_Item11_Country[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_Country",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Country.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.    Enter the Country.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Country."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].#area[0].P2_Line8_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "P2_Line8_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  6. Date of Birth. Enter date as 2-digit month, 2-digit day, and 4-digit year.",
+      "Part 3. Information about the Beneficiary. 3. Date of Birth. Enter date as 2-digit month, 2-digit day, and 4-digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].Part2_Item6_Country[0]",
+    "type": "text",
+    "leaf": "Part2_Item6_Country",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  7.  Place of Birth. Enter Country.",
+      "Part 3. Information about the Beneficiary. 6. Place of Birth. Enter Country."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].Part2_Item6_Province[0]",
+    "type": "text",
+    "leaf": "Part2_Item6_Province",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  7. Place of Birth.   Enter State or Province.",
+      "Part 3. Information about the Beneficiary. 6. Place of Birth. Enter State or Province."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].Part2_Item6_City[0]",
+    "type": "text",
+    "leaf": "Part2_Item6_City",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  7.  Place of Birth.  Enter City or Town.",
+      "Part 3. Information about the Beneficiary. 6. Place of Birth. Enter City or Town."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].Pt1Line5_AlienNumber[0]",
+    "type": "text",
+    "leaf": "Pt1Line5_AlienNumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  8. Enter 9 digit Alien Registration Number (A Number)(if any).",
+      "Part 8. Additional Information. No Entry. 2. Alien Registration Number (A. Number). This field is pre-populated from Page 1."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[0]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[1]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[2]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[3]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[4]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[5]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[6]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[7]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[8]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line10_ImmigrationStatus[9]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_ImmigrationStatus",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. Citizen.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for Lawful Permanent Resident.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 10. What is your current immigration status?  Provide documentation as provided in the instructions. Check this box for U. S. National.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Nonimmigrant.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Asylee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Refugee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Parolee.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for TPS holder.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10.  Check this box for Beneficiary of deferred action (including DACA) or Deferred Enforced Departure..",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Check this box for Other"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P3_Line10_Other[0]",
+    "type": "text",
+    "leaf": "P3_Line10_Other",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  10. Enter Explanation for Other Immigration status."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].Pt1Line10_OnlineAccountNumber[0]",
+    "type": "text",
+    "leaf": "Pt1Line10_OnlineAccountNumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  9. Enter 12 digit USCIS Online Account Number (if any)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].P2_Line11_Beneficiary[0]",
+    "type": "text",
+    "leaf": "P2_Line11_Beneficiary",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  11. What is your relationship to the beneficiary?"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].StatusEmployment_CB[0]",
+    "type": "checkbox",
+    "leaf": "StatusEmployment_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  12. Employment Status.  Check if Employed (full-time, part-time, seasonal) as a or an",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Select Self Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Unemployed or Not Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.   Check this box for Retired.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].EmploymentType[0]",
+    "type": "text",
+    "leaf": "EmploymentType",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Enter employed as a or an."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].NameOfEmployer[0]",
+    "type": "text",
+    "leaf": "NameOfEmployer",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Enter Name of Employer."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].StatusEmployment_CB[1]",
+    "type": "checkbox",
+    "leaf": "StatusEmployment_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  12. Employment Status.  Check if Employed (full-time, part-time, seasonal) as a or an",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Select Self Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Unemployed or Not Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.   Check this box for Retired.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].SelfEmploymentType[0]",
+    "type": "text",
+    "leaf": "SelfEmploymentType",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employ  ment Status.  Enter Self Employed.as a or an."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].StatusEmployment_CB[2]",
+    "type": "checkbox",
+    "leaf": "StatusEmployment_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  12. Employment Status.  Check if Employed (full-time, part-time, seasonal) as a or an",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Select Self Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Unemployed or Not Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.   Check this box for Retired.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].StatusEmployment_CB[3]",
+    "type": "checkbox",
+    "leaf": "StatusEmployment_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  12. Employment Status.  Check if Employed (full-time, part-time, seasonal) as a or an",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Select Self Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Unemployed or Not Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.   Check this box for Retired.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].StatusEmployment_CB[4]",
+    "type": "checkbox",
+    "leaf": "StatusEmployment_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  12. Employment Status.  Check if Employed (full-time, part-time, seasonal) as a or an",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Select Self Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Unemployed or Not Employed.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.   Check this box for Retired.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.  Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].PG2[0].OtherEmployment[0]",
+    "type": "text",
+    "leaf": "OtherEmployment",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. 12. Employment Status.   Enter Explanation for Other Employment status."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row1_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row1_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 1. Enter Individual's Full Name. (First, Middle, Last)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row1_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row1_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 1. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row1_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row1_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 1. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row1_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row1_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 1. Enter the Individual's Date of Birth. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row1_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row1_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 1. Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row2_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row2_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 2. Enter Individual's Full Name. (First, Middle, Last)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row2_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row2_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 2. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row2_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row2_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.   Row 2. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row2_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row2_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 2. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row2_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row2_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 2.  Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row3_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row3_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 3. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row3_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row3_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 3. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row3_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row3_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 3. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row3_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row3_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 3. Enter the Individual's Date of Birth. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row3_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row3_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 2.  Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row4_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row4_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 4. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row4_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row4_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.   Row 4. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row4_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row4_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.   Row 4. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)1. Information About You (Person Requesting Family Unity Benefits). 2. A. Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row4_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row4_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 4. Enter the Individual's Date of Birth. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row4_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row4_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 4. Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row5_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row5_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 5. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row5_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row5_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.   Row 5. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row5_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row5_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 5. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row5_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row5_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 5.  Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row5_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row5_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 5. Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row6_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row6_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 6. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row6_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row6_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.   Row 6. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row6_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row6_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 6. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row6_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row6_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 6. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row6_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row6_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 6. Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row7_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row7_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 7. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row7_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row7_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 7. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row7_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row7_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 7. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row7_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row7_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 7. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row7_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row7_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 6. Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row8_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row8_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 8. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row8_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row8_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 8. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row8_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row8_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 8. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)1. Information About You (Person Requesting Family Unity Benefits). 2. A. Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row8_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row8_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 8. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row8_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row8_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 7. Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row9_FullName[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row9_FullName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 9. Individual's Full Name. (First, Middle, Last) (do not include any individuals named in Part 3.)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row9_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row9_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 9. Enter the Individual's Date of Birth. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row9_Relationship[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row9_Relationship",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3. Row 9. Enter the Relationship to the Beneficiary. (Type or print Self if you are filing for yourself as the beneficiary or Beneficiary if someone is agreeing to support you in Part 3.)"
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].P2_Line15_Row9_ANumber[0]",
+    "type": "text",
+    "leaf": "P2_Line15_Row9_ANumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.   Row 9. Enter A- Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].#subform[0].Pt2_Line15_Row9_Receipt[0]",
+    "type": "text",
+    "leaf": "Pt2_Line15_Row9_Receipt",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  15. Provide the information requested in the table below about all of your dependents and any other individuals your financially support.  Do not include yourself and the beneficiary named in Part 3.  Row 9.  Enter Receipt Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line116_Annual[0]",
+    "type": "text",
+    "leaf": "Pt3Line116_Annual",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  16.  What is your current annual income? Enter Annual  Income."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line1Cell1_TypeofAssetDropDownList[0]",
+    "type": "choice",
+    "leaf": "Pt3Line1Cell1_TypeofAssetDropDownList",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.   Row 1. Select the type of Asset from the list of Assets."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line1Cell1_Amount[0]",
+    "type": "text",
+    "leaf": "Pt3Line1Cell1_Amount",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 1. Enter the Amount (Cash Value) (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line2Cell2_TypeofAssetDropDownList[0]",
+    "type": "choice",
+    "leaf": "Pt3Line2Cell2_TypeofAssetDropDownList",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.   Row 2. Select the type of Asset from the list of Assets."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line2Cell2_Amount[0]",
+    "type": "text",
+    "leaf": "Pt3Line2Cell2_Amount",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets. Row 2. Enter the Amount (Cash Value) (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line3Cell3_TypeofAssetDropDownList[0]",
+    "type": "choice",
+    "leaf": "Pt3Line3Cell3_TypeofAssetDropDownList",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 3.  Select the type of Asset from the list of Assets."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line3Cell3_Amount[0]",
+    "type": "text",
+    "leaf": "Pt3Line3Cell3_Amount",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 3.  Enter the Amount (Cash Value) (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line4Cell4_TypeofAssetDropDownList[0]",
+    "type": "choice",
+    "leaf": "Pt3Line4Cell4_TypeofAssetDropDownList",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets. Row 4. Select the type of Asset from the list of Assets."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line4Cell4_Amount[0]",
+    "type": "text",
+    "leaf": "Pt3Line4Cell4_Amount",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 4. Enter the Amount (Cash Value) (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line5Cell5_TypeofAssetDropDownList[0]",
+    "type": "choice",
+    "leaf": "Pt3Line5Cell5_TypeofAssetDropDownList",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 5.  Select the type of Asset from the list of Assets."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line5Cell5_Amount[0]",
+    "type": "text",
+    "leaf": "Pt3Line5Cell5_Amount",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets. Row 5. Enter the Amount (Cash Value) (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line6Cell6_TypeofAssetDropDownList[0]",
+    "type": "choice",
+    "leaf": "Pt3Line6Cell6_TypeofAssetDropDownList",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 6. Select the type of Asset from the list of Assets."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line6Cell6_Amount[0]",
+    "type": "text",
+    "leaf": "Pt3Line6Cell6_Amount",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets.  Row 6.  Enter the Amount (Cash Value) (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].Pt3Line9Cell9_Total[0]",
+    "type": "text",
+    "leaf": "Pt3Line9Cell9_Total",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  17.  Provide information on the cash or assets available to you (do not include any assets from the individual named in Part 3.). Attach evidence showing you have these assets. Enter the Total (in U. S. Dollars)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].P3_Line14[0]",
+    "type": "text",
+    "leaf": "P3_Line14",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.   How many other dependents do you support (including yourself)? Do not include individuals in Item Number 13. and the beneficiary named in Part 3."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P3[0].P3_Line13[0]",
+    "type": "text",
+    "leaf": "P3_Line13",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary. Financial Information.  Provide information about your dependents, income, and assets. If you need additional space to complete any Item Number in this section, use the space provided in Part 8.  Additional Information 13. How many other Form I-134, Form I-134A, Form I-864, Form I-864EZ, and Form I-864A have you previously submitted on behalf of a person (including yourself, if applicable) and your support obligation has not ended? Do not include the beneficiary named in Part 3."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt3Line1_FamilyName[0]",
+    "type": "text",
+    "leaf": "Pt3Line1_FamilyName",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary. Complete Part 3. if you are filing this form on behalf of another individual who is the beneficiary. If you are the beneficiary providing financial support for yourself, you do not need to complete Part 3. Proceed to Part 4.   1.  Beneficiary's Current Legal Name (Do not provide a nickname.)   Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt3Line1_MiddleName[0]",
+    "type": "text",
+    "leaf": "Pt3Line1_MiddleName",
+    "tooltips": [
+      "Part 3.   Information about the Beneficiary.  1.  Beneficiary's Current Legal Name (Do not provide a nickname.)  Enter Middle Name if applicable."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P1_Line3_MiddleName2[0]",
+    "type": "text",
+    "leaf": "P1_Line3_MiddleName2",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Row 2. Enter Middle Name.",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Middle Name if applicable."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P1_Line3_GivenName2[0]",
+    "type": "text",
+    "leaf": "P1_Line3_GivenName2",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Row 2. Enter Given Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P1_Line3_FamilyName2[0]",
+    "type": "text",
+    "leaf": "P1_Line3_FamilyName2",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Provide all other names you have ever used, including aliases, maiden name, and nicknames.  If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Family Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 2. Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P1_Line3_MiddleName1[0]",
+    "type": "text",
+    "leaf": "P1_Line3_MiddleName1",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary 2. Other Names Used. Row 1. Enter Middle Name.",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 1. Enter Middle Name if applicable."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P1_Line3_GivenName1[0]",
+    "type": "text",
+    "leaf": "P1_Line3_GivenName1",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary 2. Other Names Used. Row 1. Enter Given Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 1. Enter Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P1_Line3_FamilyName1[0]",
+    "type": "text",
+    "leaf": "P1_Line3_FamilyName1",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  2. Other Names Used. Provide all other names you have ever used, including aliases, maiden name, and nicknames.  If you need extra space to complete this section, use the space provided in Part 8. Additional Information. Row 1. Enter Family Name (Last Name).",
+      "Part 3.   Information about the Beneficiary.  2.  Other Names Used.  Provide all other names the beneficiary has ever used, including aliases, maiden name, and nicknames. If you need extra space to complete this section, use the space provided in Part 8. Additional Information.  Row 1. Enter Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].#area[0].P2_Line8_DateOfBirth[0]",
+    "type": "text",
+    "leaf": "P2_Line8_DateOfBirth",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  6. Date of Birth. Enter date as 2-digit month, 2-digit day, and 4-digit year.",
+      "Part 3. Information about the Beneficiary. 3. Date of Birth. Enter date as 2-digit month, 2-digit day, and 4-digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt3_Line4_Sex_CB[0]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line4_Sex_CB",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. 4. Sex.  Check this box for Male.",
+      "Part 3.  Information about the Beneficiary. 4. Sex.  Check this box for Female."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt3_Line4_Sex_CB[1]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line4_Sex_CB",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. 4. Sex.  Check this box for Male.",
+      "Part 3.  Information about the Beneficiary. 4. Sex.  Check this box for Female."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt3Line5_AlienNumber[0]",
+    "type": "text",
+    "leaf": "Pt3Line5_AlienNumber",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. 5. Enter 9 digit Alien Registration Number (A Number)(if any)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].P2_Line8_Country[0]",
+    "type": "text",
+    "leaf": "P2_Line8_Country",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary. 7. Enter Country of Citizenship or Nationality."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Part2_Item6_Country[0]",
+    "type": "text",
+    "leaf": "Part2_Item6_Country",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  7.  Place of Birth. Enter Country.",
+      "Part 3. Information about the Beneficiary. 6. Place of Birth. Enter Country."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Part2_Item6_Province[0]",
+    "type": "text",
+    "leaf": "Part2_Item6_Province",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  7. Place of Birth.   Enter State or Province.",
+      "Part 3. Information about the Beneficiary. 6. Place of Birth. Enter State or Province."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Part2_Item6_City[0]",
+    "type": "text",
+    "leaf": "Part2_Item6_City",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  7.  Place of Birth.  Enter City or Town.",
+      "Part 3. Information about the Beneficiary. 6. Place of Birth. Enter City or Town."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt4Line1b_language[0]",
+    "type": "text",
+    "leaf": "Pt4Line1b_language",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  Intent to Provide Specific Contribution to the Beneficiary.  If you are filing this form on behalf of another individual who is the beneficiary, complete Item Numbers 18 - 19. If you are the beneficiary, proceed to Part 4.  19.  Describe the specific contributions you will provide to cover the beneficiary's basic living needs. This could include providing safe and appropriate housing; securing employment opportunities, once authorized to work; enrolling in school; and enrolling in any benefits for which they are eligible. If you intend to furnish room and board, provide the address where the beneficiary will reside. If you need additional space, use Part 8. Additional Information.  Enter Specific contribution.",
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section.   1. B.  The interpreter named in Part 6. read to me every question and instruction on this declaration and my answer to every  question in  Enter the language of fluency."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt2_Line18_CB[0]",
+    "type": "checkbox",
+    "leaf": "Pt2_Line18_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  Intent to Provide Specific Contribution to the Beneficiary.  If you are filing this form on behalf of another individual who is the beneficiary, complete Item Numbers 18 - 19. If you are the beneficiary, proceed to Part 4.  18.  In addition to providing financial support, I intend to make specific contributions to cover the beneficiary's basic living needs.  Check this box for Yes.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  Intent to Provide Specific Contribution to the Beneficiary.  If you are filing this form on behalf of another individual who is the beneficiary, complete Item Numbers 18 - 19. If you are the beneficiary, proceed to Part 4.  18.  In addition to providing financial support, I intend to make specific contributions to cover the beneficiary's basic living needs. Check this box for No."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt2_Line18_CB[1]",
+    "type": "checkbox",
+    "leaf": "Pt2_Line18_CB",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  Intent to Provide Specific Contribution to the Beneficiary.  If you are filing this form on behalf of another individual who is the beneficiary, complete Item Numbers 18 - 19. If you are the beneficiary, proceed to Part 4.  18.  In addition to providing financial support, I intend to make specific contributions to cover the beneficiary's basic living needs.  Check this box for Yes.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  Intent to Provide Specific Contribution to the Beneficiary.  If you are filing this form on behalf of another individual who is the beneficiary, complete Item Numbers 18 - 19. If you are the beneficiary, proceed to Part 4.  18.  In addition to providing financial support, I intend to make specific contributions to cover the beneficiary's basic living needs. Check this box for No."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P8[0].Pt3Line1_GivenName[0]",
+    "type": "text",
+    "leaf": "Pt3Line1_GivenName",
+    "tooltips": [
+      "Part 3.   Information about the Beneficiary.  1.  Beneficiary's Current Legal Name (Do not provide a nickname.)  Enter Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[0]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[1]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[2]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[3]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[4]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[5]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatus[6]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line8_MaritalStatus",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Single, Never Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Married.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Divorced.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Widowed.",
+      "Part 3.  Information about the Beneficiary.  8. Marital Status. Check this box for Legally Separated.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Marriage Annulled.",
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Check this box for Other."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line8_MaritalStatusOther[0]",
+    "type": "text",
+    "leaf": "Pt3_Line8_MaritalStatusOther",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  8. Marital Status. Enter an explanation for Other marital Status."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].P2_Line10_InCareOfName[0]",
+    "type": "text",
+    "leaf": "P2_Line10_InCareOfName",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address.  Enter the In Care of Name if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].Pt2_Line10_City[0]",
+    "type": "text",
+    "leaf": "Pt2_Line10_City",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Enter the City or Town."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].Pt2Line10_State[0]",
+    "type": "choice",
+    "leaf": "Pt2Line10_State",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address.  select the State from the list of States."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].Pt2Line10_ZipCode[0]",
+    "type": "text",
+    "leaf": "Pt2Line10_ZipCode",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Enter the 5 digit Zip Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].P2_Line10_Number[0]",
+    "type": "text",
+    "leaf": "P2_Line10_Number",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Enter the Apartment, Suite, or Floor Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].P2_Line10_Unit[0]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_Unit",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Floor.",
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Suite.",
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Apartment."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].P2_Line10_Unit[1]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_Unit",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Floor.",
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Suite.",
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Apartment."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].P2_Line10_Unit[2]",
+    "type": "checkbox",
+    "leaf": "P2_Line10_Unit",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Floor.",
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Suite.",
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address. Check this box for Apartment."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].P2_Line10_StreetName[0]",
+    "type": "text",
+    "leaf": "P2_Line10_StreetName",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address.  Enter the Street Number and Name."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].Pt2Line10_PostalCode[0]",
+    "type": "text",
+    "leaf": "Pt2Line10_PostalCode",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address.  Enter the Postal Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].Pt2Line10_Province[0]",
+    "type": "text",
+    "leaf": "Pt2Line10_Province",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address.  Enter the Province."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].sfPhysicalAddress[0].Pt2Line10_Country[0]",
+    "type": "text",
+    "leaf": "Pt2Line10_Country",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  11. Beneficiary's Current Physical Address.  Enter the Country."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line12_DateFrom[0]",
+    "type": "text",
+    "leaf": "Pt3_Line12_DateFrom",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. Beneficiary's Anticipated Length of Stay. 12. Beneficiary's Anticipated Period of Stay in the United States. Enter the Date From. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt2Line12_Date[0]",
+    "type": "checkbox",
+    "leaf": "Pt2Line12_Date",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. Beneficiary's Anticipated Length of Stay. 12. Beneficiary's Anticipated Period of Stay in the United States. Check this box if there is an Anticipated end date."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line12_DateTo[0]",
+    "type": "text",
+    "leaf": "Pt3_Line12_DateTo",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. Beneficiary's Anticipated Length of Stay. 12. Beneficiary's Anticipated Period of Stay in the United States. Enter the End Date. Enter the Anticipated end date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt2Line12_NoDate[0]",
+    "type": "checkbox",
+    "leaf": "Pt2Line12_NoDate",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary. Beneficiary's Anticipated Length of Stay. 12. Beneficiary's Anticipated Period of Stay in the United States. Enter the End Date. Check this box for No End Date Anticipated."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line10_CB[0]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line10_CB",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  10. Are the beneficiary's mailing address and physical address the same? Check this box for Yes.",
+      "Part 3. Information about the Beneficiary.  10. Are the beneficiary's mailing address and physical address the same? Check this box for No. Note: If you answered No to Item Number 10. provide your physical address in Item Number 11."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Pt3_Line10_CB[1]",
+    "type": "checkbox",
+    "leaf": "Pt3_Line10_CB",
+    "tooltips": [
+      "Part 3.  Information about the Beneficiary.  10. Are the beneficiary's mailing address and physical address the same? Check this box for Yes.",
+      "Part 3. Information about the Beneficiary.  10. Are the beneficiary's mailing address and physical address the same? Check this box for No. Note: If you answered No to Item Number 10. provide your physical address in Item Number 11."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_InCareOfName[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_InCareOfName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the In Care of Name (if any).",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address. Enter the In Care of Name (if any).",
+      "Part 2. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the In Care of Name (if any)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_StreetName[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_StreetName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Street Number and Name.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address. Enter the Street Number and Name.",
+      "Part 3.  Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the Street Number and Name."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part3_Item9_Unit[0]",
+    "type": "checkbox",
+    "leaf": "Part3_Item9_Unit",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Check this box for Apartment.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Currents Mailing Address. Check this box for Suite.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Mailing Address. Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part3_Item9_Unit[1]",
+    "type": "checkbox",
+    "leaf": "Part3_Item9_Unit",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Check this box for Apartment.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Currents Mailing Address. Check this box for Suite.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Mailing Address. Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part3_Item9_Unit[2]",
+    "type": "checkbox",
+    "leaf": "Part3_Item9_Unit",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Check this box for Apartment.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Currents Mailing Address. Check this box for Suite.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Mailing Address. Check this box for Floor."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part3_Item9_Number[0]",
+    "type": "text",
+    "leaf": "Part3_Item9_Number",
+    "tooltips": [
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the Apartment, Suite, or Floor Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_City[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_City",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  Enter the City or Town.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Enter the City or Town.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. Enter the City or Town."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_State[0]",
+    "type": "choice",
+    "leaf": "Part2_Item11_State",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  For U. S. Address. select the State from the list of States.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  select the State from the list of States.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. For U. S. Address. select the State from the list of States."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_ZipCode[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_ZipCode",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address.  For U. S. Address. Enter the 5 digit Zip Code.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.  Enter the 5 digit Zip Code.",
+      "Part 2. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address. For U. S. Address.  Enter the 5 digit Zip Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_Province[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_Province",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Province.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address  .Enter the Province.",
+      "Part 3.  Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Province."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_PostalCode[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_PostalCode",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Postal Code.",
+      "Part 2. Information about the Beneficiary.  9. Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.    Enter the Postal Code.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Postal Code."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P4[0].Part2_Item11_Country[0]",
+    "type": "text",
+    "leaf": "Part2_Item11_Country",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  3. Current Mailing Address. Enter the Country.",
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  5.  Current Physical Address.    Enter the Country.",
+      "Part 3. Information about the Beneficiary.  9. Beneficiary's Current Mailing Address.  Enter the Country."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].P8_Line6_Sign[0]",
+    "type": "text",
+    "leaf": "P8_Line6_Sign",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Signature. 6. Enter the Beneficiary Signature. This field cannot be signed electronically.",
+      "Part 5.  Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary.  Signature of Individual Agreeing to Financially Support the Beneficiary.  This form can not be signed electronically.  The name of the applicant can not be typewritten into this space.  If the applicant is a minor child, the parent must sign the child's name in this space.  This form will be rejected without a signature in this space."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].P8_Line6_Date[0]",
+    "type": "text",
+    "leaf": "P8_Line6_Date",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Signature. 6. Enter the Date of Signature. Enter the Date Submitted. Enter date as 2-digit month, 2-digit day, and 4 digit year.",
+      "Part 5.  Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary.  Signature of Individual Agreeing to Financially Support the Beneficiary.  Date of Signature. Enter the 2 digit month, 2 digit day and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Part4_Line4_SafePhoneNumber3[0]",
+    "type": "text",
+    "leaf": "Part4_Line4_SafePhoneNumber3",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Contact Information. 4. Enter the Beneficiary's Mobile Telephone Number (if any).",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Contact Information of Individual Agreeing to Financially Support the Beneficiary. 4. Enter Mobile Telephone Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Part4_Line5_EmailAddress[0]",
+    "type": "text",
+    "leaf": "Part4_Line5_EmailAddress",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Contact Information. 5. Enter the Beneficiary's Email Address (if any).",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Contact Information of Individual Agreeing to Financially Support the Beneficiary. 5. Enter Email Address if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Part4_Line3_DaytimePhoneNumber3[0]",
+    "type": "text",
+    "leaf": "Part4_Line3_DaytimePhoneNumber3",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Contact Information. 3. Enter the Beneficiary's Daytime Telephone Number.",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Contact Information of Individual Agreeing to Financially Support the Beneficiary. 3. Enter Daytime Telephone Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Pt4Line1b_language[0]",
+    "type": "text",
+    "leaf": "Pt4Line1b_language",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  Intent to Provide Specific Contribution to the Beneficiary.  If you are filing this form on behalf of another individual who is the beneficiary, complete Item Numbers 18 - 19. If you are the beneficiary, proceed to Part 4.  19.  Describe the specific contributions you will provide to cover the beneficiary's basic living needs. This could include providing safe and appropriate housing; securing employment opportunities, once authorized to work; enrolling in school; and enrolling in any benefits for which they are eligible. If you intend to furnish room and board, provide the address where the beneficiary will reside. If you need additional space, use Part 8. Additional Information.  Enter Specific contribution.",
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section.   1. B.  The interpreter named in Part 6. read to me every question and instruction on this declaration and my answer to every  question in  Enter the language of fluency."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Pt4Line1a_Checkboxa[0]",
+    "type": "checkbox",
+    "leaf": "Pt4Line1a_Checkboxa",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section.     1. A. I as the beneficiary, certify the following: Check this box for I can read and understand English, and I have read and understand every question and instruction on this declaration and my answer to every question."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Pt4Line1b_Checkboxb[0]",
+    "type": "checkbox",
+    "leaf": "Pt4Line1b_Checkboxb",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section. 1. B. I as the beneficiary, certify the following: Check this box for The interpreter named in Part 6. read to me every question and instruction on this declaration and my answer to every question in a language in which I am fluent and I understand."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Pt4Line2_RepresentativeName[0]",
+    "type": "text",
+    "leaf": "Pt4Line2_RepresentativeName",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section.   2. Enter the full name of Preparer named in Part 7."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P5[0].Part4_Line2_ReqServCheckbox[0]",
+    "type": "checkbox",
+    "leaf": "Part4_Line2_ReqServCheckbox",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section.  2. Check this box for At my request, the preparer named in Part 7. prepared this declaration for me based only upon information I provided or authorized.",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Statement of Individual Agreeing to Financially Support the Beneficiary. 2. Check this box for At my request, the preparer named in Part 7., prepared this declaration for me based only upon information I provided or authorized."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Part4_Line5_EmailAddress[0]",
+    "type": "text",
+    "leaf": "Part4_Line5_EmailAddress",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Contact Information. 5. Enter the Beneficiary's Email Address (if any).",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Contact Information of Individual Agreeing to Financially Support the Beneficiary. 5. Enter Email Address if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Part4_Line4_SafePhoneNumber3[0]",
+    "type": "text",
+    "leaf": "Part4_Line4_SafePhoneNumber3",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Contact Information. 4. Enter the Beneficiary's Mobile Telephone Number (if any).",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Contact Information of Individual Agreeing to Financially Support the Beneficiary. 4. Enter Mobile Telephone Number if any."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Part4_Line3_DaytimePhoneNumber3[0]",
+    "type": "text",
+    "leaf": "Part4_Line3_DaytimePhoneNumber3",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Contact Information. 3. Enter the Beneficiary's Daytime Telephone Number.",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Contact Information of Individual Agreeing to Financially Support the Beneficiary. 3. Enter Daytime Telephone Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Part4_Line2_ReqServCheckbox[0]",
+    "type": "checkbox",
+    "leaf": "Part4_Line2_ReqServCheckbox",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I- 1 34 on his or her own behalf). If you are the beneficiary and are filing Form I- 1 34 on your own behalf, complete and sign Part 4.  NOTE: Read the Penalties section of the Form I-134 Instructions before completing this section.  2. Check this box for At my request, the preparer named in Part 7. prepared this declaration for me based only upon information I provided or authorized.",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Statement of Individual Agreeing to Financially Support the Beneficiary. 2. Check this box for At my request, the preparer named in Part 7., prepared this declaration for me based only upon information I provided or authorized."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Pt5_Line2_RepresentativeName[0]",
+    "type": "text",
+    "leaf": "Pt5_Line2_RepresentativeName",
+    "tooltips": [
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Statement of Individual Agreeing to Financially Support the Beneficiary. 2. Enter the Full Name of the Preparer."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Pt5_Line1_CB[0]",
+    "type": "checkbox",
+    "leaf": "Pt5_Line1_CB",
+    "tooltips": [
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. If you are filing Form I-134 on behalf of someone else (the beneficiary listed in Part 3.), complete and sign Part 5. NOTE:  Read the Penalties section of the Form I-134 Instructions before completing this section. Statement of Individual Agreeing to Financially Support the Beneficiary. NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 1. A. I, as the individual agreeing to financially support the beneficiary, certify the following: Check this box for I can read and understand English, and I have read and understand every question and instruction on this declaration and my answer to every question.",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Statement of Individual Agreeing to Financially Support the Beneficiary. 1. B. Check this box for The interpreter named in Part 6. read to me every question and instruction on this declaration and my answer to every question in a language I am fluent and I understand."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Pt5_Line1b_language[0]",
+    "type": "text",
+    "leaf": "Pt5_Line1b_language",
+    "tooltips": [
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Statement of Individual Agreeing to Financially Support the Beneficiary. 1. B. Enter the language in which you are fluent."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P9[0].Pt5_Line1_CB[1]",
+    "type": "checkbox",
+    "leaf": "Pt5_Line1_CB",
+    "tooltips": [
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. If you are filing Form I-134 on behalf of someone else (the beneficiary listed in Part 3.), complete and sign Part 5. NOTE:  Read the Penalties section of the Form I-134 Instructions before completing this section. Statement of Individual Agreeing to Financially Support the Beneficiary. NOTE:  Select the box for either Item A. or B. in Item Number 1.  If applicable, select the box for Item Number 2. 1. A. I, as the individual agreeing to financially support the beneficiary, certify the following: Check this box for I can read and understand English, and I have read and understand every question and instruction on this declaration and my answer to every question.",
+      "Part 5. Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary. Statement of Individual Agreeing to Financially Support the Beneficiary. 1. B. Check this box for The interpreter named in Part 6. read to me every question and instruction on this declaration and my answer to every question in a language I am fluent and I understand."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].Pt6Line1_InterpreterGivenName[0]",
+    "type": "text",
+    "leaf": "Pt6Line1_InterpreterGivenName",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature. Interpreter's Full Name. 1. Enter the Interpreter's Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].Pt6Line1_InterpreterFamilyName[0]",
+    "type": "text",
+    "leaf": "Pt6Line1_InterpreterFamilyName",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature. Interpreter's Full Name. 1. Enter the Interpreter's Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].Pt6Line2_BusinessOrOrgName[0]",
+    "type": "text",
+    "leaf": "Pt6Line2_BusinessOrOrgName",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature. Interpreter's Full Name. 2. Enter the Interpreter's Business or Organization Name."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P3_Line4_DaytimeTelePhoneNumber[0]",
+    "type": "text",
+    "leaf": "P3_Line4_DaytimeTelePhoneNumber",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature.  Interpreter's Contact Information. 3. Enter Interpreter's Daytime Telephone Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P3_Line5_MobileTelePhoneNumber[0]",
+    "type": "text",
+    "leaf": "P3_Line5_MobileTelePhoneNumber",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature.  Interpreter's Contact Information. 4. Enter Interpreter's Mobile Telephone Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P3_Line6_Email[0]",
+    "type": "text",
+    "leaf": "P3_Line6_Email",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature. Interpreter's Contact Information. 5. Enter Interpreter's Email Address."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P4_Line6_Language[0]",
+    "type": "text",
+    "leaf": "P4_Line6_Language",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature.  Interpreter's Certification. I certify, under penalty of perjury, that: I am fluent in English and Enter the fluent language, and I have interpreted every question on the declaration and Instructions and interpreted the individual agreeing to financially support the beneficiary's answers to the questions in that language, and the individual agreeing to financially support the beneficiary informed me that he or she understood every instruction, question, and answer on the declaration."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P12_SignatureApplicant[0]",
+    "type": "text",
+    "leaf": "P12_SignatureApplicant",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature. Interpreter's Certification.  6. Interpreter's Signature. This field cannot be completed electronically."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P13_DateofSignature[0]",
+    "type": "text",
+    "leaf": "P13_DateofSignature",
+    "tooltips": [
+      "Part 6. Interpreter's Contact Information, Certification, and Signature. Interpreter's Certification.  6.  Enter the Date of Signature. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P8_Line6_Sign[0]",
+    "type": "text",
+    "leaf": "P8_Line6_Sign",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Signature. 6. Enter the Beneficiary Signature. This field cannot be signed electronically.",
+      "Part 5.  Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary.  Signature of Individual Agreeing to Financially Support the Beneficiary.  This form can not be signed electronically.  The name of the applicant can not be typewritten into this space.  If the applicant is a minor child, the parent must sign the child's name in this space.  This form will be rejected without a signature in this space."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P10[0].P8_Line6_Date[0]",
+    "type": "text",
+    "leaf": "P8_Line6_Date",
+    "tooltips": [
+      "Part 4. Statement, Contact Information, Certification, and Signature of the Beneficiary (if filing Form I-134 on his or her own behalf). Beneficiary's Signature. 6. Enter the Date of Signature. Enter the Date Submitted. Enter date as 2-digit month, 2-digit day, and 4 digit year.",
+      "Part 5.  Statement, Contact Information, Certification, and Signature of the Individual Agreeing to Financially Support the Beneficiary.  Signature of Individual Agreeing to Financially Support the Beneficiary.  Date of Signature. Enter the 2 digit month, 2 digit day and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].Pt7Line8_SignatureofPreparer[0]",
+    "type": "text",
+    "leaf": "Pt7Line8_SignatureofPreparer",
+    "tooltips": [
+      "Part 7. Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary.  Preparer's Certification and Signature.   I certify, under penalty of perjury, that I prepared this declaration for the individual agreeing to financially support the beneficiary at his or her request and with express consent and that all of the responses and information contained in and submitted with the declaration are complete, true, and correct and reflects only information provided by the individual agreeing to financially support the beneficiary. The individual agreeing to financially support the beneficiary reviewed the responses and information and informed me that he or she understands the responses and information in or submitted with the declaration.    Prepare's Signature. This field cannot be completed electronically."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].Pt7Line8_DateofSignature[0]",
+    "type": "text",
+    "leaf": "Pt7Line8_DateofSignature",
+    "tooltips": [
+      "Part 7. Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Preparer's Certification and Signature. 8. Enter the Date of Signature. Enter date as 2-digit month, 2-digit day, and 4 digit year."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].P4_Line1_InterpreterGivenName[0]",
+    "type": "text",
+    "leaf": "P4_Line1_InterpreterGivenName",
+    "tooltips": [
+      "Part 7.  Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Preparer's Full Name. 1. Enter Preparer's Given Name (First Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].P4_Line1_InterpreterFamilyName[0]",
+    "type": "text",
+    "leaf": "P4_Line1_InterpreterFamilyName",
+    "tooltips": [
+      "Part 7.  Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Provide the following information about the preparer. Preparer's Full Name. 1. Enter Preparer's Family Name (Last Name)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].P4_Line2_NameofBusinessorOrgName[0]",
+    "type": "text",
+    "leaf": "P4_Line2_NameofBusinessorOrgName",
+    "tooltips": [
+      "Part 7.  Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Preparer's Full Name. 2. Enter Preparer's Business or Organization Name."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].Pt7Line4_DaytimeTelephoneNum[0]",
+    "type": "text",
+    "leaf": "Pt7Line4_DaytimeTelephoneNum",
+    "tooltips": [
+      "Part 7. Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Preparer's Contact Information. 3.  Preparer's Daytime Telephone Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].Pt7Line3_MobileTelephoneNum[0]",
+    "type": "text",
+    "leaf": "Pt7Line3_MobileTelephoneNum",
+    "tooltips": [
+      "Part 7. Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Preparer's Contact Information. 4. Preparer's Mobile Telephone Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P11[0].Pt7Line6_Email[0]",
+    "type": "text",
+    "leaf": "Pt7Line6_Email",
+    "tooltips": [
+      "Part 7. Contact Information, Declaration, and Signature of the Person Preparing this Declaration, if Other Than the Individual Agreeing to Financially Support the Beneficiary. Preparer's Contact Information. 5. Preparer's Email Address."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3d_AdditionalInfo[0]",
+    "type": "text",
+    "leaf": "Pt9Line3d_AdditionalInfo",
+    "tooltips": [
+      "Part 8. Additional Information. 3. Enter Additional Information.",
+      "Part 8. Additional Information. 4. Enter Additional Information.",
+      "Part 8. Additional Information. 5. Enter Additional Information.",
+      "Part 8. Additional Information. 6. Enter Additional Information."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3a_PageNumber[0]",
+    "type": "text",
+    "leaf": "Pt9Line3a_PageNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 3.  Enter Page Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3b_PartNumber[0]",
+    "type": "text",
+    "leaf": "Pt9Line3b_PartNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 3. Enter Part Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3c_ItemNumber[0]",
+    "type": "text",
+    "leaf": "Pt9Line3c_ItemNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 3. Enter Item Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Line3_ANumber[0].Pt1Line5_AlienNumber[0]",
+    "type": "text",
+    "leaf": "Pt1Line5_AlienNumber",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  8. Enter 9 digit Alien Registration Number (A Number)(if any).",
+      "Part 8. Additional Information. No Entry. 2. Alien Registration Number (A. Number). This field is pre-populated from Page 1."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4a_PageNumber[0]",
+    "type": "text",
+    "leaf": "Pt9Line4a_PageNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Page Number.",
+      "Part 8. Additional Information. 5. Enter Page Number.",
+      "Part 8. Additional Information. 6. Enter Page Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4b_PartNumber[0]",
+    "type": "text",
+    "leaf": "Pt9Line4b_PartNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Part Number.",
+      "Part 8. Additional Information. 5. Enter Part Number.",
+      "Part 8. Additional Information. 6. Enter Part Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4c_ItemNumber[0]",
+    "type": "text",
+    "leaf": "Pt9Line4c_ItemNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Item Number.",
+      "Part 8. Additional Information. 5. Enter Item Number.",
+      "Part 8. Additional Information. 6. Enter Item Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt1Line1_GivenName[0]",
+    "type": "text",
+    "leaf": "Pt1Line1_GivenName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  1. Current Legal Name (Do not provide a nickname). Enter Given Name (Last Name).",
+      "Part 8.  Additional Information.  If you need extra space to provide any additional information within this declaration, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this declaration or attach a separate sheet of paper.  Type or print your name and A-Number at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. No Entry  1. Given Name (First Name) (pre-populated from page 1)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt1Line1_FamilyName[0]",
+    "type": "text",
+    "leaf": "Pt1Line1_FamilyName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary.  All filiers must complete Part 2.  1.  Current Legal Name (Do not provide a nickname). Enter Family Name (Last Name)",
+      "Part 8.  Additional Information.  If you need extra space to provide any additional information within this declaration, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this declaration or attach a separate sheet of paper.  Type or print your name and A-Number at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. No Entry  2. Family Name (Last Name) (pre-populated from page 1)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt1Line1_MiddleName[0]",
+    "type": "text",
+    "leaf": "Pt1Line1_MiddleName",
+    "tooltips": [
+      "Part 2. Information About the Individual Agreeing to Financially Support the Beneficiary  1. Current Legal Name (Do not provide a nickname). Enter Middle Name.",
+      "Part 8.  Additional Information.  If you need extra space to provide any additional information within this declaration, use the space below.  If you need more space than what is provided, you may make copies of this page to complete and file with this declaration or attach a separate sheet of paper.  Type or print your name and A-Number at the top of each sheet; indicate the Page Number, Part Number, and Item Number to which your answer refers; and sign and date each sheet. No Entry  1. Middle Name (pre-populated from page 1)."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4a_PageNumber[1]",
+    "type": "text",
+    "leaf": "Pt9Line4a_PageNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Page Number.",
+      "Part 8. Additional Information. 5. Enter Page Number.",
+      "Part 8. Additional Information. 6. Enter Page Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4b_PartNumber[1]",
+    "type": "text",
+    "leaf": "Pt9Line4b_PartNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Part Number.",
+      "Part 8. Additional Information. 5. Enter Part Number.",
+      "Part 8. Additional Information. 6. Enter Part Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4c_ItemNumber[1]",
+    "type": "text",
+    "leaf": "Pt9Line4c_ItemNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Item Number.",
+      "Part 8. Additional Information. 5. Enter Item Number.",
+      "Part 8. Additional Information. 6. Enter Item Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4a_PageNumber[2]",
+    "type": "text",
+    "leaf": "Pt9Line4a_PageNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Page Number.",
+      "Part 8. Additional Information. 5. Enter Page Number.",
+      "Part 8. Additional Information. 6. Enter Page Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4b_PartNumber[2]",
+    "type": "text",
+    "leaf": "Pt9Line4b_PartNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Part Number.",
+      "Part 8. Additional Information. 5. Enter Part Number.",
+      "Part 8. Additional Information. 6. Enter Part Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line4c_ItemNumber[2]",
+    "type": "text",
+    "leaf": "Pt9Line4c_ItemNumber",
+    "tooltips": [
+      "Part 8. Additional Information. 4. Enter Item Number.",
+      "Part 8. Additional Information. 5. Enter Item Number.",
+      "Part 8. Additional Information. 6. Enter Item Number."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3d_AdditionalInfo[1]",
+    "type": "text",
+    "leaf": "Pt9Line3d_AdditionalInfo",
+    "tooltips": [
+      "Part 8. Additional Information. 3. Enter Additional Information.",
+      "Part 8. Additional Information. 4. Enter Additional Information.",
+      "Part 8. Additional Information. 5. Enter Additional Information.",
+      "Part 8. Additional Information. 6. Enter Additional Information."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3d_AdditionalInfo[2]",
+    "type": "text",
+    "leaf": "Pt9Line3d_AdditionalInfo",
+    "tooltips": [
+      "Part 8. Additional Information. 3. Enter Additional Information.",
+      "Part 8. Additional Information. 4. Enter Additional Information.",
+      "Part 8. Additional Information. 5. Enter Additional Information.",
+      "Part 8. Additional Information. 6. Enter Additional Information."
+    ]
+  },
+  {
+    "pdf_field": "form1[0].P13[0].Pt9Line3d_AdditionalInfo[3]",
+    "type": "text",
+    "leaf": "Pt9Line3d_AdditionalInfo",
+    "tooltips": [
+      "Part 8. Additional Information. 3. Enter Additional Information.",
+      "Part 8. Additional Information. 4. Enter Additional Information.",
+      "Part 8. Additional Information. 5. Enter Additional Information.",
+      "Part 8. Additional Information. 6. Enter Additional Information."
+    ]
+  }
+]

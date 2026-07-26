@@ -1,0 +1,15 @@
+{
+  "form": "G-1145",
+  "title": "G-1145 — Notificação Eletrônica de Aceitação",
+  "description": "Formulário opcional que vai grampeado na frente da sua petição em papel, para você receber um e-mail e/ou SMS assim que a USCIS aceitar o pacote no lockbox.",
+  "sections": [
+    {"id": "notificacao", "title": "Dados para Notificação"}
+  ],
+  "questions": [
+    {"id": "g1145_sobrenome", "section": "notificacao", "label": "Sobrenome do requerente ou peticionário", "type": "text", "required": true},
+    {"id": "g1145_nome", "section": "notificacao", "label": "Nome do requerente ou peticionário", "type": "text", "required": true},
+    {"id": "g1145_nome_meio", "section": "notificacao", "label": "Nome do meio (se houver)", "type": "text", "required": false},
+    {"id": "g1145_email", "section": "notificacao", "label": "E-mail para receber a notificação", "type": "text", "required": true, "hint": "É o principal canal de notificação — confira se está digitado corretamente."},
+    {"id": "g1145_celular", "section": "notificacao", "label": "Celular para receber SMS (opcional)", "type": "text", "required": false, "hint": "Só números, sem espaços, traços ou parênteses — por exemplo 5551234567. Deixe em branco se não quiser SMS."}
+  ]
+}

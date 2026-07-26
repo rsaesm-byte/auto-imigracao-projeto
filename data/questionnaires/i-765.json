@@ -1,0 +1,1103 @@
+{
+  "form": "I-765",
+  "title": "Autorização de Trabalho (Employment Authorization) — I-765",
+  "description": "Preencha todas as perguntas. Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA.",
+  "sections": [
+    {
+      "id": "motivo",
+      "title": "Parte 1 — Motivo da Aplicação"
+    },
+    {
+      "id": "basico",
+      "title": "Parte 2 — Informações Básicas"
+    },
+    {
+      "id": "outros_nomes",
+      "title": "Parte 2 — Outros Nomes Já Usados"
+    },
+    {
+      "id": "enderecos",
+      "title": "Parte 2 — Endereços"
+    },
+    {
+      "id": "info_pessoal",
+      "title": "Parte 2 — Informações Pessoais"
+    },
+    {
+      "id": "entrada_eua",
+      "title": "Parte 2 — Última Entrada nos EUA"
+    },
+    {
+      "id": "elegibilidade",
+      "title": "Parte 2 — Categoria de Elegibilidade"
+    },
+    {
+      "id": "assinatura",
+      "title": "Parte 3 — Declaração do(a) Requerente"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 4 — Intérprete"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 5 — Preparador(a)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "motivo_aplicacao",
+      "section": "motivo",
+      "label": "Você está solicitando:",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "inicial",
+          "label": "Permissão inicial para trabalhar"
+        },
+        {
+          "value": "substituicao",
+          "label": "Substituição de documento perdido, roubado ou danificado (ou correção não causada por erro do USCIS)"
+        },
+        {
+          "value": "renovacao",
+          "label": "Renovação da permissão de trabalho (anexe cópia do documento anterior)"
+        }
+      ]
+    },
+    {
+      "id": "nome_sobrenome",
+      "section": "basico",
+      "label": "Sobrenome (Family Name)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_nome",
+      "section": "basico",
+      "label": "Nome (Given Name)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_meio",
+      "section": "basico",
+      "label": "Nome do meio (Middle Name)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_sobrenome",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (2) — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_nome",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (2) — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_meio",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (2) — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_sobrenome",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (3) — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_nome",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (3) — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_meio",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (3) — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome4_sobrenome",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (4) — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome4_nome",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (4) — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome4_meio",
+      "section": "outros_nomes",
+      "label": "Outro nome já usado (4) — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cuidados_de",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_rua",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "end_correio_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_estado",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Estado (sigla)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_cep",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — CEP",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_fisico_igual_correio",
+      "section": "enderecos",
+      "label": "Seu endereço físico atual é igual ao endereço de correspondência acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_rua",
+      "section": "enderecos",
+      "label": "Endereço físico — Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_igual_correio",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_cidade",
+      "section": "enderecos",
+      "label": "Endereço físico — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_estado",
+      "section": "enderecos",
+      "label": "Endereço físico — Estado (sigla)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_cep",
+      "section": "enderecos",
+      "label": "Endereço físico — CEP",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "alien_number",
+      "section": "info_pessoal",
+      "label": "Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "uscis_online",
+      "section": "info_pessoal",
+      "label": "Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sexo",
+      "section": "info_pessoal",
+      "label": "Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "estado_civil",
+      "section": "info_pessoal",
+      "label": "Estado civil",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "solteiro",
+          "label": "Solteiro/a"
+        },
+        {
+          "value": "casado",
+          "label": "Casado/a"
+        },
+        {
+          "value": "divorciado",
+          "label": "Divorciado/a"
+        },
+        {
+          "value": "viuvo",
+          "label": "Viúvo/a"
+        }
+      ]
+    },
+    {
+      "id": "pediu_i765_antes",
+      "section": "info_pessoal",
+      "label": "Você já pediu o Formulário I-765 antes?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "ssn",
+      "section": "info_pessoal",
+      "label": "Número do Seguro Social (SSN), se souber",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "cidadania_pais1",
+      "section": "info_pessoal",
+      "label": "País de cidadania/nacionalidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "cidadania_pais2",
+      "section": "info_pessoal",
+      "label": "Segundo país de cidadania/nacionalidade (se aplicável)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "nascimento_cidade",
+      "section": "info_pessoal",
+      "label": "Local de nascimento — Cidade/Vila",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nascimento_estado_provincia",
+      "section": "info_pessoal",
+      "label": "Local de nascimento — Estado/Província",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "nascimento_pais",
+      "section": "info_pessoal",
+      "label": "Local de nascimento — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "data_nascimento",
+      "section": "info_pessoal",
+      "label": "Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "i94_numero",
+      "section": "entrada_eua",
+      "label": "Número do Formulário I-94 (se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "Número de 11 dígitos do seu registro de entrada/saída dos EUA. Consulte ou baixe em i94.cbp.dhs.gov usando seus dados de passaporte. Deixe em branco se você nunca recebeu um (ex.: entrou antes do sistema eletrônico ou entrou sem inspeção)."
+    },
+    {
+      "id": "passaporte_numero",
+      "section": "entrada_eua",
+      "label": "Número do passaporte mais recente",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "doc_viagem_numero",
+      "section": "entrada_eua",
+      "label": "Número do documento de viagem (se houver, e diferente do passaporte)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "passaporte_pais_emissao",
+      "section": "entrada_eua",
+      "label": "País que emitiu seu passaporte/documento de viagem",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "passaporte_data_expiracao",
+      "section": "entrada_eua",
+      "label": "Data de expiração do passaporte/documento de viagem (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ultima_entrada_data",
+      "section": "entrada_eua",
+      "label": "Data da sua última entrada nos EUA (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ultima_entrada_local",
+      "section": "entrada_eua",
+      "label": "Local da sua última entrada nos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ultima_entrada_status",
+      "section": "entrada_eua",
+      "label": "Status de imigração na última entrada (ex: B-2 visitante, F-1 estudante)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "status_atual",
+      "section": "entrada_eua",
+      "label": "Seu status ou categoria de imigração atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sevis_numero",
+      "section": "entrada_eua",
+      "label": "Número SEVIS (se aplicável, estudantes F-1/M-1)",
+      "type": "text",
+      "required": false,
+      "hint": "Só se aplica a estudantes F-1 ou M-1. Número de 11 dígitos começando com 'N', encontrado no canto superior direito do seu Formulário I-20."
+    },
+    {
+      "id": "elig_categoria_classe",
+      "section": "elegibilidade",
+      "label": "Categoria de elegibilidade — classe",
+      "type": "text",
+      "required": true,
+      "hint": "Normalmente é 'c'. Categorias comuns: (c)(9) pedido de residência (I-485) pendente, (c)(8) pedido de asilo pendente, (c)(3)(C) extensão STEM OPT, (c)(26) cônjuge H-4 de H-1B. Consulte as instruções oficiais do I-765 (ou a equipe) para confirmar a sua."
+    },
+    {
+      "id": "elig_categoria_numero",
+      "section": "elegibilidade",
+      "label": "Categoria de elegibilidade — número",
+      "type": "text",
+      "required": true,
+      "hint": "O número entre parênteses da sua categoria de elegibilidade (ex.: para (c)(9) — pedido de residência (I-485) pendente — digite '9'; para (c)(8) — pedido de asilo pendente — digite '8'; para (c)(26) — cônjuge H-4 de H-1B — digite '26'). Esse número precisa combinar com a letra que você informou no campo 'classe' logo acima — juntos formam o código completo da sua categoria (ex.: c + 9 = categoria (c)(9))."
+    },
+    {
+      "id": "elig_categoria_sub",
+      "section": "elegibilidade",
+      "label": "Categoria de elegibilidade — subcategoria (se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "Ex: para (c)(17)(iii) digite 'iii'"
+    },
+    {
+      "id": "stem_grau",
+      "section": "elegibilidade",
+      "label": "Grau STEM obtido (só p/ categoria (c)(3)(C))",
+      "type": "text",
+      "required": false,
+      "hint": "Só se aplica a quem está pedindo a extensão STEM OPT de 24 meses (categoria (c)(3)(C)) — uma prorrogação do OPT pra formados em ciências, tecnologia, engenharia ou matemática. Se não é o seu caso, deixe em branco."
+    },
+    {
+      "id": "stem_everify_empregador",
+      "section": "elegibilidade",
+      "label": "Nome do empregador no E-Verify (só p/ categoria (c)(3)(C))",
+      "type": "text",
+      "required": false,
+      "hint": "O empregador precisa estar cadastrado no E-Verify (sistema federal de verificação de elegibilidade para trabalho) — sem isso, não é possível conseguir a extensão STEM OPT com ele. Peça esse dado ao RH do empregador; se ele ainda não estiver cadastrado, pode se inscrever (é gratuito)."
+    },
+    {
+      "id": "stem_everify_id",
+      "section": "elegibilidade",
+      "label": "Número de identificação da empresa no E-Verify (só p/ categoria (c)(3)(C))",
+      "type": "text",
+      "required": false,
+      "hint": "É o número de identificação da empresa DENTRO do E-Verify (4 a 7 dígitos) — não é o mesmo que o EIN (identificação fiscal) da empresa. Peça esse número específico ao RH."
+    },
+    {
+      "id": "c26_recibo_numero",
+      "section": "elegibilidade",
+      "label": "Número de recibo do I-797 do cônjuge H-1B (só p/ categoria (c)(26))",
+      "type": "text",
+      "required": false,
+      "hint": "Categoria (c)(26): para cônjuges com visto H-4 cujo(a) parceiro(a) H-1B já tem um I-140 aprovado (ou está em certas fases do AC21). Este é o número de recibo do Formulário I-797 que comprova essa aprovação — normalmente começa com 3 letras (ex.: WAC, EAC)."
+    },
+    {
+      "id": "c8_preso_condenado",
+      "section": "elegibilidade",
+      "label": "Categoria (c)(8): você já foi preso e/ou condenado por algum crime?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta sensível: inclui qualquer prisão OU condenação, mesmo que o processo tenha sido arquivado, o registro selado/expungido, ou você não tenha sido considerado culpado. Se a resposta for \"Sim\", reúna os documentos do caso (boletim de ocorrência, sentença) e consulte a equipe ou um advogado de imigração antes de prosseguir — isso pode afetar sua elegibilidade."
+    },
+    {
+      "id": "c35_c36_recibo_numero",
+      "section": "elegibilidade",
+      "label": "Número de recibo do I-797 do I-140 (só p/ categoria (c)(35) ou (c)(36))",
+      "type": "text",
+      "required": false,
+      "hint": "Categorias (c)(35)/(c)(36): para quem tem um Formulário I-140 aprovado (trabalhador principal ou seu cônjuge/filho) mas ainda não pode pedir o Green Card por falta de vaga disponível na categoria, sob 'circunstâncias atenuantes'. Este é o número de recibo do Formulário I-797 que comprova a aprovação do I-140."
+    },
+    {
+      "id": "c35_c36_preso_condenado",
+      "section": "elegibilidade",
+      "label": "Categoria (c)(35)/(c)(36): você já foi preso e/ou condenado por algum crime?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta sensível: inclui qualquer prisão OU condenação, mesmo que o processo tenha sido arquivado, o registro selado/expungido, ou você não tenha sido considerado culpado. Se a resposta for \"Sim\", reúna os documentos do caso (boletim de ocorrência, sentença) e consulte a equipe ou um advogado de imigração antes de prosseguir — isso pode afetar sua elegibilidade."
+    },
+    {
+      "id": "leu_ingles",
+      "section": "assinatura",
+      "label": "Declaração do(a) requerente",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Eu leio e entendo inglês, e li e entendi todas as perguntas e instruções deste formulário e minhas respostas"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "O(a) intérprete indicado(a) na Parte 4 leu para mim, em um idioma que domino, todas as perguntas e instruções deste formulário e minhas respostas"
+        }
+      ],
+      "hint": "Escolha a primeira opção se você mesmo leu e entendeu o formulário em inglês. Só escolha a opção do intérprete se outra pessoa (informada na Parte 4) traduziu tudo em voz alta pra você, num idioma que você domina, antes de você assinar."
+    },
+    {
+      "id": "idioma_interprete",
+      "section": "assinatura",
+      "label": "Em qual idioma o(a) intérprete leu o formulário para você?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "abc_settlement",
+      "section": "assinatura",
+      "label": "Você é salvadorenho(a) ou guatemalteco(a) elegível pelo acordo ABC settlement?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Refere-se ao acordo judicial \"American Baptist Churches v. Thornburgh\" (1991), que garante autorização de trabalho a certos salvadorenhos e guatemaltecos com pedido de asilo pendente de antes de 1996, sob prazos de registro específicos. Só marque \"Sim\" se você já sabe que se enquadra nesse grupo específico — na dúvida, responda \"Não\" e consulte a equipe."
+    },
+    {
+      "id": "preparador_ajudou",
+      "section": "assinatura",
+      "label": "Alguém preparou este formulário para você, a seu pedido e com base apenas nas informações que você forneceu?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, eu mesmo(a) preenchi"
+        }
+      ],
+      "hint": "Responda \"Sim\" se alguém (advogado, despachante, familiar) digitou ou preencheu o formulário por você, mesmo que baseado só no que você informou. Isso não muda suas respostas — só identifica quem preparou o documento fisicamente."
+    },
+    {
+      "id": "preparador_nome",
+      "section": "assinatura",
+      "label": "Nome do(a) preparador(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "telefone",
+      "section": "assinatura",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "celular",
+      "section": "assinatura",
+      "label": "Telefone celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "email",
+      "section": "assinatura",
+      "label": "E-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_assinatura",
+      "section": "assinatura",
+      "label": "Data da assinatura (preenchido no dia do protocolo, MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Intérprete — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Intérprete — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_organizacao",
+      "section": "interprete",
+      "label": "Intérprete — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_rua",
+      "section": "interprete",
+      "label": "Intérprete — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_tipo_unidade",
+      "section": "interprete",
+      "label": "Intérprete — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "int_end_num_unidade",
+      "section": "interprete",
+      "label": "Intérprete — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cidade",
+      "section": "interprete",
+      "label": "Intérprete — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_estado",
+      "section": "interprete",
+      "label": "Intérprete — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cep",
+      "section": "interprete",
+      "label": "Intérprete — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_provincia",
+      "section": "interprete",
+      "label": "Intérprete — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_codigo_postal",
+      "section": "interprete",
+      "label": "Intérprete — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_pais",
+      "section": "interprete",
+      "label": "Intérprete — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Intérprete — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_celular",
+      "section": "interprete",
+      "label": "Intérprete — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "Intérprete — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Intérprete — Idioma em que é fluente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Intérprete — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Preparador(a) — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Preparador(a) — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_organizacao",
+      "section": "preparador",
+      "label": "Preparador(a) — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_rua",
+      "section": "preparador",
+      "label": "Preparador(a) — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_tipo_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "prep_end_num_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cidade",
+      "section": "preparador",
+      "label": "Preparador(a) — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_estado",
+      "section": "preparador",
+      "label": "Preparador(a) — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cep",
+      "section": "preparador",
+      "label": "Preparador(a) — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_provincia",
+      "section": "preparador",
+      "label": "Preparador(a) — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_codigo_postal",
+      "section": "preparador",
+      "label": "Preparador(a) — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_pais",
+      "section": "preparador",
+      "label": "Preparador(a) — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Preparador(a) — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_celular",
+      "section": "preparador",
+      "label": "Preparador(a) — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "Preparador(a) — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Preparador(a) — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    }
+  ]
+}

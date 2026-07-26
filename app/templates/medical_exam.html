@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ t('medexam_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('medexam_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:720px;">{{ content.hero_tagline }}</p>
+</section>
+
+<div class="card">
+  <h2>{{ content.aos.title }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ content.aos.intro }}</p>
+
+  <h3 style="margin-top:18px;">{{ t('medexam_h_who_performs') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.aos.who_performs %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_exam_includes') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.aos.exam_includes %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_vaccines') }}</h3>
+  <ul class="service-bullets" style="columns:2;">
+    {% for item in content.aos.vaccines %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+  <p class="muted" style="font-size:0.85rem;">{{ content.aos.vaccines_note }}</p>
+
+  <h3>{{ t('medexam_h_documents') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.aos.documents_to_bring %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_sealed_envelope') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.aos.sealed_envelope %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_validity') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.aos.validity %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_cost') }}</h3>
+  <p class="muted" style="line-height:1.6;">{{ content.aos.cost }}</p>
+
+  <h3>{{ t('medexam_h_how_to_find') }}</h3>
+  <p class="muted" style="line-height:1.6;">
+    {{ content.aos.how_to_find }}
+    <a href="{{ content.aos.how_to_find_url }}" target="_blank" rel="noopener noreferrer">{{ content.aos.how_to_find_url }} ↗</a>
+  </p>
+
+  <p class="muted" style="margin-top:14px;">
+    <a class="btn secondary" href="{{ url_for('wizard.reference_pdf', slug='i-693') }}">{{ t('reference_download_pdf') }} — I-693</a>
+  </p>
+</div>
+
+<div class="card">
+  <h2>{{ content.consular.title }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ content.consular.intro }}</p>
+
+  <h3 style="margin-top:18px;">{{ t('medexam_h_who_performs') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.consular.who_performs %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_scheduling') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.consular.scheduling %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_exam_includes') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.consular.exam_includes %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+  <p class="muted" style="font-size:0.85rem;">{{ content.consular.vaccines_note }}</p>
+
+  <h3>{{ t('medexam_h_documents') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.consular.documents_to_bring %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_sealed_envelope') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.consular.sealed_envelope %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_validity') }}</h3>
+  <ul class="service-bullets">
+    {% for item in content.consular.validity %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+
+  <h3>{{ t('medexam_h_cost') }}</h3>
+  <p class="muted" style="line-height:1.6;">{{ content.consular.cost }}</p>
+
+  <h3>{{ t('medexam_h_how_to_find') }}</h3>
+  <p class="muted" style="line-height:1.6;">{{ content.consular.how_to_find }}</p>
+</div>
+
+<div class="card">
+  <h2>{{ icon('list-check', 18) }} {{ t('medexam_h_comparison') }}</h2>
+  <div style="overflow-x:auto;">
+    <table class="checklist-table" style="width:100%;border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">{{ t('medexam_comparison_aspect') }}</th>
+          <th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">{{ t('medexam_comparison_aos') }}</th>
+          <th style="text-align:left;padding:8px 10px;border-bottom:2px solid var(--border);">{{ t('medexam_comparison_consular') }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for row in content.comparison_table %}
+        <tr>
+          <td style="padding:8px 10px;border-bottom:1px solid var(--border);font-weight:600;">{{ row.aspect }}</td>
+          <td style="padding:8px 10px;border-bottom:1px solid var(--border);" class="muted">{{ row.aos }}</td>
+          <td style="padding:8px 10px;border-bottom:1px solid var(--border);" class="muted">{{ row.consular }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ t('medexam_h_faq') }}</h2>
+  {% for item in content.faq %}
+  <div class="service-faq-item">
+    <p class="service-faq-q">{{ item.q }}</p>
+    <p class="muted" style="margin:4px 0 0;">{{ item.a }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>{{ t('medexam_h_references') }}</h2>
+  <ul class="service-bullets">
+    {% for ref in content.references %}
+    <li><a href="{{ ref.url }}" target="_blank" rel="noopener noreferrer">{{ ref.label }} ↗</a></li>
+    {% endfor %}
+  </ul>
+</div>
+
+<div class="card" style="border-left:4px solid var(--accent);">
+  <p class="muted" style="margin:0;font-size:0.88rem;">{{ icon('lock', 14) }} {{ content.legal_note }}</p>
+</div>
+
+{% endblock %}

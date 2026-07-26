@@ -1,0 +1,911 @@
+{
+  "title": "I-134 – Declaration of Financial Support",
+  "sections": {
+    "i134_base": "About this form",
+    "sponsor_nome": "Your Information (Sponsor) — Name",
+    "sponsor_endereco": "Your Information (Sponsor) — Address",
+    "sponsor_pessoal": "Your Information (Sponsor) — Birth and Status",
+    "sponsor_emprego": "Your Information (Sponsor) — Employment Status",
+    "sponsor_financeiro": "Your Information (Sponsor) — Financial Information",
+    "benef_dados": "Beneficiary's Information",
+    "benef_endereco": "Beneficiary's Address",
+    "benef_estadia": "Anticipated Stay in the U.S.",
+    "sponsor_declaracao": "Your Statement and Signature (Sponsor)",
+    "interprete": "Interpreter's Information",
+    "preparador": "Information About the Preparer (if other than you)"
+  },
+  "questions": {
+    "i134_confirma_beneficiario_outra_pessoa": {
+      "label": "Will this Form I-134 be completed by you (the sponsor) on behalf of another person (the beneficiary of the financial support)?",
+      "hint": "Our product only covers sponsoring ANOTHER person (for example, the I-539 applicant). If you are the beneficiary filing on your own behalf, talk to our team -- that specific part of the form (Part 4) is not automated here.",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ]
+    },
+    "sponsor_sobrenome": {
+      "label": "Family Name (Last Name)"
+    },
+    "sponsor_nome_proprio": {
+      "label": "Given Name (First Name)"
+    },
+    "sponsor_nome_meio": {
+      "label": "Middle Name"
+    },
+    "sponsor_outro_nome1_sobrenome": {
+      "label": "Other name used 1 — Family Name",
+      "hint": "Include aliases, maiden name, or any other name you've ever used."
+    },
+    "sponsor_outro_nome1_nome": {
+      "label": "Other name used 1 — Given Name"
+    },
+    "sponsor_outro_nome1_meio": {
+      "label": "Other name used 1 — Middle Name"
+    },
+    "sponsor_outro_nome2_sobrenome": {
+      "label": "Other name used 2 — Family Name"
+    },
+    "sponsor_outro_nome2_nome": {
+      "label": "Other name used 2 — Given Name"
+    },
+    "sponsor_outro_nome2_meio": {
+      "label": "Other name used 2 — Middle Name"
+    },
+    "sponsor_end_correio_cuidado_de": {
+      "label": "Mailing address — In Care Of Name (optional)"
+    },
+    "sponsor_end_correio_rua": {
+      "label": "Mailing address — Street Number and Name"
+    },
+    "sponsor_end_correio_tipo_unidade": {
+      "label": "Mailing address — Unit type (if any)",
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartment"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Floor"
+        }
+      ]
+    },
+    "sponsor_end_correio_numero_unidade": {
+      "label": "Mailing address — Unit Number"
+    },
+    "sponsor_end_correio_cidade": {
+      "label": "Mailing address — City or Town"
+    },
+    "sponsor_end_correio_estado": {
+      "label": "Mailing address — State (US)"
+    },
+    "sponsor_end_correio_cep": {
+      "label": "Mailing address — U.S. Zip Code"
+    },
+    "sponsor_end_correio_provincia": {
+      "label": "Mailing address — Province (if outside the U.S.)"
+    },
+    "sponsor_end_correio_codigo_postal": {
+      "label": "Mailing address — Postal Code (if outside the U.S.)"
+    },
+    "sponsor_end_correio_pais": {
+      "label": "Mailing address — Country"
+    },
+    "sponsor_end_fisico_diferente": {
+      "label": "Is your current physical address different from the mailing address above?",
+      "hint": "If you live at the same address where you receive mail, choose \"No\" -- you won't need to repeat the address.",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ]
+    },
+    "sponsor_end_fisico_cuidado_de": {
+      "label": "Physical address — In Care Of Name (optional)"
+    },
+    "sponsor_end_fisico_rua": {
+      "label": "Physical address — Street Number and Name"
+    },
+    "sponsor_end_fisico_tipo_unidade": {
+      "label": "Physical address — Unit type (if any)",
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartment"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Floor"
+        }
+      ]
+    },
+    "sponsor_end_fisico_numero_unidade": {
+      "label": "Physical address — Unit Number"
+    },
+    "sponsor_end_fisico_cidade": {
+      "label": "Physical address — City or Town"
+    },
+    "sponsor_end_fisico_estado": {
+      "label": "Physical address — State (US)"
+    },
+    "sponsor_end_fisico_cep": {
+      "label": "Physical address — U.S. Zip Code"
+    },
+    "sponsor_end_fisico_provincia": {
+      "label": "Physical address — Province (if outside the U.S.)"
+    },
+    "sponsor_end_fisico_codigo_postal": {
+      "label": "Physical address — Postal Code (if outside the U.S.)"
+    },
+    "sponsor_end_fisico_pais": {
+      "label": "Physical address — Country"
+    },
+    "sponsor_data_nascimento": {
+      "label": "Date of birth"
+    },
+    "sponsor_nascimento_pais": {
+      "label": "Place of birth — Country"
+    },
+    "sponsor_nascimento_provincia": {
+      "label": "Place of birth — State or Province"
+    },
+    "sponsor_nascimento_cidade": {
+      "label": "Place of birth — City or Town"
+    },
+    "sponsor_alien_number": {
+      "label": "Alien Registration Number (A-Number), if any",
+      "hint": "9 digits, without the letter \"A\" (the form already prints \"A-\" before the field). Leave blank if you've never had an A-Number."
+    },
+    "sponsor_uscis_online_account": {
+      "label": "USCIS Online Account Number, if any",
+      "hint": "12 digits. Leave blank if you don't have a USCIS online account."
+    },
+    "sponsor_status_imigratorio": {
+      "label": "What is your current immigration status?",
+      "hint": "This is the single most important point on this form: only lawful permanent residents (green card holders) or U.S. citizens can serve as a qualifying financial sponsor in this type of case. If your status is something else, talk to our team before continuing.",
+      "options": [
+        {
+          "value": "C",
+          "label": "U.S. Citizen"
+        },
+        {
+          "value": "PR",
+          "label": "Lawful Permanent Resident (Green Card)"
+        },
+        {
+          "value": "N",
+          "label": "U.S. National"
+        },
+        {
+          "value": "NI",
+          "label": "Nonimmigrant"
+        },
+        {
+          "value": "A",
+          "label": "Asylee"
+        },
+        {
+          "value": "R",
+          "label": "Refugee"
+        },
+        {
+          "value": "P",
+          "label": "Parolee"
+        },
+        {
+          "value": "TPS",
+          "label": "TPS holder"
+        },
+        {
+          "value": "B",
+          "label": "Beneficiary of deferred action (including DACA) or Deferred Enforced Departure"
+        },
+        {
+          "value": "Other",
+          "label": "Other"
+        }
+      ]
+    },
+    "sponsor_status_outro_explicacao": {
+      "label": "If \"Other\": explain your status"
+    },
+    "sponsor_relacionamento_beneficiario": {
+      "label": "What is your relationship to the beneficiary?",
+      "hint": "E.g., sibling, friend, cousin, etc."
+    },
+    "sponsor_situacao_emprego": {
+      "label": "What is your current employment status?",
+      "options": [
+        {
+          "value": "E",
+          "label": "Employed"
+        },
+        {
+          "value": "SE",
+          "label": "Self-employed"
+        },
+        {
+          "value": "U",
+          "label": "Unemployed or Not Employed"
+        },
+        {
+          "value": "M",
+          "label": "Retired"
+        },
+        {
+          "value": "O",
+          "label": "Other"
+        }
+      ]
+    },
+    "sponsor_cargo": {
+      "label": "Job title (if employed)"
+    },
+    "sponsor_nome_empregador": {
+      "label": "Name of employer (if employed)"
+    },
+    "sponsor_tipo_autonomo": {
+      "label": "Type of self-employment"
+    },
+    "sponsor_emprego_outro_explicacao": {
+      "label": "If \"Other\": explain your employment status"
+    },
+    "sponsor_quantos_i134_anteriores": {
+      "label": "How many other Form I-134, I-134A, I-864, I-864EZ, or I-864A have you previously submitted (for anyone, including yourself) that your support obligation has not ended?",
+      "hint": "Don't include the beneficiary of this application. If none, enter 0."
+    },
+    "sponsor_quantos_outros_dependentes": {
+      "label": "How many other dependents do you support (including yourself)?",
+      "hint": "Don't include the beneficiary of this application."
+    },
+    "dependente1_nome": {
+      "label": "Other dependent 1 — Full name (optional)"
+    },
+    "dependente1_nascimento": {
+      "label": "Other dependent 1 — Date of birth"
+    },
+    "dependente1_parentesco": {
+      "label": "Other dependent 1 — Relationship to you"
+    },
+    "dependente1_alien_number": {
+      "label": "Other dependent 1 — A-Number (if any)"
+    },
+    "dependente1_recibo": {
+      "label": "Other dependent 1 — USCIS receipt number (if any)"
+    },
+    "dependente2_nome": {
+      "label": "Other dependent 2 — Full name (optional)"
+    },
+    "dependente2_nascimento": {
+      "label": "Other dependent 2 — Date of birth"
+    },
+    "dependente2_parentesco": {
+      "label": "Other dependent 2 — Relationship to you"
+    },
+    "dependente2_alien_number": {
+      "label": "Other dependent 2 — A-Number (if any)"
+    },
+    "dependente2_recibo": {
+      "label": "Other dependent 2 — USCIS receipt number (if any)"
+    },
+    "dependente3_nome": {
+      "label": "Other dependent 3 — Full name (optional)"
+    },
+    "dependente3_nascimento": {
+      "label": "Other dependent 3 — Date of birth"
+    },
+    "dependente3_parentesco": {
+      "label": "Other dependent 3 — Relationship to you"
+    },
+    "dependente3_alien_number": {
+      "label": "Other dependent 3 — A-Number (if any)"
+    },
+    "dependente3_recibo": {
+      "label": "Other dependent 3 — USCIS receipt number (if any)"
+    },
+    "dependente4_nome": {
+      "label": "Other dependent 4 — Full name (optional)"
+    },
+    "dependente4_nascimento": {
+      "label": "Other dependent 4 — Date of birth"
+    },
+    "dependente4_parentesco": {
+      "label": "Other dependent 4 — Relationship to you"
+    },
+    "dependente4_alien_number": {
+      "label": "Other dependent 4 — A-Number (if any)"
+    },
+    "dependente4_recibo": {
+      "label": "Other dependent 4 — USCIS receipt number (if any)"
+    },
+    "sponsor_renda_anual": {
+      "label": "What is your current annual income? (in US dollars)"
+    },
+    "ativo1_tipo": {
+      "label": "Asset 1 — Type (optional)",
+      "options": [
+        {
+          "value": "N/A",
+          "label": "N/A"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Checking - Bank Account"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Savings - Bank Account"
+        },
+        {
+          "value": "Annuities",
+          "label": "Annuities"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Stocks, Bonds, Certificates of Deposit"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Retirement or Educational Account"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Real Estate Holdings"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Personal Property (net value)"
+        }
+      ]
+    },
+    "ativo1_valor": {
+      "label": "Asset 1 — Value in US dollars (optional)"
+    },
+    "ativo2_tipo": {
+      "label": "Asset 2 — Type (optional)",
+      "options": [
+        {
+          "value": "N/A",
+          "label": "N/A"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Checking - Bank Account"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Savings - Bank Account"
+        },
+        {
+          "value": "Annuities",
+          "label": "Annuities"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Stocks, Bonds, Certificates of Deposit"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Retirement or Educational Account"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Real Estate Holdings"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Personal Property (net value)"
+        }
+      ]
+    },
+    "ativo2_valor": {
+      "label": "Asset 2 — Value in US dollars (optional)"
+    },
+    "ativo3_tipo": {
+      "label": "Asset 3 — Type (optional)",
+      "options": [
+        {
+          "value": "N/A",
+          "label": "N/A"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Checking - Bank Account"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Savings - Bank Account"
+        },
+        {
+          "value": "Annuities",
+          "label": "Annuities"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Stocks, Bonds, Certificates of Deposit"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Retirement or Educational Account"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Real Estate Holdings"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Personal Property (net value)"
+        }
+      ]
+    },
+    "ativo3_valor": {
+      "label": "Asset 3 — Value in US dollars (optional)"
+    },
+    "ativo4_tipo": {
+      "label": "Asset 4 — Type (optional)",
+      "options": [
+        {
+          "value": "N/A",
+          "label": "N/A"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Checking - Bank Account"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Savings - Bank Account"
+        },
+        {
+          "value": "Annuities",
+          "label": "Annuities"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Stocks, Bonds, Certificates of Deposit"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Retirement or Educational Account"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Real Estate Holdings"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Personal Property (net value)"
+        }
+      ]
+    },
+    "ativo4_valor": {
+      "label": "Asset 4 — Value in US dollars (optional)"
+    },
+    "ativo5_tipo": {
+      "label": "Asset 5 — Type (optional)",
+      "options": [
+        {
+          "value": "N/A",
+          "label": "N/A"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Checking - Bank Account"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Savings - Bank Account"
+        },
+        {
+          "value": "Annuities",
+          "label": "Annuities"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Stocks, Bonds, Certificates of Deposit"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Retirement or Educational Account"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Real Estate Holdings"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Personal Property (net value)"
+        }
+      ]
+    },
+    "ativo5_valor": {
+      "label": "Asset 5 — Value in US dollars (optional)"
+    },
+    "ativo6_tipo": {
+      "label": "Asset 6 — Type (optional)",
+      "options": [
+        {
+          "value": "N/A",
+          "label": "N/A"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Checking - Bank Account"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Savings - Bank Account"
+        },
+        {
+          "value": "Annuities",
+          "label": "Annuities"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Stocks, Bonds, Certificates of Deposit"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Retirement or Educational Account"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Real Estate Holdings"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Personal Property (net value)"
+        }
+      ]
+    },
+    "ativo6_valor": {
+      "label": "Asset 6 — Value in US dollars (optional)"
+    },
+    "ativo_total": {
+      "label": "Total value of all assets above (in US dollars)"
+    },
+    "sponsor_intencao_contribuicao_especifica": {
+      "label": "In addition to general financial support, do you intend to make specific contributions to cover the beneficiary's basic living needs (for example, housing, help finding employment, school enrollment)?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ]
+    },
+    "sponsor_descricao_contribuicao": {
+      "label": "Describe the specific contributions you will provide",
+      "hint": "E.g., providing safe and appropriate housing (include the address), helping secure employment once authorized to work, enrolling in school, enrolling in eligible benefits."
+    },
+    "benef_sobrenome": {
+      "label": "Beneficiary's Family Name (Last Name)"
+    },
+    "benef_nome_proprio": {
+      "label": "Beneficiary's Given Name (First Name)"
+    },
+    "benef_nome_meio": {
+      "label": "Beneficiary's Middle Name"
+    },
+    "benef_outro_nome1_sobrenome": {
+      "label": "Other name used by beneficiary 1 — Family Name"
+    },
+    "benef_outro_nome1_nome": {
+      "label": "Other name used by beneficiary 1 — Given Name"
+    },
+    "benef_outro_nome1_meio": {
+      "label": "Other name used by beneficiary 1 — Middle Name"
+    },
+    "benef_outro_nome2_sobrenome": {
+      "label": "Other name used by beneficiary 2 — Family Name"
+    },
+    "benef_outro_nome2_nome": {
+      "label": "Other name used by beneficiary 2 — Given Name"
+    },
+    "benef_outro_nome2_meio": {
+      "label": "Other name used by beneficiary 2 — Middle Name"
+    },
+    "benef_data_nascimento": {
+      "label": "Beneficiary's date of birth"
+    },
+    "benef_sexo": {
+      "label": "Beneficiary's sex",
+      "options": [
+        {
+          "value": "M",
+          "label": "Male"
+        },
+        {
+          "value": "F",
+          "label": "Female"
+        }
+      ]
+    },
+    "benef_alien_number": {
+      "label": "Beneficiary's Alien Registration Number (A-Number), if any",
+      "hint": "9 digits, without the letter \"A\" (the form already prints \"A-\" before the field). Leave blank if the person has never had an A-Number."
+    },
+    "benef_nascimento_pais": {
+      "label": "Beneficiary's place of birth — Country"
+    },
+    "benef_nascimento_provincia": {
+      "label": "Beneficiary's place of birth — State or Province"
+    },
+    "benef_nascimento_cidade": {
+      "label": "Beneficiary's place of birth — City or Town"
+    },
+    "benef_cidadania_pais": {
+      "label": "Beneficiary's country of citizenship or nationality"
+    },
+    "benef_estado_civil": {
+      "label": "Beneficiary's marital status",
+      "options": [
+        {
+          "value": "S",
+          "label": "Single, Never Married"
+        },
+        {
+          "value": "M",
+          "label": "Married"
+        },
+        {
+          "value": "D",
+          "label": "Divorced"
+        },
+        {
+          "value": "W",
+          "label": "Widowed"
+        },
+        {
+          "value": "E",
+          "label": "Legally Separated"
+        },
+        {
+          "value": "A",
+          "label": "Marriage Annulled"
+        },
+        {
+          "value": "O",
+          "label": "Other"
+        }
+      ]
+    },
+    "benef_estado_civil_outro": {
+      "label": "If \"Other\": explain the beneficiary's marital status"
+    },
+    "benef_end_correio_cuidado_de": {
+      "label": "Beneficiary's mailing address — In Care Of Name (optional)"
+    },
+    "benef_end_correio_rua": {
+      "label": "Beneficiary's mailing address — Street Number and Name"
+    },
+    "benef_end_correio_tipo_unidade": {
+      "label": "Beneficiary's mailing address — Unit type (if any)",
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartment"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Floor"
+        }
+      ]
+    },
+    "benef_end_correio_numero_unidade": {
+      "label": "Beneficiary's mailing address — Unit Number"
+    },
+    "benef_end_correio_cidade": {
+      "label": "Beneficiary's mailing address — City or Town"
+    },
+    "benef_end_correio_estado": {
+      "label": "Beneficiary's mailing address — State (US)"
+    },
+    "benef_end_correio_cep": {
+      "label": "Beneficiary's mailing address — U.S. Zip Code"
+    },
+    "benef_end_correio_provincia": {
+      "label": "Beneficiary's mailing address — Province (if outside the U.S.)"
+    },
+    "benef_end_correio_codigo_postal": {
+      "label": "Beneficiary's mailing address — Postal Code (if outside the U.S.)"
+    },
+    "benef_end_correio_pais": {
+      "label": "Beneficiary's mailing address — Country"
+    },
+    "benef_end_fisico_diferente": {
+      "label": "Is the beneficiary's physical address different from the mailing address above?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ]
+    },
+    "benef_end_fisico_cuidado_de": {
+      "label": "Beneficiary's physical address — In Care Of Name (optional)"
+    },
+    "benef_end_fisico_rua": {
+      "label": "Beneficiary's physical address — Street Number and Name"
+    },
+    "benef_end_fisico_tipo_unidade": {
+      "label": "Beneficiary's physical address — Unit type (if any)",
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartment"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Floor"
+        }
+      ]
+    },
+    "benef_end_fisico_numero_unidade": {
+      "label": "Beneficiary's physical address — Unit Number"
+    },
+    "benef_end_fisico_cidade": {
+      "label": "Beneficiary's physical address — City or Town"
+    },
+    "benef_end_fisico_estado": {
+      "label": "Beneficiary's physical address — State (US)"
+    },
+    "benef_end_fisico_cep": {
+      "label": "Beneficiary's physical address — U.S. Zip Code"
+    },
+    "benef_end_fisico_provincia": {
+      "label": "Beneficiary's physical address — Province (if outside the U.S.)"
+    },
+    "benef_end_fisico_codigo_postal": {
+      "label": "Beneficiary's physical address — Postal Code (if outside the U.S.)"
+    },
+    "benef_end_fisico_pais": {
+      "label": "Beneficiary's physical address — Country"
+    },
+    "benef_estadia_data_inicio": {
+      "label": "Start date of the beneficiary's anticipated stay in the U.S.",
+      "hint": "Usually matches the start date of the academic program (F-1) or the planned entry date as a tourist (B-2)."
+    },
+    "benef_estadia_tem_data_fim": {
+      "label": "Is there an anticipated end date for this stay?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes, I have an anticipated date"
+        },
+        {
+          "value": "nao",
+          "label": "No, no defined end date"
+        }
+      ]
+    },
+    "benef_estadia_data_fim": {
+      "label": "Anticipated end date of the stay"
+    },
+    "sponsor_certifica_leitura": {
+      "label": "How do you confirm you read and understood this declaration?",
+      "hint": "If you need an interpreter, also fill in their information in the next section (Part 6).",
+      "options": [
+        {
+          "value": "proprio",
+          "label": "I can read and understand English, and I have read and understood every question and instruction on this form"
+        },
+        {
+          "value": "interprete",
+          "label": "An interpreter read and translated every question and instruction to me in a language I understand"
+        }
+      ]
+    },
+    "sponsor_idioma_fluente": {
+      "label": "Which language are you fluent in (the same one used by the interpreter)?"
+    },
+    "sponsor_usou_preparador": {
+      "label": "Did someone (for example, an attorney or preparer) help prepare this declaration for you?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ]
+    },
+    "sponsor_preparador_nome": {
+      "label": "Full name of the person who prepared this declaration"
+    },
+    "sponsor_telefone_diurno": {
+      "label": "Your daytime telephone number (for contact about this declaration)"
+    },
+    "sponsor_telefone_celular_decl": {
+      "label": "Your mobile telephone number (if any)"
+    },
+    "sponsor_email_decl": {
+      "label": "Your email address (if any)"
+    },
+    "sponsor_data_assinatura": {
+      "label": "Date of the sponsor's signature",
+      "hint": "Usually the date the form will actually be signed by hand before submission."
+    },
+    "interprete_sobrenome": {
+      "label": "Interpreter's Family Name (Last Name)"
+    },
+    "interprete_nome": {
+      "label": "Interpreter's Given Name (First Name)"
+    },
+    "interprete_empresa_organizacao": {
+      "label": "Interpreter's Business or Organization Name (if any)"
+    },
+    "interprete_telefone_diurno": {
+      "label": "Interpreter's daytime telephone number"
+    },
+    "interprete_telefone_celular": {
+      "label": "Interpreter's mobile telephone number (if any)"
+    },
+    "interprete_email": {
+      "label": "Interpreter's email address (if any)"
+    },
+    "interprete_idioma": {
+      "label": "Language in which the interpreter is fluent"
+    },
+    "interprete_data_assinatura": {
+      "label": "Date of the interpreter's signature"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer's Family Name (Last Name)"
+    },
+    "prep_nome": {
+      "label": "Preparer's Given Name (First Name)"
+    },
+    "prep_empresa_organizacao": {
+      "label": "Preparer's Business or Organization Name (if any)"
+    },
+    "prep_telefone_diurno": {
+      "label": "Preparer's daytime telephone number"
+    },
+    "prep_telefone_celular": {
+      "label": "Preparer's mobile telephone number (if any)"
+    },
+    "prep_email": {
+      "label": "Preparer's email address (if any)"
+    },
+    "prep_data_assinatura": {
+      "label": "Date of the preparer's signature"
+    }
+  }
+}

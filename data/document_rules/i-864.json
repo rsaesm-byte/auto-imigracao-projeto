@@ -1,0 +1,27 @@
+{
+  "form": "I-864",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-864 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). Sempre confira as instruções oficiais do formulário para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Based on the official Form I-864 instructions and multiple immigration-advocacy sources cross-checked in this session (uscis.gov blocked direct fetch). Always check the form's official instructions for your specific case before filing.",
+  "always": [
+    {"label": "Declaração de imposto de renda federal (Federal tax return) do ano mais recente, incluindo W-2s e 1099s — ou comprovação de que não era obrigado a declarar", "label_en": "Federal income tax return for the most recent tax year, including W-2s and 1099s — or evidence that you were not required to file"},
+    {"label": "Se quiser reforçar o pedido: declarações de imposto de renda dos 3 anos mais recentes (opcional, além da do ano mais recente que é obrigatória)", "label_en": "To strengthen your case: federal income tax returns for the 3 most recent tax years (optional, in addition to the most recent year's return, which is mandatory)"},
+    {"label": "Comprovante do seu status: cópia do Cartão de Residente Permanente, passaporte americano, ou certidão de nascimento/naturalização", "label_en": "Proof of your status: copy of your Permanent Resident Card, U.S. passport, or birth/naturalization certificate"},
+    {"label": "Carta do empregador atual confirmando cargo, data de início e salário — ou contracheques recentes", "label_en": "Letter from your current employer confirming position, start date, and salary — or recent pay stubs"}
+  ],
+  "rules": [
+    {
+      "questions": ["sponsor_autonomo"],
+      "equals": "sim",
+      "documents": [
+        {"label": "Anexo (Schedule) C, D, E ou F da sua declaração de imposto de renda mais recente, comprovando a renda do seu negócio", "label_en": "Schedule C, D, E, or F from your most recent federal income tax return, showing your business income"}
+      ]
+    },
+    {
+      "questions": ["pessoas_completaram_i864a"],
+      "equals": "sim",
+      "documents": [
+        {"label": "Formulário I-864A (Contrato Entre Patrocinador e Membro do Domicílio) preenchido e assinado por cada pessoa do domicílio cuja renda está sendo usada para atingir o mínimo exigido", "label_en": "Form I-864A (Contract Between Sponsor and Household Member) completed and signed by each household member whose income is being used to meet the required minimum"}
+      ]
+    }
+  ]
+}

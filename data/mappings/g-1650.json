@@ -1,0 +1,22 @@
+{
+  "form": "G-1650",
+  "_security_note": "Deliberately does NOT map RoutingNumber or AccountNumber (bank account access credentials) -- this app has no PCI/financial-grade storage for that data, so those fields are left blank on the generated PDF for the client to write by hand before mailing. See references/compliance.md discussion in this session.",
+  "_field_name_quirk": "CB_CreditCardType and its 'Visa'/'MasterCard' tooltips are copy-paste residue from the G-1450 template -- the ACTUAL on-page checkboxes at this position are 'Checking Account' and 'Savings Account' (confirmed by rendering the PDF to an image and reading widget /Rect x-positions, not by trusting the field name/tooltip). index[1] (/V, x=38.8, leftmost) = Checking Account; index[0] (/MC, x=134.8, rightmost) = Savings Account.",
+  "fields": [
+    {"pdf_field": "form1[0].PG1[0].sfApplicantPetitionerName[0].GivenName[0]", "type": "text", "question_id": "g1650_nome"},
+    {"pdf_field": "form1[0].PG1[0].sfApplicantPetitionerName[0].MiddleName[0]", "type": "text", "question_id": "g1650_nome_meio"},
+    {"pdf_field": "form1[0].PG1[0].sfApplicantPetitionerName[0].FamilyName[0]", "type": "text", "question_id": "g1650_sobrenome"},
+
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountHolderInfo[0].CB_AccountType[0]", "type": "checkbox", "question_id": "g1650_tipo_conta", "check_if_answer": "negocio"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountHolderInfo[0].CB_AccountType[1]", "type": "checkbox", "question_id": "g1650_tipo_conta", "check_if_answer": "pessoal"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountHolderInfo[0].GivenName[0]", "type": "text", "question_id": "g1650_titular_nome"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountHolderInfo[0].MiddleName[0]", "type": "text", "question_id": "g1650_titular_nome_meio"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountHolderInfo[0].FamilyName[0]", "type": "text", "question_id": "g1650_titular_sobrenome"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountInformation[0].BusinessName[0]", "type": "text", "question_id": "g1650_nome_empresa"},
+
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountInformation[0].CB_CreditCardType[1]", "type": "checkbox", "question_id": "g1650_tipo_conta_bancaria", "check_if_answer": "corrente"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountInformation[0].CB_CreditCardType[0]", "type": "checkbox", "question_id": "g1650_tipo_conta_bancaria", "check_if_answer": "poupanca"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountInformation[0].AuthorizedPaymentAmt[0]", "type": "text", "question_id": "g1650_valor_autorizado"},
+    {"pdf_field": "form1[0].PG1[0].sfBankAccountInformation[0].BankName[0]", "type": "text", "question_id": "g1650_nome_banco"}
+  ]
+}

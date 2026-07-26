@@ -1,0 +1,28 @@
+{
+  "form": "I-765",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-765 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). O I-765 tem dezenas de categorias de elegibilidade (ex.: (c)(9) ajuste de status pendente, (c)(3) OPT de estudante F-1, (a)(5) asilo, (c)(19) TPS etc.) e cada uma exige evidência própria e específica que esta lista não cobre em detalhe — confira as instruções oficiais do formulário para a evidência exata da SUA categoria de elegibilidade antes de enviar.",
+  "confidence_note_en": "Based on the official Form I-765 instructions and multiple immigration advocacy sources cross-checked in this session (uscis.gov blocked direct fetch). Form I-765 has dozens of eligibility categories (e.g., (c)(9) pending adjustment of status, (c)(3) F-1 student OPT, (a)(5) asylum, (c)(19) TPS, etc.), and each requires its own specific evidence that this list does not cover in detail — check the official form instructions for the exact evidence required for YOUR eligibility category before filing.",
+  "always": [
+    {"label": "Cópia do Formulário I-94 (registro de entrada/saída), disponível em i94.cbp.dhs.gov", "label_en": "Copy of Form I-94 (arrival/departure record), available at i94.cbp.dhs.gov"},
+    {"label": "Cópia da página de identificação do seu passaporte", "label_en": "Copy of the identification page of your passport"},
+    {"label": "2 fotos estilo passaporte, tiradas nos últimos 30 dias", "label_en": "2 passport-style photos, taken within the last 30 days"},
+    {"label": "Evidência que comprove a categoria de elegibilidade específica que você indicou (ex.: aviso de recibo do I-485 pendente, aviso de concessão de asilo, I-20 com recomendação de OPT, aviso de TPS) — varia conforme a categoria, confira as instruções oficiais", "label_en": "Evidence supporting the specific eligibility category you indicated (e.g., pending I-485 receipt notice, asylum grant notice, I-20 with OPT recommendation, TPS notice) — varies by category, check the official instructions"}
+  ],
+  "rules": [
+    {
+      "questions": ["motivo_aplicacao"],
+      "equals": "substituicao",
+      "documents": [
+        {"label": "Cópia do documento de autorização de trabalho (EAD) danificado, se o motivo for dano — anexe o cartão físico danificado ao formulário em papel", "label_en": "Copy of the damaged Employment Authorization Document (EAD), if the reason is damage — attach the physical damaged card to the paper form"},
+        {"label": "Declaração explicando as circunstâncias da perda, roubo ou dano do EAD anterior", "label_en": "Statement explaining the circumstances of the loss, theft, or damage of the previous EAD"}
+      ]
+    },
+    {
+      "questions": ["motivo_aplicacao"],
+      "equals": "renovacao",
+      "documents": [
+        {"label": "Cópia (frente e verso) do seu documento de autorização de trabalho (EAD) anterior/atual", "label_en": "Copy (front and back) of your previous/current Employment Authorization Document (EAD)"}
+      ]
+    }
+  ]
+}

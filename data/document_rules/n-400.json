@@ -1,0 +1,53 @@
+{
+  "form": "N-400",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário N-400 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). Sempre confira as instruções oficiais do formulário para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Based on the official Form N-400 instructions and multiple immigration-advocacy sources cross-checked in this session (uscis.gov blocked direct fetch). Always check the official form instructions for your specific case before filing.",
+  "always": [
+    {
+      "label": "Cópia (frente e verso, em uma única página legível) do seu Cartão de Residente Permanente",
+      "label_en": "Copy (front and back, on a single legible page) of your Permanent Resident Card"
+    },
+    {
+      "label": "2 fotos estilo passaporte 2x2\", coloridas, fundo branco ou quase branco, tiradas nos últimos 30 dias — só exigidas se você mora no exterior; a maioria dos requerentes nos EUA não precisa enviar foto",
+      "label_en": "2 passport-style photos, 2x2\", color, white or near-white background, taken within the last 30 days — only required if you live outside the U.S.; most applicants in the U.S. do not need to submit a photo"
+    },
+    {
+      "label": "Documentos em outro idioma que não o inglês precisam de tradução completa certificada",
+      "label_en": "Documents in a language other than English require a complete certified translation"
+    }
+  ],
+  "rules": [
+    {
+      "questions": ["base_elegibilidade"],
+      "equals_any": ["conjuge_usc", "conjuge_usc_exterior", "vawa"],
+      "documents": [
+        {
+          "label": "Evidência de que seu cônjuge é cidadão(ã) americano(a) há pelo menos 3 anos (certidão de nascimento nos EUA, certificado de naturalização/cidadania, ou passaporte americano)",
+          "label_en": "Evidence that your spouse has been a U.S. citizen for at least 3 years (U.S. birth certificate, Certificate of Naturalization/Citizenship, or U.S. passport)"
+        },
+        {
+          "label": "Certidão de casamento e evidência de que o casamento é verdadeiro (bona fide) e vocês moram juntos: declarações de imposto de renda conjuntas, contas bancárias conjuntas, contrato de aluguel/escritura conjunta, certidões de nascimento de filhos em comum",
+          "label_en": "Marriage certificate and evidence that the marriage is bona fide and that you live together: joint tax returns, joint bank accounts, joint lease/deed, birth certificates of children in common"
+        },
+        {
+          "label": "Certidões de divórcio/óbito de qualquer casamento anterior seu e do(a) cônjuge, se houver",
+          "label_en": "Divorce/death certificates for any prior marriage of yours or your spouse's, if any"
+        }
+      ]
+    },
+    {
+      "questions": ["base_elegibilidade"],
+      "equals_any": ["militar_hostilidades", "militar_1ano"],
+      "documents": [
+        {
+          "label": "Formulário N-426 original (Solicitação de Certificação de Serviço Militar ou Naval), preenchido",
+          "label_en": "Original completed Form N-426 (Request for Certification of Military or Naval Service)"
+        },
+        {
+          "label": "Formulário G-325B ou biografia equivalente exigida para requerentes com base militar",
+          "label_en": "Form G-325B or equivalent biographic information required for applicants filing on a military basis"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ t('civics_cta_practice') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+
+<div class="card elig-verdict-banner verdict-{{ 'eligible' if state.verdict == 'pass' else 'needs_review' }}">
+  <h1 style="font-size:1.3rem;margin:0 0 6px;">
+    {% if state.verdict == "pass" %}{{ icon('check-circle', 20) }} {{ t('civics_result_pass_title') }}
+    {% else %}{{ icon('shield-check', 20) }} {{ t('civics_result_fail_title') }}{% endif %}
+  </h1>
+  <p style="margin:0;">{{ t('civics_result_summary', correct=state.correct, wrong=state.wrong, asked=(state.correct + state.wrong)) }}</p>
+</div>
+
+{% if missed %}
+<div class="card">
+  <h2>{{ t('civics_result_missed_title') }}</h2>
+  {% for q in missed %}
+  <div class="civics-q-item">
+    <p class="civics-q-num">{{ q.id }}{% if q.starred %} ★{% endif %}</p>
+    <div>
+      <p class="civics-q-en">{{ q.question }}</p>
+      <p class="muted civics-q-pt">{{ q.question_pt }}</p>
+      <ul class="service-bullets" style="margin-top:8px;">
+        {% for a in q.answers %}<li>{{ a }}</li>{% endfor %}
+      </ul>
+      <p class="muted civics-q-pt">{{ q.answers_pt|join(" · ") }}</p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="card" style="text-align:center;">
+  <div class="hero-ctas" style="justify-content:center;flex-wrap:wrap;">
+    <form method="post" action="{{ url_for('civics.practice_start') }}">
+      <input type="hidden" name="mode" value="{{ state.mode }}">
+      <button type="submit" class="btn secondary">{{ t('civics_result_practice_again') }}</button>
+    </form>
+    <a class="btn secondary" href="{{ url_for('civics.questions_reference') }}">{{ t('civics_cta_view_questions') }}</a>
+    {% if current_user.is_authenticated %}
+      <a class="btn" href="{{ url_for('wizard.start', slug='n-400') }}">{{ t('services_cta_start') }}</a>
+    {% else %}
+      <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
+    {% endif %}
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>{{ t('civics_disclaimer') }}</p>
+</footer>
+{% endblock %}

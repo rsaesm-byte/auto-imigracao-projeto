@@ -1,0 +1,1630 @@
+{
+  "form": "I-864",
+  "title": "Declaração de Suporte Financeiro — I-864",
+  "description": "Preencha todas as perguntas sobre o(a) patrocinador(a) financeiro(a). Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA. Valores monetários em dólares (USD), sem símbolo.",
+  "sections": [
+    {
+      "id": "motivo",
+      "title": "Parte 1 — Base para o Pedido"
+    },
+    {
+      "id": "sponsor_basico",
+      "title": "Parte 2 — Informações Básicas do(a) Patrocinador(a)"
+    },
+    {
+      "id": "sponsor_end",
+      "title": "Parte 2 — Endereços do(a) Patrocinador(a)"
+    },
+    {
+      "id": "sponsor_outros",
+      "title": "Parte 2 — Outras Informações do(a) Patrocinador(a)"
+    },
+    {
+      "id": "imigrante",
+      "title": "Parte 3 — Informações sobre o(a) Imigrante Principal"
+    },
+    {
+      "id": "familia",
+      "title": "Parte 4 — Imigrantes Sendo Patrocinados"
+    },
+    {
+      "id": "household",
+      "title": "Parte 5 — Tamanho do Domicílio"
+    },
+    {
+      "id": "emprego_renda",
+      "title": "Parte 6 — Emprego e Renda"
+    },
+    {
+      "id": "impostos",
+      "title": "Parte 6 — Declarações de Imposto de Renda"
+    },
+    {
+      "id": "ativos",
+      "title": "Parte 7 — Uso de Ativos para Complementar a Renda"
+    },
+    {
+      "id": "assinatura",
+      "title": "Parte 8 — Declaração do(a) Patrocinador(a)"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 9 — Intérprete"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 10 — Preparador(a)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "motivo_patrocinio",
+      "section": "motivo",
+      "label": "Você está enviando esta declaração de suporte porque:",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "peticionario",
+          "label": "Sou o(a) peticionário(a) — apresentei ou estou apresentando a petição para meu(minha) parente"
+        },
+        {
+          "value": "peticionario_trabalhador",
+          "label": "Apresentei uma petição de trabalhador estrangeiro em nome do(a) imigrante"
+        },
+        {
+          "value": "proprietario_5pct",
+          "label": "Tenho participação de pelo menos 5% em empresa que apresentou petição de trabalhador"
+        },
+        {
+          "value": "unico_patrocinador_conjunto",
+          "label": "Sou o único patrocinador conjunto (joint sponsor)"
+        },
+        {
+          "value": "um_dos_dois_patrocinadores_conjuntos",
+          "label": "Sou o primeiro ou segundo de dois patrocinadores conjuntos"
+        },
+        {
+          "value": "patrocinador_substituto",
+          "label": "O(a) peticionário(a) original faleceu — sou o(a) patrocinador(a) substituto(a)"
+        }
+      ],
+      "hint": "Escolha a opção que descreve por que você está assinando esta declaração. A maioria dos casos familiares usa \"Sou o(a) peticionário(a)\". Use \"patrocinador conjunto\" se sua renda está ajudando porque a do peticionário sozinho não basta, e \"patrocinador substituto\" só se o peticionário original já faleceu."
+    },
+    {
+      "id": "motivo_trabalhador_relacao",
+      "section": "motivo",
+      "hint": "Só aplicável se você é o próprio empregador que apresentou a petição de trabalho (I-140) para o(a) imigrante. Descreva o cargo/função dela na sua empresa.",
+      "label": "Qual sua relação com o(a) imigrante (petição de trabalhador)?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "motivo_patrocinio",
+        "equals": "peticionario_trabalhador"
+      }
+    },
+    {
+      "id": "motivo_proprietario_negocio",
+      "section": "motivo",
+      "label": "Nome da empresa/organização em que você tem participação",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "motivo_patrocinio",
+        "equals": "proprietario_5pct"
+      },
+      "hint": "Só aplicável se você tem pelo menos 5% de participação na empresa que apresentou a petição de trabalho para o(a) imigrante — não é o caso comum de patrocínio familiar."
+    },
+    {
+      "id": "motivo_proprietario_relacao",
+      "section": "motivo",
+      "label": "Qual sua relação com o(a) imigrante?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "motivo_patrocinio",
+        "equals": "proprietario_5pct"
+      },
+      "hint": "Explique sua relação com a empresa (ex: sócio(a), proprietário(a)) e com o(a) imigrante, já que este item só se aplica a patrocínio via participação societária de pelo menos 5%."
+    },
+    {
+      "id": "patrocinador_conjunto_ordem",
+      "section": "motivo",
+      "label": "Você é o primeiro ou o segundo dos dois patrocinadores conjuntos?",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "motivo_patrocinio",
+        "equals": "um_dos_dois_patrocinadores_conjuntos"
+      },
+      "options": [
+        {
+          "value": "primeiro",
+          "label": "Primeiro"
+        },
+        {
+          "value": "segundo",
+          "label": "Segundo"
+        }
+      ],
+      "hint": "Só aplicável se você é um patrocinador conjunto (não o único). Cada imigrante pode ter até 2 patrocinadores conjuntos, cada um preenchendo seu próprio Formulário I-864 e precisando atingir sozinho o mínimo de renda exigido."
+    },
+    {
+      "id": "motivo_substituto_relacao",
+      "section": "motivo",
+      "label": "Qual sua relação com o(a) imigrante (patrocinador substituto)?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "motivo_patrocinio",
+        "equals": "patrocinador_substituto"
+      },
+      "hint": "Só aplicável se o(a) peticionário(a) original do I-130 faleceu. Só certos parentes podem ser patrocinador substituto: cônjuge, pai/mãe, sogro(a), irmão/irmã, filho(a) maior de 18 anos, genro/nora, cunhado(a), avô/avó, neto(a) ou tutor legal."
+    },
+    {
+      "id": "sponsor_sobrenome",
+      "section": "sponsor_basico",
+      "label": "Sobrenome do(a) patrocinador(a)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_nome",
+      "section": "sponsor_basico",
+      "label": "Nome do(a) patrocinador(a)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_nome_meio",
+      "section": "sponsor_basico",
+      "label": "Nome do meio do(a) patrocinador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_cuidados_de",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_rua",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_end_correio_tipo_unidade",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_end_correio_num_unidade",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_cidade",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_end_correio_estado",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_cep",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_provincia",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_codigo_postal",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_pais",
+      "section": "sponsor_end",
+      "label": "Endereço de correspondência — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_end_fisico_igual_correio",
+      "section": "sponsor_end",
+      "label": "Seu endereço físico atual é igual ao endereço de correspondência acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_end_fisico_rua",
+      "section": "sponsor_end",
+      "label": "Endereço físico — Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_tipo_unidade",
+      "section": "sponsor_end",
+      "label": "Endereço físico — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_end_fisico_num_unidade",
+      "section": "sponsor_end",
+      "label": "Endereço físico — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_cidade",
+      "section": "sponsor_end",
+      "label": "Endereço físico — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_estado",
+      "section": "sponsor_end",
+      "label": "Endereço físico — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_cep",
+      "section": "sponsor_end",
+      "label": "Endereço físico — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_provincia",
+      "section": "sponsor_end",
+      "label": "Endereço físico — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_codigo_postal",
+      "section": "sponsor_end",
+      "label": "Endereço físico — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_pais",
+      "section": "sponsor_end",
+      "label": "Endereço físico — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "sponsor_pais_domicilio",
+      "section": "sponsor_outros",
+      "label": "País de domicílio",
+      "type": "text",
+      "required": true,
+      "hint": "Geralmente os EUA, mesmo que você esteja morando temporariamente fora do país — \"domicílio\" é onde você pretende voltar a residir permanentemente, não necessariamente onde você mora agora."
+    },
+    {
+      "id": "sponsor_data_nascimento",
+      "section": "sponsor_outros",
+      "label": "Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "sponsor_pais_nascimento",
+      "section": "sponsor_outros",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_ssn",
+      "section": "sponsor_outros",
+      "label": "Número do Seguro Social (SSN)",
+      "type": "text",
+      "required": true,
+      "hint": "Formato: XXX-XX-XXXX. Obrigatório para o patrocinador."
+    },
+    {
+      "id": "sponsor_status_imigracao",
+      "section": "sponsor_outros",
+      "label": "Seu status de imigração",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "cidadao",
+          "label": "Sou cidadão(ã) americano(a)"
+        },
+        {
+          "value": "nacional",
+          "label": "Sou nacional americano(a)"
+        },
+        {
+          "value": "residente_permanente",
+          "label": "Sou residente permanente legal"
+        }
+      ],
+      "hint": "Você precisa ser cidadão(ã) americano(a), nacional americano(a) ou residente permanente legal para poder assinar este formulário como patrocinador."
+    },
+    {
+      "id": "sponsor_alien_number",
+      "section": "sponsor_outros",
+      "label": "Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_uscis_online",
+      "section": "sponsor_outros",
+      "label": "Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_servico_militar_ativo",
+      "section": "sponsor_outros",
+      "label": "Você está atualmente em serviço ativo nas Forças Armadas dos EUA ou na Guarda Costeira?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Se você está em serviço ativo nas Forças Armadas dos EUA, o limite mínimo de renda exigido é menor (100% da linha federal de pobreza, em vez de 125%)."
+    },
+    {
+      "id": "imigrante_sobrenome",
+      "section": "imigrante",
+      "label": "Sobrenome do(a) imigrante principal",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_nome",
+      "section": "imigrante",
+      "label": "Nome do(a) imigrante principal",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_nome_meio",
+      "section": "imigrante",
+      "label": "Nome do meio do(a) imigrante principal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_cuidados_de",
+      "section": "imigrante",
+      "label": "Endereço — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_rua",
+      "section": "imigrante",
+      "label": "Endereço — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_end_tipo_unidade",
+      "section": "imigrante",
+      "label": "Endereço — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "imigrante_end_num_unidade",
+      "section": "imigrante",
+      "label": "Endereço — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_cidade",
+      "section": "imigrante",
+      "label": "Endereço — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_end_estado",
+      "section": "imigrante",
+      "label": "Endereço — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_cep",
+      "section": "imigrante",
+      "label": "Endereço — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_provincia",
+      "section": "imigrante",
+      "label": "Endereço — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_codigo_postal",
+      "section": "imigrante",
+      "label": "Endereço — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_end_pais",
+      "section": "imigrante",
+      "label": "Endereço — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_pais_cidadania",
+      "section": "imigrante",
+      "label": "País de cidadania/nacionalidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_data_nascimento",
+      "section": "imigrante",
+      "label": "Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "imigrante_alien_number",
+      "section": "imigrante",
+      "label": "Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_uscis_online",
+      "section": "imigrante",
+      "label": "Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imigrante_telefone",
+      "section": "imigrante",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "patrocina_principal",
+      "section": "familia",
+      "hint": "Responda \"Sim\" no caso comum onde este I-864 é para o mesmo imigrante já identificado acima. Só seria \"Não\" numa situação atípica de patrocínio substituto/conjunto onde esta cópia do formulário cobre só um familiar dependente, não o imigrante principal — raro; confirme com a equipe se não tiver certeza.",
+      "label": "Você está patrocinando o(a) imigrante principal listado(a) acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não — só estou patrocinando familiares"
+        }
+      ]
+    },
+    {
+      "id": "patrocina_familia_mesma_data",
+      "section": "familia",
+      "label": "Você está patrocinando familiares que imigram na mesma época (até 6 meses) do(a) imigrante principal?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Familiares que pretendem imigrar dentro de 6 meses do(a) imigrante principal entram no cálculo do tamanho do seu domicílio nesta mesma declaração."
+    },
+    {
+      "id": "patrocina_familia_mais_tarde",
+      "section": "familia",
+      "label": "Você está patrocinando familiares que imigram mais de 6 meses depois do(a) imigrante principal?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Familiares que só pretendem imigrar mais de 6 meses depois normalmente vão precisar de um novo Formulário I-864 na época — ainda assim, alguns casos pedem para listá-los aqui; confirme com a equipe se tiver dúvida."
+    },
+    {
+      "id": "familia1_sobrenome",
+      "section": "familia",
+      "label": "Familiar 1 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia1_nome",
+      "section": "familia",
+      "label": "Familiar 1 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia1_nome_meio",
+      "section": "familia",
+      "label": "Familiar 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia1_relacao",
+      "section": "familia",
+      "label": "Familiar 1 — Relação com o(a) imigrante principal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia1_data_nascimento",
+      "section": "familia",
+      "label": "Familiar 1 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "familia1_alien_number",
+      "section": "familia",
+      "label": "Familiar 1 — Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia1_uscis_online",
+      "section": "familia",
+      "label": "Familiar 1 — Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia2_sobrenome",
+      "section": "familia",
+      "label": "Familiar 2 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia2_nome",
+      "section": "familia",
+      "label": "Familiar 2 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia2_nome_meio",
+      "section": "familia",
+      "label": "Familiar 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia2_relacao",
+      "section": "familia",
+      "label": "Familiar 2 — Relação com o(a) imigrante principal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia2_data_nascimento",
+      "section": "familia",
+      "label": "Familiar 2 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "familia2_alien_number",
+      "section": "familia",
+      "label": "Familiar 2 — Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia2_uscis_online",
+      "section": "familia",
+      "label": "Familiar 2 — Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia3_sobrenome",
+      "section": "familia",
+      "label": "Familiar 3 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia3_nome",
+      "section": "familia",
+      "label": "Familiar 3 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia3_nome_meio",
+      "section": "familia",
+      "label": "Familiar 3 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia3_relacao",
+      "section": "familia",
+      "label": "Familiar 3 — Relação com o(a) imigrante principal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia3_data_nascimento",
+      "section": "familia",
+      "label": "Familiar 3 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "familia3_alien_number",
+      "section": "familia",
+      "label": "Familiar 3 — Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia3_uscis_online",
+      "section": "familia",
+      "label": "Familiar 3 — Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia4_sobrenome",
+      "section": "familia",
+      "label": "Familiar 4 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia4_nome",
+      "section": "familia",
+      "label": "Familiar 4 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia4_nome_meio",
+      "section": "familia",
+      "label": "Familiar 4 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia4_relacao",
+      "section": "familia",
+      "label": "Familiar 4 — Relação com o(a) imigrante principal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia4_data_nascimento",
+      "section": "familia",
+      "label": "Familiar 4 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "familia4_alien_number",
+      "section": "familia",
+      "label": "Familiar 4 — Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "familia4_uscis_online",
+      "section": "familia",
+      "label": "Familiar 4 — Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "total_imigrantes_patrocinados",
+      "section": "household",
+      "label": "Número total de imigrantes que você está patrocinando nesta declaração",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "household_voce_mesmo",
+      "section": "household",
+      "label": "Você mesmo(a) (normalmente '1')",
+      "type": "text",
+      "required": true,
+      "hint": "Conte você mesmo(a) como 1."
+    },
+    {
+      "id": "household_conjuge",
+      "section": "household",
+      "label": "Cônjuge, se casado(a) e não já contado(a) acima (número, ou '0')",
+      "type": "text",
+      "required": false,
+      "hint": "Conte seu cônjuge aqui só se ele(a) NÃO for o(a) mesmo(a) imigrante principal que você está patrocinando (nesse caso já está contado em outro lugar) e ainda não tiver sido somado em outro campo."
+    },
+    {
+      "id": "household_filhos_dependentes",
+      "section": "household",
+      "label": "Filhos dependentes não já contados acima (número, ou '0')",
+      "type": "text",
+      "required": false,
+      "hint": "Filhos solteiros menores de 21 anos que dependem financeiramente de você, mesmo que não morem com você — não conte de novo quem já está na lista de \"Familiares\" acima."
+    },
+    {
+      "id": "household_outros_dependentes",
+      "section": "household",
+      "label": "Outros dependentes não já contados acima (número, ou '0')",
+      "type": "text",
+      "required": false,
+      "hint": "Qualquer pessoa que você reivindicou como dependente na sua última declaração de imposto de renda, além das já contadas acima."
+    },
+    {
+      "id": "household_outros_patrocinados_antes",
+      "section": "household",
+      "label": "Outras pessoas já patrocinadas em I-864/I-864EZ ainda sob sua responsabilidade (número, ou '0')",
+      "type": "text",
+      "required": false,
+      "hint": "Pessoas que você já patrocinou em um I-864/I-864EZ anterior continuam contando no seu domicílio até se tornarem cidadãs americanas ou completarem 40 trimestres de trabalho nos EUA — na prática, 40 'trimestres' (créditos) do Seguro Social equivalem a cerca de 10 anos trabalhando legalmente nos EUA (no máximo 4 créditos por ano) — mesmo que não morem mais com você."
+    },
+    {
+      "id": "household_parentes_mesma_residencia",
+      "section": "household",
+      "label": "Irmãos, pais ou filhos adultos na mesma residência combinando renda via I-864A (número, ou '0')",
+      "type": "text",
+      "required": false,
+      "hint": "Só conte parentes (irmãos, pais, filhos adultos) que morem com você E cuja renda você está combinando com a sua via Formulário I-864A — não conte quem simplesmente mora na mesma casa sem combinar renda."
+    },
+    {
+      "id": "household_total",
+      "section": "household",
+      "label": "Tamanho total do domicílio (soma de todos os itens acima)",
+      "type": "text",
+      "required": true,
+      "hint": "Confira a soma com atenção: um erro aqui pode mudar o valor mínimo de renda exigido. Se tiver qualquer dúvida sobre quem entra, confirme com a equipe antes de enviar."
+    },
+    {
+      "id": "sponsor_empregado",
+      "section": "emprego_renda",
+      "label": "Você está atualmente empregado(a)?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_ocupacao_atual",
+      "section": "emprego_renda",
+      "label": "Sua ocupação atual (o que você exerce como empregado)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_empregado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_empregador1_nome",
+      "section": "emprego_renda",
+      "label": "Nome do Empregador 1",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_empregado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_empregador2_nome",
+      "section": "emprego_renda",
+      "label": "Nome do Empregador 2 (se aplicável)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_empregado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_autonomo",
+      "section": "emprego_renda",
+      "label": "Você é autônomo(a)?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_autonomo_ocupacao",
+      "section": "emprego_renda",
+      "label": "Ocupação como autônomo(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_autonomo",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_aposentado",
+      "section": "emprego_renda",
+      "label": "Você é aposentado(a)?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_aposentado_desde",
+      "section": "emprego_renda",
+      "label": "Aposentado(a) desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_aposentado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_desempregado",
+      "section": "emprego_renda",
+      "label": "Você está desempregado(a)?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_desempregado_desde",
+      "section": "emprego_renda",
+      "label": "Desempregado(a) desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_desempregado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_renda_individual_atual",
+      "section": "emprego_renda",
+      "label": "Sua renda anual individual atual (USD)",
+      "type": "text",
+      "required": true,
+      "hint": "Sua renda ATUAL, não necessariamente a do último ano declarado no imposto de renda — se você mudou de emprego ou teve reajuste, use o valor de agora."
+    },
+    {
+      "id": "pessoa1_nome",
+      "section": "emprego_renda",
+      "label": "Renda de outra pessoa do domicílio — Pessoa 1: Nome",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha esta seção se está combinando a renda de alguém do seu domicílio para atingir o mínimo exigido — essa pessoa vai precisar assinar um Formulário I-864A separado (exceto se for o(a) próprio(a) imigrante principal)."
+    },
+    {
+      "id": "pessoa1_relacao",
+      "section": "emprego_renda",
+      "label": "Pessoa 1 — Relação com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pessoa1_renda",
+      "section": "emprego_renda",
+      "label": "Pessoa 1 — Renda atual (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Renda atual dessa pessoa — vai ser somada à sua no cálculo do total familiar."
+    },
+    {
+      "id": "pessoa2_nome",
+      "section": "emprego_renda",
+      "label": "Pessoa 2 — Nome",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha esta seção se está combinando a renda de alguém do seu domicílio para atingir o mínimo exigido — essa pessoa vai precisar assinar um Formulário I-864A separado (exceto se for o(a) próprio(a) imigrante principal)."
+    },
+    {
+      "id": "pessoa2_relacao",
+      "section": "emprego_renda",
+      "label": "Pessoa 2 — Relação com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pessoa2_renda",
+      "section": "emprego_renda",
+      "label": "Pessoa 2 — Renda atual (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Renda atual dessa pessoa — vai ser somada à sua no cálculo do total familiar."
+    },
+    {
+      "id": "pessoa3_nome",
+      "section": "emprego_renda",
+      "label": "Pessoa 3 — Nome",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha esta seção se está combinando a renda de alguém do seu domicílio para atingir o mínimo exigido — essa pessoa vai precisar assinar um Formulário I-864A separado (exceto se for o(a) próprio(a) imigrante principal)."
+    },
+    {
+      "id": "pessoa3_relacao",
+      "section": "emprego_renda",
+      "label": "Pessoa 3 — Relação com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pessoa3_renda",
+      "section": "emprego_renda",
+      "label": "Pessoa 3 — Renda atual (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Renda atual dessa pessoa — vai ser somada à sua no cálculo do total familiar."
+    },
+    {
+      "id": "pessoa4_nome",
+      "section": "emprego_renda",
+      "label": "Pessoa 4 — Nome",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha esta seção se está combinando a renda de alguém do seu domicílio para atingir o mínimo exigido — essa pessoa vai precisar assinar um Formulário I-864A separado (exceto se for o(a) próprio(a) imigrante principal)."
+    },
+    {
+      "id": "pessoa4_relacao",
+      "section": "emprego_renda",
+      "label": "Pessoa 4 — Relação com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pessoa4_renda",
+      "section": "emprego_renda",
+      "label": "Pessoa 4 — Renda atual (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Renda atual dessa pessoa — vai ser somada à sua no cálculo do total familiar."
+    },
+    {
+      "id": "renda_familiar_total",
+      "section": "emprego_renda",
+      "label": "Renda familiar anual total atual (USD)",
+      "type": "text",
+      "required": true,
+      "hint": "Soma da sua renda individual + a renda de todas as pessoas listadas acima. Comparada às diretrizes federais de pobreza."
+    },
+    {
+      "id": "pessoas_completaram_i864a",
+      "section": "emprego_renda",
+      "label": "As pessoas listadas acima completaram o Formulário I-864A?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "O Formulário I-864A é um contrato onde a pessoa cuja renda você está usando se compromete legalmente a sustentar o(a) imigrante junto com você — obrigatório para cada pessoa listada acima cuja renda entrou no total, exceto o(a) próprio(a) imigrante principal em alguns casos."
+    },
+    {
+      "id": "pessoa_nao_precisa_i864a",
+      "section": "emprego_renda",
+      "label": "Alguma das pessoas listadas é o(a) próprio(a) imigrante principal (sem dependentes que o acompanhem), dispensando o I-864A?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Se a renda que você está combinando é do(a) próprio(a) imigrante principal (não de outro membro do domicílio), ele(a) pode não precisar de um I-864A separado nesse caso específico — confirme essa exceção com a equipe antes de enviar."
+    },
+    {
+      "id": "pessoa_nao_precisa_i864a_nome",
+      "section": "emprego_renda",
+      "label": "Nome dessa pessoa",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pessoa_nao_precisa_i864a",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "declarou_impostos_3anos",
+      "section": "impostos",
+      "label": "Você declarou imposto de renda federal em cada um dos 3 anos fiscais mais recentes?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "É obrigatório anexar a declaração apenas do ano fiscal mais recente. Anexar os 2 anos anteriores é opcional e só costuma ajudar se sua renda vinha caindo e você quer mostrar estabilidade."
+    },
+    {
+      "id": "imposto_ano1_ano",
+      "section": "impostos",
+      "label": "Ano fiscal mais recente",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imposto_ano1_renda",
+      "section": "impostos",
+      "label": "Renda total declarada nesse ano (USD, ou 'zero'/'N/A')",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imposto_ano2_ano",
+      "section": "impostos",
+      "label": "2º ano fiscal mais recente (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imposto_ano2_renda",
+      "section": "impostos",
+      "label": "Renda total declarada nesse ano (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imposto_ano3_ano",
+      "section": "impostos",
+      "label": "3º ano fiscal mais recente (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "imposto_ano3_renda",
+      "section": "impostos",
+      "label": "Renda total declarada nesse ano (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "nao_precisou_declarar_impostos",
+      "section": "impostos",
+      "label": "Você não foi obrigado(a) a declarar imposto de renda federal por sua renda estar abaixo do limite exigido pelo IRS?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Só marque isso se sua renda naquele ano estava LEGALMENTE abaixo do mínimo que exige declaração — não é o mesmo que simplesmente optar por não declarar. Se não tiver certeza, confirme com a equipe."
+    },
+    {
+      "id": "ativo_saldo_contas",
+      "section": "ativos",
+      "label": "Saldo de todas as contas correntes/poupança (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha esta Parte 7 se sua renda NÃO for suficiente para atingir as diretrizes federais de pobreza."
+    },
+    {
+      "id": "ativo_imoveis",
+      "section": "ativos",
+      "label": "Valor líquido de imóveis (avaliado menos dívida da hipoteca) (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Valor do imóvel MENOS qualquer saldo de hipoteca ou financiamento ainda devido — não o valor bruto do imóvel."
+    },
+    {
+      "id": "ativo_acoes_titulos",
+      "section": "ativos",
+      "label": "Valor líquido de ações, títulos, CDs e outros ativos (USD)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_total_patrocinador",
+      "section": "ativos",
+      "label": "Total dos seus ativos (soma dos itens acima) (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Some os itens acima. Ativos só ajudam se sua renda sozinha não for suficiente: geralmente é preciso um valor de ativos equivalente a 3x a diferença que falta (se você é cidadão(ã) patrocinando cônjuge ou filho(a)) ou 5x a diferença (nos demais casos)."
+    },
+    {
+      "id": "ativo_total_membros_familia",
+      "section": "ativos",
+      "label": "Total de ativos de membros do domicílio (Form I-864A) (USD)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_imigrante_saldo_contas",
+      "section": "ativos",
+      "hint": "Só preencha esta seção se o(a) próprio(a) imigrante principal tem ativos nos EUA que podem ajudar a complementar a renda do patrocinador — situação incomum. Na maioria dos casos, deixe em branco.",
+      "label": "Ativos do(a) imigrante principal — Saldo de contas (USD)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_imigrante_imoveis",
+      "section": "ativos",
+      "label": "Ativos do(a) imigrante principal — Imóveis (USD)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_imigrante_acoes_titulos",
+      "section": "ativos",
+      "label": "Ativos do(a) imigrante principal — Ações/títulos (USD)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_imigrante_total",
+      "section": "ativos",
+      "label": "Ativos do(a) imigrante principal — Total (USD)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_valor_total_geral",
+      "section": "ativos",
+      "label": "Valor total de todos os ativos (USD)",
+      "type": "text",
+      "required": false,
+      "hint": "Soma de todos os ativos usados para complementar a renda — os seus, os de membros do domicílio (via I-864A) e os do(a) imigrante principal, quando aplicável."
+    },
+    {
+      "id": "leu_ingles",
+      "section": "assinatura",
+      "label": "Declaração do(a) patrocinador(a)",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Eu leio e entendo inglês, e li e entendi todas as perguntas e instruções desta declaração e minhas respostas"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "O(a) intérprete indicado(a) na Parte 9 leu para mim, em um idioma que domino, todas as perguntas e instruções e minhas respostas"
+        }
+      ],
+      "hint": "Marque a segunda opção só se você precisou de um(a) intérprete pra entender o formulário em outro idioma — nesse caso, preencha também a Parte 9 com os dados do(a) intérprete."
+    },
+    {
+      "id": "idioma_interprete",
+      "section": "assinatura",
+      "label": "Em qual idioma o(a) intérprete leu o formulário para você?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "preparador_ajudou",
+      "section": "assinatura",
+      "label": "Alguém preparou este formulário para você, a seu pedido e com base apenas nas informações que você forneceu?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, eu mesmo(a) preenchi"
+        }
+      ],
+      "hint": "Um(a) \"preparador(a)\" é alguém que te ajudou a preencher o formulário com base só nas informações que você forneceu (ex: um consultor) — diferente do(a) intérprete, que só traduziu."
+    },
+    {
+      "id": "preparador_nome",
+      "section": "assinatura",
+      "label": "Nome do(a) preparador(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_telefone",
+      "section": "assinatura",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_celular",
+      "section": "assinatura",
+      "label": "Telefone celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_email",
+      "section": "assinatura",
+      "label": "E-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_data_assinatura",
+      "section": "assinatura",
+      "label": "Data da assinatura (preenchido no dia do protocolo, MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Intérprete — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Intérprete — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_organizacao",
+      "section": "interprete",
+      "label": "Intérprete — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Intérprete — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_celular",
+      "section": "interprete",
+      "label": "Intérprete — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "Intérprete — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Intérprete — Idioma em que é fluente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Intérprete — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Preparador(a) — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Preparador(a) — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_organizacao",
+      "section": "preparador",
+      "label": "Preparador(a) — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Preparador(a) — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_celular",
+      "section": "preparador",
+      "label": "Preparador(a) — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "Preparador(a) — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Preparador(a) — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    }
+  ]
+}

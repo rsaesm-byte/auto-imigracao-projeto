@@ -1,0 +1,1284 @@
+{
+  "form": "I-130A",
+  "title": "Informação Suplementar para Beneficiário Cônjuge — I-130A",
+  "description": "Preencha todas as perguntas sobre o(a) cônjuge beneficiário(a). Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA. Este formulário é anexado ao I-130 quando o(a) beneficiário(a) é cônjuge.",
+  "sections": [
+    {
+      "id": "sb_basico",
+      "title": "Parte 1 — Informações Básicas do(a) Cônjuge Beneficiário(a)"
+    },
+    {
+      "id": "sb_end",
+      "title": "Parte 1 — Histórico de Endereços do(a) Cônjuge Beneficiário(a)"
+    },
+    {
+      "id": "sb_pais",
+      "title": "Parte 1 — Pais do(a) Cônjuge Beneficiário(a)"
+    },
+    {
+      "id": "sb_emprego",
+      "title": "Parte 2 e 3 — Histórico de Emprego do(a) Cônjuge Beneficiário(a)"
+    },
+    {
+      "id": "assinatura",
+      "title": "Parte 4 — Declaração do(a) Cônjuge Beneficiário(a)"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 5 — Intérprete"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 6 — Preparador(a)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "sb_sobrenome",
+      "section": "sb_basico",
+      "label": "Sobrenome (Family Name)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sb_nome",
+      "section": "sb_basico",
+      "label": "Nome (Given Name)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sb_nome_meio",
+      "section": "sb_basico",
+      "label": "Nome do meio (Middle Name)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_alien_number",
+      "section": "sb_basico",
+      "label": "Número de Estrangeiro (A-Number) — se aplicável",
+      "type": "text",
+      "required": false,
+      "hint": "Formato: A seguido de 8 ou 9 dígitos. Ex: A012345678"
+    },
+    {
+      "id": "sb_uscis_online",
+      "section": "sb_basico",
+      "label": "Número de Conta USCIS Online — se aplicável",
+      "type": "text",
+      "required": false,
+      "hint": "12 dígitos, sem traços."
+    },
+    {
+      "id": "sb_telefone",
+      "section": "sb_basico",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sb_celular",
+      "section": "sb_basico",
+      "label": "Telefone celular — se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_email",
+      "section": "sb_basico",
+      "label": "E-mail — se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_rua",
+      "section": "sb_end",
+      "label": "Endereço atual — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sb_end_tipo_unidade",
+      "section": "sb_end",
+      "label": "Tipo de unidade do endereço atual (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor) — abreviações usadas nos EUA. Deixe em branco se o endereço não tiver esse tipo de unidade."
+    },
+    {
+      "id": "sb_end_num_unidade",
+      "section": "sb_end",
+      "label": "Número da unidade (apto/sala/andar)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_cidade",
+      "section": "sb_end",
+      "label": "Endereço atual — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sb_end_estado",
+      "section": "sb_end",
+      "label": "Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_cep",
+      "section": "sb_end",
+      "label": "CEP (ZIP code, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_provincia",
+      "section": "sb_end",
+      "label": "Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_codigo_postal",
+      "section": "sb_end",
+      "label": "Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_pais",
+      "section": "sb_end",
+      "label": "País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sb_end_desde",
+      "section": "sb_end",
+      "label": "Morando neste endereço desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "sb_end_ate",
+      "section": "sb_end",
+      "label": "Até quando (MM/DD/AAAA, ou 'PRESENT' se ainda mora lá)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_rua",
+      "section": "sb_end",
+      "label": "Endereço anterior — Rua e número (últimos 5 anos, se houve outro endereço)",
+      "type": "text",
+      "required": false,
+      "hint": "Preencha só se você mora no endereço atual há menos de 5 anos (contando a partir de hoje). Se já mora lá há 5 anos ou mais, deixe em branco."
+    },
+    {
+      "id": "sb_end_ant1_tipo_unidade",
+      "section": "sb_end",
+      "label": "Tipo de unidade do endereço anterior (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "sb_end_ant1_num_unidade",
+      "section": "sb_end",
+      "label": "Número da unidade do endereço anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_cidade",
+      "section": "sb_end",
+      "label": "Endereço anterior — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_estado",
+      "section": "sb_end",
+      "label": "Estado do endereço anterior (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_cep",
+      "section": "sb_end",
+      "label": "CEP do endereço anterior (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_provincia",
+      "section": "sb_end",
+      "label": "Província do endereço anterior (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_codigo_postal",
+      "section": "sb_end",
+      "label": "Código postal do endereço anterior (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_pais",
+      "section": "sb_end",
+      "label": "País do endereço anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_desde",
+      "section": "sb_end",
+      "label": "Endereço anterior — morava lá desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "sb_end_ant1_ate",
+      "section": "sb_end",
+      "label": "Endereço anterior — morou lá até (MM/DD/AAAA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_rua",
+      "section": "sb_end",
+      "label": "Último endereço fora dos EUA (mais de 1 ano, mesmo se já listado acima) — Rua e número",
+      "type": "text",
+      "required": false,
+      "hint": "Pergunta separada e obrigatória do USCIS: o último endereço fora dos EUA onde você morou por mais de 1 ano — mesmo que já tenha sido informado acima, ou mesmo que tenha sido há muitos anos. Usado para checagem de antecedentes."
+    },
+    {
+      "id": "sb_end_ext_tipo_unidade",
+      "section": "sb_end",
+      "label": "Tipo de unidade do endereço fora dos EUA (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "sb_end_ext_num_unidade",
+      "section": "sb_end",
+      "label": "Número da unidade do endereço fora dos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_cidade",
+      "section": "sb_end",
+      "label": "Cidade do endereço fora dos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_provincia",
+      "section": "sb_end",
+      "label": "Província do endereço fora dos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_codigo_postal",
+      "section": "sb_end",
+      "label": "Código postal do endereço fora dos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_pais",
+      "section": "sb_end",
+      "label": "País do endereço fora dos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_desde",
+      "section": "sb_end",
+      "label": "Endereço fora dos EUA — desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "sb_end_ext_ate",
+      "section": "sb_end",
+      "label": "Endereço fora dos EUA — até (MM/DD/AAAA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai1_sobrenome",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Sobrenome (nome de solteiro/a)",
+      "type": "text",
+      "required": true,
+      "hint": "Sobrenome de nascimento do seu pai/mãe (antes de qualquer casamento), não o sobrenome atual se for diferente. Se um dos pais já faleceu ou você não tem essas informações, preencha o que souber e avise a equipe."
+    },
+    {
+      "id": "pai1_nome",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai1_nome_meio",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai1_data_nascimento",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pai1_sexo",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "pai1_cidade_nascimento",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Cidade/município de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai1_pais_nascimento",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai1_cidade_residencia",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — Cidade/município de residência atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai1_pais_residencia",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 1 — País de residência atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai2_sobrenome",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Sobrenome (nome de solteiro/a)",
+      "type": "text",
+      "required": true,
+      "hint": "Sobrenome de nascimento do seu pai/mãe (antes de qualquer casamento), não o sobrenome atual se for diferente. Se um dos pais já faleceu ou você não tem essas informações, preencha o que souber e avise a equipe."
+    },
+    {
+      "id": "pai2_nome",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai2_nome_meio",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai2_data_nascimento",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pai2_sexo",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "pai2_cidade_nascimento",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Cidade/município de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai2_pais_nascimento",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai2_cidade_residencia",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — Cidade/município de residência atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pai2_pais_residencia",
+      "section": "sb_pais",
+      "label": "Pai/Mãe 2 — País de residência atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_nome",
+      "section": "sb_emprego",
+      "label": "Empregador atual — Nome do empregador/empresa",
+      "type": "text",
+      "required": true,
+      "hint": "Se atualmente desempregado(a), digite 'Unemployed'."
+    },
+    {
+      "id": "emp1_end_rua",
+      "section": "sb_emprego",
+      "label": "Empregador atual — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_tipo_unidade",
+      "section": "sb_emprego",
+      "label": "Empregador atual — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "emp1_end_num_unidade",
+      "section": "sb_emprego",
+      "label": "Empregador atual — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_cidade",
+      "section": "sb_emprego",
+      "label": "Empregador atual — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_estado",
+      "section": "sb_emprego",
+      "label": "Empregador atual — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_cep",
+      "section": "sb_emprego",
+      "label": "Empregador atual — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_provincia",
+      "section": "sb_emprego",
+      "label": "Empregador atual — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_codigo_postal",
+      "section": "sb_emprego",
+      "label": "Empregador atual — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_end_pais",
+      "section": "sb_emprego",
+      "label": "Empregador atual — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_ocupacao",
+      "section": "sb_emprego",
+      "label": "Sua ocupação no emprego atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp1_desde",
+      "section": "sb_emprego",
+      "label": "Empregador atual — trabalha lá desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "emp1_ate",
+      "section": "sb_emprego",
+      "label": "Empregador atual — até quando (MM/DD/AAAA, ou 'PRESENT')",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_nome",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — Nome do empregador/empresa (últimos 5 anos, se houve outro)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_rua",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_tipo_unidade",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "emp2_end_num_unidade",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_cidade",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_estado",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_cep",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_provincia",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_codigo_postal",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_end_pais",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_ocupacao",
+      "section": "sb_emprego",
+      "label": "Sua ocupação no emprego anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp2_desde",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "emp2_ate",
+      "section": "sb_emprego",
+      "label": "Empregador anterior — até (MM/DD/AAAA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_nome",
+      "section": "sb_emprego",
+      "label": "Último emprego fora dos EUA (se não informado acima) — Nome do empregador/empresa",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_rua",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_tipo_unidade",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "emp3_end_num_unidade",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_cidade",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_estado",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_cep",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_provincia",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — Província",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_codigo_postal",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — Código postal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_end_pais",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_ocupacao",
+      "section": "sb_emprego",
+      "label": "Sua ocupação nesse emprego fora dos EUA",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "emp3_desde",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "emp3_ate",
+      "section": "sb_emprego",
+      "label": "Emprego fora dos EUA — até (MM/DD/AAAA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ass_leu_ingles",
+      "section": "assinatura",
+      "label": "Declaração do(a) cônjuge beneficiário(a)",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Eu leio e entendo inglês, e li e entendi todas as perguntas e instruções deste formulário e minhas respostas"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "O(a) intérprete indicado(a) na Parte 5 leu para mim, em um idioma que domino, todas as perguntas e instruções deste formulário e minhas respostas"
+        }
+      ],
+      "hint": "Selecione a segunda opção apenas se você não lê ou não entende bem inglês e precisou que um intérprete traduzisse o formulário para você antes de assinar."
+    },
+    {
+      "id": "ass_idioma",
+      "section": "assinatura",
+      "label": "Em qual idioma o(a) intérprete leu o formulário para você?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "ass_preparador_ajudou",
+      "section": "assinatura",
+      "label": "Alguém preparou este formulário para você, a seu pedido e com base apenas nas informações que você forneceu?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, eu mesmo(a) preenchi"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se outra pessoa (advogado, despachante, amigo) preencheu este formulário por você com base nas suas respostas. Se você mesmo(a) digitou/preencheu, responda \"Não, eu mesmo(a) preenchi\", mesmo que tenha recebido orientação de terceiros."
+    },
+    {
+      "id": "ass_preparador_nome",
+      "section": "assinatura",
+      "label": "Nome do(a) preparador(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ass_data_assinatura",
+      "section": "assinatura",
+      "label": "Data da assinatura (preenchido no dia do protocolo, MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Intérprete — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Intérprete — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_organizacao",
+      "section": "interprete",
+      "label": "Intérprete — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_rua",
+      "section": "interprete",
+      "label": "Intérprete — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_tipo_unidade",
+      "section": "interprete",
+      "label": "Intérprete — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "int_end_num_unidade",
+      "section": "interprete",
+      "label": "Intérprete — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cidade",
+      "section": "interprete",
+      "label": "Intérprete — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_estado",
+      "section": "interprete",
+      "label": "Intérprete — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cep",
+      "section": "interprete",
+      "label": "Intérprete — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_provincia",
+      "section": "interprete",
+      "label": "Intérprete — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_codigo_postal",
+      "section": "interprete",
+      "label": "Intérprete — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_pais",
+      "section": "interprete",
+      "label": "Intérprete — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Intérprete — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_celular",
+      "section": "interprete",
+      "label": "Intérprete — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "Intérprete — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Intérprete — Idioma em que é fluente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Intérprete — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Preparador(a) — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Preparador(a) — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_organizacao",
+      "section": "preparador",
+      "label": "Preparador(a) — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_rua",
+      "section": "preparador",
+      "label": "Preparador(a) — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_tipo_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "hint": "Apt = apartamento, Ste = sala/conjunto comercial (suite), Flr = andar (floor). Deixe em branco se não se aplicar."
+    },
+    {
+      "id": "prep_end_num_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cidade",
+      "section": "preparador",
+      "label": "Preparador(a) — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_estado",
+      "section": "preparador",
+      "label": "Preparador(a) — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cep",
+      "section": "preparador",
+      "label": "Preparador(a) — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_provincia",
+      "section": "preparador",
+      "label": "Preparador(a) — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_codigo_postal",
+      "section": "preparador",
+      "label": "Preparador(a) — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_pais",
+      "section": "preparador",
+      "label": "Preparador(a) — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Preparador(a) — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_celular",
+      "section": "preparador",
+      "label": "Preparador(a) — Celular (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "Preparador(a) — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Preparador(a) — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ass_preparador_ajudou",
+        "equals": "sim"
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "form": "G-1650",
+  "title": "G-1650 — Autorização de Débito Bancário (ACH)",
+  "description": "Formulário para pagar a taxa de protocolo por débito direto de uma conta bancária americana, quando você envia sua petição pelo correio (papel). Por segurança, esta ferramenta preenche apenas os dados de identificação, tipo de conta, banco e valor — o número de roteamento (routing number) e o número da conta você mesmo escreve à mão no PDF impresso, logo antes de enviar. Isso evita que dados bancários fiquem armazenados no nosso sistema.",
+  "sections": [
+    {"id": "requerente", "title": "Sobre o Requerente/Peticionário"},
+    {"id": "titular", "title": "Sobre o Titular da Conta Bancária"},
+    {"id": "pagamento", "title": "Dados da Conta e do Pagamento"}
+  ],
+  "questions": [
+    {"id": "g1650_sobrenome", "section": "requerente", "label": "Sobrenome do requerente, peticionário ou solicitante", "type": "text", "required": true},
+    {"id": "g1650_nome", "section": "requerente", "label": "Nome do requerente, peticionário ou solicitante", "type": "text", "required": true},
+    {"id": "g1650_nome_meio", "section": "requerente", "label": "Nome do meio (se houver)", "type": "text", "required": false},
+
+    {"id": "g1650_tipo_conta", "section": "titular", "label": "A conta bancária é pessoal ou de uma empresa (negócio)?", "type": "radio", "required": true,
+      "options": [
+        {"value": "pessoal", "label": "Conta pessoal"},
+        {"value": "negocio", "label": "Conta de negócio (empresa)"}
+      ]},
+    {"id": "g1650_titular_sobrenome", "section": "titular", "label": "Sobrenome do titular da conta (como aparece na conta)", "type": "text", "required": true, "hint": "Pode ser diferente do requerente — por exemplo, quando um familiar paga a taxa."},
+    {"id": "g1650_titular_nome", "section": "titular", "label": "Nome do titular da conta", "type": "text", "required": true},
+    {"id": "g1650_titular_nome_meio", "section": "titular", "label": "Nome do meio do titular (se houver)", "type": "text", "required": false},
+    {"id": "g1650_nome_empresa", "section": "titular", "label": "Nome da empresa titular da conta", "type": "text", "required": true, "show_if": {"question": "g1650_tipo_conta", "equals": "negocio"}},
+
+    {"id": "g1650_tipo_conta_bancaria", "section": "pagamento", "label": "A conta bancária é corrente (checking) ou poupança (savings)?", "type": "radio", "required": true,
+      "options": [
+        {"value": "corrente", "label": "Conta corrente (Checking Account)"},
+        {"value": "poupanca", "label": "Conta poupança (Savings Account)"}
+      ]},
+    {"id": "g1650_nome_banco", "section": "pagamento", "label": "Nome do banco", "type": "text", "required": true},
+    {"id": "g1650_valor_autorizado", "section": "pagamento", "label": "Valor autorizado para pagamento (em dólares, sem centavos)", "type": "text", "required": true, "hint": "Confira o valor exato da taxa antes de preencher — este é o valor que será debitado da conta."}
+  ]
+}

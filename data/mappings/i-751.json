@@ -1,0 +1,1719 @@
+{
+  "form": "I-751",
+  "fields": [
+    {
+      "pdf_field": "form1[0].#subform[0].G28[0]",
+      "type": "checkbox",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].AttorneyStateBarNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].USCISELISAcctNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Pt1Line1a_FamilyName[0]",
+      "type": "text",
+      "question_id": "nome_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Pt1Line1b_GivenName[0]",
+      "type": "text",
+      "question_id": "nome_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Pt1Line1c_MiddleName[0]",
+      "type": "text",
+      "question_id": "nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line2a_FamilyName[0]",
+      "type": "text",
+      "question_id": "outro_nome2_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line2b_GivenName[0]",
+      "type": "text",
+      "question_id": "outro_nome2_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line2c_MiddleName[0]",
+      "type": "text",
+      "question_id": "outro_nome2_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line3a_FamilyName[0]",
+      "type": "text",
+      "question_id": "outro_nome3_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line3b_GivenName[0]",
+      "type": "text",
+      "question_id": "outro_nome3_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line3c_MiddleName[0]",
+      "type": "text",
+      "question_id": "outro_nome3_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line4_DateOfBirth[0]",
+      "type": "text",
+      "question_id": "data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line11_DateOfMarriage[0]",
+      "type": "text",
+      "question_id": "data_casamento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line12_PlaceOfMarriage[0]",
+      "type": "text",
+      "question_id": "local_casamento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line13_DateMarriageEnded[0]",
+      "type": "text",
+      "question_id": "data_fim_casamento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line14_CRExpiresOn[0]",
+      "type": "text",
+      "question_id": "data_expiracao_residencia_condicional"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line7_AlienNumber[0]",
+      "type": "text",
+      "question_id": "alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Part1_Line10_MaritalStatus[0]",
+      "type": "checkbox",
+      "question_id": "estado_civil",
+      "check_if_answer": "casado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Part1_Line10_MaritalStatus[1]",
+      "type": "checkbox",
+      "question_id": "estado_civil",
+      "check_if_answer": "viuvo"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Part1_Line10_MaritalStatus[2]",
+      "type": "checkbox",
+      "question_id": "estado_civil",
+      "check_if_answer": "solteiro"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Part1_Line10_MaritalStatus[3]",
+      "type": "checkbox",
+      "question_id": "estado_civil",
+      "check_if_answer": "divorciado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line9_AcctIdentifier[0]",
+      "type": "text",
+      "question_id": "uscis_online"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line6_CountryOfCitizenship[0]",
+      "type": "text",
+      "question_id": "pais_cidadania"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line8_SSN[0]",
+      "type": "text",
+      "question_id": "ssn"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line5_CountryOfBirth[0]",
+      "type": "text",
+      "question_id": "pais_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17a_InCareofName[0]",
+      "type": "text",
+      "question_id": "end_correio_cuidados_de"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17d_City_Town[0]",
+      "type": "text",
+      "question_id": "end_correio_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17b_Street_Number_Name[0]",
+      "type": "text",
+      "question_id": "end_correio_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17c_Apt_Ste_Flr_Number[0]",
+      "type": "text",
+      "question_id": "end_correio_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17c_Unit[0]",
+      "type": "checkbox",
+      "question_id": "end_correio_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line15f_ZipCode[0]",
+      "type": "text",
+      "question_id": "end_correio_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line15e_State[0]",
+      "type": "choice",
+      "question_id": "end_correio_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17c_Unit[1]",
+      "type": "checkbox",
+      "question_id": "end_correio_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17c_Unit[2]",
+      "type": "checkbox",
+      "question_id": "end_correio_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line16_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "end_fisico_diferente",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line16_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "end_fisico_diferente",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "em_processo_remocao",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line18_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "taxa_paga_terceiro",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line19_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "ja_foi_preso",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line19_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "ja_foi_preso",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line18_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "taxa_paga_terceiro",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line17_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "em_processo_remocao",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_InCareofName[0]",
+      "type": "text",
+      "question_id": "end_fisico_cuidados_de"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_CityOrTown[0]",
+      "type": "text",
+      "question_id": "end_fisico_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "end_fisico_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "end_fisico_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_ZipCode[0]",
+      "type": "text",
+      "question_id": "end_fisico_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_State[0]",
+      "type": "choice",
+      "question_id": "end_fisico_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_Unit[0]",
+      "type": "checkbox",
+      "question_id": "end_fisico_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_Unit[1]",
+      "type": "checkbox",
+      "question_id": "end_fisico_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Pt1Line17_Unit[2]",
+      "type": "checkbox",
+      "question_id": "end_fisico_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line20_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "casamento_diferente",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line20_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "casamento_diferente",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line21_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "residiu_outro_endereco",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line21_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "residiu_outro_endereco",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line22_Checkbox[0]",
+      "type": "checkbox",
+      "question_id": "conjuge_funcionario_governo_exterior",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].Line22_Checkbox[1]",
+      "type": "checkbox",
+      "question_id": "conjuge_funcionario_governo_exterior",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line8_HeightFeet[0]",
+      "type": "choice",
+      "question_id": "altura_pes"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line8_HeightInches[0]",
+      "type": "choice",
+      "question_id": "altura_polegadas"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line9_HeightInches1[0]",
+      "type": "text",
+      "question_id": "peso",
+      "digit_split": 1
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line9_HeightInches2[0]",
+      "type": "text",
+      "question_id": "peso",
+      "digit_split": 2
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line9_HeightInches3[0]",
+      "type": "text",
+      "question_id": "peso",
+      "digit_split": 3
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox6[0]",
+      "type": "checkbox",
+      "question_id": "etnia",
+      "check_if_answer": "nao_hispanico"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox6[1]",
+      "type": "checkbox",
+      "question_id": "etnia",
+      "check_if_answer": "hispanico"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox7_Hawaiian[0]",
+      "type": "checkbox",
+      "question_id": "raca_havaiano_pacifico",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox7_Indian[0]",
+      "type": "checkbox",
+      "question_id": "raca_indigena_americano",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox7_White[0]",
+      "type": "checkbox",
+      "question_id": "raca_branco",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox7_Asian[0]",
+      "type": "checkbox",
+      "question_id": "raca_asiatico",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox7_Black[0]",
+      "type": "checkbox",
+      "question_id": "raca_negro",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[0]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "azul"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[1]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "verde"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[2]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "avela"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[3]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "rosa"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[4]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "marrom_avermelhado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[5]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "castanho"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[6]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "preto"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[7]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "outro"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox10[8]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "cinza"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[0]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "careca"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[1]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "loiro"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[2]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "grisalho"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[3]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "arenoso"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[4]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "outro"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[5]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "branco"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[6]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "ruivo"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[7]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "castanho"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_checkbox11[8]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "preto"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1[0]",
+      "type": "checkbox",
+      "question_id": "base_peticao_conjunta",
+      "check_if_answer": "conjuge"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1[1]",
+      "type": "checkbox",
+      "question_id": "base_peticao_conjunta",
+      "check_if_answer": "pai_padrasto"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1c[0]",
+      "type": "checkbox",
+      "question_id": "base_dispensa",
+      "check_if_answer": "conjuge_falecido"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1d[0]",
+      "type": "checkbox",
+      "question_id": "base_dispensa",
+      "check_if_answer": "casamento_terminado_divorcio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1e[0]",
+      "type": "checkbox",
+      "question_id": "base_dispensa",
+      "check_if_answer": "vitima_violencia_conjuge"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1f[0]",
+      "type": "checkbox",
+      "question_id": "base_dispensa",
+      "check_if_answer": "vitima_violencia_padrasto"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt3Line1g[0]",
+      "type": "checkbox",
+      "question_id": "base_dispensa",
+      "check_if_answer": "dificuldade_extrema"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Part4_Relationship[0]",
+      "type": "checkbox",
+      "question_id": "relacao_conjuge_americano",
+      "check_if_answer": "padrasto"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Part4_Relationship[1]",
+      "type": "checkbox",
+      "question_id": "relacao_conjuge_americano",
+      "check_if_answer": "conjuge"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line2b_GivenName2[0]",
+      "type": "text",
+      "question_id": "conjuge_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line2a_FamilyName2[0]",
+      "type": "text",
+      "question_id": "conjuge_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line2c_MiddleName2[0]",
+      "type": "text",
+      "question_id": "conjuge_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line3_DateOfBirth[0]",
+      "type": "text",
+      "question_id": "conjuge_data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line4_SSN[0]",
+      "type": "text",
+      "question_id": "conjuge_ssn"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line5_AlienNumber[0]",
+      "type": "text",
+      "question_id": "conjuge_alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_CityOrTown[0]",
+      "type": "text",
+      "question_id": "conjuge_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "conjuge_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "conjuge_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_ZipCode[0]",
+      "type": "text",
+      "question_id": "conjuge_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_State[0]",
+      "type": "choice",
+      "question_id": "conjuge_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_PostalCode[0]",
+      "type": "text",
+      "question_id": "conjuge_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_Country[0]",
+      "type": "text",
+      "question_id": "conjuge_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_Unit[0]",
+      "type": "checkbox",
+      "question_id": "conjuge_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_Unit[1]",
+      "type": "checkbox",
+      "question_id": "conjuge_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_Unit[2]",
+      "type": "checkbox",
+      "question_id": "conjuge_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Pt4Line6_Province[0]",
+      "type": "text",
+      "question_id": "conjuge_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line1b_GivenName3[0]",
+      "type": "text",
+      "question_id": "filho1_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line1a_FamilyName3[0]",
+      "type": "text",
+      "question_id": "filho1_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line1c_MiddleName3[0]",
+      "type": "text",
+      "question_id": "filho1_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line2_DateOfBirth2[0]",
+      "type": "text",
+      "question_id": "filho1_data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Line3_AlienNumber[0]",
+      "type": "text",
+      "question_id": "filho1_alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Part5Line5[0]",
+      "type": "checkbox",
+      "question_id": "filho1_mora_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Part5Line6[0]",
+      "type": "checkbox",
+      "question_id": "filho1_aplica_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Part5Line6[1]",
+      "type": "checkbox",
+      "question_id": "filho1_aplica_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].Part5Line5[1]",
+      "type": "checkbox",
+      "question_id": "filho1_mora_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "filho1_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "filho1_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_CityOrTown[0]",
+      "type": "text",
+      "question_id": "filho1_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_Unit[0]",
+      "type": "checkbox",
+      "question_id": "filho1_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_Unit[1]",
+      "type": "checkbox",
+      "question_id": "filho1_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_Unit[2]",
+      "type": "checkbox",
+      "question_id": "filho1_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_ZipCode[0]",
+      "type": "text",
+      "question_id": "filho1_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_State[0]",
+      "type": "choice",
+      "question_id": "filho1_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_PostalCode[0]",
+      "type": "text",
+      "question_id": "filho1_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_Country[0]",
+      "type": "text",
+      "question_id": "filho1_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line6_Province[0]",
+      "type": "text",
+      "question_id": "filho1_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13b_GivenName[0]",
+      "type": "text",
+      "question_id": "filho2_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13a_FamilyName[0]",
+      "type": "text",
+      "question_id": "filho2_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13c_MiddleName[0]",
+      "type": "text",
+      "question_id": "filho2_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line14_DateOfBirth[0]",
+      "type": "text",
+      "question_id": "filho2_data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line15_AlienNumber[0]",
+      "type": "text",
+      "question_id": "filho2_alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line11[0]",
+      "type": "checkbox",
+      "question_id": "filho2_mora_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line12[0]",
+      "type": "checkbox",
+      "question_id": "filho2_aplica_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line12[1]",
+      "type": "checkbox",
+      "question_id": "filho2_aplica_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line11[1]",
+      "type": "checkbox",
+      "question_id": "filho2_mora_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "filho2_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "filho2_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_CityOrTown[0]",
+      "type": "text",
+      "question_id": "filho2_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_Unit[0]",
+      "type": "checkbox",
+      "question_id": "filho2_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_Unit[1]",
+      "type": "checkbox",
+      "question_id": "filho2_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_Unit[2]",
+      "type": "checkbox",
+      "question_id": "filho2_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_ZipCode[0]",
+      "type": "text",
+      "question_id": "filho2_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_State[0]",
+      "type": "choice",
+      "question_id": "filho2_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_PostalCode[0]",
+      "type": "text",
+      "question_id": "filho2_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_Country[0]",
+      "type": "text",
+      "question_id": "filho2_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line12_Province[0]",
+      "type": "text",
+      "question_id": "filho2_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13b_GivenName[1]",
+      "type": "text",
+      "question_id": "filho3_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13a_FamilyName[1]",
+      "type": "text",
+      "question_id": "filho3_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13c_MiddleName[1]",
+      "type": "text",
+      "question_id": "filho3_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line14_DateOfBirth[1]",
+      "type": "text",
+      "question_id": "filho3_data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line15_AlienNumber[1]",
+      "type": "text",
+      "question_id": "filho3_alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line17[0]",
+      "type": "checkbox",
+      "question_id": "filho3_mora_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line18[0]",
+      "type": "checkbox",
+      "question_id": "filho3_aplica_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line18[1]",
+      "type": "checkbox",
+      "question_id": "filho3_aplica_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line17[1]",
+      "type": "checkbox",
+      "question_id": "filho3_mora_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "filho3_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "filho3_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_CityOrTown[0]",
+      "type": "text",
+      "question_id": "filho3_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_Unit[0]",
+      "type": "checkbox",
+      "question_id": "filho3_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_Unit[1]",
+      "type": "checkbox",
+      "question_id": "filho3_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_Unit[2]",
+      "type": "checkbox",
+      "question_id": "filho3_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_ZipCode[0]",
+      "type": "text",
+      "question_id": "filho3_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_State[0]",
+      "type": "choice",
+      "question_id": "filho3_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_PostalCode[0]",
+      "type": "text",
+      "question_id": "filho3_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_Country[0]",
+      "type": "text",
+      "question_id": "filho3_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Pt5Line18_Province[0]",
+      "type": "text",
+      "question_id": "filho3_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13b_GivenName[2]",
+      "type": "text",
+      "question_id": "filho4_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13a_FamilyName[2]",
+      "type": "text",
+      "question_id": "filho4_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line13c_MiddleName[2]",
+      "type": "text",
+      "question_id": "filho4_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line14_DateOfBirth[2]",
+      "type": "text",
+      "question_id": "filho4_data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Line15_AlienNumber[2]",
+      "type": "text",
+      "question_id": "filho4_alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line23[0]",
+      "type": "checkbox",
+      "question_id": "filho4_mora_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line24[0]",
+      "type": "checkbox",
+      "question_id": "filho4_aplica_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line24[1]",
+      "type": "checkbox",
+      "question_id": "filho4_aplica_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].Part5Line23[1]",
+      "type": "checkbox",
+      "question_id": "filho4_mora_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "filho4_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "filho4_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_CityOrTown[0]",
+      "type": "text",
+      "question_id": "filho4_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_Unit[0]",
+      "type": "checkbox",
+      "question_id": "filho4_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_Unit[1]",
+      "type": "checkbox",
+      "question_id": "filho4_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_Unit[2]",
+      "type": "checkbox",
+      "question_id": "filho4_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_ZipCode[0]",
+      "type": "text",
+      "question_id": "filho4_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_State[0]",
+      "type": "choice",
+      "question_id": "filho4_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_PostalCode[0]",
+      "type": "text",
+      "question_id": "filho4_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_Country[0]",
+      "type": "text",
+      "question_id": "filho4_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line24_Province[0]",
+      "type": "text",
+      "question_id": "filho4_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Line13b_GivenName[3]",
+      "type": "text",
+      "question_id": "filho5_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Line13a_FamilyName[3]",
+      "type": "text",
+      "question_id": "filho5_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Line13c_MiddleName[3]",
+      "type": "text",
+      "question_id": "filho5_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Line14_DateOfBirth[3]",
+      "type": "text",
+      "question_id": "filho5_data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Line15_AlienNumber[3]",
+      "type": "text",
+      "question_id": "filho5_alien_number"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part5Line29[0]",
+      "type": "checkbox",
+      "question_id": "filho5_mora_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part5Line30[0]",
+      "type": "checkbox",
+      "question_id": "filho5_aplica_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part5Line30[1]",
+      "type": "checkbox",
+      "question_id": "filho5_aplica_com_voce",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part5Line29[1]",
+      "type": "checkbox",
+      "question_id": "filho5_mora_com_voce",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "filho5_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "filho5_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_CityOrTown[0]",
+      "type": "text",
+      "question_id": "filho5_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_Unit[0]",
+      "type": "checkbox",
+      "question_id": "filho5_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_Unit[1]",
+      "type": "checkbox",
+      "question_id": "filho5_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_Unit[2]",
+      "type": "checkbox",
+      "question_id": "filho5_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_ZipCode[0]",
+      "type": "text",
+      "question_id": "filho5_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_State[0]",
+      "type": "choice",
+      "question_id": "filho5_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_PostalCode[0]",
+      "type": "text",
+      "question_id": "filho5_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_Country[0]",
+      "type": "text",
+      "question_id": "filho5_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt5Line30_Province[0]",
+      "type": "text",
+      "question_id": "filho5_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part6Line1[0]",
+      "type": "checkbox",
+      "question_id": "acomodacao_propria",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part6Line2[0]",
+      "type": "checkbox",
+      "question_id": "acomodacao_conjuge",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part6Line3[0]",
+      "type": "checkbox",
+      "question_id": "acomodacao_filhos",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part6Line3[1]",
+      "type": "checkbox",
+      "question_id": "acomodacao_filhos",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part6Line2[1]",
+      "type": "checkbox",
+      "question_id": "acomodacao_conjuge",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Part6Line1[1]",
+      "type": "checkbox",
+      "question_id": "acomodacao_propria",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt6Line4_DeafOrHardOfHearing[0]",
+      "type": "text",
+      "question_id": "acomodacao_surdo_detalhe"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt6Line4a_chbx[0]",
+      "type": "checkbox",
+      "question_id": "acomodacao_surdo",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt6Line4b_chbx[0]",
+      "type": "checkbox",
+      "question_id": "acomodacao_cego",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt6Line4_BlindOrSightImpaired[0]",
+      "type": "text",
+      "question_id": "acomodacao_cego_detalhe"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt6Line4_AccomodationRequested[0]",
+      "type": "text",
+      "question_id": "acomodacao_outra_detalhe"
+    },
+    {
+      "pdf_field": "form1[0].#subform[4].Pt6Line4c_chbx[0]",
+      "type": "checkbox",
+      "question_id": "acomodacao_outra",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Checkbox1[0]",
+      "type": "checkbox",
+      "question_id": "leu_ingles",
+      "check_if_answer": "leu_ingles"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Checkbox1[1]",
+      "type": "checkbox",
+      "question_id": "leu_ingles",
+      "check_if_answer": "leu_interprete"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].Pt5Line1b_Language[0]",
+      "type": "text",
+      "question_id": "idioma_interprete"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Checkbox2[0]",
+      "type": "checkbox",
+      "question_id": "preparador_ajudou",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Line2_NameofRepresentative[0]",
+      "type": "text",
+      "question_id": "preparador_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Checkbox2_Who[0]",
+      "type": "checkbox",
+      "question_id": "preparador_e_advogado",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Checkbox2_Who[1]",
+      "type": "checkbox",
+      "question_id": "preparador_e_advogado",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Line5_EmailAddress[0]",
+      "type": "text",
+      "question_id": "email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Line3_DaytimePhoneNumber[0]",
+      "type": "text",
+      "question_id": "telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P5_Line4_MobilePhoneNumber[0]",
+      "type": "text",
+      "question_id": "celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[5].P7_Name[0]",
+      "type": "text",
+      "question_id": "confirmacao_nome_asc"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P5_Line6b_DateofSignature[0]",
+      "type": "text",
+      "question_id": "data_assinatura"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P5_Line6a_SignatureofPetitioner[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P8_Checkbox1[0]",
+      "type": "checkbox",
+      "question_id": "conjuge_leu_ingles",
+      "check_if_answer": "leu_ingles"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P8_Checkbox1[1]",
+      "type": "checkbox",
+      "question_id": "conjuge_leu_ingles",
+      "check_if_answer": "leu_interprete"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].Pt7Line1b_Language[0]",
+      "type": "text",
+      "question_id": "conjuge_idioma_interprete"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P5_Checkbox2[1]",
+      "type": "checkbox",
+      "question_id": "conjuge_preparador_ajudou",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P7Line2_NameofRepresentative[0]",
+      "type": "text",
+      "question_id": "conjuge_preparador_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P7_Checkbox2_Who[0]",
+      "type": "checkbox",
+      "question_id": "conjuge_preparador_e_advogado",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P7_Checkbox2_Who[1]",
+      "type": "checkbox",
+      "question_id": "conjuge_preparador_e_advogado",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P5_Line5_EmailAddress[1]",
+      "type": "text",
+      "question_id": "conjuge_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P5_Line4_MobilePhoneNumber[1]",
+      "type": "text",
+      "question_id": "conjuge_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[6].P5_Line3_DaytimePhoneNumber[1]",
+      "type": "text",
+      "question_id": "conjuge_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt8_Name[0]",
+      "type": "text",
+      "question_id": "conjuge_confirmacao_nome_asc"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P6_Line1b_InterpretersGivenName[0]",
+      "type": "text",
+      "question_id": "int_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P6_Line1a_InterpretersFamilyName[0]",
+      "type": "text",
+      "question_id": "int_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P6_Line2_NameofBusinessor[0]",
+      "type": "text",
+      "question_id": "int_organizacao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_CityOrTown[0]",
+      "type": "text",
+      "question_id": "int_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P6_Line3a_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "int_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "int_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_Province[0]",
+      "type": "text",
+      "question_id": "int_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_ZipCode[0]",
+      "type": "text",
+      "question_id": "int_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_State[0]",
+      "type": "choice",
+      "question_id": "int_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_Country[0]",
+      "type": "text",
+      "question_id": "int_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_PostalCode[0]",
+      "type": "text",
+      "question_id": "int_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_Unit[0]",
+      "type": "checkbox",
+      "question_id": "int_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_Unit[1]",
+      "type": "checkbox",
+      "question_id": "int_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].Pt9Line3_Unit[2]",
+      "type": "checkbox",
+      "question_id": "int_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P5_Line6b_DateofSignature[1]",
+      "type": "text",
+      "question_id": "conjuge_data_assinatura"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P5_Line6a_SignatureofSpouse[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P6_Line5_InterpretersEmailAddress[0]",
+      "type": "text",
+      "question_id": "int_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[7].P6_Line4_InterpretersDaytimePhoneNumber[0]",
+      "type": "text",
+      "question_id": "int_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P6_Line6b_DateofSignature[0]",
+      "type": "text",
+      "question_id": "int_data_assinatura"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P6_Line6a_Signature[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P6_Language[0]",
+      "type": "text",
+      "question_id": "int_idioma"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line1a_FamilyName[0]",
+      "type": "text",
+      "question_id": "prep_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line1b_PreparersGivenName[0]",
+      "type": "text",
+      "question_id": "prep_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line2_NameofBusinessor[0]",
+      "type": "text",
+      "question_id": "prep_organizacao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line6_PreparersEmailAddress[0]",
+      "type": "text",
+      "question_id": "prep_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line4_PreparersDaytimePhoneNumber[0]",
+      "type": "text",
+      "question_id": "prep_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line5_PreparersFaxNumber[0]",
+      "type": "text",
+      "question_id": "prep_fax"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line3c_CityTown[0]",
+      "type": "text",
+      "question_id": "prep_end_cidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt9Line3_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "prep_end_rua"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt10Line3_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "prep_end_num_unidade"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line3f_Province[0]",
+      "type": "text",
+      "question_id": "prep_end_provincia"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line3e_ZipCode[0]",
+      "type": "text",
+      "question_id": "prep_end_cep"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line3d_State[0]",
+      "type": "choice",
+      "question_id": "prep_end_estado"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line3h_Country[0]",
+      "type": "text",
+      "question_id": "prep_end_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_Line3g_PostalCode[0]",
+      "type": "text",
+      "question_id": "prep_end_codigo_postal"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt10Line3_Unit[0]",
+      "type": "checkbox",
+      "question_id": "prep_end_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt10Line3_Unit[1]",
+      "type": "checkbox",
+      "question_id": "prep_end_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt10Line3_Unit[2]",
+      "type": "checkbox",
+      "question_id": "prep_end_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_checkbox7[0]",
+      "type": "checkbox",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].P7_checkbox7[1]",
+      "type": "checkbox",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt10Item7b_Extends[0]",
+      "type": "checkbox",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[8].Pt10Item7b_NotExtend[0]",
+      "type": "checkbox",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line8a_SignatureofPreparer[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line8b_DateofSignature[0]",
+      "type": "text",
+      "question_id": "prep_data_assinatura"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line3d_AdditionalInfo[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line3a_PageNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line3b_PartNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line3c_ItemNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].Pt1Line1a_FamilyName[1]",
+      "type": "text",
+      "question_id": "nome_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].Pt1Line1b_GivenName[1]",
+      "type": "text",
+      "question_id": "nome_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].Pt1Line1c_MiddleName[1]",
+      "type": "text",
+      "question_id": "nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line4d_AdditionalInfo[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line4a_PageNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line4b_PartNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line4c_ItemNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line7a_PageNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line7b_PartNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line7c_ItemNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line5a_PageNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line5b_PartNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line5c_ItemNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line7d_AdditionalInfo[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line5d_AdditionalInfo[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line6a_PageNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line6b_PartNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line6c_ItemNumber[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P8_Line6d_AdditionalInfo[0]",
+      "type": "text",
+      "question_id": "_ignore"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].P1_Line7_AlienNumber[1]",
+      "type": "text",
+      "question_id": "alien_number"
+    }
+  ]
+}

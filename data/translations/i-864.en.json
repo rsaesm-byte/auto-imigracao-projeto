@@ -1,0 +1,639 @@
+{
+  "title": "Affidavit of Support Under Section 213A of the INA — I-864",
+  "sections": {
+    "motivo": "Part 1 — Basis for Filing",
+    "sponsor_basico": "Part 2 — Basic Information About You (Sponsor)",
+    "sponsor_end": "Part 2 — Your (Sponsor's) Addresses",
+    "sponsor_outros": "Part 2 — Additional Information About You (Sponsor)",
+    "imigrante": "Part 3 — Information About the Principal Immigrant",
+    "familia": "Part 4 — Immigrants Being Sponsored",
+    "household": "Part 5 — Household Size",
+    "emprego_renda": "Part 6 — Sponsor's Employment and Income",
+    "impostos": "Part 6 — Federal Income Tax Return Information",
+    "ativos": "Part 7 — Use of Assets to Supplement Income",
+    "assinatura": "Part 8 — Sponsor's Statement",
+    "interprete": "Part 9 — Interpreter",
+    "preparador": "Part 10 — Preparer"
+  },
+  "questions": {
+    "motivo_patrocinio": {
+      "label": "You are submitting this affidavit of support because:",
+      "options": {
+        "peticionario": "I am the petitioner — I filed or am filing the immigrant petition for my relative",
+        "peticionario_trabalhador": "I filed an alien worker petition on behalf of the immigrant",
+        "proprietario_5pct": "I have an ownership interest of at least 5% in the entity that filed an alien worker petition",
+        "unico_patrocinador_conjunto": "I am the only joint sponsor",
+        "um_dos_dois_patrocinadores_conjuntos": "I am the first or second of two joint sponsors",
+        "patrocinador_substituto": "The original petitioner has died — I am the substitute sponsor"
+      },
+      "hint": "Choose the option that describes why you're signing this affidavit. Most family-based cases use \"I am the petitioner.\" Use \"joint sponsor\" if you're helping because the petitioner's income alone isn't enough, and \"substitute sponsor\" only if the original petitioner has passed away."
+    },
+    "motivo_trabalhador_relacao": {
+      "label": "What is your relationship to the immigrant (alien worker petition)?",
+      "hint": "Only applicable if you're the employer who filed the employment petition (I-140) for the immigrant. Describe their job title/role at your company."
+    },
+    "motivo_proprietario_negocio": {
+      "label": "Name of the business/organization in which you have an ownership interest",
+      "hint": "Only applicable if you hold at least a 5% ownership interest in the business that filed the employment-based petition for the immigrant — not the typical family-based sponsorship scenario."
+    },
+    "motivo_proprietario_relacao": {
+      "label": "What is your relationship to the immigrant?",
+      "hint": "Describe your relationship to the business (e.g., partner, owner) and to the immigrant — this item only applies to sponsorship through at least a 5% ownership stake."
+    },
+    "patrocinador_conjunto_ordem": {
+      "label": "Are you the first or second of the two joint sponsors?",
+      "options": {
+        "primeiro": "First",
+        "segundo": "Second"
+      },
+      "hint": "Only applicable if you're a joint sponsor (not the sole one). Each immigrant can have up to 2 joint sponsors, each filing their own Form I-864 and each needing to independently meet the income requirement."
+    },
+    "motivo_substituto_relacao": {
+      "label": "What is your relationship to the immigrant (substitute sponsor)?",
+      "hint": "Only applicable if the original I-130 petitioner has died. Only certain relatives may serve as substitute sponsor: spouse, parent, parent-in-law, sibling, adult child (18+), son/daughter-in-law, brother/sister-in-law, grandparent, grandchild, or legal guardian."
+    },
+    "sponsor_sobrenome": {
+      "label": "Sponsor's Family Name (Last Name)"
+    },
+    "sponsor_nome": {
+      "label": "Sponsor's Given Name (First Name)"
+    },
+    "sponsor_nome_meio": {
+      "label": "Sponsor's Middle Name"
+    },
+    "sponsor_end_correio_cuidados_de": {
+      "label": "Mailing Address — In Care Of Name (if any)"
+    },
+    "sponsor_end_correio_rua": {
+      "label": "Mailing Address — Street Number and Name"
+    },
+    "sponsor_end_correio_tipo_unidade": {
+      "label": "Mailing Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "sponsor_end_correio_num_unidade": {
+      "label": "Mailing Address — Unit Number"
+    },
+    "sponsor_end_correio_cidade": {
+      "label": "Mailing Address — City or Town"
+    },
+    "sponsor_end_correio_estado": {
+      "label": "Mailing Address — State (abbreviation, if U.S.)"
+    },
+    "sponsor_end_correio_cep": {
+      "label": "Mailing Address — ZIP Code (if U.S.)"
+    },
+    "sponsor_end_correio_provincia": {
+      "label": "Mailing Address — Province (if outside the U.S.)"
+    },
+    "sponsor_end_correio_codigo_postal": {
+      "label": "Mailing Address — Postal Code (if outside the U.S.)"
+    },
+    "sponsor_end_correio_pais": {
+      "label": "Mailing Address — Country"
+    },
+    "sponsor_end_fisico_igual_correio": {
+      "label": "Is your current physical address the same as the mailing address above?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "sponsor_end_fisico_rua": {
+      "label": "Physical Address — Street Number and Name"
+    },
+    "sponsor_end_fisico_tipo_unidade": {
+      "label": "Physical Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "sponsor_end_fisico_num_unidade": {
+      "label": "Physical Address — Unit Number"
+    },
+    "sponsor_end_fisico_cidade": {
+      "label": "Physical Address — City or Town"
+    },
+    "sponsor_end_fisico_estado": {
+      "label": "Physical Address — State (abbreviation, if U.S.)"
+    },
+    "sponsor_end_fisico_cep": {
+      "label": "Physical Address — ZIP Code (if U.S.)"
+    },
+    "sponsor_end_fisico_provincia": {
+      "label": "Physical Address — Province (if outside the U.S.)"
+    },
+    "sponsor_end_fisico_codigo_postal": {
+      "label": "Physical Address — Postal Code (if outside the U.S.)"
+    },
+    "sponsor_end_fisico_pais": {
+      "label": "Physical Address — Country"
+    },
+    "sponsor_pais_domicilio": {
+      "label": "Country of Domicile",
+      "hint": "Usually the U.S., even if you're temporarily living abroad — \"domicile\" is where you intend to permanently reside, not necessarily where you currently live."
+    },
+    "sponsor_data_nascimento": {
+      "label": "Date of Birth (MM/DD/YYYY)"
+    },
+    "sponsor_pais_nascimento": {
+      "label": "Country of Birth"
+    },
+    "sponsor_ssn": {
+      "label": "Social Security Number (SSN)",
+      "hint": "Format: XXX-XX-XXXX. Required for the sponsor."
+    },
+    "sponsor_status_imigracao": {
+      "label": "Your immigration status",
+      "options": {
+        "cidadao": "I am a U.S. citizen",
+        "nacional": "I am a U.S. national",
+        "residente_permanente": "I am a lawful permanent resident"
+      },
+      "hint": "You must be a U.S. citizen, U.S. national, or lawful permanent resident to sign this form as a sponsor."
+    },
+    "sponsor_alien_number": {
+      "label": "Alien Registration Number (A-Number), if any"
+    },
+    "sponsor_uscis_online": {
+      "label": "USCIS Online Account Number, if any"
+    },
+    "sponsor_servico_militar_ativo": {
+      "label": "Are you currently on active duty in the U.S. Armed Forces or the Coast Guard?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "If you're on active duty in the U.S. Armed Forces, the minimum income requirement is lower (100% of the federal poverty guideline instead of 125%)."
+    },
+    "imigrante_sobrenome": {
+      "label": "Principal Immigrant's Family Name (Last Name)"
+    },
+    "imigrante_nome": {
+      "label": "Principal Immigrant's Given Name (First Name)"
+    },
+    "imigrante_nome_meio": {
+      "label": "Principal Immigrant's Middle Name"
+    },
+    "imigrante_end_cuidados_de": {
+      "label": "Address — In Care Of Name (if any)"
+    },
+    "imigrante_end_rua": {
+      "label": "Address — Street Number and Name"
+    },
+    "imigrante_end_tipo_unidade": {
+      "label": "Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "imigrante_end_num_unidade": {
+      "label": "Address — Unit Number"
+    },
+    "imigrante_end_cidade": {
+      "label": "Address — City or Town"
+    },
+    "imigrante_end_estado": {
+      "label": "Address — State (abbreviation, if U.S.)"
+    },
+    "imigrante_end_cep": {
+      "label": "Address — ZIP Code (if U.S.)"
+    },
+    "imigrante_end_provincia": {
+      "label": "Address — Province (if outside the U.S.)"
+    },
+    "imigrante_end_codigo_postal": {
+      "label": "Address — Postal Code (if outside the U.S.)"
+    },
+    "imigrante_end_pais": {
+      "label": "Address — Country"
+    },
+    "imigrante_pais_cidadania": {
+      "label": "Country of Citizenship/Nationality"
+    },
+    "imigrante_data_nascimento": {
+      "label": "Date of Birth (MM/DD/YYYY)"
+    },
+    "imigrante_alien_number": {
+      "label": "Alien Registration Number (A-Number), if any"
+    },
+    "imigrante_uscis_online": {
+      "label": "USCIS Online Account Number, if any"
+    },
+    "imigrante_telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "patrocina_principal": {
+      "label": "Are you sponsoring the principal immigrant listed above?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No — I am only sponsoring family members"
+      },
+      "hint": "Answer \"Yes\" in the common case where this I-864 is for the same immigrant already identified above. This would only be \"No\" in an unusual joint/substitute-sponsor situation where this copy of the form covers only a dependent family member, not the principal immigrant — rare; confirm with our team if unsure."
+    },
+    "patrocina_familia_mesma_data": {
+      "label": "Are you sponsoring family members immigrating at the same time (within 6 months) as the principal immigrant?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Relatives intending to immigrate within 6 months of the principal immigrant count toward your household size on this same affidavit."
+    },
+    "patrocina_familia_mais_tarde": {
+      "label": "Are you sponsoring family members immigrating more than 6 months after the principal immigrant?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Relatives who won't immigrate until more than 6 months later usually need a fresh Form I-864 filed later — some cases still ask to list them here; confirm with our team if unsure."
+    },
+    "familia1_sobrenome": {
+      "label": "Family Member 1 — Family Name (Last Name)"
+    },
+    "familia1_nome": {
+      "label": "Family Member 1 — Given Name (First Name)"
+    },
+    "familia1_nome_meio": {
+      "label": "Family Member 1 — Middle Name"
+    },
+    "familia1_relacao": {
+      "label": "Family Member 1 — Relationship to the Principal Immigrant"
+    },
+    "familia1_data_nascimento": {
+      "label": "Family Member 1 — Date of Birth (MM/DD/YYYY)"
+    },
+    "familia1_alien_number": {
+      "label": "Family Member 1 — Alien Registration Number (A-Number), if any"
+    },
+    "familia1_uscis_online": {
+      "label": "Family Member 1 — USCIS Online Account Number, if any"
+    },
+    "familia2_sobrenome": {
+      "label": "Family Member 2 — Family Name (Last Name)"
+    },
+    "familia2_nome": {
+      "label": "Family Member 2 — Given Name (First Name)"
+    },
+    "familia2_nome_meio": {
+      "label": "Family Member 2 — Middle Name"
+    },
+    "familia2_relacao": {
+      "label": "Family Member 2 — Relationship to the Principal Immigrant"
+    },
+    "familia2_data_nascimento": {
+      "label": "Family Member 2 — Date of Birth (MM/DD/YYYY)"
+    },
+    "familia2_alien_number": {
+      "label": "Family Member 2 — Alien Registration Number (A-Number), if any"
+    },
+    "familia2_uscis_online": {
+      "label": "Family Member 2 — USCIS Online Account Number, if any"
+    },
+    "familia3_sobrenome": {
+      "label": "Family Member 3 — Family Name (Last Name)"
+    },
+    "familia3_nome": {
+      "label": "Family Member 3 — Given Name (First Name)"
+    },
+    "familia3_nome_meio": {
+      "label": "Family Member 3 — Middle Name"
+    },
+    "familia3_relacao": {
+      "label": "Family Member 3 — Relationship to the Principal Immigrant"
+    },
+    "familia3_data_nascimento": {
+      "label": "Family Member 3 — Date of Birth (MM/DD/YYYY)"
+    },
+    "familia3_alien_number": {
+      "label": "Family Member 3 — Alien Registration Number (A-Number), if any"
+    },
+    "familia3_uscis_online": {
+      "label": "Family Member 3 — USCIS Online Account Number, if any"
+    },
+    "familia4_sobrenome": {
+      "label": "Family Member 4 — Family Name (Last Name)"
+    },
+    "familia4_nome": {
+      "label": "Family Member 4 — Given Name (First Name)"
+    },
+    "familia4_nome_meio": {
+      "label": "Family Member 4 — Middle Name"
+    },
+    "familia4_relacao": {
+      "label": "Family Member 4 — Relationship to the Principal Immigrant"
+    },
+    "familia4_data_nascimento": {
+      "label": "Family Member 4 — Date of Birth (MM/DD/YYYY)"
+    },
+    "familia4_alien_number": {
+      "label": "Family Member 4 — Alien Registration Number (A-Number), if any"
+    },
+    "familia4_uscis_online": {
+      "label": "Family Member 4 — USCIS Online Account Number, if any"
+    },
+    "total_imigrantes_patrocinados": {
+      "label": "Total number of immigrants you are sponsoring on this affidavit"
+    },
+    "household_voce_mesmo": {
+      "label": "Yourself (normally '1')",
+      "hint": "Count yourself as 1."
+    },
+    "household_conjuge": {
+      "label": "Spouse, if married and not already counted above (number, or '0')",
+      "hint": "Count your spouse here only if they are NOT the same principal immigrant you're sponsoring (in that case they're already counted elsewhere) and haven't been added in another field."
+    },
+    "household_filhos_dependentes": {
+      "label": "Dependent children not already counted above (number, or '0')",
+      "hint": "Unmarried children under 21 who depend on you financially, even if they don't live with you — don't recount anyone already listed under \"Family members\" above."
+    },
+    "household_outros_dependentes": {
+      "label": "Other dependents not already counted above (number, or '0')",
+      "hint": "Anyone you claimed as a dependent on your most recent federal tax return, beyond who's already counted above."
+    },
+    "household_outros_patrocinados_antes": {
+      "label": "Other persons previously sponsored on Form I-864/I-864EZ still under your responsibility (number, or '0')",
+      "hint": "People you previously sponsored on an earlier I-864/I-864EZ still count toward your household until they become U.S. citizens or earn 40 quarters of work — in practice, 40 Social Security work 'quarters' (credits) add up to roughly 10 years of legal work in the U.S. (you can earn at most 4 credits per year) — even if they no longer live with you."
+    },
+    "household_parentes_mesma_residencia": {
+      "label": "Siblings, parents, or adult children in the same residence combining income via Form I-864A (number, or '0')",
+      "hint": "Only count relatives (siblings, parents, adult children) who live with you AND whose income you're combining with yours via Form I-864A — not everyone who simply lives in the same home."
+    },
+    "household_total": {
+      "label": "Total household size (sum of all items above)",
+      "hint": "Double-check this sum carefully: a mistake here can change your minimum required income. If you're unsure who counts, confirm with our team before submitting."
+    },
+    "sponsor_empregado": {
+      "label": "Are you currently employed?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "sponsor_ocupacao_atual": {
+      "label": "Your current occupation (what you do as an employee)"
+    },
+    "sponsor_empregador1_nome": {
+      "label": "Employer 1 Name"
+    },
+    "sponsor_empregador2_nome": {
+      "label": "Employer 2 Name (if applicable)"
+    },
+    "sponsor_autonomo": {
+      "label": "Are you self-employed?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "sponsor_autonomo_ocupacao": {
+      "label": "Occupation as self-employed"
+    },
+    "sponsor_aposentado": {
+      "label": "Are you retired?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "sponsor_aposentado_desde": {
+      "label": "Retired since (MM/DD/YYYY)"
+    },
+    "sponsor_desempregado": {
+      "label": "Are you unemployed?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "sponsor_desempregado_desde": {
+      "label": "Unemployed since (MM/DD/YYYY)"
+    },
+    "sponsor_renda_individual_atual": {
+      "label": "Your current individual annual income (USD)",
+      "hint": "Your CURRENT income, not necessarily what you reported on your most recent tax return — if you changed jobs or got a raise, use today's figure."
+    },
+    "pessoa1_nome": {
+      "label": "Income from another household member — Person 1: Name",
+      "hint": "Only fill this in if you're combining income from someone in your household to meet the minimum requirement — that person will need to sign a separate Form I-864A (unless they are the principal immigrant themself)."
+    },
+    "pessoa1_relacao": {
+      "label": "Person 1 — Relationship to You"
+    },
+    "pessoa1_renda": {
+      "label": "Person 1 — Current Income (USD)",
+      "hint": "That person's current income — it will be added to yours in the household income total."
+    },
+    "pessoa2_nome": {
+      "label": "Person 2 — Name",
+      "hint": "Only fill this in if you're combining income from someone in your household to meet the minimum requirement — that person will need to sign a separate Form I-864A (unless they are the principal immigrant themself)."
+    },
+    "pessoa2_relacao": {
+      "label": "Person 2 — Relationship to You"
+    },
+    "pessoa2_renda": {
+      "label": "Person 2 — Current Income (USD)",
+      "hint": "That person's current income — it will be added to yours in the household income total."
+    },
+    "pessoa3_nome": {
+      "label": "Person 3 — Name",
+      "hint": "Only fill this in if you're combining income from someone in your household to meet the minimum requirement — that person will need to sign a separate Form I-864A (unless they are the principal immigrant themself)."
+    },
+    "pessoa3_relacao": {
+      "label": "Person 3 — Relationship to You"
+    },
+    "pessoa3_renda": {
+      "label": "Person 3 — Current Income (USD)",
+      "hint": "That person's current income — it will be added to yours in the household income total."
+    },
+    "pessoa4_nome": {
+      "label": "Person 4 — Name",
+      "hint": "Only fill this in if you're combining income from someone in your household to meet the minimum requirement — that person will need to sign a separate Form I-864A (unless they are the principal immigrant themself)."
+    },
+    "pessoa4_relacao": {
+      "label": "Person 4 — Relationship to You"
+    },
+    "pessoa4_renda": {
+      "label": "Person 4 — Current Income (USD)",
+      "hint": "That person's current income — it will be added to yours in the household income total."
+    },
+    "renda_familiar_total": {
+      "label": "Total current annual household income (USD)",
+      "hint": "Sum of your individual income plus the income of everyone listed above. Compared against the Federal Poverty Guidelines."
+    },
+    "pessoas_completaram_i864a": {
+      "label": "Did the persons listed above complete Form I-864A?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Form I-864A is a contract where the person whose income you're using legally agrees to help support the immigrant along with you — required for everyone listed above whose income was counted, except the principal immigrant themself in some cases."
+    },
+    "pessoa_nao_precisa_i864a": {
+      "label": "Is any of the persons listed the principal immigrant himself/herself (with no accompanying dependents), which would exempt them from Form I-864A?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "If the income you're combining belongs to the principal immigrant themself (not another household member), they may not need a separate I-864A in this specific case — confirm this exception with our team before submitting."
+    },
+    "pessoa_nao_precisa_i864a_nome": {
+      "label": "That person's name"
+    },
+    "declarou_impostos_3anos": {
+      "label": "Did you file a federal income tax return for each of the 3 most recent tax years?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Only the most recent tax year's return must be attached. Attaching the prior 2 years is optional and usually only helps if your income was declining and you want to show stability."
+    },
+    "imposto_ano1_ano": {
+      "label": "Most recent tax year"
+    },
+    "imposto_ano1_renda": {
+      "label": "Total income reported for that year (USD, or 'zero'/'N/A')"
+    },
+    "imposto_ano2_ano": {
+      "label": "2nd most recent tax year (optional)"
+    },
+    "imposto_ano2_renda": {
+      "label": "Total income reported for that year (optional)"
+    },
+    "imposto_ano3_ano": {
+      "label": "3rd most recent tax year (optional)"
+    },
+    "imposto_ano3_renda": {
+      "label": "Total income reported for that year (optional)"
+    },
+    "nao_precisou_declarar_impostos": {
+      "label": "Were you not required to file a federal income tax return because your income was below the IRS filing threshold?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Only check this if your income that year was LEGALLY below the threshold requiring a return — not the same as simply choosing not to file. If unsure, confirm with our team."
+    },
+    "ativo_saldo_contas": {
+      "label": "Balance of all checking/savings accounts (USD)",
+      "hint": "Only complete this Part 7 if your income is NOT sufficient to meet the Federal Poverty Guidelines."
+    },
+    "ativo_imoveis": {
+      "label": "Net value of real estate (appraised value minus mortgage debt) (USD)",
+      "hint": "The property's value MINUS any remaining mortgage or loan balance — not the property's gross value."
+    },
+    "ativo_acoes_titulos": {
+      "label": "Net value of stocks, bonds, certificates of deposit, and other assets (USD)"
+    },
+    "ativo_total_patrocinador": {
+      "label": "Total of your assets (sum of the items above) (USD)",
+      "hint": "Add up the items above. Assets only help if your income alone isn't enough: you generally need assets worth about 3x the shortfall (if you're a citizen sponsoring a spouse or child) or 5x the shortfall (in other cases)."
+    },
+    "ativo_total_membros_familia": {
+      "label": "Total assets of household members (Form I-864A) (USD)"
+    },
+    "ativo_imigrante_saldo_contas": {
+      "label": "Principal immigrant's assets — Account balances (USD)",
+      "hint": "Only fill in this section if the principal immigrant themselves has U.S. assets that can help supplement the sponsor's income — an uncommon situation. In most cases, leave blank."
+    },
+    "ativo_imigrante_imoveis": {
+      "label": "Principal immigrant's assets — Real estate (USD)"
+    },
+    "ativo_imigrante_acoes_titulos": {
+      "label": "Principal immigrant's assets — Stocks/bonds (USD)"
+    },
+    "ativo_imigrante_total": {
+      "label": "Principal immigrant's assets — Total (USD)"
+    },
+    "ativo_valor_total_geral": {
+      "label": "Total value of all assets (USD)",
+      "hint": "Total of all assets used to supplement income — yours, any household members' (via I-864A), and the principal immigrant's, when applicable."
+    },
+    "leu_ingles": {
+      "label": "Sponsor's statement",
+      "options": {
+        "leu_ingles": "I can read and understand English, and I have read and understood every question and instruction on this affidavit of support, as well as my answers",
+        "leu_interprete": "The interpreter named in Part 9 read every question and instruction and my answers to me in a language I understand fluently"
+      },
+      "hint": "Select the second option only if you needed an interpreter to understand the form in another language — in that case, also fill in Part 9 with the interpreter's information."
+    },
+    "idioma_interprete": {
+      "label": "In what language did the interpreter read the form to you?"
+    },
+    "preparador_ajudou": {
+      "label": "Did someone prepare this form for you, at your request and based only on the information you provided?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No, I completed it myself"
+      },
+      "hint": "A \"preparer\" is someone who helped you fill out the form based only on information you provided (e.g., a consultant) — different from an interpreter, who only translated."
+    },
+    "preparador_nome": {
+      "label": "Preparer's name"
+    },
+    "sponsor_telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "sponsor_celular": {
+      "label": "Mobile Telephone Number (if any)"
+    },
+    "sponsor_email": {
+      "label": "Email Address (if any)"
+    },
+    "sponsor_data_assinatura": {
+      "label": "Date of Signature (filled in on the day of filing, MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter — Business or Organization Name (if any)"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Daytime Telephone Number"
+    },
+    "int_celular": {
+      "label": "Interpreter — Mobile Telephone Number (if any)"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address (if any)"
+    },
+    "int_idioma": {
+      "label": "Interpreter — Language of Fluency"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter — Date of Signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer — Business or Organization Name (if any)"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Daytime Telephone Number"
+    },
+    "prep_celular": {
+      "label": "Preparer — Mobile Telephone Number (if any)"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address (if any)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer — Date of Signature (MM/DD/YYYY)"
+    }
+  }
+}

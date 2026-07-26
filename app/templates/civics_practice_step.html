@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}{{ t('civics_cta_practice') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+
+<p class="muted" style="margin-bottom:8px;">
+  <span class="badge in_progress">{{ t('civics_q_of_total') }} {{ position }} / {{ total }}</span>
+  &nbsp;
+  <span class="badge completed">{{ t('civics_progress_correct') }}: {{ state.correct }}</span>
+  &nbsp;
+  <span class="badge in_progress" style="background:var(--error-bg);color:var(--error);">{{ t('civics_progress_wrong') }}: {{ state.wrong }}</span>
+</p>
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-fill" style="width: {{ (position / total * 100) if total else 0 }}%;"></div>
+  </div>
+</div>
+
+<div class="card">
+  {% if question.starred %}<span class="slug" style="margin-bottom:10px;">★ 65/20</span>{% endif %}
+  <h2>{{ question.question }}</h2>
+  <p class="muted" style="font-size:1rem;">{{ question.question_pt }}</p>
+
+  {% if question.dynamic %}
+    <details style="margin:18px 0;">
+      <summary class="btn secondary" style="display:inline-block;cursor:pointer;">{{ t('civics_reveal_answer') }}</summary>
+      <div class="card" style="background:var(--accent-soft);margin-top:12px;box-shadow:none;">
+        <ul class="service-bullets" style="margin:0;">
+          {% for a in question.answers %}<li>{{ a }}</li>{% endfor %}
+        </ul>
+        <p class="muted" style="margin-top:8px;margin-bottom:0;">{{ question.answers_pt|join(" · ") }}</p>
+        <p class="elig-msg tone-info" style="margin-top:10px;margin-bottom:0;">{{ t('civics_dynamic_note') }}</p>
+      </div>
+    </details>
+
+    <p style="font-weight:600;margin-bottom:10px;">{{ t('civics_self_grade_prompt') }}</p>
+    <form method="post" action="{{ url_for('civics.practice_answer') }}" style="display:flex;gap:12px;flex-wrap:wrap;">
+      <button type="submit" name="result" value="correct" class="btn">{{ t('civics_grade_correct') }}</button>
+      <button type="submit" name="result" value="wrong" class="btn secondary">{{ t('civics_grade_wrong') }}</button>
+    </form>
+  {% else %}
+    <p style="font-weight:600;margin:18px 0 10px;">{{ t('civics_choose_answer_prompt') }}</p>
+    <form method="post" action="{{ url_for('civics.practice_answer') }}">
+      <ul class="option-list">
+        {% for opt in mc_options %}
+        <li><label>
+          <input type="radio" name="choice" value="{{ opt }}" required>
+          {{ opt }}
+        </label></li>
+        {% endfor %}
+      </ul>
+      <button type="submit" class="btn">{{ t('civics_confirm_choice') }}</button>
+    </form>
+  {% endif %}
+</div>
+{% endblock %}

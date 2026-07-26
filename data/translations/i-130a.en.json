@@ -1,0 +1,489 @@
+{
+  "title": "Supplemental Information for Spouse Beneficiary — I-130A",
+  "sections": {
+    "sb_basico": "Part 1 — Basic Information About the Spouse Beneficiary",
+    "sb_end": "Part 1 — Address History of the Spouse Beneficiary",
+    "sb_pais": "Part 1 — Parents of the Spouse Beneficiary",
+    "sb_emprego": "Part 2 and 3 — Employment History of the Spouse Beneficiary",
+    "assinatura": "Part 4 — Spouse Beneficiary's Statement",
+    "interprete": "Part 5 — Interpreter",
+    "preparador": "Part 6 — Preparer"
+  },
+  "questions": {
+    "sb_sobrenome": {
+      "label": "Family Name (Last Name)"
+    },
+    "sb_nome": {
+      "label": "Given Name (First Name)"
+    },
+    "sb_nome_meio": {
+      "label": "Middle Name"
+    },
+    "sb_alien_number": {
+      "label": "Alien Registration Number (A-Number) — if applicable",
+      "hint": "Format: A followed by 8 or 9 digits. Example: A012345678"
+    },
+    "sb_uscis_online": {
+      "label": "USCIS Online Account Number — if applicable",
+      "hint": "12 digits, no dashes."
+    },
+    "sb_telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "sb_celular": {
+      "label": "Mobile Telephone Number — if any"
+    },
+    "sb_email": {
+      "label": "Email Address — if any"
+    },
+    "sb_end_rua": {
+      "label": "Current Address — Street Number and Name"
+    },
+    "sb_end_tipo_unidade": {
+      "label": "Current Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply to your address."
+    },
+    "sb_end_num_unidade": {
+      "label": "Unit Number (Apt/Ste/Flr)"
+    },
+    "sb_end_cidade": {
+      "label": "Current Address — City or Town"
+    },
+    "sb_end_estado": {
+      "label": "State (abbreviation, if U.S.)"
+    },
+    "sb_end_cep": {
+      "label": "ZIP Code (if U.S.)"
+    },
+    "sb_end_provincia": {
+      "label": "Province (if outside the U.S.)"
+    },
+    "sb_end_codigo_postal": {
+      "label": "Postal Code (if outside the U.S.)"
+    },
+    "sb_end_pais": {
+      "label": "Country"
+    },
+    "sb_end_desde": {
+      "label": "Living at this address since (MM/DD/YYYY)"
+    },
+    "sb_end_ate": {
+      "label": "Until when (MM/DD/YYYY, or 'PRESENT' if you still live there)"
+    },
+    "sb_end_ant1_rua": {
+      "label": "Previous Address — Street Number and Name (last 5 years, if you had another address)",
+      "hint": "Only fill this in if you've lived at your current address for less than 5 years (counting from today). If you've lived there 5 years or more, leave it blank."
+    },
+    "sb_end_ant1_tipo_unidade": {
+      "label": "Previous Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "sb_end_ant1_num_unidade": {
+      "label": "Previous Address — Unit Number"
+    },
+    "sb_end_ant1_cidade": {
+      "label": "Previous Address — City or Town"
+    },
+    "sb_end_ant1_estado": {
+      "label": "Previous Address — State (abbreviation, if U.S.)"
+    },
+    "sb_end_ant1_cep": {
+      "label": "Previous Address — ZIP Code (if U.S.)"
+    },
+    "sb_end_ant1_provincia": {
+      "label": "Previous Address — Province (if outside the U.S.)"
+    },
+    "sb_end_ant1_codigo_postal": {
+      "label": "Previous Address — Postal Code (if outside the U.S.)"
+    },
+    "sb_end_ant1_pais": {
+      "label": "Previous Address — Country"
+    },
+    "sb_end_ant1_desde": {
+      "label": "Previous Address — lived there since (MM/DD/YYYY)"
+    },
+    "sb_end_ant1_ate": {
+      "label": "Previous Address — lived there until (MM/DD/YYYY)"
+    },
+    "sb_end_ext_rua": {
+      "label": "Last Address Outside the U.S. (more than 1 year, even if already listed above) — Street Number and Name",
+      "hint": "A separate, required USCIS question: your last foreign address where you lived for more than 1 year — even if already listed above, or if it was many years ago. Used for background-check purposes."
+    },
+    "sb_end_ext_tipo_unidade": {
+      "label": "Address Outside the U.S. — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "sb_end_ext_num_unidade": {
+      "label": "Address Outside the U.S. — Unit Number"
+    },
+    "sb_end_ext_cidade": {
+      "label": "Address Outside the U.S. — City or Town"
+    },
+    "sb_end_ext_provincia": {
+      "label": "Address Outside the U.S. — Province"
+    },
+    "sb_end_ext_codigo_postal": {
+      "label": "Address Outside the U.S. — Postal Code"
+    },
+    "sb_end_ext_pais": {
+      "label": "Address Outside the U.S. — Country"
+    },
+    "sb_end_ext_desde": {
+      "label": "Address Outside the U.S. — since (MM/DD/YYYY)"
+    },
+    "sb_end_ext_ate": {
+      "label": "Address Outside the U.S. — until (MM/DD/YYYY)"
+    },
+    "pai1_sobrenome": {
+      "label": "Parent 1 — Family Name (maiden name, if applicable)",
+      "hint": "Your parent's birth surname (before any marriage), not their current surname if different. If a parent is deceased or you don't have this information, fill in what you know and let the team know."
+    },
+    "pai1_nome": {
+      "label": "Parent 1 — Given Name"
+    },
+    "pai1_nome_meio": {
+      "label": "Parent 1 — Middle Name"
+    },
+    "pai1_data_nascimento": {
+      "label": "Parent 1 — Date of Birth (MM/DD/YYYY)"
+    },
+    "pai1_sexo": {
+      "label": "Parent 1 — Sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "pai1_cidade_nascimento": {
+      "label": "Parent 1 — City/Town of Birth"
+    },
+    "pai1_pais_nascimento": {
+      "label": "Parent 1 — Country of Birth"
+    },
+    "pai1_cidade_residencia": {
+      "label": "Parent 1 — City/Town of Current Residence"
+    },
+    "pai1_pais_residencia": {
+      "label": "Parent 1 — Country of Current Residence"
+    },
+    "pai2_sobrenome": {
+      "label": "Parent 2 — Family Name (maiden name, if applicable)",
+      "hint": "Your parent's birth surname (before any marriage), not their current surname if different. If a parent is deceased or you don't have this information, fill in what you know and let the team know."
+    },
+    "pai2_nome": {
+      "label": "Parent 2 — Given Name"
+    },
+    "pai2_nome_meio": {
+      "label": "Parent 2 — Middle Name"
+    },
+    "pai2_data_nascimento": {
+      "label": "Parent 2 — Date of Birth (MM/DD/YYYY)"
+    },
+    "pai2_sexo": {
+      "label": "Parent 2 — Sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "pai2_cidade_nascimento": {
+      "label": "Parent 2 — City/Town of Birth"
+    },
+    "pai2_pais_nascimento": {
+      "label": "Parent 2 — Country of Birth"
+    },
+    "pai2_cidade_residencia": {
+      "label": "Parent 2 — City/Town of Current Residence"
+    },
+    "pai2_pais_residencia": {
+      "label": "Parent 2 — Country of Current Residence"
+    },
+    "emp1_nome": {
+      "label": "Current Employer — Employer/Company Name",
+      "hint": "If you are currently unemployed, enter 'Unemployed'."
+    },
+    "emp1_end_rua": {
+      "label": "Current Employer — Street Number and Name"
+    },
+    "emp1_end_tipo_unidade": {
+      "label": "Current Employer — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "emp1_end_num_unidade": {
+      "label": "Current Employer — Unit Number"
+    },
+    "emp1_end_cidade": {
+      "label": "Current Employer — City or Town"
+    },
+    "emp1_end_estado": {
+      "label": "Current Employer — State (abbreviation, if U.S.)"
+    },
+    "emp1_end_cep": {
+      "label": "Current Employer — ZIP Code (if U.S.)"
+    },
+    "emp1_end_provincia": {
+      "label": "Current Employer — Province (if outside the U.S.)"
+    },
+    "emp1_end_codigo_postal": {
+      "label": "Current Employer — Postal Code (if outside the U.S.)"
+    },
+    "emp1_end_pais": {
+      "label": "Current Employer — Country"
+    },
+    "emp1_ocupacao": {
+      "label": "Your Occupation at Current Job"
+    },
+    "emp1_desde": {
+      "label": "Current Employer — employed there since (MM/DD/YYYY)"
+    },
+    "emp1_ate": {
+      "label": "Current Employer — until when (MM/DD/YYYY, or 'PRESENT')"
+    },
+    "emp2_nome": {
+      "label": "Previous Employer — Employer/Company Name (last 5 years, if you had another employer)"
+    },
+    "emp2_end_rua": {
+      "label": "Previous Employer — Street Number and Name"
+    },
+    "emp2_end_tipo_unidade": {
+      "label": "Previous Employer — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "emp2_end_num_unidade": {
+      "label": "Previous Employer — Unit Number"
+    },
+    "emp2_end_cidade": {
+      "label": "Previous Employer — City or Town"
+    },
+    "emp2_end_estado": {
+      "label": "Previous Employer — State (abbreviation, if U.S.)"
+    },
+    "emp2_end_cep": {
+      "label": "Previous Employer — ZIP Code (if U.S.)"
+    },
+    "emp2_end_provincia": {
+      "label": "Previous Employer — Province (if outside the U.S.)"
+    },
+    "emp2_end_codigo_postal": {
+      "label": "Previous Employer — Postal Code (if outside the U.S.)"
+    },
+    "emp2_end_pais": {
+      "label": "Previous Employer — Country"
+    },
+    "emp2_ocupacao": {
+      "label": "Your Occupation at Previous Job"
+    },
+    "emp2_desde": {
+      "label": "Previous Employer — since (MM/DD/YYYY)"
+    },
+    "emp2_ate": {
+      "label": "Previous Employer — until (MM/DD/YYYY)"
+    },
+    "emp3_nome": {
+      "label": "Last Job Outside the U.S. (if not listed above) — Employer/Company Name"
+    },
+    "emp3_end_rua": {
+      "label": "Job Outside the U.S. — Street Number and Name"
+    },
+    "emp3_end_tipo_unidade": {
+      "label": "Job Outside the U.S. — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "emp3_end_num_unidade": {
+      "label": "Job Outside the U.S. — Unit Number"
+    },
+    "emp3_end_cidade": {
+      "label": "Job Outside the U.S. — City or Town"
+    },
+    "emp3_end_estado": {
+      "label": "Job Outside the U.S. — State (abbreviation, if U.S.)"
+    },
+    "emp3_end_cep": {
+      "label": "Job Outside the U.S. — ZIP Code (if U.S.)"
+    },
+    "emp3_end_provincia": {
+      "label": "Job Outside the U.S. — Province"
+    },
+    "emp3_end_codigo_postal": {
+      "label": "Job Outside the U.S. — Postal Code"
+    },
+    "emp3_end_pais": {
+      "label": "Job Outside the U.S. — Country"
+    },
+    "emp3_ocupacao": {
+      "label": "Your Occupation at This Job Outside the U.S."
+    },
+    "emp3_desde": {
+      "label": "Job Outside the U.S. — since (MM/DD/YYYY)"
+    },
+    "emp3_ate": {
+      "label": "Job Outside the U.S. — until (MM/DD/YYYY)"
+    },
+    "ass_leu_ingles": {
+      "label": "Spouse beneficiary's statement",
+      "options": {
+        "leu_ingles": "I can read and understand English, and I have read and understood every question and instruction on this form, as well as my answers",
+        "leu_interprete": "The interpreter named in Part 5 read every question and instruction on this form and my answers to me in a language I understand fluently"
+      },
+      "hint": "Only choose the second option if you don't read or understand English well and needed an interpreter to translate the form for you before signing."
+    },
+    "ass_idioma": {
+      "label": "In what language did the interpreter read the form to you?"
+    },
+    "ass_preparador_ajudou": {
+      "label": "Did someone prepare this form for you, at your request and based only on the information you provided?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No, I completed it myself"
+      },
+      "hint": "Answer \"Yes\" only if someone else (attorney, consultant, friend) filled out this form for you based on your answers. If you typed/filled it out yourself, answer \"No, I filled it out myself,\" even if you got guidance from someone else."
+    },
+    "ass_preparador_nome": {
+      "label": "Preparer's Name"
+    },
+    "ass_data_assinatura": {
+      "label": "Date of Signature (filled in on the day of filing, MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter — Business or Organization Name (if any)"
+    },
+    "int_end_rua": {
+      "label": "Interpreter — Address: Street Number and Name"
+    },
+    "int_end_tipo_unidade": {
+      "label": "Interpreter — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "int_end_num_unidade": {
+      "label": "Interpreter — Unit Number"
+    },
+    "int_end_cidade": {
+      "label": "Interpreter — City or Town"
+    },
+    "int_end_estado": {
+      "label": "Interpreter — State (abbreviation, if U.S.)"
+    },
+    "int_end_cep": {
+      "label": "Interpreter — ZIP Code (if U.S.)"
+    },
+    "int_end_provincia": {
+      "label": "Interpreter — Province (if outside the U.S.)"
+    },
+    "int_end_codigo_postal": {
+      "label": "Interpreter — Postal Code (if outside the U.S.)"
+    },
+    "int_end_pais": {
+      "label": "Interpreter — Country"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Daytime Telephone Number"
+    },
+    "int_celular": {
+      "label": "Interpreter — Mobile Telephone Number (if any)"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address (if any)"
+    },
+    "int_idioma": {
+      "label": "Interpreter — Language of Fluency"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter — Date of Signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer — Business or Organization Name (if any)"
+    },
+    "prep_end_rua": {
+      "label": "Preparer — Address: Street Number and Name"
+    },
+    "prep_end_tipo_unidade": {
+      "label": "Preparer — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      },
+      "hint": "Apt = apartment, Ste = suite, Flr = floor. Leave blank if this doesn't apply."
+    },
+    "prep_end_num_unidade": {
+      "label": "Preparer — Unit Number"
+    },
+    "prep_end_cidade": {
+      "label": "Preparer — City or Town"
+    },
+    "prep_end_estado": {
+      "label": "Preparer — State (abbreviation, if U.S.)"
+    },
+    "prep_end_cep": {
+      "label": "Preparer — ZIP Code (if U.S.)"
+    },
+    "prep_end_provincia": {
+      "label": "Preparer — Province (if outside the U.S.)"
+    },
+    "prep_end_codigo_postal": {
+      "label": "Preparer — Postal Code (if outside the U.S.)"
+    },
+    "prep_end_pais": {
+      "label": "Preparer — Country"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Daytime Telephone Number"
+    },
+    "prep_celular": {
+      "label": "Preparer — Mobile Telephone Number (if any)"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address (if any)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer — Date of Signature (MM/DD/YYYY)"
+    }
+  }
+}

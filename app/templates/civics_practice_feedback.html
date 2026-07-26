@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ t('civics_cta_practice') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+
+<p class="muted" style="margin-bottom:8px;">
+  <span class="badge completed">{{ t('civics_progress_correct') }}: {{ state.correct }}</span>
+  &nbsp;
+  <span class="badge in_progress" style="background:var(--error-bg);color:var(--error);">{{ t('civics_progress_wrong') }}: {{ state.wrong }}</span>
+</p>
+
+<div class="card elig-verdict-banner verdict-{{ 'eligible' if feedback.was_correct else 'needs_review' }}">
+  <h1 style="font-size:1.15rem;margin:0;">
+    {% if feedback.was_correct %}{{ icon('check-circle', 20) }} {{ t('civics_feedback_correct') }}
+    {% else %}{{ icon('shield-check', 20) }} {{ t('civics_feedback_wrong') }}{% endif %}
+  </h1>
+</div>
+
+<div class="card">
+  <h2>{{ question.question }}</h2>
+  <p class="muted" style="font-size:1rem;">{{ question.question_pt }}</p>
+
+  {% if not feedback.was_correct %}
+  <p class="elig-msg tone-danger">{{ t('civics_your_answer') }}: {{ feedback.chosen }}</p>
+  {% endif %}
+  <p class="elig-msg tone-success">{{ t('civics_correct_answer') }}: {{ question.mc_correct }}</p>
+
+  <ul class="service-bullets" style="margin-top:14px;">
+    {% for a in question.answers %}<li>{{ a }}</li>{% endfor %}
+  </ul>
+  <p class="muted" style="margin-top:8px;">{{ question.answers_pt|join(" · ") }}</p>
+
+  <form method="post" action="{{ url_for('civics.practice_continue') }}" style="margin-top:18px;">
+    <button type="submit" class="btn">{{ t('continue') }}</button>
+  </form>
+</div>
+{% endblock %}

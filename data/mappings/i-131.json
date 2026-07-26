@@ -1,0 +1,618 @@
+{
+  "form": "I-131",
+  "_scope_note": "Escopado a Advance Parole (Parte 1, item 5.A -- baseado em I-485 pendente) para o pacote Green Card AOS. NÃO cobre Reentry Permit, Refugee Travel Document, TPS Travel Authorization, Parole Inicial/In Place/Re-parole, nem os outros motivos de Advance Parole (5.B-5.M) -- esses ramos do formulário oficial foram deliberadamente deixados de fora.",
+  "fields": [
+    {
+      "pdf_field": "form1[0].P1[0].CB_AppType[4]",
+      "type": "checkbox",
+      "question_id": "i131_confirma_i485",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P1[0].P1_Line5A[0]",
+      "type": "text",
+      "question_id": "i131_recibo_i485"
+    },
+    {
+      "pdf_field": "form1[0].P4[0].Part2_Line1_FamilyName[0]",
+      "type": "text",
+      "question_id": "nome_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].P4[0].Part2_Line1_GivenName[0]",
+      "type": "text",
+      "question_id": "nome_nome"
+    },
+    {
+      "pdf_field": "form1[0].P4[0].Part2_Line1_MiddleName[0]",
+      "type": "text",
+      "question_id": "nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_FamilyName1[0]",
+      "type": "text",
+      "question_id": "outro_nome1_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_GivenName1[0]",
+      "type": "text",
+      "question_id": "outro_nome1_nome"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_MiddleName1[0]",
+      "type": "text",
+      "question_id": "outro_nome1_meio"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_FamilyName2[0]",
+      "type": "text",
+      "question_id": "outro_nome2_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_GivenName2[0]",
+      "type": "text",
+      "question_id": "outro_nome2_nome"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_MiddleName2[0]",
+      "type": "text",
+      "question_id": "outro_nome2_meio"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_FamilyName3[0]",
+      "type": "text",
+      "question_id": "outro_nome3_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_GivenName3[0]",
+      "type": "text",
+      "question_id": "outro_nome3_nome"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line2_MiddleName3[0]",
+      "type": "text",
+      "question_id": "outro_nome3_meio"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_InCareofName[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_cuidado_de"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_rua"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_Unit[0]",
+      "type": "checkbox",
+      "question_id": "endereco_correspondencia_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_Unit[1]",
+      "type": "checkbox",
+      "question_id": "endereco_correspondencia_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_Unit[2]",
+      "type": "checkbox",
+      "question_id": "endereco_correspondencia_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_numero_unidade"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_CityTown[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_cidade"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_State[0]",
+      "type": "select",
+      "question_id": "endereco_correspondencia_estado"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_ZipCode[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_cep"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_PostalCode[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_codigo_postal_intl"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_Province[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_provincia"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line3_Country[0]",
+      "type": "text",
+      "question_id": "endereco_correspondencia_pais"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_InCareofName[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_cuidado_de"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_StreetNumberName[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_rua"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_Unit[0]",
+      "type": "checkbox",
+      "question_id": "endereco_fisico_tipo_unidade",
+      "check_if_answer": "ste"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_Unit[1]",
+      "type": "checkbox",
+      "question_id": "endereco_fisico_tipo_unidade",
+      "check_if_answer": "apt"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_Unit[2]",
+      "type": "checkbox",
+      "question_id": "endereco_fisico_tipo_unidade",
+      "check_if_answer": "flr"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_AptSteFlrNumber[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_numero_unidade"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_CityTown[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_cidade"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_State[0]",
+      "type": "select",
+      "question_id": "endereco_fisico_estado"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_ZipCode[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_cep"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_PostalCode[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_codigo_postal_intl"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_Province[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_provincia"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line4_Country[0]",
+      "type": "text",
+      "question_id": "endereco_fisico_pais"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].#area[0].Part2_Line5_AlienNumber[0]",
+      "type": "text",
+      "question_id": "numero_a"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line6_CountryOfBirth[0]",
+      "type": "text",
+      "question_id": "pais_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line7_CountryOfCitizenshiporNationality[0]",
+      "type": "text",
+      "question_id": "pais_cidadania"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line8_Gender[0]",
+      "type": "checkbox",
+      "question_id": "sexo",
+      "check_if_answer": "F"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line8_Gender[1]",
+      "type": "checkbox",
+      "question_id": "sexo",
+      "check_if_answer": "M"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line9_DateOfBirth[0]",
+      "type": "date",
+      "question_id": "data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].#area[1].Part2_Line10_SSN[0]",
+      "type": "text",
+      "question_id": "ssn"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line11_USCISOnlineAcctNumber[0]",
+      "type": "text",
+      "question_id": "uscis_online_account"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line12_ClassofAdmission[0]",
+      "type": "text",
+      "question_id": "classe_admissao"
+    },
+    {
+      "pdf_field": "form1[0].P5[0].Part2_Line13_I94RecordNo[0]",
+      "type": "text",
+      "question_id": "numero_i94"
+    },
+    {
+      "pdf_field": "form1[0].P6[0].Part2_Line14_I94ExpDate[0]",
+      "type": "date",
+      "question_id": "data_expiracao_i94"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line1_Ethnicity[0]",
+      "type": "checkbox",
+      "question_id": "etnia",
+      "check_if_answer": "NH"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line1_Ethnicity[1]",
+      "type": "checkbox",
+      "question_id": "etnia",
+      "check_if_answer": "H"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line2_Race_Black[0]",
+      "type": "checkbox",
+      "question_id": "raca_negro",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line2_Race_Hawaiian[0]",
+      "type": "checkbox",
+      "question_id": "raca_havaiano_pacifico",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line2_Race_American[0]",
+      "type": "checkbox",
+      "question_id": "raca_indigena_americano",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line2_Race_Asian[0]",
+      "type": "checkbox",
+      "question_id": "raca_asiatico",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line2_Race_White[0]",
+      "type": "checkbox",
+      "question_id": "raca_branco",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line3_HeightFeet[0]",
+      "type": "text",
+      "question_id": "altura_pes"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line3_HeightInches[0]",
+      "type": "text",
+      "question_id": "altura_polegadas"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line4_Pound1[0]",
+      "type": "text",
+      "question_id": "peso",
+      "digit_split": 1
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line4_Pound2[0]",
+      "type": "text",
+      "question_id": "peso",
+      "digit_split": 2
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line4_Pound3[0]",
+      "type": "text",
+      "question_id": "peso",
+      "digit_split": 3
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[7]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "azul"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[6]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "verde"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[5]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "avela"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[4]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "rosa"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[2]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "marrom_avermelhado"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[0]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "castanho"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[8]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "preto"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[3]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "outro"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line5_EyeColor[1]",
+      "type": "checkbox",
+      "question_id": "cor_olhos",
+      "check_if_answer": "cinza"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[0]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "careca"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[1]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "loiro"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[2]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "grisalho"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[3]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "arenoso"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[4]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "outro"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[5]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "branco"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[6]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "ruivo"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[7]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "castanho"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P3_Line6_HairColor[8]",
+      "type": "checkbox",
+      "question_id": "cor_cabelo",
+      "check_if_answer": "preto"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line1_YesNo[0]",
+      "type": "checkbox",
+      "question_id": "historico_processo_remocao",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line1_YesNo[1]",
+      "type": "checkbox",
+      "question_id": "historico_processo_remocao",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line2a_YesNo[0]",
+      "type": "checkbox",
+      "question_id": "historico_reentry_refugee_emitido",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line2a_YesNo[1]",
+      "type": "checkbox",
+      "question_id": "historico_reentry_refugee_emitido",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line2b_DateIssued[0]",
+      "type": "date",
+      "question_id": "historico_reentry_refugee_data"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line2c_Disposition[0]",
+      "type": "text",
+      "question_id": "historico_reentry_refugee_situacao"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line3a_YesNo[0]",
+      "type": "checkbox",
+      "question_id": "historico_advance_parole_emitido",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line3a_YesNo[1]",
+      "type": "checkbox",
+      "question_id": "historico_advance_parole_emitido",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line3b_DateIssued[0]",
+      "type": "date",
+      "question_id": "historico_advance_parole_data"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line3c_Disposition[0]",
+      "type": "text",
+      "question_id": "historico_advance_parole_situacao"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line4_YesNo[0]",
+      "type": "checkbox",
+      "question_id": "historico_solicitando_substituicao",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].P7[0].P4_Line4_YesNo[1]",
+      "type": "checkbox",
+      "question_id": "historico_solicitando_substituicao",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line1_DateOfDeparture[0]",
+      "type": "date",
+      "question_id": "viagem_data_partida"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line2_Purpose[0]",
+      "type": "text",
+      "question_id": "viagem_proposito"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line3_ListCountries[0]",
+      "type": "text",
+      "question_id": "viagem_paises"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line4_CB[0]",
+      "type": "checkbox",
+      "question_id": "viagem_quantidade_viagens",
+      "check_if_answer": "O"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line4_CB[1]",
+      "type": "checkbox",
+      "question_id": "viagem_quantidade_viagens",
+      "check_if_answer": "M"
+    },
+    {
+      "pdf_field": "form1[0].#subform[9].P7_Line5_ExpectedLengthTrip[0]",
+      "type": "text",
+      "question_id": "viagem_duracao_esperada"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].Part10_Line1_DayPhone[0]",
+      "type": "text",
+      "question_id": "contato_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].Part10_Line2_MobilePhone[0]",
+      "type": "text",
+      "question_id": "contato_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[10].Part10_Line3_Email[0]",
+      "type": "text",
+      "question_id": "contato_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].Part11_Line1_InterpreterFamilyName[0]",
+      "type": "text",
+      "question_id": "interprete_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].Part11_Line1_InterpreterGivenName[0]",
+      "type": "text",
+      "question_id": "interprete_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].Part11_Line2_NameofBusinessorOrgName[0]",
+      "type": "text",
+      "question_id": "interprete_empresa"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].Part11_Line3_DayPhone[0]",
+      "type": "text",
+      "question_id": "interprete_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].Part11_Line4_MobilePhone[0]",
+      "type": "text",
+      "question_id": "interprete_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].Part11_Line5_Email[0]",
+      "type": "text",
+      "question_id": "interprete_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[11].P11_Language[0]",
+      "type": "text",
+      "question_id": "interprete_idioma"
+    },
+    {
+      "pdf_field": "form1[0].#subform[12].Part12_Line1_FamilyName[0]",
+      "type": "text",
+      "question_id": "preparador_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[12].Part12_Line1_GivenName[0]",
+      "type": "text",
+      "question_id": "preparador_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[12].Part12_Line2_NameofBusinessorOrgName[0]",
+      "type": "text",
+      "question_id": "preparador_empresa"
+    },
+    {
+      "pdf_field": "form1[0].#subform[12].Part12_Line3_DayPhone[0]",
+      "type": "text",
+      "question_id": "preparador_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[12].Part12_Line4_MobilePhone[0]",
+      "type": "text",
+      "question_id": "preparador_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[12].Part12_Line5_Email[0]",
+      "type": "text",
+      "question_id": "preparador_email"
+    }
+  ]
+}

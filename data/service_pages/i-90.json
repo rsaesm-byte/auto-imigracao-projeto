@@ -1,0 +1,132 @@
+{
+  "tagline": "Substitua ou renove seu Green Card",
+  "tagline_en": "Replace or renew your green card",
+  "what_is": [
+    "O Formulário I-90 é usado para substituir ou renovar o Cartão de Residente Permanente (Green Card) — seja porque ele expirou, foi perdido, roubado, danificado, tem informações desatualizadas (como mudança de nome), ou porque a USCIS cometeu um erro no cartão anterior."
+  ],
+  "what_is_en": [
+    "Form I-90 is used to replace or renew a Permanent Resident Card (green card) — whether it expired, was lost, stolen, damaged, has outdated information (like a name change), or USCIS made an error on the previous card."
+  ],
+  "who_needs": [
+    "Residentes permanentes com cartão vencido ou perto de vencer.",
+    "Quem teve o cartão perdido, roubado ou danificado.",
+    "Quem mudou de nome ou outra informação pessoal desde a emissão do cartão.",
+    "Residentes condicionais que tiveram o status convertido automaticamente para permanente."
+  ],
+  "who_needs_en": [
+    "Permanent residents with an expired or soon-to-expire card.",
+    "Anyone whose card was lost, stolen, or damaged.",
+    "Anyone who changed their name or other personal information since the card was issued.",
+    "Conditional residents whose status was automatically converted to permanent."
+  ],
+  "eligibility": [
+    "Não use o I-90 se você é residente condicional querendo remover as condições — esse é o I-751 (por casamento) ou o I-829 (por investimento), não o I-90.",
+    "Como residente permanente, você é legalmente obrigado a portar um Green Card válido e não vencido a todo momento — pedir a naturalização (N-400) não elimina essa exigência enquanto o processo estiver em andamento.",
+    "Alguns motivos específicos (cartão nunca recebido, ou erro cometido pela USCIS, por exemplo) são isentos da taxa de protocolo.",
+    "Nosso questionário identifica automaticamente se o seu motivo se enquadra em uma isenção."
+  ],
+  "eligibility_en": [
+    "Don't use the I-90 if you're a conditional resident trying to remove conditions — that's the I-751 (marriage-based) or I-829 (investment-based), not the I-90.",
+    "As a permanent resident, you're legally required to carry a valid, unexpired Green Card at all times — applying for naturalization (N-400) doesn't remove this requirement while that process is ongoing.",
+    "Some specific reasons (a card never received, or a USCIS error, for example) are exempt from the filing fee.",
+    "Our questionnaire automatically identifies whether your reason qualifies for an exemption."
+  ],
+  "required_evidence": [
+    "Frente e verso do cartão antigo, quando disponível (cartão danificado, com erro, ou com dados desatualizados).",
+    "Boletim de ocorrência, em caso de roubo.",
+    "Prova da mudança de nome ou outro dado pessoal (certidão de casamento, decisão judicial), quando o motivo for atualização de informação.",
+    "Cópia do certificado de residência condicional convertida, se o motivo for conversão automática de status condicional para permanente."
+  ],
+  "required_evidence_en": [
+    "Both sides of the old card, when available (damaged card, USCIS error, or outdated information).",
+    "A police report, in case of theft.",
+    "Proof of the name or other personal-data change (marriage certificate, court order), when the reason is updating information.",
+    "A copy of the converted conditional-residence documentation, if the reason is automatic conversion from conditional to permanent status."
+  ],
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
+    "Checklist de documentos de apoio personalizado para as suas respostas — não uma lista genérica.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada."
+  ],
+  "whats_included_en": [
+    "The official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "A filing checklist: who must sign, how to sign correctly, the exact fee amount, and where to send it (online or paper).",
+    "A supporting-documents checklist tailored to your actual answers — not a generic list.",
+    "Progress saved automatically: close the tab and come back anytime, nothing is lost."
+  ],
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido e os checklists de protocolo e de documentos, prontos para o seu processo."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust any of them before continuing.",
+    "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "common_mistakes": [
+    "Usar o I-90 por engano quando na verdade precisa remover condições da residência — nesse caso o formulário certo é o I-751 ou o I-829, não o I-90.",
+    "Selecionar o motivo errado na Parte 2 — cada motivo pode exigir documentos de apoio diferentes.",
+    "Não anexar o cartão antigo (ou um boletim de ocorrência, em caso de roubo) quando exigido.",
+    "Deixar em branco um dos campos que causam rejeição automática: sobrenome, endereço postal e data de nascimento (Parte 1).",
+    "Deixar para protocolar muito perto do vencimento do cartão atual, o que pode gerar dificuldades para comprovar status enquanto o novo cartão não chega.",
+    "Esquecer de assinar — formulário sem assinatura é rejeitado."
+  ],
+  "common_mistakes_en": [
+    "Using the I-90 by mistake when you actually need to remove conditions on residency — the right form there is the I-751 or I-829, not the I-90.",
+    "Selecting the wrong reason in Part 2 — each reason can require different supporting documents.",
+    "Not attaching the old card (or a police report, in case of theft) when required.",
+    "Leaving blank one of the fields that cause automatic rejection: family name, mailing address, and date of birth (Part 1).",
+    "Waiting too close to the current card's expiration to file, which can create trouble proving status while the new card is on its way.",
+    "Forgetting to sign — an unsigned form is rejected."
+  ],
+  "faq": [
+    {
+      "q": "Meu green card venceu. Ainda sou residente permanente?",
+      "a": "Sim — o cartão em si expira, mas o seu status de residente permanente não. Ainda assim, você é obrigado por lei a portar um cartão válido, então é importante renová-lo."
+    },
+    {
+      "q": "Perdi meu cartão fora dos EUA. O que eu faço?",
+      "a": "Nesse caso específico, o procedimento pode envolver contato com um consulado americano antes de retornar — as instruções oficiais do I-90 detalham esse cenário."
+    },
+    {
+      "q": "Existe taxa de biometria?",
+      "a": "Depende do motivo selecionado — alguns exigem biometria com taxa associada, outros não. Nosso checklist informa qual é o caso para você."
+    },
+    {
+      "q": "Já estou naturalizando (N-400). Ainda preciso renovar o Green Card com o I-90?",
+      "a": "Se o cartão só vai vencer, o recibo do seu N-400 já estende a validade automaticamente por 2 anos. Mas se o cartão for perdido, roubado ou danificado, você ainda precisa protocolar o I-90 normalmente, mesmo com o N-400 em andamento."
+    },
+    {
+      "q": "Posso desistir do meu pedido depois de protocolar?",
+      "a": "Sim, mediante pedido por escrito ao centro de processamento — mas a USCIS não reembolsa a taxa já paga em caso de desistência."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "My green card expired. Am I still a permanent resident?",
+      "a": "Yes — the card itself expires, but your permanent resident status does not. Still, you're legally required to carry a valid card, so it's important to renew it."
+    },
+    {
+      "q": "I lost my card outside the U.S. What do I do?",
+      "a": "In that specific case, the process may involve contacting a U.S. consulate before returning — the official I-90 instructions cover this scenario in detail."
+    },
+    {
+      "q": "Is there a biometrics fee?",
+      "a": "It depends on the reason selected — some require biometrics with an associated fee, others don't. Our checklist tells you which applies to your case."
+    },
+    {
+      "q": "I'm already naturalizing (N-400). Do I still need to renew my Green Card with the I-90?",
+      "a": "If the card is only expiring, your N-400 receipt notice already automatically extends its validity by 2 years. But if the card is lost, stolen, or damaged, you still need to file the I-90 normally, even with the N-400 pending."
+    },
+    {
+      "q": "Can I withdraw my application after filing?",
+      "a": "Yes, via a written request to the processing center — but USCIS won't refund the fee already paid if you withdraw."
+    }
+  ],
+  "related_note": "Vale renovar o green card antes de protocolar o N-400, já que uma entrevista de naturalização normalmente exige um cartão válido.",
+  "related_note_en": "Worth renewing the green card before filing the N-400, since a naturalization interview usually requires a valid card.",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

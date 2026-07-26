@@ -1,0 +1,154 @@
+{
+  "slug": "cidadania",
+  "title": "Cidadania — Naturalização (N-400)",
+  "title_en": "Citizenship — Naturalization (N-400)",
+  "subtitle": "Responda algumas perguntas rápidas para descobrir se você já pode solicitar a cidadania americana, e a partir de quando.",
+  "subtitle_en": "Answer a few quick questions to find out whether you can already apply for U.S. citizenship, and starting when.",
+  "maps_to": "n-400",
+  "questions": [
+    {
+      "id": "idade_18",
+      "type": "radio",
+      "label": "Você tem 18 anos ou mais?",
+      "label_en": "Are you 18 or older?",
+      "required": true,
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "gc_data",
+      "type": "date",
+      "label": "Em que data você se tornou residente permanente (data de emissão do seu Green Card)?",
+      "label_en": "What date did you become a permanent resident (your Green Card's issue date)?",
+      "hint": "Formato MM/DD/AAAA — está impresso no verso do seu cartão.",
+      "hint_en": "MM/DD/YYYY format — printed on the back of your card.",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"}
+    },
+    {
+      "id": "casado_com_cidadao",
+      "type": "radio",
+      "label": "Você é casado(a) e mora com o mesmo cônjuge, que é cidadão americano?",
+      "label_en": "Are you married to, and living with, the same spouse, who is a U.S. citizen?",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "conjuge_cidadao_3anos",
+      "type": "radio",
+      "label": "Seu cônjuge é cidadão americano há pelo menos 3 anos?",
+      "label_en": "Has your spouse been a U.S. citizen for at least 3 years?",
+      "required": true,
+      "show_if": {"question": "casado_com_cidadao", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "militar",
+      "type": "radio",
+      "label": "Você está servindo atualmente, ou já serviu, nas forças armadas dos Estados Unidos?",
+      "label_en": "Are you currently serving, or have you served, in the U.S. armed forces?",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "viagem_1ano",
+      "type": "radio",
+      "label": "Desde que se tornou residente permanente, você teve alguma viagem para fora dos EUA de 1 ano ou mais SEM uma Permissão de Reentrada (Reentry Permit)?",
+      "label_en": "Since becoming a permanent resident, have you taken any trip outside the U.S. of 1 year or more WITHOUT a Reentry Permit?",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "viagem_6meses",
+      "type": "radio",
+      "label": "Você teve alguma viagem entre 6 meses e 1 ano fora dos EUA nesse período?",
+      "label_en": "Have you taken any trip between 6 months and 1 year outside the U.S. during that period?",
+      "required": true,
+      "show_if": {"question": "viagem_1ano", "equals": "nao"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "residencia_estado",
+      "type": "radio",
+      "label": "Você mora no estado (ou distrito da USCIS) onde pretende protocolar há pelo menos 3 meses?",
+      "label_en": "Have you lived in the state (or USCIS district) where you plan to file for at least 3 months?",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "prisao_condenacao",
+      "type": "radio",
+      "label": "Nos últimos 5 anos (ou 3, se sua base for casamento), você foi preso(a), detido(a), condenado(a), ou colocado(a) em algum programa alternativo (diversão, liberdade condicional) por qualquer motivo, em qualquer país?",
+      "label_en": "In the last 5 years (or 3, if your basis is marriage), have you been arrested, detained, convicted, or placed in an alternative program (diversion, probation) for any reason, in any country?",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "crime_grave",
+      "type": "radio",
+      "label": "Você já foi condenado(a) por assassinato, ou por um crime classificado como \"aggravated felony\" depois de 29 de novembro de 1990?",
+      "label_en": "Have you ever been convicted of murder, or of a crime classified as an \"aggravated felony\" after November 29, 1990?",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "sexo_masculino",
+      "type": "radio",
+      "label": "Você se identifica como homem?",
+      "label_en": "Do you identify as male?",
+      "hint": "Perguntamos porque a exigência de registro no Selective Service se aplica a homens que moravam nos EUA entre 18 e 26 anos.",
+      "hint_en": "We ask because the Selective Service registration requirement applies to men who lived in the U.S. between ages 18 and 26.",
+      "required": true,
+      "show_if": {"question": "idade_18", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "selective_service",
+      "type": "radio",
+      "label": "Entre os 18 e 26 anos, enquanto morava nos EUA, você se registrou no Selective Service System?",
+      "label_en": "Between ages 18 and 26, while living in the U.S., did you register with the Selective Service System?",
+      "required": true,
+      "show_if": {"question": "sexo_masculino", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"},
+        {"value": "nao_se_aplica", "label": "Não morava nos EUA nessa época", "label_en": "I didn't live in the U.S. at that time"}
+      ]
+    }
+  ]
+}

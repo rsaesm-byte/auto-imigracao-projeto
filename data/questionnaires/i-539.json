@@ -1,0 +1,1161 @@
+{
+  "form": "I-539",
+  "title": "Extensão ou Mudança de Status de Não Imigrante — I-539",
+  "description": "Preencha todas as perguntas. Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA. Este questionário cobre os 4 serviços oferecidos: extensão do status atual, e mudança de status para B-2 (visitante), F-1 (estudante) ou F-2 (dependente de F-1).",
+  "sections": [
+    {
+      "id": "basico",
+      "title": "Parte 1 — Nome e Números de Identificação"
+    },
+    {
+      "id": "enderecos",
+      "title": "Parte 1 — Endereços"
+    },
+    {
+      "id": "pessoal",
+      "title": "Parte 1 — Nascimento e Cidadania"
+    },
+    {
+      "id": "entrada",
+      "title": "Parte 1 — Sua Entrada Mais Recente nos EUA"
+    },
+    {
+      "id": "status_atual",
+      "title": "Parte 1 — Seu Status Atual"
+    },
+    {
+      "id": "tipo_pedido",
+      "title": "Parte 2 — Tipo de Aplicação"
+    },
+    {
+      "id": "processamento",
+      "title": "Parte 3 — Informações de Processamento"
+    },
+    {
+      "id": "passaporte_atual",
+      "title": "Parte 4 — Passaporte Atual (se diferente da Parte 1)"
+    },
+    {
+      "id": "endereco_exterior",
+      "title": "Parte 4 — Endereço Físico no Exterior"
+    },
+    {
+      "id": "antecedentes",
+      "title": "Parte 4 — Perguntas de Antecedentes"
+    },
+    {
+      "id": "contato_assinatura",
+      "title": "Parte 5 — Contato e Assinatura do Requerente"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 6 — Intérprete (se usado)"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 7 — Preparador(a) (se diferente do requerente)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_sobrenome",
+      "section": "basico",
+      "label": "Sobrenome",
+      "type": "text",
+      "required": true,
+      "hint": "Digite exatamente como está no seu PASSAPORTE atual — não use o nome da certidão de casamento, se forem diferentes. Se o nome do passaporte estiver desatualizado, use mesmo assim e avise a equipe."
+    },
+    {
+      "id": "nome_nome",
+      "section": "basico",
+      "label": "Nome",
+      "type": "text",
+      "required": true,
+      "hint": "Digite exatamente como está no seu PASSAPORTE atual — não use o nome da certidão de casamento, se forem diferentes."
+    },
+    {
+      "id": "nome_meio",
+      "section": "basico",
+      "label": "Nome do meio",
+      "type": "text",
+      "required": false,
+      "hint": "Digite exatamente como está no seu PASSAPORTE atual. Deixe em branco se seu passaporte não tiver nome do meio."
+    },
+    {
+      "id": "alien_number",
+      "section": "basico",
+      "label": "Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false,
+      "hint": "9 dígitos, sem traços. Deixe em branco se você nunca recebeu um A-Number."
+    },
+    {
+      "id": "uscis_online",
+      "section": "basico",
+      "label": "Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false,
+      "hint": "12 dígitos, sem traços."
+    },
+    {
+      "id": "end_correio_cuidados_de",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false,
+      "hint": "Preencha só se a correspondência precisar ser endereçada aos cuidados de outra pessoa ou empresa (ex.: quando seu nome não está na caixa de correio, ou mora com terceiros). Na maioria dos casos, deixe em branco."
+    },
+    {
+      "id": "end_correio_rua",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apto"
+        },
+        {
+          "value": "ste",
+          "label": "Suite"
+        },
+        {
+          "value": "flr",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "end_correio_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_estado",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Estado",
+      "type": "select",
+      "required": true
+    },
+    {
+      "id": "end_correio_cep",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — CEP (Zip Code)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_mesmo_que_correio",
+      "section": "enderecos",
+      "label": "O endereço de correspondência acima é igual ao seu endereço físico atual?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_rua",
+      "section": "enderecos",
+      "label": "Endereço físico atual — Rua e número",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "end_mesmo_que_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico atual — Tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "end_mesmo_que_correio",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apto"
+        },
+        {
+          "value": "ste",
+          "label": "Suite"
+        },
+        {
+          "value": "flr",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico atual — Número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_mesmo_que_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_cidade",
+      "section": "enderecos",
+      "label": "Endereço físico atual — Cidade",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "end_mesmo_que_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_estado",
+      "section": "enderecos",
+      "label": "Endereço físico atual — Estado",
+      "type": "select",
+      "required": true,
+      "show_if": {
+        "question": "end_mesmo_que_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "end_fisico_cep",
+      "section": "enderecos",
+      "label": "Endereço físico atual — CEP (Zip Code)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "end_mesmo_que_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pais_nascimento",
+      "section": "pessoal",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pais_cidadania",
+      "section": "pessoal",
+      "label": "País de cidadania ou nacionalidade",
+      "type": "text",
+      "required": true,
+      "hint": "País do qual você é cidadão(ã) hoje — pode ser diferente do país onde nasceu (ex.: naturalizou-se em outro país, ou é cidadão por descendência). Se tiver mais de uma cidadania, informe a que consta no seu passaporte atual."
+    },
+    {
+      "id": "data_nascimento",
+      "section": "pessoal",
+      "label": "Data de nascimento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "ssn",
+      "section": "pessoal",
+      "label": "Número de Seguro Social (SSN), se houver",
+      "type": "text",
+      "required": false,
+      "hint": "9 dígitos, sem traços."
+    },
+    {
+      "id": "data_ultima_entrada",
+      "section": "entrada",
+      "label": "Data da sua última entrada nos EUA",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "numero_i94",
+      "section": "entrada",
+      "label": "Número do registro I-94 (Arrival-Departure Record)",
+      "type": "text",
+      "required": true,
+      "hint": "Encontre esse número no seu Formulário I-94 (i94.cbp.dhs.gov) — é o registro oficial da sua última entrada nos EUA."
+    },
+    {
+      "id": "numero_passaporte",
+      "section": "entrada",
+      "label": "Número do passaporte (ou documento de viagem), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "numero_documento_viagem",
+      "section": "entrada",
+      "label": "Número do documento de viagem (se diferente do passaporte)",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha se você entrou com um documento diferente do passaporte (ex.: documento de refugiado, carteira de identidade de fronteira). Se entrou com passaporte normal, deixe em branco."
+    },
+    {
+      "id": "pais_emissao_passaporte",
+      "section": "entrada",
+      "label": "País de emissão do passaporte ou documento de viagem",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_expiracao_passaporte",
+      "section": "entrada",
+      "label": "Data de expiração do passaporte ou documento de viagem",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "status_atual_codigo",
+      "section": "status_atual",
+      "label": "Código do seu status de não imigrante atual",
+      "type": "text",
+      "required": true,
+      "hint": "Digite exatamente a sigla oficial, sem hífen — ex.: F1 (estudante), F2 (dependente de F-1), B2 (visitante a passeio), H1B, J1, L2, etc. Consulte seu Formulário I-94 ou visto em caso de dúvida — a sigla precisa bater exatamente com a lista oficial do USCIS para o campo ser exibido corretamente."
+    },
+    {
+      "id": "status_atual_expira",
+      "section": "status_atual",
+      "label": "Data de expiração do seu status atual",
+      "type": "date",
+      "required": true,
+      "hint": "Encontre essa data no seu Formulário I-94 (i94.cbp.dhs.gov) ou no carimbo/anotação do seu visto — é a data limite até quando você está autorizado a permanecer nos EUA no status atual, antes desta aplicação. Se marcou \"Duração do Status (D/S)\" abaixo, informe a data de expiração do seu I-20/DS-2019 em vez de uma data fixa."
+    },
+    {
+      "id": "status_atual_duracao_status",
+      "section": "status_atual",
+      "label": "Seu status atual foi concedido por \"Duração do Status\" (D/S — sem data fixa de expiração, comum para F-1/J-1)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Confira no seu Formulário I-94 (i94.cbp.dhs.gov) — se ele não mostra uma data de vencimento e diz apenas \"D/S\" (Duration of Status), marque Sim. É comum em status F-1 e J-1."
+    },
+    {
+      "id": "servico",
+      "section": "tipo_pedido",
+      "label": "Qual serviço você está solicitando?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "eos",
+          "label": "EOS — Extensão de Status (Extension of Status)"
+        },
+        {
+          "value": "cos_f1",
+          "label": "COS F1 — Mudança de Status para Estudante (Change of Status to F-1)"
+        },
+        {
+          "value": "cos_f2",
+          "label": "COS F2 — Mudança de Status para Dependente de F-1 (Change of Status to F-2)"
+        },
+        {
+          "value": "cos_b2",
+          "label": "COS B2 — Mudança de Status para Visitante (Change of Status to B-2)"
+        }
+      ]
+    },
+    {
+      "id": "data_efetiva_mudanca",
+      "section": "tipo_pedido",
+      "label": "Data em que você deseja que a mudança de status entre em vigor",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "servico",
+        "equals": [
+          "cos_b2",
+          "cos_f1",
+          "cos_f2"
+        ]
+      },
+      "hint": "Opcional — na maioria dos casos deixe em branco e o USCIS decide a data. Só preencha se você tem um motivo específico para pedir uma data exata de início do novo status."
+    },
+    {
+      "id": "numero_pessoas",
+      "section": "tipo_pedido",
+      "label": "Quantas pessoas estão incluídas nesta aplicação?",
+      "type": "radio",
+      "required": true,
+      "hint": "Se marcar \"Eu e membros da minha família\", você poderá adicionar um Formulário I-539A para cada cônjuge/filho(a) incluído depois de terminar este formulário principal.",
+      "options": [
+        {
+          "value": "sozinho",
+          "label": "Apenas eu"
+        },
+        {
+          "value": "com_familia",
+          "label": "Eu e membros da minha família"
+        }
+      ]
+    },
+    {
+      "id": "total_pessoas",
+      "section": "tipo_pedido",
+      "label": "Número total de pessoas incluídas (contando você)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "numero_pessoas",
+        "equals": "com_familia"
+      },
+      "hint": "Um Formulário I-539A separado é necessário para cada co-requerente (cônjuge/filho(a))."
+    },
+    {
+      "id": "escola_nome",
+      "section": "tipo_pedido",
+      "label": "Nome da escola que você frequentará ou frequenta",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "servico",
+        "equals": [
+          "cos_f1",
+          "cos_f2"
+        ]
+      },
+      "hint": "Só aparece para quem está mudando para F-1 (estudante) ou F-2 (dependente de estudante). Use o nome oficial da escola, igual ao que consta no Formulário I-20."
+    },
+    {
+      "id": "sevis_id",
+      "section": "tipo_pedido",
+      "label": "Número SEVIS ID",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "servico",
+        "equals": [
+          "cos_f1",
+          "cos_f2"
+        ]
+      },
+      "hint": "Só aparece para quem está mudando para F-1 ou F-2. Número de 11 dígitos começando com 'N', encontrado no canto superior direito do Formulário I-20."
+    },
+    {
+      "id": "i134_recursos_suficientes",
+      "section": "tipo_pedido",
+      "label": "Você tem renda ou saldo suficiente, por conta própria, para cobrir todos os seus custos durante a permanência nos EUA — moradia, alimentação, saúde, transporte e, se for o caso, mensalidades/matrícula?",
+      "type": "radio",
+      "required": true,
+      "show_if": {
+        "question": "servico",
+        "equals": [
+          "cos_f1",
+          "cos_b2"
+        ]
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Não inclui a renda de um patrocinador — essa pergunta é só sobre os seus próprios recursos financeiros."
+    },
+    {
+      "id": "i134_tem_patrocinador_qualificado",
+      "section": "tipo_pedido",
+      "label": "Você tem um(a) patrocinador(a) nos EUA disposto(a) a assinar uma Declaração de Apoio Financeiro (Formulário I-134) por você, que seja residente permanente legal (green card) OU cidadão(ã) americano(a)?",
+      "type": "radio",
+      "required": true,
+      "show_if": {
+        "question": "i134_recursos_suficientes",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "O patrocinador precisa ser residente permanente legal ou cidadão(ã) americano(a) — outros status não qualificam para assinar o I-134. Se a resposta for sim, depois de terminar este formulário vamos te oferecer a opção de preencher o I-134 (serviço cobrado à parte)."
+    },
+    {
+      "id": "data_solicitada_ate",
+      "section": "processamento",
+      "label": "Até qual data você solicita que seu status (atual ou novo) seja válido?",
+      "type": "date",
+      "required": true,
+      "hint": "Normalmente, some cerca de 6 meses à data de expiração do seu status atual (Parte 1, item 12, campo \"Data de expiração do seu status atual\" acima). Exemplo: se o status atual expira em 12/24/2026, esta data seria aproximadamente 06/23/2027. Confirme o período exato com a equipe antes de enviar."
+    },
+    {
+      "id": "pedido_baseado_status_familiar",
+      "section": "processamento",
+      "label": "Esta aplicação é baseada em uma extensão ou mudança de status já concedida ao seu cônjuge, filho(a) ou pai/mãe?",
+      "type": "radio",
+      "required": true,
+      "hint": "Responda \"Sim\" apenas se você está pedindo este status PORQUE seu cônjuge, filho(a) ou pai/mãe já teve uma extensão/mudança de status semelhante aprovada pelo USCIS, e o seu pedido depende ou acompanha o dele(a) (ex.: dependente seguindo o titular). Se o seu pedido é independente, responda \"Não\".",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "pedido_baseado_peticao_separada",
+      "section": "processamento",
+      "label": "Esta aplicação é baseada em uma petição ou pedido separado para dar ao seu cônjuge, filho(a) ou pai/mãe uma extensão ou mudança de status?",
+      "type": "radio",
+      "required": true,
+      "hint": "Responda \"Sim\" apenas se existe uma petição ou pedido SEPARADO (protocolado junto com este I-539 ou já pendente no USCIS) que vai conceder extensão/mudança de status ao seu cônjuge, filho(a) ou pai/mãe — não ao próprio requerente deste formulário. Na maioria dos casos individuais, a resposta é \"Não\".",
+      "options": [
+        {
+          "value": "nao",
+          "label": "Não"
+        },
+        {
+          "value": "sim_com_este_i539",
+          "label": "Sim, protocolado junto com este Formulário I-539"
+        },
+        {
+          "value": "sim_previamente_pendente",
+          "label": "Sim, protocolado anteriormente e pendente com o USCIS"
+        }
+      ]
+    },
+    {
+      "id": "tipo_formulario_relacionado",
+      "section": "processamento",
+      "label": "Se você respondeu \"Sim\" acima, qual formulário foi/será usado?",
+      "type": "radio",
+      "required": false,
+      "hint": "Aplicável apenas se você respondeu Sim a uma das duas perguntas anteriores.",
+      "options": [
+        {
+          "value": "i539",
+          "label": "Formulário I-539"
+        },
+        {
+          "value": "i129",
+          "label": "Formulário I-129 (Petição para Trabalhador Não Imigrante)"
+        }
+      ]
+    },
+    {
+      "id": "numero_recibo_uscis",
+      "section": "processamento",
+      "label": "Número de recibo USCIS da petição/pedido relacionado (se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "Número de 13 caracteres no aviso de recibo (Notice of Action, Formulário I-797) que o USCIS enviou sobre a petição relacionada — ex.: EAC1234567890."
+    },
+    {
+      "id": "nome_peticao_relacionada_primeiro",
+      "section": "processamento",
+      "label": "Primeiro nome do beneficiário/requerente da petição relacionada",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha se você respondeu Sim a uma das perguntas acima sobre pedido baseado no cônjuge, filho(a) ou pai/mãe — é o nome de quem já teve a extensão/mudança de status aprovada ou solicitada."
+    },
+    {
+      "id": "nome_peticao_relacionada_ultimo",
+      "section": "processamento",
+      "label": "Sobrenome do beneficiário/requerente da petição relacionada",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha se você respondeu Sim a uma das perguntas acima sobre pedido baseado no cônjuge, filho(a) ou pai/mãe — é o sobrenome de quem já teve a extensão/mudança de status aprovada ou solicitada (a mesma pessoa do campo de nome acima)."
+    },
+    {
+      "id": "data_protocolo_peticao_relacionada",
+      "section": "processamento",
+      "label": "Data de protocolo da petição/pedido relacionado",
+      "type": "date",
+      "required": false,
+      "hint": "Data em que a petição/pedido relacionado foi protocolado no USCIS — confira no recibo (Formulário I-797)."
+    },
+    {
+      "id": "passaporte_atual_pais_emissao",
+      "section": "passaporte_atual",
+      "label": "País de emissão do seu passaporte ATUAL (se diferente do informado na Parte 1)",
+      "type": "text",
+      "required": false,
+      "hint": "Preencha esta seção apenas se sua informação de passaporte mudou desde a Parte 1 (ex.: renovação de passaporte)."
+    },
+    {
+      "id": "passaporte_atual_numero",
+      "section": "passaporte_atual",
+      "label": "Número do seu passaporte ATUAL",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "passaporte_atual_expiracao",
+      "section": "passaporte_atual",
+      "label": "Data de expiração do seu passaporte ATUAL",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "end_exterior_rua",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_exterior_tipo_unidade",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — Tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apto"
+        },
+        {
+          "value": "ste",
+          "label": "Suite"
+        },
+        {
+          "value": "flr",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "end_exterior_num_unidade",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_exterior_cidade",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_exterior_provincia",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — Província/Estado",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_exterior_cep",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — Código Postal",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_exterior_pais",
+      "section": "endereco_exterior",
+      "label": "Endereço físico no exterior — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "imigrante_visa_pendente",
+      "section": "antecedentes",
+      "label": "Você é requerente de visto de imigrante (ex.: possui um I-130 ou I-140 pendente/aprovado em seu nome)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda Sim se alguém já apresentou uma petição de visto de imigrante (ex.: Formulário I-130 ou I-140) em seu nome, mesmo que ainda esteja pendente. Ter uma petição de imigrante pendente não desqualifica automaticamente este pedido, mas precisa ser informado."
+    },
+    {
+      "id": "peticao_imigrante_ja_apresentada",
+      "section": "antecedentes",
+      "label": "Uma petição de imigrante já foi apresentada para você (por qualquer pessoa, a qualquer momento)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui petições já negadas, retiradas ou aprovadas há muito tempo — não só as que estão em andamento agora."
+    },
+    {
+      "id": "ja_apresentou_i485",
+      "section": "antecedentes",
+      "label": "Você já apresentou o Formulário I-485 (Pedido de Registro de Residência Permanente ou Ajuste de Status)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda Sim mesmo se aquele pedido de Green Card já foi negado, retirado, ou ainda está pendente."
+    },
+    {
+      "id": "preso_condenado_desde_entrada",
+      "section": "antecedentes",
+      "label": "Você foi preso ou condenado por algum crime desde sua última entrada nos EUA?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui qualquer prisão ou condenação, mesmo que o caso tenha sido arquivado, com pena suspensa, ou o registro apagado (selado) depois. Se a resposta for Sim, converse com a equipe antes de continuar — histórico criminal pode afetar a elegibilidade e a forma como o pedido deve ser feito."
+    },
+    {
+      "id": "ato_tortura_genocidio",
+      "section": "antecedentes",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou de qualquer forma participou de atos de tortura ou genocídio?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta padrão de segurança exigida pelo USCIS em praticamente todo formulário de imigração — a grande maioria das pessoas responde Não. Se tiver qualquer dúvida sobre se sua situação se encaixa aqui, não responda sozinho: consulte a equipe antes de continuar."
+    },
+    {
+      "id": "matou_pessoa",
+      "section": "antecedentes",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou de qualquer forma participou de matar alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta padrão de segurança do USCIS, incluindo situações como serviço militar ou policial em conflitos armados — não apenas crimes comuns. Se tiver dúvida, consulte a equipe antes de responder."
+    },
+    {
+      "id": "feriu_gravemente_pessoa",
+      "section": "antecedentes",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou de qualquer forma participou de ferir intencional e gravemente alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta padrão de segurança do USCIS. Se você teve qualquer envolvimento em conflitos armados, serviço militar/policial ou situações de violência, consulte a equipe antes de responder."
+    },
+    {
+      "id": "contato_sexual_sem_consentimento",
+      "section": "antecedentes",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou de qualquer forma participou de contato sexual sem consentimento (ou com pessoa incapaz de consentir, ou sob força/ameaça)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta padrão de segurança do USCIS. A grande maioria das pessoas responde Não. Se tiver qualquer dúvida, consulte a equipe antes de responder."
+    },
+    {
+      "id": "limitou_liberdade_religiosa",
+      "section": "antecedentes",
+      "label": "Você já limitou ou negou a alguém a capacidade de exercer crenças religiosas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta padrão de segurança do USCIS sobre perseguição religiosa (ex.: impedir alguém de praticar sua religião). A grande maioria das pessoas responde Não."
+    },
+    {
+      "id": "servico_militar_paramilitar",
+      "section": "antecedentes",
+      "label": "Você já serviu, foi membro, ajudou ou participou de alguma unidade militar, paramilitar, policial, de autodefesa, milícia, grupo rebelde, guerrilha ou qualquer outro grupo armado?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui serviço militar regular do seu país de origem, não só grupos irregulares. Se você serviu nas forças armadas oficiais do seu país, normalmente ainda deve marcar Sim aqui e detalhar na seção correspondente — não é motivo automático de negativa."
+    },
+    {
+      "id": "trabalhou_prisao_detencao",
+      "section": "antecedentes",
+      "label": "Você já trabalhou, foi voluntário(a) ou de outra forma serviu em alguma prisão, cadeia, campo de prisioneiros, centro de detenção, campo de trabalho ou situação envolvendo a detenção de pessoas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui trabalho ou serviço voluntário em qualquer instalação onde pessoas ficam detidas, mesmo que sua função não tivesse relação direta com os detentos."
+    },
+    {
+      "id": "membro_grupo_armas_ameaca",
+      "section": "antecedentes",
+      "label": "Você já foi membro, ajudou ou participou de algum grupo, unidade ou organização em que pessoas usaram ou ameaçaram usar algum tipo de arma contra alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta padrão de segurança do USCIS. Se tiver qualquer dúvida sobre se sua situação se encaixa aqui, consulte a equipe antes de responder."
+    },
+    {
+      "id": "vendeu_transportou_armas",
+      "section": "antecedentes",
+      "label": "Você já vendeu, forneceu ou transportou armas — ou ajudou alguém a fazê-lo — sabendo ou acreditando que seriam usadas contra outra pessoa?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Só marque Sim se você sabia ou acreditava que as armas seriam usadas contra outra pessoa — não inclui, por exemplo, trabalho comum em uma loja de armas de fogo licenciada."
+    },
+    {
+      "id": "treinamento_militar_armas",
+      "section": "antecedentes",
+      "label": "Você (ou alguém incluído nesta aplicação) já recebeu algum tipo de treinamento militar, paramilitar ou com armas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui treinamento militar obrigatório (ex.: serviço militar do seu país de origem), não só treinamento voluntário ou irregular."
+    },
+    {
+      "id": "violou_termos_status",
+      "section": "antecedentes",
+      "label": "Você já violou os termos do status de não imigrante que possui atualmente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Ex.: trabalhar sem autorização, ficar nos EUA além do prazo permitido, ou não cumprir as condições do seu visto atual (como frequência escolar no F-1). Se não tiver certeza, converse com a equipe antes de responder — isso pode afetar a aprovação do pedido."
+    },
+    {
+      "id": "em_processo_remocao",
+      "section": "antecedentes",
+      "label": "Você está atualmente em processo de remoção (deportação)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Significa que a Corte de Imigração (Immigration Court) já iniciou um processo formal para te retirar dos EUA. Se a resposta for Sim, fale com um advogado de imigração — isso pode mudar como este pedido deve ser feito."
+    },
+    {
+      "id": "empregado_eua_desde_ultima_entrada",
+      "section": "antecedentes",
+      "label": "Você trabalhou nos EUA desde sua última admissão ou desde a última extensão/mudança de status concedida?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Trabalhar sem autorização é uma das causas mais comuns de negativa de mudança/extensão de status. Se você trabalhou sem autorização, mesmo informalmente, converse com a equipe antes de continuar."
+    },
+    {
+      "id": "j1_j2_exchange_visitor",
+      "section": "antecedentes",
+      "label": "Você é atualmente, ou já foi, um visitante de intercâmbio J-1 ou dependente J-2 de um visitante de intercâmbio J-1?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Se você (ou o titular do status J-1, no caso de dependente J-2) está sujeito à exigência de residência de 2 anos no exterior (Seção 212(e)), normalmente NÃO é possível mudar de status dentro dos EUA sem antes cumprir esse período ou conseguir uma dispensa (waiver). Confira o campo sobre exigência de residência de 2 anos no seu Formulário DS-2019, ou pergunte ao seu patrocinador do intercâmbio. Consulte a equipe antes de continuar se isso pode se aplicar a você."
+    },
+    {
+      "id": "telefone",
+      "section": "contato_assinatura",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "celular",
+      "section": "contato_assinatura",
+      "label": "Telefone celular",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "email",
+      "section": "contato_assinatura",
+      "label": "E-mail",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_assinatura",
+      "section": "contato_assinatura",
+      "label": "Data da assinatura",
+      "type": "date",
+      "required": true,
+      "hint": "Preenchida no dia em que você assinar fisicamente o formulário impresso."
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Sobrenome do(a) intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Nome do(a) intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_organizacao",
+      "section": "interprete",
+      "label": "Empresa ou organização do(a) intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Telefone diurno do(a) intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_celular",
+      "section": "interprete",
+      "label": "Telefone celular do(a) intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "E-mail do(a) intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Idioma em que o(a) intérprete traduziu",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Data da assinatura do(a) intérprete",
+      "type": "date",
+      "required": false,
+      "hint": "Preenchida no dia em que o(a) intérprete assinar fisicamente o formulário impresso."
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Sobrenome do(a) preparador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Nome do(a) preparador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_organizacao",
+      "section": "preparador",
+      "label": "Empresa ou organização do(a) preparador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Telefone diurno do(a) preparador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_celular",
+      "section": "preparador",
+      "label": "Telefone celular do(a) preparador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "E-mail do(a) preparador(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Data da assinatura do(a) preparador(a)",
+      "type": "date",
+      "required": false,
+      "hint": "Preenchida no dia em que o(a) preparador(a) assinar fisicamente o formulário impresso."
+    }
+  ]
+}

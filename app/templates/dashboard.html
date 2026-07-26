@@ -1,0 +1,165 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_illustrations.html" import empty_state_illustration %}
+{% block title %}{{ t('dashboard_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ t('dashboard_heading') }}</h1>
+  <p style="opacity:0.92;margin:0;">{{ t('dashboard_subtitle') }}</p>
+</div>
+
+<div class="card">
+  <h2>{{ t('dashboard_start_form') }}</h2>
+  <div class="form-grid">
+    {% for form in catalog %}
+    <a class="form-tile" href="{{ url_for('wizard.start', slug=form.slug) }}">
+      <span class="slug">{{ form.slug|upper }}</span>
+      <div class="name">{{ form.name }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ t('dashboard_in_progress') }}</h2>
+  {% if submissions %}
+  <table class="submissions">
+    <thead>
+      <tr><th>{{ t('table_form') }}</th><th>{{ t('table_status') }}</th><th>{{ t('table_updated') }}</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for s in submissions %}
+      <tr>
+        <td><strong>{{ s.form_slug|upper }}</strong></td>
+        <td><span class="badge {{ s.status }}">
+          {{ t('status_completed') if s.status == "completed" else t('status_in_progress') }}
+        </span></td>
+        <td class="muted">
+          {{ s.updated_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else s.updated_at.strftime("%d/%m/%Y %H:%M") }}
+        </td>
+        <td>
+          {% if s.status == "completed" %}
+            <a href="{{ url_for('wizard.review', submission_id=s.id) }}">{{ t('action_view') }} →</a>
+          {% else %}
+            <a href="{{ url_for('wizard.wizard_view', submission_id=s.id) }}">{{ t('action_continue') }} →</a>
+          {% endif %}
+          {% if s.form_slug == "i-539" and dependent_form_enabled %}
+            <form method="post" action="{{ url_for('wizard.add_dependent', parent_submission_id=s.id) }}" style="display:inline;margin-left:10px;">
+              <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--accent);text-decoration:underline;cursor:pointer;font-size:0.88rem;padding:0;">{{ t('pkg_add_dependent') }}</button>
+            </form>
+          {% endif %}
+          {% if s.form_slug == "i-539" and i134_form_enabled and s.get_answers().get('i134_recursos_suficientes') == 'nao' and s.get_answers().get('i134_tem_patrocinador_qualificado') == 'sim' and not (dependents_by_parent.get(s.id) and dependents_by_parent[s.id]|selectattr('form_slug', 'equalto', 'i-134')|list) %}
+            <form method="post" action="{{ url_for('wizard.add_i134', parent_submission_id=s.id) }}" style="display:inline;margin-left:10px;">
+              <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--accent);text-decoration:underline;cursor:pointer;font-size:0.88rem;padding:0;">{{ t('pkg_add_i134') }}</button>
+            </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% if s.form_slug != "i-539-cartas" %}
+      <tr>
+        <td colspan="4" style="padding:4px 10px 12px 24px;border-bottom:1px solid var(--border);">
+          <form method="post" action="{{ url_for('wizard.save_receipt_number', submission_id=s.id) }}" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <label class="muted" style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;" for="receipt-{{ s.id }}">{{ t('receipt_label') }}</label>
+            <input id="receipt-{{ s.id }}" type="text" name="receipt_number" value="{{ s.receipt_number or '' }}"
+                   placeholder="{{ t('receipt_placeholder') }}" maxlength="13" style="max-width:180px;font-family:monospace;">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;">{{ t('receipt_save') }}</button>
+            {% if s.receipt_number %}
+              <a href="https://egov.uscis.gov/casestatus/landing.do" target="_blank" rel="noopener noreferrer" class="icon-btn" style="background:none;border:none;color:var(--accent);text-decoration:underline;font-size:0.82rem;padding:0;">
+                {{ icon('globe', 13) }} {{ t('receipt_check_status') }}
+              </a>
+            {% endif %}
+            <a href="https://egov.uscis.gov/processing-times/" target="_blank" rel="noopener noreferrer" class="icon-btn" style="background:none;border:none;color:var(--accent);text-decoration:underline;font-size:0.82rem;padding:0;">
+              {{ icon('globe', 13) }} {{ t('processing_times_link') }}
+            </a>
+          </form>
+          <p class="muted" style="font-size:0.76rem;margin:6px 0 0;">{{ t('receipt_hint') }}</p>
+          <p class="muted" style="font-size:0.76rem;margin:2px 0 0;">{{ t('processing_times_hint', form=s.form_slug|upper) }}</p>
+        </td>
+      </tr>
+      {% endif %}
+      {% set true_dependents = dependents_by_parent.get(s.id, [])|rejectattr('form_slug', 'equalto', 'i-134')|list %}
+      {% set linked_i134 = dependents_by_parent.get(s.id, [])|selectattr('form_slug', 'equalto', 'i-134')|list %}
+      {% if true_dependents %}
+      <tr>
+        <td colspan="4" style="padding:4px 10px 12px 24px;border-bottom:1px solid var(--border);">
+          <p class="muted" style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px;">{{ t('pkg_dependents_title') }}</p>
+          <table class="submissions" style="margin:0;">
+            <tbody>
+              {% for dep in true_dependents %}
+              <tr>
+                <td style="padding:6px 10px;"><strong>{{ dep.form_slug|upper }}</strong></td>
+                <td style="padding:6px 10px;"><span class="badge {{ dep.status }}">
+                  {{ t('status_completed') if dep.status == "completed" else t('status_in_progress') }}
+                </span></td>
+                <td style="padding:6px 10px;">
+                  {% if dep.status == "completed" %}
+                    <a href="{{ url_for('wizard.review', submission_id=dep.id) }}">{{ t('action_view') }} →</a>
+                  {% else %}
+                    <a href="{{ url_for('wizard.wizard_view', submission_id=dep.id) }}">{{ t('action_continue') }} →</a>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      {% endif %}
+      {% if linked_i134 %}
+      <tr>
+        <td colspan="4" style="padding:4px 10px 12px 24px;border-bottom:1px solid var(--border);">
+          <p class="muted" style="font-size:0.78rem;font-weight:700;text-transform:uppercase;letter-spacing:0.04em;margin:0 0 6px;">{{ t('pkg_i134_linked_title') }}</p>
+          <table class="submissions" style="margin:0;">
+            <tbody>
+              {% for dep in linked_i134 %}
+              <tr>
+                <td style="padding:6px 10px;"><strong>{{ dep.form_slug|upper }}</strong></td>
+                <td style="padding:6px 10px;"><span class="badge {{ dep.status }}">
+                  {{ t('status_completed') if dep.status == "completed" else t('status_in_progress') }}
+                </span></td>
+                <td style="padding:6px 10px;">
+                  {% if dep.status == "completed" %}
+                    <a href="{{ url_for('wizard.review', submission_id=dep.id) }}">{{ t('action_view') }} →</a>
+                  {% else %}
+                    <a href="{{ url_for('wizard.wizard_view', submission_id=dep.id) }}">{{ t('action_continue') }} →</a>
+                  {% endif %}
+                </td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+    <div class="empty-state">
+      {{ empty_state_illustration() }}
+      <p class="muted">{{ t('dashboard_empty') }}</p>
+    </div>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>{{ icon('megaphone', 18) }} {{ t('news_title') }}</h2>
+  <p class="muted" style="margin-top:-6px;">{{ t('news_subtitle') }}</p>
+  {% if news_items %}
+  <div class="news-list">
+    {% for item in news_items %}
+    <a class="news-item" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">
+      <div class="news-date">
+        {% if item.pub_date %}{{ item.pub_date.strftime("%m/%d/%Y") if get_lang() == "en" else item.pub_date.strftime("%d/%m/%Y") }}{% endif %}
+      </div>
+      <div class="news-title">{{ item.title }}</div>
+      <div class="news-link">{{ t('news_read_more') }}</div>
+    </a>
+    {% endfor %}
+  </div>
+  {% else %}
+    <p class="muted">{{ t('news_empty') }}</p>
+  {% endif %}
+</div>
+{% endblock %}

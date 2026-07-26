@@ -1,0 +1,10 @@
+{
+  "form": "I-130A",
+  "confidence_note": "O I-130A é um suplemento informativo do I-130, preenchido pelo(a) cônjuge beneficiário(a) — ele não tem uma lista própria de evidências além das já exigidas no I-130 principal (ver o checklist de documentos do I-130 para a evidência do relacionamento conjugal).",
+  "confidence_note_en": "Form I-130A is an informational supplement to Form I-130, completed by the spouse beneficiary — it does not have its own list of evidence beyond what is already required on the main I-130 (see the I-130 document checklist for evidence of the marital relationship).",
+  "always": [
+    {"label": "Cópia da página de identificação do seu passaporte (cônjuge beneficiário)", "label_en": "Copy of the biographic (identification) page of your passport (spouse beneficiary)"},
+    {"label": "Este formulário é enviado junto com o I-130 principal — confirme que os documentos de evidência do casamento (certidão de casamento, comprovantes de vida em comum) estão anexados ao pacote do I-130, não apenas aqui", "label_en": "This form is submitted together with the main I-130 — make sure the marriage evidence documents (marriage certificate, proof of shared life) are attached to the I-130 packet, not just here"}
+  ],
+  "rules": []
+}

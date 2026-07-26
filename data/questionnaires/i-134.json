@@ -1,0 +1,1740 @@
+{
+  "form": "I-134",
+  "title": "I-134 — Declaração de Apoio Financeiro",
+  "sections": [
+    {
+      "id": "i134_base",
+      "title": "Sobre este formulário",
+      "title_en": "About this form"
+    },
+    {
+      "id": "sponsor_nome",
+      "title": "Seus Dados (Patrocinador) — Nome",
+      "title_en": "Your Information (Sponsor) — Name"
+    },
+    {
+      "id": "sponsor_endereco",
+      "title": "Seus Dados (Patrocinador) — Endereço",
+      "title_en": "Your Information (Sponsor) — Address"
+    },
+    {
+      "id": "sponsor_pessoal",
+      "title": "Seus Dados (Patrocinador) — Nascimento e Status",
+      "title_en": "Your Information (Sponsor) — Birth and Status"
+    },
+    {
+      "id": "sponsor_emprego",
+      "title": "Seus Dados (Patrocinador) — Situação de Emprego",
+      "title_en": "Your Information (Sponsor) — Employment Status"
+    },
+    {
+      "id": "sponsor_financeiro",
+      "title": "Seus Dados (Patrocinador) — Informações Financeiras",
+      "title_en": "Your Information (Sponsor) — Financial Information"
+    },
+    {
+      "id": "benef_dados",
+      "title": "Dados do(a) Beneficiário(a)",
+      "title_en": "Beneficiary's Information"
+    },
+    {
+      "id": "benef_endereco",
+      "title": "Endereço do(a) Beneficiário(a)",
+      "title_en": "Beneficiary's Address"
+    },
+    {
+      "id": "benef_estadia",
+      "title": "Permanência Prevista nos EUA",
+      "title_en": "Anticipated Stay in the U.S."
+    },
+    {
+      "id": "sponsor_declaracao",
+      "title": "Sua Declaração e Assinatura (Patrocinador)",
+      "title_en": "Your Statement and Signature (Sponsor)"
+    },
+    {
+      "id": "interprete",
+      "title": "Dados do(a) Intérprete",
+      "title_en": "Interpreter's Information"
+    },
+    {
+      "id": "preparador",
+      "title": "Dados de Quem Preparou este Formulário (se não for você)",
+      "title_en": "Information About the Preparer (if other than you)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "i134_confirma_beneficiario_outra_pessoa",
+      "section": "i134_base",
+      "label": "Este Formulário I-134 será preenchido por você (o(a) patrocinador(a)) em nome de outra pessoa (o(a) beneficiário(a) do apoio financeiro)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Nosso produto só cobre o caso de patrocinar OUTRA pessoa (por exemplo, o(a) aplicante do I-539). Se você é o(a) próprio(a) beneficiário(a) preenchendo por conta própria, fale com a nossa equipe -- essa parte específica do formulário (Parte 4) não está automatizada aqui."
+    },
+    {
+      "id": "sponsor_sobrenome",
+      "section": "sponsor_nome",
+      "label": "Sobrenome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_nome_proprio",
+      "section": "sponsor_nome",
+      "label": "Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_nome_meio",
+      "section": "sponsor_nome",
+      "label": "Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_outro_nome1_sobrenome",
+      "section": "sponsor_nome",
+      "label": "Outro nome usado 1 — Sobrenome",
+      "type": "text",
+      "required": false,
+      "hint": "Inclua apelidos, nome de solteiro(a), ou qualquer outro nome que você já usou."
+    },
+    {
+      "id": "sponsor_outro_nome1_nome",
+      "section": "sponsor_nome",
+      "label": "Outro nome usado 1 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_outro_nome1_meio",
+      "section": "sponsor_nome",
+      "label": "Outro nome usado 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_outro_nome2_sobrenome",
+      "section": "sponsor_nome",
+      "label": "Outro nome usado 2 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_outro_nome2_nome",
+      "section": "sponsor_nome",
+      "label": "Outro nome usado 2 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_outro_nome2_meio",
+      "section": "sponsor_nome",
+      "label": "Outro nome usado 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_cuidado_de",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Aos cuidados de (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_rua",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_end_correio_tipo_unidade",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Tipo de unidade (se houver)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartamento"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_end_correio_numero_unidade",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_correio_tipo_unidade",
+        "equals": [
+          "APT",
+          "STE",
+          "FLR"
+        ]
+      }
+    },
+    {
+      "id": "sponsor_end_correio_cidade",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_end_correio_estado",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Estado (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_cep",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — CEP dos EUA (Zip Code)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_provincia",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_codigo_postal",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_end_correio_pais",
+      "section": "sponsor_endereco",
+      "label": "Endereço de correspondência — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_end_fisico_diferente",
+      "section": "sponsor_endereco",
+      "label": "Seu endereço físico atual é diferente do endereço de correspondência acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Se você mora no mesmo endereço para onde recebe correspondência, escolha \"Não\" -- não vai precisar repetir o endereço."
+    },
+    {
+      "id": "sponsor_end_fisico_cuidado_de",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Aos cuidados de (opcional)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_rua",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_tipo_unidade",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Tipo de unidade (se houver)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartamento"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_end_fisico_numero_unidade",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_cidade",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_estado",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Estado (EUA)",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_cep",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — CEP dos EUA (Zip Code)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_provincia",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_codigo_postal",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_end_fisico_pais",
+      "section": "sponsor_endereco",
+      "label": "Endereço físico — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_data_nascimento",
+      "section": "sponsor_pessoal",
+      "label": "Data de nascimento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "sponsor_nascimento_pais",
+      "section": "sponsor_pessoal",
+      "label": "Local de nascimento — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_nascimento_provincia",
+      "section": "sponsor_pessoal",
+      "label": "Local de nascimento — Estado ou província",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_nascimento_cidade",
+      "section": "sponsor_pessoal",
+      "label": "Local de nascimento — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_alien_number",
+      "section": "sponsor_pessoal",
+      "label": "Número de Registro de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false,
+      "hint": "9 dígitos, sem a letra \"A\" (o formulário já imprime o \"A-\" antes do campo). Deixe em branco se você nunca teve um A-Number."
+    },
+    {
+      "id": "sponsor_uscis_online_account",
+      "section": "sponsor_pessoal",
+      "label": "Número da Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false,
+      "hint": "12 dígitos. Deixe em branco se você não tem conta no site da USCIS."
+    },
+    {
+      "id": "sponsor_status_imigratorio",
+      "section": "sponsor_pessoal",
+      "label": "Qual é o seu status imigratório atual?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "C",
+          "label": "Cidadão(ã) americano(a)"
+        },
+        {
+          "value": "PR",
+          "label": "Residente Permanente Legal (Green Card)"
+        },
+        {
+          "value": "N",
+          "label": "National dos EUA"
+        },
+        {
+          "value": "NI",
+          "label": "Não imigrante (visto temporário)"
+        },
+        {
+          "value": "A",
+          "label": "Asilado(a)"
+        },
+        {
+          "value": "R",
+          "label": "Refugiado(a)"
+        },
+        {
+          "value": "P",
+          "label": "Beneficiário(a) de Parole"
+        },
+        {
+          "value": "TPS",
+          "label": "Titular de TPS (Status de Proteção Temporária)"
+        },
+        {
+          "value": "B",
+          "label": "Beneficiário(a) de ação diferida (incluindo DACA) ou Deferred Enforced Departure"
+        },
+        {
+          "value": "Other",
+          "label": "Outro"
+        }
+      ],
+      "hint": "Este é o ponto mais importante do formulário: só residentes permanentes legais (green card) ou cidadãos(ãs) americanos(as) podem servir como patrocinador financeiro qualificado neste tipo de caso. Se o seu status é outro, fale com a nossa equipe antes de continuar."
+    },
+    {
+      "id": "sponsor_status_outro_explicacao",
+      "section": "sponsor_pessoal",
+      "label": "Se \"Outro\": explique qual é o seu status",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_status_imigratorio",
+        "equals": "Other"
+      }
+    },
+    {
+      "id": "sponsor_relacionamento_beneficiario",
+      "section": "sponsor_pessoal",
+      "label": "Qual é o seu parentesco ou relacionamento com o(a) beneficiário(a)?",
+      "type": "text",
+      "required": true,
+      "hint": "Ex.: irmão(ã), amigo(a), primo(a), etc."
+    },
+    {
+      "id": "sponsor_situacao_emprego",
+      "section": "sponsor_emprego",
+      "label": "Qual é a sua situação de emprego atual?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "E",
+          "label": "Empregado(a)"
+        },
+        {
+          "value": "SE",
+          "label": "Autônomo(a) / Trabalha por conta própria"
+        },
+        {
+          "value": "U",
+          "label": "Desempregado(a) / Sem emprego"
+        },
+        {
+          "value": "M",
+          "label": "Aposentado(a)"
+        },
+        {
+          "value": "O",
+          "label": "Outro"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_cargo",
+      "section": "sponsor_emprego",
+      "label": "Cargo/função (se empregado)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_situacao_emprego",
+        "equals": "E"
+      }
+    },
+    {
+      "id": "sponsor_nome_empregador",
+      "section": "sponsor_emprego",
+      "label": "Nome do empregador (se empregado)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_situacao_emprego",
+        "equals": "E"
+      }
+    },
+    {
+      "id": "sponsor_tipo_autonomo",
+      "section": "sponsor_emprego",
+      "label": "Ramo de atividade (se autônomo)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_situacao_emprego",
+        "equals": "SE"
+      }
+    },
+    {
+      "id": "sponsor_emprego_outro_explicacao",
+      "section": "sponsor_emprego",
+      "label": "Se \"Outro\": explique sua situação de emprego",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_situacao_emprego",
+        "equals": "O"
+      }
+    },
+    {
+      "id": "sponsor_quantos_i134_anteriores",
+      "section": "sponsor_financeiro",
+      "label": "Quantos outros Formulários I-134, I-134A, I-864, I-864EZ ou I-864A você já enviou (para qualquer pessoa, incluindo você mesmo) cujo compromisso de apoio ainda não terminou?",
+      "type": "text",
+      "required": false,
+      "hint": "Não inclua o(a) beneficiário(a) deste pedido. Se nenhum, digite 0."
+    },
+    {
+      "id": "sponsor_quantos_outros_dependentes",
+      "section": "sponsor_financeiro",
+      "label": "Quantos outros dependentes você sustenta (contando você mesmo)?",
+      "type": "text",
+      "required": false,
+      "hint": "Não inclua o(a) beneficiário(a) deste pedido."
+    },
+    {
+      "id": "dependente1_nome",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 1 — Nome completo (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente1_nascimento",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 1 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "dependente1_parentesco",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 1 — Parentesco com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente1_alien_number",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 1 — A-Number (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente1_recibo",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 1 — Número de recibo USCIS (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente2_nome",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 2 — Nome completo (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente2_nascimento",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 2 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "dependente2_parentesco",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 2 — Parentesco com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente2_alien_number",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 2 — A-Number (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente2_recibo",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 2 — Número de recibo USCIS (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente3_nome",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 3 — Nome completo (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente3_nascimento",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 3 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "dependente3_parentesco",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 3 — Parentesco com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente3_alien_number",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 3 — A-Number (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente3_recibo",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 3 — Número de recibo USCIS (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente4_nome",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 4 — Nome completo (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente4_nascimento",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 4 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "dependente4_parentesco",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 4 — Parentesco com você",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente4_alien_number",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 4 — A-Number (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "dependente4_recibo",
+      "section": "sponsor_financeiro",
+      "label": "Outro dependente 4 — Número de recibo USCIS (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_renda_anual",
+      "section": "sponsor_financeiro",
+      "label": "Qual é a sua renda anual atual? (em dólares)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ativo1_tipo",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 1 — Tipo (opcional)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "N/A",
+          "label": "Não aplicável"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Conta corrente bancária"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Conta poupança bancária"
+        },
+        {
+          "value": "Annuities",
+          "label": "Anuidades"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Ações, títulos, certificados de depósito (CDs)"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Conta de aposentadoria ou educacional"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Imóveis"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Bens pessoais (valor líquido)"
+        }
+      ]
+    },
+    {
+      "id": "ativo1_valor",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 1 — Valor em dólares (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo2_tipo",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 2 — Tipo (opcional)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "N/A",
+          "label": "Não aplicável"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Conta corrente bancária"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Conta poupança bancária"
+        },
+        {
+          "value": "Annuities",
+          "label": "Anuidades"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Ações, títulos, certificados de depósito (CDs)"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Conta de aposentadoria ou educacional"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Imóveis"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Bens pessoais (valor líquido)"
+        }
+      ]
+    },
+    {
+      "id": "ativo2_valor",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 2 — Valor em dólares (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo3_tipo",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 3 — Tipo (opcional)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "N/A",
+          "label": "Não aplicável"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Conta corrente bancária"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Conta poupança bancária"
+        },
+        {
+          "value": "Annuities",
+          "label": "Anuidades"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Ações, títulos, certificados de depósito (CDs)"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Conta de aposentadoria ou educacional"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Imóveis"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Bens pessoais (valor líquido)"
+        }
+      ]
+    },
+    {
+      "id": "ativo3_valor",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 3 — Valor em dólares (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo4_tipo",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 4 — Tipo (opcional)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "N/A",
+          "label": "Não aplicável"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Conta corrente bancária"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Conta poupança bancária"
+        },
+        {
+          "value": "Annuities",
+          "label": "Anuidades"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Ações, títulos, certificados de depósito (CDs)"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Conta de aposentadoria ou educacional"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Imóveis"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Bens pessoais (valor líquido)"
+        }
+      ]
+    },
+    {
+      "id": "ativo4_valor",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 4 — Valor em dólares (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo5_tipo",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 5 — Tipo (opcional)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "N/A",
+          "label": "Não aplicável"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Conta corrente bancária"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Conta poupança bancária"
+        },
+        {
+          "value": "Annuities",
+          "label": "Anuidades"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Ações, títulos, certificados de depósito (CDs)"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Conta de aposentadoria ou educacional"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Imóveis"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Bens pessoais (valor líquido)"
+        }
+      ]
+    },
+    {
+      "id": "ativo5_valor",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 5 — Valor em dólares (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo6_tipo",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 6 — Tipo (opcional)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "N/A",
+          "label": "Não aplicável"
+        },
+        {
+          "value": "Checking - Bank Account",
+          "label": "Conta corrente bancária"
+        },
+        {
+          "value": "Savings - Bank Account",
+          "label": "Conta poupança bancária"
+        },
+        {
+          "value": "Annuities",
+          "label": "Anuidades"
+        },
+        {
+          "value": "Stocks, Bonds, Certificates of Deposit",
+          "label": "Ações, títulos, certificados de depósito (CDs)"
+        },
+        {
+          "value": "Retirement or Educational Account",
+          "label": "Conta de aposentadoria ou educacional"
+        },
+        {
+          "value": "Real Estate Holdings",
+          "label": "Imóveis"
+        },
+        {
+          "value": "Personal Property (net value)",
+          "label": "Bens pessoais (valor líquido)"
+        }
+      ]
+    },
+    {
+      "id": "ativo6_valor",
+      "section": "sponsor_financeiro",
+      "label": "Ativo 6 — Valor em dólares (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ativo_total",
+      "section": "sponsor_financeiro",
+      "label": "Valor total de todos os ativos acima (em dólares)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_intencao_contribuicao_especifica",
+      "section": "sponsor_financeiro",
+      "label": "Além do apoio financeiro geral, você pretende fornecer contribuições específicas para as necessidades básicas do(a) beneficiário(a) (por exemplo, moradia, ajuda para conseguir emprego, matrícula escolar)?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_descricao_contribuicao",
+      "section": "sponsor_financeiro",
+      "label": "Descreva as contribuições específicas que você vai fornecer",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_intencao_contribuicao_especifica",
+        "equals": "sim"
+      },
+      "hint": "Ex.: fornecer moradia segu: e adequada (informe o endereço), ajudar a conseguir emprego assim que autorizado(a) a trabalhar, matricular em escola, inscrever em benefícios elegíveis."
+    },
+    {
+      "id": "benef_sobrenome",
+      "section": "benef_dados",
+      "label": "Sobrenome do(a) beneficiário(a)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_nome_proprio",
+      "section": "benef_dados",
+      "label": "Nome do(a) beneficiário(a)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_nome_meio",
+      "section": "benef_dados",
+      "label": "Nome do meio do(a) beneficiário(a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_outro_nome1_sobrenome",
+      "section": "benef_dados",
+      "label": "Outro nome usado pelo(a) beneficiário(a) 1 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_outro_nome1_nome",
+      "section": "benef_dados",
+      "label": "Outro nome usado pelo(a) beneficiário(a) 1 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_outro_nome1_meio",
+      "section": "benef_dados",
+      "label": "Outro nome usado pelo(a) beneficiário(a) 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_outro_nome2_sobrenome",
+      "section": "benef_dados",
+      "label": "Outro nome usado pelo(a) beneficiário(a) 2 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_outro_nome2_nome",
+      "section": "benef_dados",
+      "label": "Outro nome usado pelo(a) beneficiário(a) 2 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_outro_nome2_meio",
+      "section": "benef_dados",
+      "label": "Outro nome usado pelo(a) beneficiário(a) 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_data_nascimento",
+      "section": "benef_dados",
+      "label": "Data de nascimento do(a) beneficiário(a)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "benef_sexo",
+      "section": "benef_dados",
+      "label": "Sexo do(a) beneficiário(a)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "M",
+          "label": "Masculino"
+        },
+        {
+          "value": "F",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "benef_alien_number",
+      "section": "benef_dados",
+      "label": "Número de Registro de Estrangeiro do(a) beneficiário(a) (A-Number), se houver",
+      "type": "text",
+      "required": false,
+      "hint": "9 dígitos, sem a letra \"A\" (o formulário já imprime o \"A-\" antes do campo). Deixe em branco se a pessoa nunca teve um A-Number."
+    },
+    {
+      "id": "benef_nascimento_pais",
+      "section": "benef_dados",
+      "label": "Local de nascimento do(a) beneficiário(a) — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_nascimento_provincia",
+      "section": "benef_dados",
+      "label": "Local de nascimento do(a) beneficiário(a) — Estado ou província",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_nascimento_cidade",
+      "section": "benef_dados",
+      "label": "Local de nascimento do(a) beneficiário(a) — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_cidadania_pais",
+      "section": "benef_dados",
+      "label": "País de cidadania ou nacionalidade do(a) beneficiário(a)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_estado_civil",
+      "section": "benef_dados",
+      "label": "Estado civil do(a) beneficiário(a)",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "S",
+          "label": "Solteiro(a), nunca se casou"
+        },
+        {
+          "value": "M",
+          "label": "Casado(a)"
+        },
+        {
+          "value": "D",
+          "label": "Divorciado(a)"
+        },
+        {
+          "value": "W",
+          "label": "Viúvo(a)"
+        },
+        {
+          "value": "E",
+          "label": "Legalmente separado(a)"
+        },
+        {
+          "value": "A",
+          "label": "Casamento anulado"
+        },
+        {
+          "value": "O",
+          "label": "Outro"
+        }
+      ]
+    },
+    {
+      "id": "benef_estado_civil_outro",
+      "section": "benef_dados",
+      "label": "Se \"Outro\": explique o estado civil do(a) beneficiário(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_estado_civil",
+        "equals": "O"
+      }
+    },
+    {
+      "id": "benef_end_correio_cuidado_de",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Aos cuidados de (opcional)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_end_correio_rua",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_end_correio_tipo_unidade",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Tipo de unidade (se houver)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartamento"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "benef_end_correio_numero_unidade",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_end_correio_cidade",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_end_correio_estado",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Estado (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "benef_end_correio_cep",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — CEP dos EUA (Zip Code)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_end_correio_provincia",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_end_correio_codigo_postal",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "benef_end_correio_pais",
+      "section": "benef_endereco",
+      "label": "Endereço de correspondência do(a) beneficiário(a) — País",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "benef_end_fisico_diferente",
+      "section": "benef_endereco",
+      "label": "O endereço físico do(a) beneficiário(a) é diferente do endereço de correspondência acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "benef_end_fisico_cuidado_de",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Aos cuidados de (opcional)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_rua",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_tipo_unidade",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Tipo de unidade (se houver)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "APT",
+          "label": "Apartamento"
+        },
+        {
+          "value": "STE",
+          "label": "Suite"
+        },
+        {
+          "value": "FLR",
+          "label": "Andar"
+        }
+      ]
+    },
+    {
+      "id": "benef_end_fisico_numero_unidade",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_cidade",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_estado",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Estado (EUA)",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_cep",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — CEP dos EUA (Zip Code)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_provincia",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_codigo_postal",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_end_fisico_pais",
+      "section": "benef_endereco",
+      "label": "Endereço físico do(a) beneficiário(a) — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "benef_end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "benef_estadia_data_inicio",
+      "section": "benef_estadia",
+      "label": "Data de início da permanência prevista do(a) beneficiário(a) nos EUA",
+      "type": "date",
+      "required": false,
+      "hint": "Geralmente coincide com a data de início do curso (F-1) ou data planejada de entrada como turista (B-2)."
+    },
+    {
+      "id": "benef_estadia_tem_data_fim",
+      "section": "benef_estadia",
+      "label": "Existe uma data prevista de término dessa permanência?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim, tenho uma data prevista"
+        },
+        {
+          "value": "nao",
+          "label": "Não, sem data de término definida"
+        }
+      ]
+    },
+    {
+      "id": "benef_estadia_data_fim",
+      "section": "benef_estadia",
+      "label": "Data prevista de término da permanência",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "benef_estadia_tem_data_fim",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_certifica_leitura",
+      "section": "sponsor_declaracao",
+      "label": "Como você confirma que leu e entendeu esta declaração?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "proprio",
+          "label": "Eu leio e entendo inglês, e li e entendi cada pergunta e instrução deste formulário"
+        },
+        {
+          "value": "interprete",
+          "label": "Um(a) intérprete leu e traduziu cada pergunta e instrução para mim em um idioma que eu entendo"
+        }
+      ],
+      "hint": "Se você precisar de um(a) intérprete, preencha também os dados dele(a) na seção seguinte (Parte 6)."
+    },
+    {
+      "id": "sponsor_idioma_fluente",
+      "section": "sponsor_declaracao",
+      "label": "Em qual idioma você é fluente (o mesmo usado pelo(a) intérprete)?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "sponsor_usou_preparador",
+      "section": "sponsor_declaracao",
+      "label": "Alguém (por exemplo, um(a) advogado(a) ou preparador(a)) ajudou a preencher esta declaração para você?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "sponsor_preparador_nome",
+      "section": "sponsor_declaracao",
+      "label": "Nome completo de quem preparou esta declaração",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sponsor_telefone_diurno",
+      "section": "sponsor_declaracao",
+      "label": "Seu telefone diurno (para contato sobre esta declaração)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "sponsor_telefone_celular_decl",
+      "section": "sponsor_declaracao",
+      "label": "Seu telefone celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_email_decl",
+      "section": "sponsor_declaracao",
+      "label": "Seu endereço de e-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "sponsor_data_assinatura",
+      "section": "sponsor_declaracao",
+      "label": "Data da assinatura do(a) patrocinador(a)",
+      "type": "date",
+      "required": true,
+      "hint": "Geralmente é a data em que o formulário será efetivamente assinado à mão antes do envio."
+    },
+    {
+      "id": "interprete_sobrenome",
+      "section": "interprete",
+      "label": "Sobrenome do(a) intérprete",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_nome",
+      "section": "interprete",
+      "label": "Nome do(a) intérprete",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_empresa_organizacao",
+      "section": "interprete",
+      "label": "Nome da empresa ou organização do(a) intérprete (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_telefone_diurno",
+      "section": "interprete",
+      "label": "Telefone diurno do(a) intérprete",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_telefone_celular",
+      "section": "interprete",
+      "label": "Telefone celular do(a) intérprete (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_email",
+      "section": "interprete",
+      "label": "E-mail do(a) intérprete (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_idioma",
+      "section": "interprete",
+      "label": "Idioma no qual o(a) intérprete é fluente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "interprete_data_assinatura",
+      "section": "interprete",
+      "label": "Data da assinatura do(a) intérprete",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_certifica_leitura",
+        "equals": "interprete"
+      }
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Sobrenome de quem preparou",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Nome de quem preparou",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_empresa_organizacao",
+      "section": "preparador",
+      "label": "Nome da empresa ou organização de quem preparou (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone_diurno",
+      "section": "preparador",
+      "label": "Telefone diurno de quem preparou",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone_celular",
+      "section": "preparador",
+      "label": "Telefone celular de quem preparou (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "E-mail de quem preparou (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Data da assinatura de quem preparou",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "sponsor_usou_preparador",
+        "equals": "sim"
+      }
+    }
+  ]
+}

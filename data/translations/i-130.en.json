@@ -1,0 +1,1104 @@
+{
+  "title": "Petition for Alien Relative — I-130",
+  "sections": {
+    "relacao": "Part 1 — Relationship to the Beneficiary",
+    "pet_basico": "Part 2 — Information About the Petitioner",
+    "pet_end": "Part 2 — Petitioner's Address",
+    "pet_civil": "Part 2 — Petitioner's Marital Status",
+    "pet_pais": "Part 2 — Petitioner's Parents",
+    "pet_emprego": "Part 2 — Petitioner's Employment",
+    "pet_bio": "Part 3 — Petitioner's Biographic Information",
+    "ben_basico": "Part 4 — Information About the Beneficiary",
+    "ben_end": "Part 4 — Beneficiary's Address",
+    "ben_civil": "Part 4 — Beneficiary's Marital Status",
+    "ben_pais": "Part 4 — Beneficiary's Parents",
+    "ben_filhos": "Part 4 — Beneficiary's Children",
+    "ben_imig": "Part 4 — Beneficiary's Immigration History",
+    "ben_emprego": "Part 4 — Beneficiary's Employment Abroad",
+    "ben_deport": "Part 4 — Removal/Deportation Proceedings",
+    "pet_ant": "Part 5 — Previous I-130 Petitions",
+    "assinatura": "Part 6 — Petitioner's Statement",
+    "interprete": "Part 7 — Interpreter",
+    "preparador": "Part 8 — Preparer"
+  },
+  "questions": {
+    "rel_tipo": {
+      "label": "What is your relationship to the person you are sponsoring (the beneficiary)?",
+      "options": {
+        "conjuge": "Spouse (husband/wife)",
+        "filho": "Son/Daughter",
+        "pai_mae": "Parent (father or mother)",
+        "irmao": "Brother or Sister"
+      }
+    },
+    "rel_tipo_filho": {
+      "label": "What type of parent-child relationship is it?",
+      "options": {
+        "legitimo": "Legitimate child (born during the marriage)",
+        "adotado": "Adopted child",
+        "enteado": "Stepchild",
+        "ilegitimo": "Child born out of wedlock"
+      },
+      "hint": "Biological = your own biological child. Stepchild = your spouse's child (from a prior or current marriage), not biologically yours. Adopted = legal adoption before age 16 (or 18 for siblings adopted together), with at least 2 years under your legal custody. Each type needs different documents — confirm with our team if unsure."
+    },
+    "rel_irmao_adocao": {
+      "label": "If the beneficiary is your brother or sister, are you related through adoption (not biologically)?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer Yes only if one of you was adopted (you're not blood siblings, not even half-siblings). Adoptive siblings only qualify if the adoption happened before age 18, with at least 2 years of legal custody (INA 101(b)(1)(E))."
+    },
+    "rel_lpr_via_adocao": {
+      "label": "Did you obtain permanent residence or U.S. citizenship through adoption?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Important for sibling petitions: if you became a resident/citizen through adoption, this can affect whether you may petition for a biological (non-adopted) sibling. Confirm with our team — this rule has exceptions."
+    },
+    "pet_sobrenome": {
+      "label": "Family Name (Last Name)"
+    },
+    "pet_nome": {
+      "label": "Given Name (First Name)"
+    },
+    "pet_nome_meio": {
+      "label": "Middle Name"
+    },
+    "pet_outros_sobrenome": {
+      "label": "Other family names you have used (last names)"
+    },
+    "pet_outros_nome": {
+      "label": "Other given names you have used (first names)"
+    },
+    "pet_outros_meio": {
+      "label": "Other middle names you have used"
+    },
+    "pet_alien_number": {
+      "label": "Alien Registration Number (A-Number) — if applicable",
+      "hint": "Format: A followed by 8 or 9 digits. Ex: A012345678"
+    },
+    "pet_uscis_online": {
+      "label": "USCIS Online Account Number — if applicable"
+    },
+    "pet_ssn": {
+      "label": "Social Security Number (SSN)",
+      "hint": "Format: XXX-XX-XXXX"
+    },
+    "pet_cidade_nascimento": {
+      "label": "City or town of birth"
+    },
+    "pet_pais_nascimento": {
+      "label": "Country of birth"
+    },
+    "pet_data_nascimento": {
+      "label": "Date of birth (MM/DD/YYYY)"
+    },
+    "pet_sexo": {
+      "label": "Sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "pet_end_rua": {
+      "label": "Current address — Street number and name"
+    },
+    "pet_end_tipo_unidade": {
+      "label": "Unit type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "pet_end_num_unidade": {
+      "label": "Unit number"
+    },
+    "pet_end_cuidados_de": {
+      "label": "In Care Of Name — if applicable"
+    },
+    "pet_end_cidade": {
+      "label": "City or town"
+    },
+    "pet_end_estado": {
+      "label": "State (U.S.)"
+    },
+    "pet_end_cep": {
+      "label": "ZIP Code (U.S.)"
+    },
+    "pet_end_provincia": {
+      "label": "Province (outside the U.S.)"
+    },
+    "pet_end_codigo_postal": {
+      "label": "Postal Code (outside the U.S.)"
+    },
+    "pet_end_pais": {
+      "label": "Country"
+    },
+    "pet_end_fisico_igual_correio": {
+      "label": "Is your current physical address the same as the mailing address provided above?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Question 11 of the form. If the place where you actually live is different from your mailing address, answer \"No\" to provide your physical address."
+    },
+    "pet_end_fisico_rua": {
+      "label": "Current physical address — Street number and name"
+    },
+    "pet_end_fisico_tipo_unidade": {
+      "label": "Unit type (current physical address)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "pet_end_fisico_num_unidade": {
+      "label": "Unit number (current physical address)"
+    },
+    "pet_end_fisico_cidade": {
+      "label": "City or town (current physical address)"
+    },
+    "pet_end_fisico_estado": {
+      "label": "State — U.S. (current physical address)"
+    },
+    "pet_end_fisico_cep": {
+      "label": "ZIP Code (current physical address)"
+    },
+    "pet_end_fisico_provincia": {
+      "label": "Province (current physical address)"
+    },
+    "pet_end_fisico_codigo_postal": {
+      "label": "Postal Code (current physical address)"
+    },
+    "pet_end_fisico_pais": {
+      "label": "Country (current physical address)"
+    },
+    "pet_end_desde": {
+      "label": "You have lived at this physical address since (MM/DD/YYYY)"
+    },
+    "pet_end_ant_rua": {
+      "label": "Previous address — Street number and name"
+    },
+    "pet_end_ant_tipo_unidade": {
+      "label": "Unit type (previous address)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "pet_end_ant_num_unidade": {
+      "label": "Unit number (previous address)"
+    },
+    "pet_end_ant_cidade": {
+      "label": "City or town (previous address)"
+    },
+    "pet_end_ant_estado": {
+      "label": "State — U.S. (previous address)"
+    },
+    "pet_end_ant_cep": {
+      "label": "ZIP Code (previous address)"
+    },
+    "pet_end_ant_provincia": {
+      "label": "Province (previous address)"
+    },
+    "pet_end_ant_codigo_postal": {
+      "label": "Postal Code (previous address)"
+    },
+    "pet_end_ant_pais": {
+      "label": "Country (previous address)"
+    },
+    "pet_end_ant_de": {
+      "label": "Previous address period — From (MM/DD/YYYY)"
+    },
+    "pet_end_ant_ate": {
+      "label": "Previous address period — To (MM/DD/YYYY)"
+    },
+    "pet_num_casamentos": {
+      "label": "How many times have you been married (including your current marriage, if any)?"
+    },
+    "pet_estado_civil": {
+      "label": "Current marital status",
+      "options": {
+        "solteiro": "Single",
+        "casado": "Married",
+        "divorciado": "Divorced",
+        "viuvo": "Widowed",
+        "separado": "Legally Separated",
+        "anulado": "Marriage Annulled"
+      }
+    },
+    "pet_data_casamento": {
+      "label": "Date of current marriage (MM/DD/YYYY)"
+    },
+    "pet_local_casamento_cidade": {
+      "label": "City where you got married"
+    },
+    "pet_local_casamento_estado": {
+      "label": "State (U.S.) where you got married"
+    },
+    "pet_local_casamento_provincia": {
+      "label": "Province where you got married (outside the U.S.)"
+    },
+    "pet_local_casamento_pais": {
+      "label": "Country where you got married"
+    },
+    "pet_conj_sobrenome": {
+      "label": "Current spouse — Family Name"
+    },
+    "pet_conj_nome": {
+      "label": "Current spouse — Given Name"
+    },
+    "pet_conj_meio": {
+      "label": "Current spouse — Middle Name"
+    },
+    "pet_conj_ant_sobrenome": {
+      "label": "Previous spouse — Family Name"
+    },
+    "pet_conj_ant_nome": {
+      "label": "Previous spouse — Given Name"
+    },
+    "pet_conj_ant_meio": {
+      "label": "Previous spouse — Middle Name"
+    },
+    "pet_conj_ant_fim": {
+      "label": "Previous spouse — Date marriage ended (MM/DD/YYYY)"
+    },
+    "pet_conj_ant_fim_como": {
+      "label": "Previous spouse — How did the marriage end?",
+      "options": {
+        "divorcio": "Divorce",
+        "viuvez": "Death of spouse",
+        "anulacao": "Annulment"
+      }
+    },
+    "pet_pai_sobrenome": {
+      "label": "Father's name — Family Name"
+    },
+    "pet_pai_nome": {
+      "label": "Father's name — Given Name"
+    },
+    "pet_pai_meio": {
+      "label": "Father's name — Middle Name"
+    },
+    "pet_pai_data_nasc": {
+      "label": "Father's date of birth (MM/DD/YYYY)"
+    },
+    "pet_pai_sexo": {
+      "label": "Father's sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "pet_pai_pais_nasc": {
+      "label": "Father's country of birth"
+    },
+    "pet_pai_cidade_resid": {
+      "label": "Father's current city/town of residence"
+    },
+    "pet_pai_pais_resid": {
+      "label": "Father's current country of residence"
+    },
+    "pet_mae_sobrenome": {
+      "label": "Mother's name — Family Name"
+    },
+    "pet_mae_nome": {
+      "label": "Mother's name — Given Name"
+    },
+    "pet_mae_meio": {
+      "label": "Mother's name — Middle Name"
+    },
+    "pet_mae_data_nasc": {
+      "label": "Mother's date of birth (MM/DD/YYYY)"
+    },
+    "pet_mae_sexo": {
+      "label": "Mother's sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "pet_mae_pais_nasc": {
+      "label": "Mother's country of birth"
+    },
+    "pet_mae_cidade_resid": {
+      "label": "Mother's current city/town of residence"
+    },
+    "pet_mae_pais_resid": {
+      "label": "Mother's current country of residence"
+    },
+    "pet_cidadania_tipo": {
+      "label": "Are you a U.S. citizen or a lawful permanent resident?",
+      "options": {
+        "cidadao": "U.S. Citizen",
+        "lpr": "Lawful Permanent Resident (Green Card)"
+      },
+      "hint": "Your answer determines the petition category and the beneficiary's wait time — U.S. citizens usually get faster processing for spouse/minor child/parent than permanent residents do."
+    },
+    "pet_cert_nat_numero": {
+      "label": "Certificate of Naturalization or Citizenship Number",
+      "hint": "Only applies if you became a U.S. citizen through naturalization (not by birth). The number is on your USCIS Certificate of Naturalization/Citizenship, not your passport."
+    },
+    "pet_cert_nat_local": {
+      "label": "Place the certificate was issued",
+      "hint": "Only applies if you became a U.S. citizen through naturalization (not by birth) — leave blank if you're a citizen by birth. City/state where the certificate was issued — usually printed on the document itself."
+    },
+    "pet_cert_nat_data": {
+      "label": "Date the certificate was issued (MM/DD/YYYY)"
+    },
+    "pet_emp_atual_empresa": {
+      "label": "Current employer's or organization's name"
+    },
+    "pet_emp_atual_classe_admissao": {
+      "label": "Class of admission (work visa) — if applicable",
+      "hint": "The visa/status code YOU (the petitioner) used to enter the U.S., if you weren't born a citizen — e.g., H1B, L1. Find it on your Form I-94 (i94.cbp.dhs.gov)."
+    },
+    "pet_emp_atual_data_admissao": {
+      "label": "Date of admission to current job (MM/DD/YYYY)"
+    },
+    "pet_emp_atual_cidade": {
+      "label": "Current employer's city"
+    },
+    "pet_emp_atual_estado": {
+      "label": "Current employer's state (U.S.)"
+    },
+    "pet_emp_atual_rua": {
+      "label": "Current employer's address — Street"
+    },
+    "pet_emp_atual_tipo_unidade": {
+      "label": "Unit type (current employer)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "pet_emp_atual_num_unidade": {
+      "label": "Unit number (current employer)"
+    },
+    "pet_emp_atual_cep": {
+      "label": "Current employer's ZIP Code"
+    },
+    "pet_emp_atual_pais": {
+      "label": "Current employer's country"
+    },
+    "pet_emp_atual_provincia": {
+      "label": "Current employer's province"
+    },
+    "pet_emp_atual_codigo_postal": {
+      "label": "Current employer's postal code"
+    },
+    "pet_emp_atual_ocupacao": {
+      "label": "Current occupation/job title"
+    },
+    "pet_emp_atual_de": {
+      "label": "Employment period — From (MM/DD/YYYY)"
+    },
+    "pet_emp_atual_ate": {
+      "label": "Employment period — To (MM/DD/YYYY) or 'present'"
+    },
+    "pet_emp_ant_empresa": {
+      "label": "Previous employer's name"
+    },
+    "pet_emp_ant_rua": {
+      "label": "Previous employer's address — Street"
+    },
+    "pet_emp_ant_tipo_unidade": {
+      "label": "Unit type (previous employer)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "pet_emp_ant_num_unidade": {
+      "label": "Unit number (previous employer)"
+    },
+    "pet_emp_ant_cidade": {
+      "label": "Previous employer's city"
+    },
+    "pet_emp_ant_estado": {
+      "label": "Previous employer's state (U.S.)"
+    },
+    "pet_emp_ant_cep": {
+      "label": "Previous employer's ZIP Code"
+    },
+    "pet_emp_ant_provincia": {
+      "label": "Previous employer's province"
+    },
+    "pet_emp_ant_codigo_postal": {
+      "label": "Previous employer's postal code"
+    },
+    "pet_emp_ant_pais": {
+      "label": "Previous employer's country"
+    },
+    "pet_emp_ant_ocupacao": {
+      "label": "Previous occupation/job title"
+    },
+    "pet_emp_ant_de": {
+      "label": "Previous employment period — From (MM/DD/YYYY)"
+    },
+    "pet_emp_ant_ate": {
+      "label": "Previous employment period — To (MM/DD/YYYY)"
+    },
+    "pet_etnia": {
+      "label": "Ethnicity",
+      "options": {
+        "hispanico": "Hispanic or Latino",
+        "nao_hispanico": "Not Hispanic or Latino"
+      }
+    },
+    "pet_raca": {
+      "label": "Race (select all that apply)",
+      "options": {
+        "branco": "White",
+        "negro": "Black or African American",
+        "indigena_alaska": "American Indian or Alaska Native",
+        "asiatico": "Asian",
+        "pacifico": "Native Hawaiian or Other Pacific Islander"
+      }
+    },
+    "pet_altura_pes": {
+      "label": "Height — Feet",
+      "hint": "Measured in feet (U.S. system), not centimeters."
+    },
+    "pet_altura_polegadas": {
+      "label": "Height — Inches",
+      "hint": "Inches (0-11) to go with the feet field above — U.S. system, not centimeters."
+    },
+    "pet_peso": {
+      "label": "Weight in pounds (e.g., 150)",
+      "hint": "Weight in pounds (lb), not kilograms."
+    },
+    "pet_cor_olhos": {
+      "label": "Eye color",
+      "options": {
+        "preto": "Black",
+        "castanho": "Brown",
+        "azul": "Blue",
+        "cinza": "Gray",
+        "verde": "Green",
+        "avel": "Hazel",
+        "rosa": "Pink",
+        "marrom_avermelhado": "Maroon",
+        "outro": "Other"
+      }
+    },
+    "pet_cor_cabelo": {
+      "label": "Hair color",
+      "options": {
+        "preto": "Black",
+        "castanho": "Brown",
+        "loiro": "Blond",
+        "ruivo": "Red",
+        "grisalho": "Gray",
+        "branco": "White",
+        "careca": "Bald (No Hair)",
+        "arenoso": "Sandy",
+        "outro": "Other"
+      }
+    },
+    "ben_alien_number": {
+      "label": "Beneficiary's Alien Registration Number (A-Number) — if applicable"
+    },
+    "ben_uscis_online": {
+      "label": "Beneficiary's USCIS Online Account Number — if applicable"
+    },
+    "ben_ssn": {
+      "label": "Beneficiary's Social Security Number (SSN) — if applicable"
+    },
+    "ben_sobrenome": {
+      "label": "Beneficiary's Family Name"
+    },
+    "ben_nome": {
+      "label": "Beneficiary's Given Name"
+    },
+    "ben_nome_meio": {
+      "label": "Beneficiary's Middle Name"
+    },
+    "ben_outros_sobrenome": {
+      "label": "Other family names used by the beneficiary"
+    },
+    "ben_outros_nome": {
+      "label": "Other given names used by the beneficiary"
+    },
+    "ben_outros_meio": {
+      "label": "Other middle names used by the beneficiary"
+    },
+    "ben_cidade_nascimento": {
+      "label": "Beneficiary's city or town of birth"
+    },
+    "ben_pais_nascimento": {
+      "label": "Beneficiary's country of birth"
+    },
+    "ben_data_nascimento": {
+      "label": "Beneficiary's date of birth (MM/DD/YYYY)"
+    },
+    "ben_sexo": {
+      "label": "Beneficiary's sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "ben_telefone": {
+      "label": "Beneficiary's daytime telephone number"
+    },
+    "ben_celular": {
+      "label": "Beneficiary's mobile telephone number (if any)"
+    },
+    "ben_email": {
+      "label": "Beneficiary's email address (if any)"
+    },
+    "ben_end_rua": {
+      "label": "Beneficiary's current address — Street"
+    },
+    "ben_end_tipo_unidade": {
+      "label": "Unit type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "ben_end_num_unidade": {
+      "label": "Unit number"
+    },
+    "ben_end_cidade": {
+      "label": "City"
+    },
+    "ben_end_estado": {
+      "label": "State (U.S.)"
+    },
+    "ben_end_cep": {
+      "label": "ZIP Code (U.S.)"
+    },
+    "ben_end_provincia": {
+      "label": "Province (outside the U.S.)"
+    },
+    "ben_end_codigo_postal": {
+      "label": "Postal Code (outside the U.S.)"
+    },
+    "ben_end_pais": {
+      "label": "Country"
+    },
+    "ben_end_corr_rua": {
+      "label": "Beneficiary's mailing address — Street (if different from current address)",
+      "hint": "Fill in only if the address to receive USCIS mail is different from the current address given above. Leave blank if it's the same."
+    },
+    "ben_end_corr_tipo_unidade": {
+      "label": "Unit type (mailing address)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "ben_end_corr_num_unidade": {
+      "label": "Unit number (mailing address)"
+    },
+    "ben_end_corr_cidade": {
+      "label": "City (mailing address)"
+    },
+    "ben_end_corr_estado": {
+      "label": "State (mailing address, U.S.)"
+    },
+    "ben_end_corr_cep": {
+      "label": "ZIP Code (mailing address)"
+    },
+    "ben_end_ant_rua": {
+      "label": "Beneficiary's address abroad — Street number and name (if different from physical address)",
+      "hint": "Previous address abroad, if different from the current address above — leave blank if it's the same."
+    },
+    "ben_end_ant_tipo_unidade": {
+      "label": "Unit type (address abroad)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "ben_end_ant_num_unidade": {
+      "label": "Unit number (address abroad)"
+    },
+    "ben_end_ant_cidade": {
+      "label": "City (address abroad)"
+    },
+    "ben_end_ant_pais": {
+      "label": "Country (address abroad)"
+    },
+    "ben_end_ant_provincia": {
+      "label": "Province (address abroad)"
+    },
+    "ben_end_ant_codigo_postal": {
+      "label": "Postal Code (address abroad)"
+    },
+    "ben_num_casamentos": {
+      "label": "How many times has the beneficiary been married?"
+    },
+    "ben_estado_civil": {
+      "label": "Beneficiary's current marital status",
+      "options": {
+        "solteiro": "Single",
+        "casado": "Married",
+        "divorciado": "Divorced",
+        "viuvo": "Widowed",
+        "separado": "Legally Separated",
+        "anulado": "Marriage Annulled"
+      }
+    },
+    "ben_conj_sobrenome": {
+      "label": "Beneficiary's current spouse — Family Name"
+    },
+    "ben_conj_nome": {
+      "label": "Beneficiary's current spouse — Given Name"
+    },
+    "ben_conj_meio": {
+      "label": "Beneficiary's current spouse — Middle Name"
+    },
+    "ben_data_casamento": {
+      "label": "Date of beneficiary's current marriage (MM/DD/YYYY)"
+    },
+    "ben_local_casamento_cidade": {
+      "label": "City where the beneficiary got married"
+    },
+    "ben_local_casamento_estado": {
+      "label": "State (U.S.) where the beneficiary got married"
+    },
+    "ben_local_casamento_provincia": {
+      "label": "Province where the beneficiary got married"
+    },
+    "ben_local_casamento_pais": {
+      "label": "Country where the beneficiary got married"
+    },
+    "ben_conj_ant_sobrenome": {
+      "label": "Beneficiary's previous spouse — Family Name"
+    },
+    "ben_conj_ant_nome": {
+      "label": "Beneficiary's previous spouse — Given Name"
+    },
+    "ben_conj_ant_meio": {
+      "label": "Beneficiary's previous spouse — Middle Name"
+    },
+    "ben_conj_ant_fim": {
+      "label": "Beneficiary's previous spouse — Date marriage ended (MM/DD/YYYY)"
+    },
+    "ben_pai1_sobrenome": {
+      "label": "Beneficiary's Parent 1 — Family Name"
+    },
+    "ben_pai1_nome": {
+      "label": "Beneficiary's Parent 1 — Given Name"
+    },
+    "ben_pai1_meio": {
+      "label": "Beneficiary's Parent 1 — Middle Name"
+    },
+    "ben_pai1_relacao": {
+      "label": "Relationship (Parent 1 to beneficiary)"
+    },
+    "ben_pai2_sobrenome": {
+      "label": "Beneficiary's Parent 2 — Family Name"
+    },
+    "ben_pai2_nome": {
+      "label": "Beneficiary's Parent 2 — Given Name"
+    },
+    "ben_pai2_meio": {
+      "label": "Beneficiary's Parent 2 — Middle Name"
+    },
+    "ben_pai2_relacao": {
+      "label": "Relationship (Parent 2 to beneficiary)"
+    },
+    "ben_filho1_sobrenome": {
+      "label": "Child 1 — Family Name"
+    },
+    "ben_filho1_nome": {
+      "label": "Child 1 — Given Name"
+    },
+    "ben_filho1_meio": {
+      "label": "Child 1 — Middle Name"
+    },
+    "ben_filho1_relacao": {
+      "label": "Child 1 — Relationship"
+    },
+    "ben_filho1_nasc": {
+      "label": "Child 1 — Date of birth"
+    },
+    "ben_filho1_pais_nasc": {
+      "label": "Child 1 — Country of birth"
+    },
+    "ben_filho2_sobrenome": {
+      "label": "Child 2 — Family Name"
+    },
+    "ben_filho2_nome": {
+      "label": "Child 2 — Given Name"
+    },
+    "ben_filho2_meio": {
+      "label": "Child 2 — Middle Name"
+    },
+    "ben_filho2_relacao": {
+      "label": "Child 2 — Relationship"
+    },
+    "ben_filho2_nasc": {
+      "label": "Child 2 — Date of birth"
+    },
+    "ben_filho2_pais_nasc": {
+      "label": "Child 2 — Country of birth"
+    },
+    "ben_filho3_sobrenome": {
+      "label": "Child 3 — Family Name"
+    },
+    "ben_filho3_nome": {
+      "label": "Child 3 — Given Name"
+    },
+    "ben_filho3_meio": {
+      "label": "Child 3 — Middle Name"
+    },
+    "ben_filho3_relacao": {
+      "label": "Child 3 — Relationship"
+    },
+    "ben_filho3_nasc": {
+      "label": "Child 3 — Date of birth"
+    },
+    "ben_filho3_pais_nasc": {
+      "label": "Child 3 — Country of birth"
+    },
+    "ben_filho4_sobrenome": {
+      "label": "Child 4 — Family Name"
+    },
+    "ben_filho4_nome": {
+      "label": "Child 4 — Given Name"
+    },
+    "ben_filho4_meio": {
+      "label": "Child 4 — Middle Name"
+    },
+    "ben_filho4_relacao": {
+      "label": "Child 4 — Relationship"
+    },
+    "ben_filho4_nasc": {
+      "label": "Child 4 — Date of birth"
+    },
+    "ben_filho4_pais_nasc": {
+      "label": "Child 4 — Country of birth"
+    },
+    "ben_filho5_sobrenome": {
+      "label": "Child 5 — Family Name"
+    },
+    "ben_filho5_nome": {
+      "label": "Child 5 — Given Name"
+    },
+    "ben_filho5_meio": {
+      "label": "Child 5 — Middle Name"
+    },
+    "ben_filho5_relacao": {
+      "label": "Child 5 — Relationship"
+    },
+    "ben_filho5_nasc": {
+      "label": "Child 5 — Date of birth"
+    },
+    "ben_filho5_pais_nasc": {
+      "label": "Child 5 — Country of birth"
+    },
+    "ben_nos_eua": {
+      "label": "Is the beneficiary currently physically present in the United States?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "ben_classe_admissao": {
+      "label": "Class of admission (visa type at U.S. entry)",
+      "hint": "The code for the visa/status type the beneficiary used to enter the U.S. (e.g., B2, F1, H1B). Find it on Form I-94 (i94.cbp.dhs.gov) or the passport stamp."
+    },
+    "ben_i94": {
+      "label": "I-94 Number (Arrival-Departure Record)",
+      "hint": "11-digit number identifying the beneficiary's U.S. entry. Look it up at i94.cbp.dhs.gov or on the I-94 record received on arrival."
+    },
+    "ben_data_chegada": {
+      "label": "Date of arrival in the U.S. (MM/DD/YYYY)"
+    },
+    "ben_data_exp_status": {
+      "label": "Expiration date of current status (MM/DD/YYYY)",
+      "hint": "The date until which the beneficiary is authorized to stay in the U.S. in their current status — usually shown on Form I-94."
+    },
+    "ben_passaporte_numero": {
+      "label": "Beneficiary's passport number"
+    },
+    "ben_doc_viagem_numero": {
+      "label": "Travel document number — if the beneficiary has no passport"
+    },
+    "ben_passaporte_pais_emissao": {
+      "label": "Country that issued the passport"
+    },
+    "ben_passaporte_exp": {
+      "label": "Passport expiration date (MM/DD/YYYY)"
+    },
+    "ben_emp_empresa": {
+      "label": "Name of beneficiary's employer abroad"
+    },
+    "ben_emp_rua": {
+      "label": "Employer's address — Street"
+    },
+    "ben_emp_tipo_unidade": {
+      "label": "Unit type (beneficiary's employer)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "ben_emp_num_unidade": {
+      "label": "Unit number (beneficiary's employer)"
+    },
+    "ben_emp_cidade": {
+      "label": "Employer's city"
+    },
+    "ben_emp_estado": {
+      "label": "Employer's state (U.S.)"
+    },
+    "ben_emp_cep": {
+      "label": "Employer's ZIP Code"
+    },
+    "ben_emp_provincia": {
+      "label": "Employer's province"
+    },
+    "ben_emp_codigo_postal": {
+      "label": "Employer's postal code"
+    },
+    "ben_emp_pais": {
+      "label": "Employer's country"
+    },
+    "ben_emp_inicio": {
+      "label": "Employment start date (MM/DD/YYYY)"
+    },
+    "ben_end_ext_cidade": {
+      "label": "Beneficiary's address in native script — City (if native language does not use the Roman alphabet)"
+    },
+    "ben_end_ext_provincia": {
+      "label": "Beneficiary's address in native script — Province"
+    },
+    "ben_end_ext_pais": {
+      "label": "Beneficiary's address in native script — Country"
+    },
+    "ben_outro_peticionario": {
+      "label": "Has anyone else ever filed an I-130 petition (or similar) for this beneficiary before?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No",
+        "desconhece": "I don't know"
+      },
+      "hint": "Select \"I don't know\" only if neither you nor the beneficiary know whether anyone has ever filed a petition for them."
+    },
+    "ben_processo_remocao": {
+      "label": "Has the beneficiary ever been in removal/deportation proceedings?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Removal/deportation/exclusion proceedings are a formal immigration court process (not just a visa denial) to decide whether someone must leave the U.S. If you're unsure whether this happened, answer carefully and confirm with an immigration attorney — this can significantly change how the case is handled."
+    },
+    "ben_tipo_processo": {
+      "label": "Type of proceeding (select all that apply)",
+      "options": {
+        "remocao": "Removal",
+        "exclusao": "Exclusion",
+        "rescisao": "Rescission of Status",
+        "procedimento_jud": "Judicial Proceedings"
+      },
+      "hint": "Exclusion/deportation/removal/rescission are the legal names (changed over the years) for the same type of immigration court process. Check whichever term appears on your documents; if unsure, confirm with an attorney."
+    },
+    "ben_processo_nome_sobrenome": {
+      "label": "Name used in the proceeding — Family Name"
+    },
+    "ben_processo_nome_nome": {
+      "label": "Name used in the proceeding — Given Name"
+    },
+    "ben_processo_nome_meio": {
+      "label": "Name used in the proceeding — Middle Name"
+    },
+    "ben_processo_cidade": {
+      "label": "City where the proceeding took place"
+    },
+    "ben_processo_estado": {
+      "label": "State (U.S.) where the proceeding took place"
+    },
+    "ben_processo_data": {
+      "label": "Date of the proceeding (MM/DD/YYYY)"
+    },
+    "ben_telefone_deport": {
+      "label": "Beneficiary's contact telephone number for this proceeding"
+    },
+    "pet_teve_anterior": {
+      "label": "Have you previously filed an I-130 petition for someone else?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Includes any I-130 you've ever filed, even if it was denied, withdrawn, or for a different person."
+    },
+    "pet_ant_sobrenome": {
+      "label": "Previous petition's beneficiary — Family Name"
+    },
+    "pet_ant_nome": {
+      "label": "Previous petition's beneficiary — Given Name"
+    },
+    "pet_ant_meio": {
+      "label": "Previous petition's beneficiary — Middle Name"
+    },
+    "pet_ant_local_cidade": {
+      "label": "Where the previous petition was filed — City"
+    },
+    "pet_ant_local_estado": {
+      "label": "Where the previous petition was filed — State (U.S.)"
+    },
+    "pet_ant_data": {
+      "label": "Date the previous petition was filed (MM/DD/YYYY)"
+    },
+    "pet_ant_resultado": {
+      "label": "Outcome of the previous petition",
+      "hint": "E.g., approved, denied, withdrawn, still pending. If you don't know the exact outcome, write what you know and confirm with our team."
+    },
+    "ass_leu_ingles": {
+      "label": "Did you read (or did someone read to you) the form in English?",
+      "options": {
+        "leu_ingles": "I read it in English and understand its content",
+        "leu_interprete": "An interpreter read it to me and I understood"
+      },
+      "hint": "If you don't read English fluently, an interpreter must have read and translated every question and answer to you before signing. If so, answer that it was read to you and fill in the interpreter's info below."
+    },
+    "ass_idioma_interprete": {
+      "label": "Language used by the interpreter — if applicable"
+    },
+    "ass_tem_representante": {
+      "label": "Are you represented by an attorney or accredited representative?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "ass_representante_nome": {
+      "label": "Representative's name"
+    },
+    "ass_telefone": {
+      "label": "Petitioner's daytime telephone number"
+    },
+    "ass_celular": {
+      "label": "Petitioner's mobile telephone number"
+    },
+    "ass_email": {
+      "label": "Petitioner's email address"
+    },
+    "ass_data": {
+      "label": "Date of signature (MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_empresa": {
+      "label": "Interpreter — Business or Organization Name"
+    },
+    "int_rua": {
+      "label": "Interpreter — Street Address"
+    },
+    "int_tipo_unidade": {
+      "label": "Unit type (interpreter)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "int_num_unidade": {
+      "label": "Unit number (interpreter)"
+    },
+    "int_cidade": {
+      "label": "Interpreter — City"
+    },
+    "int_estado": {
+      "label": "Interpreter — State (U.S.)"
+    },
+    "int_cep": {
+      "label": "Interpreter — ZIP Code"
+    },
+    "int_pais": {
+      "label": "Interpreter — Country"
+    },
+    "int_provincia": {
+      "label": "Interpreter — Province"
+    },
+    "int_codigo_postal": {
+      "label": "Interpreter — Postal Code"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Telephone Number"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address"
+    },
+    "int_idioma": {
+      "label": "Language interpreted"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter's date of signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_empresa": {
+      "label": "Preparer's Business or Organization Name"
+    },
+    "prep_rua": {
+      "label": "Preparer — Street Address"
+    },
+    "prep_tipo_unidade": {
+      "label": "Unit type (preparer)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "prep_num_unidade": {
+      "label": "Unit number (preparer)"
+    },
+    "prep_cidade": {
+      "label": "Preparer — City"
+    },
+    "prep_estado": {
+      "label": "Preparer — State (U.S.)"
+    },
+    "prep_cep": {
+      "label": "Preparer — ZIP Code"
+    },
+    "prep_pais": {
+      "label": "Preparer — Country"
+    },
+    "prep_provincia": {
+      "label": "Preparer — Province"
+    },
+    "prep_codigo_postal": {
+      "label": "Preparer — Postal Code"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Telephone Number"
+    },
+    "prep_fax": {
+      "label": "Preparer — Fax Number"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer's date of signature (MM/DD/YYYY)"
+    }
+  }
+}

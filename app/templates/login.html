@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_illustrations.html" import auth_illustration %}
+{% block title %}{{ t('login_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="auth-shell">
+  <div class="auth-art-panel">
+    {{ auth_illustration() }}
+    <h2>{{ t('auth_panel_login_title') }}</h2>
+    <p>{{ t('auth_panel_login_body') }}</p>
+  </div>
+  <div class="auth-form-panel">
+    <div class="auth-icon">{{ icon('lock', 22) }}</div>
+    <h1>{{ t('login_heading') }}</h1>
+    <p class="muted">{{ t('login_subtitle') }}</p>
+    <form method="post">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <label for="email">{{ t('field_email') }}</label>
+      <input type="email" id="email" name="email" value="{{ email }}" required autofocus>
+
+      <label for="password">{{ t('field_password') }}</label>
+      <input type="password" id="password" name="password" required>
+      <p style="margin:6px 0 0;text-align:right;">
+        <a href="{{ url_for('auth.forgot_password') }}" style="font-size:0.85rem;">{{ t('forgot_password_link') }}</a>
+      </p>
+
+      <button type="submit" class="btn block">{{ t('nav_login') }}</button>
+    </form>
+    <p class="muted" style="margin-top:16px;text-align:center;">
+      {{ t('login_no_account') }} <a href="{{ url_for('auth.signup', next=next_url) if next_url else url_for('auth.signup') }}">{{ t('login_create_link') }}</a>
+    </p>
+  </div>
+</div>
+{% endblock %}

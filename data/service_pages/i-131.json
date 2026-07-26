@@ -1,0 +1,128 @@
+{
+  "tagline": "Viaje para fora dos EUA sem abandonar seu pedido de green card",
+  "tagline_en": "Travel outside the U.S. without abandoning your green card application",
+  "what_is": [
+    "O Formulário I-131 é usado para pedir um Advance Parole — uma autorização de viagem que permite sair dos Estados Unidos e voltar sem abandonar um pedido de ajuste de status (Formulário I-485) pendente. Sem esse documento (ou proteção equivalente), viajar enquanto o I-485 está pendente geralmente é considerado abandono do pedido.",
+    "O formulário oficial da USCIS cobre dezenas de outros propósitos (Reentry Permit, Refugee Travel Document, TPS, pedidos de parole inicial ou re-parole) — este serviço cobre especificamente o cenário mais comum: Advance Parole baseado em um Formulário I-485 pendente, para quem está montando o pacote completo de Green Card por Ajuste de Status."
+  ],
+  "what_is_en": [
+    "Form I-131 is used to request Advance Parole — a travel authorization that lets you leave the United States and return without abandoning a pending adjustment-of-status application (Form I-485). Without this document (or equivalent protection), traveling while the I-485 is pending is generally considered abandoning the application.",
+    "The official USCIS form covers dozens of other purposes (Reentry Permit, Refugee Travel Document, TPS, initial parole or re-parole requests) — this service specifically covers the most common scenario: Advance Parole based on a pending Form I-485, for those putting together the full Green Card Adjustment of Status package."
+  ],
+  "who_needs": [
+    "Quem já protocolou (ou está protocolando ao mesmo tempo) um Formulário I-485 e precisa viajar para fora dos EUA antes da decisão final.",
+    "Quem quer sair do país por motivos familiares, de trabalho ou pessoais sem correr o risco de o pedido de green card ser considerado abandonado.",
+    "Quem está montando o pacote completo de Green Card por Ajuste de Status (I-130 + I-485 + I-765 + I-131 + I-864)."
+  ],
+  "who_needs_en": [
+    "Anyone who has filed (or is filing at the same time) a Form I-485 and needs to travel outside the U.S. before a final decision.",
+    "Anyone who wants to leave the country for family, work, or personal reasons without risking their green card application being considered abandoned.",
+    "Anyone putting together the full Green Card Adjustment of Status package (I-130 + I-485 + I-765 + I-131 + I-864)."
+  ],
+  "eligibility": [
+    "Você precisa estar fisicamente presente nos Estados Unidos no momento do pedido — este serviço não cobre pedidos feitos de fora do país.",
+    "Seu Formulário I-485 precisa estar pendente (protocolado, aguardando decisão) — se ainda não protocolou, pode protocolar o I-131 junto (concurrent filing).",
+    "Este serviço cobre só a Parte 1, item 5.A do formulário oficial (baseado em I-485 pendente) — outros motivos de Advance Parole (parolee atual, TPS, asilo pendente, CNMI, etc.) e os outros propósitos do formulário (Reentry Permit, Refugee Travel Document, parole inicial) não estão cobertos aqui; fale com nossa equipe se o seu caso for diferente."
+  ],
+  "eligibility_en": [
+    "You need to be physically present in the United States when filing — this service doesn't cover requests filed from outside the country.",
+    "Your Form I-485 needs to be pending (filed, awaiting a decision) — if you haven't filed yet, you can file the I-131 at the same time (concurrent filing).",
+    "This service covers only Part 1, item 5.A of the official form (based on a pending I-485) — other Advance Parole reasons (current parolee, TPS, pending asylum, CNMI, etc.) and the form's other purposes (Reentry Permit, Refugee Travel Document, initial parole) aren't covered here; talk to our team if your case is different."
+  ],
+  "required_evidence": [
+    "Cópia do recibo do seu Formulário I-485 (Form I-797C), se estiver protocolando o I-131 separadamente.",
+    "Cópia do seu passaporte válido.",
+    "2 fotos estilo passaporte recentes.",
+    "Cópia de qualquer Advance Parole ou documento de viagem anterior, se já teve um."
+  ],
+  "required_evidence_en": [
+    "A copy of your Form I-485 receipt (Form I-797C), if filing the I-131 separately.",
+    "A copy of your valid passport.",
+    "2 recent passport-style photos.",
+    "A copy of any previous Advance Parole or travel document, if you've had one before."
+  ],
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
+    "Checklist de documentos de apoio personalizado para as suas respostas — não uma lista genérica.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada."
+  ],
+  "whats_included_en": [
+    "The official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "A filing checklist: who must sign, how to sign correctly, the exact fee amount, and where to send it (online or paper).",
+    "A supporting-documents checklist tailored to your actual answers — not a generic list.",
+    "Progress saved automatically: close the tab and come back anytime, nothing is lost."
+  ],
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido e os checklists de protocolo e de documentos, prontos para o seu processo."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust any of them before continuing.",
+    "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "common_mistakes": [
+    "Viajar para fora dos EUA sem o Advance Parole aprovado (só com o protocolo pendente) — isso geralmente é considerado abandono do pedido de I-485.",
+    "Não indicar exatamente 1 opção de motivo na Parte 1 do formulário — este serviço já cuida disso automaticamente para o cenário de I-485 pendente.",
+    "Esquecer de incluir o número de recibo do I-485 quando o I-131 é protocolado separadamente.",
+    "Não levar em conta o tempo de processamento ao planejar a viagem — viajar antes de o Advance Parole ser aprovado tem o mesmo risco de não ter pedido nenhum.",
+    "Esquecer de assinar — formulário sem assinatura é rejeitado."
+  ],
+  "common_mistakes_en": [
+    "Traveling outside the U.S. without the Advance Parole approved (only with the request pending) — this is generally considered abandoning the I-485 application.",
+    "Not selecting exactly 1 reason in Part 1 of the form — this service already handles that automatically for the pending-I-485 scenario.",
+    "Forgetting to include the I-485 receipt number when the I-131 is filed separately.",
+    "Not accounting for processing time when planning the trip — traveling before the Advance Parole is approved carries the same risk as not having filed at all.",
+    "Forgetting to sign — an unsigned form is rejected."
+  ],
+  "faq": [
+    {
+      "q": "Posso protocolar o I-131 junto com o I-485?",
+      "a": "Sim — na verdade é o mais comum. Protocolar junto (concurrent filing) evita ter que esperar o I-485 ser aceito para só então pedir o Advance Parole."
+    },
+    {
+      "q": "Quanto tempo demora para o Advance Parole ficar pronto?",
+      "a": "Varia por centro de serviço. Consulte o verificador oficial de tempos de processamento da USCIS, e não compre passagens ou planeje a viagem antes de ter o documento aprovado em mãos."
+    },
+    {
+      "q": "Posso viajar assim que protocolo o I-131?",
+      "a": "Não — você precisa esperar o Advance Parole ser aprovado antes de viajar. Sair do país com o pedido apenas pendente (não aprovado) geralmente é tratado como abandono do seu I-485."
+    },
+    {
+      "q": "Esse serviço cobre Reentry Permit ou Refugee Travel Document?",
+      "a": "Não — este serviço cobre especificamente o Advance Parole baseado em I-485 pendente (a situação mais comum para quem está no meio do processo de green card). Se o seu caso for outro (Reentry Permit, Refugee Travel Document, TPS, parole inicial), fale com nossa equipe."
+    },
+    {
+      "q": "Preciso pagar a taxa do I-131 mesmo protocolando junto com o I-485?",
+      "a": "Sim — desde 1º de abril de 2024, o I-131 tem taxa própria mesmo em concurrent filing com o I-485. Confirme o valor atual antes de pagar, já que taxas da USCIS mudam."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "Can I file the I-131 together with the I-485?",
+      "a": "Yes — it's actually the most common approach. Filing together (concurrent filing) avoids waiting for the I-485 to be accepted before requesting Advance Parole."
+    },
+    {
+      "q": "How long does it take to get Advance Parole?",
+      "a": "It varies by service center. Check the official USCIS processing times tool, and don't buy tickets or plan travel before you have the approved document in hand."
+    },
+    {
+      "q": "Can I travel as soon as I file the I-131?",
+      "a": "No — you need to wait for the Advance Parole to be approved before traveling. Leaving the country with only a pending request (not approved) is generally treated as abandoning your I-485."
+    },
+    {
+      "q": "Does this service cover Reentry Permit or Refugee Travel Document?",
+      "a": "No — this service specifically covers Advance Parole based on a pending I-485 (the most common situation for those in the middle of the green card process). If your case is different (Reentry Permit, Refugee Travel Document, TPS, initial parole), talk to our team."
+    },
+    {
+      "q": "Do I need to pay the I-131 fee even when filing together with the I-485?",
+      "a": "Yes — since April 1, 2024, the I-131 has had its own fee even in concurrent filing with the I-485. Confirm the current amount before paying, since USCIS fees change."
+    }
+  ],
+  "related_note": "Parte do pacote Green Card AOS — costuma ser protocolado junto com I-130, I-485, I-765 e I-864.",
+  "related_note_en": "Part of the Green Card AOS package — usually filed together with I-130, I-485, I-765, and I-864.",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

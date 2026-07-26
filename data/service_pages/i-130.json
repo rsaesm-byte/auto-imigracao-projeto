@@ -1,0 +1,144 @@
+{
+  "tagline": "O primeiro passo da imigração baseada em família",
+  "tagline_en": "The first step in family-based immigration",
+  "what_is": [
+    "O Formulário I-130 é o primeiro passo do processo de imigração baseado em família. Ele serve para provar à USCIS que existe uma relação de parentesco válida — cônjuge, filho(a), pai/mãe ou irmão(ã) — entre um cidadão americano (ou residente permanente) e um parente estrangeiro que deseja imigrar para os Estados Unidos.",
+    "Aprovar o I-130 não dá o green card por si só: ele coloca o parente estrangeiro (o \"beneficiário\") na fila para o próximo passo — ajuste de status (Formulário I-485) se ele já estiver nos EUA, ou processamento consular se estiver no exterior."
+  ],
+  "what_is_en": [
+    "Form I-130 is the first step in family-based immigration. It proves to USCIS that a qualifying family relationship exists — spouse, child, parent, or sibling — between a U.S. citizen (or green card holder) and a foreign relative who wants to immigrate to the United States.",
+    "Approving the I-130 doesn't grant a green card by itself: it places the foreign relative (the \"beneficiary\") in line for the next step — adjustment of status (Form I-485) if they're already in the U.S., or consular processing if they're abroad."
+  ],
+  "who_needs": [
+    "Cidadãos americanos que querem trazer cônjuge, filho(a) solteiro(a), pai/mãe ou irmão(ã) para os EUA.",
+    "Residentes permanentes (Green Card) que querem trazer cônjuge ou filho(a) solteiro(a).",
+    "Casais que se casaram recentemente e precisam provar que o casamento é verdadeiro (bona fide), não apenas para fins de imigração."
+  ],
+  "who_needs_en": [
+    "U.S. citizens who want to bring a spouse, unmarried child, parent, or sibling to the U.S.",
+    "Green card holders who want to bring a spouse or unmarried child.",
+    "Recently married couples who need to prove the marriage is genuine (bona fide), not just for immigration purposes."
+  ],
+  "eligibility": [
+    "Parente imediato de cidadão americano: cônjuge, filho(a) solteiro(a) menor de 21 anos, filho(a) solteiro(a) com 21 anos ou mais, pai/mãe (se o cidadão tiver 21 anos ou mais), órfão adotado no exterior.",
+    "Categoria de preferência familiar (fila com limite anual de vistos): filho(a) solteiro(a) de cidadão com 21+ anos, cônjuge ou filho(a) solteiro(a) de residente permanente, filho(a) casado(a) de cidadão, irmão(ã) de cidadão (se o cidadão tiver 21+ anos).",
+    "Cada parente elegível precisa do seu próprio I-130 — não é possível incluir vários parentes em uma única petição."
+  ],
+  "eligibility_en": [
+    "Immediate relative of a U.S. citizen: spouse, unmarried child under 21, unmarried child 21 or older, parent (if the citizen is 21 or older), orphan adopted abroad.",
+    "Family preference category (subject to an annual visa cap and backlog): unmarried adult child of a citizen, spouse or unmarried child of a green card holder, married child of a citizen, sibling of a citizen (if the citizen is 21 or older).",
+    "Each eligible relative needs their own separate I-130 — you can't include multiple relatives on a single petition."
+  ],
+  "required_evidence": [
+    "Prova do seu status: certidão de nascimento americana, certificado de naturalização/cidadania, Form FS-240 (Consular Report of Birth Abroad), passaporte americano válido, ou frente e verso do seu Green Card.",
+    "Prova do vínculo: certidão de casamento (cônjuge), certidão de nascimento do(a) filho(a), sua própria certidão de nascimento (pai/mãe), ou certidões de nascimento suas e do irmão(ã) provando um pai/mãe em comum.",
+    "Se houver casamento anterior (seu ou do seu cônjuge), prova de que ele terminou (divórcio, anulação ou óbito).",
+    "Em petições de cônjuge: evidência de que o casamento é verdadeiro — propriedade em conjunto, contrato de aluguel em nome dos dois, contas financeiras combinadas, certidões de nascimento de filhos em comum, e/ou declarações de terceiros que conhecem o casal.",
+    "2 fotos estilo passaporte, se houver mudança legal de nome."
+  ],
+  "required_evidence_en": [
+    "Proof of your status: U.S. birth certificate, naturalization/citizenship certificate, Form FS-240 (Consular Report of Birth Abroad), a valid U.S. passport, or both sides of your Green Card.",
+    "Proof of the relationship: marriage certificate (spouse), child's birth certificate, your own birth certificate (parent), or both siblings' birth certificates showing a common parent.",
+    "If there was a prior marriage (yours or your spouse's), proof it ended (divorce, annulment, or death certificate).",
+    "For spousal petitions: evidence the marriage is genuine — joint property, a lease in both names, combined finances, birth certificates of children born to the couple, and/or affidavits from people with personal knowledge of the marriage.",
+    "2 passport-style photos, if there was a legal name change."
+  ],
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
+    "Checklist de documentos de apoio personalizado para as suas respostas — não uma lista genérica.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada.",
+    "Se o beneficiário for cônjuge, o produto já indica quando o Formulário I-130A (suplementar) também é necessário."
+  ],
+  "whats_included_en": [
+    "The official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "A filing checklist: who must sign, how to sign correctly, the exact fee amount, and where to send it (online or paper).",
+    "A supporting-documents checklist tailored to your actual answers — not a generic list.",
+    "Progress saved automatically: close the tab and come back anytime, nothing is lost.",
+    "If the beneficiary is a spouse, the product automatically flags when the supplemental Form I-130A is also required."
+  ],
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido e os checklists de protocolo e de documentos, prontos para o seu processo."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust any of them before continuing.",
+    "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "common_mistakes": [
+    "Deixar em branco algum dos campos que a USCIS rejeita automaticamente se estiverem faltando: relação (Parte 1), nome completo/data de nascimento/endereço/estado civil do peticionário (Parte 2), e nome completo/data de nascimento/endereço/estado civil do beneficiário (Parte 4).",
+    "Evidência insuficiente do vínculo familiar — a USCIS pode emitir um pedido de evidência adicional (RFE) ou negar o caso.",
+    "Em casos de casamento, não incluir prova de que a relação é verdadeira (bona fide) — a USCIS aceita explicitamente fotos, contas conjuntas, contratos e declarações de terceiros como evidência.",
+    "Esquecer o Formulário I-130A quando o beneficiário é cônjuge — é obrigatório nesses casos.",
+    "Não marcar exatamente 1 opção no Item 61/62 da Parte 4 (ajuste de status vs. processamento consular) — deixar em branco ou marcar os dois é um erro comum.",
+    "Não protocolar um I-130 separado para cada filho, mesmo quando o casal já tem outro I-130 em andamento entre si — cada filho biológico, enteado(a) ou adotivo precisa da sua própria petição.",
+    "Esquecer de assinar o formulário — a USCIS rejeita qualquer formulário sem assinatura."
+  ],
+  "common_mistakes_en": [
+    "Leaving blank any of the fields USCIS automatically rejects if missing: relationship (Part 1), petitioner's full name/date of birth/address/marital status (Part 2), and beneficiary's full name/date of birth/address/marital status (Part 4).",
+    "Insufficient evidence of the family relationship — USCIS can issue a Request for Evidence (RFE) or deny the case.",
+    "In marriage-based cases, not including proof the relationship is bona fide — USCIS explicitly accepts photos, joint accounts, contracts, and third-party affidavits as evidence.",
+    "Forgetting Form I-130A when the beneficiary is a spouse — it's required in those cases.",
+    "Not selecting exactly 1 option in Part 4, Item 61/62 (adjustment of status vs. consular processing) — leaving it blank or checking both is a common error.",
+    "Not filing a separate I-130 for each child, even when the couple already has another I-130 pending between themselves — each biological, step-, or adopted child needs their own petition.",
+    "Forgetting to sign the form — USCIS rejects any unsigned form."
+  ],
+  "faq": [
+    {
+      "q": "Quanto tempo leva para o I-130 ser aprovado?",
+      "a": "O tempo varia bastante conforme a categoria e o centro da USCIS que processa o caso. Consulte o verificador oficial de tempos de processamento da USCIS para uma estimativa atualizada para o seu tipo de caso."
+    },
+    {
+      "q": "Aprovar o I-130 já me dá o green card?",
+      "a": "Não. A aprovação do I-130 apenas confirma o vínculo familiar e coloca o beneficiário na fila. O próximo passo é o ajuste de status (I-485) ou o processamento consular, dependendo de onde o beneficiário está."
+    },
+    {
+      "q": "Posso protocolar o I-130 e o I-485 juntos?",
+      "a": "Em alguns casos sim — quando o beneficiário já está nos EUA e a categoria tem visto disponível imediatamente (parentes imediatos de cidadão americano, por exemplo). Nosso questionário indica quando isso pode se aplicar ao seu caso."
+    },
+    {
+      "q": "Cada filho precisa de um I-130 separado?",
+      "a": "Sim. Cada parente elegível — incluindo cada filho(a) — precisa da sua própria petição I-130 individual. Se você já protocolou um I-130 para o seu cônjuge, inclua uma cópia do recibo desse I-130 ao protocolar o do filho."
+    },
+    {
+      "q": "Eu era residente permanente quando protocolei, e agora me naturalizei. Preciso fazer algo?",
+      "a": "Sim — avise a USCIS da sua naturalização (com cópia do certificado e do recibo do I-130) para que a categoria de visto do seu parente seja atualizada, já que cônjuge e filhos solteiros menores de 21 anos de cidadão americano têm visto sempre disponível."
+    },
+    {
+      "q": "O que a USCIS não aceita como evidência?",
+      "a": "Itens com chips/baterias eletrônicos (como cartões musicais), CDs/DVDs, brinquedos, pen drives, amostras biológicas/DNA, e fotos gráficas de parto ou de relações íntimas como prova do relacionamento — fotocópias desses itens são aceitas, os itens físicos não."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "How long does I-130 approval take?",
+      "a": "It varies a lot by category and by which USCIS service center handles the case. Check the official USCIS processing times tool for a current estimate for your case type."
+    },
+    {
+      "q": "Does I-130 approval give me a green card?",
+      "a": "No. I-130 approval only confirms the family relationship and places the beneficiary in line. The next step is adjustment of status (I-485) or consular processing, depending on where the beneficiary is."
+    },
+    {
+      "q": "Can I file I-130 and I-485 together?",
+      "a": "In some cases, yes — when the beneficiary is already in the U.S. and a visa is immediately available in that category (immediate relatives of a U.S. citizen, for example). Our questionnaire flags when this may apply to your case."
+    },
+    {
+      "q": "Does each child need a separate I-130?",
+      "a": "Yes. Each eligible relative — including each child — needs their own individual I-130 petition. If you already filed an I-130 for your spouse, include a copy of that I-130's receipt when filing your child's."
+    },
+    {
+      "q": "I was a permanent resident when I filed, and I've now naturalized. Do I need to do anything?",
+      "a": "Yes — notify USCIS of your naturalization (with a copy of your certificate and the I-130 receipt) so your relative's visa category gets updated, since spouses and unmarried children under 21 of a U.S. citizen always have a visa immediately available."
+    },
+    {
+      "q": "What does USCIS not accept as evidence?",
+      "a": "Items with electronic chips/batteries (like musical greeting cards), CDs/DVDs, toys, thumb drives, biological/DNA samples, and graphic photos of childbirth or intimate relations as proof of the relationship — photocopies of these items are fine, the physical items are not."
+    }
+  ],
+  "related_note": "Costuma vir acompanhado do I-130A (quando o beneficiário é cônjuge) e, mais adiante no processo, do I-485 (ajuste de status) e do I-864 (declaração de suporte financeiro).",
+  "related_note_en": "Often paired with I-130A (when the beneficiary is a spouse) and, later in the process, with I-485 (adjustment of status) and I-864 (affidavit of support).",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

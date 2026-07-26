@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ name }} — {{ t('packages_index_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<p style="margin-bottom:18px;">
+  <a href="{{ url_for('packages.index') }}" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">
+    {{ icon('arrow-left', 14) }} {{ t('packages_back_to_index') }}
+  </a>
+</p>
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ name }}</h1>
+  <p class="hero-subtitle" style="margin:0 0 22px;max-width:640px;">{{ description }}</p>
+  <div class="hero-ctas" style="justify-content:flex-start;flex-wrap:wrap;">
+    {% if current_user.is_authenticated %}
+      <form method="post" action="{{ url_for('packages.start_package', slug=slug) }}">
+        <button type="submit" class="btn">{{ t('packages_cta_start') }}</button>
+      </form>
+    {% else %}
+      <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('packages_cta_signup') }}</a>
+    {% endif %}
+    {% if eligibility_quiz %}
+      <a class="btn secondary" href="{{ url_for('eligibility.quiz_view', slug=eligibility_quiz) }}">{{ t('nav_eligibility') }}</a>
+    {% endif %}
+  </div>
+</section>
+
+<div class="card">
+  <h2>{{ t('packages_h_items') }}</h2>
+  <div class="services-grid">
+    {% for item in items %}
+      {% if item.type == "form" %}
+      <div class="card service-card" style="margin-bottom:0;">
+        <div class="service-card-head">
+          <span class="slug">{{ item.slug|upper }}</span>
+          {% if item.optional %}<span class="badge in_progress">{{ t('packages_optional_badge') }}</span>{% endif %}
+        </div>
+        <h3 class="service-card-name">{{ item.name }}</h3>
+        {% if item.note %}<p class="muted service-card-desc">{{ item.note }}</p>{% endif %}
+        <a class="btn secondary" href="{{ url_for('wizard.service_detail', slug=item.slug) }}">{{ t('elig_cta_view_service') }}</a>
+      </div>
+      {% elif item.type == "payment_choice" %}
+      <div class="card service-card" style="margin-bottom:0;">
+        <h3 class="service-card-name">{{ t('packages_payment_choice_title') }}</h3>
+        {% if item.note %}<p class="muted service-card-desc">{{ item.note }}</p>{% endif %}
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          {% for opt in item.options %}
+          <a class="btn secondary" href="{{ url_for('wizard.start', slug=opt.slug) if current_user.is_authenticated else url_for('auth.login') }}">{{ opt.name }} — {{ t('services_cta_start') }}</a>
+          {% endfor %}
+        </div>
+      </div>
+      {% elif item.type == "repeatable" %}
+      <div class="card service-card" style="margin-bottom:0;">
+        <span class="slug" style="margin-bottom:10px;">{{ item.slug|upper }}</span>
+        <h3 class="service-card-name">{{ item.label }}</h3>
+        <p class="muted service-card-desc">{{ t('packages_repeatable_note') }}</p>
+      </div>
+      {% elif item.type == "external" %}
+      <div class="card service-card" style="margin-bottom:0;opacity:0.85;">
+        <span class="badge in_progress" style="margin-bottom:10px;">{{ t('packages_external_badge') }}</span>
+        <h3 class="service-card-name">{{ item.name }}</h3>
+        {% if item.note %}<p class="muted service-card-desc">{{ item.note }}</p>{% endif %}
+      </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

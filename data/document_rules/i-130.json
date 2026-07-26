@@ -1,0 +1,56 @@
+{
+  "form": "I-130",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-130 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). Lista pensada para cobrir o caso comum de cada relação — sempre confira as instruções oficiais do formulário para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Based on the official Form I-130 instructions and multiple immigration-law sources cross-checked in this session (uscis.gov blocked direct fetch). This checklist is designed to cover the common scenario for each relationship type — always check the current official form instructions for your specific case before filing.",
+  "always": [
+    {
+      "label": "Prova da sua cidadania americana ou status de residente permanente legal (passaporte americano, certidão de naturalização, Certificado de Cidadania, cópia do Cartão de Residente Permanente, ou certidão de nascimento nos EUA)",
+      "label_en": "Proof of your U.S. citizenship or lawful permanent resident status (U.S. passport, naturalization certificate, Certificate of Citizenship, copy of your Permanent Resident Card, or U.S. birth certificate)"
+    },
+    {
+      "label": "Uma foto sua (padrão passaporte) e uma do(a) beneficiário(a), se ainda não enviadas em outro processo relacionado",
+      "note": "Confirme nas instruções atuais se ainda é exigido — a exigência de fotos mudou nos últimos anos.",
+      "label_en": "One passport-style photo of yourself and one of the beneficiary, if not already submitted in another related case",
+      "note_en": "Confirm in the current instructions whether this is still required — the photo requirement has changed in recent years."
+    }
+  ],
+  "rules": [
+    {
+      "questions": ["rel_tipo"],
+      "equals": "conjuge",
+      "documents": [
+        {"label": "Certidão de casamento com o(a) beneficiário(a)", "label_en": "Marriage certificate with the beneficiary"},
+        {"label": "Certidões de divórcio ou óbito de qualquer cônjuge anterior seu e do(a) beneficiário(a), comprovando que ambos estavam livres para casar", "label_en": "Divorce or death certificates for any previous spouse of yours and of the beneficiary, proving both of you were free to marry"},
+        {"label": "Formulário I-130A (Informação Suplementar do Cônjuge Beneficiário), preenchido e assinado pelo(a) cônjuge", "label_en": "Form I-130A (Supplemental Information for Spouse Beneficiary), completed and signed by the spouse"},
+        {"label": "Evidência de que o casamento é verdadeiro (bona fide): contas conjuntas, contrato de aluguel ou escritura em nome dos dois, seguro de vida/saúde com um como beneficiário do outro, fotos do casal e da família ao longo do tempo, declarações de parentes/amigos com conhecimento pessoal do relacionamento", "label_en": "Evidence that the marriage is bona fide: joint bank accounts, a lease or deed in both names, life/health insurance naming each other as beneficiary, photos of the couple and family over time, and statements from relatives or friends with personal knowledge of the relationship"},
+        {"label": "Certidões de nascimento de filhos em comum do casal, se houver", "label_en": "Birth certificates of the couple's children in common, if any"}
+      ]
+    },
+    {
+      "questions": ["rel_tipo"],
+      "equals": "filho",
+      "documents": [
+        {"label": "Certidão de nascimento do(a) filho(a) mostrando seu nome como pai/mãe", "label_en": "Child's birth certificate showing your name as the parent"},
+        {"label": "Se você é o pai: certidão de casamento com a mãe da criança, e comprovação de término legal de qualquer casamento anterior de ambos (para filhos nascidos dentro do casamento)", "label_en": "If you are the father: marriage certificate with the child's mother, and proof of the legal termination of any prior marriage of either of you (for children born during the marriage)"},
+        {"label": "Se o(a) filho(a) foi adotado(a): decreto de adoção e evidência de que a adoção ocorreu antes dos 16 anos (ou 18, em certos casos) e de custódia/residência conjunta exigidas por lei", "label_en": "If the child was adopted: the adoption decree and evidence that the adoption took place before age 16 (or 18, in certain cases) and that the legally required joint custody/residence was met"}
+      ]
+    },
+    {
+      "questions": ["rel_tipo"],
+      "equals": "pai_mae",
+      "documents": [
+        {"label": "Sua certidão de nascimento mostrando o nome do pai/mãe que está sendo beneficiado(a)", "label_en": "Your birth certificate showing the name of the parent being sponsored"},
+        {"label": "Se houve mudança de nome do pai/mãe (casamento, etc.), documento comprovando a mudança", "label_en": "If the parent's name has changed (through marriage, etc.), a document proving the name change"}
+      ]
+    },
+    {
+      "questions": ["rel_tipo"],
+      "equals": "irmao",
+      "documents": [
+        {"label": "Sua certidão de nascimento e a certidão de nascimento do(a) irmão(ã) beneficiário(a), mostrando pelo menos um dos pais em comum", "label_en": "Your birth certificate and the birth certificate of the beneficiary sibling, showing at least one parent in common"},
+        {"label": "Se o parentesco é por parte de pai (não da mãe): certidão de casamento dos pais e comprovação de término legal de casamentos anteriores deles", "label_en": "If the relationship is through the father (not the mother): the parents' marriage certificate and proof of the legal termination of any of their prior marriages"},
+        {"label": "Se algum dos dois foi adotado ou é meio-irmão(ã): documentos adicionais comprovando o vínculo familiar (decreto de adoção, certidões de casamento dos pais em comum)", "label_en": "If either of you was adopted or you are half siblings: additional documents proving the family relationship (adoption decree, marriage certificates of the common parent)"}
+      ]
+    }
+  ]
+}

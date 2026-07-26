@@ -1,0 +1,118 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ t('vb_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('vb_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:720px;">{{ t('vb_subtitle') }}</p>
+</section>
+
+{% if errors %}
+<div class="card">
+  {% for e in errors %}<p class="elig-msg tone-danger">{{ e }}</p>{% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <form method="post" action="{{ url_for('visa_bulletin.index') }}">
+    <h2 style="margin-top:0;">{{ t('vb_h_relationship') }}</h2>
+
+    <p><label>{{ t('vb_label_petitioner_status') }}</label></p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="pet_cidadania_tipo" value="cidadao" {% if form.pet_cidadania_tipo == "cidadao" %}checked{% endif %}> {{ t('vb_petitioner_citizen') }}</label></li>
+      <li><label><input type="radio" name="pet_cidadania_tipo" value="lpr" {% if form.pet_cidadania_tipo == "lpr" %}checked{% endif %}> {{ t('vb_petitioner_lpr') }}</label></li>
+    </ul>
+
+    <p style="margin-top:14px;"><label>{{ t('vb_label_relationship') }}</label></p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="rel_tipo" value="conjuge" {% if form.rel_tipo == "conjuge" %}checked{% endif %}> {{ t('vb_rel_conjuge') }}</label></li>
+      <li><label><input type="radio" name="rel_tipo" value="filho" {% if form.rel_tipo == "filho" %}checked{% endif %}> {{ t('vb_rel_filho') }}</label></li>
+      <li><label><input type="radio" name="rel_tipo" value="pai_mae" {% if form.rel_tipo == "pai_mae" %}checked{% endif %}> {{ t('vb_rel_pai_mae') }}</label></li>
+      <li><label><input type="radio" name="rel_tipo" value="irmao" {% if form.rel_tipo == "irmao" %}checked{% endif %}> {{ t('vb_rel_irmao') }}</label></li>
+    </ul>
+
+    <p style="margin-top:14px;"><label>{{ t('vb_label_ben_married') }}</label></p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="ben_casado" value="nao" {% if form.ben_casado != "sim" %}checked{% endif %}> {{ t('opt_no') }}</label></li>
+      <li><label><input type="radio" name="ben_casado" value="sim" {% if form.ben_casado == "sim" %}checked{% endif %}> {{ t('opt_yes') }}</label></li>
+    </ul>
+
+    <p style="margin-top:14px;"><label for="ben_idade">{{ t('vb_label_ben_age') }}</label></p>
+    <input type="number" min="0" max="130" step="1" id="ben_idade" name="ben_idade" value="{{ form.ben_idade }}">
+    <p class="muted" style="font-size:0.85rem;">{{ t('vb_hint_ben_age') }}</p>
+
+    <h2>{{ t('vb_h_bulletin') }}</h2>
+
+    <p><label for="ben_pais_nascimento">{{ t('vb_label_ben_country') }}</label></p>
+    <input type="text" id="ben_pais_nascimento" name="ben_pais_nascimento" value="{{ form.ben_pais_nascimento }}">
+    <p class="muted" style="font-size:0.85rem;">{{ t('vb_hint_ben_country') }}</p>
+
+    <p style="margin-top:14px;"><label for="priority_date">{{ t('vb_label_priority_date') }}</label></p>
+    <input type="text" id="priority_date" name="priority_date" placeholder="MM/DD/AAAA" maxlength="10" value="{{ form.priority_date }}">
+    <p class="muted" style="font-size:0.85rem;">{{ t('vb_hint_priority_date') }}</p>
+
+    <div style="margin-top:16px;">
+      <button type="submit" class="btn">{{ t('vb_submit') }}</button>
+    </div>
+  </form>
+</div>
+
+{% if classification %}
+<div class="card">
+  {% if classification.kind == "immediate_relative" %}
+    <p class="elig-msg tone-success">{{ icon('check-circle', 16) }} {{ t('vb_result_immediate_relative') }}</p>
+  {% elif classification.kind == "not_eligible" %}
+    <p class="elig-msg tone-danger">{{ t('vb_result_not_eligible') }}</p>
+  {% elif classification.kind == "preference" %}
+    <p class="elig-msg tone-info">
+      {{ t('vb_result_category_label') }}
+      <strong>{{ t('vb_cat_' + classification.category) }}</strong>
+    </p>
+  {% endif %}
+
+  {% if classification.cspa_check %}
+    <p class="elig-msg tone-warning">{{ t('vb_cspa_notice') }}</p>
+  {% endif %}
+
+  {% if classification.kind == "preference" and not result %}
+    <p class="muted">{{ t('vb_prompt_need_priority_date') }}</p>
+  {% endif %}
+</div>
+{% endif %}
+
+{% if result %}
+<div class="card">
+  <p class="muted" style="font-size:0.82rem;text-transform:uppercase;letter-spacing:0.04em;font-weight:700;">
+    {{ t('vb_result_bulletin_month') }} {{ result.bulletin_month }} — {{ t('vb_result_chart_used') }}
+  </p>
+
+  {% if result.status == "current" %}
+    <p class="elig-msg tone-success">{{ icon('check-circle', 16) }} {{ t('vb_status_current') }}</p>
+  {% elif result.status == "waiting" %}
+    <p class="elig-msg tone-warning">{{ t('vb_status_waiting_title') }}</p>
+    <p class="elig-msg tone-info">{{ t('vb_status_waiting_cutoff') }} <strong>{{ result.cutoff.strftime("%m/%d/%Y") }}</strong></p>
+    {% if result.estimated_months %}
+      <p class="elig-msg tone-info">{{ t('vb_status_waiting_estimate') }} <strong>~{{ result.estimated_months }} {{ t('vb_months') }}</strong></p>
+    {% elif result.no_recent_movement %}
+      <p class="elig-msg tone-warning">{{ t('vb_status_no_movement') }}</p>
+    {% endif %}
+  {% elif result.status == "no_data" %}
+    <p class="elig-msg tone-warning">{{ t('vb_status_no_data') }}</p>
+  {% endif %}
+
+  {% if result.final_action_cutoff %}
+    <p class="muted" style="font-size:0.85rem;">
+      {{ t('vb_final_action_note') }} {{ result.final_action_cutoff.strftime("%m/%d/%Y") }}
+    </p>
+  {% elif result.final_action_current %}
+    <p class="muted" style="font-size:0.85rem;">{{ t('vb_final_action_current') }}</p>
+  {% endif %}
+</div>
+{% endif %}
+
+<footer class="site-footer">
+  <p>{{ t('vb_disclaimer') }}</p>
+</footer>
+{% endblock %}

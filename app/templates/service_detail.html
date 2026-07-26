@@ -1,0 +1,288 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ name }} — {{ t('services_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<p style="margin-bottom:18px;">
+  <a href="{{ url_for('wizard.services') }}" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">
+    {{ icon('arrow-left', 14) }} {{ t('services_title') }}
+  </a>
+</p>
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <span class="slug" style="margin-bottom:10px;">{{ slug|upper }}</span>
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ name }}</h1>
+  {% if content.tagline %}<p class="hero-subtitle" style="margin:0 0 22px;max-width:640px;">{{ content.tagline }}</p>{% endif %}
+
+  {% if slug == "i-539" %}
+    <p style="color:#fff;font-weight:700;margin:0 0 10px;">{{ t('i539_picker_title') }}</p>
+    <div class="hero-ctas" style="justify-content:flex-start;flex-wrap:wrap;">
+      {% for servico_value, servico_key in [("eos", "i539_picker_eos"), ("cos_f1", "i539_picker_cos_f1"), ("cos_b2", "i539_picker_cos_b2"), ("cos_f2", "i539_picker_cos_f2")] %}
+        {% set target = url_for('wizard.start', slug=slug, servico=servico_value) %}
+        <a class="btn {{ 'secondary' if not loop.first }}"
+           href="{{ target if current_user.is_authenticated else url_for('auth.signup', next=target) }}">
+          {{ t(servico_key) }}
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="hero-ctas" style="justify-content:flex-start;flex-wrap:wrap;">
+      {% if current_user.is_authenticated %}
+        <a class="btn" href="{{ url_for('wizard.start', slug=slug) }}">{{ t('services_cta_start') }}</a>
+      {% else %}
+        <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
+      {% endif %}
+      {% if eligibility_quiz %}
+        <a class="btn secondary" href="{{ url_for('eligibility.quiz_view', slug=eligibility_quiz) }}">{{ t('nav_eligibility') }}</a>
+      {% endif %}
+      {% if slug == "n-400" %}
+        <a class="btn secondary" href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
+      {% endif %}
+    </div>
+  {% endif %}
+</section>
+
+{% if slug == "i-539" and content.rule_change_title %}
+<div class="card" style="border-left:4px solid #f59e0b;">
+  <h2>{{ icon('info', 18) }} {{ content.rule_change_title }}</h2>
+  {% for p in content.rule_change_body %}<p class="elig-msg tone-warning" style="margin-top:{{ '0' if loop.first else '10' }}px;">{{ p }}</p>{% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>{{ t('svc_h_what_is') }}</h2>
+  {% for p in content.what_is %}<p class="muted" style="line-height:1.6;">{{ p }}</p>{% endfor %}
+</div>
+
+{% if registry and registry.fees %}
+<div class="card">
+  <h2>{{ t('svc_h_fee') }}</h2>
+  {% set filing = registry.fees.filing %}
+  <div class="service-fee-grid">
+    {% if filing.online is not none and filing.online != filing.paper %}
+      <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(filing.online) }}</span><span class="muted">{{ t('svc_fee_online') }}</span></div>
+      <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(filing.paper) }}</span><span class="muted">{{ t('svc_fee_paper') }}</span></div>
+    {% else %}
+      <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(filing.default) }}</span><span class="muted">{{ t('svc_fee_flat') }}</span></div>
+    {% endif %}
+  </div>
+  <p class="muted" style="margin-top:12px;font-size:0.85rem;">
+    {{ t('svc_fee_disclaimer') }}
+    {% if registry.official_url %}<a href="{{ registry.official_url }}" target="_blank" rel="noopener noreferrer">{{ t('svc_official_page') }} ↗</a>{% endif %}
+  </p>
+  <p class="muted" style="margin-top:8px;font-size:0.85rem;">
+    {{ t('svc_fee_calculator_note', form=slug|upper) }}
+    <a href="https://www.uscis.gov/feecalculator" target="_blank" rel="noopener noreferrer">{{ t('svc_fee_calculator_link') }} ↗</a>
+  </p>
+</div>
+{% endif %}
+
+{% if slug == "i-751" %}
+<div class="card">
+  <h2>{{ t('svc_h_filing_calculator') }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ t('i751_calc_intro') }}</p>
+  <form method="post" action="{{ url_for('wizard.service_detail', slug='i-751') }}">
+    <input type="hidden" name="calc_action" value="i751_filing_date">
+    <p style="font-weight:600;margin-bottom:6px;">{{ t('i751_calc_label_expiration') }}</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+      <div>
+        <label class="muted" style="font-size:0.8rem;">{{ t('calc_label_month') }}</label><br>
+        <input type="number" min="1" max="12" name="exp_month" value="{{ calc_form.exp_month }}" style="max-width:80px;" required>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.8rem;">{{ t('calc_label_day') }}</label><br>
+        <input type="number" min="1" max="31" name="exp_day" value="{{ calc_form.exp_day }}" style="max-width:80px;" required>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.8rem;">{{ t('calc_label_year') }}</label><br>
+        <input type="number" min="1900" max="2100" name="exp_year" value="{{ calc_form.exp_year }}" style="max-width:100px;" required>
+      </div>
+      <button type="submit" class="btn">{{ t('calc_submit') }}</button>
+    </div>
+  </form>
+
+  {% if calc_error %}
+    <p class="elig-msg tone-danger" style="margin-top:14px;">{{ calc_error }}</p>
+  {% elif calc_result and calc_result.type == "i751" %}
+    <div class="elig-msg tone-{{ 'success' if calc_result.can_file_now else 'info' }}" style="margin-top:14px;">
+      {{ t('i751_calc_result_prefix') }}
+      <strong>{{ calc_result.earliest_filing_date.strftime("%m/%d/%Y") if get_lang() == "en" else calc_result.earliest_filing_date.strftime("%d/%m/%Y") }}</strong>.
+      {% if calc_result.can_file_now %}{{ t('i751_calc_already_open') }}{% endif %}
+    </div>
+    <p class="elig-msg tone-warning">{{ t('i751_calc_warning') }}</p>
+  {% endif %}
+
+  <h3 style="margin-top:18px;">{{ t('i751_filing_late_title') }}</h3>
+  <ul class="service-bullets">
+    <li>{{ t('i751_filing_late_item1') }}</li>
+    <li>{{ t('i751_filing_late_item2') }}</li>
+  </ul>
+  <p class="muted" style="font-size:0.85rem;">{{ t('i751_filing_late_note') }}</p>
+  <p class="muted" style="font-size:0.82rem;margin-top:10px;">
+    <a href="https://www.uscis.gov/forms/when-to-file-your-petition-to-remove-conditions" target="_blank" rel="noopener noreferrer">{{ t('svc_official_page') }} ↗</a>
+  </p>
+</div>
+{% endif %}
+
+{% if slug == "n-400" %}
+<div class="card">
+  <h2>{{ t('svc_h_filing_calculator') }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ t('n400_calc_intro') }}</p>
+  <form method="post" action="{{ url_for('wizard.service_detail', slug='n-400') }}">
+    <input type="hidden" name="calc_action" value="n400_filing_window">
+    <p style="font-weight:600;margin-bottom:6px;">{{ t('n400_calc_label_gc_date') }}</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;">
+      <div>
+        <label class="muted" style="font-size:0.8rem;">{{ t('calc_label_month') }}</label><br>
+        <input type="number" min="1" max="12" name="gc_month" value="{{ calc_form.gc_month }}" style="max-width:80px;" required>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.8rem;">{{ t('calc_label_day') }}</label><br>
+        <input type="number" min="1" max="31" name="gc_day" value="{{ calc_form.gc_day }}" style="max-width:80px;" required>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.8rem;">{{ t('calc_label_year') }}</label><br>
+        <input type="number" min="1900" max="2100" name="gc_year" value="{{ calc_form.gc_year }}" style="max-width:100px;" required>
+      </div>
+    </div>
+    <p style="font-weight:600;margin:14px 0 6px;">{{ t('n400_calc_label_basis') }}</p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="basis" value="geral_5" {% if calc_form.basis != "conjuge_3" %}checked{% endif %}> {{ t('n400_calc_basis_general') }}</label></li>
+      <li><label><input type="radio" name="basis" value="conjuge_3" {% if calc_form.basis == "conjuge_3" %}checked{% endif %}> {{ t('n400_calc_basis_spouse') }}</label></li>
+    </ul>
+    <div style="margin-top:10px;"><button type="submit" class="btn">{{ t('calc_submit') }}</button></div>
+  </form>
+
+  {% if calc_error %}
+    <p class="elig-msg tone-danger" style="margin-top:14px;">{{ calc_error }}</p>
+  {% elif calc_result and calc_result.type == "n400" %}
+    <div class="elig-msg tone-{{ 'success' if calc_result.can_file_now else 'info' }}" style="margin-top:14px;">
+      {{ t('n400_calc_result_prefix') }}
+      <strong>{{ calc_result.window_start.strftime("%m/%d/%Y") if get_lang() == "en" else calc_result.window_start.strftime("%d/%m/%Y") }}</strong>
+      {{ t('n400_calc_result_middle') }}
+      <strong>{{ calc_result.eligible_date.strftime("%m/%d/%Y") if get_lang() == "en" else calc_result.eligible_date.strftime("%d/%m/%Y") }}</strong>).
+      {% if calc_result.can_file_now %}{{ t('n400_calc_already_open') }}{% endif %}
+    </div>
+  {% endif %}
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>{{ t('svc_h_who_needs') }}</h2>
+  <ul class="service-bullets">
+    {% for item in content.who_needs %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+</div>
+
+<div class="card">
+  <h2>{{ t('svc_h_eligibility') }}</h2>
+  <ul class="service-bullets">
+    {% for item in content.eligibility %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+</div>
+
+{% if content.required_evidence %}
+<div class="card">
+  <h2>{{ t('svc_h_required_evidence') }}</h2>
+  <ul class="service-bullets">
+    {% for item in content.required_evidence %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+  <p class="muted" style="margin-top:10px;font-size:0.82rem;">
+    {{ t('svc_evidence_disclaimer') }}
+    {% if registry and registry.instructions_url %}<a href="{{ registry.instructions_url }}" target="_blank" rel="noopener noreferrer">{{ t('svc_official_instructions') }} ↗</a>{% endif %}
+  </p>
+</div>
+{% endif %}
+
+{% if slug == "i-539" and content.sevis_fee_title %}
+<div class="card">
+  <h2>{{ content.sevis_fee_title }}</h2>
+  {% for p in content.sevis_fee_intro %}<p class="muted" style="line-height:1.6;">{{ p }}</p>{% endfor %}
+  <ul class="service-bullets">
+    {% for item in content.sevis_fee_facts %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+  <p class="muted" style="margin-top:14px;font-weight:600;">{{ content.sevis_fee_video_caption }}</p>
+  <video controls preload="metadata" style="width:100%;max-width:560px;border-radius:var(--radius-sm);border:1px solid var(--border);display:block;margin-top:8px;">
+    <source src="{{ url_for('static', filename='videos/sevis-fee-payment.mp4') }}" type="video/mp4">
+  </video>
+  <p class="muted" style="margin-top:12px;font-size:0.82rem;">
+    {{ content.sevis_fee_disclaimer }}
+    <a href="https://fmjfee.com" target="_blank" rel="noopener noreferrer">fmjfee.com ↗</a>
+  </p>
+</div>
+
+<div class="card">
+  <h2>{{ content.school_search_title }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ content.school_search_body }}</p>
+  <a class="btn secondary" href="https://studyinthestates.dhs.gov/school-search" target="_blank" rel="noopener noreferrer">
+    {{ icon('globe', 14) }} {{ content.school_search_link_label }} ↗
+  </a>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>{{ icon('list-check', 18) }} {{ t('svc_h_whats_included') }}</h2>
+  <ul class="service-bullets">
+    {% for item in content.whats_included %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+</div>
+
+<div class="card">
+  <h2>{{ t('svc_h_how_it_works') }}</h2>
+  <div class="steps-grid">
+    {% for step in content.how_it_works %}
+    <div class="step-card">
+      <div class="step-num">{{ loop.index }}</div>
+      <p class="muted" style="margin:0;">{{ step }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ icon('shield-check', 18) }} {{ t('svc_h_common_mistakes') }}</h2>
+  <ul class="service-bullets">
+    {% for item in content.common_mistakes %}<li>{{ item }}</li>{% endfor %}
+  </ul>
+</div>
+
+<div class="card">
+  <h2>{{ t('svc_h_faq') }}</h2>
+  {% for item in content.faq %}
+  <div class="service-faq-item">
+    <p class="service-faq-q">{{ item.q }}</p>
+    <p class="muted" style="margin:4px 0 0;">{{ item.a }}</p>
+  </div>
+  {% endfor %}
+</div>
+
+{% if content.related_note %}
+<div class="card">
+  <h2>{{ t('svc_h_related') }}</h2>
+  <p class="muted">{{ content.related_note }}</p>
+  <div class="form-grid" style="margin-top:14px;">
+    {% for form in related_catalog %}
+    <a class="form-tile" href="{{ url_for('wizard.service_detail', slug=form.slug) }}">
+      <span class="slug">{{ form.slug|upper }}</span>
+      <div class="name">{{ form.name }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+{% endif %}
+
+<div class="card" style="border-left:4px solid var(--accent);">
+  <p class="muted" style="margin:0;font-size:0.88rem;">{{ icon('lock', 14) }} {{ content.legal_note }}</p>
+</div>
+
+<section class="card hero" style="text-align:center;">
+  <h1 style="font-size:1.3rem;">{{ name }}</h1>
+  {% if current_user.is_authenticated %}
+    <a class="btn secondary" style="background:white;margin-top:8px;" href="{{ url_for('wizard.start', slug=slug) }}">{{ t('services_cta_start') }}</a>
+  {% else %}
+    <a class="btn secondary" style="background:white;margin-top:8px;" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
+  {% endif %}
+</section>
+
+{% endblock %}

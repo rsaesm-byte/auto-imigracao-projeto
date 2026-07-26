@@ -1,0 +1,116 @@
+{
+  "tagline": "Autorização (ou renovação) de trabalho nos Estados Unidos",
+  "tagline_en": "Work authorization (or renewal) in the United States",
+  "what_is": [
+    "O Formulário I-765 é usado para solicitar ou renovar a Autorização de Trabalho (Employment Authorization Document, ou EAD) — o documento que permite trabalhar legalmente nos Estados Unidos. Existem dezenas de categorias de elegibilidade diferentes, cada uma associada a uma situação migratória específica."
+  ],
+  "what_is_en": [
+    "Form I-765 is used to apply for or renew a work permit (Employment Authorization Document, or EAD) — the document that allows you to legally work in the United States. There are dozens of different eligibility categories, each tied to a specific immigration situation."
+  ],
+  "who_needs": [
+    "Pessoas com pedido de ajuste de status (I-485) pendente que querem trabalhar enquanto o caso é analisado.",
+    "Cônjuges de titulares de vistos como H-1B, L-1 ou E, elegíveis para autorização de trabalho derivada.",
+    "Estudantes internacionais em OPT (Optional Practical Training).",
+    "Outras categorias elegíveis listadas nas instruções oficiais do I-765."
+  ],
+  "who_needs_en": [
+    "People with a pending adjustment-of-status (I-485) application who want to work while the case is decided.",
+    "Spouses of H-1B, L-1, or E visa holders eligible for derivative work authorization.",
+    "International students on OPT (Optional Practical Training).",
+    "Other eligible categories listed in the official I-765 instructions."
+  ],
+  "eligibility": [
+    "A categoria de elegibilidade certa (item 27 do formulário — por exemplo (c)(3)(C) para STEM OPT ou (c)(9) para I-485 pendente) determina os documentos exigidos, o valor da taxa e até campos extras do formulário.",
+    "Verifique nas instruções oficiais qual categoria corresponde à sua situação antes de preencher."
+  ],
+  "eligibility_en": [
+    "The correct eligibility category (item 27 of the form — e.g. (c)(3)(C) for STEM OPT or (c)(9) for a pending I-485) determines the required documents, the fee amount, and even extra fields on the form.",
+    "Check the official instructions for which category matches your situation before filling it out."
+  ],
+  "required_evidence": [
+    "A USCIS publica um checklist de evidência específico por categoria de elegibilidade (item 27) — a evidência muda bastante entre, por exemplo, (c)(9) I-485 pendente e (c)(3)(C) STEM OPT.",
+    "Regras comuns a quase todas as categorias: 2 fotos estilo passaporte (não montadas, sem edição/retoque digital — fotos retocadas atrasam o processo e podem exigir comparecimento a um centro de biometria), cópia de documentos de identidade/status atuais.",
+    "Se estiver substituindo um cartão com erro causado pela própria USCIS, não é necessário pagar nova taxa — mas siga o procedimento específico descrito nas instruções (\"Replacement for Card Error\")."
+  ],
+  "required_evidence_en": [
+    "USCIS publishes an evidence checklist specific to each eligibility category (item 27) — required evidence varies a lot between, say, (c)(9) pending I-485 and (c)(3)(C) STEM OPT.",
+    "Rules common to nearly every category: 2 passport-style photos (unmounted, not edited/retouched digitally — retouched photos delay processing and can require an in-person biometrics appointment), copies of current identity/status documents.",
+    "If you're replacing a card with an error caused by USCIS itself, you don't need to pay a new fee — but follow the specific procedure described in the instructions (\"Replacement for Card Error\")."
+  ],
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
+    "Checklist de documentos de apoio personalizado para as suas respostas — não uma lista genérica.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada."
+  ],
+  "whats_included_en": [
+    "The official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "A filing checklist: who must sign, how to sign correctly, the exact fee amount, and where to send it (online or paper).",
+    "A supporting-documents checklist tailored to your actual answers — not a generic list.",
+    "Progress saved automatically: close the tab and come back anytime, nothing is lost."
+  ],
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido e os checklists de protocolo e de documentos, prontos para o seu processo."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust any of them before continuing.",
+    "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "common_mistakes": [
+    "Escolher a categoria de elegibilidade errada (item 27) — isso pode levar à rejeição do pedido.",
+    "Não anexar a evidência exigida especificamente para a categoria escolhida — cada categoria tem seu próprio checklist.",
+    "Renovar fora da janela recomendada — a USCIS sugere protocolar a renovação até 180 dias antes do vencimento do EAD atual (e ao menos 90 dias antes, conforme a categoria), sem exceder esse prazo.",
+    "Enviar foto retocada, editada digitalmente ou montada — a USCIS rejeita e isso pode atrasar o processo ou exigir comparecimento presencial.",
+    "Não incluir cópia do recibo do I-485 (ou outra evidência de que está pendente) ao pedir o EAD na categoria (c)(9) fora do mesmo pacote."
+  ],
+  "common_mistakes_en": [
+    "Choosing the wrong eligibility category (item 27) — this can lead to rejection of the application.",
+    "Not attaching the evidence specifically required for the chosen category — each category has its own checklist.",
+    "Renewing outside the recommended window — USCIS suggests filing the renewal up to 180 days before the current EAD expires (and at least 90 days before, depending on the category), without exceeding that window.",
+    "Submitting a retouched, digitally edited, or mounted photo — USCIS rejects these and it can delay processing or require an in-person appointment.",
+    "Not including a copy of the I-485 receipt (or other evidence it's pending) when requesting an EAD under category (c)(9) outside the same package."
+  ],
+  "faq": [
+    {
+      "q": "Quanto tempo demora para receber o EAD?",
+      "a": "Depois de aprovado, o cartão costuma ser produzido em cerca de 2 semanas e enviado por USPS Priority Mail — mas o tempo até a aprovação varia por categoria e centro de serviço. Consulte o verificador oficial de tempos de processamento da USCIS."
+    },
+    {
+      "q": "Posso trabalhar enquanto o I-765 está pendente?",
+      "a": "Só depois de receber o cartão EAD aprovado (ou, em algumas categorias específicas, com autorização automática prevista em lei) — não é permitido trabalhar apenas com o protocolo pendente, salvo exceções previstas nas instruções oficiais."
+    },
+    {
+      "q": "Mudei de endereço depois de protocolar. E agora?",
+      "a": "Atualize seu endereço com a USCIS e com o USPS imediatamente — se não atualizar a tempo, seu caso pode atrasar, o cartão pode se perder, e você pode ter que reaplicar e pagar a taxa novamente."
+    },
+    {
+      "q": "Posso renovar o EAD antes de vencer?",
+      "a": "Sim, e é recomendado — a USCIS sugere protocolar até 180 dias antes do vencimento (a categoria (c)(9), por exemplo, pede pelo menos 90 dias antes)."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "How long does it take to get the EAD?",
+      "a": "Once approved, the card is usually produced within about 2 weeks and mailed via USPS Priority Mail — but the time to approval itself varies by category and service center. Check the official USCIS processing times tool."
+    },
+    {
+      "q": "Can I work while the I-765 is pending?",
+      "a": "Only after you receive the approved EAD card (or, for a few specific categories, automatic authorization provided by law) — you generally can't work just because the application is pending, except for exceptions listed in the official instructions."
+    },
+    {
+      "q": "I moved after filing. What now?",
+      "a": "Update your address with USCIS and USPS right away — if you don't update it in time, your case could be delayed, the card could get lost, and you may need to reapply and pay the fee again."
+    },
+    {
+      "q": "Can I renew my EAD before it expires?",
+      "a": "Yes, and it's recommended — USCIS suggests filing up to 180 days before expiration (category (c)(9), for example, asks for at least 90 days before)."
+    }
+  ],
+  "related_note": "Frequentemente solicitado junto com o I-485 (categoria (c)(9)) ou como benefício derivado de um visto de trabalho de um familiar.",
+  "related_note_en": "Often filed together with the I-485 (category (c)(9)) or as a derivative benefit of a family member's work visa.",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

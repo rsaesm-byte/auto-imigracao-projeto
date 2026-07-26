@@ -1,0 +1,914 @@
+{
+  "title": "Petition to Remove Conditions on Residence — I-751",
+  "sections": {
+    "basico": "Part 1 — Information About You",
+    "enderecos": "Part 1 — Addresses",
+    "adicional": "Part 1 — Additional Information About You",
+    "biografico": "Part 2 — Biographic Information",
+    "base_peticao": "Part 3 — Basis for Petition",
+    "conjuge_americano": "Part 4 — Citizen or Permanent Resident Spouse",
+    "filhos": "Part 5 — Your Children",
+    "acomodacoes": "Part 6 — Accommodations for Individuals With Disabilities",
+    "assinatura": "Part 7 — Petitioner's Statement",
+    "assinatura_conjuge": "Part 8 — Spouse's Statement (if applicable)",
+    "interprete": "Part 9 — Interpreter",
+    "preparador": "Part 10 — Preparer"
+  },
+  "questions": {
+    "nome_sobrenome": {
+      "label": "Family Name (Last Name)"
+    },
+    "nome_nome": {
+      "label": "Given Name (First Name)"
+    },
+    "nome_meio": {
+      "label": "Middle Name"
+    },
+    "outro_nome2_sobrenome": {
+      "label": "Other Name Used (2) — Family Name"
+    },
+    "outro_nome2_nome": {
+      "label": "Other Name Used (2) — Given Name"
+    },
+    "outro_nome2_meio": {
+      "label": "Other Name Used (2) — Middle Name"
+    },
+    "outro_nome3_sobrenome": {
+      "label": "Other Name Used (3) — Family Name"
+    },
+    "outro_nome3_nome": {
+      "label": "Other Name Used (3) — Given Name"
+    },
+    "outro_nome3_meio": {
+      "label": "Other Name Used (3) — Middle Name"
+    },
+    "data_nascimento": {
+      "label": "Date of Birth (MM/DD/YYYY)"
+    },
+    "pais_nascimento": {
+      "label": "Country of Birth"
+    },
+    "pais_cidadania": {
+      "label": "Country of Citizenship or Nationality"
+    },
+    "alien_number": {
+      "label": "Alien Registration Number (A-Number), if any"
+    },
+    "ssn": {
+      "label": "Social Security Number (SSN), if any"
+    },
+    "uscis_online": {
+      "label": "USCIS Online Account Number, if any"
+    },
+    "estado_civil": {
+      "label": "Current Marital Status",
+      "options": {
+        "casado": "Married",
+        "viuvo": "Widowed",
+        "solteiro": "Single, Never Married",
+        "divorciado": "Divorced"
+      }
+    },
+    "data_casamento": {
+      "label": "Date of Marriage (MM/DD/YYYY)"
+    },
+    "local_casamento": {
+      "label": "Place of Marriage"
+    },
+    "data_fim_casamento": {
+      "label": "If the marriage ended, the date it ended (by divorce or death)"
+    },
+    "data_expiracao_residencia_condicional": {
+      "label": "Expiration date of conditional residence",
+      "hint": "Date printed on your conditional (2-year) Green Card. You can only file Form I-751 within the 90 days before this date — filing too early or too late can cause rejection or loss of status. Confirm the exact deadline with our team."
+    },
+    "end_correio_cuidados_de": {
+      "label": "Mailing Address — In Care Of Name (if any)"
+    },
+    "end_correio_rua": {
+      "label": "Mailing Address — Street Number and Name"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Mailing Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Mailing Address — Unit Number"
+    },
+    "end_correio_cidade": {
+      "label": "Mailing Address — City or Town"
+    },
+    "end_correio_estado": {
+      "label": "Mailing Address — State (abbreviation)"
+    },
+    "end_correio_cep": {
+      "label": "Mailing Address — ZIP Code"
+    },
+    "end_fisico_diferente": {
+      "label": "Is your physical address different from your mailing address?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "end_fisico_cuidados_de": {
+      "label": "Physical Address — In Care Of Name (if any)"
+    },
+    "end_fisico_rua": {
+      "label": "Physical Address — Street Number and Name"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Physical Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Physical Address — Unit Number"
+    },
+    "end_fisico_cidade": {
+      "label": "Physical Address — City or Town"
+    },
+    "end_fisico_estado": {
+      "label": "Physical Address — State (abbreviation)"
+    },
+    "end_fisico_cep": {
+      "label": "Physical Address — ZIP Code"
+    },
+    "em_processo_remocao": {
+      "label": "Are you currently in removal, deportation, or rescission proceedings?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This means being formally notified of an active immigration court removal/deportation case — not the same as having had legal trouble in the past. If you're unsure, answer carefully and consult an immigration attorney before filing."
+    },
+    "taxa_paga_terceiro": {
+      "label": "Has any fee been paid to anyone (other than an attorney) in connection with this petition?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Question from the official form itself, about having paid someone who is NOT a licensed attorney (e.g., an unlicensed \"notario\" or consultant) to help with this petition. It does not refer to the USCIS filing fee or to our own form-preparation service."
+    },
+    "ja_foi_preso": {
+      "label": "Have you ever been arrested, detained, charged, fined, or imprisoned for breaking or violating any law (excluding traffic violations), in the United States or abroad?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Broad question — includes any arrest, detention, charge, fine (beyond ordinary traffic tickets), or sentence, even if the case was later dismissed, expunged, or pardoned. Answer carefully: leaving out a record is usually worse than disclosing it. If you have any history at all, even old or minor, consult an immigration attorney before answering."
+    },
+    "casamento_diferente": {
+      "label": "If married, is this a different marriage from the one through which you obtained conditional residence?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if you remarried (a different person) after already receiving conditional residence through your earlier marriage. If it's still the same marriage that led to your conditional residence, answer \"No\"."
+    },
+    "residiu_outro_endereco": {
+      "label": "Have you resided at any other address since becoming a permanent resident?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "conjuge_funcionario_governo_exterior": {
+      "label": "Is your spouse (or your parent's spouse) currently serving with, or employed by, the U.S. government abroad?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Specific question from the official form — refers to a spouse currently working for the U.S. government (including the military) on assignment abroad at the time of filing. If that's not your situation, answer \"No\"."
+    },
+    "etnia": {
+      "label": "Ethnicity",
+      "options": {
+        "hispanico": "Hispanic or Latino",
+        "nao_hispanico": "Not Hispanic or Latino"
+      },
+      "hint": "An official U.S. government category, separate from \"race\" (next questions) — this only asks whether you identify as Hispanic/Latino, regardless of race. Most non-Hispanic Brazilians select \"Not Hispanic or Latino\" here."
+    },
+    "raca_branco": {
+      "label": "Race: White",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_negro": {
+      "label": "Race: Black or African American",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Race: Asian",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Race: American Indian or Alaska Native",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Race: Native Hawaiian or Other Pacific Islander",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "altura_pes": {
+      "label": "Height — feet",
+      "hint": "Just the number of feet (e.g., 5). Combined with the inches in the PDF's height field."
+    },
+    "altura_polegadas": {
+      "label": "Height — inches",
+      "hint": "Just the number of inches, 0-11 (e.g., 8 for 5'8\"). Combined with the feet in the PDF's height field."
+    },
+    "peso": {
+      "label": "Weight in pounds (lb)",
+      "hint": "Numbers only, e.g. 155. It will be split automatically into the PDF's 3 digit boxes."
+    },
+    "cor_olhos": {
+      "label": "Eye Color",
+      "options": {
+        "azul": "Blue",
+        "verde": "Green",
+        "avela": "Hazel",
+        "rosa": "Pink",
+        "marrom_avermelhado": "Maroon",
+        "castanho": "Brown",
+        "preto": "Black",
+        "outro": "Other",
+        "cinza": "Gray"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Hair Color",
+      "options": {
+        "careca": "Bald (No Hair)",
+        "loiro": "Blond",
+        "grisalho": "Gray",
+        "arenoso": "Sandy",
+        "outro": "Other",
+        "branco": "White",
+        "ruivo": "Red",
+        "castanho": "Brown",
+        "preto": "Black"
+      }
+    },
+    "base_peticao_conjunta": {
+      "label": "Joint filing: you are filing this petition together with:",
+      "options": {
+        "conjuge": "My spouse",
+        "pai_padrasto": "The spouse of my parent (I cannot be included on my parent's petition)"
+      },
+      "hint": "Choose \"My spouse\" if you yourself got conditional residence through your own marriage and are filing together with your citizen/resident spouse. Choose the second option only if you're a stepchild who got conditional residence through your parent's marriage to a stepparent, and can't be included on your parent's own petition (e.g., you're now 21+ or filing separately)."
+    },
+    "relacao_conjuge_americano": {
+      "label": "If a child filing separately: relationship to the citizen/permanent resident stepparent",
+      "options": {
+        "conjuge": "Spouse or former spouse",
+        "padrasto": "Spouse (or former spouse) of my parent"
+      },
+      "hint": "Only applies if you're a stepchild filing this I-751 separately from your parent's petition. Indicate whether the stepparent is your own spouse (you married them) or your parent's spouse/ex-spouse."
+    },
+    "base_dispensa": {
+      "label": "If you cannot file a joint petition, reason for the waiver:",
+      "options": {
+        "conjuge_falecido": "My spouse died",
+        "casamento_terminado_divorcio": "Good faith marriage terminated by divorce or annulment",
+        "vitima_violencia_conjuge": "I was battered or subjected to extreme cruelty by my citizen/permanent resident spouse",
+        "vitima_violencia_padrasto": "I was battered or subjected to extreme cruelty by my parent's spouse",
+        "dificuldade_extrema": "Removal from the United States would result in extreme hardship"
+      },
+      "hint": "Only fill this in if you will NOT file jointly with your spouse (e.g., you're already divorced, your spouse passed away, or there was domestic violence). Each ground has its own evidence requirements — marriage ended by divorce needs the final decree; deceased spouse needs the death certificate; domestic violence needs proof of the abuse (police report, protective order, medical records); extreme hardship needs evidence of factors that arose during your 2 years of conditional residence. All grounds still require proof the marriage was bona fide. Talk to our team before choosing, especially for domestic violence or extreme hardship cases."
+    },
+    "conjuge_sobrenome": {
+      "label": "Spouse's Family Name"
+    },
+    "conjuge_nome": {
+      "label": "Spouse's Given Name"
+    },
+    "conjuge_nome_meio": {
+      "label": "Spouse's Middle Name"
+    },
+    "conjuge_data_nascimento": {
+      "label": "Spouse's Date of Birth (MM/DD/YYYY)"
+    },
+    "conjuge_ssn": {
+      "label": "Spouse's SSN, if any"
+    },
+    "conjuge_alien_number": {
+      "label": "Spouse's A-Number, if any"
+    },
+    "conjuge_end_rua": {
+      "label": "Spouse's Address — Street Number and Name"
+    },
+    "conjuge_end_tipo_unidade": {
+      "label": "Spouse's Address — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "conjuge_end_num_unidade": {
+      "label": "Spouse's Address — Unit Number"
+    },
+    "conjuge_end_cidade": {
+      "label": "Spouse's Address — City or Town"
+    },
+    "conjuge_end_estado": {
+      "label": "Spouse's Address — State (abbreviation, if U.S.)"
+    },
+    "conjuge_end_cep": {
+      "label": "Spouse's Address — ZIP Code (if U.S.)"
+    },
+    "conjuge_end_provincia": {
+      "label": "Spouse's Address — Province (if outside the U.S.)"
+    },
+    "conjuge_end_codigo_postal": {
+      "label": "Spouse's Address — Postal Code (if outside the U.S.)"
+    },
+    "conjuge_end_pais": {
+      "label": "Spouse's Address — Country"
+    },
+    "filho1_sobrenome": {
+      "label": "Child 1 — Family Name"
+    },
+    "filho1_nome": {
+      "label": "Child 1 — Given Name"
+    },
+    "filho1_nome_meio": {
+      "label": "Child 1 — Middle Name"
+    },
+    "filho1_data_nascimento": {
+      "label": "Child 1 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho1_alien_number": {
+      "label": "Child 1 — A-Number, if any"
+    },
+    "filho1_mora_com_voce": {
+      "label": "Child 1 — Does this child live with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "filho1_aplica_com_voce": {
+      "label": "Child 1 — Is this child applying with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if this child ALSO has their own conditional permanent residence (granted together with yours) and is included in this same petition to remove conditions. If they're a U.S. citizen or already have full permanent residence, answer \"No\"."
+    },
+    "filho1_end_rua": {
+      "label": "Child 1 — Address: Street Number and Name (if not living with you)"
+    },
+    "filho1_end_tipo_unidade": {
+      "label": "Child 1 — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "filho1_end_num_unidade": {
+      "label": "Child 1 — Unit Number"
+    },
+    "filho1_end_cidade": {
+      "label": "Child 1 — City or Town"
+    },
+    "filho1_end_estado": {
+      "label": "Child 1 — State (abbreviation, if U.S.)"
+    },
+    "filho1_end_cep": {
+      "label": "Child 1 — ZIP Code (if U.S.)"
+    },
+    "filho1_end_provincia": {
+      "label": "Child 1 — Province (if outside the U.S.)"
+    },
+    "filho1_end_codigo_postal": {
+      "label": "Child 1 — Postal Code (if outside the U.S.)"
+    },
+    "filho1_end_pais": {
+      "label": "Child 1 — Country"
+    },
+    "filho2_sobrenome": {
+      "label": "Child 2 — Family Name"
+    },
+    "filho2_nome": {
+      "label": "Child 2 — Given Name"
+    },
+    "filho2_nome_meio": {
+      "label": "Child 2 — Middle Name"
+    },
+    "filho2_data_nascimento": {
+      "label": "Child 2 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho2_alien_number": {
+      "label": "Child 2 — A-Number, if any"
+    },
+    "filho2_mora_com_voce": {
+      "label": "Child 2 — Does this child live with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "filho2_aplica_com_voce": {
+      "label": "Child 2 — Is this child applying with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if this child ALSO has their own conditional permanent residence (granted together with yours) and is included in this same petition to remove conditions. If they're a U.S. citizen or already have full permanent residence, answer \"No\"."
+    },
+    "filho2_end_rua": {
+      "label": "Child 2 — Address: Street Number and Name (if not living with you)"
+    },
+    "filho2_end_tipo_unidade": {
+      "label": "Child 2 — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "filho2_end_num_unidade": {
+      "label": "Child 2 — Unit Number"
+    },
+    "filho2_end_cidade": {
+      "label": "Child 2 — City or Town"
+    },
+    "filho2_end_estado": {
+      "label": "Child 2 — State (abbreviation, if U.S.)"
+    },
+    "filho2_end_cep": {
+      "label": "Child 2 — ZIP Code (if U.S.)"
+    },
+    "filho2_end_provincia": {
+      "label": "Child 2 — Province (if outside the U.S.)"
+    },
+    "filho2_end_codigo_postal": {
+      "label": "Child 2 — Postal Code (if outside the U.S.)"
+    },
+    "filho2_end_pais": {
+      "label": "Child 2 — Country"
+    },
+    "filho3_sobrenome": {
+      "label": "Child 3 — Family Name"
+    },
+    "filho3_nome": {
+      "label": "Child 3 — Given Name"
+    },
+    "filho3_nome_meio": {
+      "label": "Child 3 — Middle Name"
+    },
+    "filho3_data_nascimento": {
+      "label": "Child 3 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho3_alien_number": {
+      "label": "Child 3 — A-Number, if any"
+    },
+    "filho3_mora_com_voce": {
+      "label": "Child 3 — Does this child live with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "filho3_aplica_com_voce": {
+      "label": "Child 3 — Is this child applying with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if this child ALSO has their own conditional permanent residence (granted together with yours) and is included in this same petition to remove conditions. If they're a U.S. citizen or already have full permanent residence, answer \"No\"."
+    },
+    "filho3_end_rua": {
+      "label": "Child 3 — Address: Street Number and Name (if not living with you)"
+    },
+    "filho3_end_tipo_unidade": {
+      "label": "Child 3 — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "filho3_end_num_unidade": {
+      "label": "Child 3 — Unit Number"
+    },
+    "filho3_end_cidade": {
+      "label": "Child 3 — City or Town"
+    },
+    "filho3_end_estado": {
+      "label": "Child 3 — State (abbreviation, if U.S.)"
+    },
+    "filho3_end_cep": {
+      "label": "Child 3 — ZIP Code (if U.S.)"
+    },
+    "filho3_end_provincia": {
+      "label": "Child 3 — Province (if outside the U.S.)"
+    },
+    "filho3_end_codigo_postal": {
+      "label": "Child 3 — Postal Code (if outside the U.S.)"
+    },
+    "filho3_end_pais": {
+      "label": "Child 3 — Country"
+    },
+    "filho4_sobrenome": {
+      "label": "Child 4 — Family Name"
+    },
+    "filho4_nome": {
+      "label": "Child 4 — Given Name"
+    },
+    "filho4_nome_meio": {
+      "label": "Child 4 — Middle Name"
+    },
+    "filho4_data_nascimento": {
+      "label": "Child 4 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho4_alien_number": {
+      "label": "Child 4 — A-Number, if any"
+    },
+    "filho4_mora_com_voce": {
+      "label": "Child 4 — Does this child live with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "filho4_aplica_com_voce": {
+      "label": "Child 4 — Is this child applying with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if this child ALSO has their own conditional permanent residence (granted together with yours) and is included in this same petition to remove conditions. If they're a U.S. citizen or already have full permanent residence, answer \"No\"."
+    },
+    "filho4_end_rua": {
+      "label": "Child 4 — Address: Street Number and Name (if not living with you)"
+    },
+    "filho4_end_tipo_unidade": {
+      "label": "Child 4 — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "filho4_end_num_unidade": {
+      "label": "Child 4 — Unit Number"
+    },
+    "filho4_end_cidade": {
+      "label": "Child 4 — City or Town"
+    },
+    "filho4_end_estado": {
+      "label": "Child 4 — State (abbreviation, if U.S.)"
+    },
+    "filho4_end_cep": {
+      "label": "Child 4 — ZIP Code (if U.S.)"
+    },
+    "filho4_end_provincia": {
+      "label": "Child 4 — Province (if outside the U.S.)"
+    },
+    "filho4_end_codigo_postal": {
+      "label": "Child 4 — Postal Code (if outside the U.S.)"
+    },
+    "filho4_end_pais": {
+      "label": "Child 4 — Country"
+    },
+    "filho5_sobrenome": {
+      "label": "Child 5 — Family Name"
+    },
+    "filho5_nome": {
+      "label": "Child 5 — Given Name"
+    },
+    "filho5_nome_meio": {
+      "label": "Child 5 — Middle Name"
+    },
+    "filho5_data_nascimento": {
+      "label": "Child 5 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho5_alien_number": {
+      "label": "Child 5 — A-Number, if any"
+    },
+    "filho5_mora_com_voce": {
+      "label": "Child 5 — Does this child live with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "filho5_aplica_com_voce": {
+      "label": "Child 5 — Is this child applying with you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if this child ALSO has their own conditional permanent residence (granted together with yours) and is included in this same petition to remove conditions. If they're a U.S. citizen or already have full permanent residence, answer \"No\"."
+    },
+    "filho5_end_rua": {
+      "label": "Child 5 — Address: Street Number and Name (if not living with you)"
+    },
+    "filho5_end_tipo_unidade": {
+      "label": "Child 5 — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "filho5_end_num_unidade": {
+      "label": "Child 5 — Unit Number"
+    },
+    "filho5_end_cidade": {
+      "label": "Child 5 — City or Town"
+    },
+    "filho5_end_estado": {
+      "label": "Child 5 — State (abbreviation, if U.S.)"
+    },
+    "filho5_end_cep": {
+      "label": "Child 5 — ZIP Code (if U.S.)"
+    },
+    "filho5_end_provincia": {
+      "label": "Child 5 — Province (if outside the U.S.)"
+    },
+    "filho5_end_codigo_postal": {
+      "label": "Child 5 — Postal Code (if outside the U.S.)"
+    },
+    "filho5_end_pais": {
+      "label": "Child 5 — Country"
+    },
+    "acomodacao_propria": {
+      "label": "Are you requesting any accommodation for your own disability?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Refers to a special accommodation for your USCIS biometrics/interview appointment (e.g., sign language interpreter, audio format, accessible location) — it doesn't affect the decision on your case, only how you're accommodated during the process."
+    },
+    "acomodacao_conjuge": {
+      "label": "Are you requesting an accommodation for your spouse's disability?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Refers to a special accommodation for the spouse's USCIS biometrics/interview appointment (e.g., sign language interpreter, audio format, accessible location) — it doesn't affect the decision on the case, only how the spouse is accommodated during the process."
+    },
+    "acomodacao_filhos": {
+      "label": "Are you requesting an accommodation for the disability of an included child or children?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Refers to a special accommodation for the biometrics/interview appointment of the children included in this petition (e.g., sign language interpreter, audio format, accessible location) — it doesn't affect the decision on the case, only how they're accommodated during the process."
+    },
+    "acomodacao_surdo": {
+      "label": "I am deaf or hard of hearing and am requesting an accommodation",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "acomodacao_surdo_detalhe": {
+      "label": "Describe the accommodation requested (e.g., sign language)"
+    },
+    "acomodacao_cego": {
+      "label": "I am blind or have low vision and am requesting an accommodation",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "acomodacao_cego_detalhe": {
+      "label": "Describe the accommodation requested"
+    },
+    "acomodacao_outra": {
+      "label": "I have another type of disability",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "acomodacao_outra_detalhe": {
+      "label": "Describe the nature of the disability and the accommodation requested"
+    },
+    "leu_ingles": {
+      "label": "Petitioner's statement",
+      "options": {
+        "leu_ingles": "I can read and understand English, and I have read and understood every question and instruction on this petition, as well as my answers",
+        "leu_interprete": "The interpreter named in Part 9 read every question and instruction and my answers to me in a language I understand fluently"
+      },
+      "hint": "Choose the first option if you personally read and understood the form in English. Choose the second only if someone read and translated everything aloud to you in another language — in that case, that person must be listed as the interpreter in Part 9."
+    },
+    "idioma_interprete": {
+      "label": "In what language did the interpreter read the form to you?"
+    },
+    "preparador_ajudou": {
+      "label": "Did someone prepare this form for you, at your request and based only on the information you provided?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No, I completed it myself"
+      },
+      "hint": "Answer \"Yes\" if anyone (including our own team) helped you complete this form based on your answers — that's what makes someone a \"preparer\" for USCIS purposes, and that person must be identified in Part 10."
+    },
+    "preparador_nome": {
+      "label": "Preparer's name"
+    },
+    "preparador_e_advogado": {
+      "label": "Is the preparer an attorney or accredited representative?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Most form-preparation services (like ours) are NOT attorneys or USCIS Accredited Representatives — in that case, answer \"No\"."
+    },
+    "confirmacao_nome_asc": {
+      "label": "Name for Application Support Center (ASC) appointment confirmation",
+      "hint": "ASC = \"Application Support Center\", the USCIS office where your biometrics (fingerprints and photo) are collected after filing. Enter your name exactly as you want it to appear on the biometrics appointment notice."
+    },
+    "telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "celular": {
+      "label": "Mobile Telephone Number (if any)"
+    },
+    "email": {
+      "label": "Email Address (if any)"
+    },
+    "data_assinatura": {
+      "label": "Date of Signature (filled in on the day of filing, MM/DD/YYYY)"
+    },
+    "conjuge_leu_ingles": {
+      "label": "Spouse's statement (if applicable — joint petition)",
+      "options": {
+        "leu_ingles": "I can read and understand English, and I have read and understood every question and instruction and the petitioner's answers",
+        "leu_interprete": "The interpreter named in Part 9 read every question and answer to me in a language I understand fluently"
+      },
+      "hint": "Same logic as the petitioner's declaration: first option if the spouse personally read and understood the form in English; second option if an interpreter read everything aloud in translation (listed in Part 9)."
+    },
+    "conjuge_idioma_interprete": {
+      "label": "In what language did the interpreter read the form to the spouse?"
+    },
+    "conjuge_preparador_ajudou": {
+      "label": "Did someone prepare this form for the spouse, at their request and based only on the information provided?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" if anyone (including our own team) helped the spouse complete this section based on their answers — that's what makes someone a \"preparer\" for USCIS purposes, and that person must be identified in Part 10."
+    },
+    "conjuge_preparador_nome": {
+      "label": "Preparer's name (spouse)"
+    },
+    "conjuge_preparador_e_advogado": {
+      "label": "Is the spouse's preparer an attorney or accredited representative?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Most form-preparation services (like ours) are NOT attorneys or USCIS Accredited Representatives — in that case, answer \"No\" for the spouse's preparer too."
+    },
+    "conjuge_confirmacao_nome_asc": {
+      "label": "Spouse's name for ASC appointment confirmation",
+      "hint": "Same logic as above (ASC = biometrics collection site), but with the spouse's name."
+    },
+    "conjuge_telefone": {
+      "label": "Spouse's Daytime Telephone Number"
+    },
+    "conjuge_celular": {
+      "label": "Spouse's Mobile Telephone Number (if any)"
+    },
+    "conjuge_email": {
+      "label": "Spouse's Email Address (if any)"
+    },
+    "conjuge_data_assinatura": {
+      "label": "Date of Spouse's Signature (MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter — Business or Organization Name (if any)"
+    },
+    "int_end_rua": {
+      "label": "Interpreter — Street Number and Name"
+    },
+    "int_end_tipo_unidade": {
+      "label": "Interpreter — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "int_end_num_unidade": {
+      "label": "Interpreter — Unit Number"
+    },
+    "int_end_cidade": {
+      "label": "Interpreter — City or Town"
+    },
+    "int_end_estado": {
+      "label": "Interpreter — State (abbreviation, if U.S.)"
+    },
+    "int_end_cep": {
+      "label": "Interpreter — ZIP Code (if U.S.)"
+    },
+    "int_end_provincia": {
+      "label": "Interpreter — Province (if outside the U.S.)"
+    },
+    "int_end_codigo_postal": {
+      "label": "Interpreter — Postal Code (if outside the U.S.)"
+    },
+    "int_end_pais": {
+      "label": "Interpreter — Country"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Daytime Telephone Number"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address (if any)"
+    },
+    "int_idioma": {
+      "label": "Interpreter — Language of Fluency"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter — Date of Signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer — Business or Organization Name (if any)"
+    },
+    "prep_end_rua": {
+      "label": "Preparer — Street Number and Name"
+    },
+    "prep_end_tipo_unidade": {
+      "label": "Preparer — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "prep_end_num_unidade": {
+      "label": "Preparer — Unit Number"
+    },
+    "prep_end_cidade": {
+      "label": "Preparer — City or Town"
+    },
+    "prep_end_estado": {
+      "label": "Preparer — State (abbreviation, if U.S.)"
+    },
+    "prep_end_cep": {
+      "label": "Preparer — ZIP Code (if U.S.)"
+    },
+    "prep_end_provincia": {
+      "label": "Preparer — Province (if outside the U.S.)"
+    },
+    "prep_end_codigo_postal": {
+      "label": "Preparer — Postal Code (if outside the U.S.)"
+    },
+    "prep_end_pais": {
+      "label": "Preparer — Country"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Daytime Telephone Number"
+    },
+    "prep_fax": {
+      "label": "Preparer — Fax Number (if any)"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address (if any)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer — Date of Signature (MM/DD/YYYY)"
+    }
+  }
+}

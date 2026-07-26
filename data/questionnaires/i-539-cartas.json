@@ -1,0 +1,1027 @@
+{
+  "form": "I-539-CARTAS",
+  "title": "I-539 — Cartas Complementares e Narrativa",
+  "description": "Formulário separado do I-539 oficial. Coleta as informações para a carta narrativa pessoal e para até 4 cartas complementares assinadas por terceiros (endereço, patrocínio, empregador, ou responsável pela empresa). Campos marcados com * são obrigatórios.",
+  "sections": [
+    {
+      "id": "tipo_servico",
+      "title": "Serviço"
+    },
+    {
+      "id": "narrativa_eos",
+      "title": "Carta Narrativa — Extensão de Status (EOS)"
+    },
+    {
+      "id": "narrativa_b2",
+      "title": "Carta Narrativa — Mudança para Visitante (COS B2)"
+    },
+    {
+      "id": "narrativa_f1",
+      "title": "Carta Narrativa — Mudança para Estudante (COS F1)"
+    },
+    {
+      "id": "narrativa_f2",
+      "title": "Carta Narrativa — Mudança para Dependente F-2 (COS F2)"
+    },
+    {
+      "id": "carta_endereco",
+      "title": "Carta de Endereço"
+    },
+    {
+      "id": "carta_patrocinio",
+      "title": "Carta de Patrocínio"
+    },
+    {
+      "id": "vinculo_profissional",
+      "title": "Vínculo Profissional no País de Origem"
+    },
+    {
+      "id": "carta_empregador",
+      "title": "Carta do Empregador"
+    },
+    {
+      "id": "carta_empresa_cuidador",
+      "title": "Carta de Quem Vai Cuidar da Empresa"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_completo_requerente",
+      "section": "tipo_servico",
+      "label": "Nome completo do requerente (para quem as cartas serão escritas)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "servico",
+      "section": "tipo_servico",
+      "label": "Para qual serviço você está preparando as cartas complementares?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "eos",
+          "label": "EOS — Extensão de Status"
+        },
+        {
+          "value": "cos_f1",
+          "label": "COS F1 — Mudança de Status para Estudante"
+        },
+        {
+          "value": "cos_f2",
+          "label": "COS F2 — Mudança de Status para Dependente de F-1"
+        },
+        {
+          "value": "cos_b2",
+          "label": "COS B2 — Mudança de Status para Visitante"
+        }
+      ]
+    },
+    {
+      "id": "narr_eos_1",
+      "section": "narrativa_eos",
+      "label": "1. Motivação Inicial",
+      "type": "text",
+      "required": true,
+      "hint": "Qual foi o principal motivo que o(a) trouxe aos Estados Unidos inicialmente? Havia um propósito específico, como turismo, trabalho ou outra atividade?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_2",
+      "section": "narrativa_eos",
+      "label": "2. Histórico de Permanência nos EUA",
+      "type": "text",
+      "required": true,
+      "hint": "Desde que chegou aos EUA, quais lugares você visitou e por que escolheu esses destinos? Você se envolveu em alguma atividade ou evento marcante nesses locais?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_3",
+      "section": "narrativa_eos",
+      "label": "3. Razões para Estender a Sua Permanência",
+      "type": "text",
+      "required": true,
+      "hint": "Por que você deseja estender sua permanência nos Estados Unidos? Quais lugares gostaria de visitar durante o período de extensão de sua estadia?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_4",
+      "section": "narrativa_eos",
+      "label": "4. Impacto no Retorno ao País de Origem",
+      "type": "text",
+      "required": true,
+      "hint": "Como esse período prolongado de permanência ou experiência cultural nos EUA beneficiará sua vida pessoal e/ou profissional quando você retornar ao seu país de origem? Há algo específico que você deseja alcançar antes de retornar?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_5",
+      "section": "narrativa_eos",
+      "label": "5. Interação com a Cultura Americana",
+      "type": "text",
+      "required": true,
+      "hint": "Como o contato prolongado com a cultura americana pode enriquecer sua perspectiva pessoal e profissional? Há algo específico na cultura americana que o(a) inspira ou motiva?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_6",
+      "section": "narrativa_eos",
+      "label": "6. Apoio Financeiro",
+      "type": "text",
+      "required": true,
+      "hint": "Quem será responsável pelos custos de sua estadia nos EUA (moradia, alimentação, transporte, etc.)? Qual é o vínculo dessa pessoa com você e qual a capacidade financeira dela para esse suporte? ATENÇÃO: NÃO mencione qualquer trabalho nos EUA, nem trabalho remoto para empresas do Brasil ou de outro país enquanto estiver fisicamente nos EUA — isso pode ser interpretado como violação do seu status. Fale apenas sobre poupança pessoal, patrocinador, renda de bens/investimentos, ou negócio que continua operando no seu país de origem sem a sua atuação direta enquanto você estiver fora.",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_7",
+      "section": "narrativa_eos",
+      "label": "7. Área de Atuação e Impacto na Carreira",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é a sua área de atuação profissional em seu país de origem? Como uma estadia prolongada nos EUA poderia agregar valor à sua carreira atual? Que oportunidades você acredita que essa experiência poderia abrir no mercado de trabalho após seu retorno? ATENÇÃO: descreva sua carreira APENAS no passado (antes de viajar) ou no futuro (depois que você retornar) — NÃO diga que vai continuar trabalhando, nem remotamente, enquanto estiver nos EUA.",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_8",
+      "section": "narrativa_eos",
+      "label": "8. Formação Acadêmica",
+      "type": "text",
+      "required": true,
+      "hint": "Você possui formação superior? Em caso afirmativo, qual é a sua formação e como uma estadia prolongada nos EUA poderia impactar ou complementar sua formação acadêmica?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_9",
+      "section": "narrativa_eos",
+      "label": "9. Nível de Inglês",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é o seu nível de inglês atualmente (básico, intermediário, avançado)? Você já estudou inglês no seu país de origem? Em caso afirmativo, como você acredita que uma estadia mais longa nos EUA poderia ajudar a aprimorar suas habilidades em inglês?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_10",
+      "section": "narrativa_eos",
+      "label": "10. Impacto Pessoal e Profissional",
+      "type": "text",
+      "required": true,
+      "hint": "Como essa extensão poderia impactar positivamente sua vida pessoal? Exemplos: aumento da confiança, ampliação da rede de contatos, experiências culturais.",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_11",
+      "section": "narrativa_eos",
+      "label": "11. Planejamento Pós-Retorno",
+      "type": "text",
+      "required": true,
+      "hint": "Quais são seus planos imediatos após retornar ao seu país de origem? Você planeja buscar novas qualificações ou se especializar em uma área específica? O contato com a cultura/língua americana influenciou essa decisão?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_eos_12",
+      "section": "narrativa_eos",
+      "label": "12. Impacto Familiar",
+      "type": "text",
+      "required": true,
+      "hint": "Como sua estadia prolongada nos EUA afeta ou é apoiada por sua família/familiares em seu país de origem?",
+      "show_if": {
+        "question": "servico",
+        "equals": "eos"
+      }
+    },
+    {
+      "id": "narr_b2_1",
+      "section": "narrativa_b2",
+      "label": "1. Motivação Inicial",
+      "type": "text",
+      "required": true,
+      "hint": "Qual foi o principal motivo que levou você a vir para os Estados Unidos inicialmente, no seu status atual? O que te motivou a escolher esse status? Havia um objetivo específico, como aprimorar o inglês, vivenciar uma nova cultura ou outro motivo pessoal ou profissional?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_2",
+      "section": "narrativa_b2",
+      "label": "2. Histórico de Permanência nos EUA",
+      "type": "text",
+      "required": true,
+      "hint": "Desde sua chegada aos Estados Unidos, quais cidades ou estados você visitou durante seu tempo livre? Por que escolheu esses destinos? Algum deles teve um significado especial para você? Participou de alguma atividade cultural, evento ou experiência marcante nesses locais?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_3",
+      "section": "narrativa_b2",
+      "label": "3. Razão para Mudar seu Status para B-2 (turista)",
+      "type": "text",
+      "required": true,
+      "hint": "Por que você deseja alterar seu status atual para B-2 (turista)? Quais são seus planos caso a mudança de status para turista seja aprovada? Que cidades ou pontos turísticos pretende visitar durante esse período?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_4",
+      "section": "narrativa_b2",
+      "label": "4. Impacto no Retorno ao País de Origem",
+      "type": "text",
+      "required": true,
+      "hint": "Como esse período prolongado de permanência ou experiência cultural nos EUA beneficiará sua vida pessoal e/ou profissional quando você retornar ao seu país de origem? Há algo específico que você deseja alcançar antes de retornar?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_5",
+      "section": "narrativa_b2",
+      "label": "5. Interação com a Cultura Americana",
+      "type": "text",
+      "required": true,
+      "hint": "Como o contato prolongado com a cultura americana pode enriquecer sua perspectiva pessoal e profissional? Há algo específico na cultura americana que o(a) inspira ou motiva?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_6",
+      "section": "narrativa_b2",
+      "label": "6. Apoio Financeiro",
+      "type": "text",
+      "required": true,
+      "hint": "Quem será responsável pelos custos de sua estadia nos EUA (moradia, alimentação, etc.)? Qual é o vínculo dessa pessoa com você e qual a capacidade financeira dela para esse suporte? ATENÇÃO: NÃO mencione qualquer trabalho nos EUA, nem trabalho remoto para empresas do Brasil ou de outro país enquanto estiver fisicamente nos EUA — isso pode ser interpretado como violação do seu status. Fale apenas sobre poupança pessoal, patrocinador, renda de bens/investimentos, ou negócio que continua operando no seu país de origem sem a sua atuação direta enquanto você estiver fora.",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_7",
+      "section": "narrativa_b2",
+      "label": "7. Área de Especialização, Formação Acadêmica e Impacto na Carreira",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é a sua área de especialização em seu país de origem? Você tem diploma universitário ou alguma qualificação acadêmica formal? Em caso afirmativo, informe o diploma, o campo de estudo e o nome da instituição. Como você acredita que esse período nos EUA beneficiará sua vida pessoal e/ou profissional ao retornar? Mesmo sem estar matriculado em um programa acadêmico, como essa estadia como visitante B-2 pode contribuir para seu desenvolvimento pessoal, habilidades linguísticas ou futuras oportunidades de carreira? ATENÇÃO: descreva sua carreira APENAS no passado (antes de viajar) ou no futuro (depois que você retornar) — NÃO diga que vai continuar trabalhando, nem remotamente, enquanto estiver nos EUA.",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_8",
+      "section": "narrativa_b2",
+      "label": "8. Nível de Inglês",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é o seu nível de inglês atualmente (básico, intermediário, avançado)? Você já estudou inglês no seu país de origem? Em caso afirmativo, como você acredita que uma estadia mais longa nos EUA poderia ajudar a aprimorar suas habilidades em inglês?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_9",
+      "section": "narrativa_b2",
+      "label": "9. Planejamento Pós-Retorno",
+      "type": "text",
+      "required": true,
+      "hint": "Quais são seus planos imediatos após retornar ao seu país de origem? Como sua estadia prolongada nos EUA afeta ou recebe apoio de sua família/parentes em seu país de origem? Sua exposição ao idioma/cultura americana influenciou essa decisão?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_b2_10",
+      "section": "narrativa_b2",
+      "label": "10. Impacto Familiar",
+      "type": "text",
+      "required": true,
+      "hint": "Como sua estadia prolongada nos EUA afeta ou é apoiada por sua família/familiares em seu país de origem?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_b2"
+      }
+    },
+    {
+      "id": "narr_f1_1",
+      "section": "narrativa_f1",
+      "label": "1. Motivação Inicial",
+      "type": "text",
+      "required": true,
+      "hint": "Qual foi o principal motivo que o(a) trouxe aos Estados Unidos inicialmente? Havia um propósito específico, como turismo, trabalho ou outra atividade?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_2",
+      "section": "narrativa_f1",
+      "label": "2. Histórico de Permanência nos EUA",
+      "type": "text",
+      "required": true,
+      "hint": "Desde que chegou aos EUA, quais lugares você visitou e por que escolheu esses destinos? Você se envolveu em alguma atividade ou evento marcante nesses locais?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_3",
+      "section": "narrativa_f1",
+      "label": "3. Razão para Estudar nos EUA",
+      "type": "text",
+      "required": true,
+      "hint": "Por que você deseja estudar nos Estados Unidos? O que torna o sistema de ensino nos EUA mais vantajoso ou único em comparação ao seu país de origem?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_4",
+      "section": "narrativa_f1",
+      "label": "4. Impacto no Retorno ao País de Origem",
+      "type": "text",
+      "required": true,
+      "hint": "Como essa experiência educacional ou cultural nos EUA irá beneficiar sua vida pessoal e/ou profissional quando retornar ao seu país de origem? Você já tem planos de como aplicar os conhecimentos adquiridos ao voltar?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_5",
+      "section": "narrativa_f1",
+      "label": "5. Interação com a Cultura Americana",
+      "type": "text",
+      "required": true,
+      "hint": "Como o contato prolongado com a cultura americana pode enriquecer sua perspectiva pessoal e profissional? Há algo específico na cultura americana que o(a) inspira ou motiva?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_6",
+      "section": "narrativa_f1",
+      "label": "6. Apoio Financeiro",
+      "type": "text",
+      "required": true,
+      "hint": "Quem será responsável pelos custos de sua estadia nos EUA (moradia, alimentação, estudos, etc.)? Qual é o vínculo dessa pessoa com você e qual a capacidade financeira dela para esse suporte? ATENÇÃO: NÃO mencione qualquer trabalho nos EUA, nem trabalho remoto para empresas do Brasil ou de outro país enquanto estiver fisicamente nos EUA — isso pode ser interpretado como violação do seu status. Fale apenas sobre poupança pessoal, patrocinador, renda de bens/investimentos, ou negócio que continua operando no seu país de origem sem a sua atuação direta enquanto você estiver fora.",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_7",
+      "section": "narrativa_f1",
+      "label": "7. Área de Atuação e Impacto na Carreira",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é a sua área de atuação profissional em seu país de origem? Como os estudos nos EUA podem agregar valor à sua carreira atual ou abrir novas oportunidades no mercado de trabalho ao retornar? ATENÇÃO: descreva sua carreira APENAS no passado (antes de viajar) ou no futuro (depois que você retornar) — NÃO diga que vai continuar trabalhando, nem remotamente, enquanto estiver nos EUA.",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_8",
+      "section": "narrativa_f1",
+      "label": "8. Formação Acadêmica",
+      "type": "text",
+      "required": true,
+      "hint": "Você possui formação superior? Em caso positivo, qual o seu curso de formação e como ele está relacionado aos estudos que deseja realizar nos EUA?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_9",
+      "section": "narrativa_f1",
+      "label": "9. Nível de Inglês",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é o seu nível de inglês atualmente (básico, intermediário, avançado)? Você já estudou inglês no seu país de origem? Se sim, o que acredita que seria diferente ao estudar inglês nos Estados Unidos?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_10",
+      "section": "narrativa_f1",
+      "label": "10. Impacto Pessoal e Profissional",
+      "type": "text",
+      "required": true,
+      "hint": "Como estudar nos EUA pode impactar positivamente sua vida pessoal (ex.: aumento da confiança, networking)? Em sua perspectiva profissional, quais oportunidades acredita que surgirão após completar seus estudos nos EUA?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_11",
+      "section": "narrativa_f1",
+      "label": "11. Planejamento Pós-Estudos",
+      "type": "text",
+      "required": true,
+      "hint": "Quais são seus planos imediatos após concluir seus estudos nos EUA? Você pretende buscar novas qualificações ou se especializar em alguma área específica ao retornar ao seu país?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f1_12",
+      "section": "narrativa_f1",
+      "label": "12. Impacto Familiar",
+      "type": "text",
+      "required": true,
+      "hint": "Como sua estadia prolongada nos EUA afeta ou é apoiada por sua família/familiares em seu país de origem?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f1"
+      }
+    },
+    {
+      "id": "narr_f2_1",
+      "section": "narrativa_f2",
+      "label": "1. Motivação Inicial",
+      "type": "text",
+      "required": true,
+      "hint": "Qual foi o principal motivo que o(a) trouxe aos Estados Unidos inicialmente? Seu objetivo era turismo, estudos, intercâmbio, trabalho ou outro motivo específico?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_2",
+      "section": "narrativa_f2",
+      "label": "2. Histórico de Permanência nos EUA",
+      "type": "text",
+      "required": true,
+      "hint": "Desde que chegou aos EUA, quais lugares você visitou e por que escolheu esses destinos? Você se envolveu em alguma atividade ou evento marcante nesses locais?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_3",
+      "section": "narrativa_f2",
+      "label": "3. Motivo para Solicitar o Status F-2 (Dependente de Estudante)",
+      "type": "text",
+      "required": true,
+      "hint": "Por que deseja mudar seu status atual para F-2 (dependente de estudante)? Qual a sua intenção durante esse período como dependente nos EUA?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_4",
+      "section": "narrativa_f2",
+      "label": "4. Planejamento Pessoal e Familiar",
+      "type": "text",
+      "required": true,
+      "hint": "Sua família apoia sua permanência prolongada nos Estados Unidos como dependente? Como essa mudança de status se encaixa nos seus planos pessoais e familiares? Como sua estadia prolongada nos EUA afeta ou é apoiada por sua família/familiares em seu país de origem?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_5",
+      "section": "narrativa_f2",
+      "label": "5. Impacto Cultural e Pessoal",
+      "type": "text",
+      "required": true,
+      "hint": "Como a convivência com a cultura americana pode enriquecer sua vida pessoal? Existe algo na cultura dos EUA que o(a) inspira ou que deseja vivenciar mais profundamente?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_6",
+      "section": "narrativa_f2",
+      "label": "6. Apoio Financeiro",
+      "type": "text",
+      "required": true,
+      "hint": "Quem será o responsável pelos custos da sua estadia nos EUA (moradia, alimentação, plano de saúde, etc.)? Qual a relação dessa pessoa com você e como ela comprova capacidade financeira para este suporte? ATENÇÃO: NÃO mencione qualquer trabalho nos EUA, nem trabalho remoto para empresas do Brasil ou de outro país enquanto estiver fisicamente nos EUA — isso pode ser interpretado como violação do seu status. Fale apenas sobre poupança pessoal, patrocinador, renda de bens/investimentos, ou negócio que continua operando no seu país de origem sem a sua atuação direta enquanto você estiver fora.",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_7",
+      "section": "narrativa_f2",
+      "label": "7. Formação Acadêmica e Profissional",
+      "type": "text",
+      "required": true,
+      "hint": "Você possui formação acadêmica (ensino superior ou técnico)? Se sim, qual? Qual é sua área de atuação profissional atualmente? Como acredita que essa experiência nos EUA, mesmo como dependente, pode contribuir para seu crescimento acadêmico ou profissional? ATENÇÃO: descreva sua carreira APENAS no passado (antes de viajar) ou no futuro (depois que você retornar) — NÃO diga que vai continuar trabalhando, nem remotamente, enquanto estiver nos EUA.",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_8",
+      "section": "narrativa_f2",
+      "label": "8. Nível de Inglês",
+      "type": "text",
+      "required": true,
+      "hint": "Qual é o seu nível atual de inglês (básico, intermediário, avançado)? Já estudou inglês no seu país de origem? Como a permanência nos EUA pode contribuir para o seu desenvolvimento no idioma?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_9",
+      "section": "narrativa_f2",
+      "label": "9. Benefícios Pessoais e Profissionais",
+      "type": "text",
+      "required": true,
+      "hint": "De que forma sua experiência nos EUA pode trazer benefícios pessoais (ex.: aumento da autoconfiança, ampliação de visão de mundo)? Em termos profissionais, que tipo de oportunidades acredita que poderá conquistar após essa vivência?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "narr_f2_10",
+      "section": "narrativa_f2",
+      "label": "10. Planos Futuros Após a Estadia nos EUA",
+      "type": "text",
+      "required": true,
+      "hint": "Quais são seus planos após o término do período como F-2? Pretende retornar ao seu país de origem? Tem planos de continuar os estudos ou buscar outras qualificações?",
+      "show_if": {
+        "question": "servico",
+        "equals": "cos_f2"
+      }
+    },
+    {
+      "id": "endereco_comprovante_proprio",
+      "section": "carta_endereco",
+      "label": "O comprovante de endereço recente do seu país de origem está no SEU PRÓPRIO nome?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, está no nome de outra pessoa"
+        }
+      ]
+    },
+    {
+      "id": "carta_endereco_titular_nome",
+      "section": "carta_endereco",
+      "label": "Nome completo do titular do comprovante de endereço",
+      "type": "text",
+      "required": true,
+      "hint": "Pessoa em cujo nome está a conta de água, luz, internet, etc.",
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_endereco",
+      "section": "carta_endereco",
+      "label": "Endereço completo (igual ao do comprovante)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_tax_id",
+      "section": "carta_endereco",
+      "label": "Número de identificação fiscal do titular (CPF ou equivalente)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_doc_id",
+      "section": "carta_endereco",
+      "label": "Número de identificação (RG ou documento equivalente) do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_email",
+      "section": "carta_endereco",
+      "label": "E-mail do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_telefone",
+      "section": "carta_endereco",
+      "label": "Telefone do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_cidade_nascimento",
+      "section": "carta_endereco",
+      "label": "Cidade e estado de nascimento do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_parentesco",
+      "section": "carta_endereco",
+      "label": "Grau de parentesco do titular com você",
+      "type": "text",
+      "required": true,
+      "hint": "IMPORTANTE: responda em INGLÊS — este texto entra direto na carta em inglês. Ex.: father, mother, brother, sister, son, daughter, friend, etc.",
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "patrocinio_terceiro",
+      "section": "carta_patrocinio",
+      "label": "Os extratos bancários usados como prova de suporte financeiro estão no nome de outra pessoa (patrocinador)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, são meus próprios extratos"
+        }
+      ]
+    },
+    {
+      "id": "carta_patrocinio_nome",
+      "section": "carta_patrocinio",
+      "label": "Nome completo do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_email",
+      "section": "carta_patrocinio",
+      "label": "E-mail do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_telefone",
+      "section": "carta_patrocinio",
+      "label": "Telefone do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_endereco",
+      "section": "carta_patrocinio",
+      "label": "Endereço completo do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_parentesco",
+      "section": "carta_patrocinio",
+      "label": "Grau de parentesco do patrocinador com você",
+      "type": "text",
+      "required": true,
+      "hint": "IMPORTANTE: responda em INGLÊS — este texto entra direto na carta em inglês. Ex.: father, mother, brother, sister, spouse, friend, etc.",
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_cidade_nascimento",
+      "section": "carta_patrocinio",
+      "label": "Cidade e estado de nascimento do patrocinador",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "tem_empresa_propria",
+      "section": "vinculo_profissional",
+      "label": "Você tem uma empresa registrada em seu nome no seu país de origem?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim, tenho empresa própria"
+        },
+        {
+          "value": "nao",
+          "label": "Não, preciso de uma carta de um empregador"
+        }
+      ]
+    },
+    {
+      "id": "carta_empregador_nome_empresa",
+      "section": "carta_empregador",
+      "label": "Nome da empresa empregadora",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_nome",
+      "section": "carta_empregador",
+      "label": "Nome completo do proprietário da empresa (empregador)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_endereco_empresa",
+      "section": "carta_empregador",
+      "label": "Endereço completo da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_cpf",
+      "section": "carta_empregador",
+      "label": "Número de identificação fiscal do proprietário (CPF)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_cnpj",
+      "section": "carta_empregador",
+      "label": "Número do CNPJ/registro estadual da empresa (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_email",
+      "section": "carta_empregador",
+      "label": "E-mail do proprietário da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_telefone",
+      "section": "carta_empregador",
+      "label": "Telefone do proprietário da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_requerente_cpf",
+      "section": "carta_empregador",
+      "label": "Seu número de identificação fiscal (CPF, do requerente)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_cidade_nascimento",
+      "section": "carta_empregador",
+      "label": "Cidade e estado de nascimento do proprietário",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empresa_nome",
+      "section": "carta_empresa_cuidador",
+      "label": "Nome da sua empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cnpj",
+      "section": "carta_empresa_cuidador",
+      "label": "Número do CNPJ/registro estadual da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_endereco",
+      "section": "carta_empresa_cuidador",
+      "label": "Endereço completo da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_proprietario_cpf",
+      "section": "carta_empresa_cuidador",
+      "label": "Seu número de identificação fiscal (CPF), como proprietário",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_nome",
+      "section": "carta_empresa_cuidador",
+      "label": "Nome completo da pessoa que vai cuidar da empresa enquanto você estiver nos EUA",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_cargo",
+      "section": "carta_empresa_cuidador",
+      "label": "Cargo/função dessa pessoa na empresa, ou grau de parentesco com você",
+      "type": "text",
+      "required": true,
+      "hint": "IMPORTANTE: responda em INGLÊS — este texto entra direto na carta em inglês. Ex.: business partner, manager, accountant, spouse, son/daughter, etc.",
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_cpf",
+      "section": "carta_empresa_cuidador",
+      "label": "CPF de quem vai cuidar da empresa",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_email",
+      "section": "carta_empresa_cuidador",
+      "label": "E-mail de quem vai cuidar da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_telefone",
+      "section": "carta_empresa_cuidador",
+      "label": "Telefone de quem vai cuidar da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_endereco",
+      "section": "carta_empresa_cuidador",
+      "label": "Endereço de quem vai cuidar da empresa",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    }
+  ]
+}

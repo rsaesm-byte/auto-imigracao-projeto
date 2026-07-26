@@ -1,0 +1,2565 @@
+{
+  "form": "I-751",
+  "title": "Petição para Remover as Condições de Residência — I-751",
+  "description": "Preencha todas as perguntas. Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA.",
+  "sections": [
+    {
+      "id": "basico",
+      "title": "Parte 1 — Informações Básicas sobre Você"
+    },
+    {
+      "id": "enderecos",
+      "title": "Parte 1 — Endereços"
+    },
+    {
+      "id": "adicional",
+      "title": "Parte 1 — Informações Adicionais sobre Você"
+    },
+    {
+      "id": "biografico",
+      "title": "Parte 2 — Informações Biográficas"
+    },
+    {
+      "id": "base_peticao",
+      "title": "Parte 3 — Base da Petição"
+    },
+    {
+      "id": "conjuge_americano",
+      "title": "Parte 4 — Cônjuge Cidadão(ã)/Residente Permanente"
+    },
+    {
+      "id": "filhos",
+      "title": "Parte 5 — Seus Filhos"
+    },
+    {
+      "id": "acomodacoes",
+      "title": "Parte 6 — Acomodações para Deficiência"
+    },
+    {
+      "id": "assinatura",
+      "title": "Parte 7 — Declaração do(a) Peticionário(a)"
+    },
+    {
+      "id": "assinatura_conjuge",
+      "title": "Parte 8 — Declaração do(a) Cônjuge (se aplicável)"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 9 — Intérprete"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 10 — Preparador(a)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_sobrenome",
+      "section": "basico",
+      "label": "Sobrenome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_nome",
+      "section": "basico",
+      "label": "Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_meio",
+      "section": "basico",
+      "label": "Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_sobrenome",
+      "section": "basico",
+      "label": "Outro nome já usado (2) — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_nome",
+      "section": "basico",
+      "label": "Outro nome já usado (2) — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome2_meio",
+      "section": "basico",
+      "label": "Outro nome já usado (2) — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_sobrenome",
+      "section": "basico",
+      "label": "Outro nome já usado (3) — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_nome",
+      "section": "basico",
+      "label": "Outro nome já usado (3) — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "outro_nome3_meio",
+      "section": "basico",
+      "label": "Outro nome já usado (3) — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_nascimento",
+      "section": "basico",
+      "label": "Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pais_nascimento",
+      "section": "basico",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pais_cidadania",
+      "section": "basico",
+      "label": "País de cidadania/nacionalidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "alien_number",
+      "section": "basico",
+      "label": "Número de Estrangeiro (A-Number), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ssn",
+      "section": "basico",
+      "label": "Número do Seguro Social (SSN), se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "uscis_online",
+      "section": "basico",
+      "label": "Número de Conta USCIS Online, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "estado_civil",
+      "section": "basico",
+      "label": "Estado civil atual",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "casado",
+          "label": "Casado(a)"
+        },
+        {
+          "value": "viuvo",
+          "label": "Viúvo(a)"
+        },
+        {
+          "value": "solteiro",
+          "label": "Solteiro(a)"
+        },
+        {
+          "value": "divorciado",
+          "label": "Divorciado(a)"
+        }
+      ]
+    },
+    {
+      "id": "data_casamento",
+      "section": "basico",
+      "label": "Data do casamento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "local_casamento",
+      "section": "basico",
+      "label": "Local do casamento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_fim_casamento",
+      "section": "basico",
+      "label": "Se o casamento terminou, data em que terminou (divórcio ou óbito)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "data_expiracao_residencia_condicional",
+      "section": "basico",
+      "label": "Data de expiração da residência condicional",
+      "type": "date",
+      "required": true,
+      "hint": "Data impressa no seu Cartão de Residente Permanente condicional (o cartão de 2 anos). Você só pode enviar o I-751 nos 90 dias antes dessa data — enviar antes ou depois do prazo pode causar rejeição ou perda do status. Confirme o prazo exato com a equipe."
+    },
+    {
+      "id": "end_correio_cuidados_de",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_rua",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "end_correio_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cidade",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "end_correio_estado",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — Estado (sigla)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_correio_cep",
+      "section": "enderecos",
+      "label": "Endereço de correspondência — CEP",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "end_fisico_diferente",
+      "section": "enderecos",
+      "label": "Seu endereço físico é diferente do endereço de correspondência?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_cuidados_de",
+      "section": "enderecos",
+      "label": "Endereço físico — Aos cuidados de (se aplicável)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "end_fisico_rua",
+      "section": "enderecos",
+      "label": "Endereço físico — Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "end_fisico_tipo_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "end_fisico_num_unidade",
+      "section": "enderecos",
+      "label": "Endereço físico — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "end_fisico_cidade",
+      "section": "enderecos",
+      "label": "Endereço físico — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "end_fisico_estado",
+      "section": "enderecos",
+      "label": "Endereço físico — Estado (sigla)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "end_fisico_cep",
+      "section": "enderecos",
+      "label": "Endereço físico — CEP",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "end_fisico_diferente",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "em_processo_remocao",
+      "section": "adicional",
+      "label": "Você está em processo de remoção, deportação ou rescisão?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Refere-se a estar formalmente notificado de um processo de deportação/remoção pela justiça de imigração — não é o mesmo que já ter tido problemas com a lei no passado. Se não tiver certeza, responda com cuidado e consulte um advogado de imigração antes de enviar."
+    },
+    {
+      "id": "taxa_paga_terceiro",
+      "section": "adicional",
+      "label": "Foi paga alguma taxa a alguém (que não seja advogado) em conexão com esta petição?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta do próprio formulário oficial, sobre ter pago alguém que NÃO é advogado (ex: um \"notario\" ou consultor não credenciado) para ajudar com esta petição. Não se refere à taxa de protocolo paga à USCIS nem aos nossos serviços de preparação de formulário."
+    },
+    {
+      "id": "ja_foi_preso",
+      "section": "adicional",
+      "label": "Você já foi preso, detido, indiciado, multado ou encarcerado por violar alguma lei (exceto trânsito), nos EUA ou no exterior?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta ampla — inclui qualquer prisão, detenção, indiciamento, multa (além de multas de trânsito comuns) ou pena, mesmo que o caso tenha sido arquivado, perdoado ou apagado do registro depois. Responda com cuidado: omitir um histórico costuma ser mais grave do que declará-lo. Se você tem qualquer histórico, mesmo antigo ou pequeno, consulte um advogado de imigração antes de responder."
+    },
+    {
+      "id": "casamento_diferente",
+      "section": "adicional",
+      "label": "Se casado(a), este é um casamento diferente daquele pelo qual você obteve a residência condicional?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se você se casou de novo (com outra pessoa) depois de já ter recebido a residência condicional através do casamento anterior. Se ainda é o mesmo casamento que gerou sua residência condicional, responda \"Não\"."
+    },
+    {
+      "id": "residiu_outro_endereco",
+      "section": "adicional",
+      "label": "Você já residiu em outro endereço desde que se tornou residente permanente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "conjuge_funcionario_governo_exterior",
+      "section": "adicional",
+      "label": "Seu cônjuge (ou cônjuge do seu pai/mãe) está atualmente servindo ou empregado pelo governo dos EUA no exterior?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta específica do formulário oficial — refere-se a cônjuge que trabalha para o governo dos EUA (incluindo Forças Armadas) em missão no exterior no momento do pedido. Se não é o seu caso, responda \"Não\"."
+    },
+    {
+      "id": "etnia",
+      "section": "biografico",
+      "hint": "Categoria oficial do governo dos EUA, separada de \"raça\" (perguntas seguintes) — pergunta apenas se você se identifica como hispânico/latino, independentemente da sua raça. A maioria dos brasileiros não-hispânicos marca \"Não hispânico ou latino\" aqui.",
+      "label": "Etnia",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "hispanico",
+          "label": "Hispânico ou Latino"
+        },
+        {
+          "value": "nao_hispanico",
+          "label": "Não Hispânico ou Latino"
+        }
+      ]
+    },
+    {
+      "id": "raca_branco",
+      "section": "biografico",
+      "label": "Raça: Branco",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_negro",
+      "section": "biografico",
+      "label": "Raça: Negro ou Afro-americano",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_asiatico",
+      "section": "biografico",
+      "label": "Raça: Asiático",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_indigena_americano",
+      "section": "biografico",
+      "label": "Raça: Indígena Americano ou Nativo do Alasca",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "raca_havaiano_pacifico",
+      "section": "biografico",
+      "label": "Raça: Havaiano Nativo ou outra Ilha do Pacífico",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "altura_pes",
+      "section": "biografico",
+      "label": "Altura — pés",
+      "type": "text",
+      "required": true,
+      "hint": "Só o número em pés (ex: 5). Será combinado com as polegadas no campo de altura do PDF."
+    },
+    {
+      "id": "altura_polegadas",
+      "section": "biografico",
+      "label": "Altura — polegadas",
+      "type": "text",
+      "required": true,
+      "hint": "Só o número em polegadas, de 0 a 11 (ex: 8 para 5 pés e 8 polegadas). Será combinado com os pés no campo de altura do PDF."
+    },
+    {
+      "id": "peso",
+      "section": "biografico",
+      "label": "Peso em libras (lb)",
+      "type": "text",
+      "required": true,
+      "hint": "Só números, ex: 155. Será dividido automaticamente nos 3 campos do PDF."
+    },
+    {
+      "id": "cor_olhos",
+      "section": "biografico",
+      "label": "Cor dos olhos",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "azul",
+          "label": "Azul"
+        },
+        {
+          "value": "verde",
+          "label": "Verde"
+        },
+        {
+          "value": "avela",
+          "label": "Avelã"
+        },
+        {
+          "value": "rosa",
+          "label": "Rosa"
+        },
+        {
+          "value": "marrom_avermelhado",
+          "label": "Marrom-avermelhado (Maroon)"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "preto",
+          "label": "Preto"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        },
+        {
+          "value": "cinza",
+          "label": "Cinza"
+        }
+      ]
+    },
+    {
+      "id": "cor_cabelo",
+      "section": "biografico",
+      "label": "Cor do cabelo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "careca",
+          "label": "Careca (sem cabelo)"
+        },
+        {
+          "value": "loiro",
+          "label": "Loiro"
+        },
+        {
+          "value": "grisalho",
+          "label": "Grisalho"
+        },
+        {
+          "value": "arenoso",
+          "label": "Arenoso"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        },
+        {
+          "value": "branco",
+          "label": "Branco"
+        },
+        {
+          "value": "ruivo",
+          "label": "Ruivo"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "preto",
+          "label": "Preto"
+        }
+      ]
+    },
+    {
+      "id": "base_peticao_conjunta",
+      "section": "base_peticao",
+      "label": "Petição conjunta: você está apresentando esta petição junto com:",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "conjuge",
+          "label": "Meu cônjuge"
+        },
+        {
+          "value": "pai_padrasto",
+          "label": "O(a) cônjuge do meu pai/mãe (não posso ser incluído na petição do meu pai/mãe)"
+        }
+      ],
+      "hint": "Escolha \"Meu cônjuge\" se você mesmo(a) obteve a residência condicional através do seu casamento e está pedindo junto com seu cônjuge cidadão/residente. Escolha a segunda opção só se você é filho(a) enteado(a) que recebeu residência condicional através do casamento do seu pai/mãe com um(a) padrasto/madrasta, e não pode ser incluído(a) na petição dos seus pais (ex: já fez 21 anos ou está apresentando separadamente)."
+    },
+    {
+      "id": "relacao_conjuge_americano",
+      "section": "base_peticao",
+      "label": "Se filho(a) apresentando separadamente: relação com o(a) padrasto/madrasta cidadão(ã)/residente permanente",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "base_peticao_conjunta",
+        "equals": "pai_padrasto"
+      },
+      "options": [
+        {
+          "value": "conjuge",
+          "label": "Cônjuge ou ex-cônjuge"
+        },
+        {
+          "value": "padrasto",
+          "label": "Cônjuge (ou ex-cônjuge) do meu pai/mãe"
+        }
+      ],
+      "hint": "Só se aplica se você é filho(a) enteado(a) apresentando este I-751 separadamente da petição dos seus pais. Indique se o(a) padrasto/madrasta é seu próprio cônjuge (você se casou com ele/a) ou é o(a) cônjuge (ou ex-cônjuge) do seu pai/mãe."
+    },
+    {
+      "id": "base_dispensa",
+      "section": "base_peticao",
+      "label": "Se não consegue apresentar petição conjunta, motivo da dispensa (waiver):",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "conjuge_falecido",
+          "label": "Meu cônjuge faleceu"
+        },
+        {
+          "value": "casamento_terminado_divorcio",
+          "label": "Casamento de boa-fé terminado por divórcio ou anulação"
+        },
+        {
+          "value": "vitima_violencia_conjuge",
+          "label": "Fui vítima de violência doméstica pelo meu cônjuge cidadão/residente"
+        },
+        {
+          "value": "vitima_violencia_padrasto",
+          "label": "Fui vítima de violência doméstica pelo cônjuge do meu pai/mãe"
+        },
+        {
+          "value": "dificuldade_extrema",
+          "label": "A remoção dos EUA resultaria em dificuldade extrema"
+        }
+      ],
+      "hint": "Só preencha esta pergunta se você NÃO vai apresentar a petição em conjunto com seu cônjuge (ex: já se divorciou, o cônjuge faleceu, ou houve violência doméstica). Cada motivo tem exigências próprias de evidência — casamento terminado por divórcio exige a sentença final; cônjuge falecido exige certidão de óbito; violência doméstica exige provas do abuso (boletim de ocorrência, ordem de proteção, laudos); dificuldade extrema exige evidência de fatores surgidos durante os 2 anos de residência condicional. Todos ainda exigem prova de que o casamento foi verdadeiro (bona fide). Converse com a equipe antes de escolher, especialmente em casos de violência doméstica ou dificuldade extrema."
+    },
+    {
+      "id": "conjuge_sobrenome",
+      "section": "conjuge_americano",
+      "label": "Sobrenome do(a) cônjuge",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_nome",
+      "section": "conjuge_americano",
+      "label": "Nome do(a) cônjuge",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_nome_meio",
+      "section": "conjuge_americano",
+      "label": "Nome do meio do(a) cônjuge",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_data_nascimento",
+      "section": "conjuge_americano",
+      "label": "Data de nascimento do(a) cônjuge (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "conjuge_ssn",
+      "section": "conjuge_americano",
+      "label": "SSN do(a) cônjuge, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_alien_number",
+      "section": "conjuge_americano",
+      "label": "A-Number do(a) cônjuge, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_rua",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_tipo_unidade",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "conjuge_end_num_unidade",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_cidade",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — Cidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_estado",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_cep",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — CEP (se EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_provincia",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_codigo_postal",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_end_pais",
+      "section": "conjuge_americano",
+      "label": "Endereço do(a) cônjuge — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho1_sobrenome",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho1_nome",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho1_nome_meio",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho1_data_nascimento",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "filho1_alien_number",
+      "section": "filhos",
+      "label": "Filho(a) 1 — A-Number, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho1_mora_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Mora com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "filho1_aplica_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Está aplicando com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se este(a) filho(a) TAMBÉM tem residência permanente condicional própria (obtida junto com a sua) e está incluído(a) neste mesmo pedido de remoção de condições. Se ele(a) é cidadão(ã) americano(a) ou já tem residência permanente definitiva, responda \"Não\"."
+    },
+    {
+      "id": "filho1_end_rua",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Endereço: Rua e número (se não mora com você)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_tipo_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 1 — tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "filho1_end_num_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 1 — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_cidade",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_estado",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_cep",
+      "section": "filhos",
+      "label": "Filho(a) 1 — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_provincia",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_codigo_postal",
+      "section": "filhos",
+      "label": "Filho(a) 1 — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho1_end_pais",
+      "section": "filhos",
+      "label": "Filho(a) 1 — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho1_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_sobrenome",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho2_nome",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho2_nome_meio",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho2_data_nascimento",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "filho2_alien_number",
+      "section": "filhos",
+      "label": "Filho(a) 2 — A-Number, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho2_mora_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Mora com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "filho2_aplica_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Está aplicando com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se este(a) filho(a) TAMBÉM tem residência permanente condicional própria (obtida junto com a sua) e está incluído(a) neste mesmo pedido de remoção de condições. Se ele(a) é cidadão(ã) americano(a) ou já tem residência permanente definitiva, responda \"Não\"."
+    },
+    {
+      "id": "filho2_end_rua",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Endereço: Rua e número (se não mora com você)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_tipo_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 2 — tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "filho2_end_num_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 2 — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_cidade",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_estado",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_cep",
+      "section": "filhos",
+      "label": "Filho(a) 2 — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_provincia",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_codigo_postal",
+      "section": "filhos",
+      "label": "Filho(a) 2 — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho2_end_pais",
+      "section": "filhos",
+      "label": "Filho(a) 2 — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho2_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_sobrenome",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho3_nome",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho3_nome_meio",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho3_data_nascimento",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "filho3_alien_number",
+      "section": "filhos",
+      "label": "Filho(a) 3 — A-Number, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho3_mora_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Mora com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "filho3_aplica_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Está aplicando com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se este(a) filho(a) TAMBÉM tem residência permanente condicional própria (obtida junto com a sua) e está incluído(a) neste mesmo pedido de remoção de condições. Se ele(a) é cidadão(ã) americano(a) ou já tem residência permanente definitiva, responda \"Não\"."
+    },
+    {
+      "id": "filho3_end_rua",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Endereço: Rua e número (se não mora com você)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_tipo_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 3 — tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "filho3_end_num_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 3 — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_cidade",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_estado",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_cep",
+      "section": "filhos",
+      "label": "Filho(a) 3 — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_provincia",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_codigo_postal",
+      "section": "filhos",
+      "label": "Filho(a) 3 — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho3_end_pais",
+      "section": "filhos",
+      "label": "Filho(a) 3 — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho3_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_sobrenome",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho4_nome",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho4_nome_meio",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho4_data_nascimento",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "filho4_alien_number",
+      "section": "filhos",
+      "label": "Filho(a) 4 — A-Number, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho4_mora_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Mora com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "filho4_aplica_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Está aplicando com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se este(a) filho(a) TAMBÉM tem residência permanente condicional própria (obtida junto com a sua) e está incluído(a) neste mesmo pedido de remoção de condições. Se ele(a) é cidadão(ã) americano(a) ou já tem residência permanente definitiva, responda \"Não\"."
+    },
+    {
+      "id": "filho4_end_rua",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Endereço: Rua e número (se não mora com você)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_tipo_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 4 — tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "filho4_end_num_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 4 — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_cidade",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_estado",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_cep",
+      "section": "filhos",
+      "label": "Filho(a) 4 — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_provincia",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_codigo_postal",
+      "section": "filhos",
+      "label": "Filho(a) 4 — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho4_end_pais",
+      "section": "filhos",
+      "label": "Filho(a) 4 — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho4_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_sobrenome",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho5_nome",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho5_nome_meio",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho5_data_nascimento",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "filho5_alien_number",
+      "section": "filhos",
+      "label": "Filho(a) 5 — A-Number, se houver",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "filho5_mora_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Mora com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "filho5_aplica_com_voce",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Está aplicando com você?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" apenas se este(a) filho(a) TAMBÉM tem residência permanente condicional própria (obtida junto com a sua) e está incluído(a) neste mesmo pedido de remoção de condições. Se ele(a) é cidadão(ã) americano(a) ou já tem residência permanente definitiva, responda \"Não\"."
+    },
+    {
+      "id": "filho5_end_rua",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Endereço: Rua e número (se não mora com você)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_tipo_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 5 — tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "filho5_end_num_unidade",
+      "section": "filhos",
+      "label": "Filho(a) 5 — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_cidade",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_estado",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_cep",
+      "section": "filhos",
+      "label": "Filho(a) 5 — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_provincia",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_codigo_postal",
+      "section": "filhos",
+      "label": "Filho(a) 5 — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "filho5_end_pais",
+      "section": "filhos",
+      "label": "Filho(a) 5 — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "filho5_mora_com_voce",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "acomodacao_propria",
+      "section": "acomodacoes",
+      "label": "Você está solicitando alguma acomodação por deficiência/incapacidade própria?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Refere-se a uma adaptação especial no seu compromisso de biometria/entrevista com a USCIS (ex: intérprete de Libras/ASL, formato em áudio, atendimento em local acessível) — não afeta a decisão do seu caso, só como você é atendido no processo."
+    },
+    {
+      "id": "acomodacao_conjuge",
+      "section": "acomodacoes",
+      "label": "Está solicitando acomodação por deficiência/incapacidade do(a) cônjuge?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Refere-se a uma adaptação especial no compromisso de biometria/entrevista do(a) cônjuge com a USCIS (ex: intérprete de Libras/ASL, formato em áudio, atendimento em local acessível) — não afeta a decisão do caso, só como o(a) cônjuge é atendido(a) no processo."
+    },
+    {
+      "id": "acomodacao_filhos",
+      "section": "acomodacoes",
+      "label": "Está solicitando acomodação por deficiência/incapacidade de filho(s) incluído(s)?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Refere-se a uma adaptação especial no compromisso de biometria/entrevista dos filhos incluídos nesta petição com a USCIS (ex: intérprete de Libras/ASL, formato em áudio, atendimento em local acessível) — não afeta a decisão do caso, só como eles são atendidos no processo."
+    },
+    {
+      "id": "acomodacao_surdo",
+      "section": "acomodacoes",
+      "label": "Sou surdo(a) ou tenho dificuldade auditiva e solicito acomodação",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_surdo_detalhe",
+      "section": "acomodacoes",
+      "label": "Detalhe a acomodação solicitada (ex: idioma de sinais)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_surdo",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acomodacao_cego",
+      "section": "acomodacoes",
+      "label": "Sou cego(a) ou tenho baixa visão e solicito acomodação",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_cego_detalhe",
+      "section": "acomodacoes",
+      "label": "Detalhe a acomodação solicitada",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_cego",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acomodacao_outra",
+      "section": "acomodacoes",
+      "label": "Tenho outro tipo de deficiência/incapacidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acomodacao_outra_detalhe",
+      "section": "acomodacoes",
+      "label": "Descreva a natureza da deficiência e a acomodação solicitada",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "acomodacao_outra",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "leu_ingles",
+      "section": "assinatura",
+      "label": "Declaração do(a) peticionário(a)",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Eu leio e entendo inglês, e li e entendi todas as perguntas e instruções desta petição e minhas respostas"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "O(a) intérprete indicado(a) na Parte 9 leu para mim, em um idioma que domino, todas as perguntas e instruções e minhas respostas"
+        }
+      ],
+      "hint": "Escolha a primeira opção se você mesmo(a) leu e entendeu o formulário em inglês. Escolha a segunda só se alguém traduziu tudo oralmente para você em outro idioma — nesse caso, essa pessoa precisa ser cadastrada como intérprete na Parte 9."
+    },
+    {
+      "id": "idioma_interprete",
+      "section": "assinatura",
+      "label": "Em qual idioma o(a) intérprete leu o formulário para você?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "preparador_ajudou",
+      "section": "assinatura",
+      "label": "Alguém preparou este formulário para você, a seu pedido e com base apenas nas informações que você forneceu?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, eu mesmo(a) preenchi"
+        }
+      ],
+      "hint": "Responda \"Sim\" se qualquer pessoa (inclusive nossa equipe) te ajudou a preencher este formulário com base nas suas respostas — é isso que caracteriza um(a) \"preparador(a)\" para fins da USCIS, e essa pessoa precisa ser identificada na Parte 10."
+    },
+    {
+      "id": "preparador_nome",
+      "section": "assinatura",
+      "label": "Nome do(a) preparador(a)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "preparador_e_advogado",
+      "section": "assinatura",
+      "label": "O(a) preparador(a) é advogado(a) ou representante credenciado(a)?",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "A maioria dos serviços de preenchimento de formulários (como o nosso) NÃO são advogados nem representantes credenciados pela USCIS (Accredited Representative) — nesse caso, responda \"Não\"."
+    },
+    {
+      "id": "confirmacao_nome_asc",
+      "section": "assinatura",
+      "label": "Nome para a confirmação de comparecimento no Application Support Center (ASC)",
+      "type": "text",
+      "required": true,
+      "hint": "ASC = \"Application Support Center\", o local onde a USCIS coleta suas biometrias (impressões digitais e foto) depois do protocolo. Digite seu nome exatamente como quer que apareça no aviso de agendamento dessa coleta."
+    },
+    {
+      "id": "telefone",
+      "section": "assinatura",
+      "label": "Telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "celular",
+      "section": "assinatura",
+      "label": "Telefone celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "email",
+      "section": "assinatura",
+      "label": "E-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_assinatura",
+      "section": "assinatura",
+      "label": "Data da assinatura (preenchido no dia do protocolo, MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "conjuge_leu_ingles",
+      "section": "assinatura_conjuge",
+      "label": "Declaração do(a) cônjuge (se aplicável — petição conjunta)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Leio e entendo inglês, e li e entendi todas as perguntas e instruções e a resposta do(a) peticionário(a)"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "O(a) intérprete indicado(a) na Parte 9 leu para mim, em um idioma que domino, todas as perguntas e respostas"
+        }
+      ],
+      "hint": "Mesma lógica da declaração do peticionário: primeira opção se o(a) cônjuge leu e entendeu o formulário em inglês; segunda opção se um(a) intérprete traduziu tudo oralmente (cadastrado na Parte 9)."
+    },
+    {
+      "id": "conjuge_idioma_interprete",
+      "section": "assinatura_conjuge",
+      "label": "Em qual idioma o(a) intérprete leu o formulário para o(a) cônjuge?",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "conjuge_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "conjuge_preparador_ajudou",
+      "section": "assinatura_conjuge",
+      "label": "Alguém preparou este formulário para o(a) cônjuge, a seu pedido e com base apenas nas informações fornecidas?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda \"Sim\" se qualquer pessoa (inclusive nossa equipe) ajudou o(a) cônjuge a preencher esta seção com base nas respostas dele(a) — é isso que caracteriza um(a) \"preparador(a)\" para fins da USCIS, e essa pessoa precisa ser identificada na Parte 10."
+    },
+    {
+      "id": "conjuge_preparador_nome",
+      "section": "assinatura_conjuge",
+      "label": "Nome do(a) preparador(a) (cônjuge)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "conjuge_preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "conjuge_preparador_e_advogado",
+      "section": "assinatura_conjuge",
+      "label": "O(a) preparador(a) do(a) cônjuge é advogado(a) ou representante credenciado(a)?",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "conjuge_preparador_ajudou",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "A maioria dos serviços de preenchimento de formulários (como o nosso) NÃO são advogados nem representantes credenciados pela USCIS (Accredited Representative) — nesse caso, responda \"Não\" também para o(a) preparador(a) do(a) cônjuge."
+    },
+    {
+      "id": "conjuge_confirmacao_nome_asc",
+      "section": "assinatura_conjuge",
+      "label": "Nome do(a) cônjuge para a confirmação de comparecimento no ASC",
+      "type": "text",
+      "required": false,
+      "hint": "Mesma lógica acima (ASC = local de coleta de biometria), mas com o nome do(a) cônjuge."
+    },
+    {
+      "id": "conjuge_telefone",
+      "section": "assinatura_conjuge",
+      "label": "Telefone diurno do(a) cônjuge",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_celular",
+      "section": "assinatura_conjuge",
+      "label": "Celular do(a) cônjuge (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_email",
+      "section": "assinatura_conjuge",
+      "label": "E-mail do(a) cônjuge (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "conjuge_data_assinatura",
+      "section": "assinatura_conjuge",
+      "label": "Data da assinatura do(a) cônjuge (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Intérprete — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Intérprete — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_organizacao",
+      "section": "interprete",
+      "label": "Intérprete — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_rua",
+      "section": "interprete",
+      "label": "Intérprete — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_tipo_unidade",
+      "section": "interprete",
+      "label": "Intérprete — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "int_end_num_unidade",
+      "section": "interprete",
+      "label": "Intérprete — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cidade",
+      "section": "interprete",
+      "label": "Intérprete — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_estado",
+      "section": "interprete",
+      "label": "Intérprete — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_cep",
+      "section": "interprete",
+      "label": "Intérprete — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_provincia",
+      "section": "interprete",
+      "label": "Intérprete — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_codigo_postal",
+      "section": "interprete",
+      "label": "Intérprete — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_end_pais",
+      "section": "interprete",
+      "label": "Intérprete — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Intérprete — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "Intérprete — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Intérprete — Idioma em que é fluente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Intérprete — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Preparador(a) — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Preparador(a) — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_organizacao",
+      "section": "preparador",
+      "label": "Preparador(a) — Empresa/Organização (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_rua",
+      "section": "preparador",
+      "label": "Preparador(a) — Endereço: Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_tipo_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "prep_end_num_unidade",
+      "section": "preparador",
+      "label": "Preparador(a) — número da unidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cidade",
+      "section": "preparador",
+      "label": "Preparador(a) — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_estado",
+      "section": "preparador",
+      "label": "Preparador(a) — Estado (sigla, se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_cep",
+      "section": "preparador",
+      "label": "Preparador(a) — CEP (se EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_provincia",
+      "section": "preparador",
+      "label": "Preparador(a) — Província (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_codigo_postal",
+      "section": "preparador",
+      "label": "Preparador(a) — Código postal (se fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_end_pais",
+      "section": "preparador",
+      "label": "Preparador(a) — País",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Preparador(a) — Telefone diurno",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_fax",
+      "section": "preparador",
+      "label": "Preparador(a) — Número de fax (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "Preparador(a) — E-mail (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Preparador(a) — Data da assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "preparador_ajudou",
+        "equals": "sim"
+      }
+    }
+  ]
+}

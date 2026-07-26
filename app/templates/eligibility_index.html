@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}{{ t('eligibility_index_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:32px 28px 36px;">
+  <p class="eyebrow">{{ t('eligibility_index_eyebrow') }}</p>
+  <h1 class="hero-title" style="font-size:2rem;">{{ t('eligibility_index_title') }}</h1>
+  <p class="hero-subtitle">{{ t('eligibility_index_subtitle') }}</p>
+</section>
+
+<div class="services-grid">
+  {% for quiz in quizzes %}
+  <div class="card service-card">
+    <h2 class="service-card-name">{{ quiz.title }}</h2>
+    <p class="muted service-card-desc">{{ quiz.subtitle }}</p>
+    <a class="btn secondary" href="{{ url_for('eligibility.quiz_view', slug=quiz.slug) }}">{{ t('elig_start_quiz') }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+<footer class="site-footer">
+  <p>{{ t('elig_disclaimer') }}</p>
+</footer>
+{% endblock %}

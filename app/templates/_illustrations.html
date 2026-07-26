@@ -1,0 +1,254 @@
+{# Ilustrações SVG originais, na paleta da marca (navy/steel/red), usadas
+   como "imagens" do sistema no lugar de fotos de banco de imagens --
+   evita depender de fotografia de terceiros e mantém tudo consistente
+   com o logo (mesmo motivo de estrela/seta usado na marca). #}
+
+{% macro hero_illustration() %}
+<svg viewBox="0 0 440 400" class="hero-illustration" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="heroCardGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A2E6C"/>
+      <stop offset="1" stop-color="#4D8FAC"/>
+    </linearGradient>
+    <clipPath id="heroCardClip">
+      <rect x="95" y="60" width="230" height="290" rx="18"/>
+    </clipPath>
+  </defs>
+
+  <path class="illus-path" d="M30 350 C 110 310, 150 210, 250 160 S 375 65, 400 35" fill="none"
+        stroke="#4D8FAC" stroke-width="2.5" stroke-dasharray="1 11" stroke-linecap="round" opacity="0.55"/>
+  <path class="illus-star illus-star-1" d="M158 232 l3 6.5 l7 1 -5 5 1.2 7 -6.2 -3.5 -6.2 3.5 1.2 -7 -5 -5 7 -1 z"
+        fill="#E44D3A" opacity="0.75"/>
+  <path class="illus-star illus-star-2" d="M400 35 l4 8.6 l9.2 1.3 -6.6 6.6 1.6 9.2 -8.2 -4.6 -8.2 4.6 1.6 -9.2 -6.6 -6.6 9.2 -1.3 z"
+        fill="#0A2E6C" opacity="0.55"/>
+
+  <rect x="66" y="76" width="230" height="290" rx="18" fill="#E7EEF6" transform="rotate(-7 181 221)"/>
+
+  <g transform="rotate(3 220 205)">
+    <rect x="95" y="60" width="230" height="290" rx="18" fill="#ffffff"/>
+    <g clip-path="url(#heroCardClip)">
+      <rect x="95" y="60" width="230" height="62" fill="url(#heroCardGrad)"/>
+    </g>
+    <circle cx="122" cy="91" r="10" fill="#ffffff" opacity="0.92"/>
+    <rect x="144" y="83" width="118" height="8" rx="4" fill="#ffffff" opacity="0.85"/>
+    <rect x="144" y="97" width="78" height="6" rx="3" fill="#ffffff" opacity="0.55"/>
+
+    <rect x="120" y="150" width="180" height="10" rx="5" fill="#DFE3EA"/>
+    <rect x="120" y="172" width="180" height="10" rx="5" fill="#DFE3EA"/>
+    <rect x="120" y="194" width="120" height="10" rx="5" fill="#DFE3EA"/>
+    <rect x="120" y="226" width="180" height="10" rx="5" fill="#F3F4F6"/>
+    <rect x="120" y="248" width="180" height="10" rx="5" fill="#F3F4F6"/>
+    <rect x="120" y="270" width="150" height="10" rx="5" fill="#F3F4F6"/>
+  </g>
+
+  <g class="illus-badge">
+    <circle cx="326" cy="316" r="34" fill="#E44D3A"/>
+    <path d="M310 316 l11 11 l23 -25" fill="none" stroke="#fff" stroke-width="6"
+          stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
+{% endmacro %}
+
+{% macro journey_illustration() %}
+{# Animação de introdução da home, estilo "peça de tabuleiro" (tipo
+   Monopoly): 3 marcos FIXOS no trajeto (formulários → revisão → bandeira
+   dos EUA) e uma peça -- o próprio ícone da pessoa -- que pula de marco em
+   marco via CSS puro (sem vídeo/JS). Reaproveita badgePop/badgePulse/
+   dashTravel já existentes em style.css; journeyLineDraw (linha que "se
+   desenha" uma vez) e gamePieceMove (a peça pulando entre coordenadas) são
+   as únicas keyframes novas. Um pino de localização marca o ponto de
+   partida -- substituiu a estrelinha de acento que ficava perto da pessoa
+   e sempre gerava sobreposição com o badge; o pino fica deslocado o
+   suficiente pra nunca encostar na peça. #}
+<svg viewBox="0 0 440 400" class="journey-illustration" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="journeyBadgeGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A2E6C"/>
+      <stop offset="1" stop-color="#4D8FAC"/>
+    </linearGradient>
+  </defs>
+
+  <path class="illus-path" d="M40 340 C 120 300, 155 225, 200 205 S 320 100, 400 50" fill="none"
+        stroke="#4D8FAC" stroke-width="2.5" stroke-dasharray="1 11" stroke-linecap="round" opacity="0.45"/>
+
+  <path class="journey-line journey-line-1" d="M40 340 C 90 320, 130 275, 168 238" fill="none"
+        stroke="#4D8FAC" stroke-width="4" stroke-linecap="round"/>
+  <path class="journey-line journey-line-2" d="M168 238 C 195 213, 220 208, 262 178" fill="none"
+        stroke="#4D8FAC" stroke-width="4" stroke-linecap="round"/>
+  <path class="journey-line journey-line-3" d="M262 178 C 305 148, 345 110, 388 62" fill="none"
+        stroke="#E44D3A" stroke-width="4" stroke-linecap="round"/>
+
+  <path class="illus-star illus-star-2" d="M412 30 l4 8.6 l9.2 1.3 -6.6 6.6 1.6 9.2 -8.2 -4.6 -8.2 4.6 1.6 -9.2 -6.6 -6.6 9.2 -1.3 z"
+        fill="#0A2E6C" opacity="0.6"/>
+
+  {# Pino de "ponto de partida" -- deslocado bem acima/à esquerda da peça
+     inicial (que fica em 40,340 com raio 30) pra nunca sobrepor, mesmo
+     contando a extensão real do desenho do pino, não só seu ponto-base. #}
+  <g transform="translate(20 348)">
+    <g class="journey-pin">
+      <path d="M0 0 C -8 -14 -14 -20 -14 -28 A14 14 0 1 1 14 -28 C 14 -20 8 -14 0 0 Z" fill="#E44D3A"/>
+      <circle cy="-28" r="5" fill="#fff"/>
+    </g>
+  </g>
+
+  {# Os 3 marcos fixos do trajeto (formulários / revisão / bandeira) --
+     cada um é um <g> de POSICIONAMENTO puro (só o atributo transform=
+     "translate(...)") envolvendo um <g class="journey-badge-N"> interno --
+     necessário porque um `transform` via CSS (a animação badgePop) SUBSTITUI
+     por completo qualquer `transform` já definido via atributo no MESMO
+     elemento, em vez de compor com ele. Sem esse aninhamento, todo badge
+     "pula" pra origem (0,0) do viewBox assim que a animação CSS começa. #}
+  <g transform="translate(168 238)">
+    <g class="journey-badge journey-badge-2">
+      <circle r="32" fill="#ffffff" stroke="#DFE3EA" stroke-width="2"/>
+      <rect x="-16" y="-20" width="32" height="40" rx="5" fill="#E7EEF6"/>
+      <rect x="-9" y="-11" width="18" height="4" rx="2" fill="#4D8FAC"/>
+      <rect x="-9" y="-2" width="18" height="4" rx="2" fill="#4D8FAC"/>
+      <rect x="-9" y="7" width="12" height="4" rx="2" fill="#4D8FAC"/>
+    </g>
+  </g>
+
+  <g transform="translate(262 178)">
+    <g class="journey-badge journey-badge-3">
+      <circle r="32" fill="url(#journeyBadgeGrad)"/>
+      <path d="M-15 1 l10 10 l20 -22" fill="none" stroke="#fff" stroke-width="6"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(400 50)">
+    <g class="journey-badge journey-badge-4">
+      <circle r="34" fill="#ffffff" stroke="#DFE3EA" stroke-width="2"/>
+      <rect x="-15" y="-21" width="3" height="42" fill="#4D8FAC"/>
+      {# Bandeira dos EUA simplificada: 7 listras (4 vermelhas + 3 brancas,
+         começando e terminando em vermelho, mesma paridade da bandeira
+         real de 13 listras) + cantão azul com 11 estrelas em linhas
+         intercaladas (padrão real de 50 estrelas, só que reduzido -- uma
+         estrela de 5 pontas de verdade seria ilegível neste tamanho, por
+         isso pontos, mesma solução já usada nos outros acentos desta
+         ilustração). #}
+      <rect x="-12" y="-19" width="27" height="3" fill="#E44D3A"/>
+      <rect x="-12" y="-16" width="27" height="3" fill="#ffffff"/>
+      <rect x="-12" y="-13" width="27" height="3" fill="#E44D3A"/>
+      <rect x="-12" y="-10" width="27" height="3" fill="#ffffff"/>
+      <rect x="-12" y="-7" width="27" height="3" fill="#E44D3A"/>
+      <rect x="-12" y="-4" width="27" height="3" fill="#ffffff"/>
+      <rect x="-12" y="-1" width="27" height="3" fill="#E44D3A"/>
+      <rect x="-12" y="-19" width="13" height="12" fill="#0A2E6C"/>
+      <circle cx="-9.5" cy="-16.5" r="0.7" fill="#fff"/>
+      <circle cx="-7" cy="-16.5" r="0.7" fill="#fff"/>
+      <circle cx="-4.5" cy="-16.5" r="0.7" fill="#fff"/>
+      <circle cx="-2" cy="-16.5" r="0.7" fill="#fff"/>
+      <circle cx="-8.3" cy="-14" r="0.7" fill="#fff"/>
+      <circle cx="-5.8" cy="-14" r="0.7" fill="#fff"/>
+      <circle cx="-3.3" cy="-14" r="0.7" fill="#fff"/>
+      <circle cx="-9.5" cy="-11.5" r="0.7" fill="#fff"/>
+      <circle cx="-7" cy="-11.5" r="0.7" fill="#fff"/>
+      <circle cx="-4.5" cy="-11.5" r="0.7" fill="#fff"/>
+      <circle cx="-2" cy="-11.5" r="0.7" fill="#fff"/>
+    </g>
+  </g>
+
+  {# A peça que se move: o ícone da pessoa, sem nenhum <g> de posicionamento
+     por atributo -- a posição inicial (40,340) já é o próprio 0% da
+     animação `gamePieceMove` (só CSS, sem atributo transform pra conflitar). #}
+  <g class="game-piece">
+    <circle r="17" fill="#ffffff" stroke="#DFE3EA" stroke-width="1.5"/>
+    <circle cy="-3" r="5" fill="#4D8FAC"/>
+    <path d="M-8 10 a8 7 0 0 1 16 0 z" fill="#4D8FAC"/>
+  </g>
+</svg>
+<p class="journey-caption">
+  <span class="jc jc-1">{{ t('journey_caption_1') }}</span>
+  <span class="jc jc-2">{{ t('journey_caption_2') }}</span>
+  <span class="jc jc-3">{{ t('journey_caption_3') }}</span>
+  <span class="jc jc-4">{{ t('journey_caption_4') }}</span>
+</p>
+{% endmacro %}
+
+{% macro auth_illustration() %}
+<svg viewBox="0 0 300 460" class="auth-illustration" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="authCardEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E44D3A"/>
+      <stop offset="1" stop-color="#0A2E6C"/>
+    </linearGradient>
+    <clipPath id="authCardClip">
+      <rect x="45" y="140" width="210" height="290" rx="20"/>
+    </clipPath>
+  </defs>
+
+  <path d="M38 432 C 92 380, 58 300, 112 248 S 92 142, 152 58" fill="none"
+        stroke="#ffffff" stroke-width="2.5" stroke-dasharray="1 11" stroke-linecap="round" opacity="0.4"/>
+  <path d="M152 58 l4.4 9.6 l10.4 1.5 -7.6 7.4 1.8 10.4 -9 -4.8 -9 4.8 1.8 -10.4 -7.6 -7.4 10.4 -1.5 z"
+        fill="#E44D3A"/>
+
+  <g transform="rotate(-4 150 250)">
+    <rect x="45" y="140" width="210" height="290" rx="20" fill="#ffffff"/>
+    <g clip-path="url(#authCardClip)">
+      <rect x="45" y="140" width="10" height="290" fill="url(#authCardEdge)"/>
+    </g>
+
+    <circle cx="112" cy="200" r="27" fill="#E7EEF6"/>
+    <circle cx="112" cy="191" r="11" fill="#4D8FAC"/>
+    <path d="M92 224 a20 17 0 0 1 40 0 z" fill="#4D8FAC"/>
+
+    <rect x="152" y="187" width="82" height="9" rx="4.5" fill="#DFE3EA"/>
+    <rect x="152" y="205" width="58" height="7" rx="3.5" fill="#F3F4F6"/>
+
+    <rect x="75" y="252" width="160" height="8" rx="4" fill="#F3F4F6"/>
+    <rect x="75" y="272" width="160" height="8" rx="4" fill="#F3F4F6"/>
+    <rect x="75" y="292" width="112" height="8" rx="4" fill="#F3F4F6"/>
+
+    <rect x="75" y="332" width="160" height="1" fill="#DFE3EA"/>
+    <rect x="75" y="352" width="70" height="24" rx="6" fill="#E7EEF6"/>
+    <rect x="155" y="352" width="80" height="24" rx="6" fill="#E7EEF6"/>
+  </g>
+
+  <circle cx="233" cy="382" r="30" fill="#E44D3A"/>
+  <path d="M218 382 l10 10 l21 -23" fill="none" stroke="#fff" stroke-width="5.5"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+{% endmacro %}
+
+{% macro empty_state_illustration() %}
+<svg viewBox="0 0 220 180" class="empty-illustration" aria-hidden="true" focusable="false">
+  <rect x="20" y="18" width="180" height="144" rx="16" fill="none" stroke="#DFE3EA" stroke-width="2" stroke-dasharray="5 7"/>
+  <rect x="80" y="66" width="64" height="82" rx="8" fill="#E7EEF6"/>
+  <rect x="66" y="78" width="64" height="82" rx="8" fill="#ffffff" stroke="#DFE3EA" stroke-width="2"/>
+  <rect x="80" y="96" width="36" height="7" rx="3.5" fill="#DFE3EA"/>
+  <rect x="80" y="112" width="36" height="7" rx="3.5" fill="#DFE3EA"/>
+  <rect x="80" y="128" width="24" height="7" rx="3.5" fill="#DFE3EA"/>
+  <path d="M152 56l3.6 7.9 8.7 1.3-6.3 6.1 1.5 8.7-7.5-4-7.5 4 1.5-8.7-6.3-6.1 8.7-1.3z" fill="#E44D3A"/>
+</svg>
+{% endmacro %}
+
+{% macro success_illustration() %}
+<svg viewBox="0 0 160 140" class="success-illustration" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="successGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0A2E6C"/>
+      <stop offset="1" stop-color="#4D8FAC"/>
+    </linearGradient>
+  </defs>
+  <circle cx="80" cy="72" r="40" fill="url(#successGrad)"/>
+  <path d="M60 72l14 14 28-30" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 28l2.6 5.7 6.2.9-4.5 4.3 1 6.2-5.3-2.8-5.3 2.8 1-6.2-4.5-4.3 6.2-.9z" fill="#4D8FAC"/>
+  <path d="M148 112l2.2 4.9 5.4.8-3.9 3.8.9 5.4-4.6-2.4-4.6 2.4.9-5.4-3.9-3.8 5.4-.8z" fill="#E44D3A"/>
+</svg>
+{% endmacro %}
+
+{% macro missing_illustration() %}
+<svg viewBox="0 0 160 140" class="missing-illustration" aria-hidden="true" focusable="false">
+  <rect x="46" y="18" width="70" height="94" rx="10" fill="#E7EEF6" transform="rotate(-5 81 65)"/>
+  <g transform="rotate(3 80 65)">
+    <rect x="40" y="14" width="70" height="94" rx="10" fill="#ffffff" stroke="#DFE3EA" stroke-width="2"/>
+    <rect x="54" y="34" width="42" height="7" rx="3.5" fill="#DFE3EA"/>
+    <rect x="54" y="50" width="42" height="7" rx="3.5" fill="#DFE3EA"/>
+    <rect x="54" y="66" width="26" height="7" rx="3.5" fill="none" stroke="#DFE3EA" stroke-width="2" stroke-dasharray="3 4"/>
+  </g>
+  <circle cx="112" cy="100" r="26" fill="#F59E0B"/>
+  <rect x="108" y="84" width="8" height="21" rx="4" fill="#fff"/>
+  <circle cx="112" cy="113" r="4" fill="#fff"/>
+</svg>
+{% endmacro %}

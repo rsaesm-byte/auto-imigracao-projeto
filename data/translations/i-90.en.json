@@ -1,0 +1,485 @@
+{
+  "title": "Application to Replace Permanent Resident Card — I-90",
+  "sections": {
+    "basico": "Part 1 — Information About You",
+    "enderecos": "Part 1 — Addresses",
+    "adicional": "Part 1 — Additional Information",
+    "tipo_aplicacao": "Part 2 — Application Type",
+    "processamento": "Part 3 — Processing Information",
+    "biografico": "Part 3 — Biographic Information",
+    "acomodacoes": "Part 4 — Accommodations for Individuals With Disabilities",
+    "assinatura": "Part 5 — Applicant's Statement",
+    "interprete": "Part 6 — Interpreter",
+    "preparador": "Part 7 — Preparer"
+  },
+  "questions": {
+    "nome_sobrenome": {
+      "label": "Family Name (Last Name) — your card will be issued with this name"
+    },
+    "nome_nome": {
+      "label": "Given Name (First Name)"
+    },
+    "nome_meio": {
+      "label": "Middle Name"
+    },
+    "alien_number": {
+      "label": "Alien Registration Number (A-Number)"
+    },
+    "uscis_online": {
+      "label": "USCIS Online Account Number, if any"
+    },
+    "nome_mudou": {
+      "label": "Has your name legally changed since the issuance of your Permanent Resident Card?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No",
+        "nao_aplicavel": "N/A — I never received my previous card"
+      }
+    },
+    "nome_cartao_anterior_sobrenome": {
+      "label": "Name exactly as printed on your current card — Family Name"
+    },
+    "nome_cartao_anterior_nome": {
+      "label": "Name exactly as printed on your current card — Given Name"
+    },
+    "nome_cartao_anterior_meio": {
+      "label": "Name exactly as printed on your current card — Middle Name"
+    },
+    "end_correio_cuidados_de": {
+      "label": "Mailing Address — In Care Of Name (if any)"
+    },
+    "end_correio_rua": {
+      "label": "Mailing Address — Street Number and Name"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Mailing Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Mailing Address — Unit Number"
+    },
+    "end_correio_cidade": {
+      "label": "Mailing Address — City or Town"
+    },
+    "end_correio_estado": {
+      "label": "Mailing Address — State (abbreviation, if U.S.)"
+    },
+    "end_correio_cep": {
+      "label": "Mailing Address — ZIP Code (if U.S.)"
+    },
+    "end_correio_provincia": {
+      "label": "Mailing Address — Province (if outside the U.S.)"
+    },
+    "end_correio_codigo_postal": {
+      "label": "Mailing Address — Postal Code (if outside the U.S.)"
+    },
+    "end_correio_pais": {
+      "label": "Mailing Address — Country"
+    },
+    "end_fisico_rua": {
+      "label": "Physical Address (if different from mailing) — Street Number and Name"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Physical Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Physical Address — Unit Number"
+    },
+    "end_fisico_cidade": {
+      "label": "Physical Address — City or Town"
+    },
+    "end_fisico_estado": {
+      "label": "Physical Address — State (abbreviation, if U.S.)"
+    },
+    "end_fisico_cep": {
+      "label": "Physical Address — ZIP Code (if U.S.)"
+    },
+    "end_fisico_provincia": {
+      "label": "Physical Address — Province (if outside the U.S.)"
+    },
+    "end_fisico_codigo_postal": {
+      "label": "Physical Address — Postal Code (if outside the U.S.)"
+    },
+    "end_fisico_pais": {
+      "label": "Physical Address — Country"
+    },
+    "sexo": {
+      "label": "Sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "data_nascimento": {
+      "label": "Date of Birth (MM/DD/YYYY)"
+    },
+    "cidade_nascimento": {
+      "label": "City/Town/Village of Birth"
+    },
+    "pais_nascimento": {
+      "label": "Country of Birth"
+    },
+    "mae_nome": {
+      "label": "Mother's First Name"
+    },
+    "pai_nome": {
+      "label": "Father's First Name"
+    },
+    "classe_admissao": {
+      "label": "Class of Admission",
+      "hint": "3-character code showing the category under which you became a permanent resident (e.g., IR1 = spouse of a U.S. citizen, CR1 = same but conditional). Find it on your current Green Card (\"Category\" section), your I-485 approval notice, or your immigrant visa."
+    },
+    "data_admissao": {
+      "label": "Date of Admission (MM/DD/YYYY)",
+      "hint": "Date you first became a permanent resident — found on your current Green Card or your I-485 approval notice."
+    },
+    "ssn": {
+      "label": "Social Security Number (SSN), if any"
+    },
+    "meu_status": {
+      "label": "My status is:",
+      "options": {
+        "residente_permanente": "Lawful Permanent Resident",
+        "residente_comutante": "Permanent Resident in Commuter Status",
+        "residente_condicional": "Conditional Permanent Resident"
+      },
+      "hint": "\"Commuter\" is someone who lives outside the U.S. (usually Canada or Mexico) but works in the U.S. as a permanent resident without living there full-time -- uncommon. \"Conditional\" means permanent residence valid for only 2 years (based on a recent marriage or investment) -- check the validity on your current card. If your card says 10 years and you live in the U.S., you are a \"Lawful Permanent Resident\"."
+    },
+    "motivo_secao_a": {
+      "label": "If you are a Permanent Resident or Commuter — reason for application:",
+      "options": {
+        "perdido_roubado_destruido": "My previous card was lost, stolen, or destroyed",
+        "emitido_nao_recebido": "My previous card was issued but never received",
+        "mutilado": "My current card has been mutilated",
+        "erro_dhs": "My current card has incorrect data due to DHS error",
+        "biografia_mudou": "My name or other biographic information has legally changed",
+        "cartao_expirado": "My current card has already expired, or will expire within 6 months",
+        "14anos_expira_apos_16": "I have turned 14 and am registering (card expires AFTER age 16)",
+        "14anos_expira_antes_16": "I have turned 14 and am registering (card expires BEFORE age 16)",
+        "residente_tomando_status_comutante": "I am a permanent resident taking commuter status",
+        "comutante_tomando_residencia": "I am a commuter now actually residing in the U.S.",
+        "convertido_automaticamente": "I was automatically converted to permanent resident status",
+        "outro_edicao_anterior": "I have a prior edition of the card, or another reason not listed"
+      },
+      "hint": "Choose the option closest to your situation. The last two options (\"I turned 14...\") are only for children who already had a Green Card before age 14 and now need an updated photo/signature."
+    },
+    "motivo_comutante_local_poe": {
+      "label": "If a commuter now residing in the U.S.: city and state of your Port of Entry (POE)",
+      "hint": "Only applies if you chose a commuter option above. \"Port of Entry\" is the location (city/border crossing) where you regularly enter the U.S. for work."
+    },
+    "motivo_secao_b": {
+      "label": "If you are a Conditional Permanent Resident — reason for application:",
+      "options": {
+        "perdido_roubado_destruido": "My previous card was lost, stolen, or destroyed",
+        "emitido_nao_recebido": "My previous card was issued but never received",
+        "mutilado": "My current card has been mutilated",
+        "erro_dhs": "My current card has incorrect data due to DHS error",
+        "biografia_mudou": "My name or other biographic information has legally changed"
+      },
+      "hint": "Only shown if your current card says \"conditional resident\" (2-year validity). Note: if you are trying to REMOVE the conditions on your Green Card (for example, after 2 years of marriage), this is NOT the right form -- that is done through Form I-751, not I-90. Use this section only if your conditional card was lost, stolen, damaged, has a DHS error, or your biographic info changed."
+    },
+    "local_aplicou_visto": {
+      "label": "Location where you applied for your immigrant visa or adjustment of status",
+      "hint": "City/country of the U.S. consulate where you applied for your immigrant visa, OR city/USCIS office where your adjustment of status (I-485) was filed."
+    },
+    "local_emitido_visto": {
+      "label": "Location where your immigrant visa was issued, or the USCIS office where adjustment of status was granted",
+      "hint": "City/country of the U.S. consulate that issued your immigrant visa, OR the USCIS office that approved your adjustment of status (I-485)."
+    },
+    "ja_esteve_processo_remocao": {
+      "label": "Have you ever been in exclusion, deportation, or removal proceedings, or been ordered to leave the U.S.?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "\"Removal/deportation proceedings\" is the immigration court process that can end in an order to leave the U.S. -- includes immigration court (EOIR) hearings, even if the case was closed or you won. Answer based on your full history, even from years ago. If unsure, confirm with our team before answering -- an incorrect answer here can have serious consequences."
+    },
+    "abandonou_status": {
+      "label": "Since becoming a permanent resident, have you ever filed Form I-407 (Abandonment of Status) or been determined to have abandoned your status?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Form I-407 is used to voluntarily give up a Green Card. \"Determined to have abandoned\" includes cases where a border officer already decided you lost your status by staying outside the U.S. too long without the right documents (e.g., no Reentry Permit on a long trip). If unsure, confirm with our team."
+    },
+    "porto_entrada": {
+      "label": "Port of Entry where you were admitted to the U.S. (if you entered with an immigrant visa)",
+      "hint": "The U.S. airport, land border crossing, or seaport where you were officially admitted as a permanent resident for the first time (passport stamp or I-94 record at i94.cbp.dhs.gov)."
+    },
+    "destino_eua_admissao": {
+      "label": "Destination in the U.S. at time of admission — City and State",
+      "hint": "City and state you declared as your U.S. destination when you entered as a permanent resident (may be different from where you live today)."
+    },
+    "altura_pes": {
+      "label": "Height — feet"
+    },
+    "altura_polegadas": {
+      "label": "Height — inches"
+    },
+    "peso": {
+      "label": "Weight in pounds (lb)",
+      "hint": "Numbers only, e.g. 155. It will be split automatically into the PDF's 3 digit boxes."
+    },
+    "etnia": {
+      "label": "Ethnicity",
+      "options": {
+        "hispanico": "Hispanic or Latino",
+        "nao_hispanico": "Not Hispanic or Latino"
+      },
+      "hint": "An official U.S. government category, separate from \"race\" (next questions) — this only asks whether you identify as Hispanic/Latino, regardless of race. Most non-Hispanic Brazilians select \"Not Hispanic or Latino\" here."
+    },
+    "raca_branco": {
+      "label": "Race: White",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_negro": {
+      "label": "Race: Black or African American",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Race: Asian",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Race: American Indian or Alaska Native",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Race: Native Hawaiian or Other Pacific Islander",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "cor_olhos": {
+      "label": "Eye Color",
+      "options": {
+        "azul": "Blue",
+        "verde": "Green",
+        "avela": "Hazel",
+        "rosa": "Pink",
+        "marrom_avermelhado": "Maroon",
+        "castanho": "Brown",
+        "preto": "Black",
+        "outro": "Other",
+        "cinza": "Gray"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Hair Color",
+      "options": {
+        "careca": "Bald (No Hair)",
+        "loiro": "Blond",
+        "grisalho": "Gray",
+        "arenoso": "Sandy",
+        "outro": "Other",
+        "branco": "White",
+        "ruivo": "Red",
+        "castanho": "Brown",
+        "preto": "Black"
+      }
+    },
+    "acomodacao_solicitada": {
+      "label": "Are you requesting any accommodation because of a disability?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Optional. Requesting an accommodation (e.g., sign language interpreter, Braille) does not affect the review of your case -- it is only to ensure accessibility during the interview/process, if any."
+    },
+    "acomodacao_surdo": {
+      "label": "I am deaf or hard of hearing and am requesting an accommodation",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "acomodacao_surdo_detalhe": {
+      "label": "Describe the accommodation requested (e.g., sign language)"
+    },
+    "acomodacao_cego": {
+      "label": "I am blind or have low vision and am requesting an accommodation",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "acomodacao_cego_detalhe": {
+      "label": "Describe the accommodation requested"
+    },
+    "acomodacao_outra": {
+      "label": "I have another type of disability",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "acomodacao_outra_detalhe": {
+      "label": "Describe the nature of the disability and the accommodation requested"
+    },
+    "leu_ingles": {
+      "label": "Applicant's statement",
+      "options": {
+        "leu_ingles": "I can read and understand English, and I have read and understood every question and instruction on this application, as well as my answers",
+        "leu_interprete": "The interpreter named in Part 6 read every question and instruction and my answers to me in a language I understand fluently"
+      },
+      "hint": "If you do not read/understand English fluently, you need an interpreter (see Part 6) to read and translate the form for you before signing -- it is not about everyday spoken English, it is about actually understanding what you are signing."
+    },
+    "idioma_interprete": {
+      "label": "In what language did the interpreter read the form to you?"
+    },
+    "preparador_ajudou": {
+      "label": "Did someone prepare this form for you, at your request and based only on the information you provided?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No, I completed it myself"
+      },
+      "hint": "Refers to someone who filled out the form FOR you (e.g., consultant, attorney, a friend typing it), based only on the information you gave -- does not change the answer if you typed it yourself but someone helped you understand the questions."
+    },
+    "preparador_nome": {
+      "label": "Preparer's name"
+    },
+    "telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "celular": {
+      "label": "Mobile Telephone Number (if any)"
+    },
+    "email": {
+      "label": "Email Address (if any)"
+    },
+    "data_assinatura": {
+      "label": "Date of Signature (filled in on the day of filing, MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter — Business or Organization Name (if any)"
+    },
+    "int_end_rua": {
+      "label": "Interpreter — Street Number and Name"
+    },
+    "int_end_tipo_unidade": {
+      "label": "Interpreter — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "int_end_num_unidade": {
+      "label": "Interpreter — Unit Number"
+    },
+    "int_end_cidade": {
+      "label": "Interpreter — City or Town"
+    },
+    "int_end_estado": {
+      "label": "Interpreter — State (abbreviation, if U.S.)"
+    },
+    "int_end_cep": {
+      "label": "Interpreter — ZIP Code (if U.S.)"
+    },
+    "int_end_provincia": {
+      "label": "Interpreter — Province (if outside the U.S.)"
+    },
+    "int_end_codigo_postal": {
+      "label": "Interpreter — Postal Code (if outside the U.S.)"
+    },
+    "int_end_pais": {
+      "label": "Interpreter — Country"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Daytime Telephone Number"
+    },
+    "int_celular": {
+      "label": "Interpreter — Mobile Telephone Number (if any)"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address (if any)"
+    },
+    "int_idioma": {
+      "label": "Interpreter — Language of Fluency"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter — Date of Signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer — Business or Organization Name (if any)"
+    },
+    "prep_end_rua": {
+      "label": "Preparer — Street Number and Name"
+    },
+    "prep_end_tipo_unidade": {
+      "label": "Preparer — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "prep_end_num_unidade": {
+      "label": "Preparer — Unit Number"
+    },
+    "prep_end_cidade": {
+      "label": "Preparer — City or Town"
+    },
+    "prep_end_estado": {
+      "label": "Preparer — State (abbreviation, if U.S.)"
+    },
+    "prep_end_cep": {
+      "label": "Preparer — ZIP Code (if U.S.)"
+    },
+    "prep_end_provincia": {
+      "label": "Preparer — Province (if outside the U.S.)"
+    },
+    "prep_end_codigo_postal": {
+      "label": "Preparer — Postal Code (if outside the U.S.)"
+    },
+    "prep_end_pais": {
+      "label": "Preparer — Country"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Daytime Telephone Number"
+    },
+    "prep_celular": {
+      "label": "Preparer — Mobile Telephone Number (if any)"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address (if any)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer — Date of Signature (MM/DD/YYYY)"
+    }
+  }
+}

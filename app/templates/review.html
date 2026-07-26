@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_illustrations.html" import success_illustration, missing_illustration %}
+{% block title %}{{ t('review_title') }} — {{ submission.form_slug|upper }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<h1>{{ t('review_title') }} — {{ submission.form_slug|upper }}</h1>
+
+{% if get_lang() == "en" and not form_translated %}
+<div class="flash" style="background:var(--accent-soft);color:var(--accent-dark);border-color:var(--accent);">
+  {{ t('form_not_translated_notice') }}
+</div>
+{% endif %}
+
+{% if missing %}
+<div class="card success-card">
+  {{ missing_illustration() }}
+  <div class="success-card-body">
+    <h2>{{ t('review_missing_title') }} ({{ missing|length }})</h2>
+    <ul>
+      {% for label in missing %}
+      <li>{{ label }}</li>
+      {% endfor %}
+    </ul>
+    <a class="btn secondary" href="{{ url_for('wizard.wizard_view', submission_id=submission.id) }}">
+      {{ t('review_continue_answering') }}
+    </a>
+  </div>
+</div>
+{% else %}
+<div class="card success-card">
+  {{ success_illustration() }}
+  <div class="success-card-body">
+  <h2>{{ t('review_all_set') }}</h2>
+  {% if submission.status == "completed" %}
+    <p class="muted">{{ t('review_already_generated') }}</p>
+    {% if submission.form_slug == "i-539-cartas" %}
+      {% if submission.cartas_zip_path %}
+      <a class="btn icon-btn" href="{{ url_for('wizard.download_cartas', submission_id=submission.id) }}">
+        {{ icon('download', 16) }} {{ t('download_cartas_zip') }}
+      </a>
+      {% else %}
+      <p class="muted">{{ t('download_cartas_none') }}</p>
+      {% endif %}
+    {% else %}
+    <a class="btn icon-btn" href="{{ url_for('wizard.download_pdf', submission_id=submission.id) }}">
+      {{ icon('download', 16) }} {{ t('download_filled_pdf') }}
+    </a>
+    <a class="btn secondary icon-btn" href="{{ url_for('wizard.download_checklist', submission_id=submission.id) }}">
+      {{ icon('list-check', 16) }} {{ t('download_protocol_checklist') }}
+    </a>
+    {% if submission.documents_pdf_path %}
+    <a class="btn secondary icon-btn" href="{{ url_for('wizard.download_documents', submission_id=submission.id) }}">
+      {{ icon('document', 16) }} {{ t('download_documents_checklist') }}
+    </a>
+    {% endif %}
+    {% endif %}
+  {% else %}
+    <form method="post" action="{{ url_for('wizard.generate', submission_id=submission.id) }}">
+      <button type="submit" class="btn">{{ t('generate_button') }}</button>
+    </form>
+  {% endif %}
+  </div>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>{{ t('review_your_answers') }} ({{ answered|length }})</h2>
+  <table class="submissions">
+    {% for question, display in answered %}
+    <tr>
+      <td style="width:55%;">{{ question.label.rstrip(" *") }}</td>
+      <td>{{ display }}</td>
+      <td style="text-align:right;">
+        <a class="icon-btn" href="{{ url_for('wizard.edit_question', submission_id=submission.id, question_id=question.id) }}">
+          {{ icon('edit-pencil', 14) }} {{ t('edit_link') }}
+        </a>
+      </td>
+    </tr>
+    {% endfor %}
+  </table>
+</div>
+{% endblock %}

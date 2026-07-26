@@ -1,0 +1,27 @@
+{
+  "form": "G-1450",
+  "_security_note": "Deliberately does NOT map CreditCardNumber_1..4, the CVV subfield, or ExpirationDate -- this app has no PCI-compliant storage/transmission for cardholder data, so those fields are left blank on the generated PDF for the client to write by hand before mailing. See references/compliance.md discussion in this session.",
+  "fields": [
+    {"pdf_field": "form1[0].#subform[0].FamilyName[0]", "type": "text", "question_id": "g1450_sobrenome"},
+    {"pdf_field": "form1[0].#subform[0].GivenName[0]", "type": "text", "question_id": "g1450_nome"},
+    {"pdf_field": "form1[0].#subform[0].MiddleName[0]", "type": "text", "question_id": "g1450_nome_meio"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderFamilyName[0]", "type": "text", "question_id": "g1450_titular_sobrenome"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderGivenName[0]", "type": "text", "question_id": "g1450_titular_nome"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderMiddleName[0]", "type": "text", "question_id": "g1450_titular_nome_meio"},
+    {"pdf_field": "form1[0].#subform[0].Pt1Line2b_StreetNumberName[0]", "type": "text", "question_id": "g1450_endereco_rua"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderAptSteFlr_Unit[0]", "type": "checkbox", "question_id": "g1450_endereco_tipo", "check_if_answer": "ste"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderAptSteFlr_Unit[1]", "type": "checkbox", "question_id": "g1450_endereco_tipo", "check_if_answer": "apt"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderAptSteFlr_Unit[2]", "type": "checkbox", "question_id": "g1450_endereco_tipo", "check_if_answer": "flr"},
+    {"pdf_field": "form1[0].#subform[0].CCHolderAptSteFlrNumber[0]", "type": "text", "question_id": "g1450_endereco_numero_unidade"},
+    {"pdf_field": "form1[0].#subform[0].CityOrTown[0]", "type": "text", "question_id": "g1450_cidade"},
+    {"pdf_field": "form1[0].#subform[0].State[0]", "type": "select", "question_id": "g1450_estado"},
+    {"pdf_field": "form1[0].#subform[0].ZipCode[0]", "type": "text", "question_id": "g1450_cep"},
+    {"pdf_field": "form1[0].#subform[0].DaytimeTelephoneNumber[0]", "type": "text", "question_id": "g1450_telefone"},
+    {"pdf_field": "form1[0].#subform[0].Email[0]", "type": "text", "question_id": "g1450_email"},
+    {"pdf_field": "form1[0].#subform[0].CreditCardTypeChBx[0]", "type": "checkbox", "question_id": "g1450_bandeira", "check_if_answer": "visa"},
+    {"pdf_field": "form1[0].#subform[0].CreditCardTypeChBx[1]", "type": "checkbox", "question_id": "g1450_bandeira", "check_if_answer": "mastercard"},
+    {"pdf_field": "form1[0].#subform[0].CreditCardTypeChBx[2]", "type": "checkbox", "question_id": "g1450_bandeira", "check_if_answer": "amex"},
+    {"pdf_field": "form1[0].#subform[0].CreditCardTypeChBx[3]", "type": "checkbox", "question_id": "g1450_bandeira", "check_if_answer": "discover"},
+    {"pdf_field": "form1[0].#subform[0].AuthorizedPaymentAmt[0]", "type": "text", "question_id": "g1450_valor_autorizado"}
+  ]
+}

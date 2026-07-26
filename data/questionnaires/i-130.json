@@ -1,0 +1,2861 @@
+{
+  "form": "I-130",
+  "title": "Petição para Familiar Estrangeiro — I-130",
+  "description": "Preencha todas as perguntas. Campos marcados com * são obrigatórios. Datas no formato MM/DD/AAAA.",
+  "sections": [
+    {
+      "id": "relacao",
+      "title": "Parte 1 — Relação com o(a) Beneficiário(a)"
+    },
+    {
+      "id": "pet_basico",
+      "title": "Parte 2 — Informações sobre o(a) Peticionário(a)"
+    },
+    {
+      "id": "pet_end",
+      "title": "Parte 2 — Endereço do(a) Peticionário(a)"
+    },
+    {
+      "id": "pet_civil",
+      "title": "Parte 2 — Estado Civil do(a) Peticionário(a)"
+    },
+    {
+      "id": "pet_pais",
+      "title": "Parte 2 — Pais do(a) Peticionário(a)"
+    },
+    {
+      "id": "pet_emprego",
+      "title": "Parte 2 — Emprego do(a) Peticionário(a)"
+    },
+    {
+      "id": "pet_bio",
+      "title": "Parte 3 — Informações Biográficas do(a) Peticionário(a)"
+    },
+    {
+      "id": "ben_basico",
+      "title": "Parte 4 — Informações sobre o(a) Beneficiário(a)"
+    },
+    {
+      "id": "ben_end",
+      "title": "Parte 4 — Endereço do(a) Beneficiário(a)"
+    },
+    {
+      "id": "ben_civil",
+      "title": "Parte 4 — Estado Civil do(a) Beneficiário(a)"
+    },
+    {
+      "id": "ben_pais",
+      "title": "Parte 4 — Pais do(a) Beneficiário(a)"
+    },
+    {
+      "id": "ben_filhos",
+      "title": "Parte 4 — Filhos do(a) Beneficiário(a)"
+    },
+    {
+      "id": "ben_imig",
+      "title": "Parte 4 — Histórico de Imigração do(a) Beneficiário(a)"
+    },
+    {
+      "id": "ben_emprego",
+      "title": "Parte 4 — Emprego do(a) Beneficiário(a) no Exterior"
+    },
+    {
+      "id": "ben_deport",
+      "title": "Parte 4 — Processos de Remoção/Deportação"
+    },
+    {
+      "id": "pet_ant",
+      "title": "Parte 5 — Petições I-130 Anteriores"
+    },
+    {
+      "id": "assinatura",
+      "title": "Parte 6 — Declaração do(a) Peticionário(a)"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 7 — Intérprete"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 8 — Preparador(a)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "rel_tipo",
+      "section": "relacao",
+      "label": "Qual é sua relação com a pessoa que você está patrocinando (o/a beneficiário/a)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "conjuge",
+          "label": "Cônjuge (esposo/esposa)"
+        },
+        {
+          "value": "filho",
+          "label": "Filho/Filha"
+        },
+        {
+          "value": "pai_mae",
+          "label": "Pai ou Mãe"
+        },
+        {
+          "value": "irmao",
+          "label": "Irmão ou Irmã"
+        }
+      ]
+    },
+    {
+      "id": "rel_tipo_filho",
+      "section": "relacao",
+      "label": "Qual é o tipo de filiação?",
+      "type": "radio",
+      "required": true,
+      "show_if": {
+        "question": "rel_tipo",
+        "equals": "filho"
+      },
+      "options": [
+        {
+          "value": "legitimo",
+          "label": "Filho/a legítimo/a (nascido/a dentro do casamento)"
+        },
+        {
+          "value": "adotado",
+          "label": "Filho/a adotado/a"
+        },
+        {
+          "value": "enteado",
+          "label": "Enteado/a (stepchild)"
+        },
+        {
+          "value": "ilegitimo",
+          "label": "Filho/a nascido/a fora do casamento"
+        }
+      ],
+      "hint": "Biológico(a) = você é pai/mãe biológico(a). Enteado(a) = filho(a) do(a) cônjuge (de casamento anterior ou atual), não seu biologicamente. Adotivo(a) = adoção legal antes dos 16 anos (ou 18, para irmãos adotados junto), com pelo menos 2 anos sob sua custódia legal. Cada tipo pede documentos diferentes — confirme com a equipe se não tiver certeza."
+    },
+    {
+      "id": "rel_irmao_adocao",
+      "section": "relacao",
+      "label": "Se o/a beneficiário/a é seu irmão/irmã, vocês são parentes por adoção (não biologicamente)?",
+      "type": "radio",
+      "required": false,
+      "show_if": {
+        "question": "rel_tipo",
+        "equals": "irmao"
+      },
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Responda Sim só se um de vocês foi adotado (não são irmãos de sangue, nem só por parte de pai/mãe biológico). Irmãos por adoção só contam para este pedido se a adoção ocorreu antes dos 18 anos, com pelo menos 2 anos de custódia legal (INA 101(b)(1)(E))."
+    },
+    {
+      "id": "rel_lpr_via_adocao",
+      "section": "relacao",
+      "label": "Você obteve residência permanente ou cidadania americana por meio de adoção?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Importante para pedidos de irmão/irmã: se você se tornou residente/cidadão através de adoção, isso pode afetar se você pode peticionar por um irmão biológico (não adotivo). Confirme com a equipe — essa regra tem exceções."
+    },
+    {
+      "id": "pet_sobrenome",
+      "section": "pet_basico",
+      "label": "Sobrenome (Family Name)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_nome",
+      "section": "pet_basico",
+      "label": "Nome (Given Name)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_nome_meio",
+      "section": "pet_basico",
+      "label": "Nome do meio (Middle Name)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_outros_sobrenome",
+      "section": "pet_basico",
+      "label": "Outros sobrenomes que você já usou (outros sobrenomes)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_outros_nome",
+      "section": "pet_basico",
+      "label": "Outros nomes que você já usou (nome)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_outros_meio",
+      "section": "pet_basico",
+      "label": "Outros nomes que você já usou (nome do meio)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_alien_number",
+      "section": "pet_basico",
+      "label": "Número de Estrangeiro (A-Number) — se aplicável",
+      "type": "text",
+      "required": false,
+      "hint": "Formato: A seguido de 8 ou 9 dígitos. Ex: A012345678"
+    },
+    {
+      "id": "pet_uscis_online",
+      "section": "pet_basico",
+      "label": "Número de Conta USCIS Online — se aplicável",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_ssn",
+      "section": "pet_basico",
+      "label": "Número do Seguro Social (SSN)",
+      "type": "text",
+      "required": true,
+      "hint": "Formato: XXX-XX-XXXX"
+    },
+    {
+      "id": "pet_cidade_nascimento",
+      "section": "pet_basico",
+      "label": "Cidade ou município de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_pais_nascimento",
+      "section": "pet_basico",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_data_nascimento",
+      "section": "pet_basico",
+      "label": "Data de nascimento (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pet_sexo",
+      "section": "pet_basico",
+      "label": "Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "pet_end_rua",
+      "section": "pet_end",
+      "label": "Endereço atual — Rua e número",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_end_tipo_unidade",
+      "section": "pet_end",
+      "label": "Tipo de unidade (se aplicável)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "pet_end_num_unidade",
+      "section": "pet_end",
+      "label": "Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_cuidados_de",
+      "section": "pet_end",
+      "label": "Aos cuidados de (In Care Of) — se aplicável",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_cidade",
+      "section": "pet_end",
+      "label": "Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_end_estado",
+      "section": "pet_end",
+      "label": "Estado (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "pet_end_cep",
+      "section": "pet_end",
+      "label": "ZIP Code (EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_provincia",
+      "section": "pet_end",
+      "label": "Província/Estado (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_codigo_postal",
+      "section": "pet_end",
+      "label": "Código Postal (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_pais",
+      "section": "pet_end",
+      "label": "País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_fisico_igual_correio",
+      "section": "pet_end",
+      "label": "Seu endereço físico atual é o mesmo do endereço de correspondência informado acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta 11 do formulário. Se o local onde você mora de fato for diferente do endereço de correspondência, responda \"Não\" para informar o endereço físico."
+    },
+    {
+      "id": "pet_end_fisico_rua",
+      "section": "pet_end",
+      "label": "Endereço físico atual — Rua e número",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_tipo_unidade",
+      "section": "pet_end",
+      "label": "Tipo de unidade (endereço físico atual)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ],
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_num_unidade",
+      "section": "pet_end",
+      "label": "Número da unidade (endereço físico atual)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_cidade",
+      "section": "pet_end",
+      "label": "Cidade (endereço físico atual)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_estado",
+      "section": "pet_end",
+      "label": "Estado — EUA (endereço físico atual)",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_cep",
+      "section": "pet_end",
+      "label": "ZIP Code (endereço físico atual)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_provincia",
+      "section": "pet_end",
+      "label": "Província (endereço físico atual)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_codigo_postal",
+      "section": "pet_end",
+      "label": "Código Postal (endereço físico atual)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_fisico_pais",
+      "section": "pet_end",
+      "label": "País (endereço físico atual)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_desde",
+      "section": "pet_end",
+      "label": "Mora nesse endereço físico desde (MM/DD/AAAA)",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "pet_end_fisico_igual_correio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "pet_end_ant_rua",
+      "section": "pet_end",
+      "label": "Endereço anterior — Rua e número",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_tipo_unidade",
+      "section": "pet_end",
+      "label": "Tipo de unidade (endereço anterior)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "pet_end_ant_num_unidade",
+      "section": "pet_end",
+      "label": "Número da unidade (endereço anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_cidade",
+      "section": "pet_end",
+      "label": "Cidade (endereço anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_estado",
+      "section": "pet_end",
+      "label": "Estado — EUA (endereço anterior)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_cep",
+      "section": "pet_end",
+      "label": "ZIP Code (endereço anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_provincia",
+      "section": "pet_end",
+      "label": "Província (endereço anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_codigo_postal",
+      "section": "pet_end",
+      "label": "Código Postal (endereço anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_pais",
+      "section": "pet_end",
+      "label": "País (endereço anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_de",
+      "section": "pet_end",
+      "label": "Período do endereço anterior — De (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_end_ant_ate",
+      "section": "pet_end",
+      "label": "Período do endereço anterior — Até (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_num_casamentos",
+      "section": "pet_civil",
+      "label": "Quantas vezes você já se casou (incluindo casamento atual, se houver)?",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_estado_civil",
+      "section": "pet_civil",
+      "label": "Estado civil atual",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "solteiro",
+          "label": "Solteiro/a"
+        },
+        {
+          "value": "casado",
+          "label": "Casado/a"
+        },
+        {
+          "value": "divorciado",
+          "label": "Divorciado/a"
+        },
+        {
+          "value": "viuvo",
+          "label": "Viúvo/a"
+        },
+        {
+          "value": "separado",
+          "label": "Separado/a legalmente"
+        },
+        {
+          "value": "anulado",
+          "label": "Casamento anulado"
+        }
+      ]
+    },
+    {
+      "id": "pet_data_casamento",
+      "section": "pet_civil",
+      "label": "Data do casamento atual (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_local_casamento_cidade",
+      "section": "pet_civil",
+      "label": "Cidade onde se casou",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_local_casamento_estado",
+      "section": "pet_civil",
+      "label": "Estado (EUA) onde se casou",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_local_casamento_provincia",
+      "section": "pet_civil",
+      "label": "Província onde se casou (fora dos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_local_casamento_pais",
+      "section": "pet_civil",
+      "label": "País onde se casou",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_conj_sobrenome",
+      "section": "pet_civil",
+      "label": "Cônjuge atual — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_conj_nome",
+      "section": "pet_civil",
+      "label": "Cônjuge atual — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_conj_meio",
+      "section": "pet_civil",
+      "label": "Cônjuge atual — Nome do meio",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "pet_conj_ant_sobrenome",
+      "section": "pet_civil",
+      "label": "Cônjuge anterior — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_conj_ant_nome",
+      "section": "pet_civil",
+      "label": "Cônjuge anterior — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_conj_ant_meio",
+      "section": "pet_civil",
+      "label": "Cônjuge anterior — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_conj_ant_fim",
+      "section": "pet_civil",
+      "label": "Cônjuge anterior — Data de término (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_conj_ant_fim_como",
+      "section": "pet_civil",
+      "label": "Cônjuge anterior — Como terminou o casamento?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "divorcio",
+          "label": "Divórcio"
+        },
+        {
+          "value": "viuvez",
+          "label": "Falecimento"
+        },
+        {
+          "value": "anulacao",
+          "label": "Anulação"
+        }
+      ]
+    },
+    {
+      "id": "pet_pai_sobrenome",
+      "section": "pet_pais",
+      "label": "Nome do pai — Sobrenome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_pai_nome",
+      "section": "pet_pais",
+      "label": "Nome do pai — Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_pai_meio",
+      "section": "pet_pais",
+      "label": "Nome do pai — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_pai_data_nasc",
+      "section": "pet_pais",
+      "label": "Data de nascimento do pai (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pet_pai_sexo",
+      "section": "pet_pais",
+      "label": "Sexo do pai",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "pet_pai_pais_nasc",
+      "section": "pet_pais",
+      "label": "País de nascimento do pai",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_pai_cidade_resid",
+      "section": "pet_pais",
+      "label": "Cidade/município de residência atual do pai",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_pai_pais_resid",
+      "section": "pet_pais",
+      "label": "País de residência atual do pai",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_mae_sobrenome",
+      "section": "pet_pais",
+      "label": "Nome da mãe — Sobrenome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_mae_nome",
+      "section": "pet_pais",
+      "label": "Nome da mãe — Nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_mae_meio",
+      "section": "pet_pais",
+      "label": "Nome da mãe — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_mae_data_nasc",
+      "section": "pet_pais",
+      "label": "Data de nascimento da mãe (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pet_mae_sexo",
+      "section": "pet_pais",
+      "label": "Sexo da mãe",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "pet_mae_pais_nasc",
+      "section": "pet_pais",
+      "label": "País de nascimento da mãe",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pet_mae_cidade_resid",
+      "section": "pet_pais",
+      "label": "Cidade/município de residência atual da mãe",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_mae_pais_resid",
+      "section": "pet_pais",
+      "label": "País de residência atual da mãe",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_cidadania_tipo",
+      "section": "pet_pais",
+      "label": "Você é cidadão/ã americano/a ou residente permanente legal?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "cidadao",
+          "label": "Cidadão/ã americano/a"
+        },
+        {
+          "value": "lpr",
+          "label": "Residente permanente legal (Green Card)"
+        }
+      ],
+      "hint": "Sua resposta determina a categoria do pedido e o tempo de espera do(a) beneficiário/a — cidadãos americanos costumam ter processamento mais rápido para cônjuge/filho(a) menor/pai/mãe do que residentes permanentes."
+    },
+    {
+      "id": "pet_cert_nat_numero",
+      "section": "pet_pais",
+      "label": "Número do Certificado de Naturalização ou Cidadania",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_cidadania_tipo",
+        "equals": "cidadao"
+      },
+      "hint": "Só se aplica se você se tornou cidadão(ã) americano(a) por naturalização (não por nascimento). O número fica no seu Certificado de Naturalização/Cidadania (documento do USCIS), não no passaporte."
+    },
+    {
+      "id": "pet_cert_nat_local",
+      "section": "pet_pais",
+      "label": "Local de emissão do certificado",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_cidadania_tipo",
+        "equals": "cidadao"
+      },
+      "hint": "Só se aplica se você se tornou cidadão(ã) americano(a) por naturalização (não por nascimento) — deixe em branco se você é cidadão(ã) de nascença. Cidade/estado onde o certificado foi emitido — geralmente consta no próprio documento."
+    },
+    {
+      "id": "pet_cert_nat_data",
+      "section": "pet_pais",
+      "label": "Data de emissão do certificado (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "pet_cidadania_tipo",
+        "equals": "cidadao"
+      }
+    },
+    {
+      "id": "pet_emp_atual_empresa",
+      "section": "pet_emprego",
+      "label": "Nome do empregador atual ou organização",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_classe_admissao",
+      "section": "pet_emprego",
+      "label": "Classe de admissão (visto de trabalho) — se aplicável",
+      "type": "text",
+      "required": false,
+      "hint": "Código do tipo de visto/status com que VOCÊ (peticionário/a) entrou nos EUA, se não nasceu ou não é cidadão por nascimento — ex: H1B, L1. Encontre no seu Formulário I-94 (i94.cbp.dhs.gov)."
+    },
+    {
+      "id": "pet_emp_atual_data_admissao",
+      "section": "pet_emprego",
+      "label": "Data de admissão no emprego atual (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_cidade",
+      "section": "pet_emprego",
+      "label": "Cidade do empregador atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_estado",
+      "section": "pet_emprego",
+      "label": "Estado do empregador atual (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_rua",
+      "section": "pet_emprego",
+      "label": "Endereço do empregador atual — Rua",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_tipo_unidade",
+      "section": "pet_emprego",
+      "label": "Tipo de unidade (empregador atual)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "pet_emp_atual_num_unidade",
+      "section": "pet_emprego",
+      "label": "Número da unidade (empregador atual)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_cep",
+      "section": "pet_emprego",
+      "label": "ZIP Code do empregador atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_pais",
+      "section": "pet_emprego",
+      "label": "País do empregador atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_provincia",
+      "section": "pet_emprego",
+      "label": "Província do empregador atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_codigo_postal",
+      "section": "pet_emprego",
+      "label": "Código postal do empregador atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_ocupacao",
+      "section": "pet_emprego",
+      "label": "Ocupação/cargo atual",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_de",
+      "section": "pet_emprego",
+      "label": "Período de emprego — De (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_emp_atual_ate",
+      "section": "pet_emprego",
+      "label": "Período de emprego — Até (MM/DD/AAAA) ou 'presente'",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_empresa",
+      "section": "pet_emprego",
+      "label": "Nome do empregador anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_rua",
+      "section": "pet_emprego",
+      "label": "Endereço do empregador anterior — Rua",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_tipo_unidade",
+      "section": "pet_emprego",
+      "label": "Tipo de unidade (empregador anterior)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "pet_emp_ant_num_unidade",
+      "section": "pet_emprego",
+      "label": "Número da unidade (empregador anterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_cidade",
+      "section": "pet_emprego",
+      "label": "Cidade do empregador anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_estado",
+      "section": "pet_emprego",
+      "label": "Estado (EUA) do empregador anterior",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_cep",
+      "section": "pet_emprego",
+      "label": "ZIP Code do empregador anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_provincia",
+      "section": "pet_emprego",
+      "label": "Província do empregador anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_codigo_postal",
+      "section": "pet_emprego",
+      "label": "Código postal do empregador anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_pais",
+      "section": "pet_emprego",
+      "label": "País do empregador anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_ocupacao",
+      "section": "pet_emprego",
+      "label": "Ocupação/cargo anterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_de",
+      "section": "pet_emprego",
+      "label": "Período de emprego anterior — De (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_emp_ant_ate",
+      "section": "pet_emprego",
+      "label": "Período de emprego anterior — Até (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pet_etnia",
+      "section": "pet_bio",
+      "label": "Etnia",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "hispanico",
+          "label": "Hispânico ou Latino"
+        },
+        {
+          "value": "nao_hispanico",
+          "label": "Não Hispânico ou Latino"
+        }
+      ]
+    },
+    {
+      "id": "pet_raca",
+      "section": "pet_bio",
+      "label": "Raça (pode selecionar mais de uma)",
+      "type": "checkbox_group",
+      "required": false,
+      "options": [
+        {
+          "value": "branco",
+          "label": "Branco"
+        },
+        {
+          "value": "negro",
+          "label": "Negro ou Afro-americano"
+        },
+        {
+          "value": "indigena_alaska",
+          "label": "Indígena Americano ou Nativo do Alasca"
+        },
+        {
+          "value": "asiatico",
+          "label": "Asiático"
+        },
+        {
+          "value": "pacifico",
+          "label": "Nativo do Havaí ou Ilhas do Pacífico"
+        }
+      ]
+    },
+    {
+      "id": "pet_altura_pes",
+      "section": "pet_bio",
+      "label": "Altura — Pés",
+      "type": "text",
+      "required": false,
+      "hint": "Medida em pés (sistema americano), não em centímetros. Ex: 1,70m ≈ 5 pés e 7 polegadas."
+    },
+    {
+      "id": "pet_altura_polegadas",
+      "section": "pet_bio",
+      "label": "Altura — Polegadas",
+      "type": "text",
+      "required": false,
+      "hint": "Complemento em polegadas (0 a 11) do campo de pés acima — sistema americano, não centímetros."
+    },
+    {
+      "id": "pet_peso",
+      "section": "pet_bio",
+      "label": "Peso em libras (ex: 150)",
+      "type": "text",
+      "required": false,
+      "hint": "Peso em libras (lb), não em quilos. Ex: 70kg ≈ 154 libras."
+    },
+    {
+      "id": "pet_cor_olhos",
+      "section": "pet_bio",
+      "label": "Cor dos olhos",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "preto",
+          "label": "Preto"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "azul",
+          "label": "Azul"
+        },
+        {
+          "value": "cinza",
+          "label": "Cinza"
+        },
+        {
+          "value": "verde",
+          "label": "Verde"
+        },
+        {
+          "value": "avel",
+          "label": "Avelã"
+        },
+        {
+          "value": "rosa",
+          "label": "Rosa"
+        },
+        {
+          "value": "marrom_avermelhado",
+          "label": "Marrom-avermelhado (Maroon)"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        }
+      ]
+    },
+    {
+      "id": "pet_cor_cabelo",
+      "section": "pet_bio",
+      "label": "Cor do cabelo",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "preto",
+          "label": "Preto"
+        },
+        {
+          "value": "castanho",
+          "label": "Castanho"
+        },
+        {
+          "value": "loiro",
+          "label": "Loiro"
+        },
+        {
+          "value": "ruivo",
+          "label": "Ruivo/Vermelho"
+        },
+        {
+          "value": "grisalho",
+          "label": "Grisalho"
+        },
+        {
+          "value": "branco",
+          "label": "Branco"
+        },
+        {
+          "value": "careca",
+          "label": "Calvo/Careca"
+        },
+        {
+          "value": "arenoso",
+          "label": "Arenoso"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        }
+      ]
+    },
+    {
+      "id": "ben_alien_number",
+      "section": "ben_basico",
+      "label": "Número de Estrangeiro (A-Number) do/a beneficiário/a — se aplicável",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_uscis_online",
+      "section": "ben_basico",
+      "label": "Número de Conta USCIS Online do/a beneficiário/a — se aplicável",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_ssn",
+      "section": "ben_basico",
+      "label": "Número do Seguro Social (SSN) do/a beneficiário/a — se aplicável",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_sobrenome",
+      "section": "ben_basico",
+      "label": "Sobrenome do/a beneficiário/a",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ben_nome",
+      "section": "ben_basico",
+      "label": "Nome do/a beneficiário/a",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ben_nome_meio",
+      "section": "ben_basico",
+      "label": "Nome do meio do/a beneficiário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_outros_sobrenome",
+      "section": "ben_basico",
+      "label": "Outros sobrenomes usados pelo/a beneficiário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_outros_nome",
+      "section": "ben_basico",
+      "label": "Outros nomes usados pelo/a beneficiário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_outros_meio",
+      "section": "ben_basico",
+      "label": "Outros nomes do meio usados pelo/a beneficiário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_cidade_nascimento",
+      "section": "ben_basico",
+      "label": "Cidade ou município de nascimento do/a beneficiário/a",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ben_pais_nascimento",
+      "section": "ben_basico",
+      "label": "País de nascimento do/a beneficiário/a",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ben_data_nascimento",
+      "section": "ben_basico",
+      "label": "Data de nascimento do/a beneficiário/a (MM/DD/AAAA)",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "ben_sexo",
+      "section": "ben_basico",
+      "label": "Sexo do/a beneficiário/a",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "ben_telefone",
+      "section": "ben_basico",
+      "label": "Telefone diurno do/a beneficiário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_celular",
+      "section": "ben_basico",
+      "label": "Celular do/a beneficiário/a (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_email",
+      "section": "ben_basico",
+      "label": "E-mail do/a beneficiário/a (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_rua",
+      "section": "ben_end",
+      "label": "Endereço atual do/a beneficiário/a — Rua",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ben_end_tipo_unidade",
+      "section": "ben_end",
+      "label": "Tipo de unidade",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "ben_end_num_unidade",
+      "section": "ben_end",
+      "label": "Número da unidade",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_cidade",
+      "section": "ben_end",
+      "label": "Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ben_end_estado",
+      "section": "ben_end",
+      "label": "Estado (EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "ben_end_cep",
+      "section": "ben_end",
+      "label": "ZIP Code (EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_provincia",
+      "section": "ben_end",
+      "label": "Província (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_codigo_postal",
+      "section": "ben_end",
+      "label": "Código Postal (fora dos EUA)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_pais",
+      "section": "ben_end",
+      "label": "País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_corr_rua",
+      "section": "ben_end",
+      "label": "Endereço de correspondência do/a beneficiário/a — Rua (se diferente do atual)",
+      "type": "text",
+      "required": false,
+      "hint": "Preencha só se o endereço para receber correspondência do USCIS for diferente do endereço atual informado acima. Deixe em branco se for igual."
+    },
+    {
+      "id": "ben_end_corr_tipo_unidade",
+      "section": "ben_end",
+      "label": "Tipo de unidade (correspondência)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "ben_end_corr_num_unidade",
+      "section": "ben_end",
+      "label": "Número da unidade (correspondência)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_corr_cidade",
+      "section": "ben_end",
+      "label": "Cidade (correspondência)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_corr_estado",
+      "section": "ben_end",
+      "label": "Estado (correspondência, EUA)",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "ben_end_corr_cep",
+      "section": "ben_end",
+      "label": "ZIP Code (correspondência)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ant_rua",
+      "section": "ben_end",
+      "label": "Endereço do/a beneficiário/a no exterior — Rua e número (se diferente do endereço físico)",
+      "type": "text",
+      "required": false,
+      "hint": "Endereço anterior no exterior, se diferente do endereço atual informado acima — deixe em branco se for o mesmo."
+    },
+    {
+      "id": "ben_end_ant_tipo_unidade",
+      "section": "ben_end",
+      "label": "Tipo de unidade (endereço no exterior)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "ben_end_ant_num_unidade",
+      "section": "ben_end",
+      "label": "Número da unidade (endereço no exterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ant_cidade",
+      "section": "ben_end",
+      "label": "Cidade (endereço no exterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ant_pais",
+      "section": "ben_end",
+      "label": "País (endereço no exterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ant_provincia",
+      "section": "ben_end",
+      "label": "Província (endereço no exterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ant_codigo_postal",
+      "section": "ben_end",
+      "label": "Código Postal (endereço no exterior)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_num_casamentos",
+      "section": "ben_civil",
+      "label": "Quantas vezes o/a beneficiário/a já se casou?",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_estado_civil",
+      "section": "ben_civil",
+      "label": "Estado civil atual do/a beneficiário/a",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "solteiro",
+          "label": "Solteiro/a"
+        },
+        {
+          "value": "casado",
+          "label": "Casado/a"
+        },
+        {
+          "value": "divorciado",
+          "label": "Divorciado/a"
+        },
+        {
+          "value": "viuvo",
+          "label": "Viúvo/a"
+        },
+        {
+          "value": "separado",
+          "label": "Separado/a legalmente"
+        },
+        {
+          "value": "anulado",
+          "label": "Casamento anulado"
+        }
+      ]
+    },
+    {
+      "id": "ben_conj_sobrenome",
+      "section": "ben_civil",
+      "label": "Cônjuge atual do/a beneficiário/a — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "ben_conj_nome",
+      "section": "ben_civil",
+      "label": "Cônjuge atual do/a beneficiário/a — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "ben_conj_meio",
+      "section": "ben_civil",
+      "label": "Cônjuge atual do/a beneficiário/a — Nome do meio",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "ben_data_casamento",
+      "section": "ben_civil",
+      "label": "Data do casamento atual do/a beneficiário/a (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ben_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "ben_local_casamento_cidade",
+      "section": "ben_civil",
+      "label": "Cidade onde o/a beneficiário/a se casou",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "ben_local_casamento_estado",
+      "section": "ben_civil",
+      "label": "Estado (EUA) onde o/a beneficiário/a se casou",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "ben_estado_civil",
+        "equals": "casado"
+      }
+    },
+    {
+      "id": "ben_local_casamento_provincia",
+      "section": "ben_civil",
+      "label": "Província onde o/a beneficiário/a se casou",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_local_casamento_pais",
+      "section": "ben_civil",
+      "label": "País onde o/a beneficiário/a se casou",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_conj_ant_sobrenome",
+      "section": "ben_civil",
+      "label": "Cônjuge anterior do/a beneficiário/a — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_conj_ant_nome",
+      "section": "ben_civil",
+      "label": "Cônjuge anterior do/a beneficiário/a — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_conj_ant_meio",
+      "section": "ben_civil",
+      "label": "Cônjuge anterior do/a beneficiário/a — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_conj_ant_fim",
+      "section": "ben_civil",
+      "label": "Cônjuge anterior do/a beneficiário/a — Data de término (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_pai1_sobrenome",
+      "section": "ben_pais",
+      "label": "Pai/Mãe 1 do/a beneficiário/a — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai1_nome",
+      "section": "ben_pais",
+      "label": "Pai/Mãe 1 do/a beneficiário/a — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai1_meio",
+      "section": "ben_pais",
+      "label": "Pai/Mãe 1 do/a beneficiário/a — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai1_relacao",
+      "section": "ben_pais",
+      "label": "Relação (Pai/Mãe 1 com beneficiário/a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai2_sobrenome",
+      "section": "ben_pais",
+      "label": "Pai/Mãe 2 do/a beneficiário/a — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai2_nome",
+      "section": "ben_pais",
+      "label": "Pai/Mãe 2 do/a beneficiário/a — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai2_meio",
+      "section": "ben_pais",
+      "label": "Pai/Mãe 2 do/a beneficiário/a — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_pai2_relacao",
+      "section": "ben_pais",
+      "label": "Relação (Pai/Mãe 2 com beneficiário/a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho1_sobrenome",
+      "section": "ben_filhos",
+      "label": "Filho/a 1 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho1_nome",
+      "section": "ben_filhos",
+      "label": "Filho/a 1 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho1_meio",
+      "section": "ben_filhos",
+      "label": "Filho/a 1 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho1_relacao",
+      "section": "ben_filhos",
+      "label": "Filho/a 1 — Relação",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho1_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 1 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_filho1_pais_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 1 — País de nascimento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho2_sobrenome",
+      "section": "ben_filhos",
+      "label": "Filho/a 2 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho2_nome",
+      "section": "ben_filhos",
+      "label": "Filho/a 2 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho2_meio",
+      "section": "ben_filhos",
+      "label": "Filho/a 2 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho2_relacao",
+      "section": "ben_filhos",
+      "label": "Filho/a 2 — Relação",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho2_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 2 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_filho2_pais_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 2 — País de nascimento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho3_sobrenome",
+      "section": "ben_filhos",
+      "label": "Filho/a 3 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho3_nome",
+      "section": "ben_filhos",
+      "label": "Filho/a 3 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho3_meio",
+      "section": "ben_filhos",
+      "label": "Filho/a 3 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho3_relacao",
+      "section": "ben_filhos",
+      "label": "Filho/a 3 — Relação",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho3_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 3 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_filho3_pais_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 3 — País de nascimento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho4_sobrenome",
+      "section": "ben_filhos",
+      "label": "Filho/a 4 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho4_nome",
+      "section": "ben_filhos",
+      "label": "Filho/a 4 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho4_meio",
+      "section": "ben_filhos",
+      "label": "Filho/a 4 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho4_relacao",
+      "section": "ben_filhos",
+      "label": "Filho/a 4 — Relação",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho4_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 4 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_filho4_pais_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 4 — País de nascimento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho5_sobrenome",
+      "section": "ben_filhos",
+      "label": "Filho/a 5 — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho5_nome",
+      "section": "ben_filhos",
+      "label": "Filho/a 5 — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho5_meio",
+      "section": "ben_filhos",
+      "label": "Filho/a 5 — Nome do meio",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho5_relacao",
+      "section": "ben_filhos",
+      "label": "Filho/a 5 — Relação",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_filho5_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 5 — Data de nascimento",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_filho5_pais_nasc",
+      "section": "ben_filhos",
+      "label": "Filho/a 5 — País de nascimento",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_nos_eua",
+      "section": "ben_imig",
+      "label": "O/A beneficiário/a está fisicamente nos Estados Unidos atualmente?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "ben_classe_admissao",
+      "section": "ben_imig",
+      "label": "Classe de admissão (tipo de visto ao entrar nos EUA)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_nos_eua",
+        "equals": "sim"
+      },
+      "hint": "É o código do tipo de visto/status com que o/a beneficiário/a entrou nos EUA (ex: B2, F1, H1B). Encontre no Formulário I-94 (i94.cbp.dhs.gov) ou no carimbo do passaporte."
+    },
+    {
+      "id": "ben_i94",
+      "section": "ben_imig",
+      "label": "Número do I-94 (Arrival-Departure Record)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_nos_eua",
+        "equals": "sim"
+      },
+      "hint": "Número de 11 dígitos que identifica a entrada do/a beneficiário/a nos EUA. Consulte em i94.cbp.dhs.gov ou no cartão/registro I-94 recebido na entrada."
+    },
+    {
+      "id": "ben_data_chegada",
+      "section": "ben_imig",
+      "label": "Data de chegada nos EUA (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ben_nos_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_data_exp_status",
+      "section": "ben_imig",
+      "label": "Data de expiração do status atual (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ben_nos_eua",
+        "equals": "sim"
+      },
+      "hint": "Data até quando o/a beneficiário/a está autorizado(a) a ficar nos EUA no status atual — normalmente indicada no Formulário I-94."
+    },
+    {
+      "id": "ben_passaporte_numero",
+      "section": "ben_imig",
+      "label": "Número do passaporte do/a beneficiário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_doc_viagem_numero",
+      "section": "ben_imig",
+      "label": "Número do documento de viagem (Travel Document) — se não tiver passaporte",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_passaporte_pais_emissao",
+      "section": "ben_imig",
+      "label": "País de emissão do passaporte",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_passaporte_exp",
+      "section": "ben_imig",
+      "label": "Data de validade do passaporte (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_emp_empresa",
+      "section": "ben_emprego",
+      "label": "Nome do empregador do/a beneficiário/a no exterior",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_rua",
+      "section": "ben_emprego",
+      "label": "Endereço do empregador — Rua",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_tipo_unidade",
+      "section": "ben_emprego",
+      "label": "Tipo de unidade (empregador beneficiário)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "ben_emp_num_unidade",
+      "section": "ben_emprego",
+      "label": "Número da unidade (empregador beneficiário)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_cidade",
+      "section": "ben_emprego",
+      "label": "Cidade do empregador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_estado",
+      "section": "ben_emprego",
+      "label": "Estado (EUA) do empregador",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "ben_emp_cep",
+      "section": "ben_emprego",
+      "label": "ZIP Code do empregador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_provincia",
+      "section": "ben_emprego",
+      "label": "Província do empregador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_codigo_postal",
+      "section": "ben_emprego",
+      "label": "Código Postal do empregador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_pais",
+      "section": "ben_emprego",
+      "label": "País do empregador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_emp_inicio",
+      "section": "ben_emprego",
+      "label": "Data de início do emprego (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "ben_end_ext_cidade",
+      "section": "ben_deport",
+      "label": "Endereço em escrita nativa do/a beneficiário/a — Cidade (se a língua nativa não usa alfabeto romano)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ext_provincia",
+      "section": "ben_deport",
+      "label": "Endereço em escrita nativa do/a beneficiário/a — Província",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_end_ext_pais",
+      "section": "ben_deport",
+      "label": "Endereço em escrita nativa do/a beneficiário/a — País",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ben_outro_peticionario",
+      "section": "ben_deport",
+      "label": "Alguma outra pessoa já apresentou uma petição I-130 (ou similar) para este/a beneficiário/a antes?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        },
+        {
+          "value": "desconhece",
+          "label": "Não sei"
+        }
+      ],
+      "hint": "Selecione \"Não sei\" apenas se nem você nem o/a beneficiário/a souberem se alguém já apresentou uma petição por ele/ela."
+    },
+    {
+      "id": "ben_processo_remocao",
+      "section": "ben_deport",
+      "label": "O/A beneficiário/a já esteve sujeito a algum processo de remoção/deportação?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Processo de remoção/deportação/exclusão é um procedimento judicial de imigração (não uma simples negativa de visto) que decide se a pessoa deve deixar os EUA. Se não tiver certeza se isso já aconteceu, responda com cautela e confirme com um advogado de imigração — isso pode mudar significativamente a análise do caso."
+    },
+    {
+      "id": "ben_tipo_processo",
+      "section": "ben_deport",
+      "label": "Tipo de processo (pode marcar mais de um)",
+      "type": "checkbox_group",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      },
+      "options": [
+        {
+          "value": "remocao",
+          "label": "Remoção (Removal)"
+        },
+        {
+          "value": "exclusao",
+          "label": "Exclusão (Exclusion)"
+        },
+        {
+          "value": "rescisao",
+          "label": "Rescisão de status (Rescission)"
+        },
+        {
+          "value": "procedimento_jud",
+          "label": "Processo judicial (Judicial Proceedings)"
+        }
+      ],
+      "hint": "Exclusão/deportação/remoção/rescisão são nomes legais (mudaram ao longo dos anos) para o mesmo tipo de processo judicial de imigração. Marque o termo que aparece nos seus documentos; se não souber, confirme com um advogado."
+    },
+    {
+      "id": "ben_processo_nome_sobrenome",
+      "section": "ben_deport",
+      "label": "Nome usado no processo — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_processo_nome_nome",
+      "section": "ben_deport",
+      "label": "Nome usado no processo — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_processo_nome_meio",
+      "section": "ben_deport",
+      "label": "Nome usado no processo — Nome do meio",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_processo_cidade",
+      "section": "ben_deport",
+      "label": "Cidade onde ocorreu o processo",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_processo_estado",
+      "section": "ben_deport",
+      "label": "Estado (EUA) onde ocorreu o processo",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_processo_data",
+      "section": "ben_deport",
+      "label": "Data do processo (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ben_processo_remocao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ben_telefone_deport",
+      "section": "ben_deport",
+      "label": "Telefone do/a beneficiário/a para contato neste processo",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "pet_teve_anterior",
+      "section": "pet_ant",
+      "label": "Você já peticionou por alguém com um I-130 anterior?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui qualquer I-130 já apresentado por você no passado, mesmo que tenha sido negado, retirado ou para outra pessoa."
+    },
+    {
+      "id": "pet_ant_sobrenome",
+      "section": "pet_ant",
+      "label": "Beneficiário/a da petição anterior — Sobrenome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pet_ant_nome",
+      "section": "pet_ant",
+      "label": "Beneficiário/a da petição anterior — Nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pet_ant_meio",
+      "section": "pet_ant",
+      "label": "Beneficiário/a da petição anterior — Nome do meio",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pet_ant_local_cidade",
+      "section": "pet_ant",
+      "label": "Local onde a petição anterior foi apresentada — Cidade",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pet_ant_local_estado",
+      "section": "pet_ant",
+      "label": "Local onde a petição anterior foi apresentada — Estado (EUA)",
+      "type": "select",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pet_ant_data",
+      "section": "pet_ant",
+      "label": "Data em que a petição anterior foi apresentada (MM/DD/AAAA)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pet_ant_resultado",
+      "section": "pet_ant",
+      "label": "Resultado da petição anterior",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "pet_teve_anterior",
+        "equals": "sim"
+      },
+      "hint": "Ex.: aprovada, negada, retirada, ainda pendente. Se não souber o resultado exato, escreva o que você sabe e confirme com a equipe."
+    },
+    {
+      "id": "ass_leu_ingles",
+      "section": "assinatura",
+      "label": "Você leu (ou alguém leu para você) o formulário em inglês?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "leu_ingles",
+          "label": "Eu li em inglês e entendo o conteúdo"
+        },
+        {
+          "value": "leu_interprete",
+          "label": "Um intérprete me leu e eu entendi"
+        }
+      ],
+      "hint": "Se você não lê inglês fluentemente, um intérprete deve ter lido e traduzido cada pergunta e resposta para você antes de assinar. Nesse caso, responda que foi lido para você e preencha os dados do intérprete mais abaixo."
+    },
+    {
+      "id": "ass_idioma_interprete",
+      "section": "assinatura",
+      "label": "Idioma que o intérprete usou — se aplicável",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_leu_ingles",
+        "equals": "leu_interprete"
+      }
+    },
+    {
+      "id": "ass_tem_representante",
+      "section": "assinatura",
+      "label": "Você é representado/a por um advogado ou agente autorizado?",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "ass_representante_nome",
+      "section": "assinatura",
+      "label": "Nome do representante",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ass_tem_representante",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ass_telefone",
+      "section": "assinatura",
+      "label": "Telefone diurno do/a peticionário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ass_celular",
+      "section": "assinatura",
+      "label": "Celular do/a peticionário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ass_email",
+      "section": "assinatura",
+      "label": "E-mail do/a peticionário/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ass_data",
+      "section": "assinatura",
+      "label": "Data de assinatura (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "int_sobrenome",
+      "section": "interprete",
+      "label": "Intérprete — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_nome",
+      "section": "interprete",
+      "label": "Intérprete — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_empresa",
+      "section": "interprete",
+      "label": "Empresa/organização do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_rua",
+      "section": "interprete",
+      "label": "Endereço do/a intérprete — Rua",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_tipo_unidade",
+      "section": "interprete",
+      "label": "Tipo de unidade (intérprete)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "int_num_unidade",
+      "section": "interprete",
+      "label": "Número da unidade (intérprete)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_cidade",
+      "section": "interprete",
+      "label": "Cidade do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_estado",
+      "section": "interprete",
+      "label": "Estado (EUA) do/a intérprete",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "int_cep",
+      "section": "interprete",
+      "label": "ZIP Code do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_pais",
+      "section": "interprete",
+      "label": "País do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_provincia",
+      "section": "interprete",
+      "label": "Província do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_codigo_postal",
+      "section": "interprete",
+      "label": "Código postal do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_telefone",
+      "section": "interprete",
+      "label": "Telefone do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_email",
+      "section": "interprete",
+      "label": "E-mail do/a intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_idioma",
+      "section": "interprete",
+      "label": "Idioma interpretado",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "int_data_assinatura",
+      "section": "interprete",
+      "label": "Data da assinatura do/a intérprete (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "prep_sobrenome",
+      "section": "preparador",
+      "label": "Preparador/a — Sobrenome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_nome",
+      "section": "preparador",
+      "label": "Preparador/a — Nome",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_empresa",
+      "section": "preparador",
+      "label": "Empresa/organização do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_rua",
+      "section": "preparador",
+      "label": "Endereço do/a preparador/a — Rua",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_tipo_unidade",
+      "section": "preparador",
+      "label": "Tipo de unidade (preparador/a)",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "apt",
+          "label": "Apt"
+        },
+        {
+          "value": "ste",
+          "label": "Ste"
+        },
+        {
+          "value": "flr",
+          "label": "Flr"
+        }
+      ]
+    },
+    {
+      "id": "prep_num_unidade",
+      "section": "preparador",
+      "label": "Número da unidade (preparador/a)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_cidade",
+      "section": "preparador",
+      "label": "Cidade do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_estado",
+      "section": "preparador",
+      "label": "Estado (EUA) do/a preparador/a",
+      "type": "select",
+      "required": false
+    },
+    {
+      "id": "prep_cep",
+      "section": "preparador",
+      "label": "ZIP Code do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_pais",
+      "section": "preparador",
+      "label": "País do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_provincia",
+      "section": "preparador",
+      "label": "Província do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_codigo_postal",
+      "section": "preparador",
+      "label": "Código postal do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_telefone",
+      "section": "preparador",
+      "label": "Telefone do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_fax",
+      "section": "preparador",
+      "label": "Fax do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_email",
+      "section": "preparador",
+      "label": "E-mail do/a preparador/a",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "prep_data_assinatura",
+      "section": "preparador",
+      "label": "Data da assinatura do/a preparador/a (MM/DD/AAAA)",
+      "type": "date",
+      "required": false
+    }
+  ]
+}

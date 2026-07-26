@@ -1,0 +1,162 @@
+{
+  "_readme": "Mapa de campos 'núcleo de identidade' equivalentes entre formulários, usado pelo autofill entre formulários (ver app/wizard.py::_build_autofill). Cada chave canônica lista, por form_slug, o question_id do questionário daquele formulário que representa o MESMO campo para a MESMA pessoa (o titular da conta, sempre 'a pessoa imigrando' -- ver nota de papéis abaixo). Um form_slug ausente de um bloco significa que aquele formulário não coleta esse campo (confirmado lendo cada questionário, não assumido). i-539a está DELIBERADAMENTE fora deste mapa inteiro: seus campos descrevem um DEPENDENTE (uma pessoa diferente do titular da conta), então nenhum autofill cruza de/para ele -- ver app/wizard.py::add_dependent.",
+  "_role_note": "Para i-130, os campos usados são os do BENEFICIÁRIO (prefixo ben_ -- a pessoa que está imigrando), não do peticionário (pet_ -- o cidadão/residente que peticiona). Para i-130a (Informação Suplementar do Cônjuge Beneficiário), são os campos sb_ (mesma pessoa que o beneficiário do I-130). Essa escolha reflete o caso de uso mais comum desta ferramenta: a mesma pessoa que é beneficiária do I-130 é quem depois preenche I-485/I-765/I-131/I-751/N-400 para si mesma (ver os 7 pacotes reais em data/packages.json). Se o titular da conta for na verdade o peticionário (não o beneficiário), o autofill vai sugerir dados da pessoa errada -- por isso o UX escolhido é sempre 'pré-preenchido com aviso explícito, editável', nunca silencioso.",
+  "_scope_note_2026_07_26": "Expansão além do núcleo de identidade (2026-07-26): adicionados passaporte (número/país/validade), I-94, data e local da última entrada, e dois grupos de status DELIBERADAMENTE SEPARADOS -- 'classe_admissao_entrada' (o status com que a pessoa entrou pela última vez, ex.: ben_classe_admissao do i-130, classe_admissao do i-131 cujo hint diz \"admitido pela última vez\", ultima_entrada_status do i-765, i94_status_imigracao do i-485) vs 'status_atual_codigo' (o status de HOJE, que pode já ter mudado desde a entrada -- ex.: status_atual_imigracao do i-485, cujo próprio hint avisa \"não confundir com o status da sua última entrada, se já mudou desde então\"; status_atual do i-765; status_atual_codigo do i-539, que é literalmente o status atual sendo estendido/alterado). NUNCA fundir esses dois grupos -- fazer isso preencheria o status errado sempre que a pessoa já tiver mudado de status desde a entrada (caso comum: entrou como B-2 turista, depois mudou para F-1 estudante). i-90 tem seus próprios 'classe_admissao'/'porto_entrada', mas esses descrevem a admissão ORIGINAL como residente permanente (LPR), um fato diferente -- por isso i-90 foi deixado de fora de todos os grupos novos. i-864 (patrocinador financeiro) e i-539a (dependente) continuam fora do mapa inteiro pelo mesmo motivo de sempre: descrevem uma pessoa diferente do titular da conta.",
+
+  "nome_sobrenome": {
+    "i-130": "ben_sobrenome", "i-130a": "sb_sobrenome", "i-485": "nome_sobrenome",
+    "i-765": "nome_sobrenome", "i-751": "nome_sobrenome", "i-90": "nome_sobrenome",
+    "i-131": "nome_sobrenome", "i-539": "nome_sobrenome", "n-400": "nome_sobrenome"
+  },
+  "nome_nome": {
+    "i-130": "ben_nome", "i-130a": "sb_nome", "i-485": "nome_nome",
+    "i-765": "nome_nome", "i-751": "nome_nome", "i-90": "nome_nome",
+    "i-131": "nome_nome", "i-539": "nome_nome", "n-400": "nome_nome"
+  },
+  "nome_meio": {
+    "i-130": "ben_nome_meio", "i-130a": "sb_nome_meio", "i-485": "nome_meio",
+    "i-765": "nome_meio", "i-751": "nome_meio", "i-90": "nome_meio",
+    "i-131": "nome_meio", "i-539": "nome_meio", "n-400": "nome_meio"
+  },
+  "data_nascimento": {
+    "i-130": "ben_data_nascimento", "i-485": "data_nascimento", "i-765": "data_nascimento",
+    "i-751": "data_nascimento", "i-90": "data_nascimento", "i-131": "data_nascimento",
+    "i-539": "data_nascimento", "n-400": "data_nascimento"
+  },
+  "local_nasc_cidade": {
+    "i-130": "ben_cidade_nascimento", "i-485": "nascimento_cidade",
+    "i-765": "nascimento_cidade", "i-90": "cidade_nascimento"
+  },
+  "local_nasc_pais": {
+    "i-130": "ben_pais_nascimento", "i-485": "nascimento_pais", "i-765": "nascimento_pais",
+    "i-751": "pais_nascimento", "i-90": "pais_nascimento", "i-131": "pais_nascimento",
+    "i-539": "pais_nascimento", "n-400": "pais_nascimento"
+  },
+  "pais_cidadania": {
+    "i-485": "cidadania_pais", "i-765": "cidadania_pais1", "i-751": "pais_cidadania",
+    "i-131": "pais_cidadania", "i-539": "pais_cidadania"
+  },
+  "ssn": {
+    "i-130": "ben_ssn", "i-485": "ssn", "i-765": "ssn", "i-751": "ssn",
+    "i-90": "ssn", "i-131": "ssn", "i-539": "ssn", "n-400": "ssn"
+  },
+  "alien_number": {
+    "i-130": "ben_alien_number", "i-130a": "sb_alien_number", "i-485": "alien_number",
+    "i-765": "alien_number", "i-751": "alien_number", "i-90": "alien_number",
+    "i-539": "alien_number", "n-400": "alien_number"
+  },
+  "uscis_online": {
+    "i-130": "ben_uscis_online", "i-130a": "sb_uscis_online", "i-485": "uscis_online",
+    "i-765": "uscis_online", "i-751": "uscis_online", "i-90": "uscis_online",
+    "i-131": "uscis_online_account", "i-539": "uscis_online", "n-400": "uscis_online"
+  },
+  "sexo": {
+    "i-130": "ben_sexo", "i-485": "sexo", "i-765": "sexo", "i-90": "sexo",
+    "i-131": "sexo", "n-400": "sexo"
+  },
+  "estado_civil": {
+    "i-130": "ben_estado_civil", "i-485": "estado_civil", "i-765": "estado_civil",
+    "i-751": "estado_civil", "n-400": "estado_civil"
+  },
+  "telefone": {
+    "i-130": "ben_telefone", "i-130a": "sb_telefone", "i-485": "telefone",
+    "i-765": "telefone", "i-751": "telefone", "i-90": "telefone",
+    "i-131": "contato_telefone", "i-539": "telefone", "n-400": "telefone"
+  },
+  "celular": {
+    "i-130": "ben_celular", "i-130a": "sb_celular", "i-485": "celular",
+    "i-765": "celular", "i-751": "celular", "i-90": "celular",
+    "i-131": "contato_celular", "i-539": "celular", "n-400": "celular"
+  },
+  "email": {
+    "i-130": "ben_email", "i-130a": "sb_email", "i-485": "email",
+    "i-765": "email", "i-751": "email", "i-90": "email",
+    "i-131": "contato_email", "i-539": "email", "n-400": "email"
+  },
+
+  "endereco_rua": {
+    "i-130": "ben_end_rua", "i-130a": "sb_end_rua", "i-485": "end_correio_rua",
+    "i-765": "end_correio_rua", "i-751": "end_correio_rua", "i-90": "end_correio_rua",
+    "i-131": "endereco_correspondencia_rua", "i-539": "end_correio_rua", "n-400": "end_correio_rua"
+  },
+  "endereco_tipo_unidade": {
+    "i-130": "ben_end_tipo_unidade", "i-130a": "sb_end_tipo_unidade",
+    "i-485": "end_correio_tipo_unidade", "i-765": "end_correio_tipo_unidade",
+    "i-751": "end_correio_tipo_unidade", "i-90": "end_correio_tipo_unidade",
+    "i-131": "endereco_correspondencia_tipo_unidade", "i-539": "end_correio_tipo_unidade",
+    "n-400": "end_correio_tipo_unidade"
+  },
+  "endereco_num_unidade": {
+    "i-130": "ben_end_num_unidade", "i-130a": "sb_end_num_unidade",
+    "i-485": "end_correio_num_unidade", "i-765": "end_correio_num_unidade",
+    "i-751": "end_correio_num_unidade", "i-90": "end_correio_num_unidade",
+    "i-131": "endereco_correspondencia_numero_unidade", "i-539": "end_correio_num_unidade",
+    "n-400": "end_correio_numero"
+  },
+  "endereco_cidade": {
+    "i-130": "ben_end_cidade", "i-130a": "sb_end_cidade", "i-485": "end_correio_cidade",
+    "i-765": "end_correio_cidade", "i-751": "end_correio_cidade", "i-90": "end_correio_cidade",
+    "i-131": "endereco_correspondencia_cidade", "i-539": "end_correio_cidade",
+    "n-400": "end_correio_cidade"
+  },
+  "endereco_estado": {
+    "i-130": "ben_end_estado", "i-130a": "sb_end_estado", "i-485": "end_correio_estado",
+    "i-765": "end_correio_estado", "i-751": "end_correio_estado", "i-90": "end_correio_estado",
+    "i-131": "endereco_correspondencia_estado", "i-539": "end_correio_estado",
+    "n-400": "end_correio_estado"
+  },
+  "endereco_cep": {
+    "i-130": "ben_end_cep", "i-130a": "sb_end_cep", "i-485": "end_correio_cep",
+    "i-765": "end_correio_cep", "i-751": "end_correio_cep", "i-90": "end_correio_cep",
+    "i-131": "endereco_correspondencia_cep", "i-539": "end_correio_cep",
+    "n-400": "end_correio_cep"
+  },
+  "endereco_provincia": {
+    "i-130": "ben_end_provincia", "i-130a": "sb_end_provincia", "i-90": "end_correio_provincia",
+    "i-131": "endereco_correspondencia_provincia", "n-400": "end_correio_provincia"
+  },
+  "endereco_codigo_postal": {
+    "i-130": "ben_end_codigo_postal", "i-130a": "sb_end_codigo_postal",
+    "i-90": "end_correio_codigo_postal", "i-131": "endereco_correspondencia_codigo_postal_intl",
+    "n-400": "end_correio_codigo_postal"
+  },
+  "endereco_pais": {
+    "i-130": "ben_end_pais", "i-130a": "sb_end_pais", "i-90": "end_correio_pais",
+    "i-131": "endereco_correspondencia_pais", "n-400": "end_correio_pais"
+  },
+
+  "numero_i94": {
+    "i-130": "ben_i94", "i-485": "i94_numero", "i-765": "i94_numero",
+    "i-131": "numero_i94", "i-539": "numero_i94"
+  },
+  "data_ultima_entrada": {
+    "i-130": "ben_data_chegada", "i-485": "ultima_entrada_data",
+    "i-765": "ultima_entrada_data", "i-539": "data_ultima_entrada"
+  },
+  "ultima_entrada_local": {
+    "i-485": "ultima_entrada_cidade", "i-765": "ultima_entrada_local"
+  },
+  "classe_admissao_entrada": {
+    "i-130": "ben_classe_admissao", "i-131": "classe_admissao",
+    "i-765": "ultima_entrada_status", "i-485": "i94_status_imigracao"
+  },
+  "status_atual_codigo": {
+    "i-485": "status_atual_imigracao", "i-765": "status_atual", "i-539": "status_atual_codigo"
+  },
+  "status_atual_expiracao": {
+    "i-130": "ben_data_exp_status", "i-485": "status_atual_data_expiracao",
+    "i-539": "status_atual_expira", "i-131": "data_expiracao_i94"
+  },
+  "passaporte_numero": {
+    "i-130": "ben_passaporte_numero", "i-485": "passaporte_numero",
+    "i-765": "passaporte_numero", "i-539": "numero_passaporte"
+  },
+  "passaporte_pais_emissao": {
+    "i-130": "ben_passaporte_pais_emissao", "i-485": "passaporte_pais_emissao",
+    "i-765": "passaporte_pais_emissao", "i-539": "pais_emissao_passaporte"
+  },
+  "passaporte_expiracao": {
+    "i-130": "ben_passaporte_exp", "i-485": "passaporte_data_expiracao",
+    "i-765": "passaporte_data_expiracao", "i-539": "data_expiracao_passaporte"
+  }
+}

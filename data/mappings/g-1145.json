@@ -1,0 +1,10 @@
+{
+  "form": "G-1145",
+  "fields": [
+    {"pdf_field": "form1[0].#subform[0].LastName[0]", "type": "text", "question_id": "g1145_sobrenome"},
+    {"pdf_field": "form1[0].#subform[0].FirstName[0]", "type": "text", "question_id": "g1145_nome"},
+    {"pdf_field": "form1[0].#subform[0].MiddleName[0]", "type": "text", "question_id": "g1145_nome_meio"},
+    {"pdf_field": "form1[0].#subform[0].Email[0]", "type": "text", "question_id": "g1145_email"},
+    {"pdf_field": "form1[0].#subform[0].MobilePhoneNumber[0]", "type": "text", "question_id": "g1145_celular"}
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "form": "G-1450",
+  "title": "G-1450 — Autorização de Pagamento por Cartão de Crédito",
+  "description": "Formulário para pagar a taxa de protocolo por cartão de crédito, débito ou pré-pago quando você envia sua petição pelo correio (papel). Por segurança, esta ferramenta preenche apenas os dados de identificação, endereço de cobrança e valor — o número do cartão, o código de segurança (CVV) e a validade você mesmo escreve à mão no PDF impresso, logo antes de enviar. Isso evita que dados de cartão fiquem armazenados no nosso sistema.",
+  "sections": [
+    {"id": "requerente", "title": "Sobre o Requerente/Peticionário"},
+    {"id": "titular", "title": "Sobre o Titular do Cartão"},
+    {"id": "pagamento", "title": "Dados do Pagamento"}
+  ],
+  "questions": [
+    {"id": "g1450_sobrenome", "section": "requerente", "label": "Sobrenome do requerente, peticionário ou solicitante", "type": "text", "required": true},
+    {"id": "g1450_nome", "section": "requerente", "label": "Nome do requerente, peticionário ou solicitante", "type": "text", "required": true},
+    {"id": "g1450_nome_meio", "section": "requerente", "label": "Nome do meio (se houver)", "type": "text", "required": false},
+
+    {"id": "g1450_titular_sobrenome", "section": "titular", "label": "Sobrenome do titular do cartão (como aparece no cartão)", "type": "text", "required": true, "hint": "Pode ser diferente do requerente — por exemplo, quando um familiar paga a taxa."},
+    {"id": "g1450_titular_nome", "section": "titular", "label": "Nome do titular do cartão", "type": "text", "required": true},
+    {"id": "g1450_titular_nome_meio", "section": "titular", "label": "Nome do meio do titular (se houver)", "type": "text", "required": false},
+    {"id": "g1450_endereco_rua", "section": "titular", "label": "Endereço de cobrança do cartão — rua e número", "type": "text", "required": true},
+    {"id": "g1450_endereco_tipo", "section": "titular", "label": "Tipo de unidade no endereço de cobrança", "type": "radio", "required": false,
+      "options": [
+        {"value": "nenhum", "label": "Nenhum"},
+        {"value": "ste", "label": "Suite (STE)"},
+        {"value": "apt", "label": "Apartamento (APT)"},
+        {"value": "flr", "label": "Andar (FLR)"}
+      ]},
+    {"id": "g1450_endereco_numero_unidade", "section": "titular", "label": "Número da suite/apartamento/andar", "type": "text", "required": false, "show_if": {"question": "g1450_endereco_tipo", "equals": ["ste", "apt", "flr"]}},
+    {"id": "g1450_cidade", "section": "titular", "label": "Cidade do endereço de cobrança", "type": "text", "required": true},
+    {"id": "g1450_estado", "section": "titular", "label": "Estado do endereço de cobrança", "type": "select", "required": true},
+    {"id": "g1450_cep", "section": "titular", "label": "CEP (ZIP code) do endereço de cobrança", "type": "text", "required": true},
+    {"id": "g1450_telefone", "section": "titular", "label": "Telefone do titular do cartão", "type": "text", "required": true},
+    {"id": "g1450_email", "section": "titular", "label": "E-mail do titular do cartão", "type": "text", "required": true},
+
+    {"id": "g1450_bandeira", "section": "pagamento", "label": "Bandeira do cartão", "type": "radio", "required": true,
+      "options": [
+        {"value": "visa", "label": "Visa"},
+        {"value": "mastercard", "label": "MasterCard"},
+        {"value": "amex", "label": "American Express"},
+        {"value": "discover", "label": "Discover"}
+      ]},
+    {"id": "g1450_valor_autorizado", "section": "pagamento", "label": "Valor autorizado para pagamento (em dólares, sem centavos)", "type": "text", "required": true, "hint": "Confira o valor exato da taxa antes de preencher — este é o valor que será cobrado do cartão."}
+  ]
+}

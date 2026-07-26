@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ quiz_title }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+
+<p class="muted" style="margin-bottom:8px;"><span class="badge in_progress">{{ quiz_title }}</span></p>
+<div class="progress-wrap">
+  <div class="progress-bar">
+    <div class="progress-fill" style="width: {{ (answered_count / total * 100) if total else 0 }}%;"></div>
+  </div>
+  <span class="progress-label">{{ answered_count + 1 }} / {{ total }}</span>
+</div>
+
+<div class="card">
+  <h2>{{ question.label }}</h2>
+  {% if question.hint %}<p class="muted">{{ question.hint }}</p>{% endif %}
+
+  <form method="post" action="{{ url_for('eligibility.answer', slug=slug) }}">
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+
+    {% if question.type == "radio" %}
+      <ul class="option-list">
+        {% for opt in question.options %}
+        <li><label>
+          <input type="radio" name="{{ question.id }}" value="{{ opt.value }}"
+                 {% if loop.first %}required{% endif %}>
+          {{ opt.label }}
+        </label></li>
+        {% endfor %}
+      </ul>
+
+    {% elif question.type == "date" %}
+      <input type="text" name="{{ question.id }}" placeholder="MM/DD/YYYY"
+             pattern="(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])/\d{4}" required>
+    {% endif %}
+
+    <div style="margin-top:8px;">
+      <button type="submit" class="btn">{{ t('continue') }}</button>
+    </div>
+  </form>
+</div>
+
+<form method="post" action="{{ url_for('eligibility.restart', slug=slug) }}">
+  <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:0.85rem;padding:0;">
+    {{ icon('arrow-left', 13) }} {{ t('elig_restart') }}
+  </button>
+</form>
+{% endblock %}

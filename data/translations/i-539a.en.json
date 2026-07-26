@@ -1,0 +1,283 @@
+{
+  "title": "I-539A — Supplemental Information for Application to Extend/Change Nonimmigrant Status",
+  "sections": {
+    "sobre_principal": "About the Principal I-539 Applicant",
+    "info_pessoal": "Part 2 — Information About You (the Dependent)",
+    "info_adicional": "Part 3 — Additional Information About You",
+    "contato_assinatura": "Part 4 — Contact Information and Signature",
+    "interprete": "Part 5 — Interpreter (if applicable)",
+    "preparador": "Part 6 — Preparer (if someone filled this out for you)"
+  },
+  "questions": {
+    "principal_sobrenome": {
+      "label": "Last name of the principal I-539 applicant",
+      "hint": "The last name of the person who filed the main I-539 — whose extension/change of status request you're attached to as a dependent (for example, your spouse or a parent). Not your own last name."
+    },
+    "principal_nome": {
+      "label": "First name of the principal I-539 applicant",
+      "hint": "The first name of that same person — who filed the main I-539 (for example, your spouse or a parent). Not your own name."
+    },
+    "principal_nome_meio": {
+      "label": "Middle name of the principal applicant (if any)",
+      "hint": "The middle name of that same person (who filed the main I-539), not your own. Leave blank if they don't have a middle name or you don't know it."
+    },
+    "nome_sobrenome": {
+      "label": "Your last name"
+    },
+    "nome_nome": {
+      "label": "Your first name"
+    },
+    "nome_meio": {
+      "label": "Your middle name (if any)"
+    },
+    "data_nascimento": {
+      "label": "Date of birth"
+    },
+    "pais_nascimento": {
+      "label": "Country of birth"
+    },
+    "pais_cidadania": {
+      "label": "Country of citizenship/nationality"
+    },
+    "ssn": {
+      "label": "Social Security Number (SSN, if any)"
+    },
+    "numero_a": {
+      "label": "Alien Registration Number (A-Number, if any)",
+      "hint": "Format A-XXXXXXXXX. Leave blank if you've never received one."
+    },
+    "data_chegada": {
+      "label": "Date of your most recent entry into the United States",
+      "hint": "Find this date in your passport (entry stamp) or on your Form I-94 (i94.cbp.dhs.gov)."
+    },
+    "numero_i94": {
+      "label": "Your Form I-94 (Arrival-Departure Record) number",
+      "hint": "Look it up at i94.cbp.dhs.gov using your passport details if you don't have the number on hand."
+    },
+    "numero_passaporte": {
+      "label": "Your passport number"
+    },
+    "numero_documento_viagem": {
+      "label": "Travel document number (if different from passport)",
+      "hint": "Only fill this in if you entered with a document other than a passport (e.g., a refugee travel document, border crossing card). If you entered with a regular passport, leave it blank."
+    },
+    "pais_emissao_passaporte": {
+      "label": "Country that issued the passport/travel document"
+    },
+    "data_expiracao_passaporte": {
+      "label": "Passport/travel document expiration date"
+    },
+    "status_atual": {
+      "label": "Your current nonimmigrant status (exact USCIS code)",
+      "hint": "Use the exact official code, no hyphen (e.g. F2, B2, H4) — the form's internal field calls this \"New Status\" but it's actually your CURRENT status. Check your Form I-94 if unsure."
+    },
+    "data_expiracao_status": {
+      "label": "Expiration date of your current status"
+    },
+    "passaporte_atual_numero": {
+      "label": "CURRENT passport number (only if different from above)"
+    },
+    "passaporte_atual_expiracao": {
+      "label": "Current passport expiration date (only if different from above)"
+    },
+    "passaporte_atual_pais": {
+      "label": "Current passport issuing country (only if different from above)"
+    },
+    "uscis_online_account": {
+      "label": "Your USCIS online account number (if any)",
+      "hint": "12 digits, no dashes — found in your account at my.uscis.gov, if you have already created one."
+    },
+    "adicional_visto_imigrante": {
+      "label": "Are you an applicant for an immigrant visa?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Having a Green Card process underway can complicate a nonimmigrant extension/change of status request, depending on your current status. Answer honestly; check with the team about how this affects your specific case."
+    },
+    "adicional_peticao_ja_protocolada": {
+      "label": "Has an immigrant petition ever been filed for you?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This includes any Green Card petition (e.g., I-130, I-140) ever filed on your behalf, even if still pending or already denied. Check with the team about how this affects your I-539 request."
+    },
+    "adicional_i485_ja_protocolado": {
+      "label": "Have you ever filed a Form I-485 (Adjustment of Status)?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This refers to Form I-485 (Adjustment of Status/Green Card), not the current I-539. Answer honestly even if the I-485 was denied or withdrawn."
+    },
+    "adicional_ofensa_criminal": {
+      "label": "Have you ever been arrested or convicted of a crime since your last entry into the U.S.?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Include ANY arrest, charge, or conviction, even if it was dismissed, pardoned, or never resulted in a conviction — including things that seem minor (e.g., DUI). If you're unsure whether something counts, answer \"Yes\" and explain in the application; confirm with the team before submitting."
+    },
+    "adicional_tortura_genocidio": {
+      "label": "Have you ever ordered, incited, committed, assisted, or otherwise participated in acts of torture or genocide?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's mandatory screening questions about human rights violations (INA 212(a)(3)(E)), asked of everyone — it is not an accusation. Answer honestly; if in doubt, check with the team or an immigration attorney before submitting."
+    },
+    "adicional_matar": {
+      "label": "Have you ever ordered, incited, committed, assisted, or otherwise participated in killing any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant — it doesn't presume anything about you. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_lesao_grave": {
+      "label": "Have you ever ordered, incited, committed, assisted, or otherwise participated in intentionally and severely injuring any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_contato_sexual_forcado": {
+      "label": "Have you ever ordered, incited, committed, assisted, or otherwise participated in nonconsensual or forced sexual contact with any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_limitar_religiao": {
+      "label": "Have you ever ordered, incited, committed, assisted, or otherwise participated in limiting or denying anyone's ability to practice their religion?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_grupo_armado": {
+      "label": "Have you ever served in, been a member of, assisted, or participated in any military, paramilitary, police, rebel, guerrilla, militia, or other armed group?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about involvement with armed groups, asked of every applicant — this includes even mandatory military service in your home country. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_trabalho_prisao": {
+      "label": "Have you ever worked, volunteered, or served in any prison, detention facility, labor camp, or other place that involved detaining people?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_ameaca_arma": {
+      "label": "Have you ever been a member of, assisted, or participated in any group where you or others used or threatened to use weapons against any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_venda_armas": {
+      "label": "Have you ever sold, provided, or transported weapons, or helped someone do so, knowing or believing they'd be used against another person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A standard USCIS screening question about human rights violations asked of every applicant. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_treinamento_armas": {
+      "label": "Have you ever received weapons, paramilitary, or other military-type training?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This includes even mandatory military training (compulsory service) in your home country — it doesn't by itself mean anything is wrong. Answer honestly; if in doubt, check with the team or an immigration attorney."
+    },
+    "adicional_violou_status": {
+      "label": "Have you ever violated the terms of the nonimmigrant status you currently hold?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Examples: working without authorization, staying longer than allowed under a prior status, or not following your visa's conditions (e.g., studying while on a visitor status). If you're unsure, check with the team before submitting — leaving out a violation can be worse than disclosing it."
+    },
+    "adicional_processo_remocao": {
+      "label": "Are you currently in removal (deportation) proceedings?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "\"Removal proceedings\" means you've already received an official Notice to Appear in immigration court, not just having had some status issue in the past. If unsure, check with the team."
+    },
+    "adicional_ja_trabalhou_eua": {
+      "label": "Have you worked in the United States since you were last admitted or granted an extension/change of status?",
+      "hint": "If \"No,\" be ready to explain how you support yourself financially. Working without authorization (including remotely for a company in Brazil) can be considered unauthorized employment.",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "adicional_visitante_j1j2": {
+      "label": "Are you now, or have you ever been, a J-1 exchange visitor or a J-2 dependent of a J-1 exchange visitor?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Important: many J-1/J-2 visas carry a 2-year home-country residency requirement before you can change status inside the U.S. (INA 212(e)) — if this applies to you, this I-539 request may not be possible without a waiver. Check with the team before proceeding."
+    },
+    "contato_telefone": {
+      "label": "Your daytime phone number"
+    },
+    "contato_celular": {
+      "label": "Your mobile phone (if any)"
+    },
+    "contato_email": {
+      "label": "Your email (if any)"
+    },
+    "interprete_sobrenome": {
+      "label": "Interpreter's last name"
+    },
+    "interprete_nome": {
+      "label": "Interpreter's first name"
+    },
+    "interprete_empresa": {
+      "label": "Interpreter's business/organization (if any)"
+    },
+    "interprete_telefone": {
+      "label": "Interpreter's daytime phone number"
+    },
+    "interprete_celular": {
+      "label": "Interpreter's mobile phone (if any)"
+    },
+    "interprete_email": {
+      "label": "Interpreter's email (if any)"
+    },
+    "interprete_idioma": {
+      "label": "Language the interpreter is fluent in (besides English)"
+    },
+    "preparador_sobrenome": {
+      "label": "Preparer's last name"
+    },
+    "preparador_nome": {
+      "label": "Preparer's first name"
+    },
+    "preparador_empresa": {
+      "label": "Preparer's business/organization (if any)"
+    },
+    "preparador_telefone": {
+      "label": "Preparer's daytime phone number"
+    },
+    "preparador_celular": {
+      "label": "Preparer's mobile phone (if any)"
+    },
+    "preparador_email": {
+      "label": "Preparer's email (if any)"
+    }
+  }
+}

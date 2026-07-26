@@ -1,0 +1,40 @@
+{
+  "form": "I-134",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-134 (uscis.gov/i-134) e no mesmo padrão de documentos comprobatórios já usado no I-864 deste projeto, já que ambos são declarações de apoio financeiro. Sempre confira as instruções oficiais do formulário para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Based on the official Form I-134 instructions (uscis.gov/i-134) and the same supporting-document pattern already used for Form I-864 in this project, since both are financial support declarations. Always check the form's official instructions for your specific case before filing.",
+  "always": [
+    {"label": "Comprovante do seu status atual nos EUA (item 10 do formulário): cópia do Cartão de Residente Permanente (frente e verso), passaporte americano, certidão de nascimento/naturalização americana, ou documento equivalente ao status que você marcou", "label_en": "Proof of your current status in the U.S. (Item 10 of the form): copy of your Permanent Resident Card (front and back), U.S. passport, U.S. birth/naturalization certificate, or the document matching the status you checked"},
+    {"label": "Comprovante de renda: declaração de imposto de renda federal (Federal tax return) do ano mais recente, incluindo W-2s e 1099s — ou comprovação de que não era obrigado a declarar", "label_en": "Proof of income: federal income tax return for the most recent tax year, including W-2s and 1099s — or evidence that you were not required to file"},
+    {"label": "Carta do empregador atual confirmando cargo, data de início e salário — ou contracheques recentes (se empregado)", "label_en": "Letter from your current employer confirming position, start date, and salary — or recent pay stubs (if employed)"}
+  ],
+  "rules": [
+    {
+      "questions": ["sponsor_situacao_emprego"],
+      "equals": "SE",
+      "documents": [
+        {"label": "Anexo (Schedule) C, D, E ou F da sua declaração de imposto de renda mais recente, comprovando a renda do seu negócio", "label_en": "Schedule C, D, E, or F from your most recent federal income tax return, showing your business income"}
+      ]
+    },
+    {
+      "questions": ["ativo1_tipo", "ativo2_tipo", "ativo3_tipo", "ativo4_tipo", "ativo5_tipo", "ativo6_tipo"],
+      "equals_any": ["Checking - Bank Account", "Savings - Bank Account", "Annuities", "Stocks, Bonds, Certificates of Deposit", "Retirement or Educational Account", "Real Estate Holdings", "Personal Property (net value)"],
+      "documents": [
+        {"label": "Comprovante de cada ativo declarado no Item 17 (ex.: extrato bancário recente, escritura de imóvel, extrato de investimentos) mostrando o valor informado", "label_en": "Evidence of each asset declared in Item 17 (e.g., recent bank statement, property deed, investment account statement) showing the value reported"}
+      ]
+    },
+    {
+      "questions": ["sponsor_quantos_outros_dependentes"],
+      "equals_any": ["1", "2", "3", "4"],
+      "documents": [
+        {"label": "Se algum dependente listado no Item 15 depende de você financeiramente, um documento simples que comprove o parentesco (certidão de nascimento/casamento) pode ser solicitado", "label_en": "If any dependent listed in Item 15 relies on you financially, a simple document proving the relationship (birth/marriage certificate) may be requested"}
+      ]
+    },
+    {
+      "questions": ["sponsor_usou_preparador"],
+      "equals": "sim",
+      "documents": [
+        {"label": "Se um(a) advogado(a) ajudou a preparar esta declaração, inclua o Formulário G-28 (Notice of Entry of Appearance) assinado", "label_en": "If an attorney helped prepare this declaration, include the signed Form G-28 (Notice of Entry of Appearance)"}
+      ]
+    }
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "_note": "Pacotes = como o negócio realmente vende os serviços, agrupando o formulário principal com os formulários administrativos que quase sempre o acompanham (G-1145, G-1450/G-1650). Cada item 'form' referencia um form_slug real e preenchível pelo motor existente (data/questionnaires|mappings/<slug>.json). 'payment_choice' oferece G-1450 (cartão) OU G-1650 (ACH) -- nunca os dois. 'repeatable' é só para I-539A (um por dependente incluído). 'external' é um passo fora do nosso sistema (ex: DS-260, que é preenchido no site do Departamento de Estado, não da USCIS). Convenção bilíngue: campo base (name/description/label) = português, campo com sufixo _en = inglês -- mesma convenção de data/service_pages/*.json.",
+  "packages": [
+    {
+      "slug": "gc-aos",
+      "name": "Green Card — Ajuste de Status (AOS)",
+      "name_en": "Green Card — Adjustment of Status (AOS)",
+      "description": "Pacote completo para se tornar residente permanente sem sair dos Estados Unidos: petição familiar, ajuste de status, autorização de trabalho e de viagem, e a declaração de suporte financeiro.",
+      "description_en": "The complete package to become a permanent resident without leaving the United States: family petition, adjustment of status, work and travel authorization, and the affidavit of support.",
+      "eligibility_quiz": "gc-aos",
+      "items": [
+        {"type": "form", "slug": "i-130", "note_pt": "Petição familiar que comprova o vínculo com quem está patrocinando."},
+        {"type": "form", "slug": "i-130a", "note_pt": "Obrigatório quando o beneficiário é cônjuge."},
+        {"type": "form", "slug": "i-485", "note_pt": "O pedido de ajuste de status em si — o \"green card\"."},
+        {"type": "form", "slug": "i-765", "note_pt": "Autorização de trabalho enquanto o I-485 está pendente."},
+        {"type": "form", "slug": "i-131", "note_pt": "Autorização de viagem (Advance Parole) enquanto o I-485 está pendente."},
+        {"type": "form", "slug": "i-864", "note_pt": "Declaração de suporte financeiro do patrocinador."},
+        {"type": "form", "slug": "g-1145", "optional": true, "note_pt": "Opcional — notificação por e-mail/SMS quando a USCIS aceitar o protocolo em papel."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa se for protocolar por papel."}
+      ]
+    },
+    {
+      "slug": "gc-consular",
+      "name": "Green Card — Processamento Consular",
+      "name_en": "Green Card — Consular Processing",
+      "description": "Pacote para quem vai se tornar residente permanente pelo consulado americano no exterior, em vez de ajustar status dentro dos EUA.",
+      "description_en": "The package for those becoming a permanent resident through a U.S. consulate abroad, instead of adjusting status inside the U.S.",
+      "eligibility_quiz": "gc-consular",
+      "items": [
+        {"type": "form", "slug": "i-130", "note_pt": "Petição familiar que comprova o vínculo com quem está patrocinando."},
+        {"type": "form", "slug": "i-864", "note_pt": "Declaração de suporte financeiro do patrocinador."},
+        {"type": "external", "name": "DS-260", "note_pt": "Preenchido diretamente no site do Departamento de Estado (ceac.state.gov) depois que o National Visa Center processar o caso — é um formulário do Departamento de Estado, não da USCIS, fora do escopo desta ferramenta."},
+        {"type": "form", "slug": "g-1145", "optional": true, "note_pt": "Opcional — notificação por e-mail/SMS quando a USCIS aceitar o protocolo em papel."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa do I-130 se for protocolar por papel."}
+      ]
+    },
+    {
+      "slug": "gc-roc",
+      "name": "Green Card — Remoção de Condições (ROC)",
+      "name_en": "Green Card — Removal of Conditions (ROC)",
+      "description": "Pacote para remover as condições da residência permanente concedida por casamento com menos de 2 anos.",
+      "description_en": "The package to remove the conditions on permanent residency granted through a marriage under 2 years old.",
+      "eligibility_quiz": "gc-roc",
+      "items": [
+        {"type": "form", "slug": "i-751"},
+        {"type": "form", "slug": "g-1145", "optional": true, "note_pt": "Opcional — notificação por e-mail/SMS quando a USCIS aceitar o protocolo em papel."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa se for protocolar por papel."}
+      ]
+    },
+    {
+      "slug": "cidadania",
+      "name": "Cidadania (N-400)",
+      "name_en": "Citizenship (N-400)",
+      "description": "Pacote para solicitar a naturalização e se tornar cidadão americano.",
+      "description_en": "The package to apply for naturalization and become a U.S. citizen.",
+      "eligibility_quiz": "cidadania",
+      "items": [
+        {"type": "form", "slug": "n-400"},
+        {"type": "form", "slug": "g-1145", "optional": true, "note_pt": "Opcional — notificação por e-mail/SMS quando a USCIS aceitar o protocolo em papel."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa se for protocolar por papel."}
+      ]
+    },
+    {
+      "slug": "gc-replacement",
+      "name": "Green Card — Substituição ou Renovação",
+      "name_en": "Green Card Replacement or Renewal",
+      "description": "Pacote para substituir ou renovar o Cartão de Residente Permanente.",
+      "description_en": "The package to replace or renew the Permanent Resident Card.",
+      "items": [
+        {"type": "form", "slug": "i-90"},
+        {"type": "form", "slug": "g-1145", "optional": true, "note_pt": "Opcional — notificação por e-mail/SMS quando a USCIS aceitar o protocolo em papel."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa se for protocolar por papel."}
+      ]
+    },
+    {
+      "slug": "i539-eos",
+      "name": "I-539 — Extensão de Status (EOS)",
+      "name_en": "I-539 — Extension of Status (EOS)",
+      "description": "Pacote para estender a permanência no seu status de não imigrante atual.",
+      "description_en": "The package to extend your stay in your current nonimmigrant status.",
+      "items": [
+        {"type": "form", "slug": "i-539", "note_pt": "Ao responder o questionário, selecione o serviço \"Extensão de Status (EOS)\" na primeira pergunta."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa se for protocolar por papel."},
+        {"type": "repeatable", "slug": "i-539a", "label": "I-539A — um formulário para cada dependente adicional incluído no seu pedido", "label_en": "I-539A — one form for each additional dependent included in your application"}
+      ]
+    },
+    {
+      "slug": "i539-cos",
+      "name": "I-539 — Mudança de Status (Estudante ou Turista)",
+      "name_en": "I-539 — Change of Status (Student or Visitor)",
+      "description": "Pacote para mudar do seu status atual para estudante (F-1), dependente de estudante (F-2), ou visitante (B-2).",
+      "description_en": "The package to change from your current status to student (F-1), student dependent (F-2), or visitor (B-2).",
+      "items": [
+        {"type": "form", "slug": "i-539", "note_pt": "Ao responder o questionário, selecione Mudança de Status para F-1, F-2 ou B-2 na primeira pergunta, conforme o seu caso."},
+        {"type": "payment_choice", "options": ["g-1450", "g-1650"], "note_pt": "Escolha como pagar a taxa se for protocolar por papel."},
+        {"type": "repeatable", "slug": "i-539a", "label": "I-539A — um formulário para cada dependente adicional incluído no seu pedido", "label_en": "I-539A — one form for each additional dependent included in your application"}
+      ]
+    }
+  ]
+}

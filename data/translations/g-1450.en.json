@@ -1,0 +1,38 @@
+{
+  "title": "G-1450 — Authorization for Credit Card Transactions",
+  "sections": {
+    "requerente": "About the Applicant/Petitioner",
+    "titular": "About the Cardholder",
+    "pagamento": "Payment Details"
+  },
+  "questions": {
+    "g1450_sobrenome": {"label": "Last name of the applicant, petitioner, or requester"},
+    "g1450_nome": {"label": "First name of the applicant, petitioner, or requester"},
+    "g1450_nome_meio": {"label": "Middle name (if any)"},
+
+    "g1450_titular_sobrenome": {"label": "Cardholder's last name (as it appears on the card)", "hint": "Can be different from the applicant — for example, when a family member pays the fee."},
+    "g1450_titular_nome": {"label": "Cardholder's first name"},
+    "g1450_titular_nome_meio": {"label": "Cardholder's middle name (if any)"},
+    "g1450_endereco_rua": {"label": "Billing address — street and number"},
+    "g1450_endereco_tipo": {"label": "Unit type in the billing address", "options": {
+      "nenhum": "None",
+      "ste": "Suite (STE)",
+      "apt": "Apartment (APT)",
+      "flr": "Floor (FLR)"
+    }},
+    "g1450_endereco_numero_unidade": {"label": "Suite/apartment/floor number"},
+    "g1450_cidade": {"label": "Billing address city"},
+    "g1450_estado": {"label": "Billing address state"},
+    "g1450_cep": {"label": "Billing address ZIP code"},
+    "g1450_telefone": {"label": "Cardholder's phone number"},
+    "g1450_email": {"label": "Cardholder's email"},
+
+    "g1450_bandeira": {"label": "Card brand", "options": {
+      "visa": "Visa",
+      "mastercard": "MasterCard",
+      "amex": "American Express",
+      "discover": "Discover"
+    }},
+    "g1450_valor_autorizado": {"label": "Authorized payment amount (in dollars, no cents)", "hint": "Double-check the exact fee amount before filling this in — it's what will be charged to the card."}
+  }
+}

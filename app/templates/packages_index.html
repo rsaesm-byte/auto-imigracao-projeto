@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ t('packages_index_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:32px 28px 36px;">
+  <p class="eyebrow">{{ t('packages_index_eyebrow') }}</p>
+  <h1 class="hero-title" style="font-size:2rem;">{{ t('packages_index_title') }}</h1>
+  <p class="hero-subtitle">{{ t('packages_index_subtitle') }}</p>
+</section>
+
+<div class="services-grid">
+  {% for pkg in packages %}
+  <div class="card service-card">
+    <h2 class="service-card-name">{{ pkg.name }}</h2>
+    <p class="muted service-card-desc">{{ pkg.description }}</p>
+    <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_includes') }}</p>
+    <p class="muted" style="font-size:0.85rem;margin-bottom:16px;">{{ pkg.form_names|join(" · ") }}</p>
+    <a class="btn secondary" href="{{ url_for('packages.detail', slug=pkg.slug) }}">{{ t('packages_cta_view') }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

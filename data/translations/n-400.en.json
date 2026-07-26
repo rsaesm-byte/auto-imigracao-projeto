@@ -1,0 +1,1372 @@
+{
+  "title": "Application for Naturalization — N-400",
+  "sections": {
+    "elegibilidade": "Part 1 — Information About Your Eligibility",
+    "identificacao": "Part 2 — Information About You",
+    "biografico": "Part 3 — Biographic Information",
+    "residencia": "Part 4 — Information About Your Residence",
+    "marital": "Part 5 — Marital History",
+    "filhos": "Part 6 — Information About Your Children",
+    "emprego": "Part 7 — Employment and Schools (Last 5 Years)",
+    "viagens": "Part 8 — Time Outside the United States",
+    "info_adicional": "Part 9 — Additional Information About You",
+    "crimes": "Part 9 — Details of Crimes or Offenses (if applicable)",
+    "reducao_taxa": "Part 10 — Request for a Fee Reduction",
+    "contato_assinatura": "Part 11 — Applicant's Contact Information, Certification, and Signature",
+    "interprete": "Part 12 — Interpreter (if applicable)",
+    "preparador": "Part 13 — Preparer (if applicable)",
+    "info_extra": "Part 14 — Additional Information (extra space)"
+  },
+  "questions": {
+    "base_elegibilidade": {
+      "label": "Basis for your eligibility for naturalization",
+      "options": {
+        "geral": "General Provision (5 years as a permanent resident)",
+        "conjuge_usc": "Spouse of a U.S. Citizen (3 years)",
+        "vawa": "Spouse, Former Spouse, or Child of a U.S. Citizen under VAWA",
+        "conjuge_usc_exterior": "Spouse of a U.S. Citizen employed abroad in a qualifying capacity",
+        "militar_hostilidades": "Military Service during Hostilities",
+        "militar_1ano": "At Least 1 Year of Honorable Military Service",
+        "outro": "Other reason not listed above"
+      },
+      "hint": "Choose whichever reason applies to you: \"General Provision\" = you've been a permanent resident for at least 5 years; \"Spouse of a U.S. Citizen\" = you've been a permanent resident for at least 3 years AND married to, and living with, a U.S. citizen spouse that whole time; \"VAWA\" = you are (or were) the spouse, former spouse, or child of a U.S. citizen and qualify under the Violence Against Women Act — unlike the category above, this does NOT require you to still be married to or living with that person, since it exists for people who experienced abuse; \"Spouse of a U.S. Citizen employed abroad\" = your U.S. citizen spouse works outside the U.S. for the U.S. government or another qualifying organization; \"Military Service during Hostilities\" = you served in the U.S. armed forces during an officially designated period of war or hostilities — no minimum time as a permanent resident is required in this case; \"At Least 1 Year of Honorable Military Service\" = you served at least 1 year in the U.S. armed forces at any time, with an honorable discharge. If you're not sure which applies, confirm with the team before continuing — the right category changes what documents are required and the filing-window rules."
+    },
+    "base_elegibilidade_outro_explicacao": {
+      "label": "Explain the other basis of eligibility"
+    },
+    "base_elegibilidade_escritorio_campo": {
+      "label": "USCIS field office for the interview (if you live abroad)",
+      "hint": "Only applies if you live outside the United States at the time of filing — enter the USCIS office abroad (or in the U.S.) where you'd prefer to be interviewed."
+    },
+    "alien_number": {
+      "label": "Alien Registration Number (A-Number)"
+    },
+    "nome_sobrenome": {
+      "label": "Family Name (Last Name)"
+    },
+    "nome_nome": {
+      "label": "Given Name (First Name)"
+    },
+    "nome_meio": {
+      "label": "Middle Name"
+    },
+    "nome_outro_usado_sobrenome": {
+      "label": "Other Name Used (1) — Family Name"
+    },
+    "nome_outro_usado_nome": {
+      "label": "Other Name Used (1) — Given Name"
+    },
+    "nome_outro_usado_meio": {
+      "label": "Other Name Used (1) — Middle Name"
+    },
+    "nome_outro_usado2_sobrenome": {
+      "label": "Other Name Used (2) — Family Name"
+    },
+    "nome_outro_usado2_nome": {
+      "label": "Other Name Used (2) — Given Name"
+    },
+    "nome_outro_usado2_meio": {
+      "label": "Other Name Used (2) — Middle Name"
+    },
+    "nome_mudou": {
+      "label": "Would you like to legally change your name as part of naturalization?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "nome_novo_sobrenome": {
+      "label": "New Name — Family Name"
+    },
+    "nome_novo_nome": {
+      "label": "New Name — Given Name"
+    },
+    "nome_novo_meio": {
+      "label": "New Name — Middle Name"
+    },
+    "uscis_online": {
+      "label": "USCIS Online Account Number, if any"
+    },
+    "sexo": {
+      "label": "Sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "data_nascimento": {
+      "label": "Date of Birth (MM/DD/YYYY)"
+    },
+    "data_tornou_residente": {
+      "label": "Date you became a Permanent Resident (MM/DD/YYYY)"
+    },
+    "pais_nascimento": {
+      "label": "Country of Birth"
+    },
+    "pais_nacionalidade": {
+      "label": "Country of Citizenship or Nationality"
+    },
+    "pais_cidadao_antes_18": {
+      "label": "Was one of your parents a U.S. citizen before you turned 18?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "This could give you automatic (\"derived\") citizenship instead of needing this naturalization application — if the answer is Yes, it's worth confirming with the team before proceeding, since it could change the whole process."
+    },
+    "tem_deficiencia": {
+      "label": "Do you have any physical, developmental, or mental impairment that prevents you from demonstrating your knowledge of English/civics?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "If you have a disability that prevents you from learning English and/or the civics material, you may qualify for a waiver of those tests using Form N-648 (certified by a licensed doctor or psychologist). Ask the team if this might apply to you."
+    },
+    "ssa_quer_cartao": {
+      "label": "Would you like the Social Security Administration to issue you a card or update your existing card upon naturalization?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "ssn": {
+      "label": "Social Security Number (SSN)"
+    },
+    "ssa_consentimento_divulgacao": {
+      "label": "Do you authorize the disclosure of information to the Social Security Administration (SSA)?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "etnia": {
+      "label": "Ethnicity",
+      "options": {
+        "nao_hispanico": "Not Hispanic or Latino",
+        "hispanico": "Hispanic or Latino"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Race: American Indian or Alaska Native",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Race: Native Hawaiian or Other Pacific Islander",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_negro": {
+      "label": "Race: Black or African American",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Race: Asian",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "raca_branco": {
+      "label": "Race: White",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "altura_pes": {
+      "label": "Height — feet"
+    },
+    "altura_polegadas": {
+      "label": "Height — inches"
+    },
+    "peso": {
+      "label": "Weight in pounds (lb)",
+      "hint": "Numbers only, e.g. 155. It will be split automatically into the PDF's 3 digit boxes."
+    },
+    "cor_olhos": {
+      "label": "Eye Color",
+      "options": {
+        "castanho": "Brown",
+        "azul": "Blue",
+        "verde": "Green",
+        "avela": "Hazel",
+        "cinza": "Gray",
+        "preto": "Black",
+        "rosa": "Pink",
+        "marrom_avermelhado": "Maroon",
+        "outro": "Other/Unknown"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Hair Color",
+      "options": {
+        "careca": "Bald (No Hair)",
+        "arenoso": "Sandy",
+        "ruivo": "Red",
+        "branco": "White",
+        "cinza": "Gray",
+        "loiro": "Blond",
+        "castanho": "Brown",
+        "preto": "Black",
+        "outro": "Other/Unknown"
+      }
+    },
+    "end_fisico_cuidados_de": {
+      "label": "Current Physical Address — In Care Of Name (if applicable)"
+    },
+    "end_fisico_rua": {
+      "label": "Current Physical Address — Street Number and Name"
+    },
+    "end_fisico_numero": {
+      "label": "Current Physical Address — Number"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Current Physical Address — Unit Type (if applicable)",
+      "options": {
+        "flr": "Flr",
+        "ste": "Ste",
+        "apt": "Apt"
+      }
+    },
+    "end_fisico_cidade": {
+      "label": "Current Physical Address — City"
+    },
+    "end_fisico_estado": {
+      "label": "Current Physical Address — State (abbreviation)"
+    },
+    "end_fisico_cep": {
+      "label": "Current Physical Address — ZIP Code"
+    },
+    "end_fisico_provincia": {
+      "label": "Current Physical Address — Province (if outside the U.S.)"
+    },
+    "end_fisico_codigo_postal": {
+      "label": "Current Physical Address — Postal Code (if outside the U.S.)"
+    },
+    "end_fisico_pais": {
+      "label": "Current Physical Address — Country"
+    },
+    "end_fisico_data_inicio": {
+      "label": "You have lived at this address since (MM/DD/YYYY)"
+    },
+    "end_fisico_data_fim": {
+      "label": "Until (MM/DD/YYYY, leave blank if current)"
+    },
+    "end_fisico_igual_correio": {
+      "label": "Is your current physical address also your mailing address?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "end_correio_cuidados_de": {
+      "label": "Mailing Address — In Care Of Name (if applicable)"
+    },
+    "end_correio_rua": {
+      "label": "Mailing Address — Street Number and Name"
+    },
+    "end_correio_numero": {
+      "label": "Mailing Address — Number"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Mailing Address — Unit Type",
+      "options": {
+        "flr": "Flr",
+        "ste": "Ste",
+        "apt": "Apt"
+      }
+    },
+    "end_correio_cidade": {
+      "label": "Mailing Address — City"
+    },
+    "end_correio_estado": {
+      "label": "Mailing Address — State (abbreviation)"
+    },
+    "end_correio_cep": {
+      "label": "Mailing Address — ZIP Code"
+    },
+    "end_correio_provincia": {
+      "label": "Mailing Address — Province (if outside the U.S.)"
+    },
+    "end_correio_codigo_postal": {
+      "label": "Mailing Address — Postal Code (if outside the U.S.)"
+    },
+    "end_correio_pais": {
+      "label": "Mailing Address — Country"
+    },
+    "residencia1_rua": {
+      "label": "Address History (last 5 years) — Address 1 — Street Number and Name"
+    },
+    "residencia1_cidade": {
+      "label": "Address History — Address 1 — City"
+    },
+    "residencia1_estado": {
+      "label": "Address History — Address 1 — State/Province"
+    },
+    "residencia1_cep": {
+      "label": "Address History — Address 1 — ZIP/Postal Code"
+    },
+    "residencia1_pais": {
+      "label": "Address History — Address 1 — Country"
+    },
+    "residencia1_data_inicio": {
+      "label": "Address History — Address 1 — From (MM/DD/YYYY)",
+      "hint": "Last 5 years of history (or 3 years, if your eligibility is based on marriage to a citizen) — list every address where you lived during that period, starting with the most recent."
+    },
+    "residencia2_rua": {
+      "label": "Address History — Address 2 — Street Number and Name"
+    },
+    "residencia2_cidade": {
+      "label": "Address History — Address 2 — City"
+    },
+    "residencia2_estado": {
+      "label": "Address History — Address 2 — State/Province"
+    },
+    "residencia2_cep": {
+      "label": "Address History — Address 2 — ZIP/Postal Code"
+    },
+    "residencia2_pais": {
+      "label": "Address History — Address 2 — Country"
+    },
+    "residencia2_data_inicio": {
+      "label": "Address History — Address 2 — From (MM/DD/YYYY)"
+    },
+    "residencia2_data_fim": {
+      "label": "Address History — Address 2 — To (MM/DD/YYYY)"
+    },
+    "residencia3_rua": {
+      "label": "Address History — Address 3 — Street Number and Name"
+    },
+    "residencia3_cidade": {
+      "label": "Address History — Address 3 — City"
+    },
+    "residencia3_estado": {
+      "label": "Address History — Address 3 — State/Province"
+    },
+    "residencia3_cep": {
+      "label": "Address History — Address 3 — ZIP/Postal Code"
+    },
+    "residencia3_pais": {
+      "label": "Address History — Address 3 — Country"
+    },
+    "residencia3_data_inicio": {
+      "label": "Address History — Address 3 — From (MM/DD/YYYY)"
+    },
+    "residencia3_data_fim": {
+      "label": "Address History — Address 3 — To (MM/DD/YYYY)"
+    },
+    "estado_civil": {
+      "label": "Current Marital Status",
+      "options": {
+        "divorciado": "Divorced",
+        "solteiro": "Single, Never Married",
+        "viuvo": "Widowed",
+        "casado": "Married",
+        "anulado": "Marriage Annulled",
+        "separado": "Separated"
+      }
+    },
+    "vezes_casado": {
+      "label": "How many times have you been married?",
+      "hint": "Count every marriage you've ever had, including ones that ended in divorce, annulment, or a spouse's death — not just your current one."
+    },
+    "conjuge_militar": {
+      "label": "If married, is your spouse a current member of the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "conjuge_sobrenome": {
+      "label": "Current Spouse — Family Name"
+    },
+    "conjuge_nome": {
+      "label": "Current Spouse — Given Name"
+    },
+    "conjuge_meio": {
+      "label": "Current Spouse — Middle Name"
+    },
+    "conjuge_data_nascimento": {
+      "label": "Current Spouse — Date of Birth (MM/DD/YYYY)"
+    },
+    "data_casamento": {
+      "label": "Date you married your current spouse (MM/DD/YYYY)"
+    },
+    "conjuge_endereco_igual": {
+      "label": "Is your spouse's current physical address the same as yours?",
+      "options": {
+        "nao": "No (provide the address in Part 14)",
+        "sim": "Yes"
+      }
+    },
+    "conjuge_quando_ficou_cidadao": {
+      "label": "When did your spouse become a U.S. citizen?",
+      "options": {
+        "nascimento": "By birth in the United States",
+        "outro": "Other way (naturalization)"
+      },
+      "hint": "Only matters if your eligibility is based on \"3 years married to a citizen\" — in that case, your spouse needs to have been a U.S. citizen for at least 3 full years as of the date you file this application."
+    },
+    "conjuge_data_naturalizacao": {
+      "label": "Date your spouse became a citizen (MM/DD/YYYY)"
+    },
+    "conjuge_alien_number": {
+      "label": "Current spouse's A-Number, if any"
+    },
+    "conjuge_vezes_casado": {
+      "label": "How many times has your current spouse been married?"
+    },
+    "conjuge_empregador_atual": {
+      "label": "Spouse's current employer or company"
+    },
+    "total_filhos_menores": {
+      "label": "Total number of children under 18 years old",
+      "hint": "Count all your living children under 18, biological or adopted — even if they don't live with you or depend on you financially."
+    },
+    "filho1_nome": {
+      "label": "Child 1 — Full Name"
+    },
+    "filho1_data_nascimento": {
+      "label": "Child 1 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho1_residencia": {
+      "label": "Child 1 — Does the child live with you?",
+      "options": {
+        "resides with me": "Lives with me",
+        "does not reside with me": "Does not live with me",
+        "unknown/missing": "Unknown/missing"
+      }
+    },
+    "filho1_relacao": {
+      "label": "Child 1 — Relationship (Select one)",
+      "options": {
+        "biological son or daughter": "Biological son or daughter",
+        "stepchild": "Stepchild",
+        "legally adopted son or daughter": "Legally adopted son or daughter"
+      }
+    },
+    "filho1_prestando_suporte": {
+      "label": "Child 1 — Do you provide financial support?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "filho2_nome": {
+      "label": "Child 2 — Full Name"
+    },
+    "filho2_data_nascimento": {
+      "label": "Child 2 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho2_residencia": {
+      "label": "Child 2 — Does the child live with you?",
+      "options": {
+        "resides with me": "Lives with me",
+        "does not reside with me": "Does not live with me",
+        "unknown/missing": "Unknown/missing"
+      }
+    },
+    "filho2_relacao": {
+      "label": "Child 2 — Relationship (Select one)",
+      "options": {
+        "biological son or daughter": "Biological son or daughter",
+        "stepchild": "Stepchild",
+        "legally adopted son or daughter": "Legally adopted son or daughter"
+      }
+    },
+    "filho2_prestando_suporte": {
+      "label": "Child 2 — Do you provide financial support?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "filho3_nome": {
+      "label": "Child 3 — Full Name"
+    },
+    "filho3_data_nascimento": {
+      "label": "Child 3 — Date of Birth (MM/DD/YYYY)"
+    },
+    "filho3_residencia": {
+      "label": "Child 3 — Does the child live with you?",
+      "options": {
+        "resides with me": "Lives with me",
+        "does not reside with me": "Does not live with me",
+        "unknown/missing": "Unknown/missing"
+      }
+    },
+    "filho3_relacao": {
+      "label": "Child 3 — Relationship (Select one)",
+      "options": {
+        "biological son or daughter": "Biological son or daughter",
+        "stepchild": "Stepchild",
+        "legally adopted son or daughter": "Legally adopted son or daughter"
+      }
+    },
+    "filho3_prestando_suporte": {
+      "label": "Child 3 — Do you provide financial support?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "emprego1_nome": {
+      "label": "Employment/School 1 (most recent) — Employer/School Name"
+    },
+    "emprego1_ocupacao": {
+      "label": "Employment/School 1 — Occupation or Field of Study"
+    },
+    "emprego1_cidade": {
+      "label": "Employment/School 1 — City"
+    },
+    "emprego1_estado": {
+      "label": "Employment/School 1 — State/Province"
+    },
+    "emprego1_cep": {
+      "label": "Employment/School 1 — ZIP/Postal Code"
+    },
+    "emprego1_pais": {
+      "label": "Employment/School 1 — Country"
+    },
+    "emprego1_data_inicio": {
+      "label": "Employment/School 1 — From (MM/DD/YYYY)"
+    },
+    "emprego2_nome": {
+      "label": "Employment/School 2 — Employer/School Name"
+    },
+    "emprego2_ocupacao": {
+      "label": "Employment/School 2 — Occupation or Field of Study"
+    },
+    "emprego2_cidade": {
+      "label": "Employment/School 2 — City"
+    },
+    "emprego2_estado": {
+      "label": "Employment/School 2 — State/Province"
+    },
+    "emprego2_cep": {
+      "label": "Employment/School 2 — ZIP/Postal Code"
+    },
+    "emprego2_pais": {
+      "label": "Employment/School 2 — Country"
+    },
+    "emprego2_data_inicio": {
+      "label": "Employment/School 2 — From (MM/DD/YYYY)"
+    },
+    "emprego2_data_fim": {
+      "label": "Employment/School 2 — To (MM/DD/YYYY)"
+    },
+    "emprego3_nome": {
+      "label": "Employment/School 3 — Employer/School Name"
+    },
+    "emprego3_ocupacao": {
+      "label": "Employment/School 3 — Occupation or Field of Study"
+    },
+    "emprego3_cidade": {
+      "label": "Employment/School 3 — City"
+    },
+    "emprego3_estado": {
+      "label": "Employment/School 3 — State/Province"
+    },
+    "emprego3_cep": {
+      "label": "Employment/School 3 — ZIP/Postal Code"
+    },
+    "emprego3_pais": {
+      "label": "Employment/School 3 — Country"
+    },
+    "emprego3_data_inicio": {
+      "label": "Employment/School 3 — From (MM/DD/YYYY)"
+    },
+    "emprego3_data_fim": {
+      "label": "Employment/School 3 — To (MM/DD/YYYY)"
+    },
+    "viagem1_paises": {
+      "label": "Trip 1 (most recent) — Countries Visited",
+      "hint": "List ALL trips outside the U.S. in the last 5 years (or 3 years, if based on marriage), even short trips to Canada/Mexico/the Caribbean. A trip of 6 months or more can \"break\" the continuous residence requirement — if you had a long trip, let the team know before continuing."
+    },
+    "viagem1_data_saida": {
+      "label": "Trip 1 — Date You Left the U.S. (MM/DD/YYYY)"
+    },
+    "viagem1_data_retorno": {
+      "label": "Trip 1 — Date You Returned to the U.S. (MM/DD/YYYY)"
+    },
+    "viagem2_paises": {
+      "label": "Trip 2 — Countries Visited"
+    },
+    "viagem2_data_saida": {
+      "label": "Trip 2 — Date You Left the U.S. (MM/DD/YYYY)"
+    },
+    "viagem2_data_retorno": {
+      "label": "Trip 2 — Date You Returned to the U.S. (MM/DD/YYYY)"
+    },
+    "viagem3_paises": {
+      "label": "Trip 3 — Countries Visited"
+    },
+    "viagem3_data_saida": {
+      "label": "Trip 3 — Date You Left the U.S. (MM/DD/YYYY)"
+    },
+    "viagem3_data_retorno": {
+      "label": "Trip 3 — Date You Returned to the U.S. (MM/DD/YYYY)"
+    },
+    "viagem4_paises": {
+      "label": "Trip 4 — Countries Visited"
+    },
+    "viagem4_data_saida": {
+      "label": "Trip 4 — Date You Left the U.S. (MM/DD/YYYY)"
+    },
+    "viagem4_data_retorno": {
+      "label": "Trip 4 — Date You Returned to the U.S. (MM/DD/YYYY)"
+    },
+    "viagem5_paises": {
+      "label": "Trip 5 — Countries Visited"
+    },
+    "viagem5_data_saida": {
+      "label": "Trip 5 — Date You Left the U.S. (MM/DD/YYYY)"
+    },
+    "viagem5_data_retorno": {
+      "label": "Trip 5 — Date You Returned to the U.S. (MM/DD/YYYY)"
+    },
+    "viagem6_paises": {
+      "label": "Trip 6 — Countries Visited"
+    },
+    "viagem6_data_saida": {
+      "label": "Trip 6 — Date You Left the U.S. (MM/DD/YYYY)"
+    },
+    "viagem6_data_retorno": {
+      "label": "Trip 6 — Date You Returned to the U.S. (MM/DD/YYYY)"
+    },
+    "reivindicou_cidadania_falsamente": {
+      "label": "1. Have you EVER claimed to be a U.S. citizen (in writing or in any other way)?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Extremely serious question: ever stating in writing or verbally that you are a U.S. citizen when you weren't (e.g., on a job application, when voting, on a passport) can be a PERMANENT bar to naturalization and even trigger removal proceedings — regardless of meeting every other requirement. If the answer is Yes, talk to an immigration attorney BEFORE continuing."
+    },
+    "registrou_votou_eleicao": {
+      "label": "2. Have you EVER registered to vote or voted in any Federal, state, or local election in the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Registering to vote or voting in any U.S. election without being a citizen — even by mistake or on someone else's advice — can be a permanent bar and even trigger removal proceedings. If the answer is Yes, talk to an immigration attorney BEFORE continuing."
+    },
+    "deve_impostos_atrasados": {
+      "label": "3. Do you currently owe any overdue Federal, state, or local taxes?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Includes federal, state, or local back taxes, even if you already have a payment plan with the tax authority — if you have a current payment plan, you can usually still proceed, but bring proof of the plan to your interview."
+    },
+    "declarou_nao_residente_fiscal": {
+      "label": "4. Since becoming a Permanent Resident, have you EVER called yourself a \"non-resident\" on a tax return, or failed to file a tax return because you considered yourself a non-resident?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Filing taxes as a \"nonresident\" while you were already a permanent resident can be read as abandoning your permanent resident status — a serious problem for this application. If this happened, talk to the team before continuing."
+    },
+    "membro_partido_comunista": {
+      "label": "5.a. Have you EVER been a member of, involved with, or associated with any communist or totalitarian party anywhere in the world?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Includes any communist or totalitarian party, in your home country or elsewhere, even if membership was in the past or not voluntary (e.g., required by the government). If the answer is Yes, talk to the team — it doesn't always block naturalization, but it needs careful review."
+    },
+    "advogou_derrubar_governo": {
+      "label": "5.b. Have you EVER advocated for, or been associated with a group that advocated for, overthrowing the U.S. government by force or other unconstitutional means?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Refers to advocating for or supporting the overthrow of ANY government by force — not ordinary political opinions or criticism of governments. If unsure, consult the team."
+    },
+    "usou_arma_explosivo_dano": {
+      "label": "6.a. Have you EVER used a weapon or explosive to injure or try to injure anyone, or to damage property?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "participou_sequestro_assassinato_sabotagem": {
+      "label": "6.b. Have you EVER participated in kidnapping, killing, sabotage, or hijacking an aircraft or vehicle?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "ameacou_conspirou_atos_6a_6b": {
+      "label": "6.c. Have you EVER threatened, attempted, conspired, or asked someone else to commit the acts described in items 6.a. or 6.b.?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "ordenou_tortura": {
+      "label": "7.a. Have you EVER ordered, incited, committed, or assisted in committing torture?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "ordenou_genocidio": {
+      "label": "7.b. Have you EVER ordered, incited, committed, or assisted in committing genocide?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "tentou_matar_pessoa": {
+      "label": "7.c. Have you EVER killed or attempted to kill anyone?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "contato_sexual_sem_consentimento": {
+      "label": "7.d. Have you EVER had sexual contact with anyone who did not consent, or was unable to consent?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "feriu_intencionalmente_pessoa": {
+      "label": "7.e. Have you EVER intentionally injured or tried to seriously injure anyone?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "impediu_pratica_religiosa": {
+      "label": "7.f. Have you EVER prevented anyone from practicing their religion?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "causou_dano_discriminacao": {
+      "label": "7.g. Have you EVER caused harm to anyone because of their race, religion, national origin, membership in a particular social group, or political opinion?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "serviu_unidade_militar_policial": {
+      "label": "8.a. Have you EVER served in, been a member of, or participated in any military or police unit?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard question about military/police/armed-group history. Includes official military service in your home country, not just irregular groups. Answer honestly and provide details in the related section — it's not an automatic denial."
+    },
+    "serviu_grupo_armado": {
+      "label": "8.b. Have you EVER served in, been a member of, or participated in any armed group (paramilitary group, militia, guerrilla group, insurgent group, etc.)?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard question about military/police/armed-group history. Includes official military service in your home country, not just irregular groups. Answer honestly and provide details in the related section — it's not an automatic denial."
+    },
+    "trabalhou_local_detencao": {
+      "label": "9. Have you EVER worked or served in a place where people were detained (prison, detention camp, etc.)?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Includes work or volunteer service at any facility where people are detained, even if your role had no direct contact with detainees."
+    },
+    "parte_grupo_arma_ameaca": {
+      "label": "10.a. Have you EVER been part of, or assisted, a group that used a weapon against any person, or threatened to do so?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "grupo_usou_arma_pessoa": {
+      "label": "10.b. If you answered \"Yes\" to item 10.a., have you EVER used a weapon against another person?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "grupo_ameacou_arma_pessoa": {
+      "label": "10.c. If you answered \"Yes\" to item 10.a., have you EVER threatened to use a weapon against another person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "recebeu_treinamento_armas": {
+      "label": "11. Have you EVER received any type of military, paramilitary, or weapons training?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Includes mandatory military training (e.g., compulsory military service in your home country), not just voluntary or irregular training."
+    },
+    "vendeu_transportou_armas": {
+      "label": "12. Have you EVER sold, provided, or transported weapons for use against another person?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Only answer Yes if you knew or believed the weapons would be used against another person — this does not include, for example, ordinary work at a licensed firearms store."
+    },
+    "recrutou_menor15_grupo_armado": {
+      "label": "13. Have you EVER recruited or used a person under 15 years of age to serve in an armed group?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "usou_menor15_hostilidades": {
+      "label": "14. Have you EVER used a person under 15 years of age to participate in hostilities?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS screening question asked of everyone on the N-400 about human-rights and national-security issues — it is not an accusation. The vast majority of people answer No. Answer honestly; if in doubt, consult the team or an immigration attorney before submitting."
+    },
+    "cometeu_crime_nao_preso": {
+      "label": "15.a. Have you EVER committed, assisted in committing, or asked someone else to commit a crime for which you were NOT arrested?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard USCIS question about violation history. Includes any arrest, citation, or detention, EVEN IF the case was dismissed, pardoned, sealed, or later expunged — USCIS still wants it reported. If the answer is Yes, talk to the team before continuing: a criminal record can affect eligibility and usually requires extra documents (court records)."
+    },
+    "foi_preso_citado_detido_acusado": {
+      "label": "15.b. Have you EVER been arrested, detained, cited, or charged with a crime by any official?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes (provide details in the Crimes section below)"
+      },
+      "hint": "Standard USCIS question about violation history. Includes any arrest, citation, or detention, EVEN IF the case was dismissed, pardoned, sealed, or later expunged — USCIS still wants it reported. If the answer is Yes, talk to the team before continuing: a criminal record can affect eligibility and usually requires extra documents (court records)."
+    },
+    "cumpriu_pena_condicional_liberdade": {
+      "label": "16. If you received a suspended sentence, probation, or parole, have you completed it?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "If you had a suspended sentence, probation, or parole, USCIS expects it to already be fully completed before naturalization. If it's still ongoing, talk to the team."
+    },
+    "envolvido_prostituicao": {
+      "label": "17.a. Have you EVER been involved in prostitution in any way?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Includes both offering and paying for commercial sexual services — immigration law treats this as a lack of \"good moral character.\""
+    },
+    "trafico_drogas": {
+      "label": "17.b. Have you EVER manufactured, distributed, sold, or smuggled controlled substances or illegal drugs?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Drug involvement (even marijuana, which is still illegal federally) can be a serious ground of inadmissibility — if this happened, even long ago, talk to an immigration attorney BEFORE continuing."
+    },
+    "casou_para_beneficio_imigratorio": {
+      "label": "17.c. Have you EVER married someone solely to obtain an immigration benefit?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Marriage fraud (\"sham marriage\") is one of the most serious grounds for denial and can lead to criminal prosecution. If you have any doubt about how this question applies to your case, talk to an attorney before answering."
+    },
+    "casado_mais_de_uma_pessoa": {
+      "label": "17.d. Have you EVER been married to more than one person at the same time (bigamy)?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Bigamy = being legally married to more than one person at the same time. If you remarried without finalizing an earlier divorce, even without realizing it was required, talk to the team before continuing."
+    },
+    "ajudou_entrada_ilegal": {
+      "label": "17.e. Have you EVER helped anyone enter, or try to enter, the United States illegally?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Includes helping (transporting, hiding, guiding) anyone — including family members — enter or stay in the U.S. without documents, even without being paid for it."
+    },
+    "jogo_ilegal": {
+      "label": "17.f. Have you EVER gambled illegally or received income from illegal gambling?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Refers to gambling prohibited by law (not legal licensed casino gambling or state lotteries)."
+    },
+    "deixou_pagar_pensao": {
+      "label": "17.g. Have you EVER failed to pay child support or other court-ordered support?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Includes court-ordered child support or spousal support, even if you've since caught up on payments."
+    },
+    "falsa_declaracao_beneficio_publico": {
+      "label": "17.h. Have you EVER made a false statement to obtain a public benefit in the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "E.g., lying about income, household size, or immigration status to get Medicaid, food assistance (SNAP), housing assistance, etc."
+    },
+    "forneceu_info_falsa_governo": {
+      "label": "18. Have you EVER given any U.S. government official false or fraudulent information?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Includes any false statement to a U.S. government official (not just immigration) to get a benefit or advantage, even if it seems minor."
+    },
+    "mentiu_para_entrar_eua": {
+      "label": "19. Have you EVER lied to any U.S. government official to gain entry or immigration benefits?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Includes using false documents, hiding relevant information, or lying in a consular/border interview to get a visa or entry into the U.S."
+    },
+    "foi_removido_deportado": {
+      "label": "20. Have you EVER been removed or deported from the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "If you were ever formally removed/deported at any point (even many years ago, even if you later returned legally), talk to the team — this can have real implications for this application."
+    },
+    "processo_remocao_rescisao": {
+      "label": "21. Have you EVER been placed in removal, rescission, or deportation proceedings?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Includes any removal proceedings ever started against you, even if they were closed, dismissed, or you won the case."
+    },
+    "homem_residiu_18_26": {
+      "label": "22.a. Are you a male who lived in the United States between the ages of 18 and 26?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "U.S. law (Selective Service) requires almost every man who lived in the U.S. between ages 18 and 25 to register with the Selective Service System, even noncitizens. If you're male and this applies, USCIS will ask about your registration in the next question."
+    },
+    "registrou_selective_service": {
+      "label": "22.b. If you answered \"Yes\" to item 22.a., have you registered with the Selective Service System?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "If you should have registered (male, lived in the U.S. between ages 18-25) but didn't, it can affect your naturalization application — you can usually still proceed, but explain the reason with the team."
+    },
+    "selective_service_data": {
+      "label": "22.c. Selective Service registration date (MM/DD/YYYY)"
+    },
+    "selective_service_numero": {
+      "label": "22.c. Selective Service number",
+      "hint": "Find this number on your Registration Acknowledgement Letter, or by checking sss.gov."
+    },
+    "saiu_eua_evitar_recrutamento": {
+      "label": "23. Have you EVER left the United States to avoid being drafted into the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Refers specifically to leaving the country WITH THE PURPOSE of avoiding mandatory U.S. military conscription — not ordinary travel."
+    },
+    "pediu_isencao_servico_militar": {
+      "label": "24. Have you EVER applied for any kind of exemption from military service in the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "If you ever requested exemption from U.S. military service by claiming to be a foreigner, it may have permanently waived your eligibility to become a citizen — talk to the team before continuing if this already happened."
+    },
+    "serviu_forcas_armadas_eua": {
+      "label": "25. Have you EVER served in the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "membro_atual_forcas_armadas": {
+      "label": "26.a. Are you currently a member of the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "destacamento_exterior_3meses": {
+      "label": "26.b. Are you scheduled to deploy outside the United States in the next 3 months?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "estacionado_fora_eua": {
+      "label": "26.c. Are you currently stationed outside the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "ex_militar_reside_exterior": {
+      "label": "26.d. Are you a former member of the U.S. armed forces currently residing outside the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "dispensado_por_ser_estrangeiro": {
+      "label": "27. Have you EVER been exempted from training or service in the U.S. armed forces because you are a noncitizen?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Different from the question above — this one is about already having BEEN officially exempted from military service because of your alien status, not about having requested the exemption."
+    },
+    "corte_marcial_dispensa_desonrosa": {
+      "label": "28. Have you EVER been court-martialed, or received an other-than-honorable discharge, from the U.S. armed forces?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "\"Court martial\" is the military court; \"other than honorable discharge\" is any separation from the armed forces rated below \"honorable\" (e.g., \"other than honorable,\" \"bad conduct,\" \"dishonorable\")."
+    },
+    "desertou_forcas_armadas": {
+      "label": "29. Have you EVER deserted from the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      }
+    },
+    "possui_titulo_nobreza": {
+      "label": "30.a. Do you currently have, or have you EVER had, any hereditary title or order of nobility in any foreign country?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "A hereditary title of nobility (e.g., count, duke, baron) — not academic degrees or elected political offices."
+    },
+    "disposto_renunciar_titulo": {
+      "label": "30.b. If you answered \"Yes,\" are you willing to renounce that title (or those titles) at your naturalization ceremony?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "If you hold a title of nobility, you'll need to formally agree to renounce it at the naturalization ceremony as a condition of becoming a U.S. citizen."
+    },
+    "titulo_nobreza_lista": {
+      "label": "30.b. List the title(s) of nobility you will renounce"
+    },
+    "apoia_constituicao_governo": {
+      "label": "31. Do you support the Constitution and form of government of the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Standard loyalty question — the vast majority of people answer Yes; answering No can prevent naturalization."
+    },
+    "entende_juramento_fidelidade": {
+      "label": "32. Do you fully understand the Oath of Allegiance to the United States?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "The Oath of Allegiance is the final commitment you make at the naturalization ceremony, renouncing loyalty to other countries and swearing to defend the U.S. Constitution — ask the team if you'd like to read the full text before answering."
+    },
+    "incapaz_juramento_deficiencia": {
+      "label": "33. Are you unable to take the Oath of Allegiance because of a physical, developmental, or mental impairment?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Only answer Yes if a disability prevents you from understanding or taking the oath — in that case, medical documentation may be required (often together with Form N-648)."
+    },
+    "disposto_juramento_completo": {
+      "label": "34. Are you willing to take the full Oath of Allegiance to the United States?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "If you answered that you object to parts of the oath (e.g., for religious reasons), this and the next questions (bearing arms / noncombatant service / work of national importance) offer alternative versions of the commitment — talk to the team if this is your situation."
+    },
+    "disposto_portar_armas": {
+      "label": "35. If the law requires it, are you willing to bear arms on behalf of the United States?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Alternative to the standard oath for those with a religious or conscientious objection to bearing arms — usually only relevant if you answered No to the previous question about the full oath."
+    },
+    "disposto_servico_nao_combatente": {
+      "label": "36. If the law requires it, are you willing to perform noncombatant service in the U.S. armed forces?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "Alternative to the standard oath for those with a religious or conscientious objection to armed combat, but who accept serving in a noncombatant role if required by law."
+    },
+    "disposto_trabalho_nacional_importante": {
+      "label": "37. If the law requires it, are you willing to perform work of national importance under civilian direction?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Alternative to the standard oath for those with a religious or conscientious objection to any form of military service, but who accept performing civilian work of national importance if required by law."
+    },
+    "crime1_local": {
+      "label": "Crime/Offense 1 — Location (city, state, country)",
+      "hint": "Include EVERY arrest, citation, detention, or charge, even if it was dismissed, pardoned, or sealed afterward, even outside the U.S. If you have more than one episode, use the following sections (Crime/violation 2, 3...). Talk to the team before filling this in — court records will usually be needed."
+    },
+    "crime1_crime": {
+      "label": "Crime/Offense 1 — What was the crime or offense"
+    },
+    "crime1_data": {
+      "label": "Crime/Offense 1 — Date of the crime/offense (MM/DD/YYYY)"
+    },
+    "crime1_disposicao": {
+      "label": "Crime/Offense 1 — Outcome/disposition of the arrest"
+    },
+    "crime1_data_condenacao": {
+      "label": "Crime/Offense 1 — Date of conviction/plea (if applicable)"
+    },
+    "crime1_sentenca": {
+      "label": "Crime/Offense 1 — Sentence (if applicable)"
+    },
+    "crime2_local": {
+      "label": "Crime/Offense 2 — Location (city, state, country)"
+    },
+    "crime2_crime": {
+      "label": "Crime/Offense 2 — What was the crime or offense"
+    },
+    "crime2_data": {
+      "label": "Crime/Offense 2 — Date of the crime/offense (MM/DD/YYYY)"
+    },
+    "crime2_disposicao": {
+      "label": "Crime/Offense 2 — Outcome/disposition of the arrest"
+    },
+    "crime2_data_condenacao": {
+      "label": "Crime/Offense 2 — Date of conviction/plea (if applicable)"
+    },
+    "crime2_sentenca": {
+      "label": "Crime/Offense 2 — Sentence (if applicable)"
+    },
+    "crime3_local": {
+      "label": "Crime/Offense 3 — Location (city, state, country)"
+    },
+    "crime3_crime": {
+      "label": "Crime/Offense 3 — What was the crime or offense"
+    },
+    "crime3_data": {
+      "label": "Crime/Offense 3 — Date of the crime/offense (MM/DD/YYYY)"
+    },
+    "crime3_disposicao": {
+      "label": "Crime/Offense 3 — Outcome/disposition of the arrest"
+    },
+    "crime3_data_condenacao": {
+      "label": "Crime/Offense 3 — Date of conviction/plea (if applicable)"
+    },
+    "crime3_sentenca": {
+      "label": "Crime/Offense 3 — Sentence (if applicable)"
+    },
+    "crime4_local": {
+      "label": "Crime/Offense 4 — Location (city, state, country)"
+    },
+    "crime4_crime": {
+      "label": "Crime/Offense 4 — What was the crime or offense"
+    },
+    "crime4_data": {
+      "label": "Crime/Offense 4 — Date of the crime/offense (MM/DD/YYYY)"
+    },
+    "crime4_disposicao": {
+      "label": "Crime/Offense 4 — Outcome/disposition of the arrest"
+    },
+    "crime4_data_condenacao": {
+      "label": "Crime/Offense 4 — Date of conviction/plea (if applicable)"
+    },
+    "crime4_sentenca": {
+      "label": "Crime/Offense 4 — Sentence (if applicable)"
+    },
+    "crime5_local": {
+      "label": "Crime/Offense 5 — Location (city, state, country)"
+    },
+    "crime5_crime": {
+      "label": "Crime/Offense 5 — What was the crime or offense"
+    },
+    "crime5_data": {
+      "label": "Crime/Offense 5 — Date of the crime/offense (MM/DD/YYYY)"
+    },
+    "crime5_disposicao": {
+      "label": "Crime/Offense 5 — Outcome/disposition of the arrest"
+    },
+    "crime5_data_condenacao": {
+      "label": "Crime/Offense 5 — Date of conviction/plea (if applicable)"
+    },
+    "crime5_sentenca": {
+      "label": "Crime/Offense 5 — Sentence (if applicable)"
+    },
+    "renda_ate_400_pobreza": {
+      "label": "Would you like to request a fee reduction? Is your household income at or below 400% of the Federal poverty level?",
+      "options": {
+        "nao": "No (skip to Part 11)",
+        "sim": "Yes"
+      },
+      "hint": "The fee reduction is based on a household income limit set by the government (updated every year) — the team can confirm the current limit and whether your household income qualifies before you decide whether to request the reduction."
+    },
+    "renda_familiar_total": {
+      "label": "Total household income",
+      "hint": "Add up the income of everyone in your household who lives with you (not just your own) — confirm with the team exactly what should be included."
+    },
+    "tamanho_familia": {
+      "label": "Household size",
+      "hint": "Count yourself plus everyone who lives with you and depends on you financially (spouse, children, etc.) — confirm with the team if you're unsure who to include."
+    },
+    "total_membros_familia_com_renda": {
+      "label": "Total number of household members with income (including you)"
+    },
+    "sou_chefe_familia": {
+      "label": "Are you the head of household?",
+      "options": {
+        "nao": "No",
+        "sim": "Yes"
+      },
+      "hint": "\"Head of household\" is whoever contributes the largest share of the household's financial support — only relevant if you're requesting a fee reduction."
+    },
+    "nome_chefe_familia": {
+      "label": "Name of the head of household (if you answered No above)"
+    },
+    "telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "celular": {
+      "label": "Mobile Telephone Number"
+    },
+    "email": {
+      "label": "Email Address"
+    },
+    "data_assinatura": {
+      "label": "Date of Signature (MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter — Business or Organization Name"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Daytime Telephone Number"
+    },
+    "int_celular": {
+      "label": "Interpreter — Mobile Telephone Number"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address"
+    },
+    "int_idioma": {
+      "label": "Interpreter — Language"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter — Date of Signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer — Business or Organization Name"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Daytime Telephone Number"
+    },
+    "prep_celular": {
+      "label": "Preparer — Mobile Telephone Number"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer — Date of Signature (MM/DD/YYYY)"
+    },
+    "info_adicional1_pagina": {
+      "label": "Line 1 — Page Number"
+    },
+    "info_adicional1_parte": {
+      "label": "Line 1 — Part Number"
+    },
+    "info_adicional1_item": {
+      "label": "Line 1 — Item Number"
+    },
+    "info_adicional1_texto": {
+      "label": "Line 1 — Text"
+    },
+    "info_adicional2_pagina": {
+      "label": "Line 2 — Page Number"
+    },
+    "info_adicional2_parte": {
+      "label": "Line 2 — Part Number"
+    },
+    "info_adicional2_item": {
+      "label": "Line 2 — Item Number"
+    },
+    "info_adicional2_texto": {
+      "label": "Line 2 — Text"
+    },
+    "info_adicional3_pagina": {
+      "label": "Line 3 — Page Number"
+    },
+    "info_adicional3_parte": {
+      "label": "Line 3 — Part Number"
+    },
+    "info_adicional3_item": {
+      "label": "Line 3 — Item Number"
+    },
+    "info_adicional3_texto": {
+      "label": "Line 3 — Text"
+    },
+    "info_adicional4_pagina": {
+      "label": "Line 4 — Page Number"
+    },
+    "info_adicional4_parte": {
+      "label": "Line 4 — Part Number"
+    },
+    "info_adicional4_item": {
+      "label": "Line 4 — Item Number"
+    },
+    "info_adicional4_texto": {
+      "label": "Line 4 — Text"
+    }
+  }
+}

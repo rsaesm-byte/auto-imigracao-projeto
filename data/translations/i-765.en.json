@@ -1,0 +1,398 @@
+{
+  "title": "Application for Employment Authorization — I-765",
+  "sections": {
+    "motivo": "Part 1 — Reason for Applying",
+    "basico": "Part 2 — Basic Information",
+    "outros_nomes": "Part 2 — Other Names Used",
+    "enderecos": "Part 2 — Addresses",
+    "info_pessoal": "Part 2 — Personal Information",
+    "entrada_eua": "Part 2 — Most Recent Entry Into the U.S.",
+    "elegibilidade": "Part 2 — Eligibility Category",
+    "assinatura": "Part 3 — Applicant's Statement",
+    "interprete": "Part 4 — Interpreter",
+    "preparador": "Part 5 — Preparer"
+  },
+  "questions": {
+    "motivo_aplicacao": {
+      "label": "You are applying for:",
+      "options": {
+        "inicial": "Initial permission to accept employment",
+        "substituicao": "Replacement of a lost, stolen, or damaged document (or correction of a document with an error not caused by USCIS)",
+        "renovacao": "Renewal of my permission to accept employment (attach a copy of your previous document)"
+      }
+    },
+    "nome_sobrenome": {
+      "label": "Family Name (Last Name)"
+    },
+    "nome_nome": {
+      "label": "Given Name (First Name)"
+    },
+    "nome_meio": {
+      "label": "Middle Name"
+    },
+    "outro_nome2_sobrenome": {
+      "label": "Other Name Used (2) — Family Name"
+    },
+    "outro_nome2_nome": {
+      "label": "Other Name Used (2) — Given Name"
+    },
+    "outro_nome2_meio": {
+      "label": "Other Name Used (2) — Middle Name"
+    },
+    "outro_nome3_sobrenome": {
+      "label": "Other Name Used (3) — Family Name"
+    },
+    "outro_nome3_nome": {
+      "label": "Other Name Used (3) — Given Name"
+    },
+    "outro_nome3_meio": {
+      "label": "Other Name Used (3) — Middle Name"
+    },
+    "outro_nome4_sobrenome": {
+      "label": "Other Name Used (4) — Family Name"
+    },
+    "outro_nome4_nome": {
+      "label": "Other Name Used (4) — Given Name"
+    },
+    "outro_nome4_meio": {
+      "label": "Other Name Used (4) — Middle Name"
+    },
+    "end_correio_cuidados_de": {
+      "label": "Mailing Address — In Care Of Name (if applicable)"
+    },
+    "end_correio_rua": {
+      "label": "Mailing Address — Street Number and Name"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Mailing Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Mailing Address — Unit Number"
+    },
+    "end_correio_cidade": {
+      "label": "Mailing Address — City"
+    },
+    "end_correio_estado": {
+      "label": "Mailing Address — State (abbreviation)"
+    },
+    "end_correio_cep": {
+      "label": "Mailing Address — ZIP Code"
+    },
+    "end_fisico_igual_correio": {
+      "label": "Is your current physical address the same as the mailing address above?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "end_fisico_rua": {
+      "label": "Physical Address — Street Number and Name"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Physical Address — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Physical Address — Unit Number"
+    },
+    "end_fisico_cidade": {
+      "label": "Physical Address — City"
+    },
+    "end_fisico_estado": {
+      "label": "Physical Address — State (abbreviation)"
+    },
+    "end_fisico_cep": {
+      "label": "Physical Address — ZIP Code"
+    },
+    "alien_number": {
+      "label": "Alien Registration Number (A-Number), if any"
+    },
+    "uscis_online": {
+      "label": "USCIS Online Account Number, if any"
+    },
+    "sexo": {
+      "label": "Sex",
+      "options": {
+        "masculino": "Male",
+        "feminino": "Female"
+      }
+    },
+    "estado_civil": {
+      "label": "Marital Status",
+      "options": {
+        "solteiro": "Single",
+        "casado": "Married",
+        "divorciado": "Divorced",
+        "viuvo": "Widowed"
+      }
+    },
+    "pediu_i765_antes": {
+      "label": "Have you previously filed Form I-765?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "ssn": {
+      "label": "Social Security Number (SSN), if known"
+    },
+    "cidadania_pais1": {
+      "label": "Country of Citizenship/Nationality"
+    },
+    "cidadania_pais2": {
+      "label": "Second Country of Citizenship/Nationality (if applicable)"
+    },
+    "nascimento_cidade": {
+      "label": "Place of Birth — City/Town/Village"
+    },
+    "nascimento_estado_provincia": {
+      "label": "Place of Birth — State/Province"
+    },
+    "nascimento_pais": {
+      "label": "Place of Birth — Country"
+    },
+    "data_nascimento": {
+      "label": "Date of Birth (MM/DD/YYYY)"
+    },
+    "i94_numero": {
+      "label": "Form I-94 Number (if any)",
+      "hint": "11-digit number from your U.S. arrival/departure record. Look it up or download it at i94.cbp.dhs.gov using your passport details. Leave blank if you never received one (e.g., you entered before the electronic system existed, or entered without inspection)."
+    },
+    "passaporte_numero": {
+      "label": "Most Recent Passport Number"
+    },
+    "doc_viagem_numero": {
+      "label": "Travel Document Number (if any, and different from your passport)"
+    },
+    "passaporte_pais_emissao": {
+      "label": "Country That Issued Your Passport/Travel Document"
+    },
+    "passaporte_data_expiracao": {
+      "label": "Passport/Travel Document Expiration Date (MM/DD/YYYY)"
+    },
+    "ultima_entrada_data": {
+      "label": "Date of Your Last Entry Into the U.S. (MM/DD/YYYY)"
+    },
+    "ultima_entrada_local": {
+      "label": "Place of Your Last Entry Into the U.S."
+    },
+    "ultima_entrada_status": {
+      "label": "Immigration Status at Last Entry (e.g., B-2 visitor, F-1 student)"
+    },
+    "status_atual": {
+      "label": "Your Current Immigration Status or Category"
+    },
+    "sevis_numero": {
+      "label": "SEVIS Number (if applicable, F-1/M-1 students)",
+      "hint": "Only applies to F-1 or M-1 students. 11-digit number starting with 'N', found in the top-right corner of your Form I-20."
+    },
+    "elig_categoria_classe": {
+      "label": "Eligibility Category — Class",
+      "hint": "Usually 'c'. Common categories: (c)(9) pending Form I-485, (c)(8) pending asylum application, (c)(3)(C) STEM OPT extension, (c)(26) H-4 spouse of an H-1B worker. Check the official Form I-765 instructions (or ask the team) to confirm yours."
+    },
+    "elig_categoria_numero": {
+      "label": "Eligibility Category — Number",
+      "hint": "The number in parentheses for your eligibility category (e.g., for (c)(9) — pending Form I-485 — enter '9'; for (c)(8) — pending asylum application — enter '8'; for (c)(26) — H-4 spouse of an H-1B worker — enter '26'). This number must match the letter you entered in the 'class' field above — together they form your full category code (e.g., c + 9 = category (c)(9))."
+    },
+    "elig_categoria_sub": {
+      "label": "Eligibility Category — Subcategory (if any)",
+      "hint": "E.g., for (c)(17)(iii) enter 'iii'"
+    },
+    "stem_grau": {
+      "label": "STEM Degree Obtained (only for category (c)(3)(C))",
+      "hint": "Only applies if you're requesting the 24-month STEM OPT extension (category (c)(3)(C)) — an OPT extension for graduates in science, technology, engineering, or math fields. Leave blank if that's not your case."
+    },
+    "stem_everify_empregador": {
+      "label": "Employer Name in E-Verify (only for category (c)(3)(C))",
+      "hint": "The employer must be enrolled in E-Verify (the federal work-eligibility verification system) — without that, you can't get the STEM OPT extension with them. Ask your employer's HR department for this; if they're not enrolled yet, enrollment is free."
+    },
+    "stem_everify_id": {
+      "label": "Employer's E-Verify Company Identification Number (only for category (c)(3)(C))",
+      "hint": "This is the company's ID number INSIDE E-Verify (4-7 digits) — it is not the same as the company's EIN (tax ID). Ask HR specifically for this number, not the EIN."
+    },
+    "c26_recibo_numero": {
+      "label": "H-1B Spouse's Form I-797 Receipt Number (only for category (c)(26))",
+      "hint": "Category (c)(26): for H-4 spouses whose H-1B partner already has an approved Form I-140 (or qualifies under certain AC21 provisions). This is the receipt number from the Form I-797 proving that approval — it usually starts with 3 letters (e.g., WAC, EAC)."
+    },
+    "c8_preso_condenado": {
+      "label": "Category (c)(8): Have you ever been arrested and/or convicted of a crime?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Sensitive question: includes any arrest OR conviction, even if the case was dismissed, the record was sealed/expunged, or you were not found guilty. If the answer is \"Yes,\" gather the case documents (police report, sentencing record) and consult the team or an immigration attorney before proceeding — this can affect your eligibility."
+    },
+    "c35_c36_recibo_numero": {
+      "label": "Form I-140 I-797 Receipt Number (only for category (c)(35) or (c)(36))",
+      "hint": "Categories (c)(35)/(c)(36): for people with an approved Form I-140 (the principal worker or their spouse/child) who cannot yet apply for a green card due to visa unavailability, under \"compelling circumstances.\" This is the receipt number from the Form I-797 proving the I-140 approval."
+    },
+    "c35_c36_preso_condenado": {
+      "label": "Category (c)(35)/(c)(36): Have you ever been arrested and/or convicted of a crime?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Sensitive question: includes any arrest OR conviction, even if the case was dismissed, the record was sealed/expunged, or you were not found guilty. If the answer is \"Yes,\" gather the case documents (police report, sentencing record) and consult the team or an immigration attorney before proceeding — this can affect your eligibility."
+    },
+    "leu_ingles": {
+      "label": "Applicant's statement",
+      "options": {
+        "leu_ingles": "I can read and understand English, and I have read and understood every question and instruction on this application, as well as my answers",
+        "leu_interprete": "The interpreter named in Part 4 read every question and instruction and my answers to me in a language I understand fluently"
+      },
+      "hint": "Choose the first option if you personally read and understood the form in English. Only choose the interpreter option if someone else (listed in Part 4) read everything aloud to you, translated into a language you understand, before you signed."
+    },
+    "idioma_interprete": {
+      "label": "In what language did the interpreter read the form to you?"
+    },
+    "abc_settlement": {
+      "label": "Are you a Salvadoran or Guatemalan national eligible under the ABC settlement agreement?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Refers to the \"American Baptist Churches v. Thornburgh\" court settlement (1991), which grants work authorization to certain Salvadorans and Guatemalans with a pending asylum application filed before 1996, under specific registration deadlines. Only answer \"Yes\" if you already know you fall into this specific group — if unsure, answer \"No\" and ask the team."
+    },
+    "preparador_ajudou": {
+      "label": "Did someone prepare this form for you, at your request and based only on the information you provided?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No, I completed it myself"
+      },
+      "hint": "Answer \"Yes\" if someone (an attorney, a preparer, a family member) typed or filled out the form for you, even if based only on information you provided. This doesn't change your answers — it just identifies who physically prepared the document."
+    },
+    "preparador_nome": {
+      "label": "Preparer's Name"
+    },
+    "telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "celular": {
+      "label": "Mobile Telephone Number (if any)"
+    },
+    "email": {
+      "label": "Email Address (if any)"
+    },
+    "data_assinatura": {
+      "label": "Date of Signature (filled in on the day of filing, MM/DD/YYYY)"
+    },
+    "int_sobrenome": {
+      "label": "Interpreter — Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter — Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter — Business or Organization Name (if any)"
+    },
+    "int_end_rua": {
+      "label": "Interpreter — Street Number and Name"
+    },
+    "int_end_tipo_unidade": {
+      "label": "Interpreter — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "int_end_num_unidade": {
+      "label": "Interpreter — Unit Number"
+    },
+    "int_end_cidade": {
+      "label": "Interpreter — City"
+    },
+    "int_end_estado": {
+      "label": "Interpreter — State (abbreviation, if U.S.)"
+    },
+    "int_end_cep": {
+      "label": "Interpreter — ZIP Code (if U.S.)"
+    },
+    "int_end_provincia": {
+      "label": "Interpreter — Province (if outside the U.S.)"
+    },
+    "int_end_codigo_postal": {
+      "label": "Interpreter — Postal Code (if outside the U.S.)"
+    },
+    "int_end_pais": {
+      "label": "Interpreter — Country"
+    },
+    "int_telefone": {
+      "label": "Interpreter — Daytime Telephone Number"
+    },
+    "int_celular": {
+      "label": "Interpreter — Mobile Telephone Number (if any)"
+    },
+    "int_email": {
+      "label": "Interpreter — Email Address (if any)"
+    },
+    "int_idioma": {
+      "label": "Interpreter — Language of Fluency"
+    },
+    "int_data_assinatura": {
+      "label": "Interpreter — Date of Signature (MM/DD/YYYY)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparer — Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer — Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer — Business or Organization Name (if any)"
+    },
+    "prep_end_rua": {
+      "label": "Preparer — Street Number and Name"
+    },
+    "prep_end_tipo_unidade": {
+      "label": "Preparer — Unit Type (if applicable)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "prep_end_num_unidade": {
+      "label": "Preparer — Unit Number"
+    },
+    "prep_end_cidade": {
+      "label": "Preparer — City"
+    },
+    "prep_end_estado": {
+      "label": "Preparer — State (abbreviation, if U.S.)"
+    },
+    "prep_end_cep": {
+      "label": "Preparer — ZIP Code (if U.S.)"
+    },
+    "prep_end_provincia": {
+      "label": "Preparer — Province (if outside the U.S.)"
+    },
+    "prep_end_codigo_postal": {
+      "label": "Preparer — Postal Code (if outside the U.S.)"
+    },
+    "prep_end_pais": {
+      "label": "Preparer — Country"
+    },
+    "prep_telefone": {
+      "label": "Preparer — Daytime Telephone Number"
+    },
+    "prep_celular": {
+      "label": "Preparer — Mobile Telephone Number (if any)"
+    },
+    "prep_email": {
+      "label": "Preparer — Email Address (if any)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparer — Date of Signature (MM/DD/YYYY)"
+    }
+  }
+}

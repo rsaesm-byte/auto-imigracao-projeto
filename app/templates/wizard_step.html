@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ submission.form_slug|upper }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+{% if edit_mode %}
+  <p class="muted" style="margin-bottom:8px;display:flex;align-items:center;gap:8px;">
+    <span class="badge in_progress">{{ submission.form_slug|upper }}</span>
+    <span>{{ form_name }}</span>
+    &nbsp;·&nbsp; {{ t('editing_answer') }}
+  </p>
+{% else %}
+<section class="hero-landing compact wizard-progress-head">
+  <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+    <div>
+      <span class="slug" style="margin-bottom:8px;">{{ submission.form_slug|upper }}</span>
+      <h1 class="hero-title" style="font-size:1.4rem;margin:0;">{{ form_name }}</h1>
+      {% if section_title %}<p class="hero-subtitle" style="margin:6px 0 0;font-size:0.88rem;">{{ section_title }}</p>{% endif %}
+    </div>
+    <span class="wizard-progress-label">{{ answered_count + 1 }} / {{ total }}</span>
+  </div>
+  <div class="wizard-progress-track">
+    <div class="wizard-progress-fill" style="width: {{ (answered_count / total * 100) if total else 0 }}%;"></div>
+  </div>
+</section>
+{% endif %}
+
+{% if get_lang() == "en" and not form_translated %}
+<div class="flash" style="background:var(--accent-soft);color:var(--accent-dark);border-color:var(--accent);">
+  {{ t('form_not_translated_notice') }}
+</div>
+{% endif %}
+
+{% if autofill_source_name %}
+<div class="flash" style="background:var(--accent-soft);color:var(--accent-dark);border-color:var(--accent);">
+  {{ t('autofilled_notice', source=autofill_source_name) }}
+</div>
+{% endif %}
+
+{% set qicon = {"radio": "list-check", "checkbox_group": "list-check", "select": "globe", "date": "calendar"}.get(question.type, "edit-pencil") %}
+<div class="card">
+  <div class="question-head">
+    <span class="question-icon">{{ icon(qicon, 20) }}</span>
+    <h2 style="flex:1;">
+      {{ question.label.rstrip(" *") }}
+      {% if question.required %}<span style="color:var(--cta);">*</span>{% endif %}
+    </h2>
+  </div>
+  {% if question.hint %}
+  <p class="muted question-hint">
+    <span class="question-hint-icon">{{ icon('info', 15) }}</span>
+    <span>{{ question.hint }}</span>
+  </p>
+  {% endif %}
+
+  <form method="post" action="{{ url_for('wizard.edit_question_save', submission_id=submission.id, question_id=question.id) if edit_mode else url_for('wizard.answer', submission_id=submission.id) }}">
+    <input type="hidden" name="question_id" value="{{ question.id }}">
+    {% if edit_mode %}<input type="hidden" name="next" value="{{ next_target }}">{% endif %}
+
+    {% if question.type == "radio" %}
+      <ul class="option-list">
+        {% for opt in question.options %}
+        <li><label>
+          <input type="radio" name="{{ question.id }}" value="{{ opt.value }}"
+                 {% if current_value == opt.value %}checked{% endif %}
+                 {% if loop.first and question.required %}required{% endif %}>
+          {{ opt.label }}
+        </label></li>
+        {% endfor %}
+      </ul>
+
+    {% elif question.type == "checkbox_group" %}
+      <ul class="option-list">
+        {% for opt in question.options %}
+        <li><label>
+          <input type="checkbox" name="{{ question.id }}" value="{{ opt.value }}"
+                 {% if current_value and opt.value in current_value %}checked{% endif %}>
+          {{ opt.label }}
+        </label></li>
+        {% endfor %}
+      </ul>
+
+    {% elif question.type == "select" %}
+      <select name="{{ question.id }}" {% if question.required %}required{% endif %}>
+        <option value="">{{ t('select_state_placeholder') }}</option>
+        {% for st in us_states %}
+        <option value="{{ st }}" {% if current_value == st %}selected{% endif %}>{{ st }}</option>
+        {% endfor %}
+      </select>
+
+    {% elif question.type == "date" %}
+      <input type="text" name="{{ question.id }}" placeholder="MM/DD/YYYY"
+             value="{{ current_value or '' }}"
+             pattern="(0[1-9]|1[0-2])/(0[1-9]|[12]\d|3[01])/\d{4}"
+             {% if question.required %}required{% endif %}>
+
+    {% else %}
+      <input type="text" name="{{ question.id }}" value="{{ current_value or '' }}"
+             {% if question.required %}required{% endif %}>
+    {% endif %}
+
+    <div style="margin-top:8px;">
+      <button type="submit" class="btn">
+        {% if edit_mode %}{{ t('save_change') }}{% else %}
+          {{ t('continue') if question.required else t('continue_or_skip') }}
+        {% endif %}
+      </button>
+      {% if edit_mode %}
+        <a class="btn secondary"
+           href="{{ url_for('wizard.wizard_view', submission_id=submission.id) if next_target == 'wizard' else url_for('wizard.review', submission_id=submission.id) }}">
+          {{ t('cancel') }}
+        </a>
+      {% elif prev_question_id %}
+        <a class="btn secondary icon-btn"
+           href="{{ url_for('wizard.edit_question', submission_id=submission.id, question_id=prev_question_id, next='wizard') }}">
+          {{ icon('arrow-left', 15) }} {{ t('back_to_previous') }}
+        </a>
+      {% endif %}
+    </div>
+  </form>
+</div>
+
+{% if not edit_mode %}
+<p class="muted"><a class="icon-btn" style="text-decoration:none;color:inherit;" href="{{ url_for('wizard.review', submission_id=submission.id) }}">{{ icon('list-check', 14) }} {{ t('view_answers_summary') }}</a></p>
+{% endif %}
+{% endblock %}

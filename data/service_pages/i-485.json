@@ -1,0 +1,128 @@
+{
+  "tagline": "Torne-se residente permanente sem sair dos Estados Unidos",
+  "tagline_en": "Become a permanent resident without leaving the United States",
+  "what_is": [
+    "O Formulário I-485 é o pedido para se tornar residente permanente legal (green card) sem precisar sair dos Estados Unidos. Ele está disponível para quem já está fisicamente presente no país e se qualifica por vínculo familiar, emprego, asilo/refúgio, ou uma das categorias especiais previstas na Parte 2 do formulário."
+  ],
+  "what_is_en": [
+    "Form I-485 is the application to become a lawful permanent resident (green card holder) without leaving the United States. It's available to people already physically present in the country who qualify through family, employment, asylum/refugee status, or one of the special categories listed in Part 2 of the form."
+  ],
+  "who_needs": [
+    "Beneficiários de uma petição familiar (I-130) aprovada ou com visto imediatamente disponível.",
+    "Beneficiários de uma petição baseada em emprego (I-140).",
+    "Asilados e refugiados elegíveis a ajustar status após um período nos EUA.",
+    "Outras categorias especiais (loteria de vistos, vítimas de crime/violência, entre outras)."
+  ],
+  "who_needs_en": [
+    "Beneficiaries of an approved family petition (I-130) or one with an immediately available visa.",
+    "Beneficiaries of an employment-based petition (I-140).",
+    "Asylees and refugees eligible to adjust status after a period in the U.S.",
+    "Other special categories (visa lottery, crime/violence victims, and others)."
+  ],
+  "eligibility": [
+    "A Parte 9 do formulário (Antecedentes e Motivos de Inadmissibilidade) tem cerca de 90 perguntas obrigatórias sobre histórico criminal, segurança e imigração.",
+    "Respostas \"Sim\" normalmente exigem explicação detalhada e documentação, e podem indicar necessidade de uma dispensa (waiver) — nesses casos, procure um advogado de imigração antes de protocolar."
+  ],
+  "eligibility_en": [
+    "Part 9 of the form (General Eligibility and Inadmissibility Grounds) has around 90 required questions about criminal history, security, and immigration background.",
+    "\"Yes\" answers usually require a detailed explanation and documentation, and may signal the need for a waiver — in those cases, consult an immigration attorney before filing."
+  ],
+  "required_evidence": [
+    "Formulário I-693 (Relatório de Exame Médico) preenchido por um médico credenciado pela USCIS (civil surgeon), entregue a você em envelope selado — se protocolar online, você mesmo abre o envelope para enviar a cópia, mas deve guardar o original selado até a decisão final do caso.",
+    "Evidência de que um visto está disponível na sua categoria (Boletim de Vistos) e da petição subjacente (I-130 ou I-140) aprovada ou pendente.",
+    "Nos casos baseados em família: o Formulário I-864 (Declaração de Suporte Financeiro) do patrocinador.",
+    "Cópia do Formulário I-797C (recibo) da petição subjacente, se estiver protocolando o I-485 separadamente."
+  ],
+  "required_evidence_en": [
+    "Form I-693 (Medical Examination Report) completed by a USCIS-designated civil surgeon, given to you in a sealed envelope — if filing online, you open the envelope yourself to upload the copy, but you must keep the sealed original until the case's final decision.",
+    "Evidence that a visa is available in your category (Visa Bulletin) and of the underlying approved or pending petition (I-130 or I-140).",
+    "In family-based cases: Form I-864 (Affidavit of Support) from the sponsor.",
+    "A copy of Form I-797C (receipt notice) for the underlying petition, if filing the I-485 separately."
+  ],
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
+    "Checklist de documentos de apoio personalizado para as suas respostas — não uma lista genérica.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada."
+  ],
+  "whats_included_en": [
+    "The official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "A filing checklist: who must sign, how to sign correctly, the exact fee amount, and where to send it (online or paper).",
+    "A supporting-documents checklist tailored to your actual answers — not a generic list.",
+    "Progress saved automatically: close the tab and come back anytime, nothing is lost."
+  ],
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido e os checklists de protocolo e de documentos, prontos para o seu processo."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust any of them before continuing.",
+    "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "common_mistakes": [
+    "Protocolar antes de o visto estar disponível na categoria certa (verifique o Boletim de Vistos do Departamento de Estado).",
+    "Não incluir o Formulário I-693 (exame médico) no envelope selado original do médico — sem ele, a USCIS pode rejeitar o I-485 inteiro.",
+    "Deixar perguntas da Parte 9 sem a explicação necessária na Parte 14.",
+    "Esquecer documentos de apoio obrigatórios, como o I-864 (Declaração de Suporte Financeiro), nos casos baseados em família.",
+    "Não marcar a caixa correta na Parte 2 (item 2 e 3.a–3.g), incluindo a diferença entre requerente principal e cônjuge/filho(a) derivado.",
+    "Não notificar a USCIS de mudança de endereço em até 10 dias (Formulário AR-11), o que é uma exigência legal separada, não só uma boa prática."
+  ],
+  "common_mistakes_en": [
+    "Filing before a visa is available in the right category (check the Department of State Visa Bulletin).",
+    "Not including Form I-693 (medical exam) in the doctor's original sealed envelope — without it, USCIS can reject the entire I-485.",
+    "Leaving Part 9 answers without the required explanation in Part 14.",
+    "Forgetting required supporting documents like the I-864 (Affidavit of Support) in family-based cases.",
+    "Not checking the correct box in Part 2 (items 2 and 3.a–3.g), including the difference between the principal applicant and a derivative spouse/child.",
+    "Not notifying USCIS of an address change within 10 days (Form AR-11) — this is a separate legal requirement, not just good practice."
+  ],
+  "faq": [
+    {
+      "q": "Quanto tempo leva o I-485?",
+      "a": "O processamento tende a ser mais longo que outros formulários, muitas vezes 1 a 2 anos, variando por categoria e centro. Consulte o verificador oficial para uma estimativa para o seu caso."
+    },
+    {
+      "q": "Posso trabalhar e viajar enquanto o I-485 está pendente?",
+      "a": "Só com autorização específica — Autorização de Trabalho (I-765) e Autorização de Viagem Antecipada (I-131, Advance Parole), que muitas vezes podem ser solicitadas junto com o I-485."
+    },
+    {
+      "q": "O que acontece se eu responder \"Sim\" em alguma pergunta da Parte 9?",
+      "a": "Isso não significa negação automática, mas normalmente exige explicação detalhada e pode indicar necessidade de aconselhamento jurídico especializado sobre dispensa (waiver) de inadmissibilidade."
+    },
+    {
+      "q": "Preciso do exame médico para protocolar?",
+      "a": "Sim, na maioria dos casos — o Formulário I-693 precisa ser preenchido por um médico credenciado pela USCIS, entregue em envelope selado. Nossa ferramenta não realiza esse exame, apenas indica quando ele é necessário."
+    },
+    {
+      "q": "Posso protocolar o I-485 pela internet?",
+      "a": "Só se for um caso autônomo baseado em emprego. A USCIS está expandindo o filing online gradualmente para outras categorias — hoje a maioria dos casos ainda é feita em papel."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "How long does I-485 processing take?",
+      "a": "Processing tends to be longer than other forms, often 1 to 2 years, varying by category and service center. Check the official tool for an estimate for your case."
+    },
+    {
+      "q": "Can I work and travel while the I-485 is pending?",
+      "a": "Only with specific authorization — a work permit (I-765) and Advance Parole travel authorization (I-131), which can often be requested together with the I-485."
+    },
+    {
+      "q": "What happens if I answer \"Yes\" to a Part 9 question?",
+      "a": "It doesn't mean automatic denial, but it usually requires a detailed explanation and may indicate the need for specialized legal advice about an inadmissibility waiver."
+    },
+    {
+      "q": "Do I need the medical exam to file?",
+      "a": "Yes, in most cases — Form I-693 must be completed by a USCIS-designated civil surgeon, delivered in a sealed envelope. Our tool doesn't perform that exam, it only flags when it's needed."
+    },
+    {
+      "q": "Can I file the I-485 online?",
+      "a": "Only if it's a stand-alone employment-based case. USCIS is gradually expanding online filing to other categories — today most cases are still filed on paper."
+    }
+  ],
+  "related_note": "Costuma vir junto com I-130/I-140 (a petição que dá origem ao caso), I-765 (autorização de trabalho), I-131 (autorização de viagem) e I-864 (suporte financeiro).",
+  "related_note_en": "Often filed together with I-130/I-140 (the underlying petition), I-765 (work permit), I-131 (travel authorization), and I-864 (affidavit of support).",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

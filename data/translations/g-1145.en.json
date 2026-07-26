@@ -1,0 +1,13 @@
+{
+  "title": "G-1145 — E-Notification of Application/Petition Acceptance",
+  "sections": {
+    "notificacao": "Notification Details"
+  },
+  "questions": {
+    "g1145_sobrenome": {"label": "Applicant's or petitioner's last name"},
+    "g1145_nome": {"label": "Applicant's or petitioner's first name"},
+    "g1145_nome_meio": {"label": "Middle name (if any)"},
+    "g1145_email": {"label": "Email to receive the notification", "hint": "This is the main notification channel — double-check it's typed correctly."},
+    "g1145_celular": {"label": "Mobile phone for SMS (optional)", "hint": "Digits only, no spaces, dashes, or parentheses — e.g. 5551234567. Leave blank if you don't want SMS."}
+  }
+}

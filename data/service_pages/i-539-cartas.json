@@ -1,0 +1,92 @@
+{
+  "tagline": "As cartas de apoio que acompanham seu I-539",
+  "tagline_en": "The support letters that accompany your I-539",
+  "what_is": [
+    "Este é um serviço complementar ao I-539: reunimos, em um questionário próprio, a narrativa do seu caso e as informações necessárias para gerar as cartas de apoio que normalmente são exigidas junto com o pedido de extensão ou mudança de status — coisas que não fazem parte do formulário oficial da USCIS, mas costumam ser pedidas na prática."
+  ],
+  "what_is_en": [
+    "This is a companion service to the I-539: we gather, in a dedicated questionnaire, your case narrative and the information needed to generate the support letters typically required alongside an extension or change-of-status request — things that aren't part of the official USCIS form, but are commonly asked for in practice."
+  ],
+  "who_needs": [
+    "Qualquer cliente que esteja fazendo um dos 4 serviços de I-539 (EOS, COS F-1, COS F-2, COS B-2) e precise de comprovação adicional de endereço, apoio financeiro, ou situação profissional."
+  ],
+  "who_needs_en": [
+    "Any client doing one of the 4 I-539 services (EOS, COS F-1, COS F-2, COS B-2) who needs additional proof of address, financial support, or professional situation."
+  ],
+  "eligibility": [
+    "Não há elegibilidade separada — este serviço é aberto a qualquer pessoa que já esteja preparando um dos 4 serviços de I-539 pelo nosso produto."
+  ],
+  "eligibility_en": [
+    "There's no separate eligibility — this service is open to anyone already preparing one of the 4 I-539 services through our product."
+  ],
+  "required_evidence": [
+    "Não há checklist oficial da USCIS para este serviço — as cartas geradas aqui são apoio adicional ao pacote do I-539, não um requisito listado nas instruções oficiais do formulário.",
+    "Você vai precisar, de qualquer forma, dos documentos de origem que a carta descreve: comprovante de endereço de quem hospeda você, extrato bancário de quem patrocina financeiramente, ou documentos do negócio, conforme o caso."
+  ],
+  "required_evidence_en": [
+    "There's no official USCIS checklist for this service — the letters generated here are additional support for the I-539 package, not a requirement listed in the form's official instructions.",
+    "You'll still need the underlying documents each letter describes: proof of address from whoever is hosting you, a bank statement from whoever is sponsoring you financially, or business documents, depending on the case."
+  ],
+  "whats_included": [
+    "Carta narrativa do seu caso, com rascunho gerado com apoio de inteligência artificial a partir das suas respostas.",
+    "Até 4 cartas de apoio de terceiros, conforme sua situação: comprovante de endereço (quando quem comprova o endereço não é o próprio requerente), patrocínio financeiro (quando a conta bancária apresentada não é do requerente), carta do empregador, ou carta do responsável pelo negócio (para quem tem negócio próprio e precisa indicar quem cuida dele durante a estadia nos EUA).",
+    "Tudo compilado em um único arquivo .zip para download."
+  ],
+  "whats_included_en": [
+    "A narrative letter for your case, with a draft generated using AI assistance based on your answers.",
+    "Up to 4 third-party support letters, depending on your situation: address proof (when the person proving the address isn't the applicant), financial sponsorship (when the bank account shown isn't the applicant's), an employer letter, or a business-caretaker letter (for those with their own business who need to name who runs it while they're in the U.S.).",
+    "Everything compiled into a single .zip file for download."
+  ],
+  "how_it_works": [
+    "Responda um questionário narrativo em português — perguntas sobre sua situação, sua rotina e seu apoio financeiro.",
+    "Nosso sistema identifica automaticamente quais cartas se aplicam ao seu caso, com base nas suas respostas.",
+    "Baixe o .zip com a carta narrativa e as cartas de apoio geradas, prontas para revisão e assinatura de terceiros."
+  ],
+  "how_it_works_en": [
+    "Answer a narrative questionnaire in Portuguese — questions about your situation, your routine, and your financial support.",
+    "Our system automatically identifies which letters apply to your case, based on your answers.",
+    "Download the .zip with the narrative letter and the generated support letters, ready for review and third-party signature."
+  ],
+  "common_mistakes": [
+    "Dar respostas que sugerem intenção de trabalhar nos EUA ou de continuar trabalhando remotamente para uma empresa no Brasil enquanto fisicamente presente — isso pode indicar trabalho não autorizado e prejudicar o caso.",
+    "Descrever a fonte de renda sem detalhar claramente de onde ela vem e por que ela é suficiente e contínua.",
+    "Preencher o campo de relação/cargo (ex: pai, patrão) em português — para as cartas em inglês, esse dado precisa ser dado em inglês (father, employer, etc.)."
+  ],
+  "common_mistakes_en": [
+    "Giving answers that suggest an intent to work in the U.S. or to keep working remotely for a company in Brazil while physically present — this can indicate unauthorized employment and hurt the case.",
+    "Describing the income source without clearly detailing where it comes from and why it's sufficient and ongoing.",
+    "Filling in the relationship/role field (e.g. father, employer) in Portuguese — for the English letters, that data needs to be given in English (father, employer, etc.)."
+  ],
+  "faq": [
+    {
+      "q": "Essas cartas substituem o I-539?",
+      "a": "Não — são documentos de apoio complementares, sempre enviados junto com o Formulário I-539 preenchido separadamente em nosso outro serviço."
+    },
+    {
+      "q": "Eu recebo todas as 4 cartas?",
+      "a": "Não necessariamente — cada carta só é gerada se as suas respostas indicarem que ela se aplica ao seu caso (por exemplo, a carta de patrocínio financeiro só é gerada se a conta bancária apresentada não for sua)."
+    },
+    {
+      "q": "As cartas vêm em português ou inglês?",
+      "a": "Em inglês — é o idioma exigido para documentos submetidos à USCIS."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "Do these letters replace the I-539?",
+      "a": "No — they're complementary supporting documents, always submitted together with the I-539 form filled out separately in our other service."
+    },
+    {
+      "q": "Do I get all 4 letters?",
+      "a": "Not necessarily — each letter is only generated if your answers indicate it applies to your case (for example, the sponsorship letter is only generated if the bank account shown isn't yours)."
+    },
+    {
+      "q": "Are the letters in Portuguese or English?",
+      "a": "In English — that's the language required for documents submitted to USCIS."
+    }
+  ],
+  "related_note": "Sempre um complemento do I-539 — veja o serviço I-539 para o formulário oficial em si.",
+  "related_note_en": "Always a companion to the I-539 — see the I-539 service for the official form itself.",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

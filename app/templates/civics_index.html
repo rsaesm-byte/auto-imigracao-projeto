@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% block title %}{{ t('civics_index_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:32px 28px 36px;">
+  <p class="eyebrow">{{ t('civics_index_eyebrow') }}</p>
+  <h1 class="hero-title" style="font-size:2rem;">{{ t('civics_index_title') }}</h1>
+  <p class="hero-subtitle">{{ t('civics_index_subtitle') }}</p>
+</section>
+
+<div class="card">
+  <h2>{{ t('civics_h_english_test') }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ t('civics_english_test_body') }}</p>
+</div>
+
+<div class="card">
+  <h2>{{ t('civics_h_civics_test') }}</h2>
+  <p class="muted" style="line-height:1.6;">{{ t('civics_civics_test_intro') }}</p>
+  <div class="services-grid" style="margin-top:16px;">
+    <div class="card service-card" style="margin-bottom:0;">
+      <h3 class="service-card-name">{{ t('civics_2008_title') }}</h3>
+      <p class="muted service-card-desc">{{ t('civics_2008_body') }}</p>
+    </div>
+    <div class="card service-card" style="margin-bottom:0;border:1.5px solid var(--accent);">
+      <h3 class="service-card-name">{{ t('civics_2025_title') }}</h3>
+      <p class="muted service-card-desc">{{ t('civics_2025_body') }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ t('civics_h_exceptions') }}</h2>
+  <div class="why-grid">
+    <div class="why-item">
+      <h3>{{ t('civics_exc_6520_title') }}</h3>
+      <p class="muted">{{ t('civics_exc_6520_body') }}</p>
+    </div>
+    <div class="why-item">
+      <h3>{{ t('civics_exc_5020_title') }}</h3>
+      <p class="muted">{{ t('civics_exc_5020_body') }}</p>
+    </div>
+    <div class="why-item">
+      <h3>{{ t('civics_exc_n648_title') }}</h3>
+      <p class="muted">{{ t('civics_exc_n648_body') }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="card" style="text-align:center;">
+  <a class="btn secondary" href="{{ url_for('civics.questions_reference') }}">{{ t('civics_cta_view_questions') }}</a>
+</div>
+
+<div class="card">
+  <h2>{{ t('civics_cta_practice') }}</h2>
+  <p class="muted">{{ t('civics_practice_intro') }}</p>
+  <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:16px;">
+    <form method="post" action="{{ url_for('civics.practice_start') }}" style="flex:1;min-width:240px;">
+      <input type="hidden" name="mode" value="full">
+      <div class="card" style="background:var(--accent-soft);margin-bottom:10px;">
+        <strong>{{ t('civics_mode_full') }}</strong>
+      </div>
+      <button type="submit" class="btn block">{{ t('civics_start_button') }}</button>
+    </form>
+    <form method="post" action="{{ url_for('civics.practice_start') }}" style="flex:1;min-width:240px;">
+      <input type="hidden" name="mode" value="65_20">
+      <div class="card" style="background:var(--accent-soft);margin-bottom:10px;">
+        <strong>{{ t('civics_mode_6520') }}</strong>
+      </div>
+      <button type="submit" class="btn secondary block">{{ t('civics_start_button') }}</button>
+    </form>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <p>{{ t('civics_source_note') }}</p>
+  <p>{{ t('civics_disclaimer') }}</p>
+</footer>
+{% endblock %}

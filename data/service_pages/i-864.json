@@ -1,0 +1,136 @@
+{
+  "tagline": "O compromisso financeiro que sustenta o pedido de green card",
+  "tagline_en": "The financial commitment behind a green card application",
+  "what_is": [
+    "O Formulário I-864 é um contrato juridicamente vinculante em que o patrocinador financeiro se compromete, perante o governo dos Estados Unidos, a sustentar financeiramente o imigrante para que ele não se torne dependente de assistência pública. É exigido na maioria dos casos de green card baseados em família."
+  ],
+  "what_is_en": [
+    "Form I-864 is a legally binding contract in which the financial sponsor commits, to the U.S. government, to financially support the immigrant so they don't become a public charge. It's required in most family-based green card cases."
+  ],
+  "who_needs": [
+    "O peticionário da petição familiar (I-130), na maioria dos casos.",
+    "Um patrocinador conjunto (joint sponsor), quando a renda do peticionário não atinge o mínimo exigido.",
+    "Um patrocinador substituto, em casos específicos previstos nas instruções oficiais."
+  ],
+  "who_needs_en": [
+    "The petitioner of the family petition (I-130), in most cases.",
+    "A joint sponsor, when the petitioner's income doesn't meet the minimum required.",
+    "A substitute sponsor, in specific cases described in the official instructions."
+  ],
+  "eligibility": [
+    "Esta é uma obrigação legal séria: o patrocinador permanece responsável até o imigrante se naturalizar, acumular 40 trimestres de trabalho nos EUA, deixar de ser residente permanente, morrer, ou (em alguns casos) até o casamento terminar.",
+    "Esta ferramenta apenas organiza e preenche o formulário — não aconselha sobre as implicações legais e financeiras dessa obrigação."
+  ],
+  "eligibility_en": [
+    "This is a serious legal obligation: the sponsor stays responsible until the immigrant naturalizes, earns 40 work quarters in the U.S., stops being a permanent resident, dies, or (in some cases) the marriage ends.",
+    "This tool only organizes and fills out the form — it does not advise on the legal or financial implications of this obligation."
+  ],
+  "required_evidence": [
+    "De todo patrocinador: cópia da declaração de imposto de renda federal (com W-2s) do ano mais recente, ou uma justificativa de por que não precisou declarar; e cópias de todo 1099 ou outra evidência de renda relatada. Opcionalmente, os últimos 3 anos + holerites dos últimos 6 meses + carta do empregador, se isso ajudar a comprovar a renda.",
+    "Se autônomo: Schedule C, D, E ou F da declaração de imposto de renda mais recente.",
+    "Se usar renda/patrimônio de outro morador do domicílio: um Formulário I-864A separado para cada pessoa, mais prova de residência no mesmo domicílio e do vínculo com o patrocinador.",
+    "Se usar patrimônio (bens) para complementar a renda: documentação de local, propriedade, data de aquisição e valor do bem, e de quaisquer dívidas/ônus sobre ele.",
+    "Prova do seu status (cidadão, residente permanente ou nacional americano) se você for patrocinador conjunto, substituto, ou parente de imigrante baseado em emprego.",
+    "Se militar em serviço ativo patrocinando cônjuge/filho(a) com 100% da linha de pobreza (em vez de 125%): prova do seu status militar ativo."
+  ],
+  "required_evidence_en": [
+    "From every sponsor: a copy of the most recent year's federal income tax return (with W-2s), or a statement explaining why you weren't required to file; plus copies of every 1099 or other evidence of reported income. Optionally, the last 3 years plus pay stubs from the last 6 months plus an employer letter, if that helps establish income.",
+    "If self-employed: Schedule C, D, E, or F from the most recent tax return.",
+    "If using another household member's income/assets: a separate Form I-864A for each person, plus proof of residency in the same household and of their relationship to the sponsor.",
+    "If using assets to supplement income: documentation of the asset's location, ownership, acquisition date, and value, and of any liens/liabilities against it.",
+    "Proof of your status (citizen, permanent resident, or U.S. national) if you're a joint sponsor, substitute sponsor, or relative of an employment-based immigrant.",
+    "If active-duty military sponsoring a spouse/child at 100% of the poverty line (instead of 125%): proof of your active military status."
+  ],
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
+    "Checklist de documentos de apoio personalizado para as suas respostas — não uma lista genérica.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada."
+  ],
+  "whats_included_en": [
+    "The official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "A filing checklist: who must sign, how to sign correctly, the exact fee amount, and where to send it (online or paper).",
+    "A supporting-documents checklist tailored to your actual answers — not a generic list.",
+    "Progress saved automatically: close the tab and come back anytime, nothing is lost."
+  ],
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido e os checklists de protocolo e de documentos, prontos para o seu processo."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust any of them before continuing.",
+    "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "common_mistakes": [
+    "Renda declarada abaixo do mínimo exigido (geralmente 125% da linha de pobreza federal) sem incluir um patrocinador conjunto.",
+    "Não anexar a declaração de imposto de renda (tax return) mais recente ou os W-2s correspondentes.",
+    "Esquecer o Formulário I-864A quando a renda de outro membro da família é usada para atingir o mínimo exigido.",
+    "Confundir I-864 com I-864EZ ou I-864W — cada um se aplica a uma situação diferente.",
+    "Deixar em branco um dos 4 campos que a USCIS confere antes de aceitar o formulário no lockbox: sobrenome, endereço, número de Seguro Social e assinatura do patrocinador."
+  ],
+  "common_mistakes_en": [
+    "Declared income below the required minimum (generally 125% of the federal poverty line) without adding a joint sponsor.",
+    "Not attaching the most recent tax return or corresponding W-2s.",
+    "Forgetting Form I-864A when another household member's income is used to reach the required minimum.",
+    "Confusing the I-864 with the I-864EZ or I-864W — each applies to a different situation.",
+    "Leaving blank one of the 4 fields USCIS checks before accepting the form at the lockbox: sponsor's family name, address, Social Security number, and signature."
+  ],
+  "faq": [
+    {
+      "q": "Qual é a renda mínima exigida?",
+      "a": "Geralmente 125% da linha de pobreza federal para o tamanho da sua família (100% para militares em serviço ativo patrocinando cônjuge ou filho). O valor exato muda todo ano — confira as diretrizes de pobreza atuais no site oficial da USCIS antes de calcular."
+    },
+    {
+      "q": "E se eu não tiver renda suficiente?",
+      "a": "Você pode usar um patrocinador conjunto (joint sponsor) que também preenche seu próprio I-864, ou combinar sua renda com a de outro membro do domicílio via Formulário I-864A."
+    },
+    {
+      "q": "Por quanto tempo essa obrigação dura?",
+      "a": "Até o imigrante se naturalizar, acumular 40 trimestres de trabalho, deixar de ser residente permanente, morrer, ou o casamento terminar em alguns casos — o que ocorrer primeiro."
+    },
+    {
+      "q": "Autônomos podem ser patrocinadores?",
+      "a": "Sim, mas em geral precisam anexar documentação adicional (Schedule C, D, E ou F da declaração de imposto de renda) para comprovar a renda."
+    },
+    {
+      "q": "O que acontece se o imigrante que eu patrocinei receber benefício assistencial do governo?",
+      "a": "A agência que pagou o benefício pode cobrar o valor de volta do patrocinador, e pode até processá-lo judicialmente por esse valor mais custas legais — é um compromisso legal sério, não apenas simbólico."
+    },
+    {
+      "q": "Para onde envio o I-864 preenchido?",
+      "a": "Entregue o formulário e os documentos de apoio à pessoa que você está patrocinando, para que ela inclua no pacote do Formulário I-485 (ou DS-230/OF-230, no processamento consular) — o I-864 não é enviado separadamente à USCIS."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "What's the minimum required income?",
+      "a": "Generally 125% of the federal poverty line for your household size (100% for active-duty military sponsoring a spouse or child). The exact amount changes every year — check the current poverty guidelines on the official USCIS site before calculating."
+    },
+    {
+      "q": "What if I don't have enough income?",
+      "a": "You can use a joint sponsor who also files their own I-864, or combine your income with another household member's via Form I-864A."
+    },
+    {
+      "q": "How long does this obligation last?",
+      "a": "Until the immigrant naturalizes, earns 40 work quarters, stops being a permanent resident, dies, or (in some cases) the marriage ends — whichever happens first."
+    },
+    {
+      "q": "Can self-employed people be sponsors?",
+      "a": "Yes, but they generally need to attach additional documentation (Schedule C, D, E, or F from their tax return) to prove income."
+    },
+    {
+      "q": "What happens if the immigrant I sponsored receives a means-tested public benefit?",
+      "a": "The agency that paid the benefit can seek repayment from the sponsor, and can even sue for that amount plus legal costs — this is a serious legal commitment, not just a formality."
+    },
+    {
+      "q": "Where do I send the completed I-864?",
+      "a": "Give the form and supporting documents to the person you're sponsoring, so they include it in their Form I-485 package (or DS-230/OF-230, for consular processing) — the I-864 isn't submitted separately to USCIS."
+    }
+  ],
+  "related_note": "Exigido junto com o I-130/I-485 na maioria dos casos de green card baseados em família.",
+  "related_note_en": "Required together with the I-130/I-485 in most family-based green card cases.",
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+}

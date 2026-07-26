@@ -1,0 +1,639 @@
+{
+  "form": "I-539A",
+  "title": "I-539A — Supplemental Information for Application to Extend/Change Nonimmigrant Status",
+  "description": "Um Formulário I-539A é necessário para cada cônjuge ou filho(a) incluído no mesmo pedido de extensão/mudança de status (Formulário I-539) de outra pessoa.",
+  "sections": [
+    {
+      "id": "sobre_principal",
+      "title": "Sobre o Requerente Principal do I-539"
+    },
+    {
+      "id": "info_pessoal",
+      "title": "Parte 2 — Informações Sobre Você (o Dependente)"
+    },
+    {
+      "id": "info_adicional",
+      "title": "Parte 3 — Informações Adicionais Sobre Você"
+    },
+    {
+      "id": "contato_assinatura",
+      "title": "Parte 4 — Contato e Assinatura"
+    },
+    {
+      "id": "interprete",
+      "title": "Parte 5 — Intérprete (se aplicável)"
+    },
+    {
+      "id": "preparador",
+      "title": "Parte 6 — Preparador (se alguém preencheu por você)"
+    }
+  ],
+  "questions": [
+    {
+      "id": "principal_sobrenome",
+      "section": "sobre_principal",
+      "label": "Sobrenome do requerente principal do I-539",
+      "type": "text",
+      "required": true,
+      "hint": "É o sobrenome da pessoa que protocolou o Formulário I-539 principal — a pessoa cujo pedido de extensão/mudança de status você está acompanhando como dependente (por exemplo, seu cônjuge ou um dos seus pais). Não é o seu sobrenome."
+    },
+    {
+      "id": "principal_nome",
+      "section": "sobre_principal",
+      "label": "Nome do requerente principal do I-539",
+      "type": "text",
+      "required": true,
+      "hint": "É o primeiro nome dessa mesma pessoa — quem protocolou o Formulário I-539 principal (por exemplo, seu cônjuge ou um dos seus pais). Não é o seu nome."
+    },
+    {
+      "id": "principal_nome_meio",
+      "section": "sobre_principal",
+      "label": "Nome do meio do requerente principal (se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "O nome do meio dessa mesma pessoa (quem protocolou o I-539 principal), não o seu. Deixe em branco se ela não tiver nome do meio ou se você não souber."
+    },
+    {
+      "id": "nome_sobrenome",
+      "section": "info_pessoal",
+      "label": "Seu sobrenome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_nome",
+      "section": "info_pessoal",
+      "label": "Seu nome",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_meio",
+      "section": "info_pessoal",
+      "label": "Seu nome do meio (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "data_nascimento",
+      "section": "info_pessoal",
+      "label": "Data de nascimento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "pais_nascimento",
+      "section": "info_pessoal",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pais_cidadania",
+      "section": "info_pessoal",
+      "label": "País de cidadania/nacionalidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "ssn",
+      "section": "info_pessoal",
+      "label": "Número de Seguro Social (SSN, se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "numero_a",
+      "section": "info_pessoal",
+      "label": "Número de Registro de Estrangeiro (A-Number, se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "Formato A-XXXXXXXXX. Deixe em branco se você nunca recebeu um."
+    },
+    {
+      "id": "data_chegada",
+      "section": "info_pessoal",
+      "label": "Data da sua entrada mais recente nos Estados Unidos",
+      "type": "date",
+      "required": true,
+      "hint": "Encontre essa data no seu passaporte (carimbo de entrada) ou no seu Formulário I-94 (i94.cbp.dhs.gov)."
+    },
+    {
+      "id": "numero_i94",
+      "section": "info_pessoal",
+      "label": "Número do seu Formulário I-94 (Arrival-Departure Record)",
+      "type": "text",
+      "required": true,
+      "hint": "Consulte em i94.cbp.dhs.gov usando seus dados de passaporte, caso não tenha o número anotado."
+    },
+    {
+      "id": "numero_passaporte",
+      "section": "info_pessoal",
+      "label": "Número do seu passaporte",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "numero_documento_viagem",
+      "section": "info_pessoal",
+      "label": "Número do documento de viagem (se diferente do passaporte)",
+      "type": "text",
+      "required": false,
+      "hint": "Só preencha se você entrou com um documento diferente do passaporte (ex.: documento de refugiado, carteira de identidade de fronteira). Se entrou com passaporte normal, deixe em branco."
+    },
+    {
+      "id": "pais_emissao_passaporte",
+      "section": "info_pessoal",
+      "label": "País que emitiu o passaporte/documento de viagem",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "data_expiracao_passaporte",
+      "section": "info_pessoal",
+      "label": "Data de expiração do passaporte/documento de viagem",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "status_atual",
+      "section": "info_pessoal",
+      "label": "Seu status de não imigrante atual (código exato da USCIS)",
+      "type": "text",
+      "required": true,
+      "hint": "Use o código oficial exato, sem hífen (ex: F2, B2, H4) — o campo interno do formulário chama isso de \"New Status\" mas na verdade é o seu status ATUAL. Consulte seu Formulário I-94 se tiver dúvida."
+    },
+    {
+      "id": "data_expiracao_status",
+      "section": "info_pessoal",
+      "label": "Data de expiração do seu status atual",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "passaporte_atual_numero",
+      "section": "info_pessoal",
+      "label": "Número do passaporte ATUAL (só se diferente do informado acima)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "passaporte_atual_expiracao",
+      "section": "info_pessoal",
+      "label": "Data de expiração do passaporte atual (só se diferente do informado acima)",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "passaporte_atual_pais",
+      "section": "info_pessoal",
+      "label": "País de emissão do passaporte atual (só se diferente do informado acima)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "uscis_online_account",
+      "section": "info_pessoal",
+      "label": "Seu número de conta online da USCIS (se houver)",
+      "type": "text",
+      "required": false,
+      "hint": "12 dígitos, sem traços — encontrado na sua conta em my.uscis.gov, se você já criou uma."
+    },
+    {
+      "id": "adicional_visto_imigrante",
+      "section": "info_adicional",
+      "label": "Você é candidato(a) a um visto de imigrante?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Ter um processo de Green Card em andamento pode complicar um pedido de extensão/mudança de status de não imigrante, dependendo do seu status atual. Responda honestamente; confirme com a equipe como isso afeta o seu caso específico."
+    },
+    {
+      "id": "adicional_peticao_ja_protocolada",
+      "section": "info_adicional",
+      "label": "Alguma petição de imigrante já foi protocolada para você?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui qualquer petição de Green Card (ex.: I-130, I-140) já protocolada em seu nome, mesmo que ainda pendente ou já negada. Confirme com a equipe como isso afeta o seu pedido de I-539."
+    },
+    {
+      "id": "adicional_i485_ja_protocolado",
+      "section": "info_adicional",
+      "label": "Você já protocolou um Formulário I-485 (Ajuste de Status)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Refere-se ao Formulário I-485 (Ajuste de Status/Green Card), não ao I-539 atual. Responda honestamente mesmo que o I-485 tenha sido negado ou retirado."
+    },
+    {
+      "id": "adicional_ofensa_criminal",
+      "section": "info_adicional",
+      "label": "Você já foi preso(a) ou condenado(a) por algum crime desde sua última entrada nos EUA?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclua QUALQUER prisão, acusação ou condenação, mesmo que tenha sido arquivada, perdoada ou não tenha virado condenação — inclusive infrações que pareçam pequenas (ex.: dirigir alcoolizado). Se tiver dúvida se algo conta, responda \"Sim\" e explique na aplicação; confirme com a equipe antes de enviar."
+    },
+    {
+      "id": "adicional_tortura_genocidio",
+      "section": "info_adicional",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou participou de atos de tortura ou genocídio?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Esta é uma das perguntas obrigatórias de triagem que a USCIS faz a todo mundo sobre violações de direitos humanos (INA 212(a)(3)(E)) — não é uma acusação. Responda honestamente; qualquer dúvida, consulte a equipe ou um advogado de imigração antes de enviar."
+    },
+    {
+      "id": "adicional_matar",
+      "section": "info_adicional",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou participou de matar alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes — não presume nada sobre você. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_lesao_grave",
+      "section": "info_adicional",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou participou de ferir alguém grave e intencionalmente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_contato_sexual_forcado",
+      "section": "info_adicional",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou participou de contato sexual forçado ou sem consentimento com alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_limitar_religiao",
+      "section": "info_adicional",
+      "label": "Você já ordenou, incitou, cometeu, ajudou ou participou de limitar ou negar a alguém o direito de praticar sua religião?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_grupo_armado",
+      "section": "info_adicional",
+      "label": "Você já serviu, foi membro, ajudou ou participou de alguma unidade militar, paramilitar, policial, grupo rebelde, guerrilha, milícia, ou outro grupo armado?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre envolvimento com grupos armados, feita a todos os requerentes — inclui até serviço militar obrigatório no seu país de origem. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_trabalho_prisao",
+      "section": "info_adicional",
+      "label": "Você já trabalhou, foi voluntário(a), ou serviu em alguma prisão, campo de detenção, campo de trabalho, ou local que envolvia deter pessoas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_ameaca_arma",
+      "section": "info_adicional",
+      "label": "Você já foi membro, ajudou ou participou de algum grupo em que você ou outras pessoas usaram ou ameaçaram usar armas contra alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_venda_armas",
+      "section": "info_adicional",
+      "label": "Você já vendeu, forneceu ou transportou armas, ou ajudou alguém a fazer isso, sabendo ou acreditando que seriam usadas contra outra pessoa?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Pergunta de triagem padrão da USCIS sobre violações de direitos humanos, feita a todos os requerentes. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_treinamento_armas",
+      "section": "info_adicional",
+      "label": "Você já recebeu algum treinamento com armas, paramilitar, ou de tipo militar?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Inclui até treinamento militar obrigatório (serviço militar) no seu país de origem — não significa nada de errado por si só. Responda honestamente; em caso de dúvida, consulte a equipe ou um advogado de imigração."
+    },
+    {
+      "id": "adicional_violou_status",
+      "section": "info_adicional",
+      "label": "Você já violou os termos do status de não imigrante que possui atualmente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Exemplos: trabalhar sem autorização, ficar mais tempo do que o permitido em um status anterior, ou não seguir as condições do seu visto (ex.: estudar em status de visitante). Se não tem certeza, responda com a equipe antes de enviar — omitir uma violação pode ser pior do que declará-la."
+    },
+    {
+      "id": "adicional_processo_remocao",
+      "section": "info_adicional",
+      "label": "Você está atualmente em processo de remoção (deportação)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "\"Processo de remoção\" significa que você já recebeu uma notificação oficial (Notice to Appear) para comparecer à corte de imigração, não apenas ter tido algum problema com status no passado. Se tiver dúvida, confirme com a equipe."
+    },
+    {
+      "id": "adicional_ja_trabalhou_eua",
+      "section": "info_adicional",
+      "label": "Você já trabalhou nos Estados Unidos desde a última vez que foi admitido(a) ou teve seu status estendido/alterado?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Se \"Não\", esteja pronto(a) para explicar como se sustenta financeiramente. Trabalhar sem autorização (inclusive remotamente para uma empresa no Brasil) pode ser considerado trabalho não autorizado."
+    },
+    {
+      "id": "adicional_visitante_j1j2",
+      "section": "info_adicional",
+      "label": "Você é ou já foi visitante de intercâmbio J-1, ou dependente J-2 de um visitante J-1?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Importante: muitos vistos J-1/J-2 têm uma exigência de residir 2 anos no país de origem antes de poder mudar de status dentro dos EUA (INA 212(e)) — se isso se aplica a você, este pedido de I-539 pode não ser possível sem uma dispensa (waiver). Confirme com a equipe antes de prosseguir."
+    },
+    {
+      "id": "contato_telefone",
+      "section": "contato_assinatura",
+      "label": "Seu telefone diurno",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "contato_celular",
+      "section": "contato_assinatura",
+      "label": "Seu celular (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "contato_email",
+      "section": "contato_assinatura",
+      "label": "Seu e-mail (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_sobrenome",
+      "section": "interprete",
+      "label": "Sobrenome do intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_nome",
+      "section": "interprete",
+      "label": "Nome do intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_empresa",
+      "section": "interprete",
+      "label": "Empresa/organização do intérprete (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_telefone",
+      "section": "interprete",
+      "label": "Telefone diurno do intérprete",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_celular",
+      "section": "interprete",
+      "label": "Celular do intérprete (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_email",
+      "section": "interprete",
+      "label": "E-mail do intérprete (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "interprete_idioma",
+      "section": "interprete",
+      "label": "Idioma em que o intérprete é fluente (além do inglês)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_sobrenome",
+      "section": "preparador",
+      "label": "Sobrenome do preparador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_nome",
+      "section": "preparador",
+      "label": "Nome do preparador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_empresa",
+      "section": "preparador",
+      "label": "Empresa/organização do preparador (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_telefone",
+      "section": "preparador",
+      "label": "Telefone diurno do preparador",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_celular",
+      "section": "preparador",
+      "label": "Celular do preparador (se houver)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "preparador_email",
+      "section": "preparador",
+      "label": "E-mail do preparador (se houver)",
+      "type": "text",
+      "required": false
+    }
+  ]
+}

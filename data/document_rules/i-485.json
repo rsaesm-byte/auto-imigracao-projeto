@@ -1,0 +1,84 @@
+{
+  "form": "I-485",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-485 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). O I-485 tem quase 50 categorias de elegibilidade possíveis — esta lista agrupa as mais comuns; se sua categoria não aparece destacada abaixo, ela ainda está coberta pelos documentos \"sempre exigidos\", mas confira as instruções oficiais (checklist do próprio USCIS para o I-485) para exigências específicas da sua categoria.",
+  "confidence_note_en": "Based on the official Form I-485 instructions and multiple immigration-law sources cross-checked in this session (uscis.gov blocked direct fetching). The I-485 has nearly 50 possible eligibility categories — this list groups the most common ones; if your category is not called out below, it is still covered by the \"always required\" documents, but check the official instructions (USCIS's own checklist for the I-485) for requirements specific to your category.",
+  "always": [
+    {"label": "Formulário I-693, Relatório de Exame Médico e Registro de Vacinação, preenchido por um médico credenciado (civil surgeon) e entregue em envelope lacrado", "label_en": "Form I-693, Report of Medical Examination and Vaccination Record, completed by a designated civil surgeon and submitted in a sealed envelope"},
+    {"label": "Cópia do seu passaporte válido (página de identificação) e de qualquer visto de entrada", "label_en": "Copy of your valid passport (biographic page) and any entry visa"},
+    {"label": "Cópia do Formulário I-94 (registro de entrada/saída), disponível em i94.cbp.dhs.gov", "label_en": "Copy of Form I-94 (Arrival/Departure Record), available at i94.cbp.dhs.gov"},
+    {"label": "Cópia da sua certidão de nascimento", "label_en": "Copy of your birth certificate"},
+    {"label": "2 fotos estilo passaporte, tiradas nos últimos 30 dias", "label_en": "2 passport-style photos, taken within the last 30 days"},
+    {"label": "Se você já foi preso, citado ou condenado (mesmo que arquivado/anulado): certidão de antecedentes/disposição do tribunal para cada ocorrência", "label_en": "If you have ever been arrested, cited, or convicted (even if dismissed or expunged): a certified court disposition/record for each occurrence"}
+  ],
+  "rules": [
+    {
+      "questions": ["categoria_imigrante"],
+      "equals_any": [
+        "familia_conjuge_cidadao", "familia_filho_menor21_cidadao",
+        "familia_pai_mae_cidadao", "familia_noivo_k1k2", "familia_viuvo_cidadao",
+        "familia_conjuge_filho_pai_militar_ndaa", "familia_filho_maior21_cidadao",
+        "familia_filho_casado_cidadao", "familia_irmao_irma_cidadao",
+        "familia_conjuge_lpr", "familia_filho_menor21_lpr", "familia_filho_maior21_lpr"
+      ],
+      "documents": [
+        {"label": "Cópia do aviso de aprovação (Form I-797) da petição familiar (I-130) que serve de base para este pedido", "label_en": "Copy of the approval notice (Form I-797) for the underlying family-based petition (Form I-130)"},
+        {"label": "Documento comprovando o parentesco: certidão de casamento, certidão de nascimento, ou decreto de adoção, conforme a relação", "label_en": "Document proving the family relationship: marriage certificate, birth certificate, or adoption decree, as applicable to the relationship"},
+        {"label": "Formulário I-864, Affidavit of Support, preenchido pelo patrocinador, com declarações de imposto de renda dos últimos 3 anos e comprovante de renda", "label_en": "Form I-864, Affidavit of Support, completed by the sponsor, with the last 3 years of income tax returns and proof of income"}
+      ]
+    },
+    {
+      "questions": ["categoria_imigrante"],
+      "equals_any": ["vawa_conjuge", "vawa_filho", "vawa_pai_mae"],
+      "documents": [
+        {"label": "Evidência do relacionamento qualificador com o abusador (certidão de casamento ou nascimento)", "label_en": "Evidence of the qualifying relationship with the abuser (marriage or birth certificate)"},
+        {"label": "Evidência do abuso: boletins de ocorrência, ordens de proteção, laudos médicos, cartas de terapeutas, declarações de testemunhas", "label_en": "Evidence of the abuse: police reports, protective orders, medical reports, letters from therapists, witness statements"},
+        {"label": "Evidência de boa conduta moral e de que o casamento (se aplicável) foi verdadeiro (bona fide)", "label_en": "Evidence of good moral character and that the marriage (if applicable) was entered into in good faith (bona fide)"}
+      ]
+    },
+    {
+      "questions": ["categoria_imigrante"],
+      "equals_any": [
+        "emp_habilidade_extraordinaria", "emp_professor_pesquisador",
+        "emp_executivo_multinacional", "emp_profissional_grau_avancado",
+        "emp_profissional_bacharel", "emp_trabalhador_qualificado",
+        "emp_outro_trabalhador", "emp_national_interest_waiver"
+      ],
+      "documents": [
+        {"label": "Cópia do aviso de aprovação (Form I-797) da petição de emprego (I-140) que serve de base para este pedido", "label_en": "Copy of the approval notice (Form I-797) for the underlying employment-based petition (Form I-140)"},
+        {"label": "Carta de oferta de emprego atual do empregador patrocinador, ou Formulário I-485 Suplemento J (confirmação de oferta de emprego contínua)", "label_en": "Current offer of employment letter from the sponsoring employer, or Form I-485 Supplement J (confirmation of a continuing offer of employment)"},
+        {"label": "Comprovante de qualificação para a categoria (diplomas, certificações, cartas de referência profissional), conforme a subcategoria", "label_en": "Proof of qualification for the category (diplomas, certifications, professional reference letters), as applicable to the subcategory"}
+      ]
+    },
+    {
+      "questions": ["categoria_imigrante"],
+      "equals": "asilo",
+      "documents": [
+        {"label": "Cópia do aviso de concessão de asilo (Form I-94 ou carta de aprovação do USCIS/decisão do Tribunal de Imigração)", "label_en": "Copy of the asylum grant notice (Form I-94 or USCIS approval letter/Immigration Court decision)"},
+        {"label": "Comprovante de presença física nos EUA por ao menos 1 ano após a concessão do asilo", "label_en": "Proof of physical presence in the U.S. for at least 1 year after the asylum grant"}
+      ]
+    },
+    {
+      "questions": ["categoria_imigrante"],
+      "equals": "refugiado",
+      "documents": [
+        {"label": "Cópia do Formulário I-94 mostrando admissão como refugiado(a), ou aviso de admissão", "label_en": "Copy of Form I-94 showing admission as a refugee, or the admission notice"},
+        {"label": "Comprovante de presença física nos EUA por ao menos 1 ano após a admissão como refugiado(a)", "label_en": "Proof of physical presence in the U.S. for at least 1 year after admission as a refugee"}
+      ]
+    },
+    {
+      "questions": ["categoria_imigrante"],
+      "equals": "diversity_visa",
+      "documents": [
+        {"label": "Carta/aviso de seleção no Programa de Visto de Diversidade (Loteria) do Departamento de Estado, com o número de classificação (rank)", "label_en": "Selection letter/notice for the Diversity Visa Program (Lottery) from the Department of State, showing the rank number"}
+      ]
+    },
+    {
+      "questions": ["categoria_imigrante"],
+      "equals_any": ["vitima_trafico_t", "vitima_crime_u"],
+      "documents": [
+        {"label": "Cópia do aviso de concessão do status T ou U (Form I-797)", "label_en": "Copy of the T or U status grant notice (Form I-797)"},
+        {"label": "Comprovante do período de presença física exigido nos EUA sob esse status", "label_en": "Proof of the required period of physical presence in the U.S. under that status"}
+      ]
+    }
+  ]
+}

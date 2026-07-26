@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="{{ 'en' if get_lang() == 'en' else 'pt-BR' }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}{{ t('app_name') }}{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=4">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+  <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
+</head>
+<body>
+  {% block top_accent %}{% endblock %}
+  <header class="topbar">
+    <a class="brand" href="{{ url_for('wizard.dashboard') if current_user.is_authenticated else url_for('wizard.index') }}">
+      <img class="brand-mark" src="{{ url_for('static', filename='logo-mark.png') }}" width="24" height="28" alt="">
+      {{ t('app_name') }}
+    </a>
+    <div class="topbar-right">
+      <a class="logout" href="{{ url_for('wizard.dashboard') if current_user.is_authenticated else url_for('wizard.index') }}">{{ t('nav_home') }}</a>
+      <a class="logout" href="{{ url_for('wizard.services') }}">{{ t('nav_services') }}</a>
+      <a class="logout" href="{{ url_for('packages.index') }}">{{ t('nav_packages') }}</a>
+      <a class="logout" href="{{ url_for('eligibility.index') }}">{{ t('nav_eligibility') }}</a>
+      <a class="logout" href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
+      <a class="logout" href="{{ url_for('medical_exam.index') }}">{{ t('nav_medical_exam') }}</a>
+      <a class="logout" href="{{ url_for('income_calculator.index') }}">{{ t('nav_income_calc') }}</a>
+      <a class="logout" href="{{ url_for('visa_bulletin.index') }}">{{ t('nav_visa_bulletin') }}</a>
+      {% if current_user.is_authenticated %}
+        <span class="muted">{{ current_user.email }}</span>
+        <a class="logout" href="{{ url_for('auth.logout') }}">{{ t('nav_logout') }}</a>
+      {% else %}
+        <a class="logout" href="{{ url_for('auth.login') }}">{{ t('nav_login') }}</a>
+        <a class="btn" style="padding:7px 16px;font-size:0.88rem;" href="{{ url_for('auth.signup') }}">{{ t('nav_signup') }}</a>
+      {% endif %}
+      <span class="lang-switch" role="group" aria-label="{{ t('lang_switch_label') }}">
+        <a class="lang-flag {{ 'active' if get_lang() == 'pt' }}" href="{{ url_for('wizard.set_lang', lang='pt') }}" title="Português">
+          <svg viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+            <rect width="24" height="16" fill="#009739"/>
+            <polygon points="12,2 22,8 12,14 2,8" fill="#fedd00"/>
+            <circle cx="12" cy="8" r="3.2" fill="#012169"/>
+          </svg>
+        </a>
+        <a class="lang-flag {{ 'active' if get_lang() == 'en' }}" href="{{ url_for('wizard.set_lang', lang='en') }}" title="English">
+          <svg viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+            <rect width="24" height="16" fill="#b22234"/>
+            <g fill="#fff">
+              <rect y="1.23" width="24" height="1.23"/>
+              <rect y="3.69" width="24" height="1.23"/>
+              <rect y="6.15" width="24" height="1.23"/>
+              <rect y="8.62" width="24" height="1.23"/>
+              <rect y="11.08" width="24" height="1.23"/>
+              <rect y="13.54" width="24" height="1.23"/>
+            </g>
+            <rect width="10" height="8.6" fill="#3c3b6e"/>
+          </svg>
+        </a>
+      </span>
+    </div>
+  </header>
+
+  <div class="page {% block page_class %}{% endblock %}">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="flash {{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </div>
+
+  <footer class="site-footer">
+    <p>{{ t('footer_disclaimer') }}</p>
+  </footer>
+
+  <script>
+    (function () {
+      var els = document.querySelectorAll('.reveal');
+      if (!els.length) return;
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduceMotion || !('IntersectionObserver' in window)) {
+        els.forEach(function (el) { el.classList.add('in-view'); });
+        return;
+      }
+      var obs = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+</body>
+</html>

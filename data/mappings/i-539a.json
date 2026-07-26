@@ -1,0 +1,416 @@
+{
+  "form": "I-539A",
+  "fields": [
+    {
+      "pdf_field": "form1[0].#subform[0].P1Line1a_FamilyName[0]",
+      "type": "text",
+      "question_id": "principal_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line1b_GivenName[0]",
+      "type": "text",
+      "question_id": "principal_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line1c_MiddleName[0]",
+      "type": "text",
+      "question_id": "principal_nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P2_Line1a_FamilyName[0]",
+      "type": "text",
+      "question_id": "nome_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P2_Line1b_GivenName[0]",
+      "type": "text",
+      "question_id": "nome_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P2_Line1c_MiddleName[0]",
+      "type": "text",
+      "question_id": "nome_meio"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line2_DateOfBirth[0]",
+      "type": "date",
+      "question_id": "data_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line3_CountryOfBirth[0]",
+      "type": "text",
+      "question_id": "pais_nascimento"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1f_CountryOfCitz[0]",
+      "type": "text",
+      "question_id": "pais_cidadania"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1g_SSN[0]",
+      "type": "text",
+      "question_id": "ssn"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].#area[0].Pt1Line6_AlienNumber[0]",
+      "type": "text",
+      "question_id": "numero_a"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1i_DateOfArrival[0]",
+      "type": "date",
+      "question_id": "data_chegada"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1j_ArrivalDeparture[0]",
+      "type": "text",
+      "question_id": "numero_i94"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1k_Passport[0]",
+      "type": "text",
+      "question_id": "numero_passaporte"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1l_TravelDoc[0]",
+      "type": "text",
+      "question_id": "numero_documento_viagem"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1m_CountryOfIssuance[0]",
+      "type": "text",
+      "question_id": "pais_emissao_passaporte"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1n_ExpDate[0]",
+      "type": "date",
+      "question_id": "data_expiracao_passaporte"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Pt1Line15a_NewStatus[0]",
+      "type": "text",
+      "question_id": "status_atual"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].SupA_Line1p_DateExpires[0]",
+      "type": "date",
+      "question_id": "data_expiracao_status"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line13_Passport[0]",
+      "type": "text",
+      "question_id": "passaporte_atual_numero"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line13b_ExpDate[0]",
+      "type": "date",
+      "question_id": "passaporte_atual_expiracao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].P1_Line13b_CountryOfCitizenship[0]",
+      "type": "text",
+      "question_id": "passaporte_atual_pais"
+    },
+    {
+      "pdf_field": "form1[0].#subform[0].Pt1Line10_USCISELISAcctNumber[0]",
+      "type": "text",
+      "question_id": "uscis_online_account"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line1_ImmVisa[1]",
+      "type": "checkbox",
+      "question_id": "adicional_visto_imigrante",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line1_ImmVisa[0]",
+      "type": "checkbox",
+      "question_id": "adicional_visto_imigrante",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line2_PetFiled[1]",
+      "type": "checkbox",
+      "question_id": "adicional_peticao_ja_protocolada",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line2_PetFiled[0]",
+      "type": "checkbox",
+      "question_id": "adicional_peticao_ja_protocolada",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line3_I485Filed[1]",
+      "type": "checkbox",
+      "question_id": "adicional_i485_ja_protocolado",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line3_I485Filed[0]",
+      "type": "checkbox",
+      "question_id": "adicional_i485_ja_protocolado",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line4_CrimOffense[1]",
+      "type": "checkbox",
+      "question_id": "adicional_ofensa_criminal",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line4_CrimOffense[0]",
+      "type": "checkbox",
+      "question_id": "adicional_ofensa_criminal",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line5_TorGeno[1]",
+      "type": "checkbox",
+      "question_id": "adicional_tortura_genocidio",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line5_TorGeno[0]",
+      "type": "checkbox",
+      "question_id": "adicional_tortura_genocidio",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line6_Killing[1]",
+      "type": "checkbox",
+      "question_id": "adicional_matar",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line6_Killing[0]",
+      "type": "checkbox",
+      "question_id": "adicional_matar",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line7_IntSevInjury[1]",
+      "type": "checkbox",
+      "question_id": "adicional_lesao_grave",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line7_IntSevInjury[0]",
+      "type": "checkbox",
+      "question_id": "adicional_lesao_grave",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line8_SexContRel[1]",
+      "type": "checkbox",
+      "question_id": "adicional_contato_sexual_forcado",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line8_SexContRel[0]",
+      "type": "checkbox",
+      "question_id": "adicional_contato_sexual_forcado",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line9_LimDenRelBel[1]",
+      "type": "checkbox",
+      "question_id": "adicional_limitar_religiao",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line9_LimDenRelBel[0]",
+      "type": "checkbox",
+      "question_id": "adicional_limitar_religiao",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line10_MilUnit[1]",
+      "type": "checkbox",
+      "question_id": "adicional_grupo_armado",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line10_MilUnit[0]",
+      "type": "checkbox",
+      "question_id": "adicional_grupo_armado",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line11_WorkPrison[1]",
+      "type": "checkbox",
+      "question_id": "adicional_trabalho_prisao",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line11_WorkPrison[0]",
+      "type": "checkbox",
+      "question_id": "adicional_trabalho_prisao",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line12_MemOfGroup[1]",
+      "type": "checkbox",
+      "question_id": "adicional_ameaca_arma",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line12_MemOfGroup[0]",
+      "type": "checkbox",
+      "question_id": "adicional_ameaca_arma",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line12_SoldProvWeap[1]",
+      "type": "checkbox",
+      "question_id": "adicional_venda_armas",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line12_SoldProvWeap[0]",
+      "type": "checkbox",
+      "question_id": "adicional_venda_armas",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line14_WeapParamilTrg[1]",
+      "type": "checkbox",
+      "question_id": "adicional_treinamento_armas",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line14_WeapParamilTrg[0]",
+      "type": "checkbox",
+      "question_id": "adicional_treinamento_armas",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line15_NonImmViolSt[1]",
+      "type": "checkbox",
+      "question_id": "adicional_violou_status",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line15_NonImmViolSt[0]",
+      "type": "checkbox",
+      "question_id": "adicional_violou_status",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line16_RemProceed[1]",
+      "type": "checkbox",
+      "question_id": "adicional_processo_remocao",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line16_RemProceed[0]",
+      "type": "checkbox",
+      "question_id": "adicional_processo_remocao",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line17_AdmitGrantExt[1]",
+      "type": "checkbox",
+      "question_id": "adicional_ja_trabalhou_eua",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line17_AdmitGrantExt[0]",
+      "type": "checkbox",
+      "question_id": "adicional_ja_trabalhou_eua",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line18_J1J2Visitor[1]",
+      "type": "checkbox",
+      "question_id": "adicional_visitante_j1j2",
+      "check_if_answer": "sim"
+    },
+    {
+      "pdf_field": "form1[0].#subform[1].P3_Line18_J1J2Visitor[0]",
+      "type": "checkbox",
+      "question_id": "adicional_visitante_j1j2",
+      "check_if_answer": "nao"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P12_Line3_Telephone[0]",
+      "type": "text",
+      "question_id": "contato_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P12_Line3_Mobile[0]",
+      "type": "text",
+      "question_id": "contato_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P12_Line5_Email[0]",
+      "type": "text",
+      "question_id": "contato_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P14_Line1_nterpreterFamilyName[0]",
+      "type": "text",
+      "question_id": "interprete_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P14_Line1_nterpreterGivenName[0]",
+      "type": "text",
+      "question_id": "interprete_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P14_Line2_NameofBusinessorOrgName[0]",
+      "type": "text",
+      "question_id": "interprete_empresa"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P14_Line4_Telephone[0]",
+      "type": "text",
+      "question_id": "interprete_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P14_Line5_Mobile[0]",
+      "type": "text",
+      "question_id": "interprete_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P14_Line5_EmailAddress[0]",
+      "type": "text",
+      "question_id": "interprete_email"
+    },
+    {
+      "pdf_field": "form1[0].#subform[2].P7_Line6_Language[0]",
+      "type": "text",
+      "question_id": "interprete_idioma"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].P15_Line1_PreparerFamilyName[0]",
+      "type": "text",
+      "question_id": "preparador_sobrenome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].P15_Line1_PreparerGivenName[0]",
+      "type": "text",
+      "question_id": "preparador_nome"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].P15_Line2_NameofBusinessorOrgName[0]",
+      "type": "text",
+      "question_id": "preparador_empresa"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].P15_Line4_Telephone[0]",
+      "type": "text",
+      "question_id": "preparador_telefone"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].P15_Line5_Mobile[0]",
+      "type": "text",
+      "question_id": "preparador_celular"
+    },
+    {
+      "pdf_field": "form1[0].#subform[3].P15_Line6_Email[0]",
+      "type": "text",
+      "question_id": "preparador_email"
+    }
+  ]
+}

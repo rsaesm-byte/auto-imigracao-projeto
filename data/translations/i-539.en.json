@@ -1,0 +1,493 @@
+{
+  "title": "Application to Extend/Change Nonimmigrant Status — I-539",
+  "sections": {
+    "basico": "Part 1 — Name and Identification Numbers",
+    "enderecos": "Part 1 — Addresses",
+    "pessoal": "Part 1 — Birth and Citizenship",
+    "entrada": "Part 1 — Your Most Recent Entry Into the U.S.",
+    "status_atual": "Part 1 — Your Current Status",
+    "tipo_pedido": "Part 2 — Application Type",
+    "processamento": "Part 3 — Processing Information",
+    "passaporte_atual": "Part 4 — Current Passport (if different from Part 1)",
+    "endereco_exterior": "Part 4 — Physical Address Abroad",
+    "antecedentes": "Part 4 — Background Questions",
+    "contato_assinatura": "Part 5 — Applicant's Contact Information and Signature",
+    "interprete": "Part 6 — Interpreter (if used)",
+    "preparador": "Part 7 — Preparer (if other than the applicant)"
+  },
+  "questions": {
+    "nome_sobrenome": {
+      "label": "Family Name (Last Name)",
+      "hint": "Enter it exactly as it appears on your CURRENT PASSPORT - do not use the name on a marriage certificate if it differs. If your passport name is outdated, use it anyway and flag it to the team."
+    },
+    "nome_nome": {
+      "label": "Given Name (First Name)",
+      "hint": "Enter it exactly as it appears on your CURRENT PASSPORT - do not use the name on a marriage certificate if it differs."
+    },
+    "nome_meio": {
+      "label": "Middle Name",
+      "hint": "Enter it exactly as it appears on your CURRENT PASSPORT. Leave blank if your passport has no middle name."
+    },
+    "alien_number": {
+      "label": "Alien Registration Number (A-Number), if any",
+      "hint": "9 digits, no dashes. Leave blank if you have never received an A-Number."
+    },
+    "uscis_online": {
+      "label": "USCIS Online Account Number, if any",
+      "hint": "12 digits, no dashes."
+    },
+    "end_correio_cuidados_de": {
+      "label": "Mailing Address — In Care Of Name (if any)",
+      "hint": "Only fill this in if mail needs to be addressed in care of another person or company (e.g., your name is not on the mailbox, or you live with others). In most cases, leave this blank."
+    },
+    "end_correio_rua": {
+      "label": "Mailing Address — Street Number and Name"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Mailing Address — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Mailing Address — Unit Number"
+    },
+    "end_correio_cidade": {
+      "label": "Mailing Address — City or Town"
+    },
+    "end_correio_estado": {
+      "label": "Mailing Address — State"
+    },
+    "end_correio_cep": {
+      "label": "Mailing Address — ZIP Code"
+    },
+    "end_mesmo_que_correio": {
+      "label": "Is the mailing address above the same as your current physical address?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      }
+    },
+    "end_fisico_rua": {
+      "label": "Current Physical Address — Street Number and Name"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Current Physical Address — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Current Physical Address — Unit Number"
+    },
+    "end_fisico_cidade": {
+      "label": "Current Physical Address — City or Town"
+    },
+    "end_fisico_estado": {
+      "label": "Current Physical Address — State"
+    },
+    "end_fisico_cep": {
+      "label": "Current Physical Address — ZIP Code"
+    },
+    "pais_nascimento": {
+      "label": "Country of Birth"
+    },
+    "pais_cidadania": {
+      "label": "Country of Citizenship or Nationality",
+      "hint": "The country you are a citizen of today - this can differ from your country of birth (e.g., you naturalized elsewhere, or hold citizenship by descent). If you hold more than one citizenship, use the one on your current passport."
+    },
+    "data_nascimento": {
+      "label": "Date of Birth"
+    },
+    "ssn": {
+      "label": "U.S. Social Security Number (SSN), if any",
+      "hint": "9 digits, no dashes."
+    },
+    "data_ultima_entrada": {
+      "label": "Date of your last arrival in the U.S."
+    },
+    "numero_i94": {
+      "label": "Form I-94 Arrival-Departure Record Number",
+      "hint": "Find this number at i94.cbp.dhs.gov (look up your most recent record) or on the stamp/annotation in your passport if you entered before 2013. 11 digits."
+    },
+    "numero_passaporte": {
+      "label": "Passport (or travel document) number, if any"
+    },
+    "numero_documento_viagem": {
+      "label": "Travel document number (if different from passport)",
+      "hint": "Only fill this in if you entered with a document other than a passport (e.g., a refugee travel document, border crossing card). If you entered with a regular passport, leave it blank."
+    },
+    "pais_emissao_passaporte": {
+      "label": "Country of issuance of passport or travel document"
+    },
+    "data_expiracao_passaporte": {
+      "label": "Expiration date of passport or travel document"
+    },
+    "status_atual_codigo": {
+      "label": "Your current nonimmigrant status code",
+      "hint": "Type the exact official abbreviation, no hyphen — e.g., F1 (student), F2 (dependent of F-1), B2 (visitor for pleasure), H1B, J1, L2, etc. Check your Form I-94 or visa if unsure — it must match the official USCIS list exactly for the field to display correctly."
+    },
+    "status_atual_expira": {
+      "label": "Expiration date of your current status",
+      "hint": "Find this date on your Form I-94 (i94.cbp.dhs.gov) or on your visa stamp/annotation - it's the deadline until which you're authorized to remain in the U.S. in your current status, before this application. If you selected \"Duration of Status (D/S)\" below, enter your I-20/DS-2019 expiration date instead of a fixed date."
+    },
+    "status_atual_duracao_status": {
+      "label": "Was your current status granted for \"Duration of Status\" (D/S — no fixed expiration date, common for F-1/J-1)?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Check your Form I-94 (i94.cbp.dhs.gov) — if it shows no expiration date and simply says \"D/S\" (Duration of Status), answer Yes. This is common for F-1 and J-1 status."
+    },
+    "servico": {
+      "label": "Which service are you requesting?",
+      "options": {
+        "eos": "EOS — Extension of Status",
+        "cos_f1": "COS F1 — Change of Status to Student (F-1)",
+        "cos_f2": "COS F2 — Change of Status to Dependent of F-1 (F-2)",
+        "cos_b2": "COS B2 — Change of Status to Visitor (B-2)"
+      }
+    },
+    "data_efetiva_mudanca": {
+      "label": "Date you would like the change of status to take effect (optional — applicable only to COS F1/F2/B2)",
+      "hint": "Optional - in most cases leave this blank and let USCIS decide the date. Only fill it in if you have a specific reason to request an exact start date for the new status."
+    },
+    "numero_pessoas": {
+      "label": "How many people are included in this application?",
+      "options": {
+        "sozinho": "Just me",
+        "com_familia": "Myself and family members"
+      },
+      "hint": "If you select \"Me and family members,\" you will be able to add a Form I-539A for each spouse/child included after finishing this main form."
+    },
+    "total_pessoas": {
+      "label": "Total number of people included (counting you)",
+      "hint": "A separate Form I-539A is required for each co-applicant (spouse/child)."
+    },
+    "escola_nome": {
+      "label": "Name of the school you will attend or attend (if applicable)",
+      "hint": "Only fill this in if your situation involves student status — change/extension to F-1, or F-2 as a student's dependent."
+    },
+    "sevis_id": {
+      "label": "SEVIS ID Number (if applicable)",
+      "hint": "Same criteria as above — only applicable if you have a SEVIS record (F-1/F-2/M-1/J-1)."
+    },
+    "data_solicitada_ate": {
+      "label": "Until what date are you requesting your status (current or new) be valid?",
+      "hint": "Typically, add about 6 months to your current status's expiration date (Part 1, item 12, \"Expiration date of your current status\" above). Example: if your current status expires 12/24/2026, this date would be approximately 06/23/2027. Confirm the exact period with the team before submitting."
+    },
+    "pedido_baseado_status_familiar": {
+      "label": "Is this application based on an extension or change of status already granted to your spouse, child, or parent?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" only if you are requesting this status BECAUSE your spouse, child, or parent already had a similar extension/change of status approved by USCIS, and your request depends on or accompanies theirs (e.g., a dependent following the principal). If your request is independent, answer \"No.\""
+    },
+    "pedido_baseado_peticao_separada": {
+      "label": "Is this application based on a separate petition or application to provide your spouse, child, or parent an extension or change of status?",
+      "options": {
+        "nao": "No",
+        "sim_com_este_i539": "Yes, filed with this Form I-539",
+        "sim_previamente_pendente": "Yes, filed previously and pending with USCIS"
+      },
+      "hint": "Answer \"Yes\" only if there is a SEPARATE petition or application (filed along with this I-539 or already pending with USCIS) that will grant an extension/change of status to your spouse, child, or parent - not to the applicant of this form itself. In most individual cases, the answer is \"No.\""
+    },
+    "tipo_formulario_relacionado": {
+      "label": "If you answered \"Yes\" above, which form was/will be used?",
+      "hint": "Applicable only if you answered Yes to one of the two previous questions.",
+      "options": {
+        "i539": "Form I-539",
+        "i129": "Form I-129 (Petition for a Nonimmigrant Worker)"
+      }
+    },
+    "numero_recibo_uscis": {
+      "label": "USCIS Receipt Number of the related petition/application (if any)",
+      "hint": "The receipt number is a 13-character code on the Notice of Action (Form I-797) that USCIS sent for the related petition — e.g., EAC1234567890."
+    },
+    "nome_peticao_relacionada_primeiro": {
+      "label": "First name of the beneficiary/applicant of the related petition",
+      "hint": "First name of the person who holds the related petition mentioned above (not always you) - leave blank if there is no related petition."
+    },
+    "nome_peticao_relacionada_ultimo": {
+      "label": "Last name of the beneficiary/applicant of the related petition",
+      "hint": "Last name of the person who holds the related petition mentioned above (not always you) - leave blank if there is no related petition."
+    },
+    "data_protocolo_peticao_relacionada": {
+      "label": "Filing date of the related petition/application",
+      "hint": "The date the related petition/application was filed - found on the same Receipt Notice (I-797) as the receipt number above."
+    },
+    "passaporte_atual_pais_emissao": {
+      "label": "Country of issuance of your CURRENT passport (if different from Part 1)",
+      "hint": "Only fill in this section if your passport information has changed since Part 1 (e.g., passport renewal)."
+    },
+    "passaporte_atual_numero": {
+      "label": "Your CURRENT passport number"
+    },
+    "passaporte_atual_expiracao": {
+      "label": "Expiration date of your CURRENT passport"
+    },
+    "end_exterior_rua": {
+      "label": "Physical Address Abroad — Street Number and Name"
+    },
+    "end_exterior_tipo_unidade": {
+      "label": "Physical Address Abroad — Unit Type",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_exterior_num_unidade": {
+      "label": "Physical Address Abroad — Unit Number"
+    },
+    "end_exterior_cidade": {
+      "label": "Physical Address Abroad — City or Town"
+    },
+    "end_exterior_provincia": {
+      "label": "Physical Address Abroad — Province/State"
+    },
+    "end_exterior_cep": {
+      "label": "Physical Address Abroad — Postal Code"
+    },
+    "end_exterior_pais": {
+      "label": "Physical Address Abroad — Country"
+    },
+    "imigrante_visa_pendente": {
+      "label": "Are you an applicant for an immigrant visa (e.g., do you have a pending/approved I-130 or I-140 in your name)?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Answer \"Yes\" if you (or this application's principal applicant) already have a Form I-130 or I-140 pending or approved in your name - this is often called \"immigrant intent\" and can be relevant to how your temporary-status request is reviewed. If unsure, check with the team or an immigration attorney before answering."
+    },
+    "peticao_imigrante_ja_apresentada": {
+      "label": "Has an immigrant petition EVER been filed for you (by anyone, at any time)?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Different from the previous question: this asks whether an immigrant visa petition was EVER filed for you, by ANYONE, at any time - even if it was denied, withdrawn, or filed years ago. Answer \"Yes\" even if it never moved forward."
+    },
+    "ja_apresentou_i485": {
+      "label": "Have you EVER filed Form I-485, Application to Register Permanent Residence or Adjust Status?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Includes any Adjustment of Status (Green Card) application filed in the past, even if denied, withdrawn, or still pending."
+    },
+    "preso_condenado_desde_entrada": {
+      "label": "Have you been arrested or convicted of any criminal offense since your last entry into the U.S.?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Include any arrest or conviction in the U.S. since your last entry, even if the case was dismissed, withdrawn, or you were found not guilty. If you are unsure what needs to be disclosed, check with the team or an immigration attorney before answering."
+    },
+    "ato_tortura_genocidio": {
+      "label": "Have you EVER ordered, incited, committed, assisted, or otherwise participated in acts of torture or genocide?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "matou_pessoa": {
+      "label": "Have you EVER ordered, incited, committed, assisted, or otherwise participated in killing any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "feriu_gravemente_pessoa": {
+      "label": "Have you EVER ordered, incited, committed, assisted, or otherwise participated in intentionally and severely injuring any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "contato_sexual_sem_consentimento": {
+      "label": "Have you EVER ordered, incited, committed, assisted, or otherwise participated in any kind of non-consensual sexual contact (or with a person unable to consent, or by force/threat)?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "limitou_liberdade_religiosa": {
+      "label": "Have you EVER limited or denied any person's ability to exercise religious beliefs?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "servico_militar_paramilitar": {
+      "label": "Have you EVER served in, been a member of, assisted, or participated in any military, paramilitary, police, self-defense, vigilante, rebel, guerrilla, militia, or other armed group?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "trabalhou_prisao_detencao": {
+      "label": "Have you EVER worked, volunteered, or otherwise served in any prison, jail, prison camp, detention facility, labor camp, or other situation involving the detention of persons?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "membro_grupo_armas_ameaca": {
+      "label": "Have you EVER been a member of, assisted, or participated in any group, unit, or organization in which persons used or threatened to use any type of weapon against any person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "vendeu_transportou_armas": {
+      "label": "Have you EVER sold, provided, or transported weapons — or assisted anyone in doing so — knowing or believing they would be used against another person?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "treinamento_militar_armas": {
+      "label": "Have you (or anyone included in this application) EVER received any type of military, paramilitary, or weapons training?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "This is one of USCIS's official security-screening questions - the wording is intentionally broad. Answer honestly even if the situation does not seem to clearly apply to you or happened long ago. If you have any doubt about whether this describes you, check with the team or an immigration attorney before answering - an incorrect answer here can lead to denial or a fraud finding."
+    },
+    "violou_termos_status": {
+      "label": "Have you EVER violated the terms of the nonimmigrant status you currently hold?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Common examples: working without authorization, staying past your I-94 date, or (for F-1 students) falling below the required minimum course load. If you're not sure whether something that happened counts as a violation, check with the team or an immigration attorney before answering - it can affect approval of this request."
+    },
+    "em_processo_remocao": {
+      "label": "Are you currently in removal proceedings?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "\"Removal proceedings\" is the formal deportation process conducted by an immigration judge in Immigration Court - different from having received a voluntary-departure notice or simply being worried about your status. If you have received any notice from an immigration court, answer \"Yes\" and consult an immigration attorney before proceeding."
+    },
+    "empregado_eua_desde_ultima_entrada": {
+      "label": "Have you worked in the U.S. since your last admission or since your last extension/change of status was granted?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "Include any paid or unpaid work, formal or informal, even brief - working without authorization can prevent approval of this request. If you're unsure whether something counts as \"work,\" check with the team before answering."
+    },
+    "j1_j2_exchange_visitor": {
+      "label": "Are you currently, or have you EVER been, a J-1 exchange visitor or a J-2 dependent of a J-1 exchange visitor?",
+      "options": {
+        "sim": "Yes",
+        "nao": "No"
+      },
+      "hint": "If you (or this application's principal applicant) have ever held a J-1 or J-2 visa, you may be subject to the \"two-year home-country residence requirement\" (Section 212(e)) before being able to change status inside the U.S. - this doesn't apply to everyone (it depends on your country and the reason for your J program). Answer \"Yes\" even if you're not sure it applies to you, and confirm with the team or an immigration attorney."
+    },
+    "telefone": {
+      "label": "Daytime Telephone Number"
+    },
+    "celular": {
+      "label": "Mobile Telephone Number"
+    },
+    "email": {
+      "label": "Email Address"
+    },
+    "data_assinatura": {
+      "label": "Date of signature",
+      "hint": "Filled in on the day you physically sign the printed form."
+    },
+    "int_sobrenome": {
+      "label": "Interpreter's Family Name"
+    },
+    "int_nome": {
+      "label": "Interpreter's Given Name"
+    },
+    "int_organizacao": {
+      "label": "Interpreter's Business or Organization Name"
+    },
+    "int_telefone": {
+      "label": "Interpreter's Daytime Telephone Number"
+    },
+    "int_celular": {
+      "label": "Interpreter's Mobile Telephone Number"
+    },
+    "int_email": {
+      "label": "Interpreter's Email Address"
+    },
+    "int_idioma": {
+      "label": "Language the interpreter translated"
+    },
+    "int_data_assinatura": {
+      "label": "Date of interpreter's signature",
+      "hint": "Filled in on the day the interpreter physically signs the printed form."
+    },
+    "prep_sobrenome": {
+      "label": "Preparer's Family Name"
+    },
+    "prep_nome": {
+      "label": "Preparer's Given Name"
+    },
+    "prep_organizacao": {
+      "label": "Preparer's Business or Organization Name"
+    },
+    "prep_telefone": {
+      "label": "Preparer's Daytime Telephone Number"
+    },
+    "prep_celular": {
+      "label": "Preparer's Mobile Telephone Number"
+    },
+    "prep_email": {
+      "label": "Preparer's Email Address"
+    },
+    "prep_data_assinatura": {
+      "label": "Date of preparer's signature",
+      "hint": "Filled in on the day the preparer physically signs the printed form."
+    },
+    "i134_recursos_suficientes": {
+      "label": "Do you have enough income or savings of your own to cover all your costs during your stay in the U.S. — housing, food, health, transportation, and, if applicable, tuition/fees?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ],
+      "hint": "This doesn't include a sponsor's income — this question is only about your own financial resources."
+    },
+    "i134_tem_patrocinador_qualificado": {
+      "label": "Do you have a sponsor in the U.S. willing to sign a Declaration of Financial Support (Form I-134) for you, who is a lawful permanent resident (green card holder) OR a U.S. citizen?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Yes"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ],
+      "hint": "The sponsor must be a lawful permanent resident or a U.S. citizen — other statuses don't qualify to sign the I-134. If you answer yes, once you finish this form we'll offer you the option to complete the I-134 (a separately billed service)."
+    }
+  }
+}

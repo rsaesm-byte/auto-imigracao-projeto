@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ t('income_calc_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('income_calc_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:720px;">{{ t('income_calc_subtitle') }}</p>
+</section>
+
+{% if errors %}
+<div class="card">
+  {% for e in errors %}<p class="elig-msg tone-danger">{{ e }}</p>{% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <form method="post" action="{{ url_for('income_calculator.index') }}">
+    <h2 style="margin-top:0;">{{ t('income_calc_h_household') }}</h2>
+
+    <p><label>{{ t('income_calc_label_region') }}</label></p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="regiao" value="48_states" {% if form.regiao == "48_states" %}checked{% endif %}> {{ t('income_calc_region_48') }}</label></li>
+      <li><label><input type="radio" name="regiao" value="alaska" {% if form.regiao == "alaska" %}checked{% endif %}> {{ t('income_calc_region_alaska') }}</label></li>
+      <li><label><input type="radio" name="regiao" value="hawaii" {% if form.regiao == "hawaii" %}checked{% endif %}> {{ t('income_calc_region_hawaii') }}</label></li>
+    </ul>
+
+    <p style="margin-top:14px;"><label for="tamanho_domicilio">{{ t('income_calc_label_household') }}</label></p>
+    <input type="number" min="2" step="1" id="tamanho_domicilio" name="tamanho_domicilio" value="{{ form.tamanho_domicilio }}" required>
+    <p class="muted" style="font-size:0.85rem;">{{ t('income_calc_hint_household') }}</p>
+
+    <p style="margin-top:14px;"><label>{{ t('income_calc_label_military') }}</label></p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="militar_conjuge_filho" value="nao" {% if form.militar_conjuge_filho != "sim" %}checked{% endif %}> {{ t('opt_no') }}</label></li>
+      <li><label><input type="radio" name="militar_conjuge_filho" value="sim" {% if form.militar_conjuge_filho == "sim" %}checked{% endif %}> {{ t('opt_yes') }}</label></li>
+    </ul>
+    <p class="muted" style="font-size:0.85rem;">{{ t('income_calc_hint_military') }}</p>
+
+    <h2>{{ t('income_calc_h_income') }}</h2>
+
+    <p><label for="renda_patrocinador">{{ t('income_calc_label_sponsor_income') }}</label></p>
+    <input type="number" min="0" step="0.01" id="renda_patrocinador" name="renda_patrocinador" value="{{ form.renda_patrocinador }}" required>
+
+    <p style="margin-top:14px;"><label for="renda_adicional">{{ t('income_calc_label_additional_income') }}</label></p>
+    <input type="number" min="0" step="0.01" id="renda_adicional" name="renda_adicional" value="{{ form.renda_adicional }}">
+    <p class="muted" style="font-size:0.85rem;">{{ t('income_calc_hint_additional_income') }}</p>
+
+    <h2>{{ t('income_calc_h_assets') }}</h2>
+
+    <p><label>{{ t('income_calc_label_relationship') }}</label></p>
+    <ul class="option-list">
+      <li><label><input type="radio" name="conjuge_ou_filho_de_cidadao" value="nao" {% if form.conjuge_ou_filho_de_cidadao != "sim" %}checked{% endif %}> {{ t('opt_no') }}</label></li>
+      <li><label><input type="radio" name="conjuge_ou_filho_de_cidadao" value="sim" {% if form.conjuge_ou_filho_de_cidadao == "sim" %}checked{% endif %}> {{ t('opt_yes') }}</label></li>
+    </ul>
+    <p class="muted" style="font-size:0.85rem;">{{ t('income_calc_hint_relationship') }}</p>
+
+    <p style="margin-top:14px;"><label for="valor_ativos">{{ t('income_calc_label_assets') }}</label></p>
+    <input type="number" min="0" step="0.01" id="valor_ativos" name="valor_ativos" value="{{ form.valor_ativos }}">
+    <p class="muted" style="font-size:0.85rem;">{{ t('income_calc_hint_assets') }}</p>
+
+    <div style="margin-top:16px;">
+      <button type="submit" class="btn">{{ t('income_calc_submit') }}</button>
+    </div>
+  </form>
+</div>
+
+{% if result %}
+{% set verdict_class = {"atende_renda": "eligible", "atende_com_ativos": "eligible", "insuficiente": "needs_review"}[result.verdict] %}
+<div class="card elig-verdict-banner verdict-{{ verdict_class }}">
+  <h1 style="font-size:1.3rem;margin:0 0 4px;">
+    {% if result.verdict == "atende_renda" %}{{ icon('check-circle', 20) }} {{ t('income_calc_verdict_income_ok') }}
+    {% elif result.verdict == "atende_com_ativos" %}{{ icon('check-circle', 20) }} {{ t('income_calc_verdict_assets_ok') }}
+    {% else %}{{ icon('shield-check', 20) }} {{ t('income_calc_verdict_insufficient') }}{% endif %}
+  </h1>
+</div>
+
+<div class="card">
+  <p class="elig-msg tone-info">
+    {{ t('income_calc_result_threshold') }}
+    <strong>${{ "{:,.0f}".format(result.threshold) }}</strong>
+    ({{ result.region_label_en if get_lang() == "en" else result.region_label }},
+    {{ t('income_calc_result_household_of') }} {{ result.household_size }})
+  </p>
+  <p class="elig-msg tone-info">
+    {{ t('income_calc_result_total_income') }}
+    <strong>${{ "{:,.0f}".format(result.total_income) }}</strong>
+  </p>
+
+  {% if result.verdict == "atende_renda" %}
+    <p class="elig-msg tone-success">{{ t('income_calc_msg_income_ok') }}</p>
+    {% if result.additional_income %}
+      <p class="elig-msg tone-warning">{{ t('income_calc_msg_i864a_needed') }}</p>
+    {% endif %}
+  {% else %}
+    <p class="elig-msg tone-warning">
+      {{ t('income_calc_result_shortfall') }}
+      <strong>${{ "{:,.0f}".format(result.shortfall) }}</strong>
+    </p>
+    <p class="elig-msg tone-info">
+      {{ t('income_calc_result_required_assets') }}
+      <strong>${{ "{:,.0f}".format(result.required_assets) }}</strong>
+      ({{ result.multiplier }}x{{ t('income_calc_result_the_shortfall') }})
+    </p>
+    {% if result.verdict == "atende_com_ativos" %}
+      <p class="elig-msg tone-success">{{ t('income_calc_msg_assets_ok') }}</p>
+    {% else %}
+      <p class="elig-msg tone-danger">{{ t('income_calc_msg_insufficient') }}</p>
+    {% endif %}
+  {% endif %}
+</div>
+
+<div class="card" style="text-align:center;">
+  <div class="hero-ctas" style="justify-content:center;flex-wrap:wrap;">
+    <a class="btn secondary" href="{{ url_for('wizard.service_detail', slug='i-864') }}">{{ t('elig_cta_view_service') }}</a>
+  </div>
+</div>
+{% endif %}
+
+<footer class="site-footer">
+  <p>{{ t('income_calc_disclaimer') }}</p>
+</footer>
+{% endblock %}

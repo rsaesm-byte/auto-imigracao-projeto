@@ -1,0 +1,992 @@
+{
+  "_comment": "Registro de formulários USCIS. Verifique taxas em uscis.gov/forms/our-fees antes de protocolar.",
+  "_fee_effective": "2024-04-01",
+  "_last_verified": "2026-07-05",
+  "forms": {
+    "I-130": {
+      "name": "Petition for Alien Relative",
+      "name_pt": "Petição para Familiar Estrangeiro",
+      "edition": "04/01/24",
+      "edition_iso": "2024-04-01",
+      "official_url": "https://www.uscis.gov/i-130",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-130.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf",
+      "local_pdf": "data/forms/i-130.pdf",
+      "pdf_sha256": "7fc733d4639995d6ad4798f1031464d044bd0da4233caa4ada886e79e762a88f",
+      "pdf_size_bytes": 729861,
+      "fees": {
+        "filing": {
+          "default": 675,
+          "online": 625,
+          "paper": 675,
+          "notes": "Desconto de $50 no online: $625 online / $675 papel, em vigor desde 01/04/2024 (8 CFR 106.1(g)). CORRIGIDO em 2026-07-05 — a versão anterior deste registro dizia, incorretamente, que não havia desconto online."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Taxa de biometria não se aplica ao I-130 isolado"
+        },
+        "special_cases": {
+          "orphan_abroad": {
+            "amount": 775,
+            "description": "Peticionando para órfão no exterior (Orphan Petition)"
+          },
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Isenção de taxa (Fee Waiver, Form I-912) não está disponível para I-130"
+          }
+        },
+        "total_typical": 675,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito (online)",
+          "dinheiro (em pessoa)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security",
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH MULTI-FONTE em 2026-07-05 (immigrationdirect.com, immiva.com, feecalculator.us, todas concordando de forma independente): $625 online / $675 papel, vigente desde 01/04/2024, sem mudança em 2026. A tentativa de fetch direto em uscis.gov/g-1055 e no PDF do G-1055 retornou 403 (bloqueio de bot) nesta sessão — confirmação veio de múltiplas fontes terceiras concordantes, não da fonte primária diretamente. Reconfirme em uscis.gov/i-130 antes de protocolar."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual)",
+        "paper_abroad": "U.S. Embassy or Consulate no país de residência do peticionário"
+      },
+      "concurrent_filing": {
+        "i485": {
+          "allowed_if": "beneficiario_nos_eua_e_visa_disponivel",
+          "notes": "I-130 e I-485 podem ser protocolados juntos se a data de prioridade do beneficiário já for atual"
+        }
+      },
+      "related_forms": [
+        "I-130A",
+        "I-485",
+        "I-864",
+        "I-693"
+      ],
+      "eligibility_summary": {
+        "petitioner_must_be": "Cidadão americano ou Residente Permanente Legal (Green Card)",
+        "beneficiary_relationships": {
+          "us_citizen": [
+            "conjuge",
+            "filho_solteiro_menos_21",
+            "filho_solteiro_21_mais",
+            "filho_casado",
+            "pai_mae",
+            "irmao_irma"
+          ],
+          "lpr": [
+            "conjuge",
+            "filho_solteiro_menor_21",
+            "filho_solteiro_21_mais"
+          ]
+        }
+      }
+    },
+    "I-130A": {
+      "name": "Supplemental Information for Spouse Beneficiary",
+      "name_pt": "Informação Suplementar para Beneficiário(a) Cônjuge",
+      "edition": "04/01/24",
+      "edition_iso": "2024-04-01",
+      "official_url": "https://www.uscis.gov/i-130a",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-130a.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-130instr.pdf",
+      "local_pdf": "data/forms/i-130a.pdf",
+      "pdf_sha256": "1d2b2ca97b28abcd2c7e0d336396218b50d582c66450baddfbfda4ee7e779d18",
+      "pdf_size_bytes": 465583,
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "O I-130A não tem taxa própria — é sempre anexado a uma petição I-130 (cujo peticionário paga a taxa) quando o(a) beneficiário(a) é cônjuge. Preenchido e assinado pelo(a) próprio(a) cônjuge beneficiário(a), não pelo(a) peticionário(a)."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não se aplica ao I-130A isoladamente"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável — não há taxa própria"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [],
+        "payable_to": "N/A — sem taxa própria",
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH em 2026-07-05: sem taxa própria, incluído na taxa do I-130 ($625 online / $675 papel) — consistente com o valor já registrado aqui."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Anexado ao pacote do I-130 — mesmo endereço/lockbox do peticionário",
+        "paper_abroad": "Anexado ao pacote do I-130 — mesmo local de protocolo do peticionário"
+      },
+      "concurrent_filing": {
+        "i130": {
+          "required": true,
+          "notes": "OBRIGATÓRIO sempre que o(a) beneficiário(a) do I-130 é cônjuge — não é um formulário autônomo, é protocolado junto com o I-130."
+        }
+      },
+      "related_forms": [
+        "I-130",
+        "I-485",
+        "I-864"
+      ],
+      "eligibility_summary": {
+        "who_files": "O(a) cônjuge beneficiário(a) da petição I-130 (não o(a) peticionário(a))",
+        "when_required": "Toda vez que a relação declarada no I-130 for 'cônjuge' (rel_tipo = conjuge)"
+      }
+    },
+    "I-765": {
+      "name": "Application for Employment Authorization",
+      "name_pt": "Autorização de Trabalho",
+      "edition": "08/21/25",
+      "edition_iso": "2025-08-21",
+      "official_url": "https://www.uscis.gov/i-765",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-765.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-765instr.pdf",
+      "local_pdf": "data/forms/i-765.pdf",
+      "pdf_sha256": "9ac0eae287749d4c2dfa0a591f464cc2124c18647c10e999b59484f090e0dc7d",
+      "pdf_size_bytes": 467424,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "Taxa base CONFIRMADA POR WEBSEARCH MULTI-FONTE em 2026-07-05 (feecalculator.us, immigrationdirect.com, lighthousehq.com, todas concordando): $470 online / $520 papel. NOTA sobre litígio (Ms. L. v. ICE, 18-cv-00428 S.D. Cal.): a pausa de cobrança de taxas HR-1 é ESCOPO ESTREITO — aplica-se apenas a membros da classe do acordo Ms. L. e seus 'Qualifying Additional Family Members' (QAFMs) com pedidos de EAD de parolado (Parolee Initial/Renewal EAD Fee), pausada desde 2026-02-05, não à taxa base $470/$520 das categorias típicas cobertas por este questionário. DHS não concorda com a decisão e está avaliando opções — pode mudar. Reconfirme em uscis.gov/i-765 se o requerente se enquadrar em uma categoria de parolado/QAFM.",
+        "filing": {
+          "default": 520,
+          "online": 470,
+          "paper": 520,
+          "notes": "Desconto de $50 no online. Desde 01/04/2024 o I-765 tem taxa separada mesmo quando protocolado junto com I-485/I-130. Pode haver taxas adicionais por categoria de elegibilidade sob a lei HR-1 (ver aviso acima) — a categoria exata (campo elig_categoria_*) determina se alguma sobretaxa se aplica."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "I-765 não exige biometria própria desde a taxa unificada"
+        },
+        "special_cases": {
+          "with_pending_i485": {
+            "amount": 260,
+            "description": "I-765 protocolado com I-485 pendente, em ou após 01/04/2024"
+          },
+          "category_c33_daca": {
+            "amount": null,
+            "description": "Categoria (c)(33) DACA tem taxa própria histórica ($470) — confirmar valor atual, pode ter sido afetado pela lei HR-1"
+          },
+          "category_c8_asylum": {
+            "amount": null,
+            "description": "Requerentes de asilo pendente (c)(8) — historicamente isentos de parte da taxa; confirmar regra atual"
+          },
+          "fee_waiver": {
+            "eligible": "depende_da_categoria",
+            "notes": "Isenção de taxa (Form I-912) disponível para algumas categorias de elegibilidade, não todas — confirmar por categoria"
+          }
+        },
+        "total_typical": 520,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito (online)",
+          "dinheiro (em pessoa)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security"
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual, depende da categoria de elegibilidade)",
+        "paper_abroad": "USCIS office responsável ou instruções específicas da categoria"
+      },
+      "concurrent_filing": {
+        "i485": {
+          "allowed_if": "beneficiario_com_i485_pendente",
+          "notes": "Pode ser protocolado junto com I-485 (taxa especial with_pending_i485) ou separadamente"
+        },
+        "i130": {
+          "allowed_if": "categoria_permite",
+          "notes": "Algumas categorias de elegibilidade dependem de uma petição subjacente (I-130, I-140 etc.) já aprovada ou pendente"
+        }
+      },
+      "related_forms": [
+        "I-131",
+        "I-485",
+        "I-140",
+        "I-130",
+        "I-821",
+        "I-821D"
+      ],
+      "eligibility_summary": {
+        "who_files": "Qualquer pessoa elegível para solicitar autorização de trabalho sob uma das dezenas de categorias listadas nas instruções do I-765 (item 27, campo elig_categoria_*)",
+        "notes": "A categoria de elegibilidade (ex: (c)(3)(C) STEM OPT, (c)(9) I-485 pendente, (c)(35)/(c)(36) cônjuge H-1B/E/L) determina documentos exigidos, taxa e até campos extras do formulário (Parte 2, itens 28-31). Consulte 'Who May File Form I-765' nas instruções oficiais para a categoria certa antes de preencher."
+      }
+    },
+    "I-485": {
+      "name": "Application to Register Permanent Residence or Adjust Status",
+      "name_pt": "Pedido de Registro de Residência Permanente ou Ajuste de Status",
+      "edition": "01/20/25",
+      "edition_iso": "2025-01-20",
+      "official_url": "https://www.uscis.gov/i-485",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-485.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-485instr.pdf",
+      "local_pdf": "data/forms/i-485.pdf",
+      "pdf_sha256": "7c8e1c5242d680b2bc0bfa7d8026e0c3fc8e32bbe52c55648fb5078703122423",
+      "pdf_size_bytes": 1203646,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "Taxa base CONFIRMADA POR WEBSEARCH MULTI-FONTE em 2026-07-05 (feecalculator.us, immigrationdirect.com, todas concordando): $1.440 flat, sem desconto online, desde 01/04/2024. O mesmo litígio Ms. L. v. ICE citado no I-765 tem escopo estreito (parolados/QAFM) e não afeta a taxa base das categorias típicas de ajuste de status. Reconfirme a taxa de $950 para menor de 14 anos protocolando junto com o pai/mãe — não reverificada nesta sessão.",
+        "filing": {
+          "default": 1440,
+          "online": 1440,
+          "paper": 1440,
+          "notes": "Taxa unificada desde 01/04/2024, já inclui biometria (não há mais taxa de biometria separada para I-485). Desde 01/04/2024, I-485 tem taxa separada do I-130/I-765/I-131 mesmo quando protocolados juntos."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Incluída na taxa de protocolo desde 01/04/2024"
+        },
+        "special_cases": {
+          "under14_with_parent": {
+            "amount": 950,
+            "description": "Menor de 14 anos protocolando junto com o pedido de um dos pais (mesmo momento, mesma unidade familiar)"
+          },
+          "fee_waiver": {
+            "eligible": "depende_da_categoria",
+            "notes": "Isenção de taxa (Form I-912) disponível para algumas categorias de elegibilidade (ex.: certas categorias humanitárias), não todas — confirmar por categoria"
+          }
+        },
+        "total_typical": 1440,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito (online)",
+          "dinheiro (em pessoa)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security",
+        "other_fees_not_included": "USCIS Immigrant Fee de $235, cobrado depois da aprovação (antes do green card físico chegar), sem isenção — não incluído nesta taxa de protocolo."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual, depende da categoria de elegibilidade e se há entrevista associada)",
+        "paper_abroad": "Não aplicável — I-485 só pode ser protocolado dentro dos Estados Unidos (ajuste de status)"
+      },
+      "concurrent_filing": {
+        "i130": {
+          "allowed_if": "beneficiario_nos_eua_e_visa_disponivel",
+          "notes": "I-130 e I-485 podem ser protocolados juntos se a categoria e a data de prioridade permitirem (concurrent filing)"
+        },
+        "i765": {
+          "allowed_if": "sempre_permitido",
+          "notes": "I-765 pode ser protocolado junto com I-485 pendente (categoria (c)(9)) para autorização de trabalho durante a análise"
+        },
+        "i131": {
+          "allowed_if": "sempre_permitido",
+          "notes": "I-131 (Advance Parole) pode ser protocolado junto com I-485 pendente para permitir viagem durante a análise"
+        },
+        "i864": {
+          "required_if": "categoria_baseada_em_familia_ou_emprego_com_parente",
+          "notes": "Affidavit of Support geralmente exigido, salvo isenção pedida na Parte 3 do próprio I-485"
+        }
+      },
+      "related_forms": [
+        "I-130",
+        "I-130A",
+        "I-765",
+        "I-131",
+        "I-864",
+        "I-693",
+        "I-140"
+      ],
+      "eligibility_summary": {
+        "who_files": "Pessoa fisicamente presente nos EUA que se qualifica para ajustar status a residente permanente legal sob uma das categorias da Parte 2 (familiar, emprego, asilo/refúgio, especial, programas especiais)",
+        "notes": "A Parte 9 (General Eligibility and Inadmissibility Grounds) contém ~90 perguntas obrigatórias de antecedentes criminais, segurança e imigração — respostas 'Sim' normalmente exigem documentação e explicação na Parte 14 e podem indicar necessidade de aconselhamento jurídico especializado (waiver de inadmissibilidade). Esta ferramenta apenas coleta e preenche — não avalia elegibilidade nem aconselha sobre waivers (ver compliance.md)."
+      }
+    },
+    "I-864": {
+      "name": "Affidavit of Support Under Section 213A of the INA",
+      "name_pt": "Declaração de Suporte Financeiro",
+      "edition": "10/17/24",
+      "edition_iso": "2024-10-17",
+      "official_url": "https://www.uscis.gov/i-864",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-864.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-864instr.pdf",
+      "local_pdf": "data/forms/i-864.pdf",
+      "pdf_sha256": "f231f39684ba4dd348aad920a65f29ef5707270f39d6f8328ab43e366348f5f5",
+      "pdf_size_bytes": 540131,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH em 2026-07-05: o I-864 não tem taxa de protocolo própria junto ao USCIS quando anexado a uma petição (I-130) ou usado no ajuste de status (I-485) — consistente com o $0 já registrado aqui. Ressalva: em processamento consular (fora do escopo deste projeto, que cobre ajuste de status via USCIS), o National Visa Center cobra uma taxa própria de processamento do I-864 (~$120 em 2026) — não aplicável aos formulários deste projeto.",
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "O I-864 é um contrato/declaração anexado a uma petição (normalmente I-130) ou usado no processo de visto consular — não tem taxa de protocolo separada conhecida. Confirmar caso a caso."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não aplicável — não é um formulário com biometria própria"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável — não há taxa própria a isentar"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [],
+        "payable_to": "N/A — sem taxa própria conhecida"
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/ (se anexado a um I-130/I-485 eletrônico)",
+        "paper_domestic": "Anexado ao pacote do I-130/I-485 — mesmo endereço/lockbox do peticionário, ou enviado ao Departamento de Estado para processos consulares",
+        "paper_abroad": "Enviado ao National Visa Center / posto consular no processo de visto de imigrante, se aplicável"
+      },
+      "concurrent_filing": {
+        "i130": {
+          "notes": "Frequentemente exigido junto com o I-130/I-485 quando a categoria de imigração é baseada em relação familiar ou em petição de emprego por parente próximo, salvo isenção pedida na própria petição principal."
+        }
+      },
+      "related_forms": [
+        "I-130",
+        "I-485",
+        "I-864A",
+        "I-864EZ",
+        "I-864W"
+      ],
+      "eligibility_summary": {
+        "who_files": "O(a) patrocinador(a) financeiro(a) (petitioner, joint sponsor, ou substitute sponsor) que assume obrigação legal de suporte ao(à) imigrante",
+        "notes": "É um contrato juridicamente vinculante com o governo dos EUA — o patrocinador assume responsabilidade financeira até o(a) imigrante se naturalizar, acumular 40 trimestres de trabalho, deixar de ser residente permanente, morrer, ou (em alguns casos) o casamento terminar. Esta ferramenta apenas coleta e preenche — não aconselha sobre as implicações legais/financeiras dessa obrigação (ver compliance.md)."
+      }
+    },
+    "I-751": {
+      "name": "Petition to Remove Conditions on Residence",
+      "name_pt": "Petição para Remover as Condições de Residência",
+      "edition": "04/01/24",
+      "edition_iso": "2024-04-01",
+      "official_url": "https://www.uscis.gov/i-751",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-751.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-751instr.pdf",
+      "local_pdf": "data/forms/i-751.pdf",
+      "pdf_sha256": "064f773369f0bda068e3a4fbe1a1c6447a8830cfd6777a8d5a81148be5a36510",
+      "pdf_size_bytes": 627011,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH MULTI-FONTE em 2026-07-05 (feecalculator.us, immigrationdirect.com, ambas concordando): $750 flat, sem desconto online — consistente com o valor já registrado aqui. NOTA: uma fonte terceira (uscisfees.com) divergiu, citando $700 online / $750 papel; essa fonte parece estar desatualizada/incorreta à luz das duas fontes concordantes, então não foi usada.",
+        "filing": {
+          "default": 750,
+          "online": 750,
+          "paper": 750,
+          "notes": "Taxa unificada desde 01/04/2024 (sem desconto online para este formulário, conforme referência interna). Inclui biometria."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Incluído na taxa unificada de protocolo desde 01/04/2024"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": "depende_do_caso",
+            "notes": "Isenção de taxa (Form I-912) pode ser aplicável em casos de dispensa por violência doméstica (waiver) — confirmar elegibilidade"
+          }
+        },
+        "total_typical": 750,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito (online)",
+          "dinheiro (em pessoa)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security"
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual)",
+        "paper_abroad": "USCIS office responsável, se aplicável"
+      },
+      "concurrent_filing": {},
+      "related_forms": [
+        "I-130",
+        "I-485",
+        "I-864"
+      ],
+      "eligibility_summary": {
+        "who_files": "Residente permanente condicional (obteve status por casamento) que precisa remover as condições da residência, normalmente em petição conjunta com o cônjuge, ou sozinho com pedido de dispensa (waiver) por morte do cônjuge, divórcio de boa-fé, violência doméstica, ou dificuldade extrema",
+        "notes": "Deve ser protocolado nos 90 dias antes da expiração da residência condicional (petição conjunta), ou a qualquer momento após obter o status condicional (pedidos de dispensa/waiver). Esta ferramenta apenas coleta e preenche — não avalia elegibilidade para waiver nem aconselha sobre a estratégia de dispensa (ver compliance.md)."
+      }
+    },
+    "N-400": {
+      "name": "Application for Naturalization",
+      "name_pt": "Pedido de Naturalização",
+      "edition": "01/20/25",
+      "edition_iso": "2025-01-20",
+      "official_url": "https://www.uscis.gov/n-400",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/n-400.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/n-400instr.pdf",
+      "local_pdf": "data/forms/n-400.pdf",
+      "pdf_sha256": "8b33868ba071e261bf5e8d87d9667860d1f6d2c4de76101eb1e674404a82d909",
+      "pdf_size_bytes": 776244,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "RECONFIRMADO POR WEBSEARCH em 2026-07-05: $710 online / $760 papel / $380 reduzida (renda 150%-400% do nível federal de pobreza, só papel, via Form I-942) — sem mudança desde a última verificação (2026-07-04). ATUALIZAÇÃO sobre a proposta do Federal Register de 2026-06-23 ('Naturalization Application Fee Adjustments', que propunha subir a taxa em papel para $1.330 e a online para $1.280, aumento de 75%): CONTINUA APENAS PROPOSTA, não final — período de comentário público aberto até 2026-08-24, sem data de vigência. Reconfirme perto do protocolo, especialmente se for depois de agosto de 2026.",
+        "filing": {
+          "default": 760,
+          "online": 710,
+          "paper": 760,
+          "reduced": 380,
+          "notes": "Desconto de $50 no online. Taxa reduzida ($380) exige Form I-942 e só está disponível para protocolo em papel, para renda familiar entre 150%-400% do nível federal de pobreza."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Taxa de biometria já incluída na taxa unificada de protocolo desde 01/04/2024"
+        },
+        "special_cases": {
+          "military_naturalization": {
+            "amount": 0,
+            "description": "Residente permanente com ao menos 1 ano de serviço militar honroso (base de elegibilidade militar, Parte 1 item 1.e/1.f) pode ter a taxa isenta (Form N-426)"
+          },
+          "fee_waiver": {
+            "eligible": "depende_do_caso",
+            "notes": "Isenção de taxa (Form I-912) disponível para certas categorias (ex.: recebendo benefício de assistência baseado em renda, renda familiar ≤150% do nível de pobreza, dificuldade financeira comprovada)"
+          }
+        },
+        "total_typical": 760,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito (online, G-1450)",
+          "débito em conta (G-1650)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security"
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual)",
+        "paper_abroad": "USCIS office responsável (para residentes no exterior sob a base de elegibilidade da Parte 1, item 1.d)"
+      },
+      "concurrent_filing": {},
+      "related_forms": [
+        "I-90",
+        "I-751",
+        "N-426",
+        "I-912",
+        "I-942"
+      ],
+      "eligibility_summary": {
+        "who_files": "Residente permanente legal elegível para naturalização sob uma das bases da Parte 1 (disposição geral de 5 anos, cônjuge de cidadão americano há 3 anos, VAWA, cônjuge de cidadão em emprego qualificado no exterior, ou serviço militar)",
+        "notes": "A Parte 9 (Additional Information About You) contém 37 itens de antecedentes (moralidade, segurança nacional, histórico criminal, serviço militar, Juramento de Fidelidade) — respostas 'Sim' normalmente exigem explicação na Parte 14 e podem indicar necessidade de aconselhamento jurídico especializado. Esta ferramenta apenas coleta e preenche — não avalia elegibilidade nem aconselha sobre casos complexos de moralidade/segurança (ver compliance.md)."
+      }
+    },
+    "I-90": {
+      "name": "Application to Replace Permanent Resident Card",
+      "name_pt": "Substituição do Cartão de Residente Permanente (Green Card)",
+      "edition": "01/20/25",
+      "edition_iso": "2025-01-20",
+      "official_url": "https://www.uscis.gov/i-90",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-90.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-90instr.pdf",
+      "local_pdf": "data/forms/i-90.pdf",
+      "pdf_sha256": "fd436062284fd572224509e0e17a795f915734f7e7c0fca8a161d0a9976f83a0",
+      "pdf_size_bytes": 508291,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH MULTI-FONTE em 2026-07-05 (immigrationdirect.com e feecalculator.us, concordando de forma independente): $415 online / $465 papel — consistente com o valor já registrado aqui. Eleva a confiança da verificação anterior (2026-07-04), que tinha apenas uma fonte terceira sem corroboração.",
+        "filing": {
+          "default": 465,
+          "online": 415,
+          "paper": 465,
+          "notes": "Taxa já inclui biometria (sem cobrança separada de digitais)."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Incluída na taxa unificada de protocolo"
+        },
+        "special_cases": {
+          "card_issued_never_received": {
+            "amount": 0,
+            "description": "Motivo 'emitido mas nunca recebido' (2.b / 3.b) — isento de taxa"
+          },
+          "dhs_error": {
+            "amount": 0,
+            "description": "Motivo 'erro do DHS nos dados do cartão' (2.d / 3.d) — isento de taxa"
+          },
+          "turned_14_expires_after_16": {
+            "amount": 0,
+            "description": "Completou 14 anos, cartão expira após os 16 anos (2.g.1) — isento de taxa"
+          },
+          "fee_waiver": {
+            "eligible": "depende_do_caso",
+            "notes": "Isenção geral (Form I-912) pode se aplicar em casos de dificuldade financeira"
+          }
+        },
+        "total_typical": 465,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito (online, G-1450)",
+          "débito em conta (G-1650)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security"
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual)",
+        "paper_abroad": "USCIS office responsável, se aplicável"
+      },
+      "concurrent_filing": {},
+      "related_forms": [
+        "I-751",
+        "I-485",
+        "I-130"
+      ],
+      "eligibility_summary": {
+        "who_files": "Residente permanente (ou condicional) que precisa substituir/renovar o Cartão de Residente Permanente por um dos motivos listados na Parte 2 (cartão perdido/roubado/mutilado/expirado, mudança de nome, erro do DHS, conversão automática de status, etc.)",
+        "notes": "Alguns motivos (item 2.b, 2.d, 2.g.1) são isentos da taxa de protocolo — ver special_cases acima. Esta ferramenta apenas coleta e preenche — não avalia qual motivo de elegibilidade se aplica ao caso do cliente (ver compliance.md)."
+      }
+    },
+    "I-539": {
+      "name": "Application to Extend/Change Nonimmigrant Status",
+      "name_pt": "Extensão ou Mudança de Status de Não Imigrante",
+      "edition": "08/28/24",
+      "edition_iso": "2024-08-28",
+      "official_url": "https://www.uscis.gov/i-539",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-539.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-539instr.pdf",
+      "local_pdf": "data/forms/i-539.pdf",
+      "pdf_sha256": "1bc54433340995d37eaba60f6975ee501f4e4e635e1ff63eee8ad3f9ae1bd81f",
+      "pdf_size_bytes": 495022,
+      "fees": {
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH MULTI-FONTE em 2026-07-13 (feecalculator.us, alllaw.com/Nolo, immigrationquestion.com, e a própria tabela G-1055 edição 05/29/26 citada por h1bvisalawyerblog.com, todas concordando): $420 online / $470 papel, em vigor desde 01/04/2024 (8 CFR 106.1(g)), SEM alteração na edição mais recente do G-1055 (05/29/26 — essa edição só mudou algo relativo ao Formulário I-102, não ao I-539). Taxa de biometria eliminada para a maioria dos requerentes de I-539 desde 01/10/2024 (não há mais cobrança separada). uscis.gov/i-539 e o PDF do G-1055 em si retornaram 403 (bloqueio de bot) nesta sessão, como de costume — confirmação via múltiplas fontes terceiras concordantes. Reconfirme em uscis.gov/i-539 antes de protocolar.",
+        "filing": {
+          "default": 470,
+          "online": 420,
+          "paper": 470,
+          "notes": "Desconto de $50 no online, em vigor desde 01/04/2024. A maioria das categorias cobertas pelos 4 serviços deste app (extensão, mudança para B-2/F-1/F-2) pode ser protocolada online."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Taxa de biometria eliminada para a maioria dos requerentes de I-539 desde 01/10/2024"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": "depende_do_caso",
+            "notes": "Isenção de taxa (Form I-912, ou pedido conforme 8 CFR 103.7(c)(3)) pode se aplicar em casos específicos — confirmar elegibilidade"
+          },
+          "isento_a_g_nato_t_u": {
+            "amount": 0,
+            "description": "Isento de taxa: entrando ou saindo de status A, G ou NATO; vítimas de tráfico humano (T) ou de atividade criminal qualificada (U); ou mudança/extensão para B-1 Observador de Missão da ONU ou B-2 dependente — categorias fora do escopo dos 4 serviços padrão deste app, mas relevante se um cliente se enquadrar"
+          }
+        },
+        "total_typical": 470,
+        "currency": "USD",
+        "payment_methods": [
+          "cartão de crédito ou débito via Form G-1450 (protocolo em papel)",
+          "débito em conta via Form G-1650 (ACH)",
+          "cartão de crédito (online)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security",
+        "notes_pagamento": "USCIS não aceita mais cheque pessoal/comercial ou money order para a maioria dos protocolos em papel, salvo isenção específica."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/",
+        "paper_domestic": "Lockbox facility (ver instruções do formulário para endereço atual, depende da categoria e se é protocolado junto com outro formulário)",
+        "paper_abroad": "Não aplicável — I-539 só pode ser protocolado dentro dos Estados Unidos (mudança/extensão de status de não imigrante)"
+      },
+      "concurrent_filing": {
+        "i129": {
+          "allowed_if": "extensao_mudanca_ligada_a_peticao_de_trabalhador",
+          "notes": "Quando a extensão/mudança de status do requerente depende de uma petição I-129 de um empregador (ex.: dependente H-4/L-2 de um peticionário de H-1B/L-1), o I-539 pode referenciar ou ser protocolado perto do I-129 relacionado (ver Parte 3 do formulário)"
+        }
+      },
+      "related_forms": [
+        "I-539A",
+        "I-129",
+        "I-94"
+      ],
+      "eligibility_summary": {
+        "who_files": "Não imigrante presente nos EUA em status válido que quer (a) estender a permanência no status atual, ou (b) mudar para outro status de não imigrante. Este app cobre 4 serviços: extensão do status atual, e mudança de status para B-2 (visitante), F-1 (estudante) ou F-2 (cônjuge/filho(a) de F-1) — o formulário oficial na verdade aceita dezenas de status de destino (item 2, Parte 2), mas o produto restringe a UI a esses 3 alvos de mudança + a extensão.",
+        "notes": "Cada co-requerente (cônjuge/filho(a) incluído na mesma aplicação) precisa de um Formulário I-539A separado, fora do escopo desta ferramenta por ora. A Parte 4 tem 18 perguntas de antecedentes (itens 3-15, com sub-itens 7.a-e e 8.a-b) — respostas 'Sim' tipicamente exigem explicação na Parte 8 e podem indicar necessidade de aconselhamento jurídico especializado. Esta ferramenta apenas coleta e preenche — não avalia elegibilidade nem aconselha sobre casos complexos (ver compliance.md)."
+      }
+    },
+    "G-1145": {
+      "name": "E-Notification of Application/Petition Acceptance",
+      "name_pt": "Notificação Eletrônica de Aceitação de Petição",
+      "edition": "09/26/14",
+      "edition_iso": "2014-09-26",
+      "official_url": "https://www.uscis.gov/g-1145",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/g-1145.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/g-1145.pdf",
+      "local_pdf": "data/forms/g-1145.pdf",
+      "pdf_sha256": "f06c73937567793cbad9e5c0a5a025ba3823406ebc16b69bb1aee9964cf5b8f8",
+      "pdf_size_bytes": 250968,
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "Sem taxa própria — formulário totalmente opcional grampeado na frente de uma petição em papel."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não se aplica"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável — sem taxa própria"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [],
+        "payable_to": "N/A — sem taxa própria",
+        "_confirmar_antes_de_cobrar": "Formulário opcional sem taxa — confirmado em uscis.gov/g-1145 (2026-07-22)."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "Não se aplica — só usado em protocolos por papel",
+        "paper_domestic": "Grampeado na frente da primeira página do formulário/petição principal",
+        "paper_abroad": "Grampeado na frente da primeira página do formulário/petição principal"
+      },
+      "concurrent_filing": {},
+      "related_forms": [],
+      "eligibility_summary": {
+        "who_files": "Qualquer pessoa protocolando um formulário em papel que queira receber e-mail/SMS quando a USCIS aceitar o pacote no lockbox",
+        "when_required": "Nunca obrigatório — sempre opcional, só relevante para protocolos em papel (protocolos online já notificam automaticamente)"
+      }
+    },
+    "G-1450": {
+      "name": "Authorization for Credit Card Transactions",
+      "name_pt": "Autorização para Pagamento por Cartão de Crédito",
+      "edition": "02/06/26",
+      "edition_iso": "2026-02-06",
+      "official_url": "https://www.uscis.gov/g-1450",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/g-1450.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/g-1450.pdf",
+      "local_pdf": "data/forms/g-1450.pdf",
+      "pdf_sha256": "59d0e7b8e7a007a063b3fca5faee97d5ff11f043285b5ccf2cfb3fb499d40c93",
+      "pdf_size_bytes": 278599,
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "Sem taxa própria — é o meio de pagamento da taxa do formulário principal, não uma taxa em si."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não se aplica"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [
+          "cartão de crédito",
+          "cartão de débito",
+          "cartão pré-pago"
+        ],
+        "payable_to": "N/A — autorização de cobrança, não um pagamento em si",
+        "_confirmar_antes_de_cobrar": "USCIS não aceita mais cheque/money order para protocolos em papel salvo isenção (Form G-1651) — pagamento eletrônico via G-1450 ou G-1650 é agora obrigatório para a maioria dos protocolos por papel. Confirmado em uscis.gov/g-1450 (2026-07-22)."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "Não se aplica — pagamentos online usam Pay.gov automaticamente",
+        "paper_domestic": "Colocado no topo do pacote do formulário/petição principal",
+        "paper_abroad": "Colocado no topo do pacote do formulário/petição principal"
+      },
+      "concurrent_filing": {},
+      "related_forms": [
+        "G-1650",
+        "G-1651"
+      ],
+      "eligibility_summary": {
+        "who_files": "Qualquer pessoa pagando a taxa de um protocolo em papel com cartão de crédito, débito ou pré-pago emitido por banco americano",
+        "when_required": "Obrigatório para a maioria dos protocolos em papel desde que a USCIS parou de aceitar cheque/money order, salvo isenção via Form G-1651 — alternativa ao G-1650 (débito ACH)"
+      }
+    },
+    "G-1650": {
+      "name": "Authorization for ACH Transactions",
+      "name_pt": "Autorização para Débito Bancário (ACH)",
+      "edition": "06/03/25",
+      "edition_iso": "2025-06-03",
+      "official_url": "https://www.uscis.gov/g-1650",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/g-1650.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/g-1650.pdf",
+      "local_pdf": "data/forms/g-1650.pdf",
+      "pdf_sha256": "f9761dca890ca5d404c1f4b5494531e329f9d423f004272fe00f167dadaf9fa7",
+      "pdf_size_bytes": 266757,
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "Sem taxa própria — é o meio de pagamento da taxa do formulário principal, não uma taxa em si."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não se aplica"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [
+          "débito ACH de conta bancária americana"
+        ],
+        "payable_to": "N/A — autorização de débito, não um pagamento em si",
+        "_confirmar_antes_de_cobrar": "USCIS não aceita mais cheque/money order para protocolos em papel salvo isenção (Form G-1651) — pagamento eletrônico via G-1450 ou G-1650 é agora obrigatório para a maioria dos protocolos por papel. Só aceita contas de bancos americanos. Confirmado em uscis.gov/g-1650 (2026-07-22)."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "Não se aplica — pagamentos online usam Pay.gov automaticamente",
+        "paper_domestic": "Colocado no topo do pacote do formulário/petição principal",
+        "paper_abroad": "Colocado no topo do pacote do formulário/petição principal"
+      },
+      "concurrent_filing": {},
+      "related_forms": [
+        "G-1450",
+        "G-1651"
+      ],
+      "eligibility_summary": {
+        "who_files": "Qualquer pessoa pagando a taxa de um protocolo em papel por débito direto de uma conta bancária americana",
+        "when_required": "Obrigatório para a maioria dos protocolos em papel desde que a USCIS parou de aceitar cheque/money order, salvo isenção via Form G-1651 — alternativa ao G-1450 (cartão de crédito)"
+      }
+    },
+    "I-131": {
+      "name": "Application for Travel Document",
+      "name_pt": "Autorização de Viagem (Advance Parole)",
+      "edition": "01/20/25",
+      "edition_iso": "2025-01-20",
+      "official_url": "https://www.uscis.gov/i-131",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-131.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-131instr.pdf",
+      "local_pdf": "data/forms/i-131.pdf",
+      "pdf_sha256": "e177bbae35c3df634e7269f1094c93a11c6edf6849fa5fe66fbe3726498d59b5",
+      "pdf_size_bytes": 652991,
+      "_scope_note": "Nosso questionário cobre só a Parte 1, item 5.A (Advance Parole baseado em Formulário I-485 pendente) — o uso mais comum, e o que o pacote Green Card AOS precisa. O formulário oficial cobre dezenas de outros propósitos (Reentry Permit, Refugee Travel Document, TPS, Parole inicial/in place/re-parole, e os outros motivos 5.B-5.M de Advance Parole) que este produto não automatiza.",
+      "fees": {
+        "filing": {
+          "default": 630,
+          "online": 630,
+          "paper": 630,
+          "notes": "Taxa própria de $630, mesmo quando protocolado junto (concurrent filing) com o I-485 — desde 01/04/2024 o I-131 deixou de ser gratuito nesse cenário. Pode ser protocolado online quando o recibo do I-485 começa com \"IOE\"."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Sem taxa de biometria própria para Advance Parole baseado em I-485 pendente."
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": true,
+            "notes": "Isenção de taxa (Form I-912) pode se aplicar em alguns casos — confirme elegibilidade antes de cobrar."
+          }
+        },
+        "total_typical": 630,
+        "currency": "USD",
+        "payment_methods": [
+          "cheque",
+          "ordem bancária",
+          "cartão de crédito/débito (G-1450)",
+          "débito ACH (G-1650)",
+          "online (Pay.gov)"
+        ],
+        "payable_to": "U.S. Department of Homeland Security",
+        "_confirmar_antes_de_cobrar": "CONFIRMADO POR WEBSEARCH em 2026-07-22 (múltiplas fontes): $630 flat, sem desconto online, mesmo em concurrent filing com I-485 desde 01/04/2024. Há também uma nova taxa de \"immigration parole\" de $1.000 sob legislação recente (HR-1) que NÃO se aplica ao cenário comum de Advance Parole baseado em I-485 pendente (5.A) — essa taxa é para categorias específicas de parole humanitário. Reconfirme em uscis.gov/i-131 e no Fee Schedule (g-1055) antes de cobrar, já que este é um valor sensível e a legislação de taxas mudou recentemente."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "https://my.uscis.gov/ (só quando o recibo do I-485 começa com IOE)",
+        "paper_domestic": "Ver Filing Addresses for Form I-131 page (varia por categoria)",
+        "paper_abroad": "Não aplicável ao cenário coberto por este produto (Advance Parole exige estar dentro dos EUA)"
+      },
+      "concurrent_filing": {
+        "i485": {
+          "allowed": true,
+          "notes": "Comumente protocolado junto com o I-130/I-485/I-765/I-864 no pacote Green Card AOS."
+        }
+      },
+      "related_forms": [
+        "I-485",
+        "I-130",
+        "I-765",
+        "I-864",
+        "G-1145",
+        "G-1450",
+        "G-1650"
+      ],
+      "eligibility_summary": {
+        "who_files": "Pessoa fisicamente presente nos EUA com um Formulário I-485 pendente que precisa viajar para fora do país sem abandonar o pedido de ajuste de status",
+        "notes": "Viajar sem um Advance Parole aprovado (ou sem esse tipo de proteção) enquanto o I-485 está pendente geralmente é considerado abandono do pedido. Esta ferramenta apenas coleta e preenche — não avalia se sua situação específica permite viajar com segurança (ver compliance.md)."
+      }
+    },
+    "I-693": {
+      "name": "Report of Medical Examination and Vaccination Record",
+      "name_pt": "Relatório de Exame Médico e Registro de Vacinação",
+      "edition": "01/20/25",
+      "edition_iso": "2025-01-20",
+      "official_url": "https://www.uscis.gov/i-693",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-693.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-693instr.pdf",
+      "local_pdf": "data/forms/i-693.pdf",
+      "pdf_sha256": "ac8d8032f4bf1421ed2ce76c9754aa5f68b636cbb9b18b5ab16bf09bca5403d2",
+      "pdf_size_bytes": 695449,
+      "reference_only": true,
+      "reference_only_note": "Não preenchemos este formulário — ele só pode ser completado e assinado por um médico credenciado pela USCIS (civil surgeon), diretamente com o cliente, e entregue em envelope selado. Disponibilizamos o PDF oficial em branco apenas para o cliente conhecer o documento com antecedência, e orientamos a busca por um médico credenciado pela ferramenta oficial da USCIS.",
+      "reference_only_note_en": "We don't fill out this form — it can only be completed and signed by a USCIS-designated civil surgeon, directly with the client, and delivered in a sealed envelope. We provide the official blank PDF only so the client can see the document ahead of time, and we point them to USCIS's own tool to find a credentialed doctor.",
+      "civil_surgeon_finder_url": "https://www.uscis.gov/tools/find-a-civil-surgeon",
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "Não tem taxa de protocolo junto à USCIS — o custo é a consulta/exame cobrado diretamente pelo médico credenciado (civil surgeon), que varia por região e não é fixado pela USCIS."
+        },
+        "biometric": {"amount": 0, "notes": "Não aplicável"},
+        "special_cases": {
+          "fee_waiver": {"eligible": false, "notes": "Não aplicável — não é protocolado junto à USCIS por conta própria, é anexado ao I-485 pelo próprio médico em envelope selado"}
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [],
+        "payable_to": "N/A — pagamento é feito diretamente ao médico credenciado, fora do sistema da USCIS",
+        "_confirmar_antes_de_cobrar": "Confirmado em uscis.gov/i-693 (2026-07-22): não existe taxa de protocolo à USCIS para o I-693 em si. Edição 01/20/25 confirmada por extração de texto do PDF oficial (rodapé de todas as 14 páginas)."
+      },
+      "processing_times_url": null,
+      "filing_locations": {
+        "online": "Não se aplica — não é protocolado isoladamente; é anexado ao pacote do I-485 (papel ou upload no protocolo online) em envelope selado, pelo próprio médico",
+        "paper_domestic": "Anexado ao pacote do I-485",
+        "paper_abroad": "Não aplicável — o I-693 é exclusivo de ajuste de status doméstico; processamento consular usa exame equivalente com painel médico do consulado, sem este formulário"
+      },
+      "concurrent_filing": {
+        "i485": {
+          "notes": "Entregue junto com o I-485, em envelope selado pelo médico — não preenchido por este produto"
+        }
+      },
+      "related_forms": ["I-485"],
+      "eligibility_summary": {
+        "who_files": "Não é 'preenchido' pelo requerente — é completado inteiramente pelo médico credenciado (civil surgeon) durante o exame médico exigido para o ajuste de status (I-485)",
+        "notes": "Formulário apenas de referência neste produto: disponibilizamos o PDF oficial em branco para o cliente ver como é, mas não coletamos respostas nem preenchemos este documento. Veja references/compliance.md."
+      }
+    },
+    "I-539A": {
+      "name": "Supplemental Information for Application to Extend/Change Nonimmigrant Status",
+      "name_pt": "Informação Suplementar para Extensão/Mudança de Status de Não Imigrante",
+      "edition": "08/28/24",
+      "edition_iso": "2024-08-28",
+      "official_url": "https://www.uscis.gov/i-539",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-539a.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-539instr.pdf",
+      "local_pdf": "data/forms/i-539a.pdf",
+      "pdf_sha256": "b9e6ebd14072338b642bf5dba080f3532ec2671b7887f3694f417685b5cca885",
+      "pdf_size_bytes": 427057,
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "O I-539A não tem taxa própria — está incluído na taxa do I-539 principal (um formulário por dependente/co-requerente incluído no mesmo pedido)."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não se aplica ao I-539A isoladamente"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável — sem taxa própria"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [],
+        "payable_to": "N/A — sem taxa própria",
+        "_confirmar_antes_de_cobrar": "Sem taxa própria — confirmado em uscis.gov/i-539 (2026-07-22), mesma lógica do I-130A."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "Junto com o I-539 principal",
+        "paper_domestic": "Anexado ao pacote do I-539 — mesmo endereço/lockbox do requerente principal",
+        "paper_abroad": "Anexado ao pacote do I-539 — mesmo local de protocolo do requerente principal"
+      },
+      "concurrent_filing": {
+        "i539": {
+          "required": true,
+          "notes": "Sempre protocolado junto com o I-539 principal — um I-539A por cônjuge/filho(a) incluído no mesmo pedido."
+        }
+      },
+      "related_forms": [
+        "I-539"
+      ],
+      "eligibility_summary": {
+        "who_files": "Cada cônjuge ou filho(a) incluído no mesmo pedido de extensão/mudança de status de outra pessoa (o requerente principal do I-539)",
+        "when_required": "Sempre que mais de uma pessoa é incluída no mesmo Formulário I-539 — cada co-requerente adicional preenche o seu próprio I-539A"
+      }
+    },
+    "I-134": {
+      "name": "Declaration of Financial Support",
+      "name_pt": "Declaração de Apoio Financeiro",
+      "edition": "01/20/25",
+      "edition_iso": "2025-01-20",
+      "official_url": "https://www.uscis.gov/i-134",
+      "pdf_url": "https://www.uscis.gov/sites/default/files/document/forms/i-134.pdf",
+      "instructions_url": "https://www.uscis.gov/sites/default/files/document/forms/i-134instr.pdf",
+      "local_pdf": "data/forms/i-134.pdf",
+      "pdf_sha256": "e887f9dbb4660ff9eec47d740c00358e45fcfb9c04a9776d8d95cda2e7a5e0d8",
+      "pdf_size_bytes": 511302,
+      "fees": {
+        "filing": {
+          "default": 0,
+          "online": 0,
+          "paper": 0,
+          "notes": "A USCIS não cobra taxa própria pelo I-134 quando usado para comprovar apoio financeiro em um pedido de mudança de status (I-539) — é um formulário de declaração, não uma petição por si só. Este é um serviço cobrado à parte pelo nosso sistema (não é uma taxa da USCIS)."
+        },
+        "biometric": {
+          "amount": 0,
+          "notes": "Não se aplica ao I-134 isoladamente"
+        },
+        "special_cases": {
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável — sem taxa própria da USCIS"
+          }
+        },
+        "total_typical": 0,
+        "currency": "USD",
+        "payment_methods": [],
+        "payable_to": "N/A — sem taxa própria da USCIS",
+        "_confirmar_antes_de_cobrar": "Sem taxa própria da USCIS — confirmado em uscis.gov/i-134 (2026-07-24). A cobrança deste serviço é feita pelo nosso próprio sistema, separadamente da taxa de protocolo do I-539 principal."
+      },
+      "processing_times_url": "https://egov.uscis.gov/processing-times/",
+      "filing_locations": {
+        "online": "Junto com o I-539 principal (anexado como evidência de apoio financeiro)",
+        "paper_domestic": "Anexado ao pacote do I-539 — mesmo endereço/lockbox do requerente principal",
+        "paper_abroad": "Não aplicável — segue o mesmo local de protocolo do I-539 principal, que só pode ser protocolado dentro dos Estados Unidos"
+      },
+      "concurrent_filing": {
+        "i539": {
+          "required": false,
+          "notes": "Usado neste produto como evidência de apoio financeiro para os serviços de mudança de status para estudante (F-1) ou turista (B-2) do I-539, quando o(a) requerente não tem recursos próprios suficientes e conta com um(a) patrocinador(a) LPR ou cidadão(ã) americano(a)."
+        }
+      },
+      "related_forms": [
+        "I-539"
+      ],
+      "eligibility_summary": {
+        "who_files": "O(a) patrocinador(a) (Lawful Permanent Resident ou cidadão(ã) americano(a)) que concorda em apoiar financeiramente o(a) beneficiário(a) — neste produto, o(a) requerente do I-539 (mudança de status para F-1 ou B-2) que não comprova recursos próprios suficientes",
+        "when_required": "Quando o(a) requerente de mudança de status para estudante (F-1) ou turista (B-2) não tem saldo/renda suficiente para cobrir os custos da estadia (matrícula, moradia, alimentação, saúde, transporte) e possui um(a) patrocinador(a) qualificado(a)",
+        "notes": "Este formulário cobre apenas o cenário em que o(a) patrocinador(a) preenche em nome de OUTRA pessoa (Partes 1-3 e 5-8). A Parte 4 (autopreenchimento pelo(a) próprio(a) beneficiário(a)) não é automatizada neste produto — fora do escopo do caso de uso coberto."
+      }
+    }
+  }
+}

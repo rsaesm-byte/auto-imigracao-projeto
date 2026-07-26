@@ -1,0 +1,121 @@
+{
+  "form": "I-90",
+  "confidence_note": "Baseado nas instruções oficiais do Formulário I-90 e em múltiplas fontes de advocacia imigratória cruzadas nesta sessão (uscis.gov bloqueou fetch direto). Lista pensada para cobrir o caso comum de cada motivo — sempre confira as instruções oficiais do formulário para o seu caso específico antes de enviar.",
+  "confidence_note_en": "Based on the official Form I-90 instructions and multiple immigration-law sources cross-checked in this session (uscis.gov blocked direct fetch). This list is designed to cover the common case for each reason — always check the form's official instructions for your specific case before filing.",
+  "always": [
+    {
+      "label": "Documento de identidade com foto emitido pelo governo (passaporte, CNH ou identidade militar) com nome, data de nascimento, foto e assinatura",
+      "label_en": "Government-issued photo ID (passport, driver's license, or military ID) with name, date of birth, photo, and signature"
+    },
+    {
+      "label": "Cópia (frente e verso) do seu Cartão de Residente Permanente atual/anterior, se você tiver uma cópia ou o cartão físico",
+      "label_en": "Copy (front and back) of your current/previous Permanent Resident Card, if you have a copy or the physical card"
+    },
+    {
+      "label": "Comprovante de pagamento da taxa de protocolo — ou Formulário I-912 (pedido de isenção de taxa) com documentação financeira de apoio, se estiver pedindo isenção",
+      "label_en": "Proof of filing fee payment — or Form I-912 (fee waiver request) with supporting financial documentation, if requesting a waiver",
+      "note": "Se o motivo for \"cartão emitido mas nunca recebido\", a taxa de protocolo não é exigida.",
+      "note_en": "If the reason is \"card issued but never received,\" the filing fee is not required."
+    }
+  ],
+  "rules": [
+    {
+      "questions": ["motivo_secao_a", "motivo_secao_b"],
+      "equals": "perdido_roubado_destruido",
+      "documents": [
+        {"label": "Cópia do cartão anterior, se você tiver alguma cópia guardada (foto, escaneamento)",
+         "label_en": "Copy of the previous card, if you have any copy saved (photo, scan)"},
+        {"label": "Boletim de ocorrência (police report), se o cartão foi roubado — não é obrigatório, mas reforça o pedido",
+         "label_en": "Police report, if the card was stolen — not required, but strengthens the request"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a", "motivo_secao_b"],
+      "equals": "emitido_nao_recebido",
+      "documents": [
+        {"label": "Cópia do aviso de aprovação do USCIS (Form I-797, Notice of Action) referente ao cartão que não chegou, se você tiver",
+         "label_en": "Copy of the USCIS approval notice (Form I-797, Notice of Action) for the card that did not arrive, if you have it"},
+        {"label": "Comprovante do endereço correto para onde o cartão deveria ter sido enviado",
+         "label_en": "Proof of the correct address the card should have been mailed to"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a", "motivo_secao_b"],
+      "equals": "mutilado",
+      "documents": [
+        {"label": "O próprio cartão mutilado/danificado (o original, não só uma cópia) — ele deve ser enviado junto com o formulário em papel",
+         "label_en": "The mutilated/damaged card itself (the original, not just a copy) — it must be mailed together with the paper form"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a", "motivo_secao_b"],
+      "equals": "erro_dhs",
+      "documents": [
+        {"label": "O cartão original com os dados incorretos",
+         "label_en": "The original card with the incorrect information"},
+        {"label": "Prova do dado correto: certidão de nascimento, passaporte, ou outro documento oficial mostrando a informação correta que deveria constar no cartão",
+         "label_en": "Proof of the correct information: birth certificate, passport, or other official document showing the correct information that should appear on the card"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a", "motivo_secao_b"],
+      "equals": "biografia_mudou",
+      "documents": [
+        {"label": "Documento comprovando a mudança legal de nome ou dado biográfico: certidão de casamento, sentença de divórcio, certidão de nascimento, sentença de adoção, ou ordem judicial de mudança de nome",
+         "label_en": "Document proving the legal change of name or biographic data: marriage certificate, divorce decree, birth certificate, adoption decree, or court order for name change"},
+        {"label": "Cópia do seu passaporte atual, se o novo nome já constar nele",
+         "label_en": "Copy of your current passport, if the new name already appears on it"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a", "motivo_secao_b"],
+      "equals": "cartao_expirado",
+      "documents": [
+        {"label": "Cópia do cartão expirado ou prestes a expirar (frente e verso)",
+         "label_en": "Copy of the expired or soon-to-expire card (front and back)"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a"],
+      "equals": "14anos_expira_apos_16",
+      "documents": [
+        {"label": "Certidão de nascimento ou passaporte confirmando a data de nascimento (para comprovar que completou 14 anos)",
+         "label_en": "Birth certificate or passport confirming date of birth (to prove you have turned 14)"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a"],
+      "equals": "14anos_expira_antes_16",
+      "documents": [
+        {"label": "Certidão de nascimento ou passaporte confirmando a data de nascimento (para comprovar que completou 14 anos)",
+         "label_en": "Birth certificate or passport confirming date of birth (to prove you have turned 14)"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a"],
+      "equals": "residente_tomando_status_comutante",
+      "documents": [
+        {"label": "Evidência de emprego ou residência no Canadá ou México que justifique o status de comutante",
+         "label_en": "Evidence of employment or residence in Canada or Mexico justifying commuter status"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a"],
+      "equals": "comutante_tomando_residencia",
+      "documents": [
+        {"label": "Evidência de que passou a residir efetivamente nos EUA (contrato de aluguel, conta de consumo, etc.)",
+         "label_en": "Evidence that you have started actually residing in the U.S. (lease agreement, utility bill, etc.)"},
+        {"label": "Informação do Porto de Entrada (POE) usado — já coletada no questionário",
+         "label_en": "Information on the Port of Entry (POE) used — already collected in the questionnaire"}
+      ]
+    },
+    {
+      "questions": ["motivo_secao_a"],
+      "equals": "convertido_automaticamente",
+      "documents": [
+        {"label": "Documento que comprove a conversão automática para status de residente permanente (ex.: carimbo no passaporte, documento de status anterior)",
+         "label_en": "Document proving the automatic conversion to permanent resident status (e.g., passport stamp, prior status document)"}
+      ]
+    }
+  ]
+}

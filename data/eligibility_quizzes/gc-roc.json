@@ -1,0 +1,84 @@
+{
+  "slug": "gc-roc",
+  "title": "Green Card — Remoção de Condições (I-751)",
+  "title_en": "Green Card — Removal of Conditions (I-751)",
+  "subtitle": "Descubra se o seu caso se encaixa no I-751 e quando você deve protocolar.",
+  "subtitle_en": "Find out whether your case fits the I-751 and when you should file.",
+  "maps_to": "i-751",
+  "questions": [
+    {
+      "id": "casamento_origem",
+      "type": "radio",
+      "label": "Seu Green Card foi obtido através de casamento com um cidadão americano ou residente permanente?",
+      "label_en": "Was your Green Card obtained through marriage to a U.S. citizen or permanent resident?",
+      "required": true,
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "condicional",
+      "type": "radio",
+      "label": "Seu Green Card é do tipo CONDICIONAL, com validade de 2 anos?",
+      "label_en": "Is your Green Card the CONDITIONAL type, valid for 2 years?",
+      "hint": "Está escrito \"2 Years\" (não \"10 Years\") na frente do cartão, na parte de validade.",
+      "hint_en": "It says \"2 Years\" (not \"10 Years\") on the front of the card, under the validity date.",
+      "required": true,
+      "show_if": {"question": "casamento_origem", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "data_expiracao",
+      "type": "date",
+      "label": "Qual é a data de expiração do seu Green Card condicional?",
+      "label_en": "What is your conditional Green Card's expiration date?",
+      "hint": "Formato MM/DD/AAAA — está impresso na frente do cartão.",
+      "hint_en": "MM/DD/YYYY format — printed on the front of the card.",
+      "required": true,
+      "show_if": {"question": "condicional", "equals": "sim"}
+    },
+    {
+      "id": "ainda_casado",
+      "type": "radio",
+      "label": "Você ainda está casado(a) e morando com o mesmo cônjuge que originou a sua residência condicional?",
+      "label_en": "Are you still married to, and living with, the same spouse who was the basis for your conditional residency?",
+      "required": true,
+      "show_if": {"question": "condicional", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    },
+    {
+      "id": "motivo_dispensa",
+      "type": "radio",
+      "label": "Por qual motivo você vai protocolar sozinho(a), sem petição conjunta com o cônjuge?",
+      "label_en": "What is the reason you'll be filing alone, without a joint petition with your spouse?",
+      "required": true,
+      "show_if": {"question": "ainda_casado", "equals": "nao"},
+      "options": [
+        {"value": "falecimento", "label": "Meu cônjuge faleceu", "label_en": "My spouse passed away"},
+        {"value": "divorcio_anulacao", "label": "Divórcio ou anulação, depois de um casamento de boa-fé", "label_en": "Divorce or annulment, after a good-faith marriage"},
+        {"value": "violencia_domestica", "label": "Eu (ou meu filho) sofri violência ou crueldade extrema do meu cônjuge", "label_en": "I (or my child) suffered battery or extreme cruelty from my spouse"},
+        {"value": "dificuldade_extrema", "label": "Perder meu status e ser removido(a) dos EUA causaria dificuldade extrema", "label_en": "Losing my status and being removed from the U.S. would cause extreme hardship"},
+        {"value": "outro", "label": "Outro motivo / não sei", "label_en": "Other reason / not sure"}
+      ]
+    },
+    {
+      "id": "condenacao",
+      "type": "radio",
+      "label": "Desde que recebeu a residência condicional, você foi preso(a) ou condenado(a) por algum crime?",
+      "label_en": "Since receiving conditional residency, have you been arrested or convicted of any crime?",
+      "required": true,
+      "show_if": {"question": "condicional", "equals": "sim"},
+      "options": [
+        {"value": "sim", "label": "Sim", "label_en": "Yes"},
+        {"value": "nao", "label": "Não", "label_en": "No"}
+      ]
+    }
+  ]
+}
