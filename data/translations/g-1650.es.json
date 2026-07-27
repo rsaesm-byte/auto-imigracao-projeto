@@ -6,8 +6,8 @@
     "pagamento": "Detalles de la Cuenta y del Pago"
   },
   "questions": {
-    "g1650_sobrenome": {"label": "Apellido del solicitante, peticionario o requirente"},
-    "g1650_nome": {"label": "Nombre del solicitante, peticionario o requirente"},
+    "g1650_sobrenome": {"label": "Apellido del solicitante o peticionario"},
+    "g1650_nome": {"label": "Nombre del solicitante o peticionario"},
     "g1650_nome_meio": {"label": "Segundo nombre (si tiene)"},
 
     "g1650_tipo_conta": {"label": "¿La cuenta bancaria es personal o de negocio?", "options": {
@@ -20,8 +20,8 @@
     "g1650_nome_empresa": {"label": "Nombre de la empresa titular de la cuenta"},
 
     "g1650_tipo_conta_bancaria": {"label": "¿La cuenta bancaria es corriente o de ahorros?", "options": {
-      "corrente": "Cuenta Corriente",
-      "poupanca": "Cuenta de Ahorros"
+      "corrente": "Cuenta corriente",
+      "poupanca": "Cuenta de ahorros"
     }},
     "g1650_nome_banco": {"label": "Nombre del banco"},
     "g1650_valor_autorizado": {"label": "Monto de pago autorizado (en dólares, sin centavos)", "hint": "Verifique el monto exacto de la tarifa antes de completar esto — es lo que se debitará de la cuenta."}

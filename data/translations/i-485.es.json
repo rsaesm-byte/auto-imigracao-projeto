@@ -4,10 +4,10 @@
     "motivo": "Partes 1 y 2 — Tipo de Solicitud y Categoría de Inmigrante",
     "basico": "Parte 1 — Información Básica",
     "outros_nomes": "Parte 1 — Otros Nombres Usados",
-    "enderecos": "Parte 1 — Domicilios",
+    "enderecos": "Parte 1 — Direcciones",
     "entrada_eua": "Parte 1 — Última Llegada a los EE. UU. / Formulario I-94",
     "info_pessoal": "Parte 1 — Información Personal y Seguro Social",
-    "affidavit": "Parte 3 — Exención de la Declaración de Apoyo Financiero",
+    "affidavit": "Parte 3 — Exención de la Declaración Jurada de Patrocinio Económico",
     "adicional": "Parte 4 — Información Adicional / Empleo y Educación",
     "pais": "Parte 5 — Información Sobre sus Padres",
     "matrimonial": "Parte 6 — Historial Matrimonial",
@@ -272,40 +272,40 @@
       "label": "Otro nombre usado 2 — Apellido"
     },
     "end_ant_ate": {
-      "label": "Domicilio anterior — Fecha de fin (MM/DD/AAAA)"
+      "label": "Dirección anterior — Fecha de fin (MM/DD/AAAA)"
     },
     "end_ant_cep": {
-      "label": "Domicilio anterior — Código postal (ZIP)"
+      "label": "Dirección anterior — Código postal (ZIP)"
     },
     "end_ant_cidade": {
-      "label": "Domicilio anterior — Ciudad"
+      "label": "Dirección anterior — Ciudad"
     },
     "end_ant_codigo_postal": {
-      "label": "Domicilio anterior — Código postal"
+      "label": "Dirección anterior — Código postal"
     },
     "end_ant_cuidados_de": {
-      "label": "Domicilio anterior — A la atención de (si aplica)"
+      "label": "Dirección anterior — A la atención de (si aplica)"
     },
     "end_ant_desde": {
-      "label": "Domicilio anterior — Fecha de inicio (MM/DD/AAAA)"
+      "label": "Dirección anterior — Fecha de inicio (MM/DD/AAAA)"
     },
     "end_ant_estado": {
-      "label": "Domicilio anterior — Estado (abreviatura)"
+      "label": "Dirección anterior — Estado (abreviatura)"
     },
     "end_ant_num_unidade": {
-      "label": "Domicilio anterior — Número de unidad"
+      "label": "Dirección anterior — Número de unidad"
     },
     "end_ant_pais": {
-      "label": "Domicilio anterior — País"
+      "label": "Dirección anterior — País"
     },
     "end_ant_provincia": {
-      "label": "Domicilio anterior — Provincia"
+      "label": "Dirección anterior — Provincia"
     },
     "end_ant_rua": {
-      "label": "Domicilio anterior — Número y nombre de la calle"
+      "label": "Dirección anterior — Número y nombre de la calle"
     },
     "end_ant_tipo_unidade": {
-      "label": "Domicilio anterior — Tipo de unidad (apt/ste/flr)",
+      "label": "Dirección anterior — Tipo de unidad (apt/ste/flr)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -313,33 +313,33 @@
       }
     },
     "end_correio_cep": {
-      "label": "Domicilio postal — Código postal (ZIP)"
+      "label": "Dirección postal — Código postal (ZIP)"
     },
     "end_correio_cidade": {
-      "label": "Domicilio postal — Ciudad"
+      "label": "Dirección postal — Ciudad"
     },
     "end_correio_cuidados_de": {
-      "label": "Domicilio postal — A la atención de (si aplica)"
+      "label": "Dirección postal — A la atención de (si aplica)"
     },
     "end_correio_estado": {
-      "label": "Domicilio postal — Estado (abreviatura)"
+      "label": "Dirección postal — Estado (abreviatura)"
     },
     "end_correio_igual_fisico": {
-      "label": "Domicilio postal — ¿Es igual a su domicilio físico?",
+      "label": "Dirección postal — ¿Es igual a su dirección física?",
       "options": {
         "sim": "Sí",
         "nao": "No"
       },
-      "hint": "Indique si el domicilio donde usted VIVE actualmente es el mismo domicilio al que USCIS debe enviar la correspondencia. Si son diferentes, a continuación completará su domicilio físico por separado."
+      "hint": "Indique si la dirección donde usted VIVE actualmente es la misma dirección a la que USCIS debe enviar la correspondencia. Si son diferentes, a continuación completará su dirección física por separado."
     },
     "end_correio_num_unidade": {
-      "label": "Domicilio postal — Número de unidad"
+      "label": "Dirección postal — Número de unidad"
     },
     "end_correio_rua": {
-      "label": "Domicilio postal — Número y nombre de la calle"
+      "label": "Dirección postal — Número y nombre de la calle"
     },
     "end_correio_tipo_unidade": {
-      "label": "Domicilio postal — Tipo de unidad (apt/ste/flr)",
+      "label": "Dirección postal — Tipo de unidad (apt/ste/flr)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -347,37 +347,37 @@
       }
     },
     "end_ext_ate": {
-      "label": "Último domicilio fuera de los EE. UU. — Fecha de fin (MM/DD/AAAA)"
+      "label": "Última dirección fuera de los EE. UU. — Fecha de fin (MM/DD/AAAA)"
     },
     "end_ext_cep": {
-      "label": "Último domicilio fuera de los EE. UU. — Código postal (ZIP)"
+      "label": "Última dirección fuera de los EE. UU. — Código postal (ZIP)"
     },
     "end_ext_cidade": {
-      "label": "Último domicilio fuera de los EE. UU. — Ciudad"
+      "label": "Última dirección fuera de los EE. UU. — Ciudad"
     },
     "end_ext_codigo_postal": {
-      "label": "Último domicilio fuera de los EE. UU. — Código postal"
+      "label": "Última dirección fuera de los EE. UU. — Código postal"
     },
     "end_ext_desde": {
-      "label": "Último domicilio fuera de los EE. UU. — Fecha de inicio (MM/DD/AAAA)"
+      "label": "Última dirección fuera de los EE. UU. — Fecha de inicio (MM/DD/AAAA)"
     },
     "end_ext_estado": {
-      "label": "Último domicilio fuera de los EE. UU. — Estado (abreviatura)"
+      "label": "Última dirección fuera de los EE. UU. — Estado (abreviatura)"
     },
     "end_ext_num_unidade": {
-      "label": "Último domicilio fuera de los EE. UU. — Número de unidad"
+      "label": "Última dirección fuera de los EE. UU. — Número de unidad"
     },
     "end_ext_pais": {
-      "label": "Último domicilio fuera de los EE. UU. — País"
+      "label": "Última dirección fuera de los EE. UU. — País"
     },
     "end_ext_provincia": {
-      "label": "Último domicilio fuera de los EE. UU. — Provincia"
+      "label": "Última dirección fuera de los EE. UU. — Provincia"
     },
     "end_ext_rua": {
-      "label": "Último domicilio fuera de los EE. UU. — Número y nombre de la calle"
+      "label": "Última dirección fuera de los EE. UU. — Número y nombre de la calle"
     },
     "end_ext_tipo_unidade": {
-      "label": "Último domicilio fuera de los EE. UU. — Tipo de unidad (apt/ste/flr)",
+      "label": "Última dirección fuera de los EE. UU. — Tipo de unidad (apt/ste/flr)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -385,28 +385,28 @@
       }
     },
     "end_fisico_cep": {
-      "label": "Domicilio físico actual — Código postal (ZIP)"
+      "label": "Dirección física actual — Código postal (ZIP)"
     },
     "end_fisico_cidade": {
-      "label": "Domicilio físico actual — Ciudad"
+      "label": "Dirección física actual — Ciudad"
     },
     "end_fisico_cuidados_de": {
-      "label": "Domicilio físico actual — A la atención de (si aplica)"
+      "label": "Dirección física actual — A la atención de (si aplica)"
     },
     "end_fisico_desde": {
-      "label": "Domicilio físico actual — Fecha de inicio (MM/DD/AAAA)"
+      "label": "Dirección física actual — Fecha de inicio (MM/DD/AAAA)"
     },
     "end_fisico_estado": {
-      "label": "Domicilio físico actual — Estado (abreviatura)"
+      "label": "Dirección física actual — Estado (abreviatura)"
     },
     "end_fisico_num_unidade": {
-      "label": "Domicilio físico actual — Número de unidad"
+      "label": "Dirección física actual — Número de unidad"
     },
     "end_fisico_rua": {
-      "label": "Domicilio físico actual — Número y nombre de la calle"
+      "label": "Dirección física actual — Número y nombre de la calle"
     },
     "end_fisico_tipo_unidade": {
-      "label": "Domicilio físico actual — Tipo de unidad (apt/ste/flr)",
+      "label": "Dirección física actual — Tipo de unidad (apt/ste/flr)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -414,7 +414,7 @@
       }
     },
     "mora_atual_5anos": {
-      "label": "¿Ha vivido en su domicilio físico actual durante al menos 5 años?",
+      "label": "¿Ha vivido en su dirección física actual durante al menos 5 años?",
       "options": {
         "sim": "Sí",
         "nao": "No"
@@ -531,16 +531,16 @@
       "label": "Embajada/consulado donde solicitó — País"
     },
     "isencao_affidavit_motivo": {
-      "label": "Motivo de la exención de presentar la Declaración de Apoyo Financiero (Sección 213A del INA)",
+      "label": "Motivo de la exención de presentar la Declaración Jurada de Patrocinio Económico (Sección 213A del INA)",
       "options": {
         "40_trimestres": "Tengo (o se me pueden acreditar) 40 trimestres calificados de trabajo en los EE. UU.",
         "menor18_filho_cidadao": "Soy menor de 18 años, soltero(a), e hijo(a) de un(a) ciudadano(a) estadounidense",
         "viuvo_cidadao": "Estoy solicitando como viudo(a) de un(a) ciudadano(a) estadounidense",
         "vawa": "Estoy solicitando como autopeticionario(a) VAWA",
-        "nao_precisa": "No aplica ninguna exención a mi caso, y no estoy obligado(a) a presentar la Declaración de Apoyo Financiero",
-        "precisa_apresentar": "No aplica ninguna exención — debo presentar la Declaración de Apoyo Financiero"
+        "nao_precisa": "No aplica ninguna exención a mi caso, y no estoy obligado(a) a presentar la Declaración Jurada de Patrocinio Económico",
+        "precisa_apresentar": "No aplica ninguna exención — debo presentar la Declaración Jurada de Patrocinio Económico"
       },
-      "hint": "La Declaración de Apoyo Financiero (Sección 213A del INA / Formulario I-864) es una garantía financiera normalmente exigida — solo se exime en casos específicos (por ejemplo, usted ya tiene 40 trimestres calificados de trabajo en EE. UU., es huérfano(a) adoptado(a) por un(a) ciudadano(a) estadounidense, o su caso es basado en empleo y usted posee el 5% o más de la empresa patrocinadora). Si no está seguro(a) de calificar para una exención, confirme con el equipo — la mayoría de los casos NO están exentos."
+      "hint": "La Declaración Jurada de Patrocinio Económico (Sección 213A del INA / Formulario I-864) es una garantía financiera normalmente exigida — solo se exime en casos específicos (por ejemplo, usted ya tiene 40 trimestres calificados de trabajo en EE. UU., es huérfano(a) adoptado(a) por un(a) ciudadano(a) estadounidense, o su caso es basado en empleo y usted posee el 5% o más de la empresa patrocinadora). Si no está seguro(a) de calificar para una exención, confirme con el equipo — la mayoría de los casos NO están exentos."
     },
     "emp1_ate": {
       "label": "Empleador/escuela actual — Fecha de fin (MM/DD/AAAA)"
@@ -549,31 +549,31 @@
       "label": "Empleador/escuela actual — Fecha de inicio (MM/DD/AAAA)"
     },
     "emp1_end_cep": {
-      "label": "Empleador/escuela actual — Código postal del domicilio"
+      "label": "Empleador/escuela actual — Código postal de la dirección"
     },
     "emp1_end_cidade": {
-      "label": "Empleador/escuela actual — Ciudad del domicilio"
+      "label": "Empleador/escuela actual — Ciudad de la dirección"
     },
     "emp1_end_codigo_postal": {
-      "label": "Empleador/escuela actual — Código postal del domicilio"
+      "label": "Empleador/escuela actual — Código postal de la dirección"
     },
     "emp1_end_estado": {
-      "label": "Empleador/escuela actual — Estado del domicilio"
+      "label": "Empleador/escuela actual — Estado de la dirección"
     },
     "emp1_end_num_unidade": {
-      "label": "Empleador/escuela actual — Número de unidad del domicilio"
+      "label": "Empleador/escuela actual — Número de unidad de la dirección"
     },
     "emp1_end_pais": {
-      "label": "Empleador/escuela actual — País del domicilio"
+      "label": "Empleador/escuela actual — País de la dirección"
     },
     "emp1_end_provincia": {
-      "label": "Empleador/escuela actual — Provincia del domicilio"
+      "label": "Empleador/escuela actual — Provincia de la dirección"
     },
     "emp1_end_rua": {
-      "label": "Empleador/escuela actual — Calle del domicilio"
+      "label": "Empleador/escuela actual — Calle de la dirección"
     },
     "emp1_end_tipo_unidade": {
-      "label": "Empleador/escuela actual — Tipo de unidad del domicilio",
+      "label": "Empleador/escuela actual — Tipo de unidad de la dirección",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -593,31 +593,31 @@
       "label": "Empleador/escuela anterior — Fecha de inicio (MM/DD/AAAA)"
     },
     "emp2_end_cep": {
-      "label": "Empleador/escuela anterior — Código postal del domicilio"
+      "label": "Empleador/escuela anterior — Código postal de la dirección"
     },
     "emp2_end_cidade": {
-      "label": "Empleador/escuela anterior — Ciudad del domicilio"
+      "label": "Empleador/escuela anterior — Ciudad de la dirección"
     },
     "emp2_end_codigo_postal": {
-      "label": "Empleador/escuela anterior — Código postal del domicilio"
+      "label": "Empleador/escuela anterior — Código postal de la dirección"
     },
     "emp2_end_estado": {
-      "label": "Empleador/escuela anterior — Estado del domicilio"
+      "label": "Empleador/escuela anterior — Estado de la dirección"
     },
     "emp2_end_num_unidade": {
-      "label": "Empleador/escuela anterior — Número de unidad del domicilio"
+      "label": "Empleador/escuela anterior — Número de unidad de la dirección"
     },
     "emp2_end_pais": {
-      "label": "Empleador/escuela anterior — País del domicilio"
+      "label": "Empleador/escuela anterior — País de la dirección"
     },
     "emp2_end_provincia": {
-      "label": "Empleador/escuela anterior — Provincia del domicilio"
+      "label": "Empleador/escuela anterior — Provincia de la dirección"
     },
     "emp2_end_rua": {
-      "label": "Empleador/escuela anterior — Calle del domicilio"
+      "label": "Empleador/escuela anterior — Calle de la dirección"
     },
     "emp2_end_tipo_unidade": {
-      "label": "Empleador/escuela anterior — Tipo de unidad del domicilio",
+      "label": "Empleador/escuela anterior — Tipo de unidad de la dirección",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -720,31 +720,31 @@
       "label": "Cónyuge actual — Fecha de nacimiento"
     },
     "conjuge_end_cep": {
-      "label": "Cónyuge actual — Código postal del domicilio"
+      "label": "Cónyuge actual — Código postal de la dirección"
     },
     "conjuge_end_cidade": {
-      "label": "Cónyuge actual — Ciudad del domicilio"
+      "label": "Cónyuge actual — Ciudad de la dirección"
     },
     "conjuge_end_codigo_postal": {
-      "label": "Cónyuge actual — Código postal del domicilio"
+      "label": "Cónyuge actual — Código postal de la dirección"
     },
     "conjuge_end_estado": {
-      "label": "Cónyuge actual — Estado del domicilio"
+      "label": "Cónyuge actual — Estado de la dirección"
     },
     "conjuge_end_num_unidade": {
-      "label": "Cónyuge actual — Número de unidad del domicilio"
+      "label": "Cónyuge actual — Número de unidad de la dirección"
     },
     "conjuge_end_pais": {
-      "label": "Cónyuge actual — País del domicilio"
+      "label": "Cónyuge actual — País de la dirección"
     },
     "conjuge_end_provincia": {
-      "label": "Cónyuge actual — Provincia del domicilio"
+      "label": "Cónyuge actual — Provincia de la dirección"
     },
     "conjuge_end_rua": {
-      "label": "Cónyuge actual — Calle del domicilio"
+      "label": "Cónyuge actual — Calle de la dirección"
     },
     "conjuge_end_tipo_unidade": {
-      "label": "Cónyuge actual — Tipo de unidad del domicilio",
+      "label": "Cónyuge actual — Tipo de unidad de la dirección",
       "options": {
         "apt": "Apt",
         "ste": "Ste",

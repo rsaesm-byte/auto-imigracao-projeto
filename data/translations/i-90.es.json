@@ -2,7 +2,7 @@
   "title": "Solicitud de Sustitución de la Tarjeta de Residente Permanente — I-90",
   "sections": {
     "basico": "Parte 1 — Información Sobre Usted",
-    "enderecos": "Parte 1 — Domicilios",
+    "enderecos": "Parte 1 — Direcciones",
     "adicional": "Parte 1 — Información Adicional",
     "tipo_aplicacao": "Parte 2 — Tipo de Solicitud",
     "processamento": "Parte 3 — Información de Procesamiento",
@@ -46,13 +46,13 @@
       "label": "Nombre exactamente como aparece impreso en su tarjeta actual — Segundo Nombre"
     },
     "end_correio_cuidados_de": {
-      "label": "Domicilio de Correspondencia — A Nombre De (si tiene)"
+      "label": "Dirección de Correspondencia — A Nombre De (si tiene)"
     },
     "end_correio_rua": {
-      "label": "Domicilio de Correspondencia — Número y Nombre de la Calle"
+      "label": "Dirección de Correspondencia — Número y Nombre de la Calle"
     },
     "end_correio_tipo_unidade": {
-      "label": "Domicilio de Correspondencia — Tipo de Unidad (si aplica)",
+      "label": "Dirección de Correspondencia — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -60,31 +60,31 @@
       }
     },
     "end_correio_num_unidade": {
-      "label": "Domicilio de Correspondencia — Número de Unidad"
+      "label": "Dirección de Correspondencia — Número de Unidad"
     },
     "end_correio_cidade": {
-      "label": "Domicilio de Correspondencia — Ciudad o Pueblo"
+      "label": "Dirección de Correspondencia — Ciudad o Pueblo"
     },
     "end_correio_estado": {
-      "label": "Domicilio de Correspondencia — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Dirección de Correspondencia — Estado (abreviatura, si está en EE. UU.)"
     },
     "end_correio_cep": {
-      "label": "Domicilio de Correspondencia — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Dirección de Correspondencia — Código Postal (ZIP, si está en EE. UU.)"
     },
     "end_correio_provincia": {
-      "label": "Domicilio de Correspondencia — Provincia (si es fuera de EE. UU.)"
+      "label": "Dirección de Correspondencia — Provincia (si está fuera de EE. UU.)"
     },
     "end_correio_codigo_postal": {
-      "label": "Domicilio de Correspondencia — Código Postal (si es fuera de EE. UU.)"
+      "label": "Dirección de Correspondencia — Código Postal (si está fuera de EE. UU.)"
     },
     "end_correio_pais": {
-      "label": "Domicilio de Correspondencia — País"
+      "label": "Dirección de Correspondencia — País"
     },
     "end_fisico_rua": {
-      "label": "Domicilio Físico (si es diferente al de correspondencia) — Número y Nombre de la Calle"
+      "label": "Dirección Física (si es diferente a la de correspondencia) — Número y Nombre de la Calle"
     },
     "end_fisico_tipo_unidade": {
-      "label": "Domicilio Físico — Tipo de Unidad (si aplica)",
+      "label": "Dirección Física — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -92,25 +92,25 @@
       }
     },
     "end_fisico_num_unidade": {
-      "label": "Domicilio Físico — Número de Unidad"
+      "label": "Dirección Física — Número de Unidad"
     },
     "end_fisico_cidade": {
-      "label": "Domicilio Físico — Ciudad o Pueblo"
+      "label": "Dirección Física — Ciudad o Pueblo"
     },
     "end_fisico_estado": {
-      "label": "Domicilio Físico — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Dirección Física — Estado (abreviatura, si está en EE. UU.)"
     },
     "end_fisico_cep": {
-      "label": "Domicilio Físico — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Dirección Física — Código Postal (ZIP, si está en EE. UU.)"
     },
     "end_fisico_provincia": {
-      "label": "Domicilio Físico — Provincia (si es fuera de EE. UU.)"
+      "label": "Dirección Física — Provincia (si está fuera de EE. UU.)"
     },
     "end_fisico_codigo_postal": {
-      "label": "Domicilio Físico — Código Postal (si es fuera de EE. UU.)"
+      "label": "Dirección Física — Código Postal (si está fuera de EE. UU.)"
     },
     "end_fisico_pais": {
-      "label": "Domicilio Físico — País"
+      "label": "Dirección Física — País"
     },
     "sexo": {
       "label": "Sexo",
@@ -399,16 +399,16 @@
       "label": "Intérprete — Ciudad o Pueblo"
     },
     "int_end_estado": {
-      "label": "Intérprete — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Intérprete — Estado (abreviatura, si está en EE. UU.)"
     },
     "int_end_cep": {
-      "label": "Intérprete — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Intérprete — Código Postal (ZIP, si está en EE. UU.)"
     },
     "int_end_provincia": {
-      "label": "Intérprete — Provincia (si es fuera de EE. UU.)"
+      "label": "Intérprete — Provincia (si está fuera de EE. UU.)"
     },
     "int_end_codigo_postal": {
-      "label": "Intérprete — Código Postal (si es fuera de EE. UU.)"
+      "label": "Intérprete — Código Postal (si está fuera de EE. UU.)"
     },
     "int_end_pais": {
       "label": "Intérprete — País"
@@ -455,16 +455,16 @@
       "label": "Preparador(a) — Ciudad o Pueblo"
     },
     "prep_end_estado": {
-      "label": "Preparador(a) — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Preparador(a) — Estado (abreviatura, si está en EE. UU.)"
     },
     "prep_end_cep": {
-      "label": "Preparador(a) — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Preparador(a) — Código Postal (ZIP, si está en EE. UU.)"
     },
     "prep_end_provincia": {
-      "label": "Preparador(a) — Provincia (si es fuera de EE. UU.)"
+      "label": "Preparador(a) — Provincia (si está fuera de EE. UU.)"
     },
     "prep_end_codigo_postal": {
-      "label": "Preparador(a) — Código Postal (si es fuera de EE. UU.)"
+      "label": "Preparador(a) — Código Postal (si está fuera de EE. UU.)"
     },
     "prep_end_pais": {
       "label": "Preparador(a) — País"

@@ -44,7 +44,7 @@
   "eligibility_es": [
     "No use el I-90 si usted es residente condicional y quiere eliminar las condiciones — para eso es el I-751 (por matrimonio) o el I-829 (por inversión), no el I-90.",
     "Como residente permanente, usted está legalmente obligado(a) a portar una Green Card válida y vigente en todo momento — solicitar la naturalización (N-400) no elimina este requisito mientras ese proceso esté en curso.",
-    "Algunos motivos específicos (tarjeta nunca recibida, o error cometido por USCIS, por ejemplo) están exentos de la tarifa de protocolo.",
+    "Algunos motivos específicos (tarjeta nunca recibida, o error cometido por USCIS, por ejemplo) están exentos de la tarifa de presentación.",
     "Nuestro cuestionario identifica automáticamente si su motivo califica para una exención."
   ],
   "required_evidence": [
@@ -79,7 +79,7 @@
   ],
   "whats_included_es": [
     "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
-    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de presentación: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
     "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
     "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
   ],
@@ -96,7 +96,7 @@
   "how_it_works_es": [
     "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
     "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
-    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listas para su proceso."
+    "Descargue el PDF oficial completado junto con las listas de verificación de presentación y de documentos, listas para su proceso."
   ],
   "common_mistakes": [
     "Usar o I-90 por engano quando na verdade precisa remover condições da residência — nesse caso o formulário certo é o I-751 ou o I-829, não o I-90.",
@@ -193,5 +193,5 @@
   "related_note_es": "Vale la pena renovar la green card antes de presentar el N-400, ya que una entrevista de naturalización normalmente exige una tarjeta válida.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
   "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
-  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni ofrece asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

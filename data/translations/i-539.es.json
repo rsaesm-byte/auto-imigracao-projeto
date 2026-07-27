@@ -2,14 +2,14 @@
   "title": "Solicitud de Extensión/Cambio de Estatus de No Inmigrante — I-539",
   "sections": {
     "basico": "Parte 1 — Nombre y Números de Identificación",
-    "enderecos": "Parte 1 — Domicilios",
+    "enderecos": "Parte 1 — Direcciones",
     "pessoal": "Parte 1 — Nacimiento y Ciudadanía",
     "entrada": "Parte 1 — Su Entrada Más Reciente a los EE. UU.",
     "status_atual": "Parte 1 — Su Estatus Actual",
     "tipo_pedido": "Parte 2 — Tipo de Solicitud",
     "processamento": "Parte 3 — Información de Procesamiento",
     "passaporte_atual": "Parte 4 — Pasaporte Actual (si es diferente de la Parte 1)",
-    "endereco_exterior": "Parte 4 — Domicilio Físico en el Extranjero",
+    "endereco_exterior": "Parte 4 — Dirección Física en el Extranjero",
     "antecedentes": "Parte 4 — Preguntas de Antecedentes",
     "contato_assinatura": "Parte 5 — Información de Contacto y Firma del/de la Solicitante",
     "interprete": "Parte 6 — Intérprete (si se usó)",
@@ -37,14 +37,14 @@
       "hint": "12 dígitos, sin guiones."
     },
     "end_correio_cuidados_de": {
-      "label": "Domicilio de Correspondencia — A Nombre De (si aplica)",
+      "label": "Dirección de Correspondencia — A Nombre De (si aplica)",
       "hint": "Complete esto solo si la correspondencia debe dirigirse a nombre de otra persona o empresa (por ejemplo, su nombre no está en el buzón, o vive con otras personas). En la mayoría de los casos, déjelo en blanco."
     },
     "end_correio_rua": {
-      "label": "Domicilio de Correspondencia — Número y Nombre de la Calle"
+      "label": "Dirección de Correspondencia — Número y Nombre de la Calle"
     },
     "end_correio_tipo_unidade": {
-      "label": "Domicilio de Correspondencia — Tipo de Unidad",
+      "label": "Dirección de Correspondencia — Tipo de Unidad",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -52,29 +52,29 @@
       }
     },
     "end_correio_num_unidade": {
-      "label": "Domicilio de Correspondencia — Número de Unidad"
+      "label": "Dirección de Correspondencia — Número de Unidad"
     },
     "end_correio_cidade": {
-      "label": "Domicilio de Correspondencia — Ciudad o Pueblo"
+      "label": "Dirección de Correspondencia — Ciudad o Pueblo"
     },
     "end_correio_estado": {
-      "label": "Domicilio de Correspondencia — Estado"
+      "label": "Dirección de Correspondencia — Estado"
     },
     "end_correio_cep": {
-      "label": "Domicilio de Correspondencia — Código Postal (ZIP)"
+      "label": "Dirección de Correspondencia — Código Postal (ZIP)"
     },
     "end_mesmo_que_correio": {
-      "label": "¿El domicilio de correspondencia anterior es el mismo que su domicilio físico actual?",
+      "label": "¿La dirección de correspondencia anterior es la misma que su dirección física actual?",
       "options": {
         "sim": "Sí",
         "nao": "No"
       }
     },
     "end_fisico_rua": {
-      "label": "Domicilio Físico Actual — Número y Nombre de la Calle"
+      "label": "Dirección Física Actual — Número y Nombre de la Calle"
     },
     "end_fisico_tipo_unidade": {
-      "label": "Domicilio Físico Actual — Tipo de Unidad",
+      "label": "Dirección Física Actual — Tipo de Unidad",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -82,16 +82,16 @@
       }
     },
     "end_fisico_num_unidade": {
-      "label": "Domicilio Físico Actual — Número de Unidad"
+      "label": "Dirección Física Actual — Número de Unidad"
     },
     "end_fisico_cidade": {
-      "label": "Domicilio Físico Actual — Ciudad o Pueblo"
+      "label": "Dirección Física Actual — Ciudad o Pueblo"
     },
     "end_fisico_estado": {
-      "label": "Domicilio Físico Actual — Estado"
+      "label": "Dirección Física Actual — Estado"
     },
     "end_fisico_cep": {
-      "label": "Domicilio Físico Actual — Código Postal (ZIP)"
+      "label": "Dirección Física Actual — Código Postal (ZIP)"
     },
     "pais_nascimento": {
       "label": "País de Nacimiento"
@@ -149,7 +149,7 @@
         "eos": "EOS — Extensión de Estatus",
         "cos_f1": "COS F1 — Cambio de Estatus a Estudiante (F-1)",
         "cos_f2": "COS F2 — Cambio de Estatus a Dependiente de F-1 (F-2)",
-        "cos_b2": "COS B2 — Cambio de Estatus a Turista (B-2)"
+        "cos_b2": "COS B2 — Cambio de Estatus a Visitante (B-2)"
       }
     },
     "data_efetiva_mudanca": {
@@ -232,10 +232,10 @@
       "label": "Fecha de vencimiento de su pasaporte ACTUAL"
     },
     "end_exterior_rua": {
-      "label": "Domicilio Físico en el Extranjero — Número y Nombre de la Calle"
+      "label": "Dirección Física en el Extranjero — Número y Nombre de la Calle"
     },
     "end_exterior_tipo_unidade": {
-      "label": "Domicilio Físico en el Extranjero — Tipo de Unidad",
+      "label": "Dirección Física en el Extranjero — Tipo de Unidad",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -243,19 +243,19 @@
       }
     },
     "end_exterior_num_unidade": {
-      "label": "Domicilio Físico en el Extranjero — Número de Unidad"
+      "label": "Dirección Física en el Extranjero — Número de Unidad"
     },
     "end_exterior_cidade": {
-      "label": "Domicilio Físico en el Extranjero — Ciudad o Pueblo"
+      "label": "Dirección Física en el Extranjero — Ciudad o Pueblo"
     },
     "end_exterior_provincia": {
-      "label": "Domicilio Físico en el Extranjero — Provincia/Estado"
+      "label": "Dirección Física en el Extranjero — Provincia/Estado"
     },
     "end_exterior_cep": {
-      "label": "Domicilio Físico en el Extranjero — Código Postal"
+      "label": "Dirección Física en el Extranjero — Código Postal"
     },
     "end_exterior_pais": {
-      "label": "Domicilio Físico en el Extranjero — País"
+      "label": "Dirección Física en el Extranjero — País"
     },
     "imigrante_visa_pendente": {
       "label": "¿Es usted solicitante de una visa de inmigrante (por ejemplo, tiene un I-130 o I-140 pendiente/aprobado a su nombre)?",

@@ -58,7 +58,7 @@
   ],
   "whats_included_es": [
     "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
-    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de presentación: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
     "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
     "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
   ],
@@ -75,7 +75,7 @@
   "how_it_works_es": [
     "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente se aplican a su caso.",
     "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
-    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su caso."
+    "Descargue el PDF oficial completado junto con las listas de verificación de presentación y de documentos, listos para su caso."
   ],
   "common_mistakes": [
     "Preencher o I-130A pensando que ele substitui o I-130 — na verdade ele é sempre um complemento, nunca é enviado sozinho.",
@@ -122,7 +122,7 @@
   ],
   "faq_es": [
     {
-      "q": "¿El I-130A tiene una tarifa de protocolo separada?",
+      "q": "¿El I-130A tiene una tarifa de presentación separada?",
       "a": "No. La tarifa se cobra una sola vez, junto con el I-130 — el I-130A no tiene costo adicional."
     },
     {

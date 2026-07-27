@@ -231,7 +231,7 @@
         "verde": "Verde",
         "avela": "Avellana",
         "rosa": "Rosado",
-        "marrom_avermelhado": "Marrón rojizo",
+        "marrom_avermelhado": "Granate",
         "castanho": "Castaño",
         "preto": "Negro",
         "outro": "Otro",
@@ -244,7 +244,7 @@
         "careca": "Calvo (sin cabello)",
         "loiro": "Rubio",
         "grisalho": "Canoso",
-        "arenoso": "Rubio ceniza",
+        "arenoso": "Rubio arena",
         "outro": "Otro",
         "branco": "Blanco",
         "ruivo": "Pelirrojo",
@@ -345,7 +345,7 @@
       "label": "Correo electrónico del/de la intérprete (si tiene)"
     },
     "interprete_idioma": {
-      "label": "Idioma en el que el/la intérprete es fluido (además del inglés)"
+      "label": "Idioma en el que el/la intérprete es fluido(a) (además del inglés)"
     },
     "preparador_sobrenome": {
       "label": "Apellido del/de la preparador(a)"

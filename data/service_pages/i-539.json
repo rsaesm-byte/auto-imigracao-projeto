@@ -93,7 +93,7 @@
   ],
   "whats_included_es": [
     "El formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
-    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de presentación: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
     "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
     "Progreso guardado automáticamente: cierre la pestaña y regrese cuando quiera, sin perder nada.",
     "Un único selector claro de servicio — Extensión de Estatus, o Cambio a F-1, F-2 o B-2 — sin jerga técnica confusa."
@@ -111,7 +111,7 @@
   "how_it_works_es": [
     "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
     "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
-    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su proceso."
+    "Descargue el PDF oficial completado junto con las listas de verificación de presentación y de documentos, listos para su proceso."
   ],
   "common_mistakes": [
     "Protocolar depois que o status atual já expirou sem se qualificar para uma das exceções de atraso — em geral, o pedido deve ser feito antes do vencimento, e a USCIS recomenda pelo menos 45 dias de antecedência.",
@@ -254,7 +254,7 @@
     "If your case is Change of Status to Student (COS F-1), there's a separate fee from the I-539 filing fee: the SEVIS Fee (Form I-901). It's administered by ICE/SEVP — not USCIS — and funds SEVIS, the system that tracks students and exchange visitors (F, M, and J) for the entire duration of their U.S. stay."
   ],
   "sevis_fee_intro_es": [
-    "Si su caso es un Cambio de Estatus a Estudiante (COS F-1), existe una tarifa separada de la tarifa de protocolo del I-539: la Tarifa SEVIS (Formulario I-901). La administra ICE/SEVP — no USCIS — y financia el SEVIS, el sistema que da seguimiento a estudiantes y visitantes de intercambio (F, M y J) durante toda su permanencia en los EE. UU."
+    "Si su caso es un Cambio de Estatus a Estudiante (COS F-1), existe una tarifa separada de la tarifa de presentación del I-539: la Tarifa SEVIS (Formulario I-901). La administra ICE/SEVP — no USCIS — y financia el SEVIS, el sistema que da seguimiento a estudiantes y visitantes de intercambio (F, M y J) durante toda su permanencia en los EE. UU."
   ],
   "sevis_fee_facts": [
     "Valor: US$ 350 para estudantes F ou M (confirme o valor atual em fmjfee.com antes de pagar — taxas do governo mudam).",

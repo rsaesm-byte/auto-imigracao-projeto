@@ -2,7 +2,7 @@
   "title": "Información Suplementaria para Beneficiario(a) Cónyuge — I-130A",
   "sections": {
     "sb_basico": "Parte 1 — Información Básica del/de la Beneficiario(a) Cónyuge",
-    "sb_end": "Parte 1 — Historial de Domicilios del/de la Beneficiario(a) Cónyuge",
+    "sb_end": "Parte 1 — Historial de Direcciones del/de la Beneficiario(a) Cónyuge",
     "sb_pais": "Parte 1 — Padres del/de la Beneficiario(a) Cónyuge",
     "sb_emprego": "Parte 2 y 3 — Historial Laboral del/de la Beneficiario(a) Cónyuge",
     "assinatura": "Parte 4 — Declaración del/de la Beneficiario(a) Cónyuge",
@@ -37,117 +37,117 @@
       "label": "Correo Electrónico — si tiene"
     },
     "sb_end_rua": {
-      "label": "Domicilio Actual — Número y Nombre de la Calle"
+      "label": "Dirección Actual — Número y Nombre de la Calle"
     },
     "sb_end_tipo_unidade": {
-      "label": "Domicilio Actual — Tipo de Unidad (si aplica)",
+      "label": "Dirección Actual — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
-      "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica a su domicilio."
+      "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica a su dirección."
     },
     "sb_end_num_unidade": {
       "label": "Número de Unidad (Apt/Ste/Flr)"
     },
     "sb_end_cidade": {
-      "label": "Domicilio Actual — Ciudad o Pueblo"
+      "label": "Dirección Actual — Ciudad o Pueblo"
     },
     "sb_end_estado": {
-      "label": "Estado (abreviatura, si es en EE. UU.)"
+      "label": "Estado (abreviatura, si está en EE. UU.)"
     },
     "sb_end_cep": {
-      "label": "Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Código Postal (ZIP, si está en EE. UU.)"
     },
     "sb_end_provincia": {
-      "label": "Provincia (si es fuera de EE. UU.)"
+      "label": "Provincia (si está fuera de EE. UU.)"
     },
     "sb_end_codigo_postal": {
-      "label": "Código Postal (si es fuera de EE. UU.)"
+      "label": "Código Postal (si está fuera de EE. UU.)"
     },
     "sb_end_pais": {
       "label": "País"
     },
     "sb_end_desde": {
-      "label": "Viviendo en este domicilio desde (MM/DD/AAAA)"
+      "label": "Viviendo en esta dirección desde (MM/DD/AAAA)"
     },
     "sb_end_ate": {
       "label": "Hasta cuándo (MM/DD/AAAA, o 'PRESENTE' si todavía vive allí)"
     },
     "sb_end_ant1_rua": {
-      "label": "Domicilio Anterior — Número y Nombre de la Calle (últimos 5 años, si tuvo otro domicilio)",
-      "hint": "Complete esto solo si ha vivido en su domicilio actual por menos de 5 años (contando desde hoy). Si ha vivido allí 5 años o más, déjelo en blanco."
+      "label": "Dirección Anterior — Número y Nombre de la Calle (últimos 5 años, si tuvo otra dirección)",
+      "hint": "Complete esto solo si ha vivido en su dirección actual por menos de 5 años (contando desde hoy). Si ha vivido allí 5 años o más, déjelo en blanco."
     },
     "sb_end_ant1_tipo_unidade": {
-      "label": "Domicilio Anterior — Tipo de Unidad (si aplica)",
+      "label": "Dirección Anterior — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
     "sb_end_ant1_num_unidade": {
-      "label": "Domicilio Anterior — Número de Unidad"
+      "label": "Dirección Anterior — Número de Unidad"
     },
     "sb_end_ant1_cidade": {
-      "label": "Domicilio Anterior — Ciudad o Pueblo"
+      "label": "Dirección Anterior — Ciudad o Pueblo"
     },
     "sb_end_ant1_estado": {
-      "label": "Domicilio Anterior — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Dirección Anterior — Estado (abreviatura, si está en EE. UU.)"
     },
     "sb_end_ant1_cep": {
-      "label": "Domicilio Anterior — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Dirección Anterior — Código Postal (ZIP, si está en EE. UU.)"
     },
     "sb_end_ant1_provincia": {
-      "label": "Domicilio Anterior — Provincia (si es fuera de EE. UU.)"
+      "label": "Dirección Anterior — Provincia (si está fuera de EE. UU.)"
     },
     "sb_end_ant1_codigo_postal": {
-      "label": "Domicilio Anterior — Código Postal (si es fuera de EE. UU.)"
+      "label": "Dirección Anterior — Código Postal (si está fuera de EE. UU.)"
     },
     "sb_end_ant1_pais": {
-      "label": "Domicilio Anterior — País"
+      "label": "Dirección Anterior — País"
     },
     "sb_end_ant1_desde": {
-      "label": "Domicilio Anterior — vivió allí desde (MM/DD/AAAA)"
+      "label": "Dirección Anterior — vivió allí desde (MM/DD/AAAA)"
     },
     "sb_end_ant1_ate": {
-      "label": "Domicilio Anterior — vivió allí hasta (MM/DD/AAAA)"
+      "label": "Dirección Anterior — vivió allí hasta (MM/DD/AAAA)"
     },
     "sb_end_ext_rua": {
-      "label": "Último Domicilio Fuera de EE. UU. (más de 1 año, aunque ya se haya indicado arriba) — Número y Nombre de la Calle",
-      "hint": "Una pregunta obligatoria y separada de USCIS: su último domicilio en el extranjero donde vivió por más de 1 año — incluso si ya se indicó arriba, o si fue hace muchos años. Se usa para fines de verificación de antecedentes."
+      "label": "Última Dirección Fuera de EE. UU. (más de 1 año, aunque ya se haya indicado arriba) — Número y Nombre de la Calle",
+      "hint": "Una pregunta obligatoria y separada de USCIS: su última dirección en el extranjero donde vivió por más de 1 año — incluso si ya se indicó arriba, o si fue hace muchos años. Se usa para fines de verificación de antecedentes."
     },
     "sb_end_ext_tipo_unidade": {
-      "label": "Domicilio Fuera de EE. UU. — Tipo de Unidad (si aplica)",
+      "label": "Dirección Fuera de EE. UU. — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
     "sb_end_ext_num_unidade": {
-      "label": "Domicilio Fuera de EE. UU. — Número de Unidad"
+      "label": "Dirección Fuera de EE. UU. — Número de Unidad"
     },
     "sb_end_ext_cidade": {
-      "label": "Domicilio Fuera de EE. UU. — Ciudad o Pueblo"
+      "label": "Dirección Fuera de EE. UU. — Ciudad o Pueblo"
     },
     "sb_end_ext_provincia": {
-      "label": "Domicilio Fuera de EE. UU. — Provincia"
+      "label": "Dirección Fuera de EE. UU. — Provincia"
     },
     "sb_end_ext_codigo_postal": {
-      "label": "Domicilio Fuera de EE. UU. — Código Postal"
+      "label": "Dirección Fuera de EE. UU. — Código Postal"
     },
     "sb_end_ext_pais": {
-      "label": "Domicilio Fuera de EE. UU. — País"
+      "label": "Dirección Fuera de EE. UU. — País"
     },
     "sb_end_ext_desde": {
-      "label": "Domicilio Fuera de EE. UU. — desde (MM/DD/AAAA)"
+      "label": "Dirección Fuera de EE. UU. — desde (MM/DD/AAAA)"
     },
     "sb_end_ext_ate": {
-      "label": "Domicilio Fuera de EE. UU. — hasta (MM/DD/AAAA)"
+      "label": "Dirección Fuera de EE. UU. — hasta (MM/DD/AAAA)"
     },
     "pai1_sobrenome": {
       "label": "Padre/Madre 1 — Apellido (de soltero(a), si aplica)",
@@ -225,7 +225,7 @@
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
@@ -236,16 +236,16 @@
       "label": "Empleador Actual — Ciudad o Pueblo"
     },
     "emp1_end_estado": {
-      "label": "Empleador Actual — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Empleador Actual — Estado (abreviatura, si está en EE. UU.)"
     },
     "emp1_end_cep": {
-      "label": "Empleador Actual — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Empleador Actual — Código Postal (ZIP, si está en EE. UU.)"
     },
     "emp1_end_provincia": {
-      "label": "Empleador Actual — Provincia (si es fuera de EE. UU.)"
+      "label": "Empleador Actual — Provincia (si está fuera de EE. UU.)"
     },
     "emp1_end_codigo_postal": {
-      "label": "Empleador Actual — Código Postal (si es fuera de EE. UU.)"
+      "label": "Empleador Actual — Código Postal (si está fuera de EE. UU.)"
     },
     "emp1_end_pais": {
       "label": "Empleador Actual — País"
@@ -270,7 +270,7 @@
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
@@ -281,16 +281,16 @@
       "label": "Empleador Anterior — Ciudad o Pueblo"
     },
     "emp2_end_estado": {
-      "label": "Empleador Anterior — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Empleador Anterior — Estado (abreviatura, si está en EE. UU.)"
     },
     "emp2_end_cep": {
-      "label": "Empleador Anterior — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Empleador Anterior — Código Postal (ZIP, si está en EE. UU.)"
     },
     "emp2_end_provincia": {
-      "label": "Empleador Anterior — Provincia (si es fuera de EE. UU.)"
+      "label": "Empleador Anterior — Provincia (si está fuera de EE. UU.)"
     },
     "emp2_end_codigo_postal": {
-      "label": "Empleador Anterior — Código Postal (si es fuera de EE. UU.)"
+      "label": "Empleador Anterior — Código Postal (si está fuera de EE. UU.)"
     },
     "emp2_end_pais": {
       "label": "Empleador Anterior — País"
@@ -315,7 +315,7 @@
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
@@ -326,10 +326,10 @@
       "label": "Empleo Fuera de EE. UU. — Ciudad o Pueblo"
     },
     "emp3_end_estado": {
-      "label": "Empleo Fuera de EE. UU. — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Empleo Fuera de EE. UU. — Estado (abreviatura, si está en EE. UU.)"
     },
     "emp3_end_cep": {
-      "label": "Empleo Fuera de EE. UU. — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Empleo Fuera de EE. UU. — Código Postal (ZIP, si está en EE. UU.)"
     },
     "emp3_end_provincia": {
       "label": "Empleo Fuera de EE. UU. — Provincia"
@@ -384,14 +384,14 @@
       "label": "Intérprete — Nombre de la Empresa u Organización (si tiene)"
     },
     "int_end_rua": {
-      "label": "Intérprete — Domicilio: Número y Nombre de la Calle"
+      "label": "Intérprete — Dirección: Número y Nombre de la Calle"
     },
     "int_end_tipo_unidade": {
       "label": "Intérprete — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
@@ -402,16 +402,16 @@
       "label": "Intérprete — Ciudad o Pueblo"
     },
     "int_end_estado": {
-      "label": "Intérprete — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Intérprete — Estado (abreviatura, si está en EE. UU.)"
     },
     "int_end_cep": {
-      "label": "Intérprete — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Intérprete — Código Postal (ZIP, si está en EE. UU.)"
     },
     "int_end_provincia": {
-      "label": "Intérprete — Provincia (si es fuera de EE. UU.)"
+      "label": "Intérprete — Provincia (si está fuera de EE. UU.)"
     },
     "int_end_codigo_postal": {
-      "label": "Intérprete — Código Postal (si es fuera de EE. UU.)"
+      "label": "Intérprete — Código Postal (si está fuera de EE. UU.)"
     },
     "int_end_pais": {
       "label": "Intérprete — País"
@@ -441,14 +441,14 @@
       "label": "Preparador(a) — Nombre de la Empresa u Organización (si tiene)"
     },
     "prep_end_rua": {
-      "label": "Preparador(a) — Domicilio: Número y Nombre de la Calle"
+      "label": "Preparador(a) — Dirección: Número y Nombre de la Calle"
     },
     "prep_end_tipo_unidade": {
       "label": "Preparador(a) — Tipo de Unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
-        "flr": "Flr"
+        "flr": "Piso"
       },
       "hint": "Apt = apartamento, Ste = suite, Flr = piso. Déjelo en blanco si no aplica."
     },
@@ -459,16 +459,16 @@
       "label": "Preparador(a) — Ciudad o Pueblo"
     },
     "prep_end_estado": {
-      "label": "Preparador(a) — Estado (abreviatura, si es en EE. UU.)"
+      "label": "Preparador(a) — Estado (abreviatura, si está en EE. UU.)"
     },
     "prep_end_cep": {
-      "label": "Preparador(a) — Código Postal (ZIP, si es en EE. UU.)"
+      "label": "Preparador(a) — Código Postal (ZIP, si está en EE. UU.)"
     },
     "prep_end_provincia": {
-      "label": "Preparador(a) — Provincia (si es fuera de EE. UU.)"
+      "label": "Preparador(a) — Provincia (si está fuera de EE. UU.)"
     },
     "prep_end_codigo_postal": {
-      "label": "Preparador(a) — Código Postal (si es fuera de EE. UU.)"
+      "label": "Preparador(a) — Código Postal (si está fuera de EE. UU.)"
     },
     "prep_end_pais": {
       "label": "Preparador(a) — País"

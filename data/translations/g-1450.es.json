@@ -6,8 +6,8 @@
     "pagamento": "Detalles del Pago"
   },
   "questions": {
-    "g1450_sobrenome": {"label": "Apellido del solicitante, peticionario o requirente"},
-    "g1450_nome": {"label": "Nombre del solicitante, peticionario o requirente"},
+    "g1450_sobrenome": {"label": "Apellido del solicitante o peticionario"},
+    "g1450_nome": {"label": "Nombre del solicitante o peticionario"},
     "g1450_nome_meio": {"label": "Segundo nombre (si tiene)"},
 
     "g1450_titular_sobrenome": {"label": "Apellido del titular de la tarjeta (tal como aparece en la tarjeta)", "hint": "Puede ser diferente del solicitante — por ejemplo, cuando un familiar paga la tarifa."},

@@ -56,7 +56,7 @@
   "required_evidence_es": [
     "Formulario I-693 (Informe de Examen Médico) completado por un médico designado por USCIS (civil surgeon), entregado a usted en un sobre sellado — si presenta la solicitud en línea, usted mismo abre el sobre para cargar la copia, pero debe conservar el original sellado hasta la decisión final del caso.",
     "Evidencia de que hay una visa disponible en su categoría (Boletín de Visas) y de la petición subyacente (I-130 o I-140) aprobada o pendiente.",
-    "En los casos basados en familia: el Formulario I-864 (Declaración de Apoyo Financiero) del patrocinador.",
+    "En los casos basados en familia: el Formulario I-864 (Declaración Jurada de Patrocinio Económico) del patrocinador.",
     "Copia del Formulario I-797C (aviso de recibo) de la petición subyacente, si presenta el I-485 por separado."
   ],
   "whats_included": [
@@ -73,7 +73,7 @@
   ],
   "whats_included_es": [
     "El formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
-    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de presentación: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
     "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
     "Progreso guardado automáticamente: cierre la pestaña y regrese cuando quiera, sin perder nada."
   ],
@@ -90,7 +90,7 @@
   "how_it_works_es": [
     "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
     "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
-    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su proceso."
+    "Descargue el PDF oficial completado junto con las listas de verificación de presentación y de documentos, listos para su proceso."
   ],
   "common_mistakes": [
     "Protocolar antes de o visto estar disponível na categoria certa (verifique o Boletim de Vistos do Departamento de Estado).",
@@ -112,7 +112,7 @@
     "Presentar la solicitud antes de que haya una visa disponible en la categoría correcta (verifique el Boletín de Visas del Departamento de Estado).",
     "No incluir el Formulario I-693 (examen médico) en el sobre sellado original del médico — sin él, USCIS puede rechazar todo el I-485.",
     "Dejar preguntas de la Parte 9 sin la explicación necesaria en la Parte 14.",
-    "Olvidar documentos de respaldo obligatorios, como el I-864 (Declaración de Apoyo Financiero), en los casos basados en familia.",
+    "Olvidar documentos de respaldo obligatorios, como el I-864 (Declaración Jurada de Patrocinio Económico), en los casos basados en familia.",
     "No marcar la casilla correcta en la Parte 2 (ítem 2 y 3.a–3.g), incluyendo la diferencia entre solicitante principal y cónyuge/hijo(a) derivado.",
     "No notificar a USCIS un cambio de domicilio dentro de los 10 días (Formulario AR-11), lo cual es un requisito legal separado, no solo una buena práctica."
   ],

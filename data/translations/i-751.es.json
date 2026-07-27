@@ -2,7 +2,7 @@
   "title": "Petición para Eliminar las Condiciones de la Residencia — I-751",
   "sections": {
     "basico": "Parte 1 — Información Sobre Usted",
-    "enderecos": "Parte 1 — Domicilios",
+    "enderecos": "Parte 1 — Direcciones",
     "adicional": "Parte 1 — Información Adicional Sobre Usted",
     "biografico": "Parte 2 — Información Biográfica",
     "base_peticao": "Parte 3 — Base de la Petición",
@@ -109,20 +109,20 @@
       "label": "Dirección postal — Código postal"
     },
     "end_fisico_diferente": {
-      "label": "¿Su domicilio físico es diferente de su dirección postal?",
+      "label": "¿Su dirección física es diferente de su dirección postal?",
       "options": {
         "sim": "Sí",
         "nao": "No"
       }
     },
     "end_fisico_cuidados_de": {
-      "label": "Domicilio físico — A la atención de (si aplica)"
+      "label": "Dirección física — A la atención de (si aplica)"
     },
     "end_fisico_rua": {
-      "label": "Domicilio físico — Número y nombre de la calle"
+      "label": "Dirección física — Número y nombre de la calle"
     },
     "end_fisico_tipo_unidade": {
-      "label": "Domicilio físico — Tipo de unidad (si aplica)",
+      "label": "Dirección física — Tipo de unidad (si aplica)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -130,16 +130,16 @@
       }
     },
     "end_fisico_num_unidade": {
-      "label": "Domicilio físico — Número de unidad"
+      "label": "Dirección física — Número de unidad"
     },
     "end_fisico_cidade": {
-      "label": "Domicilio físico — Ciudad o pueblo"
+      "label": "Dirección física — Ciudad o pueblo"
     },
     "end_fisico_estado": {
-      "label": "Domicilio físico — Estado (abreviatura)"
+      "label": "Dirección física — Estado (abreviatura)"
     },
     "end_fisico_cep": {
-      "label": "Domicilio físico — Código postal"
+      "label": "Dirección física — Código postal"
     },
     "em_processo_remocao": {
       "label": "¿Está actualmente en un proceso de remoción, deportación o rescisión?",
@@ -174,7 +174,7 @@
       "hint": "Responda \"Sí\" solo si volvió a casarse (con una persona diferente) después de haber recibido la residencia condicional por su matrimonio anterior. Si sigue siendo el mismo matrimonio que le dio la residencia condicional, responda \"No\"."
     },
     "residiu_outro_endereco": {
-      "label": "¿Ha residido en algún otro domicilio desde que se convirtió en residente permanente?",
+      "label": "¿Ha residido en alguna otra dirección desde que se convirtió en residente permanente?",
       "options": {
         "sim": "Sí",
         "nao": "No"
@@ -317,10 +317,10 @@
       "label": "A-Number del cónyuge, si tiene"
     },
     "conjuge_end_rua": {
-      "label": "Domicilio del cónyuge — Número y nombre de la calle"
+      "label": "Dirección del cónyuge — Número y nombre de la calle"
     },
     "conjuge_end_tipo_unidade": {
-      "label": "Domicilio del cónyuge — Tipo de unidad",
+      "label": "Dirección del cónyuge — Tipo de unidad",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -328,25 +328,25 @@
       }
     },
     "conjuge_end_num_unidade": {
-      "label": "Domicilio del cónyuge — Número de unidad"
+      "label": "Dirección del cónyuge — Número de unidad"
     },
     "conjuge_end_cidade": {
-      "label": "Domicilio del cónyuge — Ciudad o pueblo"
+      "label": "Dirección del cónyuge — Ciudad o pueblo"
     },
     "conjuge_end_estado": {
-      "label": "Domicilio del cónyuge — Estado (abreviatura, si es EE. UU.)"
+      "label": "Dirección del cónyuge — Estado (abreviatura, si está en EE. UU.)"
     },
     "conjuge_end_cep": {
-      "label": "Domicilio del cónyuge — Código postal (si es EE. UU.)"
+      "label": "Dirección del cónyuge — Código postal (si está en EE. UU.)"
     },
     "conjuge_end_provincia": {
-      "label": "Domicilio del cónyuge — Provincia (si es fuera de EE. UU.)"
+      "label": "Dirección del cónyuge — Provincia (si está fuera de EE. UU.)"
     },
     "conjuge_end_codigo_postal": {
-      "label": "Domicilio del cónyuge — Código postal (si es fuera de EE. UU.)"
+      "label": "Dirección del cónyuge — Código postal (si está fuera de EE. UU.)"
     },
     "conjuge_end_pais": {
-      "label": "Domicilio del cónyuge — País"
+      "label": "Dirección del cónyuge — País"
     },
     "filho1_sobrenome": {
       "label": "Hijo(a) 1 — Apellido"
@@ -379,7 +379,7 @@
       "hint": "Responda \"Sí\" solo si este hijo(a) TAMBIÉN tiene su propia residencia permanente condicional (otorgada junto con la suya) y está incluido(a) en esta misma petición para eliminar las condiciones. Si es ciudadano(a) estadounidense o ya tiene residencia permanente completa, responda \"No\"."
     },
     "filho1_end_rua": {
-      "label": "Hijo(a) 1 — Domicilio: Número y nombre de la calle (si no vive con usted)"
+      "label": "Hijo(a) 1 — Dirección: Número y nombre de la calle (si no vive con usted)"
     },
     "filho1_end_tipo_unidade": {
       "label": "Hijo(a) 1 — Tipo de unidad",
@@ -396,16 +396,16 @@
       "label": "Hijo(a) 1 — Ciudad o pueblo"
     },
     "filho1_end_estado": {
-      "label": "Hijo(a) 1 — Estado (abreviatura, si es EE. UU.)"
+      "label": "Hijo(a) 1 — Estado (abreviatura, si está en EE. UU.)"
     },
     "filho1_end_cep": {
-      "label": "Hijo(a) 1 — Código postal (si es EE. UU.)"
+      "label": "Hijo(a) 1 — Código postal (si está en EE. UU.)"
     },
     "filho1_end_provincia": {
-      "label": "Hijo(a) 1 — Provincia (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 1 — Provincia (si está fuera de EE. UU.)"
     },
     "filho1_end_codigo_postal": {
-      "label": "Hijo(a) 1 — Código postal (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 1 — Código postal (si está fuera de EE. UU.)"
     },
     "filho1_end_pais": {
       "label": "Hijo(a) 1 — País"
@@ -441,7 +441,7 @@
       "hint": "Responda \"Sí\" solo si este hijo(a) TAMBIÉN tiene su propia residencia permanente condicional (otorgada junto con la suya) y está incluido(a) en esta misma petición para eliminar las condiciones. Si es ciudadano(a) estadounidense o ya tiene residencia permanente completa, responda \"No\"."
     },
     "filho2_end_rua": {
-      "label": "Hijo(a) 2 — Domicilio: Número y nombre de la calle (si no vive con usted)"
+      "label": "Hijo(a) 2 — Dirección: Número y nombre de la calle (si no vive con usted)"
     },
     "filho2_end_tipo_unidade": {
       "label": "Hijo(a) 2 — Tipo de unidad",
@@ -458,16 +458,16 @@
       "label": "Hijo(a) 2 — Ciudad o pueblo"
     },
     "filho2_end_estado": {
-      "label": "Hijo(a) 2 — Estado (abreviatura, si es EE. UU.)"
+      "label": "Hijo(a) 2 — Estado (abreviatura, si está en EE. UU.)"
     },
     "filho2_end_cep": {
-      "label": "Hijo(a) 2 — Código postal (si es EE. UU.)"
+      "label": "Hijo(a) 2 — Código postal (si está en EE. UU.)"
     },
     "filho2_end_provincia": {
-      "label": "Hijo(a) 2 — Provincia (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 2 — Provincia (si está fuera de EE. UU.)"
     },
     "filho2_end_codigo_postal": {
-      "label": "Hijo(a) 2 — Código postal (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 2 — Código postal (si está fuera de EE. UU.)"
     },
     "filho2_end_pais": {
       "label": "Hijo(a) 2 — País"
@@ -503,7 +503,7 @@
       "hint": "Responda \"Sí\" solo si este hijo(a) TAMBIÉN tiene su propia residencia permanente condicional (otorgada junto con la suya) y está incluido(a) en esta misma petición para eliminar las condiciones. Si es ciudadano(a) estadounidense o ya tiene residencia permanente completa, responda \"No\"."
     },
     "filho3_end_rua": {
-      "label": "Hijo(a) 3 — Domicilio: Número y nombre de la calle (si no vive con usted)"
+      "label": "Hijo(a) 3 — Dirección: Número y nombre de la calle (si no vive con usted)"
     },
     "filho3_end_tipo_unidade": {
       "label": "Hijo(a) 3 — Tipo de unidad",
@@ -520,16 +520,16 @@
       "label": "Hijo(a) 3 — Ciudad o pueblo"
     },
     "filho3_end_estado": {
-      "label": "Hijo(a) 3 — Estado (abreviatura, si es EE. UU.)"
+      "label": "Hijo(a) 3 — Estado (abreviatura, si está en EE. UU.)"
     },
     "filho3_end_cep": {
-      "label": "Hijo(a) 3 — Código postal (si es EE. UU.)"
+      "label": "Hijo(a) 3 — Código postal (si está en EE. UU.)"
     },
     "filho3_end_provincia": {
-      "label": "Hijo(a) 3 — Provincia (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 3 — Provincia (si está fuera de EE. UU.)"
     },
     "filho3_end_codigo_postal": {
-      "label": "Hijo(a) 3 — Código postal (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 3 — Código postal (si está fuera de EE. UU.)"
     },
     "filho3_end_pais": {
       "label": "Hijo(a) 3 — País"
@@ -565,7 +565,7 @@
       "hint": "Responda \"Sí\" solo si este hijo(a) TAMBIÉN tiene su propia residencia permanente condicional (otorgada junto con la suya) y está incluido(a) en esta misma petición para eliminar las condiciones. Si es ciudadano(a) estadounidense o ya tiene residencia permanente completa, responda \"No\"."
     },
     "filho4_end_rua": {
-      "label": "Hijo(a) 4 — Domicilio: Número y nombre de la calle (si no vive con usted)"
+      "label": "Hijo(a) 4 — Dirección: Número y nombre de la calle (si no vive con usted)"
     },
     "filho4_end_tipo_unidade": {
       "label": "Hijo(a) 4 — Tipo de unidad",
@@ -582,16 +582,16 @@
       "label": "Hijo(a) 4 — Ciudad o pueblo"
     },
     "filho4_end_estado": {
-      "label": "Hijo(a) 4 — Estado (abreviatura, si es EE. UU.)"
+      "label": "Hijo(a) 4 — Estado (abreviatura, si está en EE. UU.)"
     },
     "filho4_end_cep": {
-      "label": "Hijo(a) 4 — Código postal (si es EE. UU.)"
+      "label": "Hijo(a) 4 — Código postal (si está en EE. UU.)"
     },
     "filho4_end_provincia": {
-      "label": "Hijo(a) 4 — Provincia (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 4 — Provincia (si está fuera de EE. UU.)"
     },
     "filho4_end_codigo_postal": {
-      "label": "Hijo(a) 4 — Código postal (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 4 — Código postal (si está fuera de EE. UU.)"
     },
     "filho4_end_pais": {
       "label": "Hijo(a) 4 — País"
@@ -627,7 +627,7 @@
       "hint": "Responda \"Sí\" solo si este hijo(a) TAMBIÉN tiene su propia residencia permanente condicional (otorgada junto con la suya) y está incluido(a) en esta misma petición para eliminar las condiciones. Si es ciudadano(a) estadounidense o ya tiene residencia permanente completa, responda \"No\"."
     },
     "filho5_end_rua": {
-      "label": "Hijo(a) 5 — Domicilio: Número y nombre de la calle (si no vive con usted)"
+      "label": "Hijo(a) 5 — Dirección: Número y nombre de la calle (si no vive con usted)"
     },
     "filho5_end_tipo_unidade": {
       "label": "Hijo(a) 5 — Tipo de unidad",
@@ -644,16 +644,16 @@
       "label": "Hijo(a) 5 — Ciudad o pueblo"
     },
     "filho5_end_estado": {
-      "label": "Hijo(a) 5 — Estado (abreviatura, si es EE. UU.)"
+      "label": "Hijo(a) 5 — Estado (abreviatura, si está en EE. UU.)"
     },
     "filho5_end_cep": {
-      "label": "Hijo(a) 5 — Código postal (si es EE. UU.)"
+      "label": "Hijo(a) 5 — Código postal (si está en EE. UU.)"
     },
     "filho5_end_provincia": {
-      "label": "Hijo(a) 5 — Provincia (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 5 — Provincia (si está fuera de EE. UU.)"
     },
     "filho5_end_codigo_postal": {
-      "label": "Hijo(a) 5 — Código postal (si es fuera de EE. UU.)"
+      "label": "Hijo(a) 5 — Código postal (si está fuera de EE. UU.)"
     },
     "filho5_end_pais": {
       "label": "Hijo(a) 5 — País"
@@ -831,16 +831,16 @@
       "label": "Intérprete — Ciudad o pueblo"
     },
     "int_end_estado": {
-      "label": "Intérprete — Estado (abreviatura, si es EE. UU.)"
+      "label": "Intérprete — Estado (abreviatura, si está en EE. UU.)"
     },
     "int_end_cep": {
-      "label": "Intérprete — Código postal (si es EE. UU.)"
+      "label": "Intérprete — Código postal (si está en EE. UU.)"
     },
     "int_end_provincia": {
-      "label": "Intérprete — Provincia (si es fuera de EE. UU.)"
+      "label": "Intérprete — Provincia (si está fuera de EE. UU.)"
     },
     "int_end_codigo_postal": {
-      "label": "Intérprete — Código postal (si es fuera de EE. UU.)"
+      "label": "Intérprete — Código postal (si está fuera de EE. UU.)"
     },
     "int_end_pais": {
       "label": "Intérprete — País"
@@ -884,16 +884,16 @@
       "label": "Preparador — Ciudad o pueblo"
     },
     "prep_end_estado": {
-      "label": "Preparador — Estado (abreviatura, si es EE. UU.)"
+      "label": "Preparador — Estado (abreviatura, si está en EE. UU.)"
     },
     "prep_end_cep": {
-      "label": "Preparador — Código postal (si es EE. UU.)"
+      "label": "Preparador — Código postal (si está en EE. UU.)"
     },
     "prep_end_provincia": {
-      "label": "Preparador — Provincia (si es fuera de EE. UU.)"
+      "label": "Preparador — Provincia (si está fuera de EE. UU.)"
     },
     "prep_end_codigo_postal": {
-      "label": "Preparador — Código postal (si es fuera de EE. UU.)"
+      "label": "Preparador — Código postal (si está fuera de EE. UU.)"
     },
     "prep_end_pais": {
       "label": "Preparador — País"

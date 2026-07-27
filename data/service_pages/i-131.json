@@ -76,7 +76,7 @@
   ],
   "whats_included_es": [
     "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
-    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de presentación: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
     "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
     "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
   ],
@@ -93,7 +93,7 @@
   "how_it_works_es": [
     "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente se aplican a su caso.",
     "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
-    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su caso."
+    "Descargue el PDF oficial completado junto con las listas de verificación de presentación y de documentos, listos para su caso."
   ],
   "common_mistakes": [
     "Viajar para fora dos EUA sem o Advance Parole aprovado (só com o protocolo pendente) — isso geralmente é considerado abandono do pedido de I-485.",
@@ -170,7 +170,7 @@
       "a": "Varía según el centro de servicio. Consulte la herramienta oficial de tiempos de procesamiento de USCIS, y no compre pasajes ni planee el viaje antes de tener el documento aprobado en mano."
     },
     {
-      "q": "¿Puedo viajar apenas presento el I-131?",
+      "q": "¿Puedo viajar en cuanto presente el I-131?",
       "a": "No — debe esperar a que se apruebe el Advance Parole antes de viajar. Salir del país con la solicitud solo pendiente (no aprobada) generalmente se trata como un abandono de su I-485."
     },
     {

@@ -194,7 +194,7 @@
     "cor_olhos": {
       "label": "Color de Ojos",
       "options": {
-        "castanho": "Café",
+        "castanho": "Castaño",
         "azul": "Azul",
         "verde": "Verde",
         "avela": "Avellana",
@@ -246,10 +246,10 @@
       "label": "Dirección Física Actual — Código Postal"
     },
     "end_fisico_provincia": {
-      "label": "Dirección Física Actual — Provincia (si es fuera de los EE. UU.)"
+      "label": "Dirección Física Actual — Provincia (si está fuera de los EE. UU.)"
     },
     "end_fisico_codigo_postal": {
-      "label": "Dirección Física Actual — Código Postal (si es fuera de los EE. UU.)"
+      "label": "Dirección Física Actual — Código Postal (si está fuera de los EE. UU.)"
     },
     "end_fisico_pais": {
       "label": "Dirección Física Actual — País"
@@ -294,10 +294,10 @@
       "label": "Dirección Postal — Código Postal"
     },
     "end_correio_provincia": {
-      "label": "Dirección Postal — Provincia (si es fuera de los EE. UU.)"
+      "label": "Dirección Postal — Provincia (si está fuera de los EE. UU.)"
     },
     "end_correio_codigo_postal": {
-      "label": "Dirección Postal — Código Postal (si es fuera de los EE. UU.)"
+      "label": "Dirección Postal — Código Postal (si está fuera de los EE. UU.)"
     },
     "end_correio_pais": {
       "label": "Dirección Postal — País"
@@ -419,7 +419,7 @@
       "label": "Fecha en que su cónyuge se hizo ciudadano(a) (MM/DD/AAAA)"
     },
     "conjuge_alien_number": {
-      "label": "Número A del cónyuge actual, si tiene"
+      "label": "Número de Extranjero (A-Number) del cónyuge actual, si tiene"
     },
     "conjuge_vezes_casado": {
       "label": "¿Cuántas veces se ha casado su cónyuge actual?"
@@ -1300,25 +1300,25 @@
       "label": "Intérprete — Fecha de Firma (MM/DD/AAAA)"
     },
     "prep_sobrenome": {
-      "label": "Preparador — Apellido"
+      "label": "Preparador(a) — Apellido"
     },
     "prep_nome": {
-      "label": "Preparador — Nombre"
+      "label": "Preparador(a) — Nombre"
     },
     "prep_organizacao": {
-      "label": "Preparador — Nombre de la Empresa u Organización"
+      "label": "Preparador(a) — Nombre de la Empresa u Organización"
     },
     "prep_telefone": {
-      "label": "Preparador — Número de Teléfono Diurno"
+      "label": "Preparador(a) — Número de Teléfono Diurno"
     },
     "prep_celular": {
-      "label": "Preparador — Número de Teléfono Móvil"
+      "label": "Preparador(a) — Número de Teléfono Móvil"
     },
     "prep_email": {
-      "label": "Preparador — Dirección de Correo Electrónico"
+      "label": "Preparador(a) — Dirección de Correo Electrónico"
     },
     "prep_data_assinatura": {
-      "label": "Preparador — Fecha de Firma (MM/DD/AAAA)"
+      "label": "Preparador(a) — Fecha de Firma (MM/DD/AAAA)"
     },
     "info_adicional1_pagina": {
       "label": "Línea 1 — Número de Página"

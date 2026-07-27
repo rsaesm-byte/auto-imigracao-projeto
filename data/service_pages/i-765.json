@@ -70,7 +70,7 @@
   ],
   "whats_included_es": [
     "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
-    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de presentación: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
     "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
     "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
   ],
@@ -87,7 +87,7 @@
   "how_it_works_es": [
     "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
     "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
-    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listas para su proceso."
+    "Descargue el PDF oficial completado junto con las listas de verificación de presentación y de documentos, listas para su proceso."
   ],
   "common_mistakes": [
     "Escolher a categoria de elegibilidade errada (item 27) — isso pode levar à rejeição do pedido.",
@@ -169,5 +169,5 @@
   "related_note_es": "Con frecuencia se solicita junto con el I-485 (categoría (c)(9)) o como beneficio derivado de una visa de trabajo de un familiar.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
   "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
-  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni ofrece asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

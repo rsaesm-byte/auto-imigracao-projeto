@@ -3,13 +3,13 @@
   "sections": {
     "relacao": "Parte 1 — Relación con el Beneficiario",
     "pet_basico": "Parte 2 — Información sobre el Peticionario",
-    "pet_end": "Parte 2 — Domicilio del Peticionario",
+    "pet_end": "Parte 2 — Dirección del Peticionario",
     "pet_civil": "Parte 2 — Estado Civil del Peticionario",
     "pet_pais": "Parte 2 — Padres del Peticionario",
     "pet_emprego": "Parte 2 — Empleo del Peticionario",
     "pet_bio": "Parte 3 — Información Biográfica del Peticionario",
     "ben_basico": "Parte 4 — Información sobre el Beneficiario",
-    "ben_end": "Parte 4 — Domicilio del Beneficiario",
+    "ben_end": "Parte 4 — Dirección del Beneficiario",
     "ben_civil": "Parte 4 — Estado Civil del Beneficiario",
     "ben_pais": "Parte 4 — Padres del Beneficiario",
     "ben_filhos": "Parte 4 — Hijos del Beneficiario",
@@ -27,7 +27,7 @@
       "options": {
         "conjuge": "Cónyuge (esposo/esposa)",
         "filho": "Hijo/Hija",
-        "pai_mae": "Padre (padre o madre)",
+        "pai_mae": "Padre o Madre",
         "irmao": "Hermano o Hermana"
       }
     },
@@ -103,7 +103,7 @@
       }
     },
     "pet_end_rua": {
-      "label": "Domicilio actual — Número y nombre de la calle"
+      "label": "Dirección actual — Número y nombre de la calle"
     },
     "pet_end_tipo_unidade": {
       "label": "Tipo de unidad (si aplica)",
@@ -138,18 +138,18 @@
       "label": "País"
     },
     "pet_end_fisico_igual_correio": {
-      "label": "¿Su domicilio físico actual es el mismo que la dirección postal indicada arriba?",
+      "label": "¿Su dirección física actual es la misma que la dirección postal indicada arriba?",
       "options": {
         "sim": "Sí",
         "nao": "No"
       },
-      "hint": "Pregunta 11 del formulario. Si el lugar donde realmente vive es diferente de su dirección postal, responda \"No\" para indicar su domicilio físico."
+      "hint": "Pregunta 11 del formulario. Si el lugar donde realmente vive es diferente de su dirección postal, responda \"No\" para indicar su dirección física."
     },
     "pet_end_fisico_rua": {
-      "label": "Domicilio físico actual — Número y nombre de la calle"
+      "label": "Dirección física actual — Número y nombre de la calle"
     },
     "pet_end_fisico_tipo_unidade": {
-      "label": "Tipo de unidad (domicilio físico actual)",
+      "label": "Tipo de unidad (dirección física actual)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -157,34 +157,34 @@
       }
     },
     "pet_end_fisico_num_unidade": {
-      "label": "Número de unidad (domicilio físico actual)"
+      "label": "Número de unidad (dirección física actual)"
     },
     "pet_end_fisico_cidade": {
-      "label": "Ciudad o pueblo (domicilio físico actual)"
+      "label": "Ciudad o pueblo (dirección física actual)"
     },
     "pet_end_fisico_estado": {
-      "label": "Estado — EE. UU. (domicilio físico actual)"
+      "label": "Estado — EE. UU. (dirección física actual)"
     },
     "pet_end_fisico_cep": {
-      "label": "Código postal (domicilio físico actual)"
+      "label": "Código postal (dirección física actual)"
     },
     "pet_end_fisico_provincia": {
-      "label": "Provincia (domicilio físico actual)"
+      "label": "Provincia (dirección física actual)"
     },
     "pet_end_fisico_codigo_postal": {
-      "label": "Código postal (domicilio físico actual)"
+      "label": "Código postal (dirección física actual)"
     },
     "pet_end_fisico_pais": {
-      "label": "País (domicilio físico actual)"
+      "label": "País (dirección física actual)"
     },
     "pet_end_desde": {
-      "label": "Vive en este domicilio físico desde (MM/DD/AAAA)"
+      "label": "Vive en esta dirección física desde (MM/DD/AAAA)"
     },
     "pet_end_ant_rua": {
-      "label": "Domicilio anterior — Número y nombre de la calle"
+      "label": "Dirección anterior — Número y nombre de la calle"
     },
     "pet_end_ant_tipo_unidade": {
-      "label": "Tipo de unidad (domicilio anterior)",
+      "label": "Tipo de unidad (dirección anterior)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -192,31 +192,31 @@
       }
     },
     "pet_end_ant_num_unidade": {
-      "label": "Número de unidad (domicilio anterior)"
+      "label": "Número de unidad (dirección anterior)"
     },
     "pet_end_ant_cidade": {
-      "label": "Ciudad o pueblo (domicilio anterior)"
+      "label": "Ciudad o pueblo (dirección anterior)"
     },
     "pet_end_ant_estado": {
-      "label": "Estado — EE. UU. (domicilio anterior)"
+      "label": "Estado — EE. UU. (dirección anterior)"
     },
     "pet_end_ant_cep": {
-      "label": "Código postal (domicilio anterior)"
+      "label": "Código postal (dirección anterior)"
     },
     "pet_end_ant_provincia": {
-      "label": "Provincia (domicilio anterior)"
+      "label": "Provincia (dirección anterior)"
     },
     "pet_end_ant_codigo_postal": {
-      "label": "Código postal (domicilio anterior)"
+      "label": "Código postal (dirección anterior)"
     },
     "pet_end_ant_pais": {
-      "label": "País (domicilio anterior)"
+      "label": "País (dirección anterior)"
     },
     "pet_end_ant_de": {
-      "label": "Período del domicilio anterior — Desde (MM/DD/AAAA)"
+      "label": "Período de la dirección anterior — Desde (MM/DD/AAAA)"
     },
     "pet_end_ant_ate": {
-      "label": "Período del domicilio anterior — Hasta (MM/DD/AAAA)"
+      "label": "Período de la dirección anterior — Hasta (MM/DD/AAAA)"
     },
     "pet_num_casamentos": {
       "label": "¿Cuántas veces se ha casado (incluyendo su matrimonio actual, si aplica)?"
@@ -368,7 +368,7 @@
       "label": "Estado del empleador actual (EE. UU.)"
     },
     "pet_emp_atual_rua": {
-      "label": "Domicilio del empleador actual — Calle"
+      "label": "Dirección del empleador actual — Calle"
     },
     "pet_emp_atual_tipo_unidade": {
       "label": "Tipo de unidad (empleador actual)",
@@ -406,7 +406,7 @@
       "label": "Nombre del empleador anterior"
     },
     "pet_emp_ant_rua": {
-      "label": "Domicilio del empleador anterior — Calle"
+      "label": "Dirección del empleador anterior — Calle"
     },
     "pet_emp_ant_tipo_unidade": {
       "label": "Tipo de unidad (empleador anterior)",
@@ -479,13 +479,13 @@
       "label": "Color de ojos",
       "options": {
         "preto": "Negro",
-        "castanho": "Café",
+        "castanho": "Castaño",
         "azul": "Azul",
         "cinza": "Gris",
         "verde": "Verde",
         "avel": "Avellana",
         "rosa": "Rosado",
-        "marrom_avermelhado": "Marrón rojizo",
+        "marrom_avermelhado": "Granate",
         "outro": "Otro"
       }
     },
@@ -493,13 +493,13 @@
       "label": "Color de cabello",
       "options": {
         "preto": "Negro",
-        "castanho": "Café",
+        "castanho": "Castaño",
         "loiro": "Rubio",
         "ruivo": "Pelirrojo",
         "grisalho": "Canoso",
         "branco": "Blanco",
         "careca": "Calvo (Sin cabello)",
-        "arenoso": "Rubio ceniza",
+        "arenoso": "Rubio arena",
         "outro": "Otro"
       }
     },
@@ -556,7 +556,7 @@
       "label": "Correo electrónico del beneficiario (si tiene)"
     },
     "ben_end_rua": {
-      "label": "Domicilio actual del beneficiario — Calle"
+      "label": "Dirección actual del beneficiario — Calle"
     },
     "ben_end_tipo_unidade": {
       "label": "Tipo de unidad",
@@ -588,8 +588,8 @@
       "label": "País"
     },
     "ben_end_corr_rua": {
-      "label": "Dirección postal del beneficiario — Calle (si es diferente del domicilio actual)",
-      "hint": "Complete solo si la dirección para recibir correo de USCIS es diferente del domicilio actual indicado arriba. Deje en blanco si es la misma."
+      "label": "Dirección postal del beneficiario — Calle (si es diferente de la dirección actual)",
+      "hint": "Complete solo si la dirección para recibir correo de USCIS es diferente de la dirección actual indicada arriba. Deje en blanco si es la misma."
     },
     "ben_end_corr_tipo_unidade": {
       "label": "Tipo de unidad (dirección postal)",
@@ -612,11 +612,11 @@
       "label": "Código postal (dirección postal)"
     },
     "ben_end_ant_rua": {
-      "label": "Domicilio del beneficiario en el extranjero — Número y nombre de la calle (si es diferente del domicilio físico)",
-      "hint": "Domicilio anterior en el extranjero, si es diferente del domicilio actual indicado arriba — deje en blanco si es el mismo."
+      "label": "Dirección del beneficiario en el extranjero — Número y nombre de la calle (si es diferente de la dirección física)",
+      "hint": "Dirección anterior en el extranjero, si es diferente de la dirección actual indicada arriba — deje en blanco si es la misma."
     },
     "ben_end_ant_tipo_unidade": {
-      "label": "Tipo de unidad (domicilio en el extranjero)",
+      "label": "Tipo de unidad (dirección en el extranjero)",
       "options": {
         "apt": "Apt",
         "ste": "Ste",
@@ -624,19 +624,19 @@
       }
     },
     "ben_end_ant_num_unidade": {
-      "label": "Número de unidad (domicilio en el extranjero)"
+      "label": "Número de unidad (dirección en el extranjero)"
     },
     "ben_end_ant_cidade": {
-      "label": "Ciudad (domicilio en el extranjero)"
+      "label": "Ciudad (dirección en el extranjero)"
     },
     "ben_end_ant_pais": {
-      "label": "País (domicilio en el extranjero)"
+      "label": "País (dirección en el extranjero)"
     },
     "ben_end_ant_provincia": {
-      "label": "Provincia (domicilio en el extranjero)"
+      "label": "Provincia (dirección en el extranjero)"
     },
     "ben_end_ant_codigo_postal": {
-      "label": "Código postal (domicilio en el extranjero)"
+      "label": "Código postal (dirección en el extranjero)"
     },
     "ben_num_casamentos": {
       "label": "¿Cuántas veces se ha casado el beneficiario?"
@@ -840,7 +840,7 @@
       "label": "Nombre del empleador del beneficiario en el extranjero"
     },
     "ben_emp_rua": {
-      "label": "Domicilio del empleador — Calle"
+      "label": "Dirección del empleador — Calle"
     },
     "ben_emp_tipo_unidade": {
       "label": "Tipo de unidad (empleador del beneficiario)",
@@ -875,13 +875,13 @@
       "label": "Fecha de inicio del empleo (MM/DD/AAAA)"
     },
     "ben_end_ext_cidade": {
-      "label": "Domicilio del beneficiario en escritura nativa — Ciudad (si el idioma nativo no usa el alfabeto romano)"
+      "label": "Dirección del beneficiario en escritura nativa — Ciudad (si el idioma nativo no usa el alfabeto romano)"
     },
     "ben_end_ext_provincia": {
-      "label": "Domicilio del beneficiario en escritura nativa — Provincia"
+      "label": "Dirección del beneficiario en escritura nativa — Provincia"
     },
     "ben_end_ext_pais": {
-      "label": "Domicilio del beneficiario en escritura nativa — País"
+      "label": "Dirección del beneficiario en escritura nativa — País"
     },
     "ben_outro_peticionario": {
       "label": "¿Alguien más ha presentado antes una petición I-130 (o similar) por este beneficiario?",
@@ -1004,7 +1004,7 @@
       "label": "Intérprete — Nombre de la empresa u organización"
     },
     "int_rua": {
-      "label": "Intérprete — Domicilio (calle)"
+      "label": "Intérprete — Dirección (calle)"
     },
     "int_tipo_unidade": {
       "label": "Tipo de unidad (intérprete)",
@@ -1057,7 +1057,7 @@
       "label": "Nombre de la empresa u organización del preparador"
     },
     "prep_rua": {
-      "label": "Preparador — Domicilio (calle)"
+      "label": "Preparador — Dirección (calle)"
     },
     "prep_tipo_unidade": {
       "label": "Tipo de unidad (preparador)",
