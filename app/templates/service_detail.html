@@ -50,6 +50,13 @@
 </div>
 {% endif %}
 
+{% if slug == "i-539" and content.i134_notice_title %}
+<div class="card" style="border-left:4px solid #f59e0b;">
+  <h2>{{ icon('info', 18) }} {{ content.i134_notice_title }}</h2>
+  {% for p in content.i134_notice_body %}<p class="elig-msg tone-warning" style="margin-top:{{ '0' if loop.first else '10' }}px;">{{ p }}</p>{% endfor %}
+</div>
+{% endif %}
+
 <div class="card">
   <h2>{{ t('svc_h_what_is') }}</h2>
   {% for p in content.what_is %}<p class="muted" style="line-height:1.6;">{{ p }}</p>{% endfor %}

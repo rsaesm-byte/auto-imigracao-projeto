@@ -16,6 +16,7 @@ resposta antiga é uma ação deliberada à parte (tela de revisão).
 from __future__ import annotations
 
 import re
+import shutil
 from pathlib import Path
 
 from flask import (Blueprint, abort, flash, redirect, render_template,
@@ -45,7 +46,7 @@ OUTPUT_USERS_DIR = ROOT / "output" / "users"
 # responsável pela empresa) via scripts/generate_cartas_i539.py, não
 # scripts/fill_form.py.
 FORM_SLUGS_ORDER = ["i-130", "i-130a", "i-485", "i-765", "i-131", "i-864", "i-751",
-                    "i-90", "n-400", "i-539", "i-539-cartas"]
+                    "i-90", "n-400", "i-539", "i-134", "i-539-cartas"]
 
 # Formulários administrativos/complementares (notificação G-1145, pagamento
 # G-1450/G-1650, e o I-539A por dependente) -- preenchíveis pelo mesmo motor
@@ -60,7 +61,14 @@ FORM_SLUGS_ORDER = ["i-130", "i-130a", "i-485", "i-765", "i-131", "i-864", "i-75
 # wizard.start, nunca pra wizard.service_detail. Ver ENABLED_FORMS abaixo
 # (união das duas listas) para o que de fato pode ser iniciado via
 # /forms/<slug>/start.
-AUXILIARY_FORM_SLUGS = ["g-1145", "g-1450", "g-1650", "i-539a", "i-134"]
+#
+# O I-134 morava aqui até 2026-07-26 (só alcançável via wizard.add_i134, a
+# partir de uma submissão I-539 existente). Passou para FORM_SLUGS_ORDER a
+# pedido do usuário: agora também tem página própria em /servicos/i-134
+# (data/service_pages/i-134.json) e aparece na grade principal como
+# qualquer outro formulário -- o atalho "adicionar ao I-539" continua
+# funcionando do mesmo jeito, em paralelo.
+AUXILIARY_FORM_SLUGS = ["g-1145", "g-1450", "g-1650", "i-539a"]
 
 # Valores reais da pergunta "servico" em data/questionnaires/i-539.json --
 # usado por wizard.start() para pré-preencher essa pergunta quando o
@@ -89,16 +97,21 @@ REFERENCE_FORM_SLUGS = ["i-693"]
 # "i-539-cartas" é o único de fora -- tratado à parte em generate()/download().
 PDF_BACKED_FORMS = [s for s in FORM_SLUGS_ORDER if s != "i-539-cartas"]
 
-CARTAS_DISPLAY_NAME = {"pt": "I-539 — Cartas Complementares", "en": "I-539 — Supplementary Letters"}
+CARTAS_DISPLAY_NAME = {
+    "pt": "I-539 — Cartas Complementares",
+    "en": "I-539 — Supplementary Letters",
+    "es": "I-539 — Cartas Complementarias",
+}
 
 
 def _load_questionnaire(slug: str) -> dict:
-    """Carrega o questionário em português e, se o idioma da sessão for
-    inglês e existir um overlay de tradução para esse formulário
-    (data/translations/<slug>.en.json), aplica label/hint/opções em
-    inglês por cima -- sem tocar no arquivo original em português. Só o
-    I-90 tem overlay por enquanto; os outros 7 formulários continuam em
-    português mesmo com o site em inglês (o próprio wizard avisa isso)."""
+    """Carrega o questionário em português e, se o idioma da sessão não for
+    português e existir um overlay de tradução para esse formulário e
+    idioma (data/translations/<slug>.<lang>.json, ex. <slug>.en.json ou
+    <slug>.es.json), aplica label/hint/opções por cima -- sem tocar no
+    arquivo original em português. Um formulário sem overlay num dado
+    idioma continua em português mesmo com o site nesse idioma (o próprio
+    wizard avisa isso, ver _questionnaire_has_translation)."""
     import json
     from app.i18n import get_lang
 
@@ -152,15 +165,20 @@ def _load_registry_entry(slug: str) -> dict:
 def _form_display_name(slug: str) -> str:
     """Nome do formulário na vitrine (landing/dashboard) -- em inglês
     quando o site está em inglês, já que o nome oficial do formulário é
-    em inglês mesmo (é o nome real que a USCIS usa); em português quando
-    o site está em português."""
-    from app.i18n import get_lang
+    em inglês mesmo (é o nome real que a USCIS usa); traduzido (name_pt/
+    name_es) nos outros idiomas, com fallback pro nome em português se o
+    idioma atual ainda não tiver essa variante preenchida no registro."""
+    from app.i18n import DEFAULT_LANG, get_lang
     lang = get_lang()
     if slug == "i-539-cartas":
-        return CARTAS_DISPLAY_NAME[lang]
+        return CARTAS_DISPLAY_NAME.get(lang, CARTAS_DISPLAY_NAME[DEFAULT_LANG])
     entry = _load_registry_entry(slug)
     if lang == "en":
         return entry.get("name", slug.upper())
+    if lang != DEFAULT_LANG:
+        alt = entry.get(f"name_{lang}")
+        if alt:
+            return alt
     return entry.get("name_pt", slug.upper())
 
 
@@ -277,7 +295,8 @@ def index():
     ]
     for slug in REFERENCE_FORM_SLUGS:
         entry = _load_registry_entry(slug)
-        note = entry.get("reference_only_note_en") if lang == "en" else entry.get("reference_only_note")
+        note = entry.get(f"reference_only_note_{lang}") if lang != "pt" else None
+        note = note or entry.get("reference_only_note")
         catalog.append({
             "slug": slug, "name": _form_display_name(slug), "reference": True,
             "enabled": False, "reference_note": note,
@@ -304,6 +323,7 @@ _SERVICE_CONTENT_FIELDS = [
     # SEVIS, busca de escola certificada) -- ausentes/None nas outras
     # páginas, o template já trata isso como "seção não aplicável".
     "rule_change_title", "rule_change_body",
+    "i134_notice_title", "i134_notice_body",
     "sevis_fee_title", "sevis_fee_intro", "sevis_fee_facts",
     "sevis_fee_video_caption", "sevis_fee_disclaimer",
     "school_search_title", "school_search_body", "school_search_link_label",
@@ -312,17 +332,19 @@ _SERVICE_CONTENT_FIELDS = [
 
 def _load_service_content(slug: str) -> dict:
     """Carrega data/service_pages/<slug>.json e resolve os campos para o
-    idioma atual da sessão (cada campo tem uma variante <campo>_en; sem
-    overlay -- este conteúdo é próprio, não uma tradução por cima de um
-    original, diferente do padrão usado nos questionários)."""
+    idioma atual da sessão (cada campo tem uma variante <campo>_<lang>, ex.
+    <campo>_en/<campo>_es; sem overlay -- este conteúdo é próprio, não uma
+    tradução por cima de um original, diferente do padrão usado nos
+    questionários). Cai pro campo em português (sem sufixo) se a variante do
+    idioma atual não existir."""
     import json
-    from app.i18n import get_lang
+    from app.i18n import DEFAULT_LANG, get_lang
 
     path = ROOT / "data" / "service_pages" / f"{slug}.json"
     raw = json.loads(path.read_text(encoding="utf-8"))
     lang = get_lang()
     return {
-        field: raw.get(f"{field}_en") if lang == "en" and raw.get(f"{field}_en") is not None
+        field: raw.get(f"{field}_{lang}") if lang != DEFAULT_LANG and raw.get(f"{field}_{lang}") is not None
         else raw.get(field)
         for field in _SERVICE_CONTENT_FIELDS
     }
@@ -499,6 +521,21 @@ def new_attempt(slug: str):
     return redirect(url_for("wizard.wizard_view", submission_id=submission.id))
 
 
+@wizard_bp.route("/comecar-para-outra-pessoa")
+@login_required
+def start_for_other():
+    """Página dedicada (link de destaque no dashboard) para o usuário
+    escolher qual formulário preencher para OUTRA pessoa -- cada tile aqui
+    aponta pra wizard.new_attempt (sempre cria uma submissão nova),
+    diferente da grade normal do dashboard que aponta pra wizard.start
+    (retoma a submissão em andamento do próprio usuário, se houver)."""
+    catalog = [
+        {"slug": slug, "name": _form_display_name(slug)}
+        for slug in list(FORM_SLUGS_ORDER) + MAIN_GRID_EXTRA_SLUGS
+    ]
+    return render_template("start_for_other.html", catalog=catalog)
+
+
 @wizard_bp.route("/wizard/<int:parent_submission_id>/dependentes/adicionar", methods=["POST"])
 @login_required
 def add_dependent(parent_submission_id: int):
@@ -585,6 +622,32 @@ def save_receipt_number(submission_id: int):
 
     submission.receipt_number = raw or None
     SessionLocal.commit()
+    return redirect(url_for("wizard.dashboard"))
+
+
+@wizard_bp.route("/wizard/<int:submission_id>/apagar", methods=["POST"])
+@login_required
+def delete_submission(submission_id: int):
+    """Apaga permanentemente uma submissão a pedido do usuário no dashboard --
+    inclusive qualquer dependente vinculado (I-539A, I-134) e os arquivos já
+    gerados em output/users/. Não existia nenhuma forma de desfazer um
+    formulário começado por engano antes desta rota."""
+    from app.i18n import t
+    submission = _get_owned_submission(submission_id)
+
+    children = (
+        SessionLocal.query(FormSubmission)
+        .filter_by(parent_submission_id=submission.id)
+        .all()
+    )
+    for child in children:
+        shutil.rmtree(_submission_dir(child), ignore_errors=True)
+        SessionLocal.delete(child)
+
+    shutil.rmtree(_submission_dir(submission), ignore_errors=True)
+    SessionLocal.delete(submission)
+    SessionLocal.commit()
+    flash(t("submission_deleted"), "success")
     return redirect(url_for("wizard.dashboard"))
 
 

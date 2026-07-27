@@ -1,0 +1,493 @@
+{
+  "title": "Solicitud de Extensión/Cambio de Estatus de No Inmigrante — I-539",
+  "sections": {
+    "basico": "Parte 1 — Nombre y Números de Identificación",
+    "enderecos": "Parte 1 — Domicilios",
+    "pessoal": "Parte 1 — Nacimiento y Ciudadanía",
+    "entrada": "Parte 1 — Su Entrada Más Reciente a los EE. UU.",
+    "status_atual": "Parte 1 — Su Estatus Actual",
+    "tipo_pedido": "Parte 2 — Tipo de Solicitud",
+    "processamento": "Parte 3 — Información de Procesamiento",
+    "passaporte_atual": "Parte 4 — Pasaporte Actual (si es diferente de la Parte 1)",
+    "endereco_exterior": "Parte 4 — Domicilio Físico en el Extranjero",
+    "antecedentes": "Parte 4 — Preguntas de Antecedentes",
+    "contato_assinatura": "Parte 5 — Información de Contacto y Firma del/de la Solicitante",
+    "interprete": "Parte 6 — Intérprete (si se usó)",
+    "preparador": "Parte 7 — Preparador(a) (si no es el/la solicitante)"
+  },
+  "questions": {
+    "nome_sobrenome": {
+      "label": "Apellido (Last Name)",
+      "hint": "Escríbalo exactamente como aparece en su PASAPORTE ACTUAL — no use el nombre del certificado de matrimonio si es diferente. Si el nombre en su pasaporte está desactualizado, úselo de todos modos y avise a nuestro equipo."
+    },
+    "nome_nome": {
+      "label": "Nombre (First Name)",
+      "hint": "Escríbalo exactamente como aparece en su PASAPORTE ACTUAL — no use el nombre del certificado de matrimonio si es diferente."
+    },
+    "nome_meio": {
+      "label": "Segundo Nombre (Middle Name)",
+      "hint": "Escríbalo exactamente como aparece en su PASAPORTE ACTUAL. Déjelo en blanco si su pasaporte no tiene segundo nombre."
+    },
+    "alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number), si tiene",
+      "hint": "9 dígitos, sin guiones. Déjelo en blanco si nunca ha recibido un A-Number."
+    },
+    "uscis_online": {
+      "label": "Número de Cuenta en Línea de USCIS, si tiene",
+      "hint": "12 dígitos, sin guiones."
+    },
+    "end_correio_cuidados_de": {
+      "label": "Domicilio de Correspondencia — A Nombre De (si aplica)",
+      "hint": "Complete esto solo si la correspondencia debe dirigirse a nombre de otra persona o empresa (por ejemplo, su nombre no está en el buzón, o vive con otras personas). En la mayoría de los casos, déjelo en blanco."
+    },
+    "end_correio_rua": {
+      "label": "Domicilio de Correspondencia — Número y Nombre de la Calle"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Domicilio de Correspondencia — Tipo de Unidad",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Domicilio de Correspondencia — Número de Unidad"
+    },
+    "end_correio_cidade": {
+      "label": "Domicilio de Correspondencia — Ciudad o Pueblo"
+    },
+    "end_correio_estado": {
+      "label": "Domicilio de Correspondencia — Estado"
+    },
+    "end_correio_cep": {
+      "label": "Domicilio de Correspondencia — Código Postal (ZIP)"
+    },
+    "end_mesmo_que_correio": {
+      "label": "¿El domicilio de correspondencia anterior es el mismo que su domicilio físico actual?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "end_fisico_rua": {
+      "label": "Domicilio Físico Actual — Número y Nombre de la Calle"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Domicilio Físico Actual — Tipo de Unidad",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Domicilio Físico Actual — Número de Unidad"
+    },
+    "end_fisico_cidade": {
+      "label": "Domicilio Físico Actual — Ciudad o Pueblo"
+    },
+    "end_fisico_estado": {
+      "label": "Domicilio Físico Actual — Estado"
+    },
+    "end_fisico_cep": {
+      "label": "Domicilio Físico Actual — Código Postal (ZIP)"
+    },
+    "pais_nascimento": {
+      "label": "País de Nacimiento"
+    },
+    "pais_cidadania": {
+      "label": "País de Ciudadanía o Nacionalidad",
+      "hint": "El país del que usted es ciudadano(a) hoy — puede ser diferente de su país de nacimiento (por ejemplo, se naturalizó en otro país, o tiene ciudadanía por ascendencia). Si tiene más de una ciudadanía, use la que figura en su pasaporte actual."
+    },
+    "data_nascimento": {
+      "label": "Fecha de Nacimiento"
+    },
+    "ssn": {
+      "label": "Número de Seguro Social de EE. UU. (SSN), si tiene",
+      "hint": "9 dígitos, sin guiones."
+    },
+    "data_ultima_entrada": {
+      "label": "Fecha de su última entrada a los EE. UU."
+    },
+    "numero_i94": {
+      "label": "Número de Registro de Entrada/Salida del Formulario I-94",
+      "hint": "Encuentre este número en i94.cbp.dhs.gov (busque su registro más reciente) o en el sello/anotación de su pasaporte si ingresó antes de 2013. 11 dígitos."
+    },
+    "numero_passaporte": {
+      "label": "Número de pasaporte (o documento de viaje), si tiene"
+    },
+    "numero_documento_viagem": {
+      "label": "Número del documento de viaje (si es diferente del pasaporte)",
+      "hint": "Complete esto solo si ingresó con un documento distinto al pasaporte (por ejemplo, un documento de viaje para refugiados, una tarjeta de cruce fronterizo). Si ingresó con un pasaporte regular, déjelo en blanco."
+    },
+    "pais_emissao_passaporte": {
+      "label": "País de emisión del pasaporte o documento de viaje"
+    },
+    "data_expiracao_passaporte": {
+      "label": "Fecha de vencimiento del pasaporte o documento de viaje"
+    },
+    "status_atual_codigo": {
+      "label": "Código de su estatus de no inmigrante actual",
+      "hint": "Escriba la abreviatura oficial exacta, sin guion — por ejemplo, F1 (estudiante), F2 (dependiente de F-1), B2 (visitante de placer), H1B, J1, L2, etc. Consulte su Formulario I-94 o su visa si no está seguro(a) — debe coincidir exactamente con la lista oficial de USCIS para que el campo se muestre correctamente."
+    },
+    "status_atual_expira": {
+      "label": "Fecha de vencimiento de su estatus actual",
+      "hint": "Encuentre esta fecha en su Formulario I-94 (i94.cbp.dhs.gov) o en el sello/anotación de su visa — es la fecha límite hasta la cual está autorizado(a) a permanecer en los EE. UU. en su estatus actual, antes de esta solicitud. Si seleccionó \"Duración del Estatus (D/S)\" abajo, escriba la fecha de vencimiento de su I-20/DS-2019 en lugar de una fecha fija."
+    },
+    "status_atual_duracao_status": {
+      "label": "¿Su estatus actual fue otorgado por \"Duración del Estatus\" (D/S — sin fecha fija de vencimiento, común para F-1/J-1)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Consulte su Formulario I-94 (i94.cbp.dhs.gov) — si no muestra fecha de vencimiento y simplemente dice \"D/S\" (Duration of Status), responda Sí. Esto es común para los estatus F-1 y J-1."
+    },
+    "servico": {
+      "label": "¿Qué servicio está solicitando?",
+      "options": {
+        "eos": "EOS — Extensión de Estatus",
+        "cos_f1": "COS F1 — Cambio de Estatus a Estudiante (F-1)",
+        "cos_f2": "COS F2 — Cambio de Estatus a Dependiente de F-1 (F-2)",
+        "cos_b2": "COS B2 — Cambio de Estatus a Turista (B-2)"
+      }
+    },
+    "data_efetiva_mudanca": {
+      "label": "Fecha en que desea que el cambio de estatus entre en vigor (opcional — aplica solo a COS F1/F2/B2)",
+      "hint": "Opcional — en la mayoría de los casos, déjelo en blanco y deje que USCIS decida la fecha. Complételo solo si tiene una razón específica para solicitar una fecha exacta de inicio del nuevo estatus."
+    },
+    "numero_pessoas": {
+      "label": "¿Cuántas personas están incluidas en esta solicitud?",
+      "options": {
+        "sozinho": "Solo yo",
+        "com_familia": "Yo y miembros de mi familia"
+      },
+      "hint": "Si selecciona \"Yo y miembros de mi familia\", podrá agregar un Formulario I-539A por cada cónyuge/hijo(a) incluido después de terminar este formulario principal."
+    },
+    "total_pessoas": {
+      "label": "Número total de personas incluidas (contándolo(a) a usted)",
+      "hint": "Se requiere un Formulario I-539A separado por cada co-solicitante (cónyuge/hijo(a))."
+    },
+    "escola_nome": {
+      "label": "Nombre de la escuela a la que asistirá o asiste (si aplica)",
+      "hint": "Complete esto solo si su situación involucra estatus de estudiante — cambio/extensión a F-1, o F-2 como dependiente de un(a) estudiante."
+    },
+    "sevis_id": {
+      "label": "Número de SEVIS ID (si aplica)",
+      "hint": "Mismo criterio que arriba — solo aplica si tiene un registro SEVIS (F-1/F-2/M-1/J-1)."
+    },
+    "data_solicitada_ate": {
+      "label": "¿Hasta qué fecha solicita que su estatus (actual o nuevo) sea válido?",
+      "hint": "Típicamente, agregue unos 6 meses a la fecha de vencimiento de su estatus actual (Parte 1, punto 12, \"Fecha de vencimiento de su estatus actual\" arriba). Ejemplo: si su estatus actual vence el 24/12/2026, esta fecha sería aproximadamente 23/06/2027. Confirme el período exacto con nuestro equipo antes de enviar."
+    },
+    "pedido_baseado_status_familiar": {
+      "label": "¿Esta solicitud se basa en una extensión o cambio de estatus ya otorgado a su cónyuge, hijo(a), o padre/madre?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Responda \"Sí\" solo si está solicitando este estatus PORQUE su cónyuge, hijo(a), o padre/madre ya tuvo una extensión/cambio de estatus similar aprobada por USCIS, y su solicitud depende de o acompaña la de ellos (por ejemplo, un(a) dependiente que sigue al solicitante principal). Si su solicitud es independiente, responda \"No\"."
+    },
+    "pedido_baseado_peticao_separada": {
+      "label": "¿Esta solicitud se basa en una petición o solicitud separada para otorgar a su cónyuge, hijo(a), o padre/madre una extensión o cambio de estatus?",
+      "options": {
+        "nao": "No",
+        "sim_com_este_i539": "Sí, presentada con este Formulario I-539",
+        "sim_previamente_pendente": "Sí, presentada previamente y pendiente ante USCIS"
+      },
+      "hint": "Responda \"Sí\" solo si existe una petición o solicitud SEPARADA (presentada junto con este I-539 o ya pendiente ante USCIS) que otorgará una extensión/cambio de estatus a su cónyuge, hijo(a), o padre/madre — no al/a la solicitante de este formulario. En la mayoría de los casos individuales, la respuesta es \"No\"."
+    },
+    "tipo_formulario_relacionado": {
+      "label": "Si respondió \"Sí\" arriba, ¿qué formulario se usó/se usará?",
+      "hint": "Aplica solo si respondió Sí a una de las dos preguntas anteriores.",
+      "options": {
+        "i539": "Formulario I-539",
+        "i129": "Formulario I-129 (Petición para un Trabajador No Inmigrante)"
+      }
+    },
+    "numero_recibo_uscis": {
+      "label": "Número de Recibo de USCIS de la petición/solicitud relacionada (si tiene)",
+      "hint": "El número de recibo es un código de 13 caracteres en el Aviso de Acción (Formulario I-797) que USCIS envió para la petición relacionada — por ejemplo, EAC1234567890."
+    },
+    "nome_peticao_relacionada_primeiro": {
+      "label": "Nombre del/de la beneficiario(a)/solicitante de la petición relacionada",
+      "hint": "Nombre de la persona titular de la petición relacionada mencionada arriba (no siempre es usted) — déjelo en blanco si no hay petición relacionada."
+    },
+    "nome_peticao_relacionada_ultimo": {
+      "label": "Apellido del/de la beneficiario(a)/solicitante de la petición relacionada",
+      "hint": "Apellido de la persona titular de la petición relacionada mencionada arriba (no siempre es usted) — déjelo en blanco si no hay petición relacionada."
+    },
+    "data_protocolo_peticao_relacionada": {
+      "label": "Fecha de presentación de la petición/solicitud relacionada",
+      "hint": "La fecha en que se presentó la petición/solicitud relacionada — se encuentra en el mismo Aviso de Recibo (I-797) que el número de recibo indicado arriba."
+    },
+    "passaporte_atual_pais_emissao": {
+      "label": "País de emisión de su pasaporte ACTUAL (si es diferente de la Parte 1)",
+      "hint": "Complete esta sección solo si la información de su pasaporte cambió desde la Parte 1 (por ejemplo, renovación de pasaporte)."
+    },
+    "passaporte_atual_numero": {
+      "label": "Número de su pasaporte ACTUAL"
+    },
+    "passaporte_atual_expiracao": {
+      "label": "Fecha de vencimiento de su pasaporte ACTUAL"
+    },
+    "end_exterior_rua": {
+      "label": "Domicilio Físico en el Extranjero — Número y Nombre de la Calle"
+    },
+    "end_exterior_tipo_unidade": {
+      "label": "Domicilio Físico en el Extranjero — Tipo de Unidad",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_exterior_num_unidade": {
+      "label": "Domicilio Físico en el Extranjero — Número de Unidad"
+    },
+    "end_exterior_cidade": {
+      "label": "Domicilio Físico en el Extranjero — Ciudad o Pueblo"
+    },
+    "end_exterior_provincia": {
+      "label": "Domicilio Físico en el Extranjero — Provincia/Estado"
+    },
+    "end_exterior_cep": {
+      "label": "Domicilio Físico en el Extranjero — Código Postal"
+    },
+    "end_exterior_pais": {
+      "label": "Domicilio Físico en el Extranjero — País"
+    },
+    "imigrante_visa_pendente": {
+      "label": "¿Es usted solicitante de una visa de inmigrante (por ejemplo, tiene un I-130 o I-140 pendiente/aprobado a su nombre)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Responda \"Sí\" si usted (o el/la solicitante principal de esta solicitud) ya tiene un Formulario I-130 o I-140 pendiente o aprobado a su nombre — esto se conoce a menudo como \"intención de inmigrar\" y puede ser relevante para cómo se revisa su solicitud de estatus temporal. Si no está seguro(a), consulte con nuestro equipo o con un abogado de inmigración antes de responder."
+    },
+    "peticao_imigrante_ja_apresentada": {
+      "label": "¿Se ha presentado ALGUNA VEZ una petición de inmigrante para usted (por cualquier persona, en cualquier momento)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Diferente de la pregunta anterior: esta pregunta es si ALGUNA VEZ se presentó una petición de visa de inmigrante para usted, por CUALQUIER persona, en cualquier momento — incluso si fue denegada, retirada, o presentada hace años. Responda \"Sí\" aunque nunca haya avanzado."
+    },
+    "ja_apresentou_i485": {
+      "label": "¿Ha presentado ALGUNA VEZ el Formulario I-485, Solicitud de Registro de Residencia Permanente o Ajuste de Estatus?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluye cualquier solicitud de Ajuste de Estatus (Green Card) presentada en el pasado, incluso si fue denegada, retirada, o sigue pendiente."
+    },
+    "preso_condenado_desde_entrada": {
+      "label": "¿Ha sido arrestado(a) o condenado(a) por algún delito desde su última entrada a los EE. UU.?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluya cualquier arresto o condena en los EE. UU. desde su última entrada, incluso si el caso fue desestimado, retirado, o fue declarado(a) no culpable. Si no está seguro(a) de qué debe divulgar, consulte con nuestro equipo o con un abogado de inmigración antes de responder."
+    },
+    "ato_tortura_genocidio": {
+      "label": "¿ALGUNA VEZ ha ordenado, incitado, cometido, ayudado, o participado de alguna otra forma en actos de tortura o genocidio?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "matou_pessoa": {
+      "label": "¿ALGUNA VEZ ha ordenado, incitado, cometido, ayudado, o participado de alguna otra forma en matar a alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "feriu_gravemente_pessoa": {
+      "label": "¿ALGUNA VEZ ha ordenado, incitado, cometido, ayudado, o participado de alguna otra forma en herir intencional y gravemente a alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "contato_sexual_sem_consentimento": {
+      "label": "¿ALGUNA VEZ ha ordenado, incitado, cometido, ayudado, o participado de alguna otra forma en algún tipo de contacto sexual no consensuado (o con una persona incapaz de consentir, o mediante fuerza/amenaza)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "limitou_liberdade_religiosa": {
+      "label": "¿ALGUNA VEZ ha limitado o negado la capacidad de alguna persona de ejercer sus creencias religiosas?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "servico_militar_paramilitar": {
+      "label": "¿ALGUNA VEZ ha servido en, sido miembro de, ayudado, o participado en algún grupo militar, paramilitar, policial, de autodefensa, vigilante, rebelde, guerrillero, milicia, u otro grupo armado?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "trabalhou_prisao_detencao": {
+      "label": "¿ALGUNA VEZ ha trabajado, sido voluntario(a), o servido de alguna otra forma en alguna prisión, cárcel, campo de prisioneros, centro de detención, campo de trabajo, u otra situación que implique la detención de personas?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "membro_grupo_armas_ameaca": {
+      "label": "¿ALGUNA VEZ ha sido miembro de, ayudado, o participado en algún grupo, unidad, u organización en la que personas usaron o amenazaron con usar algún tipo de arma contra alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "vendeu_transportou_armas": {
+      "label": "¿ALGUNA VEZ ha vendido, proporcionado, o transportado armas — o ayudado a alguien a hacerlo — sabiendo o creyendo que se usarían contra otra persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "treinamento_militar_armas": {
+      "label": "¿Usted (o alguien incluido en esta solicitud) ha recibido ALGUNA VEZ algún tipo de entrenamiento militar, paramilitar, o de armas?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas oficiales de evaluación de seguridad de USCIS — la redacción es intencionalmente amplia. Responda con honestidad aunque la situación no parezca aplicarle claramente o haya ocurrido hace mucho tiempo. Si tiene alguna duda sobre si esto lo(a) describe, consulte con nuestro equipo o con un abogado de inmigración antes de responder — una respuesta incorrecta aquí puede llevar a una denegación o a un hallazgo de fraude."
+    },
+    "violou_termos_status": {
+      "label": "¿ALGUNA VEZ ha violado los términos del estatus de no inmigrante que tiene actualmente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Ejemplos comunes: trabajar sin autorización, permanecer más allá de la fecha de su I-94, o (para estudiantes F-1) tener una carga de cursos menor a la mínima requerida. Si no está seguro(a) de si algo que ocurrió cuenta como una violación, consulte con nuestro equipo o con un abogado de inmigración antes de responder — puede afectar la aprobación de esta solicitud."
+    },
+    "em_processo_remocao": {
+      "label": "¿Está actualmente en proceso de remoción (deportación)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El \"proceso de remoción\" es el proceso formal de deportación llevado a cabo por un juez de inmigración en la Corte de Inmigración — es diferente de haber recibido un aviso de salida voluntaria o simplemente estar preocupado(a) por su estatus. Si ha recibido algún aviso de una corte de inmigración, responda \"Sí\" y consulte a un abogado de inmigración antes de continuar."
+    },
+    "empregado_eua_desde_ultima_entrada": {
+      "label": "¿Ha trabajado en los EE. UU. desde su última admisión o desde que se le otorgó su última extensión/cambio de estatus?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluya cualquier trabajo remunerado o no remunerado, formal o informal, incluso breve — trabajar sin autorización puede impedir la aprobación de esta solicitud. Si no está seguro(a) de si algo cuenta como \"trabajo\", consulte con nuestro equipo antes de responder."
+    },
+    "j1_j2_exchange_visitor": {
+      "label": "¿Es actualmente, o ha sido ALGUNA VEZ, un(a) visitante de intercambio J-1 o un(a) dependiente J-2 de un(a) visitante de intercambio J-1?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Si usted (o el/la solicitante principal de esta solicitud) ha tenido alguna vez una visa J-1 o J-2, puede estar sujeto(a) al \"requisito de residencia de dos años en el país de origen\" (Sección 212(e)) antes de poder cambiar de estatus dentro de los EE. UU. — esto no aplica a todos(as) (depende de su país y del motivo de su programa J). Responda \"Sí\" aunque no esté seguro(a) de si le aplica, y confírmelo con nuestro equipo o con un abogado de inmigración."
+    },
+    "telefone": {
+      "label": "Número de Teléfono Durante el Día"
+    },
+    "celular": {
+      "label": "Número de Teléfono Móvil"
+    },
+    "email": {
+      "label": "Correo Electrónico"
+    },
+    "data_assinatura": {
+      "label": "Fecha de la firma",
+      "hint": "Se completa el día en que usted firma físicamente el formulario impreso."
+    },
+    "int_sobrenome": {
+      "label": "Apellido del/de la Intérprete"
+    },
+    "int_nome": {
+      "label": "Nombre del/de la Intérprete"
+    },
+    "int_organizacao": {
+      "label": "Nombre de la Empresa u Organización del/de la Intérprete"
+    },
+    "int_telefone": {
+      "label": "Número de Teléfono Durante el Día del/de la Intérprete"
+    },
+    "int_celular": {
+      "label": "Número de Teléfono Móvil del/de la Intérprete"
+    },
+    "int_email": {
+      "label": "Correo Electrónico del/de la Intérprete"
+    },
+    "int_idioma": {
+      "label": "Idioma que tradujo el/la intérprete"
+    },
+    "int_data_assinatura": {
+      "label": "Fecha de la firma del/de la intérprete",
+      "hint": "Se completa el día en que el/la intérprete firma físicamente el formulario impreso."
+    },
+    "prep_sobrenome": {
+      "label": "Apellido del/de la Preparador(a)"
+    },
+    "prep_nome": {
+      "label": "Nombre del/de la Preparador(a)"
+    },
+    "prep_organizacao": {
+      "label": "Nombre de la Empresa u Organización del/de la Preparador(a)"
+    },
+    "prep_telefone": {
+      "label": "Número de Teléfono Durante el Día del/de la Preparador(a)"
+    },
+    "prep_celular": {
+      "label": "Número de Teléfono Móvil del/de la Preparador(a)"
+    },
+    "prep_email": {
+      "label": "Correo Electrónico del/de la Preparador(a)"
+    },
+    "prep_data_assinatura": {
+      "label": "Fecha de la firma del/de la preparador(a)",
+      "hint": "Se completa el día en que el/la preparador(a) firma físicamente el formulario impreso."
+    },
+    "i134_recursos_suficientes": {
+      "label": "¿Tiene ingresos o ahorros propios suficientes para cubrir todos sus gastos durante su estadía en los EE. UU. — vivienda, alimentación, salud, transporte y, si aplica, matrícula/colegiatura?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sí"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ],
+      "hint": "Esto no incluye el ingreso de un patrocinador — esta pregunta trata solo sobre sus propios recursos financieros."
+    },
+    "i134_tem_patrocinador_qualificado": {
+      "label": "¿Tiene un(a) patrocinador(a) en los EE. UU. dispuesto(a) a firmar una Declaración de Apoyo Financiero (Formulario I-134) por usted, que sea residente permanente legal (green card) O ciudadano(a) estadounidense?",
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sí"
+        },
+        {
+          "value": "nao",
+          "label": "No"
+        }
+      ],
+      "hint": "El/la patrocinador(a) debe ser residente permanente legal o ciudadano(a) estadounidense — otros estatus no califican para firmar el I-134. Si responde que sí, al terminar este formulario le ofreceremos la opción de completar el I-134 (un servicio facturado por separado)."
+    }
+  }
+}

@@ -7,6 +7,7 @@
     "48_states": {
       "label": "48 Estados Contíguos, DC, Porto Rico, Ilhas Virgens dos EUA, Guam e CNMI",
       "label_en": "48 Contiguous States, DC, Puerto Rico, U.S. Virgin Islands, Guam, and CNMI",
+      "label_es": "48 estados contiguos, DC, Puerto Rico, Islas Vírgenes de EE. UU., Guam y CNMI",
       "base_household_size": 2,
       "amounts_100": [21640, 27320, 33000, 38680, 44360, 50040, 55720],
       "amounts_125": [27050, 34150, 41250, 48350, 55450, 62550, 69650],
@@ -16,6 +17,7 @@
     "alaska": {
       "label": "Alasca",
       "label_en": "Alaska",
+      "label_es": "Alaska",
       "base_household_size": 2,
       "amounts_100": [27050, 34150, 41250, 48350, 55450, 62550, 69650],
       "amounts_125": [33813, 42688, 51563, 60438, 69313, 78188, 87063],
@@ -25,6 +27,7 @@
     "hawaii": {
       "label": "Havaí",
       "label_en": "Hawaii",
+      "label_es": "Hawái",
       "base_household_size": 2,
       "amounts_100": [24890, 31420, 37950, 44480, 51010, 57540, 64070],
       "amounts_125": [31113, 39275, 47438, 55600, 63763, 71925, 80088],

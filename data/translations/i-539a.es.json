@@ -1,0 +1,283 @@
+{
+  "title": "I-539A — Información Suplementaria para la Solicitud de Extensión/Cambio de Estatus de No Inmigrante",
+  "sections": {
+    "sobre_principal": "Sobre el Solicitante Principal del I-539",
+    "info_pessoal": "Parte 2 — Información Sobre Usted (el Dependiente)",
+    "info_adicional": "Parte 3 — Información Adicional Sobre Usted",
+    "contato_assinatura": "Parte 4 — Información de Contacto y Firma",
+    "interprete": "Parte 5 — Intérprete (si corresponde)",
+    "preparador": "Parte 6 — Preparador (si alguien completó esto por usted)"
+  },
+  "questions": {
+    "principal_sobrenome": {
+      "label": "Apellido del solicitante principal del I-539",
+      "hint": "El apellido de la persona que presentó el I-539 principal — cuya solicitud de extensión/cambio de estatus lo(a) incluye a usted como dependiente (por ejemplo, su cónyuge o uno de sus padres). No es su propio apellido."
+    },
+    "principal_nome": {
+      "label": "Nombre del solicitante principal del I-539",
+      "hint": "El nombre de esa misma persona — quien presentó el I-539 principal (por ejemplo, su cónyuge o uno de sus padres). No es su propio nombre."
+    },
+    "principal_nome_meio": {
+      "label": "Segundo nombre del solicitante principal (si tiene)",
+      "hint": "El segundo nombre de esa misma persona (quien presentó el I-539 principal), no el suyo. Déjelo en blanco si no tiene segundo nombre o si no lo sabe."
+    },
+    "nome_sobrenome": {
+      "label": "Su apellido"
+    },
+    "nome_nome": {
+      "label": "Su nombre"
+    },
+    "nome_meio": {
+      "label": "Su segundo nombre (si tiene)"
+    },
+    "data_nascimento": {
+      "label": "Fecha de nacimiento"
+    },
+    "pais_nascimento": {
+      "label": "País de nacimiento"
+    },
+    "pais_cidadania": {
+      "label": "País de ciudadanía/nacionalidad"
+    },
+    "ssn": {
+      "label": "Número de Seguro Social (SSN, si tiene)"
+    },
+    "numero_a": {
+      "label": "Número de Registro de Extranjero (A-Number, si tiene)",
+      "hint": "Formato A-XXXXXXXXX. Déjelo en blanco si nunca ha recibido uno."
+    },
+    "data_chegada": {
+      "label": "Fecha de su ingreso más reciente a los Estados Unidos",
+      "hint": "Encuentre esta fecha en su pasaporte (sello de entrada) o en su Formulario I-94 (i94.cbp.dhs.gov)."
+    },
+    "numero_i94": {
+      "label": "Su número de Formulario I-94 (Registro de Entrada/Salida)",
+      "hint": "Consúltelo en i94.cbp.dhs.gov usando los datos de su pasaporte si no tiene el número a la mano."
+    },
+    "numero_passaporte": {
+      "label": "Su número de pasaporte"
+    },
+    "numero_documento_viagem": {
+      "label": "Número del documento de viaje (si es diferente del pasaporte)",
+      "hint": "Complete esto solo si ingresó con un documento distinto de un pasaporte (por ejemplo, un documento de viaje para refugiados, una tarjeta de cruce fronterizo). Si ingresó con un pasaporte normal, déjelo en blanco."
+    },
+    "pais_emissao_passaporte": {
+      "label": "País que emitió el pasaporte/documento de viaje"
+    },
+    "data_expiracao_passaporte": {
+      "label": "Fecha de vencimiento del pasaporte/documento de viaje"
+    },
+    "status_atual": {
+      "label": "Su estatus de no inmigrante actual (código exacto de USCIS)",
+      "hint": "Use el código oficial exacto, sin guion (ej. F2, B2, H4) — el campo interno del formulario lo llama \"New Status\", pero en realidad es su estatus ACTUAL. Consulte su Formulario I-94 si tiene dudas."
+    },
+    "data_expiracao_status": {
+      "label": "Fecha de vencimiento de su estatus actual"
+    },
+    "passaporte_atual_numero": {
+      "label": "Número de pasaporte ACTUAL (solo si es diferente del anterior)"
+    },
+    "passaporte_atual_expiracao": {
+      "label": "Fecha de vencimiento del pasaporte actual (solo si es diferente de la anterior)"
+    },
+    "passaporte_atual_pais": {
+      "label": "País emisor del pasaporte actual (solo si es diferente del anterior)"
+    },
+    "uscis_online_account": {
+      "label": "Número de su cuenta en línea de USCIS (si tiene)",
+      "hint": "12 dígitos, sin guiones — se encuentra en su cuenta en my.uscis.gov, si ya creó una."
+    },
+    "adicional_visto_imigrante": {
+      "label": "¿Es usted solicitante de una visa de inmigrante?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Tener un proceso de Green Card en curso puede complicar una solicitud de extensión/cambio de estatus de no inmigrante, según su estatus actual. Responda con honestidad; consulte con el equipo cómo esto afecta su caso específico."
+    },
+    "adicional_peticao_ja_protocolada": {
+      "label": "¿Alguna vez se ha presentado una petición de inmigrante en su nombre?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esto incluye cualquier petición de Green Card (por ejemplo, I-130, I-140) presentada alguna vez en su nombre, incluso si todavía está pendiente o ya fue denegada. Consulte con el equipo cómo esto afecta su solicitud de I-539."
+    },
+    "adicional_i485_ja_protocolado": {
+      "label": "¿Alguna vez ha presentado un Formulario I-485 (Ajuste de Estatus)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esto se refiere al Formulario I-485 (Ajuste de Estatus/Green Card), no al I-539 actual. Responda con honestidad incluso si el I-485 fue denegado o retirado."
+    },
+    "adicional_ofensa_criminal": {
+      "label": "¿Alguna vez ha sido arrestado(a) o condenado(a) por un delito desde su última entrada a los EE. UU.?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluya CUALQUIER arresto, cargo o condena, incluso si fue desestimado, perdonado, o nunca resultó en una condena — incluyendo cosas que parezcan menores (por ejemplo, DUI). Si no está seguro(a) de si algo cuenta, responda \"Sí\" y explique en la solicitud; confirme con el equipo antes de enviarla."
+    },
+    "adicional_tortura_genocidio": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de algún modo en actos de tortura o genocidio?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esta es una de las preguntas obligatorias de detección de USCIS sobre violaciones de derechos humanos (INA 212(a)(3)(E)), que se hace a todos — no es una acusación. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "adicional_matar": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de algún modo en matar a alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes — no presupone nada sobre usted. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_lesao_grave": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de algún modo en lesionar intencional y gravemente a alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_contato_sexual_forcado": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de algún modo en contacto sexual no consentido o forzado con alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_limitar_religiao": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de algún modo en limitar o negar a alguien la posibilidad de practicar su religión?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_grupo_armado": {
+      "label": "¿Alguna vez ha servido en, sido miembro de, ayudado o participado en algún grupo militar, paramilitar, policial, rebelde, guerrillero, milicia u otro grupo armado?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre participación en grupos armados, hecha a todos los solicitantes — esto incluye incluso el servicio militar obligatorio en su país de origen. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_trabalho_prisao": {
+      "label": "¿Alguna vez ha trabajado, sido voluntario(a), o prestado servicio en alguna prisión, centro de detención, campo de trabajo, u otro lugar que implicara detener personas?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_ameaca_arma": {
+      "label": "¿Alguna vez ha sido miembro de, ayudado o participado en algún grupo donde usted u otros usaron o amenazaron con usar armas contra alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_venda_armas": {
+      "label": "¿Alguna vez ha vendido, proporcionado o transportado armas, o ayudado a alguien a hacerlo, sabiendo o creyendo que se usarían contra otra persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una pregunta estándar de detección de USCIS sobre violaciones de derechos humanos, hecha a todos los solicitantes. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_treinamento_armas": {
+      "label": "¿Alguna vez ha recibido entrenamiento con armas, paramilitar, u otro entrenamiento de tipo militar?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Esto incluye incluso el entrenamiento militar obligatorio (servicio obligatorio) en su país de origen — por sí solo no significa que haya algo indebido. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración."
+    },
+    "adicional_violou_status": {
+      "label": "¿Alguna vez ha violado los términos del estatus de no inmigrante que tiene actualmente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Ejemplos: trabajar sin autorización, permanecer más tiempo del permitido bajo un estatus anterior, o no cumplir las condiciones de su visa (por ejemplo, estudiar mientras está en estatus de visitante). Si no está seguro(a), consulte con el equipo antes de enviar la solicitud — omitir una infracción puede ser peor que declararla."
+    },
+    "adicional_processo_remocao": {
+      "label": "¿Está actualmente en un proceso de remoción (deportación)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "\"Proceso de remoción\" significa que usted ya ha recibido un Aviso de Comparecencia oficial ante un tribunal de inmigración, no simplemente haber tenido algún problema de estatus en el pasado. Si tiene dudas, consulte con el equipo."
+    },
+    "adicional_ja_trabalhou_eua": {
+      "label": "¿Ha trabajado en los Estados Unidos desde que fue admitido(a) por última vez o se le otorgó una extensión/cambio de estatus?",
+      "hint": "Si responde \"No\", esté preparado(a) para explicar cómo se mantiene económicamente. Trabajar sin autorización (incluso de forma remota para una empresa en su país de origen) puede considerarse empleo no autorizado.",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "adicional_visitante_j1j2": {
+      "label": "¿Es usted actualmente, o alguna vez ha sido, un(a) visitante de intercambio J-1 o un(a) dependiente J-2 de un(a) visitante de intercambio J-1?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Importante: muchas visas J-1/J-2 conllevan un requisito de residencia de 2 años en el país de origen antes de poder cambiar de estatus dentro de los EE. UU. (INA 212(e)) — si esto le aplica, esta solicitud de I-539 podría no ser posible sin una dispensa (waiver). Consulte con el equipo antes de continuar."
+    },
+    "contato_telefone": {
+      "label": "Su número de teléfono diurno"
+    },
+    "contato_celular": {
+      "label": "Su teléfono móvil (si tiene)"
+    },
+    "contato_email": {
+      "label": "Su correo electrónico (si tiene)"
+    },
+    "interprete_sobrenome": {
+      "label": "Apellido del intérprete"
+    },
+    "interprete_nome": {
+      "label": "Nombre del intérprete"
+    },
+    "interprete_empresa": {
+      "label": "Empresa/organización del intérprete (si tiene)"
+    },
+    "interprete_telefone": {
+      "label": "Número de teléfono diurno del intérprete"
+    },
+    "interprete_celular": {
+      "label": "Teléfono móvil del intérprete (si tiene)"
+    },
+    "interprete_email": {
+      "label": "Correo electrónico del intérprete (si tiene)"
+    },
+    "interprete_idioma": {
+      "label": "Idioma en el que el intérprete tiene fluidez (además de inglés)"
+    },
+    "preparador_sobrenome": {
+      "label": "Apellido del preparador"
+    },
+    "preparador_nome": {
+      "label": "Nombre del preparador"
+    },
+    "preparador_empresa": {
+      "label": "Empresa/organización del preparador (si tiene)"
+    },
+    "preparador_telefone": {
+      "label": "Número de teléfono diurno del preparador"
+    },
+    "preparador_celular": {
+      "label": "Teléfono móvil del preparador (si tiene)"
+    },
+    "preparador_email": {
+      "label": "Correo electrónico del preparador (si tiene)"
+    }
+  }
+}

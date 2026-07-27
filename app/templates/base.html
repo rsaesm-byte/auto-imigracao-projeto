@@ -1,10 +1,10 @@
 <!doctype html>
-<html lang="{{ 'en' if get_lang() == 'en' else 'pt-BR' }}">
+<html lang="{{ {'en': 'en', 'es': 'es'}.get(get_lang(), 'pt-BR') }}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ t('app_name') }}{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=4">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=5">
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
@@ -54,6 +54,12 @@
             <rect width="10" height="8.6" fill="#3c3b6e"/>
           </svg>
         </a>
+        <a class="lang-flag {{ 'active' if get_lang() == 'es' }}" href="{{ url_for('wizard.set_lang', lang='es') }}" title="Español">
+          <svg viewBox="0 0 24 16" width="22" height="15" aria-hidden="true">
+            <rect width="24" height="16" fill="#AA151B"/>
+            <rect y="4" width="24" height="8" fill="#F1BF00"/>
+          </svg>
+        </a>
       </span>
     </div>
   </header>
@@ -92,5 +98,7 @@
       els.forEach(function (el) { obs.observe(el); });
     })();
   </script>
+
+  {% include "_chat_widget.html" %}
 </body>
 </html>

@@ -1,0 +1,398 @@
+{
+  "title": "Solicitud de Autorización de Empleo — I-765",
+  "sections": {
+    "motivo": "Parte 1 — Motivo de la Solicitud",
+    "basico": "Parte 2 — Información Básica",
+    "outros_nomes": "Parte 2 — Otros Nombres Usados",
+    "enderecos": "Parte 2 — Domicilios",
+    "info_pessoal": "Parte 2 — Información Personal",
+    "entrada_eua": "Parte 2 — Entrada Más Reciente a los EE. UU.",
+    "elegibilidade": "Parte 2 — Categoría de Elegibilidad",
+    "assinatura": "Parte 3 — Declaración del/de la Solicitante",
+    "interprete": "Parte 4 — Intérprete",
+    "preparador": "Parte 5 — Preparador(a)"
+  },
+  "questions": {
+    "motivo_aplicacao": {
+      "label": "Usted está solicitando:",
+      "options": {
+        "inicial": "Permiso inicial para aceptar empleo",
+        "substituicao": "Sustitución de un documento perdido, robado, o dañado (o corrección de un documento con un error no causado por USCIS)",
+        "renovacao": "Renovación de mi permiso para aceptar empleo (adjunte una copia de su documento anterior)"
+      }
+    },
+    "nome_sobrenome": {
+      "label": "Apellido (Last Name)"
+    },
+    "nome_nome": {
+      "label": "Nombre (First Name)"
+    },
+    "nome_meio": {
+      "label": "Segundo Nombre (Middle Name)"
+    },
+    "outro_nome2_sobrenome": {
+      "label": "Otro Nombre Usado (2) — Apellido"
+    },
+    "outro_nome2_nome": {
+      "label": "Otro Nombre Usado (2) — Nombre"
+    },
+    "outro_nome2_meio": {
+      "label": "Otro Nombre Usado (2) — Segundo Nombre"
+    },
+    "outro_nome3_sobrenome": {
+      "label": "Otro Nombre Usado (3) — Apellido"
+    },
+    "outro_nome3_nome": {
+      "label": "Otro Nombre Usado (3) — Nombre"
+    },
+    "outro_nome3_meio": {
+      "label": "Otro Nombre Usado (3) — Segundo Nombre"
+    },
+    "outro_nome4_sobrenome": {
+      "label": "Otro Nombre Usado (4) — Apellido"
+    },
+    "outro_nome4_nome": {
+      "label": "Otro Nombre Usado (4) — Nombre"
+    },
+    "outro_nome4_meio": {
+      "label": "Otro Nombre Usado (4) — Segundo Nombre"
+    },
+    "end_correio_cuidados_de": {
+      "label": "Domicilio de Correspondencia — A Nombre De (si aplica)"
+    },
+    "end_correio_rua": {
+      "label": "Domicilio de Correspondencia — Número y Nombre de la Calle"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Domicilio de Correspondencia — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Domicilio de Correspondencia — Número de Unidad"
+    },
+    "end_correio_cidade": {
+      "label": "Domicilio de Correspondencia — Ciudad"
+    },
+    "end_correio_estado": {
+      "label": "Domicilio de Correspondencia — Estado (abreviatura)"
+    },
+    "end_correio_cep": {
+      "label": "Domicilio de Correspondencia — Código Postal (ZIP)"
+    },
+    "end_fisico_igual_correio": {
+      "label": "¿Su domicilio físico actual es el mismo que el domicilio de correspondencia anterior?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "end_fisico_rua": {
+      "label": "Domicilio Físico — Número y Nombre de la Calle"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Domicilio Físico — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Domicilio Físico — Número de Unidad"
+    },
+    "end_fisico_cidade": {
+      "label": "Domicilio Físico — Ciudad"
+    },
+    "end_fisico_estado": {
+      "label": "Domicilio Físico — Estado (abreviatura)"
+    },
+    "end_fisico_cep": {
+      "label": "Domicilio Físico — Código Postal (ZIP)"
+    },
+    "alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number), si tiene"
+    },
+    "uscis_online": {
+      "label": "Número de Cuenta en Línea de USCIS, si tiene"
+    },
+    "sexo": {
+      "label": "Sexo",
+      "options": {
+        "masculino": "Masculino",
+        "feminino": "Femenino"
+      }
+    },
+    "estado_civil": {
+      "label": "Estado Civil",
+      "options": {
+        "solteiro": "Soltero(a)",
+        "casado": "Casado(a)",
+        "divorciado": "Divorciado(a)",
+        "viuvo": "Viudo(a)"
+      }
+    },
+    "pediu_i765_antes": {
+      "label": "¿Ha presentado anteriormente el Formulario I-765?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "ssn": {
+      "label": "Número de Seguro Social (SSN), si lo conoce"
+    },
+    "cidadania_pais1": {
+      "label": "País de Ciudadanía/Nacionalidad"
+    },
+    "cidadania_pais2": {
+      "label": "Segundo País de Ciudadanía/Nacionalidad (si aplica)"
+    },
+    "nascimento_cidade": {
+      "label": "Lugar de Nacimiento — Ciudad/Pueblo/Aldea"
+    },
+    "nascimento_estado_provincia": {
+      "label": "Lugar de Nacimiento — Estado/Provincia"
+    },
+    "nascimento_pais": {
+      "label": "Lugar de Nacimiento — País"
+    },
+    "data_nascimento": {
+      "label": "Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "i94_numero": {
+      "label": "Número del Formulario I-94 (si tiene)",
+      "hint": "Número de 11 dígitos de su registro de entrada/salida a los EE. UU. Búsquelo o descárguelo en i94.cbp.dhs.gov usando los datos de su pasaporte. Déjelo en blanco si nunca recibió uno (por ejemplo, ingresó antes de que existiera el sistema electrónico, o ingresó sin inspección)."
+    },
+    "passaporte_numero": {
+      "label": "Número del Pasaporte Más Reciente"
+    },
+    "doc_viagem_numero": {
+      "label": "Número del Documento de Viaje (si tiene, y es diferente de su pasaporte)"
+    },
+    "passaporte_pais_emissao": {
+      "label": "País que Emitió su Pasaporte/Documento de Viaje"
+    },
+    "passaporte_data_expiracao": {
+      "label": "Fecha de Vencimiento del Pasaporte/Documento de Viaje (MM/DD/AAAA)"
+    },
+    "ultima_entrada_data": {
+      "label": "Fecha de su Última Entrada a los EE. UU. (MM/DD/AAAA)"
+    },
+    "ultima_entrada_local": {
+      "label": "Lugar de su Última Entrada a los EE. UU."
+    },
+    "ultima_entrada_status": {
+      "label": "Estatus Migratorio en la Última Entrada (ej.: visitante B-2, estudiante F-1)"
+    },
+    "status_atual": {
+      "label": "Su Estatus o Categoría Migratoria Actual"
+    },
+    "sevis_numero": {
+      "label": "Número de SEVIS (si aplica, estudiantes F-1/M-1)",
+      "hint": "Aplica solo a estudiantes F-1 o M-1. Número de 11 dígitos que comienza con 'N', ubicado en la esquina superior derecha de su Formulario I-20."
+    },
+    "elig_categoria_classe": {
+      "label": "Categoría de Elegibilidad — Clase",
+      "hint": "Generalmente es 'c'. Categorías comunes: (c)(9) I-485 pendiente, (c)(8) solicitud de asilo pendiente, (c)(3)(C) extensión STEM OPT, (c)(26) cónyuge H-4 de un(a) trabajador(a) H-1B. Consulte las instrucciones oficiales del Formulario I-765 (o pregunte a nuestro equipo) para confirmar la suya."
+    },
+    "elig_categoria_numero": {
+      "label": "Categoría de Elegibilidad — Número",
+      "hint": "El número entre paréntesis de su categoría de elegibilidad (por ejemplo, para (c)(9) — I-485 pendiente — escriba '9'; para (c)(8) — solicitud de asilo pendiente — escriba '8'; para (c)(26) — cónyuge H-4 de un(a) trabajador(a) H-1B — escriba '26'). Este número debe coincidir con la letra que escribió en el campo 'clase' de arriba — juntos forman su código de categoría completo (ej.: c + 9 = categoría (c)(9))."
+    },
+    "elig_categoria_sub": {
+      "label": "Categoría de Elegibilidad — Subcategoría (si tiene)",
+      "hint": "Ej.: para (c)(17)(iii) escriba 'iii'"
+    },
+    "stem_grau": {
+      "label": "Título STEM Obtenido (solo para la categoría (c)(3)(C))",
+      "hint": "Aplica solo si está solicitando la extensión STEM OPT de 24 meses (categoría (c)(3)(C)) — una extensión de OPT para graduados en campos de ciencia, tecnología, ingeniería, o matemáticas. Déjelo en blanco si no es su caso."
+    },
+    "stem_everify_empregador": {
+      "label": "Nombre del Empleador en E-Verify (solo para la categoría (c)(3)(C))",
+      "hint": "El empleador debe estar inscrito en E-Verify (el sistema federal de verificación de elegibilidad de empleo) — sin eso, no puede obtener la extensión STEM OPT con ellos. Pídale este dato al departamento de recursos humanos de su empleador; si aún no están inscritos, la inscripción es gratuita."
+    },
+    "stem_everify_id": {
+      "label": "Número de Identificación de la Empresa en E-Verify (solo para la categoría (c)(3)(C))",
+      "hint": "Este es el número de identificación de la empresa DENTRO de E-Verify (4-7 dígitos) — no es lo mismo que el EIN (número de identificación fiscal) de la empresa. Pida específicamente este número a recursos humanos, no el EIN."
+    },
+    "c26_recibo_numero": {
+      "label": "Número de Recibo del Formulario I-797 del Cónyuge H-1B (solo para la categoría (c)(26))",
+      "hint": "Categoría (c)(26): para cónyuges H-4 cuya pareja H-1B ya tiene un Formulario I-140 aprobado (o califica bajo ciertas disposiciones de AC21). Este es el número de recibo del Formulario I-797 que comprueba esa aprobación — generalmente comienza con 3 letras (ej.: WAC, EAC)."
+    },
+    "c8_preso_condenado": {
+      "label": "Categoría (c)(8): ¿Ha sido arrestado(a) y/o condenado(a) por algún delito alguna vez?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Pregunta sensible: incluye cualquier arresto O condena, incluso si el caso fue desestimado, el registro fue sellado/eliminado, o no fue declarado(a) culpable. Si la respuesta es \"Sí\", reúna los documentos del caso (reporte policial, sentencia) y consulte a nuestro equipo o a un abogado de inmigración antes de continuar — esto puede afectar su elegibilidad."
+    },
+    "c35_c36_recibo_numero": {
+      "label": "Número de Recibo del I-797 del Formulario I-140 (solo para la categoría (c)(35) o (c)(36))",
+      "hint": "Categorías (c)(35)/(c)(36): para personas con un Formulario I-140 aprobado (el/la trabajador(a) principal o su cónyuge/hijo(a)) que aún no pueden solicitar la green card debido a la falta de disponibilidad de visa, bajo \"circunstancias apremiantes\". Este es el número de recibo del Formulario I-797 que comprueba la aprobación del I-140."
+    },
+    "c35_c36_preso_condenado": {
+      "label": "Categoría (c)(35)/(c)(36): ¿Ha sido arrestado(a) y/o condenado(a) por algún delito alguna vez?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Pregunta sensible: incluye cualquier arresto O condena, incluso si el caso fue desestimado, el registro fue sellado/eliminado, o no fue declarado(a) culpable. Si la respuesta es \"Sí\", reúna los documentos del caso (reporte policial, sentencia) y consulte a nuestro equipo o a un abogado de inmigración antes de continuar — esto puede afectar su elegibilidad."
+    },
+    "leu_ingles": {
+      "label": "Declaración del/de la solicitante",
+      "options": {
+        "leu_ingles": "Puedo leer y entender inglés, y he leído y entendido cada pregunta e instrucción de esta solicitud, así como mis respuestas",
+        "leu_interprete": "El/la intérprete nombrado(a) en la Parte 4 me leyó cada pregunta e instrucción y mis respuestas en un idioma que entiendo con fluidez"
+      },
+      "hint": "Elija la primera opción si usted mismo(a) leyó y entendió el formulario en inglés. Elija la opción del intérprete solo si otra persona (indicada en la Parte 4) le leyó todo en voz alta, traducido a un idioma que usted entiende, antes de firmar."
+    },
+    "idioma_interprete": {
+      "label": "¿En qué idioma le leyó el/la intérprete el formulario?"
+    },
+    "abc_settlement": {
+      "label": "¿Es usted ciudadano(a) salvadoreño(a) o guatemalteco(a) elegible bajo el acuerdo ABC settlement?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Se refiere al acuerdo judicial \"American Baptist Churches v. Thornburgh\" (1991), que otorga autorización de trabajo a ciertos(as) salvadoreños(as) y guatemaltecos(as) con una solicitud de asilo pendiente presentada antes de 1996, bajo plazos específicos de registro. Responda \"Sí\" solo si ya sabe que pertenece a este grupo específico — si no está seguro(a), responda \"No\" y consulte a nuestro equipo."
+    },
+    "preparador_ajudou": {
+      "label": "¿Alguien preparó este formulario por usted, a su solicitud y basándose solo en la información que usted proporcionó?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No, lo completé yo mismo(a)"
+      },
+      "hint": "Responda \"Sí\" si alguien (un(a) abogado(a), un(a) preparador(a), un familiar) escribió o completó el formulario por usted, aunque haya sido solo con la información que usted proporcionó. Esto no cambia sus respuestas — solo identifica quién preparó físicamente el documento."
+    },
+    "preparador_nome": {
+      "label": "Nombre del/de la Preparador(a)"
+    },
+    "telefone": {
+      "label": "Número de Teléfono Durante el Día"
+    },
+    "celular": {
+      "label": "Número de Teléfono Móvil (si tiene)"
+    },
+    "email": {
+      "label": "Correo Electrónico (si tiene)"
+    },
+    "data_assinatura": {
+      "label": "Fecha de la Firma (se completa el día de la presentación, MM/DD/AAAA)"
+    },
+    "int_sobrenome": {
+      "label": "Intérprete — Apellido"
+    },
+    "int_nome": {
+      "label": "Intérprete — Nombre"
+    },
+    "int_organizacao": {
+      "label": "Intérprete — Nombre de la Empresa u Organización (si tiene)"
+    },
+    "int_end_rua": {
+      "label": "Intérprete — Número y Nombre de la Calle"
+    },
+    "int_end_tipo_unidade": {
+      "label": "Intérprete — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "int_end_num_unidade": {
+      "label": "Intérprete — Número de Unidad"
+    },
+    "int_end_cidade": {
+      "label": "Intérprete — Ciudad"
+    },
+    "int_end_estado": {
+      "label": "Intérprete — Estado (abreviatura, si es en EE. UU.)"
+    },
+    "int_end_cep": {
+      "label": "Intérprete — Código Postal (ZIP, si es en EE. UU.)"
+    },
+    "int_end_provincia": {
+      "label": "Intérprete — Provincia (si es fuera de EE. UU.)"
+    },
+    "int_end_codigo_postal": {
+      "label": "Intérprete — Código Postal (si es fuera de EE. UU.)"
+    },
+    "int_end_pais": {
+      "label": "Intérprete — País"
+    },
+    "int_telefone": {
+      "label": "Intérprete — Número de Teléfono Durante el Día"
+    },
+    "int_celular": {
+      "label": "Intérprete — Número de Teléfono Móvil (si tiene)"
+    },
+    "int_email": {
+      "label": "Intérprete — Correo Electrónico (si tiene)"
+    },
+    "int_idioma": {
+      "label": "Intérprete — Idioma de Fluidez"
+    },
+    "int_data_assinatura": {
+      "label": "Intérprete — Fecha de la Firma (MM/DD/AAAA)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparador(a) — Apellido"
+    },
+    "prep_nome": {
+      "label": "Preparador(a) — Nombre"
+    },
+    "prep_organizacao": {
+      "label": "Preparador(a) — Nombre de la Empresa u Organización (si tiene)"
+    },
+    "prep_end_rua": {
+      "label": "Preparador(a) — Número y Nombre de la Calle"
+    },
+    "prep_end_tipo_unidade": {
+      "label": "Preparador(a) — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "prep_end_num_unidade": {
+      "label": "Preparador(a) — Número de Unidad"
+    },
+    "prep_end_cidade": {
+      "label": "Preparador(a) — Ciudad"
+    },
+    "prep_end_estado": {
+      "label": "Preparador(a) — Estado (abreviatura, si es en EE. UU.)"
+    },
+    "prep_end_cep": {
+      "label": "Preparador(a) — Código Postal (ZIP, si es en EE. UU.)"
+    },
+    "prep_end_provincia": {
+      "label": "Preparador(a) — Provincia (si es fuera de EE. UU.)"
+    },
+    "prep_end_codigo_postal": {
+      "label": "Preparador(a) — Código Postal (si es fuera de EE. UU.)"
+    },
+    "prep_end_pais": {
+      "label": "Preparador(a) — País"
+    },
+    "prep_telefone": {
+      "label": "Preparador(a) — Número de Teléfono Durante el Día"
+    },
+    "prep_celular": {
+      "label": "Preparador(a) — Número de Teléfono Móvil (si tiene)"
+    },
+    "prep_email": {
+      "label": "Preparador(a) — Correo Electrónico (si tiene)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparador(a) — Fecha de la Firma (MM/DD/AAAA)"
+    }
+  }
+}

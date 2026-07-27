@@ -2,8 +2,10 @@
   "slug": "gc-aos",
   "title": "Green Card — Ajuste de Status (AOS)",
   "title_en": "Green Card — Adjustment of Status (AOS)",
+  "title_es": "Green Card — Ajuste de Estatus (AOS)",
   "subtitle": "Descubra se você pode solicitar o Green Card sem sair dos Estados Unidos (I-130 + I-485 + I-765 + I-131 + I-864).",
   "subtitle_en": "Find out whether you can apply for a Green Card without leaving the United States (I-130 + I-485 + I-765 + I-131 + I-864).",
+  "subtitle_es": "Descubra si puede solicitar la Green Card sin salir de los Estados Unidos (I-130 + I-485 + I-765 + I-131 + I-864).",
   "maps_to": "i-485",
   "questions": [
     {
@@ -11,10 +13,11 @@
       "type": "radio",
       "label": "Você está atualmente fisicamente presente nos Estados Unidos?",
       "label_en": "Are you currently physically present in the United States?",
+      "label_es": "¿Se encuentra usted actualmente físicamente presente en los Estados Unidos?",
       "required": true,
       "options": [
-        {"value": "sim", "label": "Sim", "label_en": "Yes"},
-        {"value": "nao", "label": "Não", "label_en": "No"}
+        {"value": "sim", "label": "Sim", "label_en": "Yes", "label_es": "Sí"},
+        {"value": "nao", "label": "Não", "label_en": "No", "label_es": "No"}
       ]
     },
     {
@@ -22,12 +25,13 @@
       "type": "radio",
       "label": "Como foi a sua última entrada nos Estados Unidos?",
       "label_en": "How did you last enter the United States?",
+      "label_es": "¿Cómo fue su última entrada a los Estados Unidos?",
       "required": true,
       "show_if": {"question": "presente_eua", "equals": "sim"},
       "options": [
-        {"value": "inspecionado", "label": "Entrei com visto e fui inspecionado(a) na fronteira/aeroporto", "label_en": "I entered with a visa and was inspected at the border/airport"},
-        {"value": "ewi", "label": "Atravessei a fronteira sem passar por inspeção", "label_en": "I crossed the border without being inspected"},
-        {"value": "nao_sei", "label": "Não sei / não tenho certeza", "label_en": "I don't know / not sure"}
+        {"value": "inspecionado", "label": "Entrei com visto e fui inspecionado(a) na fronteira/aeroporto", "label_en": "I entered with a visa and was inspected at the border/airport", "label_es": "Entré con visa y fui inspeccionado(a) en la frontera/aeropuerto"},
+        {"value": "ewi", "label": "Atravessei a fronteira sem passar por inspeção", "label_en": "I crossed the border without being inspected", "label_es": "Crucé la frontera sin pasar por inspección"},
+        {"value": "nao_sei", "label": "Não sei / não tenho certeza", "label_en": "I don't know / not sure", "label_es": "No sé / no estoy seguro(a)"}
       ]
     },
     {
@@ -35,17 +39,18 @@
       "type": "radio",
       "label": "Qual é o seu vínculo com a pessoa que está te patrocinando?",
       "label_en": "What is your relationship to the person sponsoring you?",
+      "label_es": "¿Cuál es su vínculo con la persona que lo(a) está patrocinando?",
       "required": true,
       "show_if": {"question": "presente_eua", "equals": "sim"},
       "options": [
-        {"value": "conjuge_cidadao", "label": "Cônjuge de cidadão americano", "label_en": "Spouse of a U.S. citizen"},
-        {"value": "filho_solteiro_menor21_cidadao", "label": "Filho(a) solteiro(a), menor de 21 anos, de cidadão americano", "label_en": "Unmarried child, under 21, of a U.S. citizen"},
-        {"value": "pai_mae_cidadao", "label": "Pai/mãe de cidadão americano (21 anos ou mais)", "label_en": "Parent of a U.S. citizen (21 or older)"},
-        {"value": "filho_solteiro_21mais_cidadao", "label": "Filho(a) solteiro(a), 21 anos ou mais, de cidadão americano", "label_en": "Unmarried child, 21 or older, of a U.S. citizen"},
-        {"value": "filho_casado_cidadao", "label": "Filho(a) casado(a) de cidadão americano", "label_en": "Married child of a U.S. citizen"},
-        {"value": "conjuge_ou_filho_lpr", "label": "Cônjuge ou filho(a) solteiro(a) de residente permanente (Green Card)", "label_en": "Spouse or unmarried child of a permanent resident (Green Card holder)"},
-        {"value": "irmao_cidadao", "label": "Irmão(ã) de cidadão americano (21 anos ou mais)", "label_en": "Sibling of a U.S. citizen (21 or older)"},
-        {"value": "outro", "label": "Outro (baseado em emprego, asilo, etc.)", "label_en": "Other (employment-based, asylum, etc.)"}
+        {"value": "conjuge_cidadao", "label": "Cônjuge de cidadão americano", "label_en": "Spouse of a U.S. citizen", "label_es": "Cónyuge de ciudadano(a) estadounidense"},
+        {"value": "filho_solteiro_menor21_cidadao", "label": "Filho(a) solteiro(a), menor de 21 anos, de cidadão americano", "label_en": "Unmarried child, under 21, of a U.S. citizen", "label_es": "Hijo(a) soltero(a), menor de 21 años, de ciudadano(a) estadounidense"},
+        {"value": "pai_mae_cidadao", "label": "Pai/mãe de cidadão americano (21 anos ou mais)", "label_en": "Parent of a U.S. citizen (21 or older)", "label_es": "Padre/madre de ciudadano(a) estadounidense (21 años o más)"},
+        {"value": "filho_solteiro_21mais_cidadao", "label": "Filho(a) solteiro(a), 21 anos ou mais, de cidadão americano", "label_en": "Unmarried child, 21 or older, of a U.S. citizen", "label_es": "Hijo(a) soltero(a), 21 años o más, de ciudadano(a) estadounidense"},
+        {"value": "filho_casado_cidadao", "label": "Filho(a) casado(a) de cidadão americano", "label_en": "Married child of a U.S. citizen", "label_es": "Hijo(a) casado(a) de ciudadano(a) estadounidense"},
+        {"value": "conjuge_ou_filho_lpr", "label": "Cônjuge ou filho(a) solteiro(a) de residente permanente (Green Card)", "label_en": "Spouse or unmarried child of a permanent resident (Green Card holder)", "label_es": "Cónyuge o hijo(a) soltero(a) de residente permanente (titular de Green Card)"},
+        {"value": "irmao_cidadao", "label": "Irmão(ã) de cidadão americano (21 anos ou mais)", "label_en": "Sibling of a U.S. citizen (21 or older)", "label_es": "Hermano(a) de ciudadano(a) estadounidense (21 años o más)"},
+        {"value": "outro", "label": "Outro (baseado em emprego, asilo, etc.)", "label_en": "Other (employment-based, asylum, etc.)", "label_es": "Otro (basado en empleo, asilo, etc.)"}
       ]
     },
     {
@@ -53,12 +58,13 @@
       "type": "radio",
       "label": "Qual é a situação da petição I-130 (ou da base que te qualifica) no momento?",
       "label_en": "What's the current status of the I-130 petition (or the underlying basis that qualifies you)?",
+      "label_es": "¿Cuál es la situación actual de la petición I-130 (o de la base que lo(a) califica)?",
       "required": true,
       "show_if": {"question": "presente_eua", "equals": "sim"},
       "options": [
-        {"value": "nao_protocolei", "label": "Ainda não protocolei", "label_en": "I haven't filed yet"},
-        {"value": "protocolado_pendente", "label": "Já protocolei, aguardando decisão", "label_en": "Already filed, awaiting a decision"},
-        {"value": "aprovado", "label": "Já foi aprovada", "label_en": "Already approved"}
+        {"value": "nao_protocolei", "label": "Ainda não protocolei", "label_en": "I haven't filed yet", "label_es": "Todavía no la he presentado"},
+        {"value": "protocolado_pendente", "label": "Já protocolei, aguardando decisão", "label_en": "Already filed, awaiting a decision", "label_es": "Ya la presenté, esperando una decisión"},
+        {"value": "aprovado", "label": "Já foi aprovada", "label_en": "Already approved", "label_es": "Ya fue aprobada"}
       ]
     },
     {
@@ -66,11 +72,12 @@
       "type": "radio",
       "label": "Você já teve alguma condenação criminal, nos Estados Unidos ou em outro país?",
       "label_en": "Have you ever had a criminal conviction, in the United States or in another country?",
+      "label_es": "¿Alguna vez ha tenido una condena penal, en los Estados Unidos o en otro país?",
       "required": true,
       "show_if": {"question": "presente_eua", "equals": "sim"},
       "options": [
-        {"value": "sim", "label": "Sim", "label_en": "Yes"},
-        {"value": "nao", "label": "Não", "label_en": "No"}
+        {"value": "sim", "label": "Sim", "label_en": "Yes", "label_es": "Sí"},
+        {"value": "nao", "label": "Não", "label_en": "No", "label_es": "No"}
       ]
     },
     {
@@ -78,11 +85,12 @@
       "type": "radio",
       "label": "Você já trabalhou nos Estados Unidos sem autorização, por mais de 180 dias somados, em algum momento?",
       "label_en": "Have you ever worked in the United States without authorization, for more than 180 days total, at any point?",
+      "label_es": "¿Alguna vez ha trabajado en los Estados Unidos sin autorización, por más de 180 días en total, en algún momento?",
       "required": true,
       "show_if": {"question": "presente_eua", "equals": "sim"},
       "options": [
-        {"value": "sim", "label": "Sim", "label_en": "Yes"},
-        {"value": "nao", "label": "Não", "label_en": "No"}
+        {"value": "sim", "label": "Sim", "label_en": "Yes", "label_es": "Sí"},
+        {"value": "nao", "label": "Não", "label_en": "No", "label_es": "No"}
       ]
     },
     {
@@ -90,11 +98,12 @@
       "type": "radio",
       "label": "Você já recebeu algum benefício assistencial do governo americano (ex: Medicaid, vale-alimentação) enquanto estava nos EUA?",
       "label_en": "Have you ever received a means-tested public benefit from the U.S. government (e.g. Medicaid, food stamps) while in the U.S.?",
+      "label_es": "¿Alguna vez ha recibido algún beneficio asistencial del gobierno estadounidense (por ejemplo: Medicaid, cupones de alimentos) mientras estaba en los EE. UU.?",
       "required": true,
       "show_if": {"question": "presente_eua", "equals": "sim"},
       "options": [
-        {"value": "sim", "label": "Sim", "label_en": "Yes"},
-        {"value": "nao", "label": "Não", "label_en": "No"}
+        {"value": "sim", "label": "Sim", "label_en": "Yes", "label_es": "Sí"},
+        {"value": "nao", "label": "Não", "label_en": "No", "label_es": "No"}
       ]
     }
   ]

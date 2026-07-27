@@ -11,7 +11,7 @@ from pathlib import Path
 from flask import session
 
 TRANSLATIONS_DIR = Path(__file__).resolve().parent / "translations"
-SUPPORTED_LANGS = ("pt", "en")
+SUPPORTED_LANGS = ("pt", "en", "es")
 DEFAULT_LANG = "pt"
 
 _cache: dict[str, dict] = {}

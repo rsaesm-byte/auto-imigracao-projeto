@@ -1,11 +1,15 @@
 {
   "tagline": "Remova as condições da sua residência obtida por casamento",
   "tagline_en": "Remove the conditions on residency obtained through marriage",
+  "tagline_es": "Elimine las condiciones de su residencia obtenida por matrimonio",
   "what_is": [
     "O Formulário I-751 remove as condições da residência permanente concedida a quem se casou há menos de 2 anos no momento em que recebeu o green card. Sem esse passo, a residência condicional expira automaticamente e a pessoa perde o status."
   ],
   "what_is_en": [
     "Form I-751 removes the conditions on permanent residency granted to those who had been married less than 2 years when they received their green card. Without this step, conditional residency automatically expires and the person loses their status."
+  ],
+  "what_is_es": [
+    "El Formulario I-751 elimina las condiciones de la residencia permanente otorgada a quienes se casaron hace menos de 2 años en el momento en que recibieron la green card. Sin este paso, la residencia condicional vence automáticamente y la persona pierde su estatus."
   ],
   "who_needs": [
     "Casais que continuam juntos e vão protocolar uma petição conjunta.",
@@ -14,6 +18,10 @@
   "who_needs_en": [
     "Couples who are still together and will file a joint petition.",
     "People who need a waiver due to good-faith divorce, death of the spouse, domestic violence, or extreme hardship."
+  ],
+  "who_needs_es": [
+    "Parejas que siguen juntas y presentarán una petición conjunta.",
+    "Personas que necesitan una dispensa (waiver) por divorcio de buena fe, fallecimiento del cónyuge, violencia doméstica, o dificultad extrema."
   ],
   "eligibility": [
     "Petição conjunta: deve ser protocolada dentro dos 90 dias imediatamente antes da expiração da residência condicional.",
@@ -26,6 +34,12 @@
     "A stepchild who wasn't included in their parent's petition and will file their own joint petition with the stepparent: can file at any time before conditional status expires (no need to wait for the 90-day window).",
     "Waiver of the joint filing requirement — 5 official grounds: (1) termination of status and removal would cause extreme hardship; (2) good-faith marriage but the spouse/stepparent died; (3) good-faith marriage but it ended by annulment or divorce; (4) good-faith marriage but you (or your child) suffered battery or extreme cruelty from the spouse; (5) your parent's good-faith marriage but you suffered battery/extreme cruelty from the stepparent or your own parent. In these 5 cases, you can file any time before conditional status expires.",
     "This tool gathers the information and fills out the form, but doesn't evaluate whether you qualify for a specific waiver — in those cases, consult an immigration attorney."
+  ],
+  "eligibility_es": [
+    "Petición conjunta: debe presentarse dentro de los 90 días inmediatamente anteriores al vencimiento de la residencia condicional.",
+    "Hijastro(a) que no fue incluido(a) en la petición de su padre/madre y presentará su propia petición conjunta con el padrastro/madrastra: puede presentarla en cualquier momento antes de que venza el estatus condicional (no necesita esperar la ventana de 90 días).",
+    "Dispensa (waiver) del requisito de petición conjunta — 5 bases oficiales: (1) el fin del estatus y la remoción resultarían en dificultad extrema; (2) matrimonio de buena fe pero el cónyuge/padrastro falleció; (3) matrimonio de buena fe pero terminó en anulación o divorcio; (4) matrimonio de buena fe pero usted (o su hijo) sufrió violencia o crueldad extrema por parte del cónyuge; (5) matrimonio de buena fe de sus padres pero usted sufrió violencia/crueldad extrema por parte del padrastro o de su propio padre/madre. En estos 5 casos, puede presentar la solicitud en cualquier momento antes de que venza el estatus condicional.",
+    "Esta herramienta reúne la información y completa el formulario, pero no evalúa si usted califica para una dispensa específica — en esos casos, consulte a un abogado de inmigración."
   ],
   "required_evidence": [
     "Em qualquer cenário: cópia da frente e verso do seu Green Card (e do de qualquer filho(a) condicional incluído na petição).",
@@ -45,6 +59,15 @@
     "If any petitioner/dependent lives outside the U.S. on military/government orders: 2 passport-style photos and 2 fingerprint cards (Form FD-258) for each person aged 14–79, plus a copy of the current military/government orders.",
     "Dispositions on any criminal charges, arrests, or convictions, if applicable."
   ],
+  "required_evidence_es": [
+    "En cualquier escenario: copia del frente y reverso de su Green Card (y de la de cualquier hijo(a) condicional incluido en la petición).",
+    "Evidencia de que la relación es genuina (bona fide) — USCIS acepta cualquier combinación de documentos que demuestren la relación desde el matrimonio hasta hoy (o hasta la separación/fallecimiento, según el caso).",
+    "Petición conjunta por fallecimiento: certificado de defunción del cónyuge/padrastro.",
+    "Dispensa por divorcio/anulación: la sentencia final de divorcio o anulación, y evidencia de las circunstancias del fin de la relación.",
+    "Dispensa por violencia doméstica: cualquier evidencia creíble (\"credible evidence\") relacionada — USCIS decide el peso de cada documento a su criterio.",
+    "Si algún peticionario/dependiente vive fuera de los EE. UU. por órdenes militares/gubernamentales: 2 fotos tipo pasaporte y 2 tarjetas de huellas digitales (Formulario FD-258) para cada persona de 14 a 79 años, más copia de las órdenes militares/gubernamentales vigentes.",
+    "Disposiciones de cualquier cargo, arresto o condena penal, si aplica."
+  ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
     "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
@@ -57,6 +80,12 @@
     "A supporting-documents checklist tailored to your actual answers — not a generic list.",
     "Progress saved automatically: close the tab and come back anytime, nothing is lost."
   ],
+  "whats_included_es": [
+    "El formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre la pestaña y regrese cuando quiera, sin perder nada."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -66,6 +95,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su proceso."
   ],
   "common_mistakes": [
     "Perder a janela de 90 dias antes da expiração do cartão (petição conjunta) — protocolar antes dessa janela pode ser rejeitado.",
@@ -80,6 +114,13 @@
     "In waiver requests, not clearly indicating which of the 5 waiver grounds applies.",
     "Forgetting that a stepchild who wasn't included in the parents' original petition can file their own joint petition at any time (no need to wait for the 90-day window).",
     "Forgetting to sign — an unsigned form is automatically rejected."
+  ],
+  "common_mistakes_es": [
+    "Perder la ventana de 90 días antes del vencimiento de la tarjeta (petición conjunta) — presentar la solicitud antes de esa ventana puede ser rechazado.",
+    "No reunir evidencia suficiente de que el matrimonio es genuino (bona fide) — cuentas conjuntas, hijos en común, contratos, seguros, fotos a lo largo del tiempo.",
+    "En solicitudes de dispensa, no indicar claramente cuál de las 5 bases de waiver aplica.",
+    "Olvidar que un(a) hijastro(a) que no entró en la petición original de los padres puede presentar su propia petición conjunta en cualquier momento (sin esperar la ventana de 90 días).",
+    "Olvidar firmar — un formulario sin firma es rechazado automáticamente."
   ],
   "faq": [
     {
@@ -117,8 +158,28 @@
       "a": "Extreme hardship if removed; death of the spouse/stepparent after a good-faith marriage; divorce or annulment after a good-faith marriage; battery or extreme cruelty you suffered during the marriage; or battery or extreme cruelty you suffered from a stepparent during your parents' good-faith marriage."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿Qué pasa si no presento la solicitud a tiempo?",
+      "a": "Su residencia condicional vence automáticamente y usted pierde su estatus de residente — es esencial presentar la solicitud dentro de la ventana de 90 días, salvo en solicitudes de dispensa."
+    },
+    {
+      "q": "Me divorcié antes de cumplir los 2 años. ¿Todavía puedo presentar la solicitud?",
+      "a": "Sí, mediante una solicitud de dispensa (waiver) por divorcio de buena fe — puede presentarla usted solo(a), sin su ex cónyuge, pero debe demostrar que el matrimonio fue genuino."
+    },
+    {
+      "q": "¿Necesito presentar la solicitud junto con mi cónyuge?",
+      "a": "En la petición conjunta, sí, ambos firman. En los casos de dispensa (waiver), puede presentarla usted solo(a)."
+    },
+    {
+      "q": "¿Cuáles son exactamente las 5 bases de dispensa (waiver)?",
+      "a": "Dificultad extrema si es removido(a); fallecimiento del cónyuge/padrastro tras un matrimonio de buena fe; divorcio o anulación tras un matrimonio de buena fe; violencia/crueldad extrema sufrida por usted durante el matrimonio; o violencia/crueldad extrema sufrida por usted por parte del padrastro durante el matrimonio de buena fe de sus padres."
+    }
+  ],
   "related_note": "Vem depois do I-485 (o green card condicional original) e costuma reutilizar evidência semelhante à do I-130/I-864.",
   "related_note_en": "Comes after the I-485 (the original conditional green card) and often reuses evidence similar to the I-130/I-864.",
+  "related_note_es": "Se presenta después del I-485 (la green card condicional original) y suele reutilizar evidencia similar a la del I-130/I-864.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

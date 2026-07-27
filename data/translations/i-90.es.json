@@ -1,0 +1,485 @@
+{
+  "title": "Solicitud de Sustitución de la Tarjeta de Residente Permanente — I-90",
+  "sections": {
+    "basico": "Parte 1 — Información Sobre Usted",
+    "enderecos": "Parte 1 — Domicilios",
+    "adicional": "Parte 1 — Información Adicional",
+    "tipo_aplicacao": "Parte 2 — Tipo de Solicitud",
+    "processamento": "Parte 3 — Información de Procesamiento",
+    "biografico": "Parte 3 — Información Biográfica",
+    "acomodacoes": "Parte 4 — Adaptaciones para Personas con Discapacidades",
+    "assinatura": "Parte 5 — Declaración del/de la Solicitante",
+    "interprete": "Parte 6 — Intérprete",
+    "preparador": "Parte 7 — Preparador(a)"
+  },
+  "questions": {
+    "nome_sobrenome": {
+      "label": "Apellido (Last Name) — su tarjeta se emitirá con este nombre"
+    },
+    "nome_nome": {
+      "label": "Nombre (First Name)"
+    },
+    "nome_meio": {
+      "label": "Segundo Nombre (Middle Name)"
+    },
+    "alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number)"
+    },
+    "uscis_online": {
+      "label": "Número de Cuenta en Línea de USCIS, si tiene"
+    },
+    "nome_mudou": {
+      "label": "¿Su nombre ha cambiado legalmente desde la emisión de su Tarjeta de Residente Permanente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No",
+        "nao_aplicavel": "N/A — Nunca recibí mi tarjeta anterior"
+      }
+    },
+    "nome_cartao_anterior_sobrenome": {
+      "label": "Nombre exactamente como aparece impreso en su tarjeta actual — Apellido"
+    },
+    "nome_cartao_anterior_nome": {
+      "label": "Nombre exactamente como aparece impreso en su tarjeta actual — Nombre"
+    },
+    "nome_cartao_anterior_meio": {
+      "label": "Nombre exactamente como aparece impreso en su tarjeta actual — Segundo Nombre"
+    },
+    "end_correio_cuidados_de": {
+      "label": "Domicilio de Correspondencia — A Nombre De (si tiene)"
+    },
+    "end_correio_rua": {
+      "label": "Domicilio de Correspondencia — Número y Nombre de la Calle"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Domicilio de Correspondencia — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_num_unidade": {
+      "label": "Domicilio de Correspondencia — Número de Unidad"
+    },
+    "end_correio_cidade": {
+      "label": "Domicilio de Correspondencia — Ciudad o Pueblo"
+    },
+    "end_correio_estado": {
+      "label": "Domicilio de Correspondencia — Estado (abreviatura, si es en EE. UU.)"
+    },
+    "end_correio_cep": {
+      "label": "Domicilio de Correspondencia — Código Postal (ZIP, si es en EE. UU.)"
+    },
+    "end_correio_provincia": {
+      "label": "Domicilio de Correspondencia — Provincia (si es fuera de EE. UU.)"
+    },
+    "end_correio_codigo_postal": {
+      "label": "Domicilio de Correspondencia — Código Postal (si es fuera de EE. UU.)"
+    },
+    "end_correio_pais": {
+      "label": "Domicilio de Correspondencia — País"
+    },
+    "end_fisico_rua": {
+      "label": "Domicilio Físico (si es diferente al de correspondencia) — Número y Nombre de la Calle"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Domicilio Físico — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_num_unidade": {
+      "label": "Domicilio Físico — Número de Unidad"
+    },
+    "end_fisico_cidade": {
+      "label": "Domicilio Físico — Ciudad o Pueblo"
+    },
+    "end_fisico_estado": {
+      "label": "Domicilio Físico — Estado (abreviatura, si es en EE. UU.)"
+    },
+    "end_fisico_cep": {
+      "label": "Domicilio Físico — Código Postal (ZIP, si es en EE. UU.)"
+    },
+    "end_fisico_provincia": {
+      "label": "Domicilio Físico — Provincia (si es fuera de EE. UU.)"
+    },
+    "end_fisico_codigo_postal": {
+      "label": "Domicilio Físico — Código Postal (si es fuera de EE. UU.)"
+    },
+    "end_fisico_pais": {
+      "label": "Domicilio Físico — País"
+    },
+    "sexo": {
+      "label": "Sexo",
+      "options": {
+        "masculino": "Masculino",
+        "feminino": "Femenino"
+      }
+    },
+    "data_nascimento": {
+      "label": "Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "cidade_nascimento": {
+      "label": "Ciudad/Pueblo/Aldea de Nacimiento"
+    },
+    "pais_nascimento": {
+      "label": "País de Nacimiento"
+    },
+    "mae_nome": {
+      "label": "Nombre de Pila de la Madre"
+    },
+    "pai_nome": {
+      "label": "Nombre de Pila del Padre"
+    },
+    "classe_admissao": {
+      "label": "Clase de Admisión",
+      "hint": "Código de 3 caracteres que indica la categoría bajo la cual se convirtió en residente permanente (ej.: IR1 = cónyuge de ciudadano(a) estadounidense, CR1 = lo mismo pero condicional). Búsquelo en su Green Card actual (sección \"Category\"), en su aviso de aprobación del I-485, o en su visa de inmigrante."
+    },
+    "data_admissao": {
+      "label": "Fecha de Admisión (MM/DD/AAAA)",
+      "hint": "Fecha en que se convirtió por primera vez en residente permanente — se encuentra en su Green Card actual o en su aviso de aprobación del I-485."
+    },
+    "ssn": {
+      "label": "Número de Seguro Social (SSN), si tiene"
+    },
+    "meu_status": {
+      "label": "Mi estatus es:",
+      "options": {
+        "residente_permanente": "Residente Permanente Legal",
+        "residente_comutante": "Residente Permanente en Estatus de Conmutador(a) (Commuter)",
+        "residente_condicional": "Residente Permanente Condicional"
+      },
+      "hint": "\"Conmutador(a)\" (commuter) es alguien que vive fuera de los EE. UU. (generalmente Canadá o México) pero trabaja en los EE. UU. como residente permanente sin vivir allí de tiempo completo — poco común. \"Condicional\" significa residencia permanente válida por solo 2 años (basada en un matrimonio o inversión reciente) — verifique la vigencia en su tarjeta actual. Si su tarjeta dice 10 años y usted vive en los EE. UU., es un(a) \"Residente Permanente Legal\"."
+    },
+    "motivo_secao_a": {
+      "label": "Si es Residente Permanente o Conmutador(a) — motivo de la solicitud:",
+      "options": {
+        "perdido_roubado_destruido": "Mi tarjeta anterior se perdió, fue robada, o fue destruida",
+        "emitido_nao_recebido": "Mi tarjeta anterior fue emitida pero nunca la recibí",
+        "mutilado": "Mi tarjeta actual está mutilada",
+        "erro_dhs": "Mi tarjeta actual tiene datos incorrectos debido a un error del DHS",
+        "biografia_mudou": "Mi nombre u otra información biográfica ha cambiado legalmente",
+        "cartao_expirado": "Mi tarjeta actual ya venció, o vencerá dentro de 6 meses",
+        "14anos_expira_apos_16": "Cumplí 14 años y me estoy registrando (la tarjeta vence DESPUÉS de los 16 años)",
+        "14anos_expira_antes_16": "Cumplí 14 años y me estoy registrando (la tarjeta vence ANTES de los 16 años)",
+        "residente_tomando_status_comutante": "Soy residente permanente y estoy tomando el estatus de conmutador(a)",
+        "comutante_tomando_residencia": "Soy conmutador(a) y ahora resido realmente en los EE. UU.",
+        "convertido_automaticamente": "Fui convertido(a) automáticamente al estatus de residente permanente",
+        "outro_edicao_anterior": "Tengo una edición anterior de la tarjeta, u otro motivo no listado"
+      },
+      "hint": "Elija la opción más cercana a su situación. Las dos últimas opciones (\"Cumplí 14 años...\") son solo para niños(as) que ya tenían una Green Card antes de los 14 años y ahora necesitan una foto/firma actualizada."
+    },
+    "motivo_comutante_local_poe": {
+      "label": "Si es conmutador(a) que ahora reside en los EE. UU.: ciudad y estado de su Puerto de Entrada (POE)",
+      "hint": "Aplica solo si eligió una opción de conmutador(a) arriba. \"Puerto de Entrada\" es el lugar (ciudad/cruce fronterizo) por donde usted ingresa regularmente a los EE. UU. para trabajar."
+    },
+    "motivo_secao_b": {
+      "label": "Si es Residente Permanente Condicional — motivo de la solicitud:",
+      "options": {
+        "perdido_roubado_destruido": "Mi tarjeta anterior se perdió, fue robada, o fue destruida",
+        "emitido_nao_recebido": "Mi tarjeta anterior fue emitida pero nunca la recibí",
+        "mutilado": "Mi tarjeta actual está mutilada",
+        "erro_dhs": "Mi tarjeta actual tiene datos incorrectos debido a un error del DHS",
+        "biografia_mudou": "Mi nombre u otra información biográfica ha cambiado legalmente"
+      },
+      "hint": "Se muestra solo si su tarjeta actual dice \"residente condicional\" (vigencia de 2 años). Nota: si usted está tratando de REMOVER las condiciones de su Green Card (por ejemplo, después de 2 años de matrimonio), este NO es el formulario correcto — eso se hace mediante el Formulario I-751, no el I-90. Use esta sección solo si su tarjeta condicional se perdió, fue robada, dañada, tiene un error del DHS, o cambió su información biográfica."
+    },
+    "local_aplicou_visto": {
+      "label": "Lugar donde solicitó su visa de inmigrante o ajuste de estatus",
+      "hint": "Ciudad/país del consulado de EE. UU. donde solicitó su visa de inmigrante, O ciudad/oficina de USCIS donde se presentó su ajuste de estatus (I-485)."
+    },
+    "local_emitido_visto": {
+      "label": "Lugar donde se emitió su visa de inmigrante, u oficina de USCIS donde se otorgó el ajuste de estatus",
+      "hint": "Ciudad/país del consulado de EE. UU. que emitió su visa de inmigrante, O la oficina de USCIS que aprobó su ajuste de estatus (I-485)."
+    },
+    "ja_esteve_processo_remocao": {
+      "label": "¿Alguna vez ha estado en proceso de exclusión, deportación, o remoción, o se le ha ordenado salir de los EE. UU.?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El \"proceso de remoción/deportación\" es el proceso de la corte de inmigración que puede terminar en una orden de salir de los EE. UU. — incluye audiencias en la corte de inmigración (EOIR), incluso si el caso fue cerrado o usted ganó. Responda basándose en todo su historial, incluso de hace años. Si no está seguro(a), confirme con nuestro equipo antes de responder — una respuesta incorrecta aquí puede tener consecuencias graves."
+    },
+    "abandonou_status": {
+      "label": "Desde que se convirtió en residente permanente, ¿ha presentado alguna vez el Formulario I-407 (Abandono de Estatus) o se ha determinado que abandonó su estatus?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El Formulario I-407 se usa para renunciar voluntariamente a una Green Card. \"Determinado que abandonó\" incluye casos en que un oficial fronterizo ya decidió que usted perdió su estatus por permanecer fuera de los EE. UU. demasiado tiempo sin los documentos correctos (por ejemplo, sin Permiso de Reingreso en un viaje largo). Si no está seguro(a), confirme con nuestro equipo."
+    },
+    "porto_entrada": {
+      "label": "Puerto de Entrada por donde fue admitido(a) a los EE. UU. (si ingresó con una visa de inmigrante)",
+      "hint": "El aeropuerto, cruce fronterizo terrestre, o puerto marítimo de EE. UU. donde fue admitido(a) oficialmente como residente permanente por primera vez (sello de pasaporte o registro I-94 en i94.cbp.dhs.gov)."
+    },
+    "destino_eua_admissao": {
+      "label": "Destino en los EE. UU. al momento de la admisión — Ciudad y Estado",
+      "hint": "Ciudad y estado que declaró como su destino en los EE. UU. cuando ingresó como residente permanente (puede ser diferente de donde vive hoy)."
+    },
+    "altura_pes": {
+      "label": "Estatura — pies"
+    },
+    "altura_polegadas": {
+      "label": "Estatura — pulgadas"
+    },
+    "peso": {
+      "label": "Peso en libras (lb)",
+      "hint": "Solo números, ej. 155. Se dividirá automáticamente en las 3 casillas de dígitos del PDF."
+    },
+    "etnia": {
+      "label": "Etnia",
+      "options": {
+        "hispanico": "Hispano o Latino",
+        "nao_hispanico": "No Hispano o Latino"
+      },
+      "hint": "Una categoría oficial del gobierno de EE. UU., separada de \"raza\" (siguientes preguntas) — esto solo pregunta si usted se identifica como hispano/latino, sin importar la raza. La mayoría de los brasileños no hispanos seleccionan \"No Hispano o Latino\" aquí."
+    },
+    "raca_branco": {
+      "label": "Raza: Blanco",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_negro": {
+      "label": "Raza: Negro o Afroamericano",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Raza: Asiático",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Raza: Indígena Americano o Nativo de Alaska",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Raza: Nativo de Hawái u Otra Isla del Pacífico",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "cor_olhos": {
+      "label": "Color de Ojos",
+      "options": {
+        "azul": "Azul",
+        "verde": "Verde",
+        "avela": "Avellana",
+        "rosa": "Rosado",
+        "marrom_avermelhado": "Granate",
+        "castanho": "Castaño",
+        "preto": "Negro",
+        "outro": "Otro",
+        "cinza": "Gris"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Color de Cabello",
+      "options": {
+        "careca": "Calvo (Sin Cabello)",
+        "loiro": "Rubio",
+        "grisalho": "Canoso",
+        "arenoso": "Rubio Arena",
+        "outro": "Otro",
+        "branco": "Blanco",
+        "ruivo": "Pelirrojo",
+        "castanho": "Castaño",
+        "preto": "Negro"
+      }
+    },
+    "acomodacao_solicitada": {
+      "label": "¿Está solicitando alguna adaptación debido a una discapacidad?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Opcional. Solicitar una adaptación (ej.: intérprete de lenguaje de señas, Braille) no afecta la evaluación de su caso — es solo para garantizar la accesibilidad durante la entrevista/proceso, si la hay."
+    },
+    "acomodacao_surdo": {
+      "label": "Soy sordo(a) o tengo dificultad auditiva y estoy solicitando una adaptación",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "acomodacao_surdo_detalhe": {
+      "label": "Describa la adaptación solicitada (ej.: lenguaje de señas)"
+    },
+    "acomodacao_cego": {
+      "label": "Soy ciego(a) o tengo baja visión y estoy solicitando una adaptación",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "acomodacao_cego_detalhe": {
+      "label": "Describa la adaptación solicitada"
+    },
+    "acomodacao_outra": {
+      "label": "Tengo otro tipo de discapacidad",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "acomodacao_outra_detalhe": {
+      "label": "Describa la naturaleza de la discapacidad y la adaptación solicitada"
+    },
+    "leu_ingles": {
+      "label": "Declaración del/de la solicitante",
+      "options": {
+        "leu_ingles": "Puedo leer y entender inglés, y he leído y entendido cada pregunta e instrucción de esta solicitud, así como mis respuestas",
+        "leu_interprete": "El/la intérprete nombrado(a) en la Parte 6 me leyó cada pregunta e instrucción y mis respuestas en un idioma que entiendo con fluidez"
+      },
+      "hint": "Si usted no lee/entiende inglés con fluidez, necesita un(a) intérprete (ver Parte 6) que le lea y traduzca el formulario antes de firmar — no se trata del inglés hablado cotidiano, sino de entender realmente lo que está firmando."
+    },
+    "idioma_interprete": {
+      "label": "¿En qué idioma le leyó el/la intérprete el formulario?"
+    },
+    "preparador_ajudou": {
+      "label": "¿Alguien preparó este formulario por usted, a su solicitud y basándose solo en la información que usted proporcionó?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No, lo completé yo mismo(a)"
+      },
+      "hint": "Se refiere a alguien que completó el formulario POR usted (ej.: consultor(a), abogado(a), un(a) amigo(a) que lo escribió), basándose solo en la información que usted proporcionó — no cambia la respuesta si usted mismo(a) lo escribió pero alguien lo ayudó a entender las preguntas."
+    },
+    "preparador_nome": {
+      "label": "Nombre del/de la preparador(a)"
+    },
+    "telefone": {
+      "label": "Número de Teléfono Durante el Día"
+    },
+    "celular": {
+      "label": "Número de Teléfono Móvil (si tiene)"
+    },
+    "email": {
+      "label": "Correo Electrónico (si tiene)"
+    },
+    "data_assinatura": {
+      "label": "Fecha de la Firma (se completa el día de la presentación, MM/DD/AAAA)"
+    },
+    "int_sobrenome": {
+      "label": "Intérprete — Apellido"
+    },
+    "int_nome": {
+      "label": "Intérprete — Nombre"
+    },
+    "int_organizacao": {
+      "label": "Intérprete — Nombre de la Empresa u Organización (si tiene)"
+    },
+    "int_end_rua": {
+      "label": "Intérprete — Número y Nombre de la Calle"
+    },
+    "int_end_tipo_unidade": {
+      "label": "Intérprete — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "int_end_num_unidade": {
+      "label": "Intérprete — Número de Unidad"
+    },
+    "int_end_cidade": {
+      "label": "Intérprete — Ciudad o Pueblo"
+    },
+    "int_end_estado": {
+      "label": "Intérprete — Estado (abreviatura, si es en EE. UU.)"
+    },
+    "int_end_cep": {
+      "label": "Intérprete — Código Postal (ZIP, si es en EE. UU.)"
+    },
+    "int_end_provincia": {
+      "label": "Intérprete — Provincia (si es fuera de EE. UU.)"
+    },
+    "int_end_codigo_postal": {
+      "label": "Intérprete — Código Postal (si es fuera de EE. UU.)"
+    },
+    "int_end_pais": {
+      "label": "Intérprete — País"
+    },
+    "int_telefone": {
+      "label": "Intérprete — Número de Teléfono Durante el Día"
+    },
+    "int_celular": {
+      "label": "Intérprete — Número de Teléfono Móvil (si tiene)"
+    },
+    "int_email": {
+      "label": "Intérprete — Correo Electrónico (si tiene)"
+    },
+    "int_idioma": {
+      "label": "Intérprete — Idioma de Fluidez"
+    },
+    "int_data_assinatura": {
+      "label": "Intérprete — Fecha de la Firma (MM/DD/AAAA)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparador(a) — Apellido"
+    },
+    "prep_nome": {
+      "label": "Preparador(a) — Nombre"
+    },
+    "prep_organizacao": {
+      "label": "Preparador(a) — Nombre de la Empresa u Organización (si tiene)"
+    },
+    "prep_end_rua": {
+      "label": "Preparador(a) — Número y Nombre de la Calle"
+    },
+    "prep_end_tipo_unidade": {
+      "label": "Preparador(a) — Tipo de Unidad (si aplica)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "prep_end_num_unidade": {
+      "label": "Preparador(a) — Número de Unidad"
+    },
+    "prep_end_cidade": {
+      "label": "Preparador(a) — Ciudad o Pueblo"
+    },
+    "prep_end_estado": {
+      "label": "Preparador(a) — Estado (abreviatura, si es en EE. UU.)"
+    },
+    "prep_end_cep": {
+      "label": "Preparador(a) — Código Postal (ZIP, si es en EE. UU.)"
+    },
+    "prep_end_provincia": {
+      "label": "Preparador(a) — Provincia (si es fuera de EE. UU.)"
+    },
+    "prep_end_codigo_postal": {
+      "label": "Preparador(a) — Código Postal (si es fuera de EE. UU.)"
+    },
+    "prep_end_pais": {
+      "label": "Preparador(a) — País"
+    },
+    "prep_telefone": {
+      "label": "Preparador(a) — Número de Teléfono Durante el Día"
+    },
+    "prep_celular": {
+      "label": "Preparador(a) — Número de Teléfono Móvil (si tiene)"
+    },
+    "prep_email": {
+      "label": "Preparador(a) — Correo Electrónico (si tiene)"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparador(a) — Fecha de la Firma (MM/DD/AAAA)"
+    }
+  }
+}

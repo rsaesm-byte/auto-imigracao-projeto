@@ -36,8 +36,8 @@ def _session_answers(slug: str) -> dict:
 
 
 def _pick(obj: dict, key: str, lang: str):
-    if lang == "en":
-        alt = obj.get(f"{key}_en")
+    if lang != "pt":
+        alt = obj.get(f"{key}_{lang}")
         if alt:
             return alt
     return obj.get(key)
@@ -142,13 +142,13 @@ def result(slug: str):
 
     outcome = EVALUATORS[slug](answers)
     messages = [
-        {"tone": m["tone"], "text": m["text_en"] if lang == "en" else m["text"]}
+        {"tone": m["tone"], "text": _pick(m, "text", lang)}
         for m in outcome["messages"]
     ]
     filing_window = None
     if outcome["filing_window"]:
         fw = outcome["filing_window"]
-        filing_window = {"tone": fw["tone"], "text": fw["text_en"] if lang == "en" else fw["text"]}
+        filing_window = {"tone": fw["tone"], "text": _pick(fw, "text", lang)}
 
     return render_template(
         "eligibility_result.html",

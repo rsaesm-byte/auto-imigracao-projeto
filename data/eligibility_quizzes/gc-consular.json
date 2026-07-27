@@ -2,8 +2,10 @@
   "slug": "gc-consular",
   "title": "Green Card — Processamento Consular",
   "title_en": "Green Card — Consular Processing",
+  "title_es": "Green Card — Trámite Consular",
   "subtitle": "Descubra se o processamento consular (I-130 + DS-260 + I-864) é o caminho certo para o seu caso.",
   "subtitle_en": "Find out whether consular processing (I-130 + DS-260 + I-864) is the right path for your case.",
+  "subtitle_es": "Descubra si el trámite consular (I-130 + DS-260 + I-864) es el camino correcto para su caso.",
   "maps_to": "i-130",
   "questions": [
     {
@@ -11,10 +13,11 @@
       "type": "radio",
       "label": "O beneficiário (quem está imigrando) está atualmente fora dos Estados Unidos, ou prefere fazer o processo pelo consulado mesmo estando nos EUA?",
       "label_en": "Is the beneficiary (the person immigrating) currently outside the United States, or do they prefer to process through a consulate even while in the U.S.?",
+      "label_es": "¿El (la) beneficiario(a) (quien está inmigrando) está actualmente fuera de los Estados Unidos, o prefiere hacer el trámite por el consulado aunque esté en los EE. UU.?",
       "required": true,
       "options": [
-        {"value": "fora_eua", "label": "Está fora dos Estados Unidos", "label_en": "They're outside the United States"},
-        {"value": "eua_prefere_consular", "label": "Está nos EUA, mas prefere processamento consular", "label_en": "They're in the U.S., but prefer consular processing"}
+        {"value": "fora_eua", "label": "Está fora dos Estados Unidos", "label_en": "They're outside the United States", "label_es": "Está fuera de los Estados Unidos"},
+        {"value": "eua_prefere_consular", "label": "Está nos EUA, mas prefere processamento consular", "label_en": "They're in the U.S., but prefer consular processing", "label_es": "Está en los EE. UU., pero prefiere el trámite consular"}
       ]
     },
     {
@@ -22,16 +25,17 @@
       "type": "radio",
       "label": "Qual é o vínculo do beneficiário com quem está patrocinando?",
       "label_en": "What is the beneficiary's relationship to the sponsor?",
+      "label_es": "¿Cuál es el vínculo del (de la) beneficiario(a) con quien lo(a) está patrocinando?",
       "required": true,
       "options": [
-        {"value": "conjuge_cidadao", "label": "Cônjuge de cidadão americano", "label_en": "Spouse of a U.S. citizen"},
-        {"value": "filho_solteiro_menor21_cidadao", "label": "Filho(a) solteiro(a), menor de 21 anos, de cidadão americano", "label_en": "Unmarried child, under 21, of a U.S. citizen"},
-        {"value": "pai_mae_cidadao", "label": "Pai/mãe de cidadão americano (21 anos ou mais)", "label_en": "Parent of a U.S. citizen (21 or older)"},
-        {"value": "filho_solteiro_21mais_cidadao", "label": "Filho(a) solteiro(a), 21 anos ou mais, de cidadão americano", "label_en": "Unmarried child, 21 or older, of a U.S. citizen"},
-        {"value": "filho_casado_cidadao", "label": "Filho(a) casado(a) de cidadão americano", "label_en": "Married child of a U.S. citizen"},
-        {"value": "conjuge_ou_filho_lpr", "label": "Cônjuge ou filho(a) solteiro(a) de residente permanente (Green Card)", "label_en": "Spouse or unmarried child of a permanent resident (Green Card holder)"},
-        {"value": "irmao_cidadao", "label": "Irmão(ã) de cidadão americano (21 anos ou mais)", "label_en": "Sibling of a U.S. citizen (21 or older)"},
-        {"value": "outro", "label": "Outro", "label_en": "Other"}
+        {"value": "conjuge_cidadao", "label": "Cônjuge de cidadão americano", "label_en": "Spouse of a U.S. citizen", "label_es": "Cónyuge de ciudadano(a) estadounidense"},
+        {"value": "filho_solteiro_menor21_cidadao", "label": "Filho(a) solteiro(a), menor de 21 anos, de cidadão americano", "label_en": "Unmarried child, under 21, of a U.S. citizen", "label_es": "Hijo(a) soltero(a), menor de 21 años, de ciudadano(a) estadounidense"},
+        {"value": "pai_mae_cidadao", "label": "Pai/mãe de cidadão americano (21 anos ou mais)", "label_en": "Parent of a U.S. citizen (21 or older)", "label_es": "Padre/madre de ciudadano(a) estadounidense (21 años o más)"},
+        {"value": "filho_solteiro_21mais_cidadao", "label": "Filho(a) solteiro(a), 21 anos ou mais, de cidadão americano", "label_en": "Unmarried child, 21 or older, of a U.S. citizen", "label_es": "Hijo(a) soltero(a), 21 años o más, de ciudadano(a) estadounidense"},
+        {"value": "filho_casado_cidadao", "label": "Filho(a) casado(a) de cidadão americano", "label_en": "Married child of a U.S. citizen", "label_es": "Hijo(a) casado(a) de ciudadano(a) estadounidense"},
+        {"value": "conjuge_ou_filho_lpr", "label": "Cônjuge ou filho(a) solteiro(a) de residente permanente (Green Card)", "label_en": "Spouse or unmarried child of a permanent resident (Green Card holder)", "label_es": "Cónyuge o hijo(a) soltero(a) de residente permanente (titular de Green Card)"},
+        {"value": "irmao_cidadao", "label": "Irmão(ã) de cidadão americano (21 anos ou mais)", "label_en": "Sibling of a U.S. citizen (21 or older)", "label_es": "Hermano(a) de ciudadano(a) estadounidense (21 años o más)"},
+        {"value": "outro", "label": "Outro", "label_en": "Other", "label_es": "Otro"}
       ]
     },
     {
@@ -39,12 +43,13 @@
       "type": "radio",
       "label": "Qual é a situação da petição I-130 no momento?",
       "label_en": "What's the current status of the I-130 petition?",
+      "label_es": "¿Cuál es la situación actual de la petición I-130?",
       "required": true,
       "options": [
-        {"value": "nao_protocolei", "label": "Ainda não protocolei", "label_en": "I haven't filed yet"},
-        {"value": "protocolado_pendente", "label": "Protocolado, aguardando decisão da USCIS", "label_en": "Filed, awaiting a USCIS decision"},
-        {"value": "aprovado_aguardando_nvc", "label": "Aprovado, aguardando o National Visa Center (NVC)", "label_en": "Approved, waiting on the National Visa Center (NVC)"},
-        {"value": "nvc_em_andamento", "label": "Já em andamento no NVC (reunindo documentos ou aguardando entrevista)", "label_en": "Already in progress at the NVC (gathering documents or awaiting interview)"}
+        {"value": "nao_protocolei", "label": "Ainda não protocolei", "label_en": "I haven't filed yet", "label_es": "Todavía no la he presentado"},
+        {"value": "protocolado_pendente", "label": "Protocolado, aguardando decisão da USCIS", "label_en": "Filed, awaiting a USCIS decision", "label_es": "Presentada, esperando una decisión de USCIS"},
+        {"value": "aprovado_aguardando_nvc", "label": "Aprovado, aguardando o National Visa Center (NVC)", "label_en": "Approved, waiting on the National Visa Center (NVC)", "label_es": "Aprobada, esperando al National Visa Center (NVC)"},
+        {"value": "nvc_em_andamento", "label": "Já em andamento no NVC (reunindo documentos ou aguardando entrevista)", "label_en": "Already in progress at the NVC (gathering documents or awaiting interview)", "label_es": "Ya en trámite en el NVC (reuniendo documentos o esperando la entrevista)"}
       ]
     },
     {
@@ -52,11 +57,12 @@
       "type": "radio",
       "label": "O beneficiário já morou nos Estados Unidos sem status legal (ilegalmente) por mais de 180 dias, em algum momento, antes de sair do país?",
       "label_en": "Has the beneficiary ever lived in the United States without legal status for more than 180 days, at any point, before leaving the country?",
+      "label_es": "¿El (la) beneficiario(a) alguna vez vivió en los Estados Unidos sin estatus legal (ilegalmente) por más de 180 días, en algún momento, antes de salir del país?",
       "required": true,
       "options": [
-        {"value": "sim", "label": "Sim", "label_en": "Yes"},
-        {"value": "nao", "label": "Não", "label_en": "No"},
-        {"value": "nao_sei", "label": "Não sei / não tenho certeza", "label_en": "I don't know / not sure"}
+        {"value": "sim", "label": "Sim", "label_en": "Yes", "label_es": "Sí"},
+        {"value": "nao", "label": "Não", "label_en": "No", "label_es": "No"},
+        {"value": "nao_sei", "label": "Não sei / não tenho certeza", "label_en": "I don't know / not sure", "label_es": "No sé / no estoy seguro(a)"}
       ]
     },
     {
@@ -64,10 +70,11 @@
       "type": "radio",
       "label": "O beneficiário tem alguma condenação criminal, já foi deportado dos EUA, ou tem histórico de fraude/uso de documento falso perante autoridades migratórias?",
       "label_en": "Does the beneficiary have any criminal conviction, has ever been deported from the U.S., or has a history of fraud/fake documents with immigration authorities?",
+      "label_es": "¿El (la) beneficiario(a) tiene alguna condena penal, ha sido deportado(a) de los EE. UU., o tiene antecedentes de fraude/uso de documentos falsos ante las autoridades de inmigración?",
       "required": true,
       "options": [
-        {"value": "sim", "label": "Sim", "label_en": "Yes"},
-        {"value": "nao", "label": "Não", "label_en": "No"}
+        {"value": "sim", "label": "Sim", "label_en": "Yes", "label_es": "Sí"},
+        {"value": "nao", "label": "Não", "label_en": "No", "label_es": "No"}
       ]
     }
   ]

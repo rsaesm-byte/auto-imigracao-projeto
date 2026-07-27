@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_illustrations.html" import handoff_illustration %}
+{% block title %}{{ t('start_for_other_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<p style="margin-bottom:18px;">
+  <a href="{{ url_for('wizard.dashboard') }}" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">
+    {{ icon('arrow-left', 14) }} {{ t('dashboard_title') }}
+  </a>
+</p>
+
+<section class="hero-landing" style="margin-bottom:20px;">
+  <div class="hero-landing-grid">
+    <div class="hero-landing-text">
+      <p class="eyebrow"><span class="eyebrow-star">★</span> {{ t('start_for_other_eyebrow') }}</p>
+      <h1 class="hero-title">{{ t('start_for_other_title') }}</h1>
+      <p class="hero-subtitle">{{ t('start_for_other_subtitle') }}</p>
+    </div>
+    <div class="hero-landing-art">
+      {{ handoff_illustration() }}
+    </div>
+  </div>
+</section>
+
+<div class="card">
+  <h2>{{ t('start_for_other_pick_heading') }}</h2>
+  <div class="form-grid">
+    {% for form in catalog %}
+    <a class="form-tile" href="{{ url_for('wizard.new_attempt', slug=form.slug) }}">
+      <span class="slug">{{ form.slug|upper }}</span>
+      <div class="name">{{ form.name }}</div>
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,369 @@
+{
+  "title": "I-131 — Solicitud de Documento de Viaje (Advance Parole)",
+  "sections": {
+    "tipo_pedido": "Parte 1 — Tipo de Solicitud",
+    "info_pessoal": "Parte 2 — Información Sobre Usted",
+    "info_biografica": "Parte 3 — Información Biográfica",
+    "historico": "Parte 4 — Historial de Documentos de Viaje",
+    "viagem": "Parte 7 — Sobre su Viaje Propuesto",
+    "contato_assinatura": "Parte 10 — Información de Contacto y Firma del Solicitante",
+    "interprete": "Parte 11 — Intérprete (si corresponde)",
+    "preparador": "Parte 12 — Preparador(a) (si alguien completó esto por usted)"
+  },
+  "questions": {
+    "i131_confirma_i485": {
+      "label": "¿Esta solicitud de Advance Parole (autorización de viaje) se basa en un Formulario I-485 (Ajuste de Estatus) pendiente?",
+      "hint": "Esta herramienta cubre específicamente este escenario (el más común para el paquete de Green Card AOS). Si su Advance Parole es por otro motivo (parolee actual, TPS, asilo pendiente, CNMI, etc.), hable con nuestro equipo -- esos otros motivos no están automatizados aquí.",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "i131_recibo_i485": {
+      "label": "Número de recibo de su Formulario I-485 (si presenta el I-131 por separado del I-485)",
+      "hint": "Déjelo en blanco si presenta el I-131 junto (concurrent filing) con el I-485."
+    },
+    "nome_sobrenome": {
+      "label": "Apellido"
+    },
+    "nome_nome": {
+      "label": "Nombre"
+    },
+    "nome_meio": {
+      "label": "Segundo nombre (si tiene)"
+    },
+    "outro_nome1_sobrenome": {
+      "label": "Otro nombre usado 1 — Apellido"
+    },
+    "outro_nome1_nome": {
+      "label": "Otro nombre usado 1 — Nombre"
+    },
+    "outro_nome1_meio": {
+      "label": "Otro nombre usado 1 — Segundo nombre"
+    },
+    "outro_nome2_sobrenome": {
+      "label": "Otro nombre usado 2 — Apellido"
+    },
+    "outro_nome2_nome": {
+      "label": "Otro nombre usado 2 — Nombre"
+    },
+    "outro_nome2_meio": {
+      "label": "Otro nombre usado 2 — Segundo nombre"
+    },
+    "outro_nome3_sobrenome": {
+      "label": "Otro nombre usado 3 — Apellido"
+    },
+    "outro_nome3_nome": {
+      "label": "Otro nombre usado 3 — Nombre"
+    },
+    "outro_nome3_meio": {
+      "label": "Otro nombre usado 3 — Segundo nombre"
+    },
+    "endereco_correspondencia_cuidado_de": {
+      "label": "Dirección postal — A nombre de (In Care Of, si aplica)",
+      "hint": "Complete esto solo si su correo se entrega a nombre de otra persona (por ejemplo, un(a) amigo(a), familiar o abogado(a)) -- escriba su nombre. Si el correo llega directamente a usted, déjelo en blanco."
+    },
+    "endereco_correspondencia_rua": {
+      "label": "Dirección postal — Número y nombre de la calle"
+    },
+    "endereco_correspondencia_tipo_unidade": {
+      "label": "Dirección postal — Tipo de unidad",
+      "options": {
+        "ste": "Suite (STE)",
+        "apt": "Apartamento (APT)",
+        "flr": "Piso (FLR)"
+      }
+    },
+    "endereco_correspondencia_numero_unidade": {
+      "label": "Dirección postal — Número de unidad"
+    },
+    "endereco_correspondencia_cidade": {
+      "label": "Dirección postal — Ciudad"
+    },
+    "endereco_correspondencia_estado": {
+      "label": "Dirección postal — Estado (EE. UU.)"
+    },
+    "endereco_correspondencia_cep": {
+      "label": "Dirección postal — Código postal (EE. UU.)"
+    },
+    "endereco_correspondencia_codigo_postal_intl": {
+      "label": "Dirección postal — Código postal (fuera de EE. UU.)"
+    },
+    "endereco_correspondencia_provincia": {
+      "label": "Dirección postal — Provincia/Estado (fuera de EE. UU.)"
+    },
+    "endereco_correspondencia_pais": {
+      "label": "Dirección postal — País"
+    },
+    "endereco_fisico_cuidado_de": {
+      "label": "Dirección física actual (si es diferente de la postal) — A nombre de",
+      "hint": "Complete esto solo si vive en esta dirección física a nombre de otra persona (por ejemplo, un(a) amigo(a), familiar o abogado(a) dueño(a) de la vivienda, que recibe correo allí en su nombre) -- escriba su nombre. Si vive en esta dirección bajo su propio nombre, déjelo en blanco."
+    },
+    "endereco_fisico_rua": {
+      "label": "Dirección física actual — Número y nombre de la calle"
+    },
+    "endereco_fisico_tipo_unidade": {
+      "label": "Dirección física actual — Tipo de unidad",
+      "options": {
+        "ste": "Suite (STE)",
+        "apt": "Apartamento (APT)",
+        "flr": "Piso (FLR)"
+      }
+    },
+    "endereco_fisico_numero_unidade": {
+      "label": "Dirección física actual — Número de unidad"
+    },
+    "endereco_fisico_cidade": {
+      "label": "Dirección física actual — Ciudad"
+    },
+    "endereco_fisico_estado": {
+      "label": "Dirección física actual — Estado (EE. UU.)"
+    },
+    "endereco_fisico_cep": {
+      "label": "Dirección física actual — Código postal (EE. UU.)"
+    },
+    "endereco_fisico_codigo_postal_intl": {
+      "label": "Dirección física actual — Código postal (fuera de EE. UU.)"
+    },
+    "endereco_fisico_provincia": {
+      "label": "Dirección física actual — Provincia/Estado (fuera de EE. UU.)"
+    },
+    "endereco_fisico_pais": {
+      "label": "Dirección física actual — País"
+    },
+    "numero_a": {
+      "label": "Número de Registro de Extranjero (A-Number, si tiene)",
+      "hint": "Formato A-XXXXXXXXX. Déjelo en blanco si nunca ha recibido uno."
+    },
+    "pais_nascimento": {
+      "label": "País de nacimiento"
+    },
+    "pais_cidadania": {
+      "label": "País de ciudadanía/nacionalidad"
+    },
+    "sexo": {
+      "label": "Sexo",
+      "options": {
+        "F": "Femenino",
+        "M": "Masculino"
+      }
+    },
+    "data_nascimento": {
+      "label": "Fecha de nacimiento"
+    },
+    "ssn": {
+      "label": "Número de Seguro Social (SSN, si tiene)"
+    },
+    "uscis_online_account": {
+      "label": "Número de su cuenta en línea de USCIS (si tiene)",
+      "hint": "12 dígitos, sin guiones. Es el número de su cuenta en myaccount.uscis.gov, no un número de recibo de caso. Déjelo en blanco si nunca creó esa cuenta."
+    },
+    "classe_admissao": {
+      "label": "Clase de admisión actual (si tiene)",
+      "hint": "El código de estatus con el que fue admitido(a) por última vez a los EE. UU. (por ejemplo, B2, F1) -- consulte su Formulario I-94."
+    },
+    "numero_i94": {
+      "label": "Número de su Formulario I-94 más reciente (si tiene)",
+      "hint": "Busque o descargue su I-94 en i94.cbp.dhs.gov -- el registro oficial de su entrada a EE. UU. 11 dígitos."
+    },
+    "data_expiracao_i94": {
+      "label": "Fecha de vencimiento de su estadía autorizada según su I-94 (si tiene)",
+      "hint": "La fecha hasta la cual está autorizado(a) a permanecer en EE. UU. bajo su estatus actual -- también en i94.cbp.dhs.gov. Si tiene un ajuste de estatus (I-485) pendiente, esta fecha puede haber pasado ya; eso normalmente no es un problema para el Advance Parole, pero confírmelo con nuestro equipo."
+    },
+    "etnia": {
+      "label": "Origen étnico",
+      "options": {
+        "NH": "No hispano o latino",
+        "H": "Hispano o latino"
+      },
+      "hint": "Es una categoría oficial del gobierno de EE. UU., separada de la \"raza\" (siguiente pregunta) -- esto solo pregunta si usted se identifica como hispano/latino (origen cultural/lingüístico español o latinoamericano), sin importar la raza."
+    },
+    "raca_negro": {
+      "label": "Raza: Negro o afroamericano",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Raza: Nativo de Hawái u otras Islas del Pacífico",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Raza: Indígena americano o nativo de Alaska",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Raza: Asiático",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_branco": {
+      "label": "Raza: Blanco",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "altura_pes": {
+      "label": "Estatura — pies",
+      "hint": "Un número entre 2 y 8."
+    },
+    "altura_polegadas": {
+      "label": "Estatura — pulgadas",
+      "hint": "Un número entre 0 y 11."
+    },
+    "peso": {
+      "label": "Peso en libras (lb)"
+    },
+    "cor_olhos": {
+      "label": "Color de ojos",
+      "options": {
+        "azul": "Azul",
+        "verde": "Verde",
+        "avela": "Avellana",
+        "rosa": "Rosado",
+        "marrom_avermelhado": "Marrón rojizo",
+        "castanho": "Castaño",
+        "preto": "Negro",
+        "outro": "Otro",
+        "cinza": "Gris"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Color de cabello",
+      "options": {
+        "careca": "Calvo (sin cabello)",
+        "loiro": "Rubio",
+        "grisalho": "Canoso",
+        "arenoso": "Rubio ceniza",
+        "outro": "Otro",
+        "branco": "Blanco",
+        "ruivo": "Pelirrojo",
+        "castanho": "Castaño",
+        "preto": "Negro"
+      }
+    },
+    "historico_processo_remocao": {
+      "label": "¿Usted (o la persona que recibirá el documento) ha estado alguna vez en un proceso de exclusión, deportación, remoción o rescisión?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "\"Proceso de remoción\" es el proceso ante la corte de inmigración que puede terminar en deportación -- diferente de simplemente estar fuera de estatus. Responda \"Sí\" si alguna vez recibió un Aviso de Comparecencia (NTA) o tuvo una audiencia, incluso si el caso se cerró después o usted ganó. Si no está seguro(a), responda \"Sí\" y confirme con nuestro equipo antes de enviar -- esto puede afectar su elegibilidad."
+    },
+    "historico_reentry_refugee_emitido": {
+      "label": "¿Alguna vez le han emitido un Permiso de Reingreso o un Documento de Viaje para Refugiados?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Un Permiso de Reingreso y un Documento de Viaje para Refugiados son OTROS tipos de documento de viaje, diferentes del Advance Parole que está solicitando ahora. Esta pregunta es sobre su historial -- responda \"Sí\" solo si ha tenido específicamente uno de estos dos documentos antes (no Advance Parole, que se pregunta después)."
+    },
+    "historico_reentry_refugee_data": {
+      "label": "Fecha en que se emitió ese documento"
+    },
+    "historico_reentry_refugee_situacao": {
+      "label": "Estado actual de ese documento (adjunto, perdido, robado, dañado/destruido, todavía en su posesión, etc.)"
+    },
+    "historico_advance_parole_emitido": {
+      "label": "¿Alguna vez le han emitido un Documento de Advance Parole?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Responda \"Sí\" si ha tenido un Advance Parole aprobado en cualquier solicitud anterior (incluso de un caso diferente) -- no lo confunda con su I-94 o visa."
+    },
+    "historico_advance_parole_data": {
+      "label": "Fecha en que se emitió ese Advance Parole"
+    },
+    "historico_advance_parole_situacao": {
+      "label": "Estado actual de ese Advance Parole (adjunto, perdido, robado, dañado/destruido, todavía en su posesión, etc.)"
+    },
+    "historico_solicitando_substituicao": {
+      "label": "¿Está solicitando un reemplazo de Permiso de Reingreso, Documento de Viaje para Refugiados, Documento de Advance Parole, o Documento de Autorización de Viaje TPS?",
+      "hint": "Si es así, hable con nuestro equipo para los detalles específicos del reemplazo -- esta herramienta cubre la solicitud inicial de Advance Parole, no el proceso completo de reemplazo.",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "viagem_data_partida": {
+      "label": "Fecha prevista de salida"
+    },
+    "viagem_proposito": {
+      "label": "Propósito del viaje",
+      "hint": "Explique brevemente el motivo del viaje (por ejemplo, visitar familiares, negocios, turismo)."
+    },
+    "viagem_paises": {
+      "label": "Países que planea visitar"
+    },
+    "viagem_quantidade_viagens": {
+      "label": "¿Para cuántos viajes planea usar este documento?",
+      "options": {
+        "O": "Un viaje",
+        "M": "Más de un viaje"
+      },
+      "hint": "\"Un viaje\" autoriza una única salida y regreso; una vez usado, el documento queda inválido aunque la fecha de vencimiento impresa no haya pasado todavía. \"Más de un viaje\" le permite salir y regresar tantas veces como necesite mientras el documento sea válido. Si no está seguro(a) de cuántas veces viajará, varios viajes suele ser la opción más segura."
+    },
+    "viagem_duracao_esperada": {
+      "label": "Duración esperada del viaje (en días)"
+    },
+    "contato_telefone": {
+      "label": "Su número de teléfono diurno"
+    },
+    "contato_celular": {
+      "label": "Su teléfono celular (si tiene)"
+    },
+    "contato_email": {
+      "label": "Su correo electrónico (si tiene)"
+    },
+    "interprete_sobrenome": {
+      "label": "Apellido del/de la intérprete"
+    },
+    "interprete_nome": {
+      "label": "Nombre del/de la intérprete"
+    },
+    "interprete_empresa": {
+      "label": "Empresa/organización del/de la intérprete (si tiene)"
+    },
+    "interprete_telefone": {
+      "label": "Número de teléfono diurno del/de la intérprete"
+    },
+    "interprete_celular": {
+      "label": "Teléfono celular del/de la intérprete (si tiene)"
+    },
+    "interprete_email": {
+      "label": "Correo electrónico del/de la intérprete (si tiene)"
+    },
+    "interprete_idioma": {
+      "label": "Idioma en el que el/la intérprete es fluido (además del inglés)"
+    },
+    "preparador_sobrenome": {
+      "label": "Apellido del/de la preparador(a)"
+    },
+    "preparador_nome": {
+      "label": "Nombre del/de la preparador(a)"
+    },
+    "preparador_empresa": {
+      "label": "Empresa/organización del/de la preparador(a) (si tiene)"
+    },
+    "preparador_telefone": {
+      "label": "Número de teléfono diurno del/de la preparador(a)"
+    },
+    "preparador_celular": {
+      "label": "Teléfono celular del/de la preparador(a) (si tiene)"
+    },
+    "preparador_email": {
+      "label": "Correo electrónico del/de la preparador(a) (si tiene)"
+    }
+  }
+}

@@ -59,6 +59,7 @@ def evaluate(answers: dict) -> dict:
     result = {
         "region_label": region["label"],
         "region_label_en": region["label_en"],
+        "region_label_es": region.get("label_es", region["label"]),
         "household_size": household_size,
         "use_100_pct": use_100_pct,
         "threshold": threshold,

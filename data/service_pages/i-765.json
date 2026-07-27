@@ -1,11 +1,15 @@
 {
   "tagline": "Autorização (ou renovação) de trabalho nos Estados Unidos",
   "tagline_en": "Work authorization (or renewal) in the United States",
+  "tagline_es": "Autorización (o renovación) de trabajo en los Estados Unidos",
   "what_is": [
     "O Formulário I-765 é usado para solicitar ou renovar a Autorização de Trabalho (Employment Authorization Document, ou EAD) — o documento que permite trabalhar legalmente nos Estados Unidos. Existem dezenas de categorias de elegibilidade diferentes, cada uma associada a uma situação migratória específica."
   ],
   "what_is_en": [
     "Form I-765 is used to apply for or renew a work permit (Employment Authorization Document, or EAD) — the document that allows you to legally work in the United States. There are dozens of different eligibility categories, each tied to a specific immigration situation."
+  ],
+  "what_is_es": [
+    "El Formulario I-765 se usa para solicitar o renovar la Autorización de Empleo (Employment Authorization Document, o EAD) — el documento que permite trabajar legalmente en los Estados Unidos. Existen decenas de categorías de elegibilidad diferentes, cada una asociada a una situación migratoria específica."
   ],
   "who_needs": [
     "Pessoas com pedido de ajuste de status (I-485) pendente que querem trabalhar enquanto o caso é analisado.",
@@ -19,6 +23,12 @@
     "International students on OPT (Optional Practical Training).",
     "Other eligible categories listed in the official I-765 instructions."
   ],
+  "who_needs_es": [
+    "Personas con una solicitud de ajuste de estatus (I-485) pendiente que quieren trabajar mientras se resuelve el caso.",
+    "Cónyuges de titulares de visas como H-1B, L-1 o E, elegibles para autorización de trabajo derivada.",
+    "Estudiantes internacionales en OPT (Optional Practical Training).",
+    "Otras categorías elegibles listadas en las instrucciones oficiales del I-765."
+  ],
   "eligibility": [
     "A categoria de elegibilidade certa (item 27 do formulário — por exemplo (c)(3)(C) para STEM OPT ou (c)(9) para I-485 pendente) determina os documentos exigidos, o valor da taxa e até campos extras do formulário.",
     "Verifique nas instruções oficiais qual categoria corresponde à sua situação antes de preencher."
@@ -26,6 +36,10 @@
   "eligibility_en": [
     "The correct eligibility category (item 27 of the form — e.g. (c)(3)(C) for STEM OPT or (c)(9) for a pending I-485) determines the required documents, the fee amount, and even extra fields on the form.",
     "Check the official instructions for which category matches your situation before filling it out."
+  ],
+  "eligibility_es": [
+    "La categoría de elegibilidad correcta (punto 27 del formulario — por ejemplo (c)(3)(C) para STEM OPT o (c)(9) para I-485 pendiente) determina los documentos exigidos, el monto de la tarifa e incluso campos adicionales del formulario.",
+    "Verifique en las instrucciones oficiales qué categoría corresponde a su situación antes de completar el formulario."
   ],
   "required_evidence": [
     "A USCIS publica um checklist de evidência específico por categoria de elegibilidade (item 27) — a evidência muda bastante entre, por exemplo, (c)(9) I-485 pendente e (c)(3)(C) STEM OPT.",
@@ -36,6 +50,11 @@
     "USCIS publishes an evidence checklist specific to each eligibility category (item 27) — required evidence varies a lot between, say, (c)(9) pending I-485 and (c)(3)(C) STEM OPT.",
     "Rules common to nearly every category: 2 passport-style photos (unmounted, not edited/retouched digitally — retouched photos delay processing and can require an in-person biometrics appointment), copies of current identity/status documents.",
     "If you're replacing a card with an error caused by USCIS itself, you don't need to pay a new fee — but follow the specific procedure described in the instructions (\"Replacement for Card Error\")."
+  ],
+  "required_evidence_es": [
+    "USCIS publica una lista de evidencia específica por categoría de elegibilidad (punto 27) — la evidencia varía bastante entre, por ejemplo, (c)(9) I-485 pendiente y (c)(3)(C) STEM OPT.",
+    "Reglas comunes a casi todas las categorías: 2 fotos tipo pasaporte (no montadas, sin edición/retoque digital — las fotos retocadas retrasan el proceso y pueden requerir una cita presencial de datos biométricos), copia de documentos de identidad/estatus vigentes.",
+    "Si está sustituyendo una tarjeta con un error causado por la propia USCIS, no es necesario pagar una nueva tarifa — pero siga el procedimiento específico descrito en las instrucciones (\"Replacement for Card Error\")."
   ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
@@ -49,6 +68,12 @@
     "A supporting-documents checklist tailored to your actual answers — not a generic list.",
     "Progress saved automatically: close the tab and come back anytime, nothing is lost."
   ],
+  "whats_included_es": [
+    "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -58,6 +83,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listas para su proceso."
   ],
   "common_mistakes": [
     "Escolher a categoria de elegibilidade errada (item 27) — isso pode levar à rejeição do pedido.",
@@ -72,6 +102,13 @@
     "Renewing outside the recommended window — USCIS suggests filing the renewal up to 180 days before the current EAD expires (and at least 90 days before, depending on the category), without exceeding that window.",
     "Submitting a retouched, digitally edited, or mounted photo — USCIS rejects these and it can delay processing or require an in-person appointment.",
     "Not including a copy of the I-485 receipt (or other evidence it's pending) when requesting an EAD under category (c)(9) outside the same package."
+  ],
+  "common_mistakes_es": [
+    "Elegir la categoría de elegibilidad incorrecta (punto 27) — esto puede llevar al rechazo de la solicitud.",
+    "No adjuntar la evidencia exigida específicamente para la categoría elegida — cada categoría tiene su propia lista de verificación.",
+    "Renovar fuera de la ventana recomendada — USCIS sugiere presentar la renovación hasta 180 días antes del vencimiento del EAD actual (y al menos 90 días antes, según la categoría), sin exceder ese plazo.",
+    "Enviar una foto retocada, editada digitalmente o montada — USCIS la rechaza y esto puede retrasar el proceso o exigir una cita presencial.",
+    "No incluir una copia del recibo del I-485 (u otra evidencia de que está pendiente) al solicitar el EAD en la categoría (c)(9) fuera del mismo paquete."
   ],
   "faq": [
     {
@@ -109,8 +146,28 @@
       "a": "Yes, and it's recommended — USCIS suggests filing up to 180 days before expiration (category (c)(9), for example, asks for at least 90 days before)."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿Cuánto tiempo tarda en llegar el EAD?",
+      "a": "Una vez aprobada, la tarjeta suele producirse en cerca de 2 semanas y se envía por USPS Priority Mail — pero el tiempo hasta la aprobación varía según la categoría y el centro de servicio. Consulte la herramienta oficial de tiempos de procesamiento de USCIS."
+    },
+    {
+      "q": "¿Puedo trabajar mientras el I-765 está pendiente?",
+      "a": "Solo después de recibir la tarjeta EAD aprobada (o, en algunas categorías específicas, con autorización automática prevista por ley) — no está permitido trabajar solo porque la solicitud está pendiente, salvo las excepciones previstas en las instrucciones oficiales."
+    },
+    {
+      "q": "Me mudé después de presentar la solicitud. ¿Y ahora?",
+      "a": "Actualice su dirección con USCIS y con USPS de inmediato — si no la actualiza a tiempo, su caso puede retrasarse, la tarjeta puede perderse, y es posible que deba volver a solicitar y pagar la tarifa de nuevo."
+    },
+    {
+      "q": "¿Puedo renovar el EAD antes de que venza?",
+      "a": "Sí, y se recomienda — USCIS sugiere presentar la solicitud hasta 180 días antes del vencimiento (la categoría (c)(9), por ejemplo, pide al menos 90 días antes)."
+    }
+  ],
   "related_note": "Frequentemente solicitado junto com o I-485 (categoria (c)(9)) ou como benefício derivado de um visto de trabalho de um familiar.",
   "related_note_en": "Often filed together with the I-485 (category (c)(9)) or as a derivative benefit of a family member's work visa.",
+  "related_note_es": "Con frecuencia se solicita junto con el I-485 (categoría (c)(9)) o como beneficio derivado de una visa de trabajo de un familiar.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni ofrece asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

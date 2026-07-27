@@ -1,11 +1,15 @@
 {
   "tagline": "Torne-se residente permanente sem sair dos Estados Unidos",
   "tagline_en": "Become a permanent resident without leaving the United States",
+  "tagline_es": "Conviértase en residente permanente sin salir de los Estados Unidos",
   "what_is": [
     "O Formulário I-485 é o pedido para se tornar residente permanente legal (green card) sem precisar sair dos Estados Unidos. Ele está disponível para quem já está fisicamente presente no país e se qualifica por vínculo familiar, emprego, asilo/refúgio, ou uma das categorias especiais previstas na Parte 2 do formulário."
   ],
   "what_is_en": [
     "Form I-485 is the application to become a lawful permanent resident (green card holder) without leaving the United States. It's available to people already physically present in the country who qualify through family, employment, asylum/refugee status, or one of the special categories listed in Part 2 of the form."
+  ],
+  "what_is_es": [
+    "El Formulario I-485 es la solicitud para convertirse en residente permanente legal (green card) sin necesidad de salir de los Estados Unidos. Está disponible para quienes ya están físicamente presentes en el país y califican por vínculo familiar, empleo, asilo/refugio, o una de las categorías especiales previstas en la Parte 2 del formulario."
   ],
   "who_needs": [
     "Beneficiários de uma petição familiar (I-130) aprovada ou com visto imediatamente disponível.",
@@ -19,6 +23,12 @@
     "Asylees and refugees eligible to adjust status after a period in the U.S.",
     "Other special categories (visa lottery, crime/violence victims, and others)."
   ],
+  "who_needs_es": [
+    "Beneficiarios de una petición familiar (I-130) aprobada o con una visa inmediatamente disponible.",
+    "Beneficiarios de una petición basada en empleo (I-140).",
+    "Asilados y refugiados elegibles para ajustar estatus después de un período en los EE. UU.",
+    "Otras categorías especiales (lotería de visas, víctimas de delitos/violencia, entre otras)."
+  ],
   "eligibility": [
     "A Parte 9 do formulário (Antecedentes e Motivos de Inadmissibilidade) tem cerca de 90 perguntas obrigatórias sobre histórico criminal, segurança e imigração.",
     "Respostas \"Sim\" normalmente exigem explicação detalhada e documentação, e podem indicar necessidade de uma dispensa (waiver) — nesses casos, procure um advogado de imigração antes de protocolar."
@@ -26,6 +36,10 @@
   "eligibility_en": [
     "Part 9 of the form (General Eligibility and Inadmissibility Grounds) has around 90 required questions about criminal history, security, and immigration background.",
     "\"Yes\" answers usually require a detailed explanation and documentation, and may signal the need for a waiver — in those cases, consult an immigration attorney before filing."
+  ],
+  "eligibility_es": [
+    "La Parte 9 del formulario (Antecedentes y Motivos de Inadmisibilidad) tiene alrededor de 90 preguntas obligatorias sobre antecedentes penales, seguridad e historial migratorio.",
+    "Las respuestas \"Sí\" normalmente requieren una explicación detallada y documentación, y pueden indicar la necesidad de una dispensa (waiver) — en esos casos, consulte a un abogado de inmigración antes de presentar la solicitud."
   ],
   "required_evidence": [
     "Formulário I-693 (Relatório de Exame Médico) preenchido por um médico credenciado pela USCIS (civil surgeon), entregue a você em envelope selado — se protocolar online, você mesmo abre o envelope para enviar a cópia, mas deve guardar o original selado até a decisão final do caso.",
@@ -39,6 +53,12 @@
     "In family-based cases: Form I-864 (Affidavit of Support) from the sponsor.",
     "A copy of Form I-797C (receipt notice) for the underlying petition, if filing the I-485 separately."
   ],
+  "required_evidence_es": [
+    "Formulario I-693 (Informe de Examen Médico) completado por un médico designado por USCIS (civil surgeon), entregado a usted en un sobre sellado — si presenta la solicitud en línea, usted mismo abre el sobre para cargar la copia, pero debe conservar el original sellado hasta la decisión final del caso.",
+    "Evidencia de que hay una visa disponible en su categoría (Boletín de Visas) y de la petición subyacente (I-130 o I-140) aprobada o pendiente.",
+    "En los casos basados en familia: el Formulario I-864 (Declaración de Apoyo Financiero) del patrocinador.",
+    "Copia del Formulario I-797C (aviso de recibo) de la petición subyacente, si presenta el I-485 por separado."
+  ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
     "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
@@ -51,6 +71,12 @@
     "A supporting-documents checklist tailored to your actual answers — not a generic list.",
     "Progress saved automatically: close the tab and come back anytime, nothing is lost."
   ],
+  "whats_included_es": [
+    "El formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre la pestaña y regrese cuando quiera, sin perder nada."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -60,6 +86,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su proceso."
   ],
   "common_mistakes": [
     "Protocolar antes de o visto estar disponível na categoria certa (verifique o Boletim de Vistos do Departamento de Estado).",
@@ -76,6 +107,14 @@
     "Forgetting required supporting documents like the I-864 (Affidavit of Support) in family-based cases.",
     "Not checking the correct box in Part 2 (items 2 and 3.a–3.g), including the difference between the principal applicant and a derivative spouse/child.",
     "Not notifying USCIS of an address change within 10 days (Form AR-11) — this is a separate legal requirement, not just good practice."
+  ],
+  "common_mistakes_es": [
+    "Presentar la solicitud antes de que haya una visa disponible en la categoría correcta (verifique el Boletín de Visas del Departamento de Estado).",
+    "No incluir el Formulario I-693 (examen médico) en el sobre sellado original del médico — sin él, USCIS puede rechazar todo el I-485.",
+    "Dejar preguntas de la Parte 9 sin la explicación necesaria en la Parte 14.",
+    "Olvidar documentos de respaldo obligatorios, como el I-864 (Declaración de Apoyo Financiero), en los casos basados en familia.",
+    "No marcar la casilla correcta en la Parte 2 (ítem 2 y 3.a–3.g), incluyendo la diferencia entre solicitante principal y cónyuge/hijo(a) derivado.",
+    "No notificar a USCIS un cambio de domicilio dentro de los 10 días (Formulario AR-11), lo cual es un requisito legal separado, no solo una buena práctica."
   ],
   "faq": [
     {
@@ -121,8 +160,32 @@
       "a": "Only if it's a stand-alone employment-based case. USCIS is gradually expanding online filing to other categories — today most cases are still filed on paper."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿Cuánto tiempo toma el procesamiento del I-485?",
+      "a": "El procesamiento tiende a ser más largo que el de otros formularios, muchas veces de 1 a 2 años, variando según la categoría y el centro. Consulte la herramienta oficial para una estimación de su caso."
+    },
+    {
+      "q": "¿Puedo trabajar y viajar mientras el I-485 está pendiente?",
+      "a": "Solo con autorización específica — Autorización de Trabajo (I-765) y Autorización de Viaje Anticipado (I-131, Advance Parole), que muchas veces pueden solicitarse junto con el I-485."
+    },
+    {
+      "q": "¿Qué pasa si respondo \"Sí\" a alguna pregunta de la Parte 9?",
+      "a": "Eso no significa una denegación automática, pero normalmente requiere una explicación detallada y puede indicar la necesidad de asesoramiento jurídico especializado sobre una dispensa (waiver) de inadmisibilidad."
+    },
+    {
+      "q": "¿Necesito el examen médico para presentar la solicitud?",
+      "a": "Sí, en la mayoría de los casos — el Formulario I-693 debe ser completado por un médico designado por USCIS, entregado en un sobre sellado. Nuestra herramienta no realiza ese examen, solo indica cuándo es necesario."
+    },
+    {
+      "q": "¿Puedo presentar el I-485 por internet?",
+      "a": "Solo si es un caso independiente basado en empleo. USCIS está expandiendo gradualmente la presentación en línea a otras categorías — hoy la mayoría de los casos todavía se presentan en papel."
+    }
+  ],
   "related_note": "Costuma vir junto com I-130/I-140 (a petição que dá origem ao caso), I-765 (autorização de trabalho), I-131 (autorização de viagem) e I-864 (suporte financeiro).",
   "related_note_en": "Often filed together with I-130/I-140 (the underlying petition), I-765 (work permit), I-131 (travel authorization), and I-864 (affidavit of support).",
+  "related_note_es": "Suele presentarse junto con el I-130/I-140 (la petición que origina el caso), el I-765 (autorización de trabajo), el I-131 (autorización de viaje) y el I-864 (apoyo financiero).",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

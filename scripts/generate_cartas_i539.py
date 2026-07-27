@@ -7,11 +7,11 @@ questionário separado data/questionnaires/i-539-cartas.json:
   i539-cos-narrative.txt para COS B2/F1/F2 documentam o roteiro completo)
   em um PDF "Uso Interno" — não é a carta final, serve de base para a
   equipe redigir a carta pessoal de extensão/mudança de status à mão.
-  (A geração automática da carta final via IA -- Claude, API da Anthropic
-  -- existe no código, `draft_narrative_letter`/`build_drafted_narrative_letter`,
+  (A geração automática da carta final via IA -- Gemini, API do Google --
+  existe no código, `draft_narrative_letter`/`build_drafted_narrative_letter`,
   mas está pausada por decisão do usuário: `generate_all()` não a chama.
   Para reativar, basta trocar o builder de volta para
-  `build_drafted_narrative_letter` e configurar ANTHROPIC_API_KEY.)
+  `build_drafted_narrative_letter` e configurar GEMINI_API_KEY.)
 - Carta de Endereço (assinada pelo titular do comprovante de endereço, se
   não for o próprio requerente) — em inglês, pronta para imprimir e assinar.
 - Carta de Patrocínio (assinada pelo patrocinador financeiro, se os
@@ -38,6 +38,7 @@ import os
 import sys
 from pathlib import Path
 
+import requests
 from reportlab.lib import colors
 from reportlab.lib.pagesizes import letter
 from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
@@ -57,7 +58,12 @@ PROMPTS_DIR = ROOT / "data" / "prompts"
 if load_dotenv is not None:
     load_dotenv(ROOT / ".env")
 
-CLAUDE_MODEL = "claude-opus-4-8"
+# Gemini via REST direta (requests já é dependência do projeto) -- mesmo
+# padrão de app/chatbot.py. "gemini-flash-latest" é a única opção viável na
+# chave atual: confirmado por teste real que "gemini-pro-latest" retorna 429
+# (quota zerada no tier gratuito para o modelo Pro).
+GEMINI_MODEL = "gemini-flash-latest"
+GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
 # Cada serviço usa um dos dois prompts do usuário — EOS é específico pra
 # extensão; o mesmo prompt de COS (genérico) serve pros 3 alvos de mudança
 # de status, já que o usuário só forneceu um prompt de COS pros três.
@@ -376,8 +382,8 @@ def _build_qa_context(answers: dict, qdata: dict, section_id: str) -> str:
 
 
 def draft_narrative_letter(answers: dict, qdata: dict) -> str | None:
-    """Chama a API da Anthropic (Claude) para redigir a carta narrativa final
-    em inglês, usando o prompt do usuário (EOS ou COS, data/prompts/) como
+    """Chama a API do Gemini (Google) para redigir a carta narrativa final em
+    inglês, usando o prompt do usuário (EOS ou COS, data/prompts/) como
     system prompt e as respostas do questionário como contexto. Retorna None
     -- sem levantar exceção -- se faltar API key, prompt, ou respostas, para
     que a geração dos outros documentos nunca trave por causa desta carta."""
@@ -396,23 +402,29 @@ def draft_narrative_letter(answers: dict, qdata: dict) -> str | None:
     if "\n" not in qa_context.strip():
         return None  # nenhuma pergunta de narrativa foi respondida
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    api_key = os.environ.get("GEMINI_API_KEY")
     if not api_key:
-        print("AVISO: ANTHROPIC_API_KEY não configurada (variável de ambiente ou .env) "
+        print("AVISO: GEMINI_API_KEY não configurada (variável de ambiente ou .env) "
               "-- pulando a carta narrativa redigida por IA.", file=sys.stderr)
         return None
 
-    from anthropic import Anthropic
-    client = Anthropic(api_key=api_key)
-    response = client.messages.create(
-        model=CLAUDE_MODEL,
-        max_tokens=8192,
-        system=system_prompt,
-        messages=[
-            {"role": "user", "content": qa_context},
-        ],
+    response = requests.post(
+        GEMINI_URL,
+        headers={"Content-Type": "application/json", "X-goog-api-key": api_key},
+        json={
+            "contents": [{"role": "user", "parts": [{"text": qa_context}]}],
+            "systemInstruction": {"parts": [{"text": system_prompt}]},
+            "generationConfig": {"maxOutputTokens": 8192},
+        },
+        timeout=120,
     )
-    return next((b.text for b in response.content if b.type == "text"), None)
+    response.raise_for_status()
+    candidates = response.json().get("candidates") or []
+    if not candidates:
+        return None
+    parts = candidates[0].get("content", {}).get("parts", [])
+    text = "".join(p.get("text", "") for p in parts)
+    return text or None
 
 
 def _markdown_ish_to_story(text: str, styles):
@@ -505,7 +517,7 @@ def generate_all(answers: dict, out_dir: Path) -> list[Path]:
     qdata = load_questionnaire()
     generated = []
     builders = [
-        # Geração via IA (Claude) pausada por decisão do usuário -- ver
+        # Geração via IA (Gemini) pausada por decisão do usuário -- ver
         # docstring do módulo. Troque a linha abaixo por
         # build_drafted_narrative_letter para reativar.
         ("i-539-carta-narrativa-resumo.pdf", lambda p: build_narrative_summary(answers, qdata, p)),

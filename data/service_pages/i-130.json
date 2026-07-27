@@ -1,6 +1,7 @@
 {
   "tagline": "O primeiro passo da imigração baseada em família",
   "tagline_en": "The first step in family-based immigration",
+  "tagline_es": "El primer paso de la inmigración basada en familia",
   "what_is": [
     "O Formulário I-130 é o primeiro passo do processo de imigração baseado em família. Ele serve para provar à USCIS que existe uma relação de parentesco válida — cônjuge, filho(a), pai/mãe ou irmão(ã) — entre um cidadão americano (ou residente permanente) e um parente estrangeiro que deseja imigrar para os Estados Unidos.",
     "Aprovar o I-130 não dá o green card por si só: ele coloca o parente estrangeiro (o \"beneficiário\") na fila para o próximo passo — ajuste de status (Formulário I-485) se ele já estiver nos EUA, ou processamento consular se estiver no exterior."
@@ -8,6 +9,10 @@
   "what_is_en": [
     "Form I-130 is the first step in family-based immigration. It proves to USCIS that a qualifying family relationship exists — spouse, child, parent, or sibling — between a U.S. citizen (or green card holder) and a foreign relative who wants to immigrate to the United States.",
     "Approving the I-130 doesn't grant a green card by itself: it places the foreign relative (the \"beneficiary\") in line for the next step — adjustment of status (Form I-485) if they're already in the U.S., or consular processing if they're abroad."
+  ],
+  "what_is_es": [
+    "El Formulario I-130 es el primer paso del proceso de inmigración basado en familia. Sirve para probar ante USCIS que existe una relación familiar válida — cónyuge, hijo(a), padre/madre o hermano(a) — entre un(a) ciudadano(a) estadounidense (o residente permanente) y un familiar extranjero que desea inmigrar a los Estados Unidos.",
+    "Aprobar el I-130 no otorga la green card por sí solo: coloca al familiar extranjero (el/la \"beneficiario(a)\") en la fila para el siguiente paso — ajuste de estatus (Formulario I-485) si ya está en los EE. UU., o trámite consular si está en el extranjero."
   ],
   "who_needs": [
     "Cidadãos americanos que querem trazer cônjuge, filho(a) solteiro(a), pai/mãe ou irmão(ã) para os EUA.",
@@ -19,6 +24,11 @@
     "Green card holders who want to bring a spouse or unmarried child.",
     "Recently married couples who need to prove the marriage is genuine (bona fide), not just for immigration purposes."
   ],
+  "who_needs_es": [
+    "Ciudadanos(as) estadounidenses que quieren traer a su cónyuge, hijo(a) soltero(a), padre/madre o hermano(a) a los EE. UU.",
+    "Residentes permanentes (Green Card) que quieren traer a su cónyuge o hijo(a) soltero(a).",
+    "Parejas que se casaron recientemente y necesitan probar que el matrimonio es genuino (de buena fe), no solo con fines migratorios."
+  ],
   "eligibility": [
     "Parente imediato de cidadão americano: cônjuge, filho(a) solteiro(a) menor de 21 anos, filho(a) solteiro(a) com 21 anos ou mais, pai/mãe (se o cidadão tiver 21 anos ou mais), órfão adotado no exterior.",
     "Categoria de preferência familiar (fila com limite anual de vistos): filho(a) solteiro(a) de cidadão com 21+ anos, cônjuge ou filho(a) solteiro(a) de residente permanente, filho(a) casado(a) de cidadão, irmão(ã) de cidadão (se o cidadão tiver 21+ anos).",
@@ -28,6 +38,11 @@
     "Immediate relative of a U.S. citizen: spouse, unmarried child under 21, unmarried child 21 or older, parent (if the citizen is 21 or older), orphan adopted abroad.",
     "Family preference category (subject to an annual visa cap and backlog): unmarried adult child of a citizen, spouse or unmarried child of a green card holder, married child of a citizen, sibling of a citizen (if the citizen is 21 or older).",
     "Each eligible relative needs their own separate I-130 — you can't include multiple relatives on a single petition."
+  ],
+  "eligibility_es": [
+    "Familiar inmediato de ciudadano(a) estadounidense: cónyuge, hijo(a) soltero(a) menor de 21 años, hijo(a) soltero(a) de 21 años o más, padre/madre (si el/la ciudadano(a) tiene 21 años o más), huérfano(a) adoptado(a) en el extranjero.",
+    "Categoría de preferencia familiar (fila sujeta a límite anual de visas): hijo(a) soltero(a) de ciudadano(a) de 21+ años, cónyuge o hijo(a) soltero(a) de residente permanente, hijo(a) casado(a) de ciudadano(a), hermano(a) de ciudadano(a) (si el/la ciudadano(a) tiene 21+ años).",
+    "Cada familiar elegible necesita su propio I-130 — no es posible incluir a varios familiares en una sola petición."
   ],
   "required_evidence": [
     "Prova do seu status: certidão de nascimento americana, certificado de naturalização/cidadania, Form FS-240 (Consular Report of Birth Abroad), passaporte americano válido, ou frente e verso do seu Green Card.",
@@ -43,6 +58,13 @@
     "For spousal petitions: evidence the marriage is genuine — joint property, a lease in both names, combined finances, birth certificates of children born to the couple, and/or affidavits from people with personal knowledge of the marriage.",
     "2 passport-style photos, if there was a legal name change."
   ],
+  "required_evidence_es": [
+    "Prueba de su estatus: certificado de nacimiento estadounidense, certificado de naturalización/ciudadanía, Formulario FS-240 (Consular Report of Birth Abroad), pasaporte estadounidense vigente, o ambos lados de su Green Card.",
+    "Prueba del vínculo: certificado de matrimonio (cónyuge), certificado de nacimiento del/de la hijo(a), su propio certificado de nacimiento (padre/madre), o los certificados de nacimiento suyo y de su hermano(a) que muestren un padre/madre en común.",
+    "Si hubo un matrimonio anterior (suyo o de su cónyuge), prueba de que terminó (divorcio, anulación o certificado de defunción).",
+    "En peticiones de cónyuge: evidencia de que el matrimonio es genuino — propiedad conjunta, contrato de arrendamiento a nombre de ambos, cuentas financieras combinadas, certificados de nacimiento de hijos en común, y/o declaraciones juradas de terceros que conozcan a la pareja.",
+    "2 fotografías tipo pasaporte, si hubo un cambio legal de nombre."
+  ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
     "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
@@ -57,6 +79,13 @@
     "Progress saved automatically: close the tab and come back anytime, nothing is lost.",
     "If the beneficiary is a spouse, the product automatically flags when the supplemental Form I-130A is also required."
   ],
+  "whats_included_es": [
+    "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada.",
+    "Si el/la beneficiario(a) es cónyuge, el producto ya indica cuándo también se necesita el Formulario I-130A (suplementario)."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -66,6 +95,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente se aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su caso."
   ],
   "common_mistakes": [
     "Deixar em branco algum dos campos que a USCIS rejeita automaticamente se estiverem faltando: relação (Parte 1), nome completo/data de nascimento/endereço/estado civil do peticionário (Parte 2), e nome completo/data de nascimento/endereço/estado civil do beneficiário (Parte 4).",
@@ -84,6 +118,15 @@
     "Not selecting exactly 1 option in Part 4, Item 61/62 (adjustment of status vs. consular processing) — leaving it blank or checking both is a common error.",
     "Not filing a separate I-130 for each child, even when the couple already has another I-130 pending between themselves — each biological, step-, or adopted child needs their own petition.",
     "Forgetting to sign the form — USCIS rejects any unsigned form."
+  ],
+  "common_mistakes_es": [
+    "Dejar en blanco alguno de los campos que USCIS rechaza automáticamente si faltan: relación (Parte 1), nombre completo/fecha de nacimiento/domicilio/estado civil del peticionario (Parte 2), y nombre completo/fecha de nacimiento/domicilio/estado civil del/de la beneficiario(a) (Parte 4).",
+    "Evidencia insuficiente del vínculo familiar — USCIS puede emitir un Pedido de Evidencia Adicional (RFE) o negar el caso.",
+    "En casos de matrimonio, no incluir prueba de que la relación es genuina (de buena fe) — USCIS acepta explícitamente fotos, cuentas conjuntas, contratos y declaraciones juradas de terceros como evidencia.",
+    "Olvidar el Formulario I-130A cuando el/la beneficiario(a) es cónyuge — es obligatorio en esos casos.",
+    "No marcar exactamente 1 opción en el punto 61/62 de la Parte 4 (ajuste de estatus vs. trámite consular) — dejarlo en blanco o marcar ambos es un error común.",
+    "No presentar un I-130 separado para cada hijo(a), incluso cuando la pareja ya tiene otro I-130 pendiente entre ellos — cada hijo(a) biológico(a), hijastro(a) o adoptivo(a) necesita su propia petición.",
+    "Olvidar firmar el formulario — USCIS rechaza cualquier formulario sin firma."
   ],
   "faq": [
     {
@@ -137,8 +180,36 @@
       "a": "Items with electronic chips/batteries (like musical greeting cards), CDs/DVDs, toys, thumb drives, biological/DNA samples, and graphic photos of childbirth or intimate relations as proof of the relationship — photocopies of these items are fine, the physical items are not."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿Cuánto tiempo tarda en aprobarse el I-130?",
+      "a": "El tiempo varía bastante según la categoría y el centro de USCIS que procesa el caso. Consulte la herramienta oficial de tiempos de procesamiento de USCIS para una estimación actualizada según su tipo de caso."
+    },
+    {
+      "q": "¿Aprobar el I-130 ya me da la green card?",
+      "a": "No. La aprobación del I-130 solo confirma el vínculo familiar y coloca al/a la beneficiario(a) en la fila. El siguiente paso es el ajuste de estatus (I-485) o el trámite consular, dependiendo de dónde esté el/la beneficiario(a)."
+    },
+    {
+      "q": "¿Puedo presentar el I-130 y el I-485 juntos?",
+      "a": "En algunos casos sí — cuando el/la beneficiario(a) ya está en los EE. UU. y hay una visa disponible de inmediato en esa categoría (familiares inmediatos de ciudadano(a) estadounidense, por ejemplo). Nuestro cuestionario indica cuándo esto puede aplicar a su caso."
+    },
+    {
+      "q": "¿Cada hijo(a) necesita un I-130 separado?",
+      "a": "Sí. Cada familiar elegible — incluyendo cada hijo(a) — necesita su propia petición I-130 individual. Si ya presentó un I-130 para su cónyuge, incluya una copia del recibo de ese I-130 al presentar el de su hijo(a)."
+    },
+    {
+      "q": "Era residente permanente cuando presenté la solicitud, y ahora me naturalicé. ¿Debo hacer algo?",
+      "a": "Sí — notifique a USCIS de su naturalización (con copia del certificado y del recibo del I-130) para que se actualice la categoría de visa de su familiar, ya que el cónyuge y los hijos solteros menores de 21 años de un(a) ciudadano(a) estadounidense siempre tienen una visa disponible de inmediato."
+    },
+    {
+      "q": "¿Qué no acepta USCIS como evidencia?",
+      "a": "Artículos con chips/baterías electrónicos (como tarjetas musicales), CDs/DVDs, juguetes, memorias USB, muestras biológicas/de ADN, y fotos gráficas de parto o de relaciones íntimas como prueba de la relación — se aceptan fotocopias de estos artículos, no los artículos físicos."
+    }
+  ],
   "related_note": "Costuma vir acompanhado do I-130A (quando o beneficiário é cônjuge) e, mais adiante no processo, do I-485 (ajuste de status) e do I-864 (declaração de suporte financeiro).",
   "related_note_en": "Often paired with I-130A (when the beneficiary is a spouse) and, later in the process, with I-485 (adjustment of status) and I-864 (affidavit of support).",
+  "related_note_es": "Suele acompañarse del I-130A (cuando el/la beneficiario(a) es cónyuge) y, más adelante en el proceso, del I-485 (ajuste de estatus) y del I-864 (declaración de apoyo financiero).",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

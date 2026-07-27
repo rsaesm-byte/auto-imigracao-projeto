@@ -1,11 +1,15 @@
 {
   "tagline": "Estenda sua permanência ou mude de status de não imigrante",
   "tagline_en": "Extend your stay or change nonimmigrant status",
+  "tagline_es": "Extienda su permanencia o cambie de estatus de no inmigrante",
   "what_is": [
     "O Formulário I-539 é usado por quem já está nos Estados Unidos em status de não imigrante (turista, estudante, etc.) e precisa estender essa permanência ou mudar para outro status antes que o atual expire. O formulário oficial cobre dezenas de status de destino, mas o nosso produto foca nos 4 serviços mais procurados pelos nossos clientes: Extensão de Status (EOS) e Mudança de Status para Estudante F-1, Dependente F-2, ou Visitante B-2."
   ],
   "what_is_en": [
     "Form I-539 is used by people already in the U.S. in nonimmigrant status (tourist, student, etc.) who need to extend their stay or change to another status before their current one expires. The official form covers dozens of target statuses, but our product focuses on the 4 services our clients ask for most: Extension of Status (EOS) and Change of Status to Student F-1, Dependent F-2, or Visitor B-2."
+  ],
+  "what_is_es": [
+    "El Formulario I-539 lo usan quienes ya están en los Estados Unidos en estatus de no inmigrante (turista, estudiante, etc.) y necesitan extender esa permanencia o cambiar a otro estatus antes de que el actual venza. El formulario oficial cubre docenas de estatus de destino, pero nuestro producto se enfoca en los 4 servicios más solicitados por nuestros clientes: Extensión de Estatus (EOS) y Cambio de Estatus a Estudiante F-1, Dependiente F-2, o Turista B-2."
   ],
   "who_needs": [
     "Quem está em status B-1/B-2 (visitante) e quer prolongar a estadia.",
@@ -18,6 +22,12 @@
     "Anyone who wants to change from their current status to student (F-1) to start a course in the U.S.",
     "Spouses/children of F-1 students who need F-2 dependent status.",
     "Anyone who wants to change to visitor (B-2) — for example, to accompany medical treatment or a longer tourist stay."
+  ],
+  "who_needs_es": [
+    "Quienes están en estatus B-1/B-2 (visitante) y quieren prolongar su estadía.",
+    "Quienes quieren cambiar de su estatus actual a estudiante (F-1) para comenzar un curso en los EE. UU.",
+    "Cónyuges/hijos(as) de estudiantes F-1 que necesitan el estatus dependiente F-2.",
+    "Quienes quieren cambiar a visitante (B-2) — por ejemplo, para acompañar un tratamiento médico o una estadía turística más larga."
   ],
   "eligibility": [
     "Você precisa ter sido admitido legalmente nos EUA como não imigrante, não ter cometido nada que o(a) torne inelegível, e nenhum outro fator pode exigir que você saia dos EUA antes de voltar sob a nova classificação.",
@@ -37,6 +47,15 @@
     "Part 4 of the form has 18 background questions; \"Yes\" answers usually require an explanation in Part 8.",
     "Each spouse/child included in the same application needs their own Form I-539A, which isn't part of this product yet."
   ],
+  "eligibility_es": [
+    "Usted debe haber sido admitido(a) legalmente en los EE. UU. como no inmigrante, no haber hecho nada que lo(a) haga inelegible, y ningún otro factor debe exigirle salir de los EE. UU. antes de reingresar bajo la nueva clasificación.",
+    "Debe estar en estatus válido al momento de la solicitud: presente la solicitud antes de la fecha de vencimiento de su estadía autorizada (indicada en su Formulario I-94). USCIS recomienda presentar la solicitud al menos 45 días antes del vencimiento, o tan pronto sepa que necesitará cambiar/extender su estatus.",
+    "Su pasaporte debe permanecer válido durante todo el período de permanencia solicitado bajo la nueva clasificación.",
+    "Algunos estatus no pueden extenderse/cambiarse en absoluto (C, D, K-1, K-2, S, TWOV, WT, WB), y otros solo bajo restricciones específicas (J-1, M-1) — verifique si su estatus actual lo permite.",
+    "El I-539 NO sirve para extender/cambiar hacia o desde las clasificaciones basadas en empleo E-1, E-2, E-3, H (H-1B/H-2A/H-2B/H-3), L-1, O-1/O-2, P, Q-1, R-1, TN — esas usan el Formulario I-129. Presentar la solicitud en el formulario equivocado puede resultar en rechazo o denegación, sin reembolso de la tarifa.",
+    "La Parte 4 del formulario tiene 18 preguntas de antecedentes; las respuestas \"Sí\" normalmente requieren una explicación en la Parte 8.",
+    "Cada cónyuge/hijo(a) incluido en la misma solicitud necesita su propio Formulario I-539A, que todavía no forma parte de este producto."
+  ],
   "required_evidence": [
     "Cópia do seu Formulário I-94 (registro de chegada/saída) atual.",
     "Mudança para F-1: Formulário I-20 emitido pela instituição de ensino.",
@@ -50,6 +69,13 @@
     "Change to F-2: the F-1 spouse's/parent's I-20, plus a marriage or birth certificate proving the relationship.",
     "B-2 extension: evidence the stay remains temporary and that you have enough financial resources to support yourself without working.",
     "If you fell out of status before filing (let the authorized period lapse): evidence the delay was due to extraordinary circumstances beyond your control, was reasonable in length, that you haven't otherwise violated your status, that you're still a bona fide nonimmigrant, and that you're not in removal proceedings — USCIS can excuse the delay only in these specific cases."
+  ],
+  "required_evidence_es": [
+    "Copia de su Formulario I-94 (registro de llegada/salida) actual.",
+    "Cambio a F-1: Formulario I-20 emitido por la institución educativa.",
+    "Cambio a F-2: I-20 del cónyuge/padre-madre F-1, más el certificado de matrimonio o nacimiento que compruebe el vínculo.",
+    "Extensión de B-2: evidencia de que la estadía sigue siendo temporal y de que usted cuenta con recursos financieros suficientes para mantenerse sin trabajar.",
+    "Si quedó fuera de estatus antes de presentar la solicitud (dejó vencer el período autorizado): evidencia de que la demora se debió a circunstancias extraordinarias fuera de su control, de duración razonable, que no violó su estatus de otra forma, que sigue siendo un(a) no inmigrante de buena fe, y que no está en proceso de remoción — USCIS puede perdonar la demora solo en estos casos específicos."
   ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
@@ -65,6 +91,13 @@
     "Progress saved automatically: close the tab and come back anytime, nothing is lost.",
     "A single, clear service selector — Extension of Status, or Change to F-1, F-2, or B-2 — with no confusing technical jargon."
   ],
+  "whats_included_es": [
+    "El formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre la pestaña y regrese cuando quiera, sin perder nada.",
+    "Un único selector claro de servicio — Extensión de Estatus, o Cambio a F-1, F-2 o B-2 — sin jerga técnica confusa."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -74,6 +107,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su proceso."
   ],
   "common_mistakes": [
     "Protocolar depois que o status atual já expirou sem se qualificar para uma das exceções de atraso — em geral, o pedido deve ser feito antes do vencimento, e a USCIS recomenda pelo menos 45 dias de antecedência.",
@@ -90,6 +128,14 @@
     "Filling in the name differently from what's on the passport — nonimmigrant form names must follow the passport, unlike green card forms, which usually follow the marriage certificate.",
     "Not including the I-20 when changing to F-1, or the right documentation when changing to B-2/F-2.",
     "Falling out of status (letting the authorized period lapse without filing) — this can hurt your ability to get other benefits or return to the U.S. later; if it's already happened, the general recommendation is to leave the U.S. to limit the impact."
+  ],
+  "common_mistakes_es": [
+    "Presentar la solicitud después de que el estatus actual ya venció, sin calificar para una de las excepciones por demora — en general, la solicitud debe hacerse antes del vencimiento, y USCIS recomienda al menos 45 días de anticipación.",
+    "Usar el I-539 para intentar extender/cambiar un estatus de trabajo (H-1B, L-1, O, P, etc.) — esos casos usan el Formulario I-129, no el I-539.",
+    "Dejar en blanco algún campo que causa rechazo automático: apellido, domicilio, fecha de nacimiento, estatus actual (Parte 1), tipo de solicitud y estatus solicitado (Parte 2), y número total de personas incluidas.",
+    "Escribir el nombre de forma distinta a la del pasaporte — los nombres en formularios de no inmigrante deben coincidir con el pasaporte, a diferencia de los formularios de green card, que suelen seguir el certificado de matrimonio.",
+    "No incluir el I-20 al cambiar a F-1, o la documentación correcta al cambiar a B-2/F-2.",
+    "Quedar fuera de estatus (dejar vencer el período autorizado sin presentar la solicitud) — esto puede perjudicar su capacidad de obtener otros beneficios o de regresar a los EE. UU. en el futuro; si esto ya ocurrió, la recomendación general es salir de los EE. UU. para limitar el impacto."
   ],
   "faq": [
     {
@@ -135,11 +181,35 @@
       "a": "Only under very specific, excusable circumstances — a delay due to extraordinary circumstances beyond your control, of reasonable length, with no other status violation, remaining a bona fide nonimmigrant, and not in removal proceedings. Otherwise, you're \"out of status,\" and the general recommendation is to leave the U.S. to limit the impact on future applications."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿Puedo trabajar en los EE. UU. con este estatus?",
+      "a": "Generalmente, no — los estatus cubiertos aquí (extensión, F-1, F-2, B-2) no autorizan trabajo remunerado en los EE. UU. Trabajar (incluso remotamente para una empresa en Brasil mientras está físicamente presente en los EE. UU.) puede considerarse empleo no autorizado y perjudicar su estatus."
+    },
+    {
+      "q": "¿Puedo incluir a mi cónyuge e hijos en la misma solicitud?",
+      "a": "El formulario oficial lo permite, pero cada uno necesita su propio Formulario I-539A — esa parte todavía no está automatizada en este producto. Consulte a nuestro equipo si su caso involucra co-solicitantes."
+    },
+    {
+      "q": "¿Cuánto tiempo tarda la decisión?",
+      "a": "Varía según el centro de servicio y la categoría. Consulte la herramienta oficial de tiempos de procesamiento de USCIS, y evite viajar fuera de los EE. UU. mientras la solicitud está pendiente, ya que normalmente eso abandona la solicitud."
+    },
+    {
+      "q": "¿Puedo usar el I-539 para extender mi visa de trabajo (H-1B, L-1, etc.)?",
+      "a": "No — esas clasificaciones usan el Formulario I-129, Petition for a Nonimmigrant Worker, presentado por el empleador, no el I-539. Presentar la solicitud en el formulario equivocado puede ser rechazado o denegado, y USCIS no reembolsa la tarifa."
+    },
+    {
+      "q": "Mi estatus ya venció. ¿Todavía puedo presentar la solicitud?",
+      "a": "Solo en circunstancias muy específicas y excusables — demora por motivo extraordinario fuera de su control, de duración razonable, sin otra violación de estatus, permaneciendo un(a) no inmigrante de buena fe y sin estar en proceso de remoción. Fuera de eso, usted está \"fuera de estatus\" y la recomendación general es salir de los EE. UU. para limitar el impacto en solicitudes futuras."
+    }
+  ],
   "related_note": "Veja também o serviço de Cartas Complementares (I-539 — Cartas), que gera as cartas de apoio de terceiros que costumam acompanhar este pedido.",
   "related_note_en": "See also the Supplementary Letters service (I-539 — Letters), which generates the third-party support letters that typically accompany this application.",
+  "related_note_es": "Vea también el servicio de Cartas Complementarias (I-539 — Cartas), que genera las cartas de respaldo de terceros que suelen acompañar esta solicitud.",
 
   "rule_change_title": "Mudança de regra a partir de 15/09/2026: fim do \"duration of status\" para estudantes F",
   "rule_change_title_en": "Rule change starting 09/15/2026: the end of \"duration of status\" for F students",
+  "rule_change_title_es": "Cambio de regla a partir del 15/09/2026: el fin del \"duration of status\" para estudiantes F",
   "rule_change_body": [
     "Em 17/07/2026, o DHS publicou uma regra final criando um período fixo de admissão para estudantes F, no lugar do antigo \"duration of status\" (permanência por prazo indeterminado enquanto durasse o curso). A partir de 15/09/2026, um(a) estudante F-1 será admitido(a) por um período fixo baseado na duração do curso informada no Formulário I-20 (limitado a 4 anos), mais 30 dias para chegada e mais 30 dias para saída ao final.",
     "Quem precisar de mais tempo — para terminar o curso, começar um novo curso, ou fazer OPT/STEM OPT após a formatura — vai precisar pedir uma Extensão de Status (EOS) à USCIS antes que esse período fixo termine, protocolando exatamente o Formulário I-539, pagando a taxa correspondente e fornecendo biometria. É este o mesmo serviço \"EOS\" que já oferecemos nesta página — a diferença é que, a partir de 15/09/2026, muito mais estudantes F vão precisar dele, já que a permanência não será mais automática enquanto durar o curso.",
@@ -150,14 +220,41 @@
     "Anyone needing more time — to finish the program, start a new one, or do post-completion OPT/STEM OPT — will need to request an Extension of Stay (EOS) from USCIS before that fixed period ends, by filing Form I-539, paying the corresponding fee, and providing biometrics. This is the same \"EOS\" service already offered on this page — the difference is that, starting 09/15/2026, far more F students will need it, since staying will no longer be automatic for the whole length of the program.",
     "Until 09/15/2026, F students continue to be admitted under the old system (duration of status). Official source: Study in the States / DHS (studyinthestates.dhs.gov), with the full text published in the Federal Register on 07/17/2026 — always confirm the current effective date and latest details with our team before deciding when to file."
   ],
+  "rule_change_body_es": [
+    "El 17/07/2026, el DHS publicó una regla final que crea un período fijo de admisión para estudiantes F, en lugar del antiguo \"duration of status\" (permanencia por plazo indeterminado mientras durara el curso). A partir del 15/09/2026, un(a) estudiante F-1 será admitido(a) por un período fijo basado en la duración del curso indicada en el Formulario I-20 (limitado a 4 años), más 30 días para llegar y 30 días más para salir al finalizar.",
+    "Quien necesite más tiempo — para terminar el curso, comenzar uno nuevo, o hacer OPT/STEM OPT después de graduarse — deberá solicitar una Extensión de Estatus (EOS) a USCIS antes de que ese período fijo termine, presentando exactamente el Formulario I-539, pagando la tarifa correspondiente y proporcionando datos biométricos. Este es el mismo servicio \"EOS\" que ya ofrecemos en esta página — la diferencia es que, a partir del 15/09/2026, muchos más estudiantes F lo necesitarán, ya que la permanencia ya no será automática durante todo el curso.",
+    "Hasta el 15/09/2026, los estudiantes F continúan siendo admitidos bajo el sistema anterior (duration of status). Fuente oficial: Study in the States / DHS (studyinthestates.dhs.gov), con el texto completo publicado en el Federal Register el 17/07/2026 — confirme siempre la fecha de vigencia y los detalles más recientes con nuestro equipo antes de decidir cuándo presentar la solicitud."
+  ],
 
+  "i134_notice_title": "Tem um patrocinador nos EUA? Uma simples carta pode não bastar",
+  "i134_notice_title_en": "Have a sponsor in the US? A simple letter may not be enough",
+  "i134_notice_title_es": "¿Tiene un patrocinador en los EE. UU.? Una simple carta puede no ser suficiente",
+  "i134_notice_body": [
+    "Se o seu pedido é de Mudança de Status para Estudante (F-1) ou para Turista (B-2) e você não tem renda ou saldo próprio suficiente para se manter nos EUA, é comum pensar que uma carta de patrocínio simples, assinada por quem vai te apoiar financeiramente, resolve. Quando esse patrocinador é residente permanente legal (green card) ou cidadão(ã) americano(a), o USCIS costuma esperar algo mais formal.",
+    "Nesse cenário, o caminho mais seguro é anexar ao pedido o Formulário I-134 (Declaração de Apoio Financeiro) já preenchido pelo patrocinador, em vez de uma carta informal. Uma carta simples no lugar do I-134 é um motivo conhecido de Pedido de Evidência Adicional (RFE) e de atraso no processamento — ver, por exemplo, a orientação da Murthy Law Firm sobre o I-134 em pedidos de visitante B-1/B-2.",
+    "Por isso, ao responder no questionário do I-539 que você não tem recursos próprios suficientes e que tem um(a) patrocinador(a) qualificado(a) (LPR ou cidadão americano), oferecemos automaticamente a opção de adicionar o I-134 ao seu pedido, direto do seu painel."
+  ],
+  "i134_notice_body_en": [
+    "If your application is a Change of Status to Student (F-1) or Visitor (B-2) and you don't have enough income or savings of your own to support yourself in the US, it's tempting to assume a simple sponsorship letter signed by whoever is supporting you will do. When that sponsor is a lawful permanent resident (green card holder) or a US citizen, USCIS usually expects something more formal.",
+    "In that scenario, the safer path is to attach a completed Form I-134 (Declaration of Financial Support) to the application instead of an informal letter. A simple letter in place of the I-134 is a known trigger for a Request for Evidence (RFE) and processing delays — see, for example, Murthy Law Firm's guidance on the I-134 for B-1/B-2 visitor applications.",
+    "That's why, once you tell the I-539 questionnaire that you don't have enough resources of your own and that you have a qualified sponsor (LPR or US citizen), we automatically offer the option to add the I-134 to your application, right from your dashboard."
+  ],
+  "i134_notice_body_es": [
+    "Si su solicitud es un Cambio de Estatus a Estudiante (F-1) o a Turista (B-2) y usted no tiene ingresos o ahorros propios suficientes para mantenerse en los EE. UU., es común pensar que una simple carta de patrocinio, firmada por quien lo va a apoyar financieramente, es suficiente. Cuando ese patrocinador es residente permanente legal (green card) o ciudadano(a) estadounidense, USCIS suele esperar algo más formal.",
+    "En ese escenario, el camino más seguro es adjuntar a la solicitud el Formulario I-134 (Declaración de Apoyo Financiero) ya completado por el patrocinador, en lugar de una carta informal. Una simple carta en lugar del I-134 es un motivo conocido de Solicitud de Evidencia Adicional (RFE) y de demoras en el procesamiento — vea, por ejemplo, la orientación de Murthy Law Firm sobre el I-134 en solicitudes de visitante B-1/B-2.",
+    "Por eso, al responder en el cuestionario del I-539 que usted no tiene recursos propios suficientes y que tiene un(a) patrocinador(a) calificado(a) (LPR o ciudadano estadounidense), le ofrecemos automáticamente la opción de agregar el I-134 a su solicitud, directamente desde su panel."
+  ],
   "sevis_fee_title": "Taxa SEVIS (Formulário I-901) para Mudança de Status para Estudante F-1",
   "sevis_fee_title_en": "SEVIS Fee (Form I-901) for Change of Status to Student F-1",
+  "sevis_fee_title_es": "Tarifa SEVIS (Formulario I-901) para Cambio de Estatus a Estudiante F-1",
   "sevis_fee_intro": [
     "Se o seu caso é Mudança de Status para Estudante (COS F-1), existe uma taxa separada da taxa de protocolo do I-539: a Taxa SEVIS (Formulário I-901). Ela é administrada pelo ICE/SEVP — não pela USCIS — e financia o SEVIS, o sistema que acompanha estudantes e visitantes de intercâmbio (F, M e J) durante toda a permanência nos EUA."
   ],
   "sevis_fee_intro_en": [
     "If your case is Change of Status to Student (COS F-1), there's a separate fee from the I-539 filing fee: the SEVIS Fee (Form I-901). It's administered by ICE/SEVP — not USCIS — and funds SEVIS, the system that tracks students and exchange visitors (F, M, and J) for the entire duration of their U.S. stay."
+  ],
+  "sevis_fee_intro_es": [
+    "Si su caso es un Cambio de Estatus a Estudiante (COS F-1), existe una tarifa separada de la tarifa de protocolo del I-539: la Tarifa SEVIS (Formulario I-901). La administra ICE/SEVP — no USCIS — y financia el SEVIS, el sistema que da seguimiento a estudiantes y visitantes de intercambio (F, M y J) durante toda su permanencia en los EE. UU."
   ],
   "sevis_fee_facts": [
     "Valor: US$ 350 para estudantes F ou M (confirme o valor atual em fmjfee.com antes de pagar — taxas do governo mudam).",
@@ -175,18 +272,32 @@
     "Who does NOT need to pay again: same-SEVIS-ID school transfers, change between F-1↔F-3 or M-1↔M-3, Extension of Stay (EOS) requests, or a new application within 12 months of the last payment for the same status type.",
     "F-2 dependents (spouse/children of the F-1 student) do NOT pay this fee on their own — they'd only pay if separately changing status to F-1, M-1, or J-1 themselves."
   ],
+  "sevis_fee_facts_es": [
+    "Monto: US$350 para estudiantes F o M (confirme el monto actual en fmjfee.com antes de pagar — las tarifas del gobierno cambian).",
+    "Cuándo pagar: ANTES de presentar el Formulario I-539 solicitando el cambio a F-1. No pagar es motivo de denegación de la solicitud.",
+    "Cómo pagar: en fmjfee.com, con tarjeta de crédito (en dólares) o cheque/money order/Western Union. Necesitará su número de SEVIS ID (está en su Formulario I-20, emitido por la escuela), apellido y fecha de nacimiento.",
+    "Comprobante: se genera e imprime al momento, directamente en fmjfee.com — desde 2013 USCIS ya no envía el comprobante por correo. Guarde ese comprobante para adjuntarlo a su solicitud.",
+    "Quién NO necesita pagar de nuevo: transferencia entre escuelas manteniendo el mismo SEVIS ID, cambio entre F-1↔F-3 o M-1↔M-3, solicitudes de Extensión de Estatus (EOS), o una nueva solicitud dentro de los 12 meses del último pago para el mismo tipo de estatus.",
+    "Los dependientes F-2 (cónyuge/hijos del/de la estudiante F-1) NO pagan esta tarifa por su cuenta — solo pagarían si estuvieran cambiando de estatus a F-1, M-1 o J-1 individualmente."
+  ],
   "sevis_fee_video_caption": "Veja no vídeo abaixo como é feito o pagamento da taxa SEVIS em fmjfee.com:",
   "sevis_fee_video_caption_en": "Watch the video below to see how the SEVIS fee payment works at fmjfee.com:",
+  "sevis_fee_video_caption_es": "Vea en el siguiente video cómo se realiza el pago de la tarifa SEVIS en fmjfee.com:",
   "sevis_fee_disclaimer": "Valor e regras sujeitos a mudança pelo ICE/SEVP — sempre confirme em fmjfee.com antes de pagar. Fonte: ice.gov/sevis/i901.",
   "sevis_fee_disclaimer_en": "Amount and rules subject to change by ICE/SEVP — always confirm at fmjfee.com before paying. Source: ice.gov/sevis/i901.",
+  "sevis_fee_disclaimer_es": "Monto y reglas sujetos a cambios por parte de ICE/SEVP — confirme siempre en fmjfee.com antes de pagar. Fuente: ice.gov/sevis/i901.",
 
   "school_search_title": "Encontre uma escola certificada pelo SEVP",
   "school_search_title_en": "Find an SEVP-certified school",
+  "school_search_title_es": "Encuentre una escuela certificada por el SEVP",
   "school_search_body": "Para mudar de status para F-1, a escola/instituição que vai te emitir o Formulário I-20 precisa ser certificada pelo SEVP (Student and Exchange Visitor Program). A ferramenta oficial \"School Search\" do Study in the States (DHS) deixa buscar por nome da escola, cidade, estado ou tipo de ensino, e mostra só instituições certificadas — evite qualquer escola que não apareça lá.",
   "school_search_body_en": "To change status to F-1, the school/institution issuing your Form I-20 must be SEVP-certified (Student and Exchange Visitor Program). The official \"School Search\" tool from Study in the States (DHS) lets you search by school name, city, state, or education type, and shows only certified institutions — avoid any school that doesn't appear there.",
+  "school_search_body_es": "Para cambiar de estatus a F-1, la escuela/institución que le emitirá el Formulario I-20 debe estar certificada por el SEVP (Student and Exchange Visitor Program). La herramienta oficial \"School Search\" de Study in the States (DHS) permite buscar por nombre de la escuela, ciudad, estado o tipo de enseñanza, y muestra solo instituciones certificadas — evite cualquier escuela que no aparezca allí.",
   "school_search_link_label": "Buscar escolas certificadas (studyinthestates.dhs.gov)",
   "school_search_link_label_en": "Search certified schools (studyinthestates.dhs.gov)",
+  "school_search_link_label_es": "Buscar escuelas certificadas (studyinthestates.dhs.gov)",
 
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

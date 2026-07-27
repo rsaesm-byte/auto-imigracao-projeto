@@ -1,17 +1,24 @@
 {
   "tagline": "Informação suplementar exigida quando o I-130 é baseado em casamento",
   "tagline_en": "Supplemental information required when the I-130 is marriage-based",
+  "tagline_es": "Información suplementaria exigida cuando el I-130 se basa en matrimonio",
   "what_is": [
     "O Formulário I-130A é um formulário suplementar obrigatório sempre que a petição I-130 for baseada em casamento. Diferente do I-130 (preenchido pelo peticionário), o I-130A é preenchido pelo próprio cônjuge beneficiário — a pessoa que está sendo patrocinada — e reúne o histórico pessoal, de endereços e de emprego dela nos últimos 5 anos."
   ],
   "what_is_en": [
     "Form I-130A is a required supplemental form whenever the I-130 petition is marriage-based. Unlike the I-130 (filled out by the petitioner), the I-130A is filled out by the beneficiary spouse — the person being sponsored — and collects their personal, address, and employment history for the last 5 years."
   ],
+  "what_is_es": [
+    "El Formulario I-130A es un formulario suplementario obligatorio siempre que la petición I-130 se base en matrimonio. A diferencia del I-130 (completado por el peticionario), el I-130A lo completa el propio cónyuge beneficiario(a) — la persona que está siendo patrocinada — y reúne su historial personal, de domicilios y de empleo de los últimos 5 años."
+  ],
   "who_needs": [
     "Cônjuges estrangeiros beneficiados por uma petição I-130 baseada em casamento."
   ],
   "who_needs_en": [
     "Foreign spouses who are the beneficiary of a marriage-based I-130 petition."
+  ],
+  "who_needs_es": [
+    "Cónyuges extranjeros(as) beneficiarios(as) de una petición I-130 basada en matrimonio."
   ],
   "eligibility": [
     "Só é exigido quando a relação declarada no I-130 correspondente for \"cônjuge\". Não se aplica a outras relações (filho, pai/mãe, irmão).",
@@ -21,6 +28,10 @@
     "Only required when the matching I-130's declared relationship is \"spouse\". It doesn't apply to other relationships (child, parent, sibling).",
     "Always submitted together with the I-130 — never on its own."
   ],
+  "eligibility_es": [
+    "Solo se exige cuando la relación declarada en el I-130 correspondiente es \"cónyuge\". No se aplica a otras relaciones (hijo(a), padre/madre, hermano(a)).",
+    "Siempre se envía junto con el I-130 — nunca por separado."
+  ],
   "required_evidence": [
     "A USCIS não publica um checklist de evidência separado para o I-130A — o formulário só reúne dados pessoais do cônjuge beneficiário (histórico de endereços e emprego dos últimos 5 anos, dados biográficos).",
     "A evidência do relacionamento em si (certidão de casamento, prova de boa-fé do casamento) é anexada no pacote do I-130, não no I-130A."
@@ -28,6 +39,10 @@
   "required_evidence_en": [
     "USCIS doesn't publish a separate evidence checklist for the I-130A — the form only collects the beneficiary spouse's personal data (5-year address/employment history, biographic data).",
     "Evidence of the relationship itself (marriage certificate, bona fide marriage evidence) is attached to the I-130 package, not the I-130A."
+  ],
+  "required_evidence_es": [
+    "USCIS no publica una lista de verificación de evidencia separada para el I-130A — el formulario solo reúne los datos personales del cónyuge beneficiario(a) (historial de domicilios y empleo de los últimos 5 años, datos biográficos).",
+    "La evidencia de la relación en sí (certificado de matrimonio, prueba de buena fe del matrimonio) se adjunta en el paquete del I-130, no en el I-130A."
   ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
@@ -41,6 +56,12 @@
     "A supporting-documents checklist tailored to your actual answers — not a generic list.",
     "Progress saved automatically: close the tab and come back anytime, nothing is lost."
   ],
+  "whats_included_es": [
+    "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -51,6 +72,11 @@
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
   ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente se aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listos para su caso."
+  ],
   "common_mistakes": [
     "Preencher o I-130A pensando que ele substitui o I-130 — na verdade ele é sempre um complemento, nunca é enviado sozinho.",
     "Deixar de listar todos os endereços e empregos dos últimos 5 anos, mesmo os mais antigos ou de curta duração.",
@@ -60,6 +86,11 @@
     "Filling out the I-130A thinking it replaces the I-130 — it's always a companion form, never sent on its own.",
     "Leaving out addresses or jobs from the last 5 years, even short or older ones.",
     "Forgetting that the I-130A is signed by the beneficiary spouse, not the petitioner."
+  ],
+  "common_mistakes_es": [
+    "Completar el I-130A pensando que sustituye al I-130 — en realidad siempre es un complemento, nunca se envía por separado.",
+    "Omitir domicilios o empleos de los últimos 5 años, incluso los más antiguos o de corta duración.",
+    "Olvidar que quien firma el I-130A es el cónyuge beneficiario(a), no el peticionario."
   ],
   "faq": [
     {
@@ -89,8 +120,24 @@
       "a": "Yes, the I-130A is required regardless of where the beneficiary spouse lives."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿El I-130A tiene una tarifa de protocolo separada?",
+      "a": "No. La tarifa se cobra una sola vez, junto con el I-130 — el I-130A no tiene costo adicional."
+    },
+    {
+      "q": "¿Adónde envío el I-130A?",
+      "a": "Junto con el I-130, en el mismo envío (en línea o en papel) — forman un solo paquete."
+    },
+    {
+      "q": "El/la beneficiario(a) vive fuera de los EE. UU. ¿Aún debe completar el I-130A?",
+      "a": "Sí, el I-130A se exige sin importar dónde viva el cónyuge beneficiario(a)."
+    }
+  ],
   "related_note": "Sempre acompanha um I-130 baseado em casamento — veja também o I-130.",
   "related_note_en": "Always accompanies a marriage-based I-130 — see also the I-130.",
+  "related_note_es": "Siempre acompaña a un I-130 basado en matrimonio — vea también el I-130.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

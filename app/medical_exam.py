@@ -18,8 +18,8 @@ _CONTENT_PATH = ROOT / "data" / "medical_exam_page.json"
 
 
 def _pick(obj: dict, key: str, lang: str):
-    if lang == "en":
-        alt = obj.get(f"{key}_en")
+    if lang != "pt":
+        alt = obj.get(f"{key}_{lang}")
         if alt is not None:
             return alt
     return obj.get(key)
@@ -32,7 +32,7 @@ def _localize(content: dict, lang: str) -> dict:
     def loc_section(section: dict) -> dict:
         out = {}
         for key in list(section.keys()):
-            if key.endswith("_en"):
+            if key.endswith("_en") or key.endswith("_es"):
                 continue
             out[key] = _pick(section, key, lang)
         return out

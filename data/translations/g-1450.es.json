@@ -1,0 +1,38 @@
+{
+  "title": "G-1450 — Autorización para Transacciones con Tarjeta de Crédito",
+  "sections": {
+    "requerente": "Sobre el Solicitante/Peticionario",
+    "titular": "Sobre el Titular de la Tarjeta",
+    "pagamento": "Detalles del Pago"
+  },
+  "questions": {
+    "g1450_sobrenome": {"label": "Apellido del solicitante, peticionario o requirente"},
+    "g1450_nome": {"label": "Nombre del solicitante, peticionario o requirente"},
+    "g1450_nome_meio": {"label": "Segundo nombre (si tiene)"},
+
+    "g1450_titular_sobrenome": {"label": "Apellido del titular de la tarjeta (tal como aparece en la tarjeta)", "hint": "Puede ser diferente del solicitante — por ejemplo, cuando un familiar paga la tarifa."},
+    "g1450_titular_nome": {"label": "Nombre del titular de la tarjeta"},
+    "g1450_titular_nome_meio": {"label": "Segundo nombre del titular de la tarjeta (si tiene)"},
+    "g1450_endereco_rua": {"label": "Dirección de facturación — calle y número"},
+    "g1450_endereco_tipo": {"label": "Tipo de unidad en la dirección de facturación", "options": {
+      "nenhum": "Ninguno",
+      "ste": "Suite (STE)",
+      "apt": "Apartamento (APT)",
+      "flr": "Piso (FLR)"
+    }},
+    "g1450_endereco_numero_unidade": {"label": "Número de suite/apartamento/piso"},
+    "g1450_cidade": {"label": "Ciudad de la dirección de facturación"},
+    "g1450_estado": {"label": "Estado de la dirección de facturación"},
+    "g1450_cep": {"label": "Código postal de la dirección de facturación"},
+    "g1450_telefone": {"label": "Número de teléfono del titular de la tarjeta"},
+    "g1450_email": {"label": "Correo electrónico del titular de la tarjeta"},
+
+    "g1450_bandeira": {"label": "Marca de la tarjeta", "options": {
+      "visa": "Visa",
+      "mastercard": "MasterCard",
+      "amex": "American Express",
+      "discover": "Discover"
+    }},
+    "g1450_valor_autorizado": {"label": "Monto de pago autorizado (en dólares, sin centavos)", "hint": "Verifique el monto exacto de la tarifa antes de completar esto — es lo que se cobrará a la tarjeta."}
+  }
+}

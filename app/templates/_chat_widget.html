@@ -1,0 +1,80 @@
+{% from "_icons.html" import icon %}
+<button type="button" class="chat-fab" id="chatFab" aria-label="{{ t('chat_fab_label') }}" aria-expanded="false">
+  {{ icon('sparkle', 26) }}
+</button>
+
+<div class="chat-panel" id="chatPanel" hidden>
+  <div class="chat-panel-header">
+    <span>{{ t('chat_fab_label') }}</span>
+    <button type="button" class="chat-panel-close" id="chatClose" aria-label="Close">&times;</button>
+  </div>
+  <p class="chat-disclaimer">{{ t('chat_disclaimer') }}</p>
+  <div class="chat-log" id="chatLog"></div>
+  <form class="chat-input-row" id="chatForm">
+    <input type="text" id="chatInput" placeholder="{{ t('chat_placeholder') }}" autocomplete="off">
+    <button type="submit" class="btn" id="chatSendBtn">{{ t('chat_send') }}</button>
+  </form>
+</div>
+
+<script>
+(function () {
+  var fab = document.getElementById('chatFab');
+  var panel = document.getElementById('chatPanel');
+  var closeBtn = document.getElementById('chatClose');
+  var form = document.getElementById('chatForm');
+  var input = document.getElementById('chatInput');
+  var log = document.getElementById('chatLog');
+  var sendBtn = document.getElementById('chatSendBtn');
+
+  function toggle(open) {
+    panel.hidden = !open;
+    fab.setAttribute('aria-expanded', String(open));
+    if (open) { input.focus(); }
+  }
+
+  fab.addEventListener('click', function () { toggle(panel.hidden); });
+  closeBtn.addEventListener('click', function () { toggle(false); });
+
+  function addMessage(role, text) {
+    var div = document.createElement('div');
+    div.className = 'chat-msg ' + (role === 'user' ? 'user' : 'bot');
+    div.textContent = text;
+    log.appendChild(div);
+    log.scrollTop = log.scrollHeight;
+    return div;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var message = input.value.trim();
+    if (!message) return;
+
+    addMessage('user', message);
+    input.value = '';
+    sendBtn.disabled = true;
+    var typing = addMessage('bot', '…');
+
+    var context = window.CHAT_CONTEXT || {};
+    fetch('{{ url_for("chatbot.send_message") }}', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        message: message,
+        submission_id: context.submission_id || null,
+        question_id: context.question_id || null
+      })
+    })
+      .then(function (resp) { return resp.json(); })
+      .then(function (data) {
+        typing.textContent = data.reply || '';
+      })
+      .catch(function () {
+        typing.textContent = {{ t('chat_error_generic') | tojson }};
+      })
+      .finally(function () {
+        sendBtn.disabled = false;
+        log.scrollTop = log.scrollHeight;
+      });
+  });
+})();
+</script>

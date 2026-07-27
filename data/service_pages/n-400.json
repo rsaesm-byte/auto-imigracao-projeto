@@ -1,11 +1,15 @@
 {
   "tagline": "O passo final: torne-se cidadão americano",
   "tagline_en": "The final step: become a U.S. citizen",
+  "tagline_es": "El paso final: conviértase en ciudadano(a) estadounidense",
   "what_is": [
     "O Formulário N-400 é o pedido para se tornar cidadão americano por naturalização. Costuma ser o último passo do processo de imigração para quem já é residente permanente há tempo suficiente e atende aos requisitos de presença física, bom caráter moral e conhecimento de inglês/civismo."
   ],
   "what_is_en": [
     "Form N-400 is the application to become a U.S. citizen through naturalization. It's usually the final step of the immigration journey for those who have been permanent residents long enough and meet the physical presence, good moral character, and English/civics knowledge requirements."
+  ],
+  "what_is_es": [
+    "El Formulario N-400 es la solicitud para convertirse en ciudadano(a) estadounidense mediante la naturalización. Suele ser el último paso del proceso migratorio para quienes ya son residentes permanentes durante el tiempo suficiente y cumplen con los requisitos de presencia física, buen carácter moral y conocimiento de inglés/educación cívica."
   ],
   "who_needs": [
     "Residentes permanentes há pelo menos 5 anos (regra geral).",
@@ -19,6 +23,12 @@
     "VAWA (Violence Against Women Act) beneficiaries.",
     "Members of the U.S. armed forces, under specific military eligibility bases."
   ],
+  "who_needs_es": [
+    "Residentes permanentes desde hace al menos 5 años (regla general).",
+    "Residentes permanentes desde hace al menos 3 años, casados(as) y viviendo con un(a) cónyuge ciudadano(a) estadounidense.",
+    "Beneficiarios(as) de la VAWA (Ley de Violencia contra la Mujer).",
+    "Miembros de las fuerzas armadas estadounidenses, bajo bases específicas de elegibilidad militar."
+  ],
   "eligibility": [
     "Você pode protocolar o N-400 até 90 dias antes de completar o tempo de residência contínua exigido (5 anos, ou 3 anos se casado(a) e vivendo com cônjuge cidadão americano) — não precisa esperar o dia exato.",
     "A Parte 9 do formulário (Informações Adicionais Sobre Você) tem 37 itens sobre antecedentes — moralidade, segurança nacional, histórico criminal, serviço militar e o Juramento de Fidelidade.",
@@ -30,6 +40,12 @@
     "Part 9 of the form (Additional Information About You) has 37 background items — moral character, national security, criminal history, military service, and the Oath of Allegiance.",
     "\"Yes\" answers usually require a detailed explanation in Part 14 and may indicate the need for specialized legal advice, especially in cases involving criminal history.",
     "If you're male and should have registered with the Selective Service before turning 26 but didn't, and you're now between 26 and 31 (or 26 and 29, if filing based on marriage to a U.S. citizen), you'll need a Selective Service status letter plus a written explanation."
+  ],
+  "eligibility_es": [
+    "Usted puede presentar el N-400 hasta 90 días antes de completar el tiempo de residencia continua exigido (5 años, o 3 años si está casado(a) y vive con un(a) cónyuge ciudadano(a) estadounidense) — no necesita esperar el día exacto.",
+    "La Parte 9 del formulario (Información Adicional Sobre Usted) tiene 37 puntos de antecedentes — carácter moral, seguridad nacional, antecedentes penales, servicio militar y el Juramento de Lealtad.",
+    "Las respuestas \"Sí\" normalmente requieren una explicación detallada en la Parte 14 y pueden indicar la necesidad de asesoramiento jurídico especializado, especialmente en casos con antecedentes penales.",
+    "Si usted es hombre y debió registrarse en el Selective Service antes de cumplir 26 años pero no lo hizo, y hoy tiene entre 26 y 31 años (o entre 26 y 29 años, si la base es matrimonio con ciudadano(a) estadounidense), necesitará una carta de estatus del Selective Service y una justificación por escrito."
   ],
   "required_evidence": [
     "Cópia da frente e verso do seu Green Card.",
@@ -49,6 +65,15 @@
     "If you traveled outside the U.S. for more than 6 months (but less than 1 year) during the required residency period: evidence you still maintained U.S. residence anyway (bank statements, rent proof, pay stubs, car registration, passport entry/exit stamps, IRS transcripts).",
     "If based on military service: Form N-426 (if currently serving) or DD-214/NGB-22 (if already discharged)."
   ],
+  "required_evidence_es": [
+    "Copia de ambos lados de su Green Card.",
+    "Certificado de matrimonio vigente y certificados de divorcio/anulación/defunción de matrimonios anteriores, si corresponde.",
+    "Si se basa en matrimonio con ciudadano(a) estadounidense: certificado de matrimonio, y prueba de la ciudadanía del (de la) cónyuge durante los últimos 3 años.",
+    "Si tuvo un arresto o detención, incluso sin cargos formales: el parte policial y una declaración oficial de la autoridad confirmando que no se presentaron cargos.",
+    "Si fue condenado(a), colocado(a) en un programa alternativo (diversión, rehabilitación) o tuvo una sentencia suspendida/libertad condicional: el registro de la sentencia y prueba de que cumplió el programa/la pena.",
+    "Si viajó fuera de los EE. UU. por más de 6 meses (pero menos de 1 año) durante el período de residencia exigido: evidencia de que mantuvo su residencia en los EE. UU. de todos modos (estados de cuenta bancarios, comprobante de alquiler, talones de pago, registro del automóvil, sellos de entrada/salida en el pasaporte, transcripciones del IRS).",
+    "Si se basa en servicio militar: Formulario N-426 (si está en servicio activo) o DD-214/NGB-22 (si ya fue dado de baja)."
+  ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
     "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
@@ -61,6 +86,12 @@
     "A supporting-documents checklist tailored to your actual answers — not a generic list.",
     "Progress saved automatically: close the tab and come back anytime, nothing is lost."
   ],
+  "whats_included_es": [
+    "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -70,6 +101,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listas para su proceso."
   ],
   "common_mistakes": [
     "Protocolar antes da janela permitida (90 dias antes de completar o tempo mínimo de residência exigido).",
@@ -86,6 +122,14 @@
     "Not preparing for the English and civics test, a required part of the process (outside the scope of this tool), unless a documented exemption applies.",
     "Trying to file online while requesting a reduced fee or fee waiver — USCIS requires a paper form in those cases.",
     "Not telling USCIS if the Green Card gets lost even with the N-400 pending — the N-400 receipt notice automatically extends the Green Card for 2 years, but if that receipt notice itself is lost, an I-90 still needs to be filed."
+  ],
+  "common_mistakes_es": [
+    "Presentar la solicitud antes de la ventana permitida (90 días antes de completar el tiempo mínimo de residencia exigido).",
+    "No declarar viajes largos fuera de los EE. UU. (más de 6 meses) que puedan haber roto la continuidad de la residencia, sin reunir evidencia de que la residencia se mantuvo.",
+    "No explicar correctamente las respuestas \"Sí\" en la sección de antecedentes.",
+    "No prepararse para el examen de inglés y educación cívica, una parte obligatoria del proceso (fuera del alcance de esta herramienta), salvo exención documentada.",
+    "Intentar presentar la solicitud en línea al pedir tarifa reducida o exención de tarifa — USCIS exige formulario en papel en esos casos.",
+    "No avisar a USCIS si la Green Card se pierde aun con el N-400 pendiente — el recibo del N-400 extiende la Green Card por 2 años automáticamente, pero si ese mismo recibo se pierde, es necesario presentar un I-90."
   ],
   "faq": [
     {
@@ -131,8 +175,32 @@
       "a": "Yes — the full fee is $760 on paper or $710 online; the reduced fee is $380 (with income documentation); a full waiver requires Form I-912 or a written request with documentation. Reduced fee and waiver requests can only be filed on paper, not online."
     }
   ],
+  "faq_es": [
+    {
+      "q": "¿Necesito presentar el examen de inglés y educación cívica?",
+      "a": "Sí, salvo exenciones específicas (edad más tiempo de residencia, o condición médica documentada). Esta etapa ocurre en la entrevista con USCIS, fuera del alcance de esta herramienta."
+    },
+    {
+      "q": "¿Los viajes largos afectan mi solicitud?",
+      "a": "Sí — las ausencias de 6 meses o más pueden romper la continuidad de la residencia exigida, y esto se evalúa caso por caso."
+    },
+    {
+      "q": "Tengo un antecedente penal antiguo. ¿Aún puedo naturalizarme?",
+      "a": "Depende del tipo de antecedente y de cuándo ocurrió. Recomendamos encarecidamente consultar a un abogado de inmigración antes de presentar la solicitud en estos casos."
+    },
+    {
+      "q": "Mi Green Card vencerá antes de mi entrevista de naturalización. ¿Necesito renovarla (I-90)?",
+      "a": "Una vez que presenta correctamente el N-400, USCIS emite un recibo que extiende automáticamente la validez de su Green Card por 2 años a partir de su fecha de vencimiento — presente ese recibo junto con la tarjeta. Pero si pierde la tarjeta (o el propio recibo), igual necesitará presentar un I-90."
+    },
+    {
+      "q": "¿Puedo pagar una tarifa reducida o pedir una exención?",
+      "a": "Sí — la tarifa completa es $760 en papel o $710 en línea; la tarifa reducida es $380 (con documentación de ingresos); la exención total requiere el Formulario I-912 o una solicitud por escrito con documentación. La tarifa reducida y la exención solo pueden presentarse en papel, no en línea."
+    }
+  ],
   "related_note": "Geralmente segue o I-90 (se o green card precisar de renovação antes da entrevista) e, para casos militares, o Formulário N-426.",
   "related_note_en": "Usually follows the I-90 (if the green card needs renewal before the interview) and, for military cases, Form N-426.",
+  "related_note_es": "Generalmente sigue al I-90 (si la green card necesita renovación antes de la entrevista) y, en casos militares, al Formulario N-426.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni ofrece asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

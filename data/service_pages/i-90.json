@@ -1,11 +1,15 @@
 {
   "tagline": "Substitua ou renove seu Green Card",
   "tagline_en": "Replace or renew your green card",
+  "tagline_es": "Sustituya o renueve su Green Card",
   "what_is": [
     "O Formulário I-90 é usado para substituir ou renovar o Cartão de Residente Permanente (Green Card) — seja porque ele expirou, foi perdido, roubado, danificado, tem informações desatualizadas (como mudança de nome), ou porque a USCIS cometeu um erro no cartão anterior."
   ],
   "what_is_en": [
     "Form I-90 is used to replace or renew a Permanent Resident Card (green card) — whether it expired, was lost, stolen, damaged, has outdated information (like a name change), or USCIS made an error on the previous card."
+  ],
+  "what_is_es": [
+    "El Formulario I-90 se usa para sustituir o renovar la Tarjeta de Residente Permanente (Green Card) — ya sea porque venció, se perdió, fue robada, está dañada, tiene información desactualizada (como un cambio de nombre), o porque USCIS cometió un error en la tarjeta anterior."
   ],
   "who_needs": [
     "Residentes permanentes com cartão vencido ou perto de vencer.",
@@ -19,6 +23,12 @@
     "Anyone who changed their name or other personal information since the card was issued.",
     "Conditional residents whose status was automatically converted to permanent."
   ],
+  "who_needs_es": [
+    "Residentes permanentes con la tarjeta vencida o próxima a vencer.",
+    "Quienes tuvieron la tarjeta perdida, robada o dañada.",
+    "Quienes cambiaron de nombre u otra información personal desde que se emitió la tarjeta.",
+    "Residentes condicionales cuyo estatus se convirtió automáticamente a permanente."
+  ],
   "eligibility": [
     "Não use o I-90 se você é residente condicional querendo remover as condições — esse é o I-751 (por casamento) ou o I-829 (por investimento), não o I-90.",
     "Como residente permanente, você é legalmente obrigado a portar um Green Card válido e não vencido a todo momento — pedir a naturalização (N-400) não elimina essa exigência enquanto o processo estiver em andamento.",
@@ -30,6 +40,12 @@
     "As a permanent resident, you're legally required to carry a valid, unexpired Green Card at all times — applying for naturalization (N-400) doesn't remove this requirement while that process is ongoing.",
     "Some specific reasons (a card never received, or a USCIS error, for example) are exempt from the filing fee.",
     "Our questionnaire automatically identifies whether your reason qualifies for an exemption."
+  ],
+  "eligibility_es": [
+    "No use el I-90 si usted es residente condicional y quiere eliminar las condiciones — para eso es el I-751 (por matrimonio) o el I-829 (por inversión), no el I-90.",
+    "Como residente permanente, usted está legalmente obligado(a) a portar una Green Card válida y vigente en todo momento — solicitar la naturalización (N-400) no elimina este requisito mientras ese proceso esté en curso.",
+    "Algunos motivos específicos (tarjeta nunca recibida, o error cometido por USCIS, por ejemplo) están exentos de la tarifa de protocolo.",
+    "Nuestro cuestionario identifica automáticamente si su motivo califica para una exención."
   ],
   "required_evidence": [
     "Frente e verso do cartão antigo, quando disponível (cartão danificado, com erro, ou com dados desatualizados).",
@@ -43,6 +59,12 @@
     "Proof of the name or other personal-data change (marriage certificate, court order), when the reason is updating information.",
     "A copy of the converted conditional-residence documentation, if the reason is automatic conversion from conditional to permanent status."
   ],
+  "required_evidence_es": [
+    "Ambos lados de la tarjeta anterior, cuando esté disponible (tarjeta dañada, con error, o con datos desactualizados).",
+    "Denuncia policial, en caso de robo.",
+    "Prueba del cambio de nombre u otro dato personal (certificado de matrimonio, resolución judicial), cuando el motivo sea la actualización de información.",
+    "Copia del certificado de residencia condicional convertida, si el motivo es la conversión automática de estatus condicional a permanente."
+  ],
   "whats_included": [
     "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
     "Checklist de protocolo: quem deve assinar, como assinar corretamente, valor exato da taxa e para onde enviar (online ou papel).",
@@ -55,6 +77,12 @@
     "A supporting-documents checklist tailored to your actual answers — not a generic list.",
     "Progress saved automatically: close the tab and come back anytime, nothing is lost."
   ],
+  "whats_included_es": [
+    "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de protocolo: quién debe firmar, cómo firmar correctamente, el monto exacto de la tarifa y adónde enviarlo (en línea o en papel).",
+    "Lista de verificación de documentos de respaldo personalizada según sus respuestas — no una lista genérica.",
+    "Progreso guardado automáticamente: cierre y regrese cuando quiera, sin perder nada."
+  ],
   "how_it_works": [
     "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
     "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
@@ -64,6 +92,11 @@
     "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
     "Review the full summary of your answers and adjust any of them before continuing.",
     "Download the filled-out official PDF plus the filing and documents checklists, ready for your case."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquiera de ellas antes de continuar.",
+    "Descargue el PDF oficial completado junto con las listas de verificación de protocolo y de documentos, listas para su proceso."
   ],
   "common_mistakes": [
     "Usar o I-90 por engano quando na verdade precisa remover condições da residência — nesse caso o formulário certo é o I-751 ou o I-829, não o I-90.",
@@ -80,6 +113,14 @@
     "Leaving blank one of the fields that cause automatic rejection: family name, mailing address, and date of birth (Part 1).",
     "Waiting too close to the current card's expiration to file, which can create trouble proving status while the new card is on its way.",
     "Forgetting to sign — an unsigned form is rejected."
+  ],
+  "common_mistakes_es": [
+    "Usar el I-90 por error cuando en realidad necesita eliminar las condiciones de la residencia — en ese caso el formulario correcto es el I-751 o el I-829, no el I-90.",
+    "Seleccionar el motivo incorrecto en la Parte 2 — cada motivo puede exigir documentos de respaldo diferentes.",
+    "No adjuntar la tarjeta anterior (o una denuncia policial, en caso de robo) cuando se exige.",
+    "Dejar en blanco uno de los campos que causan rechazo automático: apellido, dirección postal y fecha de nacimiento (Parte 1).",
+    "Esperar hasta muy cerca del vencimiento de la tarjeta actual para presentar la solicitud, lo que puede dificultar comprobar el estatus mientras llega la nueva tarjeta.",
+    "Olvidar firmar — un formulario sin firma es rechazado."
   ],
   "faq": [
     {
@@ -125,8 +166,32 @@
       "a": "Yes, via a written request to the processing center — but USCIS won't refund the fee already paid if you withdraw."
     }
   ],
+  "faq_es": [
+    {
+      "q": "Mi green card venció. ¿Sigo siendo residente permanente?",
+      "a": "Sí — la tarjeta en sí vence, pero su estatus de residente permanente no. Aun así, usted está obligado(a) por ley a portar una tarjeta válida, así que es importante renovarla."
+    },
+    {
+      "q": "Perdí mi tarjeta fuera de los EE. UU. ¿Qué hago?",
+      "a": "En ese caso específico, el procedimiento puede implicar contactar a un consulado estadounidense antes de regresar — las instrucciones oficiales del I-90 detallan este escenario."
+    },
+    {
+      "q": "¿Hay una tarifa de datos biométricos?",
+      "a": "Depende del motivo seleccionado — algunos exigen datos biométricos con una tarifa asociada, otros no. Nuestra lista de verificación le indica cuál es su caso."
+    },
+    {
+      "q": "Ya estoy tramitando mi naturalización (N-400). ¿Todavía necesito renovar la Green Card con el I-90?",
+      "a": "Si la tarjeta solo va a vencer, el recibo de su N-400 ya extiende la validez automáticamente por 2 años. Pero si la tarjeta se pierde, es robada o dañada, usted igual necesita presentar el I-90 normalmente, aunque el N-400 esté en trámite."
+    },
+    {
+      "q": "¿Puedo retirar mi solicitud después de presentarla?",
+      "a": "Sí, mediante una solicitud por escrito al centro de procesamiento — pero USCIS no reembolsa la tarifa ya pagada en caso de retiro."
+    }
+  ],
   "related_note": "Vale renovar o green card antes de protocolar o N-400, já que uma entrevista de naturalização normalmente exige um cartão válido.",
   "related_note_en": "Worth renewing the green card before filing the N-400, since a naturalization interview usually requires a valid card.",
+  "related_note_es": "Vale la pena renovar la green card antes de presentar el N-400, ya que una entrevista de naturalización normalmente exige una tarjeta válida.",
   "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos (histórico criminal, inadmissibilidade, pedidos de dispensa), procure um advogado de imigração antes de protocolar.",
-  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing."
+  "legal_note_en": "This tool organizes your information and fills out the official form — it does not evaluate eligibility or provide legal advice. For complex cases (criminal history, inadmissibility, waiver requests), consult an immigration attorney before filing.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni ofrece asesoramiento jurídico. En casos complejos (antecedentes penales, inadmisibilidad, solicitudes de dispensa), consulte a un abogado de inmigración antes de presentar la solicitud."
 }

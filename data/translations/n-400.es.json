@@ -1,0 +1,1372 @@
+{
+  "title": "Solicitud de Naturalización — N-400",
+  "sections": {
+    "elegibilidade": "Parte 1 — Información Sobre Su Elegibilidad",
+    "identificacao": "Parte 2 — Información Sobre Usted",
+    "biografico": "Parte 3 — Información Biográfica",
+    "residencia": "Parte 4 — Información Sobre Su Residencia",
+    "marital": "Parte 5 — Historial Matrimonial",
+    "filhos": "Parte 6 — Información Sobre Sus Hijos",
+    "emprego": "Parte 7 — Empleo y Escuelas (Últimos 5 Años)",
+    "viagens": "Parte 8 — Tiempo Fuera de los Estados Unidos",
+    "info_adicional": "Parte 9 — Información Adicional Sobre Usted",
+    "crimes": "Parte 9 — Detalles de Delitos o Infracciones (si corresponde)",
+    "reducao_taxa": "Parte 10 — Solicitud de Reducción de Tarifa",
+    "contato_assinatura": "Parte 11 — Información de Contacto, Certificación y Firma del Solicitante",
+    "interprete": "Parte 12 — Intérprete (si corresponde)",
+    "preparador": "Parte 13 — Preparador (si corresponde)",
+    "info_extra": "Parte 14 — Información Adicional (espacio extra)"
+  },
+  "questions": {
+    "base_elegibilidade": {
+      "label": "Base de su elegibilidad para la naturalización",
+      "options": {
+        "geral": "Disposición General (5 años como residente permanente)",
+        "conjuge_usc": "Cónyuge de un(a) Ciudadano(a) Estadounidense (3 años)",
+        "vawa": "Cónyuge, Ex Cónyuge, o Hijo(a) de un(a) Ciudadano(a) Estadounidense bajo VAWA",
+        "conjuge_usc_exterior": "Cónyuge de un(a) Ciudadano(a) Estadounidense empleado(a) en el extranjero en una capacidad calificada",
+        "militar_hostilidades": "Servicio Militar durante Hostilidades",
+        "militar_1ano": "Al Menos 1 Año de Servicio Militar Honorable",
+        "outro": "Otra razón no listada arriba"
+      },
+      "hint": "Elija la razón que le corresponda: \"Disposición General\" = ha sido residente permanente durante al menos 5 años; \"Cónyuge de un(a) Ciudadano(a) Estadounidense\" = ha sido residente permanente durante al menos 3 años Y ha estado casado(a) con, y viviendo con, un(a) cónyuge ciudadano(a) estadounidense todo ese tiempo; \"VAWA\" = usted es (o fue) cónyuge, ex cónyuge, o hijo(a) de un(a) ciudadano(a) estadounidense y califica bajo la Ley de Violencia Contra la Mujer — a diferencia de la categoría anterior, esta NO exige que usted siga casado(a) o viviendo con esa persona, ya que existe para quienes sufrieron abuso; \"Cónyuge de un(a) Ciudadano(a) Estadounidense empleado(a) en el extranjero\" = su cónyuge ciudadano(a) estadounidense trabaja fuera de los EE. UU. para el gobierno de EE. UU. u otra organización calificada; \"Servicio Militar durante Hostilidades\" = usted sirvió en las fuerzas armadas de EE. UU. durante un período de guerra u hostilidades oficialmente designado — en este caso no se exige un tiempo mínimo como residente permanente; \"Al Menos 1 Año de Servicio Militar Honorable\" = usted sirvió al menos 1 año en las fuerzas armadas de EE. UU. en cualquier momento, con una baja honorable. Si no está seguro(a) de cuál le corresponde, confirme con el equipo antes de continuar — la categoría correcta cambia los documentos exigidos y las reglas de la ventana de protocolo."
+    },
+    "base_elegibilidade_outro_explicacao": {
+      "label": "Explique la otra base de elegibilidad"
+    },
+    "base_elegibilidade_escritorio_campo": {
+      "label": "Oficina local de USCIS para la entrevista (si vive en el extranjero)",
+      "hint": "Solo aplica si usted vive fuera de los Estados Unidos al momento de presentar la solicitud — indique la oficina de USCIS en el extranjero (o en los EE. UU.) donde preferiría ser entrevistado(a)."
+    },
+    "alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number)"
+    },
+    "nome_sobrenome": {
+      "label": "Apellido"
+    },
+    "nome_nome": {
+      "label": "Nombre"
+    },
+    "nome_meio": {
+      "label": "Segundo nombre"
+    },
+    "nome_outro_usado_sobrenome": {
+      "label": "Otro Nombre Usado (1) — Apellido"
+    },
+    "nome_outro_usado_nome": {
+      "label": "Otro Nombre Usado (1) — Nombre"
+    },
+    "nome_outro_usado_meio": {
+      "label": "Otro Nombre Usado (1) — Segundo nombre"
+    },
+    "nome_outro_usado2_sobrenome": {
+      "label": "Otro Nombre Usado (2) — Apellido"
+    },
+    "nome_outro_usado2_nome": {
+      "label": "Otro Nombre Usado (2) — Nombre"
+    },
+    "nome_outro_usado2_meio": {
+      "label": "Otro Nombre Usado (2) — Segundo nombre"
+    },
+    "nome_mudou": {
+      "label": "¿Desea cambiar legalmente su nombre como parte de la naturalización?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "nome_novo_sobrenome": {
+      "label": "Nombre Nuevo — Apellido"
+    },
+    "nome_novo_nome": {
+      "label": "Nombre Nuevo — Nombre"
+    },
+    "nome_novo_meio": {
+      "label": "Nombre Nuevo — Segundo nombre"
+    },
+    "uscis_online": {
+      "label": "Número de cuenta en línea de USCIS, si tiene"
+    },
+    "sexo": {
+      "label": "Sexo",
+      "options": {
+        "masculino": "Masculino",
+        "feminino": "Femenino"
+      }
+    },
+    "data_nascimento": {
+      "label": "Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "data_tornou_residente": {
+      "label": "Fecha en que se convirtió en Residente Permanente (MM/DD/AAAA)"
+    },
+    "pais_nascimento": {
+      "label": "País de Nacimiento"
+    },
+    "pais_nacionalidade": {
+      "label": "País de Ciudadanía o Nacionalidad"
+    },
+    "pais_cidadao_antes_18": {
+      "label": "¿Alguno de sus padres fue ciudadano(a) estadounidense antes de que usted cumpliera 18 años?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Esto podría darle ciudadanía automática (\"derivada\") en lugar de necesitar esta solicitud de naturalización — si la respuesta es Sí, vale la pena confirmar con el equipo antes de continuar, ya que podría cambiar todo el proceso."
+    },
+    "tem_deficiencia": {
+      "label": "¿Tiene alguna discapacidad física, del desarrollo, o mental que le impida demostrar su conocimiento de inglés/educación cívica?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Si tiene una discapacidad que le impide aprender inglés y/o el material de educación cívica, podría calificar para una dispensa de esos exámenes usando el Formulario N-648 (certificado por un médico o psicólogo con licencia). Pregunte al equipo si esto podría aplicarle."
+    },
+    "ssa_quer_cartao": {
+      "label": "¿Desea que la Administración del Seguro Social le emita una tarjeta o actualice su tarjeta existente al naturalizarse?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "ssn": {
+      "label": "Número de Seguro Social (SSN)"
+    },
+    "ssa_consentimento_divulgacao": {
+      "label": "¿Autoriza la divulgación de información a la Administración del Seguro Social (SSA)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "etnia": {
+      "label": "Etnia",
+      "options": {
+        "nao_hispanico": "No Hispano o Latino",
+        "hispanico": "Hispano o Latino"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Raza: Indígena Americano o Nativo de Alaska",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Raza: Nativo de Hawái u Otra Isla del Pacífico",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_negro": {
+      "label": "Raza: Negro o Afroamericano",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_asiatico": {
+      "label": "Raza: Asiático",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "raca_branco": {
+      "label": "Raza: Blanco",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "altura_pes": {
+      "label": "Estatura — pies"
+    },
+    "altura_polegadas": {
+      "label": "Estatura — pulgadas"
+    },
+    "peso": {
+      "label": "Peso en libras (lb)",
+      "hint": "Solo números, ej. 155. Se dividirá automáticamente en las 3 casillas de dígitos del PDF."
+    },
+    "cor_olhos": {
+      "label": "Color de Ojos",
+      "options": {
+        "castanho": "Café",
+        "azul": "Azul",
+        "verde": "Verde",
+        "avela": "Avellana",
+        "cinza": "Gris",
+        "preto": "Negro",
+        "rosa": "Rosado",
+        "marrom_avermelhado": "Marrón rojizo",
+        "outro": "Otro/Desconocido"
+      }
+    },
+    "cor_cabelo": {
+      "label": "Color de Cabello",
+      "options": {
+        "careca": "Calvo (Sin Cabello)",
+        "arenoso": "Arenoso",
+        "ruivo": "Pelirrojo",
+        "branco": "Blanco",
+        "cinza": "Gris",
+        "loiro": "Rubio",
+        "castanho": "Castaño",
+        "preto": "Negro",
+        "outro": "Otro/Desconocido"
+      }
+    },
+    "end_fisico_cuidados_de": {
+      "label": "Dirección Física Actual — A Nombre De (si corresponde)"
+    },
+    "end_fisico_rua": {
+      "label": "Dirección Física Actual — Calle y Número"
+    },
+    "end_fisico_numero": {
+      "label": "Dirección Física Actual — Número"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Dirección Física Actual — Tipo de Unidad (si corresponde)",
+      "options": {
+        "flr": "Piso",
+        "ste": "Suite",
+        "apt": "Apto"
+      }
+    },
+    "end_fisico_cidade": {
+      "label": "Dirección Física Actual — Ciudad"
+    },
+    "end_fisico_estado": {
+      "label": "Dirección Física Actual — Estado (abreviatura)"
+    },
+    "end_fisico_cep": {
+      "label": "Dirección Física Actual — Código Postal"
+    },
+    "end_fisico_provincia": {
+      "label": "Dirección Física Actual — Provincia (si es fuera de los EE. UU.)"
+    },
+    "end_fisico_codigo_postal": {
+      "label": "Dirección Física Actual — Código Postal (si es fuera de los EE. UU.)"
+    },
+    "end_fisico_pais": {
+      "label": "Dirección Física Actual — País"
+    },
+    "end_fisico_data_inicio": {
+      "label": "Usted ha vivido en esta dirección desde (MM/DD/AAAA)"
+    },
+    "end_fisico_data_fim": {
+      "label": "Hasta (MM/DD/AAAA, deje en blanco si es la actual)"
+    },
+    "end_fisico_igual_correio": {
+      "label": "¿Su dirección física actual es también su dirección postal?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "end_correio_cuidados_de": {
+      "label": "Dirección Postal — A Nombre De (si corresponde)"
+    },
+    "end_correio_rua": {
+      "label": "Dirección Postal — Calle y Número"
+    },
+    "end_correio_numero": {
+      "label": "Dirección Postal — Número"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Dirección Postal — Tipo de Unidad",
+      "options": {
+        "flr": "Piso",
+        "ste": "Suite",
+        "apt": "Apto"
+      }
+    },
+    "end_correio_cidade": {
+      "label": "Dirección Postal — Ciudad"
+    },
+    "end_correio_estado": {
+      "label": "Dirección Postal — Estado (abreviatura)"
+    },
+    "end_correio_cep": {
+      "label": "Dirección Postal — Código Postal"
+    },
+    "end_correio_provincia": {
+      "label": "Dirección Postal — Provincia (si es fuera de los EE. UU.)"
+    },
+    "end_correio_codigo_postal": {
+      "label": "Dirección Postal — Código Postal (si es fuera de los EE. UU.)"
+    },
+    "end_correio_pais": {
+      "label": "Dirección Postal — País"
+    },
+    "residencia1_rua": {
+      "label": "Historial de Direcciones (últimos 5 años) — Dirección 1 — Calle y Número"
+    },
+    "residencia1_cidade": {
+      "label": "Historial de Direcciones — Dirección 1 — Ciudad"
+    },
+    "residencia1_estado": {
+      "label": "Historial de Direcciones — Dirección 1 — Estado/Provincia"
+    },
+    "residencia1_cep": {
+      "label": "Historial de Direcciones — Dirección 1 — Código Postal"
+    },
+    "residencia1_pais": {
+      "label": "Historial de Direcciones — Dirección 1 — País"
+    },
+    "residencia1_data_inicio": {
+      "label": "Historial de Direcciones — Dirección 1 — Desde (MM/DD/AAAA)",
+      "hint": "Últimos 5 años de historial (o 3 años, si su elegibilidad se basa en matrimonio con un(a) ciudadano(a)) — liste todas las direcciones donde vivió durante ese período, comenzando por la más reciente."
+    },
+    "residencia2_rua": {
+      "label": "Historial de Direcciones — Dirección 2 — Calle y Número"
+    },
+    "residencia2_cidade": {
+      "label": "Historial de Direcciones — Dirección 2 — Ciudad"
+    },
+    "residencia2_estado": {
+      "label": "Historial de Direcciones — Dirección 2 — Estado/Provincia"
+    },
+    "residencia2_cep": {
+      "label": "Historial de Direcciones — Dirección 2 — Código Postal"
+    },
+    "residencia2_pais": {
+      "label": "Historial de Direcciones — Dirección 2 — País"
+    },
+    "residencia2_data_inicio": {
+      "label": "Historial de Direcciones — Dirección 2 — Desde (MM/DD/AAAA)"
+    },
+    "residencia2_data_fim": {
+      "label": "Historial de Direcciones — Dirección 2 — Hasta (MM/DD/AAAA)"
+    },
+    "residencia3_rua": {
+      "label": "Historial de Direcciones — Dirección 3 — Calle y Número"
+    },
+    "residencia3_cidade": {
+      "label": "Historial de Direcciones — Dirección 3 — Ciudad"
+    },
+    "residencia3_estado": {
+      "label": "Historial de Direcciones — Dirección 3 — Estado/Provincia"
+    },
+    "residencia3_cep": {
+      "label": "Historial de Direcciones — Dirección 3 — Código Postal"
+    },
+    "residencia3_pais": {
+      "label": "Historial de Direcciones — Dirección 3 — País"
+    },
+    "residencia3_data_inicio": {
+      "label": "Historial de Direcciones — Dirección 3 — Desde (MM/DD/AAAA)"
+    },
+    "residencia3_data_fim": {
+      "label": "Historial de Direcciones — Dirección 3 — Hasta (MM/DD/AAAA)"
+    },
+    "estado_civil": {
+      "label": "Estado Civil Actual",
+      "options": {
+        "divorciado": "Divorciado(a)",
+        "solteiro": "Soltero(a), Nunca Casado(a)",
+        "viuvo": "Viudo(a)",
+        "casado": "Casado(a)",
+        "anulado": "Matrimonio Anulado",
+        "separado": "Separado(a)"
+      }
+    },
+    "vezes_casado": {
+      "label": "¿Cuántas veces se ha casado?",
+      "hint": "Cuente todos los matrimonios que ha tenido, incluidos los que terminaron en divorcio, anulación, o el fallecimiento de un(a) cónyuge — no solo el actual."
+    },
+    "conjuge_militar": {
+      "label": "Si está casado(a), ¿su cónyuge es actualmente miembro de las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "conjuge_sobrenome": {
+      "label": "Cónyuge Actual — Apellido"
+    },
+    "conjuge_nome": {
+      "label": "Cónyuge Actual — Nombre"
+    },
+    "conjuge_meio": {
+      "label": "Cónyuge Actual — Segundo nombre"
+    },
+    "conjuge_data_nascimento": {
+      "label": "Cónyuge Actual — Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "data_casamento": {
+      "label": "Fecha en que se casó con su cónyuge actual (MM/DD/AAAA)"
+    },
+    "conjuge_endereco_igual": {
+      "label": "¿La dirección física actual de su cónyuge es la misma que la suya?",
+      "options": {
+        "nao": "No (indique la dirección en la Parte 14)",
+        "sim": "Sí"
+      }
+    },
+    "conjuge_quando_ficou_cidadao": {
+      "label": "¿Cuándo se convirtió su cónyuge en ciudadano(a) estadounidense?",
+      "options": {
+        "nascimento": "Por nacimiento en los Estados Unidos",
+        "outro": "Otra forma (naturalización)"
+      },
+      "hint": "Solo importa si su elegibilidad se basa en \"3 años casado(a) con un(a) ciudadano(a)\" — en ese caso, su cónyuge debe haber sido ciudadano(a) estadounidense durante al menos 3 años completos a la fecha en que presenta esta solicitud."
+    },
+    "conjuge_data_naturalizacao": {
+      "label": "Fecha en que su cónyuge se hizo ciudadano(a) (MM/DD/AAAA)"
+    },
+    "conjuge_alien_number": {
+      "label": "Número A del cónyuge actual, si tiene"
+    },
+    "conjuge_vezes_casado": {
+      "label": "¿Cuántas veces se ha casado su cónyuge actual?"
+    },
+    "conjuge_empregador_atual": {
+      "label": "Empleador o empresa actual del cónyuge"
+    },
+    "total_filhos_menores": {
+      "label": "Número total de hijos menores de 18 años",
+      "hint": "Cuente a todos sus hijos vivos menores de 18 años, biológicos o adoptados — incluso si no viven con usted o no dependen económicamente de usted."
+    },
+    "filho1_nome": {
+      "label": "Hijo(a) 1 — Nombre Completo"
+    },
+    "filho1_data_nascimento": {
+      "label": "Hijo(a) 1 — Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "filho1_residencia": {
+      "label": "Hijo(a) 1 — ¿El (la) hijo(a) vive con usted?",
+      "options": {
+        "resides with me": "Vive conmigo",
+        "does not reside with me": "No vive conmigo",
+        "unknown/missing": "Desconocido/desaparecido"
+      }
+    },
+    "filho1_relacao": {
+      "label": "Hijo(a) 1 — Relación (Elija una)",
+      "options": {
+        "biological son or daughter": "Hijo(a) biológico(a)",
+        "stepchild": "Hijastro(a)",
+        "legally adopted son or daughter": "Hijo(a) legalmente adoptado(a)"
+      }
+    },
+    "filho1_prestando_suporte": {
+      "label": "Hijo(a) 1 — ¿Usted le brinda apoyo económico?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "filho2_nome": {
+      "label": "Hijo(a) 2 — Nombre Completo"
+    },
+    "filho2_data_nascimento": {
+      "label": "Hijo(a) 2 — Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "filho2_residencia": {
+      "label": "Hijo(a) 2 — ¿El (la) hijo(a) vive con usted?",
+      "options": {
+        "resides with me": "Vive conmigo",
+        "does not reside with me": "No vive conmigo",
+        "unknown/missing": "Desconocido/desaparecido"
+      }
+    },
+    "filho2_relacao": {
+      "label": "Hijo(a) 2 — Relación (Elija una)",
+      "options": {
+        "biological son or daughter": "Hijo(a) biológico(a)",
+        "stepchild": "Hijastro(a)",
+        "legally adopted son or daughter": "Hijo(a) legalmente adoptado(a)"
+      }
+    },
+    "filho2_prestando_suporte": {
+      "label": "Hijo(a) 2 — ¿Usted le brinda apoyo económico?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "filho3_nome": {
+      "label": "Hijo(a) 3 — Nombre Completo"
+    },
+    "filho3_data_nascimento": {
+      "label": "Hijo(a) 3 — Fecha de Nacimiento (MM/DD/AAAA)"
+    },
+    "filho3_residencia": {
+      "label": "Hijo(a) 3 — ¿El (la) hijo(a) vive con usted?",
+      "options": {
+        "resides with me": "Vive conmigo",
+        "does not reside with me": "No vive conmigo",
+        "unknown/missing": "Desconocido/desaparecido"
+      }
+    },
+    "filho3_relacao": {
+      "label": "Hijo(a) 3 — Relación (Elija una)",
+      "options": {
+        "biological son or daughter": "Hijo(a) biológico(a)",
+        "stepchild": "Hijastro(a)",
+        "legally adopted son or daughter": "Hijo(a) legalmente adoptado(a)"
+      }
+    },
+    "filho3_prestando_suporte": {
+      "label": "Hijo(a) 3 — ¿Usted le brinda apoyo económico?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "emprego1_nome": {
+      "label": "Empleo/Escuela 1 (más reciente) — Nombre del Empleador/Escuela"
+    },
+    "emprego1_ocupacao": {
+      "label": "Empleo/Escuela 1 — Ocupación o Campo de Estudio"
+    },
+    "emprego1_cidade": {
+      "label": "Empleo/Escuela 1 — Ciudad"
+    },
+    "emprego1_estado": {
+      "label": "Empleo/Escuela 1 — Estado/Provincia"
+    },
+    "emprego1_cep": {
+      "label": "Empleo/Escuela 1 — Código Postal"
+    },
+    "emprego1_pais": {
+      "label": "Empleo/Escuela 1 — País"
+    },
+    "emprego1_data_inicio": {
+      "label": "Empleo/Escuela 1 — Desde (MM/DD/AAAA)"
+    },
+    "emprego2_nome": {
+      "label": "Empleo/Escuela 2 — Nombre del Empleador/Escuela"
+    },
+    "emprego2_ocupacao": {
+      "label": "Empleo/Escuela 2 — Ocupación o Campo de Estudio"
+    },
+    "emprego2_cidade": {
+      "label": "Empleo/Escuela 2 — Ciudad"
+    },
+    "emprego2_estado": {
+      "label": "Empleo/Escuela 2 — Estado/Provincia"
+    },
+    "emprego2_cep": {
+      "label": "Empleo/Escuela 2 — Código Postal"
+    },
+    "emprego2_pais": {
+      "label": "Empleo/Escuela 2 — País"
+    },
+    "emprego2_data_inicio": {
+      "label": "Empleo/Escuela 2 — Desde (MM/DD/AAAA)"
+    },
+    "emprego2_data_fim": {
+      "label": "Empleo/Escuela 2 — Hasta (MM/DD/AAAA)"
+    },
+    "emprego3_nome": {
+      "label": "Empleo/Escuela 3 — Nombre del Empleador/Escuela"
+    },
+    "emprego3_ocupacao": {
+      "label": "Empleo/Escuela 3 — Ocupación o Campo de Estudio"
+    },
+    "emprego3_cidade": {
+      "label": "Empleo/Escuela 3 — Ciudad"
+    },
+    "emprego3_estado": {
+      "label": "Empleo/Escuela 3 — Estado/Provincia"
+    },
+    "emprego3_cep": {
+      "label": "Empleo/Escuela 3 — Código Postal"
+    },
+    "emprego3_pais": {
+      "label": "Empleo/Escuela 3 — País"
+    },
+    "emprego3_data_inicio": {
+      "label": "Empleo/Escuela 3 — Desde (MM/DD/AAAA)"
+    },
+    "emprego3_data_fim": {
+      "label": "Empleo/Escuela 3 — Hasta (MM/DD/AAAA)"
+    },
+    "viagem1_paises": {
+      "label": "Viaje 1 (más reciente) — Países Visitados",
+      "hint": "Liste TODOS los viajes fuera de los EE. UU. en los últimos 5 años (o 3 años, si se basa en matrimonio), incluso viajes cortos a Canadá/México/el Caribe. Un viaje de 6 meses o más puede \"romper\" el requisito de residencia continua — si tuvo un viaje largo, avise al equipo antes de continuar."
+    },
+    "viagem1_data_saida": {
+      "label": "Viaje 1 — Fecha en que Salió de los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem1_data_retorno": {
+      "label": "Viaje 1 — Fecha en que Regresó a los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem2_paises": {
+      "label": "Viaje 2 — Países Visitados"
+    },
+    "viagem2_data_saida": {
+      "label": "Viaje 2 — Fecha en que Salió de los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem2_data_retorno": {
+      "label": "Viaje 2 — Fecha en que Regresó a los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem3_paises": {
+      "label": "Viaje 3 — Países Visitados"
+    },
+    "viagem3_data_saida": {
+      "label": "Viaje 3 — Fecha en que Salió de los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem3_data_retorno": {
+      "label": "Viaje 3 — Fecha en que Regresó a los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem4_paises": {
+      "label": "Viaje 4 — Países Visitados"
+    },
+    "viagem4_data_saida": {
+      "label": "Viaje 4 — Fecha en que Salió de los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem4_data_retorno": {
+      "label": "Viaje 4 — Fecha en que Regresó a los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem5_paises": {
+      "label": "Viaje 5 — Países Visitados"
+    },
+    "viagem5_data_saida": {
+      "label": "Viaje 5 — Fecha en que Salió de los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem5_data_retorno": {
+      "label": "Viaje 5 — Fecha en que Regresó a los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem6_paises": {
+      "label": "Viaje 6 — Países Visitados"
+    },
+    "viagem6_data_saida": {
+      "label": "Viaje 6 — Fecha en que Salió de los EE. UU. (MM/DD/AAAA)"
+    },
+    "viagem6_data_retorno": {
+      "label": "Viaje 6 — Fecha en que Regresó a los EE. UU. (MM/DD/AAAA)"
+    },
+    "reivindicou_cidadania_falsamente": {
+      "label": "1. ¿Alguna vez ha afirmado ser ciudadano(a) estadounidense (por escrito o de cualquier otra forma)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta extremadamente seria: declarar alguna vez, por escrito o verbalmente, que usted es ciudadano(a) estadounidense sin serlo (por ejemplo, en una solicitud de empleo, al votar, en un pasaporte) puede ser una barrera PERMANENTE para la naturalización e incluso desencadenar un proceso de remoción — sin importar que cumpla con todos los demás requisitos. Si la respuesta es Sí, hable con un abogado de inmigración ANTES de continuar."
+    },
+    "registrou_votou_eleicao": {
+      "label": "2. ¿Alguna vez se ha registrado para votar o ha votado en alguna elección Federal, estatal, o local en los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Registrarse para votar o votar en cualquier elección de EE. UU. sin ser ciudadano(a) — incluso por error o por consejo de otra persona — puede ser una barrera permanente e incluso desencadenar un proceso de remoción. Si la respuesta es Sí, hable con un abogado de inmigración ANTES de continuar."
+    },
+    "deve_impostos_atrasados": {
+      "label": "3. ¿Actualmente debe algún impuesto Federal, estatal, o local atrasado?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluye impuestos atrasados federales, estatales o locales, incluso si ya tiene un plan de pago con la autoridad fiscal — si tiene un plan de pago vigente, generalmente puede continuar, pero lleve prueba del plan a su entrevista."
+    },
+    "declarou_nao_residente_fiscal": {
+      "label": "4. Desde que se convirtió en Residente Permanente, ¿alguna vez se ha declarado \"no residente\" en una declaración de impuestos, o ha dejado de presentar una declaración de impuestos por considerarse no residente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Declarar impuestos como \"no residente\" mientras ya era residente permanente puede interpretarse como un abandono de su estatus de residente permanente — un problema serio para esta solicitud. Si esto ocurrió, hable con el equipo antes de continuar."
+    },
+    "membro_partido_comunista": {
+      "label": "5.a. ¿Alguna vez ha sido miembro de, estado involucrado con, o asociado con algún partido comunista o totalitario en cualquier parte del mundo?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluye cualquier partido comunista o totalitario, en su país de origen o en otro lugar, incluso si la membresía fue en el pasado o no fue voluntaria (por ejemplo, exigida por el gobierno). Si la respuesta es Sí, hable con el equipo — no siempre impide la naturalización, pero requiere una revisión cuidadosa."
+    },
+    "advogou_derrubar_governo": {
+      "label": "5.b. ¿Alguna vez ha abogado por, o estado asociado con un grupo que abogara por, derrocar al gobierno de EE. UU. por la fuerza u otros medios inconstitucionales?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Se refiere a abogar por o apoyar el derrocamiento de CUALQUIER gobierno por la fuerza — no opiniones políticas ordinarias o críticas a gobiernos. Si tiene dudas, consulte con el equipo."
+    },
+    "usou_arma_explosivo_dano": {
+      "label": "6.a. ¿Alguna vez ha usado un arma o explosivo para lesionar o intentar lesionar a alguien, o para dañar propiedad?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "participou_sequestro_assassinato_sabotagem": {
+      "label": "6.b. ¿Alguna vez ha participado en un secuestro, asesinato, sabotaje, o el secuestro de una aeronave o vehículo?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "ameacou_conspirou_atos_6a_6b": {
+      "label": "6.c. ¿Alguna vez ha amenazado, intentado, conspirado, o pedido a otra persona que cometiera los actos descritos en los puntos 6.a. o 6.b.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "ordenou_tortura": {
+      "label": "7.a. ¿Alguna vez ha ordenado, incitado, cometido, o ayudado a cometer tortura?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "ordenou_genocidio": {
+      "label": "7.b. ¿Alguna vez ha ordenado, incitado, cometido, o ayudado a cometer genocidio?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "tentou_matar_pessoa": {
+      "label": "7.c. ¿Alguna vez ha matado o intentado matar a alguien?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "contato_sexual_sem_consentimento": {
+      "label": "7.d. ¿Alguna vez ha tenido contacto sexual con alguien que no dio su consentimiento, o que no pudo darlo?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "feriu_intencionalmente_pessoa": {
+      "label": "7.e. ¿Alguna vez ha lesionado intencionalmente, o intentado lesionar gravemente, a alguien?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "impediu_pratica_religiosa": {
+      "label": "7.f. ¿Alguna vez ha impedido que alguien practicara su religión?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "causou_dano_discriminacao": {
+      "label": "7.g. ¿Alguna vez ha causado daño a alguien por su raza, religión, origen nacional, pertenencia a un grupo social particular, u opinión política?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "serviu_unidade_militar_policial": {
+      "label": "8.a. ¿Alguna vez ha servido en, sido miembro de, o participado en alguna unidad militar o policial?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar sobre historial militar/policial/de grupos armados. Incluye el servicio militar oficial en su país de origen, no solo grupos irregulares. Responda con honestidad y proporcione detalles en la sección correspondiente — no es una denegación automática."
+    },
+    "serviu_grupo_armado": {
+      "label": "8.b. ¿Alguna vez ha servido en, sido miembro de, o participado en algún grupo armado (grupo paramilitar, milicia, grupo guerrillero, grupo insurgente, etc.)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar sobre historial militar/policial/de grupos armados. Incluye el servicio militar oficial en su país de origen, no solo grupos irregulares. Responda con honestidad y proporcione detalles en la sección correspondiente — no es una denegación automática."
+    },
+    "trabalhou_local_detencao": {
+      "label": "9. ¿Alguna vez ha trabajado o servido en un lugar donde se detenía a personas (prisión, campo de detención, etc.)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Incluye trabajo o servicio voluntario en cualquier instalación donde se detenga a personas, aunque su función no tuviera contacto directo con los detenidos."
+    },
+    "parte_grupo_arma_ameaca": {
+      "label": "10.a. ¿Alguna vez ha sido parte de, o ayudado a, un grupo que usó un arma contra alguna persona, o amenazó con hacerlo?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "grupo_usou_arma_pessoa": {
+      "label": "10.b. Si respondió \"Sí\" al punto 10.a., ¿alguna vez ha usado un arma contra otra persona?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "grupo_ameacou_arma_pessoa": {
+      "label": "10.c. Si respondió \"Sí\" al punto 10.a., ¿alguna vez ha amenazado con usar un arma contra otra persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "recebeu_treinamento_armas": {
+      "label": "11. ¿Alguna vez ha recibido algún tipo de entrenamiento militar, paramilitar, o con armas?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Incluye el entrenamiento militar obligatorio (por ejemplo, el servicio militar obligatorio en su país de origen), no solo entrenamiento voluntario o irregular."
+    },
+    "vendeu_transportou_armas": {
+      "label": "12. ¿Alguna vez ha vendido, proporcionado, o transportado armas para usarlas contra otra persona?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Responda Sí solo si sabía o creía que las armas se usarían contra otra persona — esto no incluye, por ejemplo, trabajo ordinario en una armería con licencia."
+    },
+    "recrutou_menor15_grupo_armado": {
+      "label": "13. ¿Alguna vez ha reclutado o utilizado a una persona menor de 15 años para servir en un grupo armado?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "usou_menor15_hostilidades": {
+      "label": "14. ¿Alguna vez ha utilizado a una persona menor de 15 años para participar en hostilidades?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de detección de USCIS que se hace a todos en el N-400 sobre derechos humanos y seguridad nacional — no es una acusación. La gran mayoría de las personas responde No. Responda con honestidad; si tiene dudas, consulte con el equipo o con un abogado de inmigración antes de enviar la solicitud."
+    },
+    "cometeu_crime_nao_preso": {
+      "label": "15.a. ¿Alguna vez ha cometido, ayudado a cometer, o pedido a otra persona que cometiera un delito por el cual NO fue arrestado(a)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de USCIS sobre historial de infracciones. Incluye cualquier arresto, citación, o detención, INCLUSO SI el caso fue desestimado, perdonado, sellado, o posteriormente eliminado del expediente — USCIS aun así quiere que se reporte. Si la respuesta es Sí, hable con el equipo antes de continuar: un antecedente penal puede afectar la elegibilidad y usualmente exige documentos adicionales (registros judiciales)."
+    },
+    "foi_preso_citado_detido_acusado": {
+      "label": "15.b. ¿Alguna vez ha sido arrestado(a), detenido(a), citado(a), o acusado(a) de un delito por algún funcionario?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí (proporcione detalles en la sección de Delitos a continuación)"
+      },
+      "hint": "Pregunta estándar de USCIS sobre historial de infracciones. Incluye cualquier arresto, citación, o detención, INCLUSO SI el caso fue desestimado, perdonado, sellado, o posteriormente eliminado del expediente — USCIS aun así quiere que se reporte. Si la respuesta es Sí, hable con el equipo antes de continuar: un antecedente penal puede afectar la elegibilidad y usualmente exige documentos adicionales (registros judiciales)."
+    },
+    "cumpriu_pena_condicional_liberdade": {
+      "label": "16. Si recibió una sentencia suspendida, libertad condicional, o libertad bajo palabra, ¿la ha completado?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Si tuvo una sentencia suspendida, libertad condicional, o libertad bajo palabra, USCIS espera que ya esté completamente cumplida antes de la naturalización. Si todavía está en curso, hable con el equipo."
+    },
+    "envolvido_prostituicao": {
+      "label": "17.a. ¿Alguna vez ha estado involucrado(a) en la prostitución de alguna manera?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Incluye tanto ofrecer como pagar por servicios sexuales comerciales — la ley de inmigración trata esto como una falta de \"buen carácter moral\"."
+    },
+    "trafico_drogas": {
+      "label": "17.b. ¿Alguna vez ha fabricado, distribuido, vendido, o traficado sustancias controladas o drogas ilegales?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "La participación en drogas (incluso marihuana, que sigue siendo ilegal a nivel federal) puede ser un motivo grave de inadmisibilidad — si esto ocurrió, incluso hace mucho tiempo, hable con un abogado de inmigración ANTES de continuar."
+    },
+    "casou_para_beneficio_imigratorio": {
+      "label": "17.c. ¿Alguna vez se ha casado con alguien únicamente para obtener un beneficio migratorio?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "El fraude matrimonial (\"matrimonio simulado\") es uno de los motivos más graves de denegación y puede derivar en un proceso penal. Si tiene alguna duda sobre cómo esta pregunta se aplica a su caso, hable con un abogado antes de responder."
+    },
+    "casado_mais_de_uma_pessoa": {
+      "label": "17.d. ¿Alguna vez ha estado casado(a) con más de una persona al mismo tiempo (bigamia)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Bigamia = estar legalmente casado(a) con más de una persona al mismo tiempo. Si se volvió a casar sin finalizar un divorcio anterior, incluso sin darse cuenta de que era necesario, hable con el equipo antes de continuar."
+    },
+    "ajudou_entrada_ilegal": {
+      "label": "17.e. ¿Alguna vez ha ayudado a alguien a ingresar, o intentar ingresar, a los Estados Unidos ilegalmente?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Incluye ayudar (transportar, esconder, guiar) a cualquier persona — incluidos familiares — a ingresar o permanecer en los EE. UU. sin documentos, incluso sin recibir pago por ello."
+    },
+    "jogo_ilegal": {
+      "label": "17.f. ¿Alguna vez ha apostado ilegalmente o recibido ingresos de apuestas ilegales?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Se refiere a apuestas prohibidas por la ley (no apuestas legales en casinos con licencia o loterías estatales)."
+    },
+    "deixou_pagar_pensao": {
+      "label": "17.g. ¿Alguna vez ha dejado de pagar la manutención de menores u otro apoyo ordenado por un tribunal?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Incluye la manutención de menores o de cónyuge ordenada por un tribunal, incluso si desde entonces se ha puesto al día con los pagos."
+    },
+    "falsa_declaracao_beneficio_publico": {
+      "label": "17.h. ¿Alguna vez ha hecho una declaración falsa para obtener un beneficio público en los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Por ejemplo, mentir sobre ingresos, tamaño del hogar, o estatus migratorio para obtener Medicaid, asistencia alimentaria (SNAP), asistencia de vivienda, etc."
+    },
+    "forneceu_info_falsa_governo": {
+      "label": "18. ¿Alguna vez le ha dado a algún funcionario del gobierno de EE. UU. información falsa o fraudulenta?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluye cualquier declaración falsa a un funcionario del gobierno de EE. UU. (no solo de inmigración) para obtener un beneficio o ventaja, incluso si parece menor."
+    },
+    "mentiu_para_entrar_eua": {
+      "label": "19. ¿Alguna vez le ha mentido a algún funcionario del gobierno de EE. UU. para obtener el ingreso o beneficios migratorios?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluye usar documentos falsos, ocultar información relevante, o mentir en una entrevista consular/fronteriza para obtener una visa o el ingreso a los EE. UU."
+    },
+    "foi_removido_deportado": {
+      "label": "20. ¿Alguna vez ha sido removido(a) o deportado(a) de los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Si alguna vez fue formalmente removido(a)/deportado(a) en algún momento (incluso hace muchos años, incluso si después regresó legalmente), hable con el equipo — esto puede tener implicaciones reales para esta solicitud."
+    },
+    "processo_remocao_rescisao": {
+      "label": "21. ¿Alguna vez ha sido sometido(a) a un proceso de remoción, rescisión, o deportación?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Incluye cualquier proceso de remoción iniciado alguna vez en su contra, incluso si fue cerrado, desestimado, o si usted ganó el caso."
+    },
+    "homem_residiu_18_26": {
+      "label": "22.a. ¿Es usted hombre y vivió en los Estados Unidos entre los 18 y los 26 años de edad?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "La ley de EE. UU. (Selective Service) exige que casi todo hombre que vivió en los EE. UU. entre los 18 y los 25 años se registre en el Selective Service System, incluso los no ciudadanos. Si usted es hombre y esto le aplica, USCIS preguntará sobre su registro en la siguiente pregunta."
+    },
+    "registrou_selective_service": {
+      "label": "22.b. Si respondió \"Sí\" al punto 22.a., ¿se ha registrado en el Selective Service System?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Si debía haberse registrado (hombre, vivió en los EE. UU. entre los 18-25 años) pero no lo hizo, puede afectar su solicitud de naturalización — usualmente puede continuar, pero explique el motivo con el equipo."
+    },
+    "selective_service_data": {
+      "label": "22.c. Fecha de registro en el Selective Service (MM/DD/AAAA)"
+    },
+    "selective_service_numero": {
+      "label": "22.c. Número del Selective Service",
+      "hint": "Encuentre este número en su Carta de Confirmación de Registro, o consultando sss.gov."
+    },
+    "saiu_eua_evitar_recrutamento": {
+      "label": "23. ¿Alguna vez ha salido de los Estados Unidos para evitar ser reclutado(a) en las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Se refiere específicamente a salir del país CON EL PROPÓSITO de evitar el servicio militar obligatorio de EE. UU. — no a viajes ordinarios."
+    },
+    "pediu_isencao_servico_militar": {
+      "label": "24. ¿Alguna vez ha solicitado algún tipo de exención del servicio militar en las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Si alguna vez solicitó una exención del servicio militar de EE. UU. alegando ser extranjero, esto puede haber renunciado permanentemente a su elegibilidad para hacerse ciudadano(a) — hable con el equipo antes de continuar si esto ya ocurrió."
+    },
+    "serviu_forcas_armadas_eua": {
+      "label": "25. ¿Alguna vez ha servido en las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "membro_atual_forcas_armadas": {
+      "label": "26.a. ¿Es usted actualmente miembro de las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "destacamento_exterior_3meses": {
+      "label": "26.b. ¿Tiene programado un despliegue fuera de los Estados Unidos en los próximos 3 meses?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "estacionado_fora_eua": {
+      "label": "26.c. ¿Está actualmente destacado(a) fuera de los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "ex_militar_reside_exterior": {
+      "label": "26.d. ¿Es usted un(a) ex miembro de las fuerzas armadas de EE. UU. que reside actualmente fuera de los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "dispensado_por_ser_estrangeiro": {
+      "label": "27. ¿Alguna vez ha sido eximido(a) de entrenamiento o servicio en las fuerzas armadas de EE. UU. por ser extranjero?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Diferente de la pregunta anterior — esta se refiere a haber SIDO eximido(a) oficialmente del servicio militar por su condición de extranjero, no a haber solicitado la exención."
+    },
+    "corte_marcial_dispensa_desonrosa": {
+      "label": "28. ¿Alguna vez ha sido sometido(a) a corte marcial, o ha recibido una baja distinta de honorable, de las fuerzas armadas de EE. UU.?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "\"Corte marcial\" es el tribunal militar; \"baja distinta de honorable\" es cualquier separación de las fuerzas armadas calificada por debajo de \"honorable\" (por ejemplo, \"otra que honorable\", \"mala conducta\", \"deshonrosa\")."
+    },
+    "desertou_forcas_armadas": {
+      "label": "29. ¿Alguna vez ha desertado de las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "possui_titulo_nobreza": {
+      "label": "30.a. ¿Actualmente tiene, o alguna vez ha tenido, algún título hereditario u orden de nobleza en algún país extranjero?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Un título hereditario de nobleza (por ejemplo, conde, duque, barón) — no títulos académicos ni cargos políticos electos."
+    },
+    "disposto_renunciar_titulo": {
+      "label": "30.b. Si respondió \"Sí\", ¿está dispuesto(a) a renunciar a ese título (o esos títulos) en su ceremonia de naturalización?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Si posee un título de nobleza, deberá aceptar formalmente renunciar a él en la ceremonia de naturalización como condición para convertirse en ciudadano(a) estadounidense."
+    },
+    "titulo_nobreza_lista": {
+      "label": "30.b. Enumere el (los) título(s) de nobleza al (a los) que renunciará"
+    },
+    "apoia_constituicao_governo": {
+      "label": "31. ¿Apoya usted la Constitución y la forma de gobierno de los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Pregunta estándar de lealtad — la gran mayoría de las personas responde Sí; responder No puede impedir la naturalización."
+    },
+    "entende_juramento_fidelidade": {
+      "label": "32. ¿Entiende usted completamente el Juramento de Lealtad a los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El Juramento de Lealtad es el compromiso final que se hace en la ceremonia de naturalización, renunciando a la lealtad a otros países y jurando defender la Constitución de EE. UU. — pregunte al equipo si desea leer el texto completo antes de responder."
+    },
+    "incapaz_juramento_deficiencia": {
+      "label": "33. ¿Es usted incapaz de prestar el Juramento de Lealtad debido a una discapacidad física, del desarrollo, o mental?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Responda Sí solo si una discapacidad le impide entender o prestar el juramento — en ese caso, puede requerirse documentación médica (a menudo junto con el Formulario N-648)."
+    },
+    "disposto_juramento_completo": {
+      "label": "34. ¿Está usted dispuesto(a) a prestar el Juramento de Lealtad completo a los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Si respondió que objeta partes del juramento (por ejemplo, por motivos religiosos), esta pregunta y las siguientes (portar armas / servicio no combatiente / trabajo de importancia nacional) ofrecen versiones alternativas del compromiso — hable con el equipo si esta es su situación."
+    },
+    "disposto_portar_armas": {
+      "label": "35. Si la ley lo exige, ¿está usted dispuesto(a) a portar armas en nombre de los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Alternativa al juramento estándar para quienes tienen una objeción religiosa o de conciencia a portar armas — generalmente solo relevante si respondió No a la pregunta anterior sobre el juramento completo."
+    },
+    "disposto_servico_nao_combatente": {
+      "label": "36. Si la ley lo exige, ¿está usted dispuesto(a) a realizar servicio no combatiente en las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Alternativa al juramento estándar para quienes tienen una objeción religiosa o de conciencia al combate armado, pero aceptan servir en un rol no combatiente si la ley lo exige."
+    },
+    "disposto_trabalho_nacional_importante": {
+      "label": "37. Si la ley lo exige, ¿está usted dispuesto(a) a realizar trabajo de importancia nacional bajo dirección civil?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Alternativa al juramento estándar para quienes tienen una objeción religiosa o de conciencia a cualquier forma de servicio militar, pero aceptan realizar trabajo civil de importancia nacional si la ley lo exige."
+    },
+    "crime1_local": {
+      "label": "Delito/Infracción 1 — Ubicación (ciudad, estado, país)",
+      "hint": "Incluya CADA arresto, citación, detención, o cargo, incluso si posteriormente fue desestimado, perdonado, o sellado, incluso fuera de los EE. UU. Si tiene más de un episodio, use las secciones siguientes (Delito/infracción 2, 3...). Hable con el equipo antes de completar esto — generalmente se necesitarán registros judiciales."
+    },
+    "crime1_crime": {
+      "label": "Delito/Infracción 1 — Cuál fue el delito o infracción"
+    },
+    "crime1_data": {
+      "label": "Delito/Infracción 1 — Fecha del delito/infracción (MM/DD/AAAA)"
+    },
+    "crime1_disposicao": {
+      "label": "Delito/Infracción 1 — Resultado/disposición del arresto"
+    },
+    "crime1_data_condenacao": {
+      "label": "Delito/Infracción 1 — Fecha de condena/declaración de culpabilidad (si corresponde)"
+    },
+    "crime1_sentenca": {
+      "label": "Delito/Infracción 1 — Sentencia (si corresponde)"
+    },
+    "crime2_local": {
+      "label": "Delito/Infracción 2 — Ubicación (ciudad, estado, país)"
+    },
+    "crime2_crime": {
+      "label": "Delito/Infracción 2 — Cuál fue el delito o infracción"
+    },
+    "crime2_data": {
+      "label": "Delito/Infracción 2 — Fecha del delito/infracción (MM/DD/AAAA)"
+    },
+    "crime2_disposicao": {
+      "label": "Delito/Infracción 2 — Resultado/disposición del arresto"
+    },
+    "crime2_data_condenacao": {
+      "label": "Delito/Infracción 2 — Fecha de condena/declaración de culpabilidad (si corresponde)"
+    },
+    "crime2_sentenca": {
+      "label": "Delito/Infracción 2 — Sentencia (si corresponde)"
+    },
+    "crime3_local": {
+      "label": "Delito/Infracción 3 — Ubicación (ciudad, estado, país)"
+    },
+    "crime3_crime": {
+      "label": "Delito/Infracción 3 — Cuál fue el delito o infracción"
+    },
+    "crime3_data": {
+      "label": "Delito/Infracción 3 — Fecha del delito/infracción (MM/DD/AAAA)"
+    },
+    "crime3_disposicao": {
+      "label": "Delito/Infracción 3 — Resultado/disposición del arresto"
+    },
+    "crime3_data_condenacao": {
+      "label": "Delito/Infracción 3 — Fecha de condena/declaración de culpabilidad (si corresponde)"
+    },
+    "crime3_sentenca": {
+      "label": "Delito/Infracción 3 — Sentencia (si corresponde)"
+    },
+    "crime4_local": {
+      "label": "Delito/Infracción 4 — Ubicación (ciudad, estado, país)"
+    },
+    "crime4_crime": {
+      "label": "Delito/Infracción 4 — Cuál fue el delito o infracción"
+    },
+    "crime4_data": {
+      "label": "Delito/Infracción 4 — Fecha del delito/infracción (MM/DD/AAAA)"
+    },
+    "crime4_disposicao": {
+      "label": "Delito/Infracción 4 — Resultado/disposición del arresto"
+    },
+    "crime4_data_condenacao": {
+      "label": "Delito/Infracción 4 — Fecha de condena/declaración de culpabilidad (si corresponde)"
+    },
+    "crime4_sentenca": {
+      "label": "Delito/Infracción 4 — Sentencia (si corresponde)"
+    },
+    "crime5_local": {
+      "label": "Delito/Infracción 5 — Ubicación (ciudad, estado, país)"
+    },
+    "crime5_crime": {
+      "label": "Delito/Infracción 5 — Cuál fue el delito o infracción"
+    },
+    "crime5_data": {
+      "label": "Delito/Infracción 5 — Fecha del delito/infracción (MM/DD/AAAA)"
+    },
+    "crime5_disposicao": {
+      "label": "Delito/Infracción 5 — Resultado/disposición del arresto"
+    },
+    "crime5_data_condenacao": {
+      "label": "Delito/Infracción 5 — Fecha de condena/declaración de culpabilidad (si corresponde)"
+    },
+    "crime5_sentenca": {
+      "label": "Delito/Infracción 5 — Sentencia (si corresponde)"
+    },
+    "renda_ate_400_pobreza": {
+      "label": "¿Desea solicitar una reducción de tarifa? ¿El ingreso de su hogar está en o por debajo del 400% del nivel federal de pobreza?",
+      "options": {
+        "nao": "No (pase a la Parte 11)",
+        "sim": "Sí"
+      },
+      "hint": "La reducción de tarifa se basa en un límite de ingreso del hogar establecido por el gobierno (actualizado cada año) — el equipo puede confirmar el límite actual y si el ingreso de su hogar califica antes de que decida si solicitar la reducción."
+    },
+    "renda_familiar_total": {
+      "label": "Ingreso total del hogar",
+      "hint": "Sume el ingreso de todas las personas de su hogar que viven con usted (no solo el suyo) — confirme con el equipo exactamente qué debe incluirse."
+    },
+    "tamanho_familia": {
+      "label": "Tamaño del hogar",
+      "hint": "Cuéntese a usted más todas las personas que viven con usted y dependen económicamente de usted (cónyuge, hijos, etc.) — confirme con el equipo si no está seguro(a) de a quién incluir."
+    },
+    "total_membros_familia_com_renda": {
+      "label": "Número total de miembros del hogar con ingresos (incluyéndolo a usted)"
+    },
+    "sou_chefe_familia": {
+      "label": "¿Es usted el (la) jefe(a) de familia?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "\"Jefe(a) de familia\" es quien aporta la mayor parte del apoyo económico del hogar — solo relevante si está solicitando una reducción de tarifa."
+    },
+    "nome_chefe_familia": {
+      "label": "Nombre del (de la) jefe(a) de familia (si respondió No arriba)"
+    },
+    "telefone": {
+      "label": "Número de Teléfono Diurno"
+    },
+    "celular": {
+      "label": "Número de Teléfono Móvil"
+    },
+    "email": {
+      "label": "Dirección de Correo Electrónico"
+    },
+    "data_assinatura": {
+      "label": "Fecha de Firma (MM/DD/AAAA)"
+    },
+    "int_sobrenome": {
+      "label": "Intérprete — Apellido"
+    },
+    "int_nome": {
+      "label": "Intérprete — Nombre"
+    },
+    "int_organizacao": {
+      "label": "Intérprete — Nombre de la Empresa u Organización"
+    },
+    "int_telefone": {
+      "label": "Intérprete — Número de Teléfono Diurno"
+    },
+    "int_celular": {
+      "label": "Intérprete — Número de Teléfono Móvil"
+    },
+    "int_email": {
+      "label": "Intérprete — Dirección de Correo Electrónico"
+    },
+    "int_idioma": {
+      "label": "Intérprete — Idioma"
+    },
+    "int_data_assinatura": {
+      "label": "Intérprete — Fecha de Firma (MM/DD/AAAA)"
+    },
+    "prep_sobrenome": {
+      "label": "Preparador — Apellido"
+    },
+    "prep_nome": {
+      "label": "Preparador — Nombre"
+    },
+    "prep_organizacao": {
+      "label": "Preparador — Nombre de la Empresa u Organización"
+    },
+    "prep_telefone": {
+      "label": "Preparador — Número de Teléfono Diurno"
+    },
+    "prep_celular": {
+      "label": "Preparador — Número de Teléfono Móvil"
+    },
+    "prep_email": {
+      "label": "Preparador — Dirección de Correo Electrónico"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparador — Fecha de Firma (MM/DD/AAAA)"
+    },
+    "info_adicional1_pagina": {
+      "label": "Línea 1 — Número de Página"
+    },
+    "info_adicional1_parte": {
+      "label": "Línea 1 — Número de Parte"
+    },
+    "info_adicional1_item": {
+      "label": "Línea 1 — Número de Punto"
+    },
+    "info_adicional1_texto": {
+      "label": "Línea 1 — Texto"
+    },
+    "info_adicional2_pagina": {
+      "label": "Línea 2 — Número de Página"
+    },
+    "info_adicional2_parte": {
+      "label": "Línea 2 — Número de Parte"
+    },
+    "info_adicional2_item": {
+      "label": "Línea 2 — Número de Punto"
+    },
+    "info_adicional2_texto": {
+      "label": "Línea 2 — Texto"
+    },
+    "info_adicional3_pagina": {
+      "label": "Línea 3 — Número de Página"
+    },
+    "info_adicional3_parte": {
+      "label": "Línea 3 — Número de Parte"
+    },
+    "info_adicional3_item": {
+      "label": "Línea 3 — Número de Punto"
+    },
+    "info_adicional3_texto": {
+      "label": "Línea 3 — Texto"
+    },
+    "info_adicional4_pagina": {
+      "label": "Línea 4 — Número de Página"
+    },
+    "info_adicional4_parte": {
+      "label": "Línea 4 — Número de Parte"
+    },
+    "info_adicional4_item": {
+      "label": "Línea 4 — Número de Punto"
+    },
+    "info_adicional4_texto": {
+      "label": "Línea 4 — Texto"
+    }
+  }
+}

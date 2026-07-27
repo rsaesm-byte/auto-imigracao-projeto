@@ -2,11 +2,20 @@
 from __future__ import annotations
 
 import os
+from pathlib import Path
 
 from flask import Flask
 from flask_login import LoginManager
 
 from app.db import Base, SessionLocal, engine
+
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
+
+if load_dotenv is not None:
+    load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 
 def _ensure_cartas_zip_path_column() -> None:
@@ -94,6 +103,7 @@ def create_app() -> Flask:
     from app.medical_exam import medical_exam_bp
     from app.income_calculator import income_calculator_bp
     from app.visa_bulletin import visa_bulletin_bp
+    from app.chatbot import chatbot_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(wizard_bp)
     app.register_blueprint(eligibility_bp)
@@ -102,6 +112,7 @@ def create_app() -> Flask:
     app.register_blueprint(medical_exam_bp)
     app.register_blueprint(income_calculator_bp)
     app.register_blueprint(visa_bulletin_bp)
+    app.register_blueprint(chatbot_bp)
 
     from app.i18n import get_lang, t
     app.jinja_env.globals["t"] = t

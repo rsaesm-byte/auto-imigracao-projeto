@@ -35,8 +35,8 @@ def _find_package(slug: str) -> dict | None:
 
 
 def _pick(pkg: dict, key: str, lang: str):
-    if lang == "en":
-        alt = pkg.get(f"{key}_en")
+    if lang != "pt":
+        alt = pkg.get(f"{key}_{lang}")
         if alt:
             return alt
     return pkg.get(key)
@@ -75,13 +75,13 @@ def detail(slug: str):
                 "type": "form", "slug": item["slug"],
                 "name": _form_display_name(item["slug"]),
                 "optional": item.get("optional", False),
-                "note": item.get("note_pt"),
+                "note": _pick(item, "note", lang),
             })
         elif item["type"] == "payment_choice":
             items.append({
                 "type": "payment_choice",
                 "options": [{"slug": s, "name": _form_display_name(s)} for s in item["options"]],
-                "note": item.get("note_pt"),
+                "note": _pick(item, "note", lang),
             })
         elif item["type"] == "repeatable":
             items.append({
@@ -91,7 +91,7 @@ def detail(slug: str):
         elif item["type"] == "external":
             items.append({
                 "type": "external", "name": item["name"],
-                "note": item.get("note_pt"),
+                "note": _pick(item, "note", lang),
             })
 
     return render_template(

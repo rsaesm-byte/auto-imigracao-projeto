@@ -1,0 +1,383 @@
+{
+  "title": "I-134 – Declaración de Apoyo Financiero",
+  "sections": {
+    "i134_base": "Sobre este formulario",
+    "sponsor_nome": "Su Información (Patrocinador) — Nombre",
+    "sponsor_endereco": "Su Información (Patrocinador) — Dirección",
+    "sponsor_pessoal": "Su Información (Patrocinador) — Nacimiento y Estatus",
+    "sponsor_emprego": "Su Información (Patrocinador) — Situación Laboral",
+    "sponsor_financeiro": "Su Información (Patrocinador) — Información Financiera",
+    "benef_dados": "Información del/de la Beneficiario/a",
+    "benef_endereco": "Dirección del/de la Beneficiario/a",
+    "benef_estadia": "Estadía Prevista en los EE. UU.",
+    "sponsor_declaracao": "Su Declaración y Firma (Patrocinador)",
+    "interprete": "Información del/de la Intérprete",
+    "preparador": "Información Sobre el/la Preparador(a) (si no es usted)"
+  },
+  "questions": {
+    "i134_confirma_beneficiario_outra_pessoa": {
+      "label": "¿Este Formulario I-134 será completado por usted (el/la patrocinador(a)) en nombre de otra persona (el/la beneficiario(a) del apoyo financiero)?",
+      "hint": "Nuestro producto solo cubre el patrocinio de OTRA persona (por ejemplo, el/la solicitante del I-539). Si usted es el/la beneficiario(a) que presenta la solicitud por su cuenta, hable con nuestro equipo -- esa parte específica del formulario (Parte 4) no está automatizada aquí.",
+      "options": [
+        { "value": "sim", "label": "Sí" },
+        { "value": "nao", "label": "No" }
+      ]
+    },
+    "sponsor_sobrenome": { "label": "Apellido" },
+    "sponsor_nome_proprio": { "label": "Nombre" },
+    "sponsor_nome_meio": { "label": "Segundo nombre" },
+    "sponsor_outro_nome1_sobrenome": {
+      "label": "Otro nombre usado 1 — Apellido",
+      "hint": "Incluya alias, apellido de soltero(a), o cualquier otro nombre que haya usado alguna vez."
+    },
+    "sponsor_outro_nome1_nome": { "label": "Otro nombre usado 1 — Nombre" },
+    "sponsor_outro_nome1_meio": { "label": "Otro nombre usado 1 — Segundo nombre" },
+    "sponsor_outro_nome2_sobrenome": { "label": "Otro nombre usado 2 — Apellido" },
+    "sponsor_outro_nome2_nome": { "label": "Otro nombre usado 2 — Nombre" },
+    "sponsor_outro_nome2_meio": { "label": "Otro nombre usado 2 — Segundo nombre" },
+    "sponsor_end_correio_cuidado_de": { "label": "Dirección postal — A nombre de (opcional)" },
+    "sponsor_end_correio_rua": { "label": "Dirección postal — Número y nombre de la calle" },
+    "sponsor_end_correio_tipo_unidade": {
+      "label": "Dirección postal — Tipo de unidad (si tiene)",
+      "options": [
+        { "value": "APT", "label": "Apartamento" },
+        { "value": "STE", "label": "Suite" },
+        { "value": "FLR", "label": "Piso" }
+      ]
+    },
+    "sponsor_end_correio_numero_unidade": { "label": "Dirección postal — Número de unidad" },
+    "sponsor_end_correio_cidade": { "label": "Dirección postal — Ciudad" },
+    "sponsor_end_correio_estado": { "label": "Dirección postal — Estado (EE. UU.)" },
+    "sponsor_end_correio_cep": { "label": "Dirección postal — Código postal (EE. UU.)" },
+    "sponsor_end_correio_provincia": { "label": "Dirección postal — Provincia (si es fuera de EE. UU.)" },
+    "sponsor_end_correio_codigo_postal": { "label": "Dirección postal — Código postal (si es fuera de EE. UU.)" },
+    "sponsor_end_correio_pais": { "label": "Dirección postal — País" },
+    "sponsor_end_fisico_diferente": {
+      "label": "¿Su dirección física actual es diferente de la dirección postal indicada arriba?",
+      "hint": "Si vive en la misma dirección donde recibe correo, elija \"No\" -- no necesitará repetir la dirección.",
+      "options": [
+        { "value": "sim", "label": "Sí" },
+        { "value": "nao", "label": "No" }
+      ]
+    },
+    "sponsor_end_fisico_cuidado_de": { "label": "Dirección física — A nombre de (opcional)" },
+    "sponsor_end_fisico_rua": { "label": "Dirección física — Número y nombre de la calle" },
+    "sponsor_end_fisico_tipo_unidade": {
+      "label": "Dirección física — Tipo de unidad (si tiene)",
+      "options": [
+        { "value": "APT", "label": "Apartamento" },
+        { "value": "STE", "label": "Suite" },
+        { "value": "FLR", "label": "Piso" }
+      ]
+    },
+    "sponsor_end_fisico_numero_unidade": { "label": "Dirección física — Número de unidad" },
+    "sponsor_end_fisico_cidade": { "label": "Dirección física — Ciudad" },
+    "sponsor_end_fisico_estado": { "label": "Dirección física — Estado (EE. UU.)" },
+    "sponsor_end_fisico_cep": { "label": "Dirección física — Código postal (EE. UU.)" },
+    "sponsor_end_fisico_provincia": { "label": "Dirección física — Provincia (si es fuera de EE. UU.)" },
+    "sponsor_end_fisico_codigo_postal": { "label": "Dirección física — Código postal (si es fuera de EE. UU.)" },
+    "sponsor_end_fisico_pais": { "label": "Dirección física — País" },
+    "sponsor_data_nascimento": { "label": "Fecha de nacimiento" },
+    "sponsor_nascimento_pais": { "label": "Lugar de nacimiento — País" },
+    "sponsor_nascimento_provincia": { "label": "Lugar de nacimiento — Estado o Provincia" },
+    "sponsor_nascimento_cidade": { "label": "Lugar de nacimiento — Ciudad" },
+    "sponsor_alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number), si tiene",
+      "hint": "9 dígitos, sin la letra \"A\" (el formulario ya imprime \"A-\" antes del campo). Déjelo en blanco si nunca ha tenido un A-Number."
+    },
+    "sponsor_uscis_online_account": {
+      "label": "Número de Cuenta en Línea de USCIS, si tiene",
+      "hint": "12 dígitos. Déjelo en blanco si no tiene una cuenta en línea de USCIS."
+    },
+    "sponsor_status_imigratorio": {
+      "label": "¿Cuál es su estatus migratorio actual?",
+      "hint": "Este es el punto más importante de todo el formulario: solo los residentes permanentes legales (titulares de green card) o los ciudadanos estadounidenses pueden servir como patrocinador(a) financiero(a) calificado(a) en este tipo de caso. Si su estatus es otro, hable con nuestro equipo antes de continuar.",
+      "options": [
+        { "value": "C", "label": "Ciudadano(a) estadounidense" },
+        { "value": "PR", "label": "Residente Permanente Legal (Green Card)" },
+        { "value": "N", "label": "Nacional estadounidense" },
+        { "value": "NI", "label": "No inmigrante" },
+        { "value": "A", "label": "Asilado(a)" },
+        { "value": "R", "label": "Refugiado(a)" },
+        { "value": "P", "label": "Parolee" },
+        { "value": "TPS", "label": "Titular de TPS" },
+        { "value": "B", "label": "Beneficiario(a) de acción diferida (incluyendo DACA) o Salida Diferida Forzosa" },
+        { "value": "Other", "label": "Otro" }
+      ]
+    },
+    "sponsor_status_outro_explicacao": { "label": "Si \"Otro\": explique su estatus" },
+    "sponsor_relacionamento_beneficiario": {
+      "label": "¿Cuál es su relación con el/la beneficiario(a)?",
+      "hint": "Por ejemplo: hermano(a), amigo(a), primo(a), etc."
+    },
+    "sponsor_situacao_emprego": {
+      "label": "¿Cuál es su situación laboral actual?",
+      "options": [
+        { "value": "E", "label": "Empleado(a)" },
+        { "value": "SE", "label": "Trabajador(a) independiente" },
+        { "value": "U", "label": "Desempleado(a) o sin empleo" },
+        { "value": "M", "label": "Jubilado(a)" },
+        { "value": "O", "label": "Otro" }
+      ]
+    },
+    "sponsor_cargo": { "label": "Puesto de trabajo (si está empleado(a))" },
+    "sponsor_nome_empregador": { "label": "Nombre del empleador (si está empleado(a))" },
+    "sponsor_tipo_autonomo": { "label": "Tipo de trabajo independiente" },
+    "sponsor_emprego_outro_explicacao": { "label": "Si \"Otro\": explique su situación laboral" },
+    "sponsor_quantos_i134_anteriores": {
+      "label": "¿Cuántos otros Formularios I-134, I-134A, I-864, I-864EZ, o I-864A ha presentado anteriormente (para cualquier persona, incluido usted mismo(a)) cuya obligación de apoyo no ha terminado?",
+      "hint": "No incluya al/a la beneficiario(a) de esta solicitud. Si ninguno, ingrese 0."
+    },
+    "sponsor_quantos_outros_dependentes": {
+      "label": "¿A cuántos otros dependientes mantiene (incluyéndose a usted mismo(a))?",
+      "hint": "No incluya al/a la beneficiario(a) de esta solicitud."
+    },
+    "dependente1_nome": { "label": "Otro dependiente 1 — Nombre completo (opcional)" },
+    "dependente1_nascimento": { "label": "Otro dependiente 1 — Fecha de nacimiento" },
+    "dependente1_parentesco": { "label": "Otro dependiente 1 — Relación con usted" },
+    "dependente1_alien_number": { "label": "Otro dependiente 1 — A-Number (si tiene)" },
+    "dependente1_recibo": { "label": "Otro dependiente 1 — Número de recibo de USCIS (si tiene)" },
+    "dependente2_nome": { "label": "Otro dependiente 2 — Nombre completo (opcional)" },
+    "dependente2_nascimento": { "label": "Otro dependiente 2 — Fecha de nacimiento" },
+    "dependente2_parentesco": { "label": "Otro dependiente 2 — Relación con usted" },
+    "dependente2_alien_number": { "label": "Otro dependiente 2 — A-Number (si tiene)" },
+    "dependente2_recibo": { "label": "Otro dependiente 2 — Número de recibo de USCIS (si tiene)" },
+    "dependente3_nome": { "label": "Otro dependiente 3 — Nombre completo (opcional)" },
+    "dependente3_nascimento": { "label": "Otro dependiente 3 — Fecha de nacimiento" },
+    "dependente3_parentesco": { "label": "Otro dependiente 3 — Relación con usted" },
+    "dependente3_alien_number": { "label": "Otro dependiente 3 — A-Number (si tiene)" },
+    "dependente3_recibo": { "label": "Otro dependiente 3 — Número de recibo de USCIS (si tiene)" },
+    "dependente4_nome": { "label": "Otro dependiente 4 — Nombre completo (opcional)" },
+    "dependente4_nascimento": { "label": "Otro dependiente 4 — Fecha de nacimiento" },
+    "dependente4_parentesco": { "label": "Otro dependiente 4 — Relación con usted" },
+    "dependente4_alien_number": { "label": "Otro dependiente 4 — A-Number (si tiene)" },
+    "dependente4_recibo": { "label": "Otro dependiente 4 — Número de recibo de USCIS (si tiene)" },
+    "sponsor_renda_anual": { "label": "¿Cuál es su ingreso anual actual? (en dólares estadounidenses)" },
+    "ativo1_tipo": {
+      "label": "Activo 1 — Tipo (opcional)",
+      "options": [
+        { "value": "N/A", "label": "N/A" },
+        { "value": "Checking - Bank Account", "label": "Cuenta corriente bancaria" },
+        { "value": "Savings - Bank Account", "label": "Cuenta de ahorros bancaria" },
+        { "value": "Annuities", "label": "Anualidades" },
+        { "value": "Stocks, Bonds, Certificates of Deposit", "label": "Acciones, bonos, certificados de depósito" },
+        { "value": "Retirement or Educational Account", "label": "Cuenta de jubilación o educativa" },
+        { "value": "Real Estate Holdings", "label": "Bienes raíces" },
+        { "value": "Personal Property (net value)", "label": "Bienes personales (valor neto)" }
+      ]
+    },
+    "ativo1_valor": { "label": "Activo 1 — Valor en dólares estadounidenses (opcional)" },
+    "ativo2_tipo": {
+      "label": "Activo 2 — Tipo (opcional)",
+      "options": [
+        { "value": "N/A", "label": "N/A" },
+        { "value": "Checking - Bank Account", "label": "Cuenta corriente bancaria" },
+        { "value": "Savings - Bank Account", "label": "Cuenta de ahorros bancaria" },
+        { "value": "Annuities", "label": "Anualidades" },
+        { "value": "Stocks, Bonds, Certificates of Deposit", "label": "Acciones, bonos, certificados de depósito" },
+        { "value": "Retirement or Educational Account", "label": "Cuenta de jubilación o educativa" },
+        { "value": "Real Estate Holdings", "label": "Bienes raíces" },
+        { "value": "Personal Property (net value)", "label": "Bienes personales (valor neto)" }
+      ]
+    },
+    "ativo2_valor": { "label": "Activo 2 — Valor en dólares estadounidenses (opcional)" },
+    "ativo3_tipo": {
+      "label": "Activo 3 — Tipo (opcional)",
+      "options": [
+        { "value": "N/A", "label": "N/A" },
+        { "value": "Checking - Bank Account", "label": "Cuenta corriente bancaria" },
+        { "value": "Savings - Bank Account", "label": "Cuenta de ahorros bancaria" },
+        { "value": "Annuities", "label": "Anualidades" },
+        { "value": "Stocks, Bonds, Certificates of Deposit", "label": "Acciones, bonos, certificados de depósito" },
+        { "value": "Retirement or Educational Account", "label": "Cuenta de jubilación o educativa" },
+        { "value": "Real Estate Holdings", "label": "Bienes raíces" },
+        { "value": "Personal Property (net value)", "label": "Bienes personales (valor neto)" }
+      ]
+    },
+    "ativo3_valor": { "label": "Activo 3 — Valor en dólares estadounidenses (opcional)" },
+    "ativo4_tipo": {
+      "label": "Activo 4 — Tipo (opcional)",
+      "options": [
+        { "value": "N/A", "label": "N/A" },
+        { "value": "Checking - Bank Account", "label": "Cuenta corriente bancaria" },
+        { "value": "Savings - Bank Account", "label": "Cuenta de ahorros bancaria" },
+        { "value": "Annuities", "label": "Anualidades" },
+        { "value": "Stocks, Bonds, Certificates of Deposit", "label": "Acciones, bonos, certificados de depósito" },
+        { "value": "Retirement or Educational Account", "label": "Cuenta de jubilación o educativa" },
+        { "value": "Real Estate Holdings", "label": "Bienes raíces" },
+        { "value": "Personal Property (net value)", "label": "Bienes personales (valor neto)" }
+      ]
+    },
+    "ativo4_valor": { "label": "Activo 4 — Valor en dólares estadounidenses (opcional)" },
+    "ativo5_tipo": {
+      "label": "Activo 5 — Tipo (opcional)",
+      "options": [
+        { "value": "N/A", "label": "N/A" },
+        { "value": "Checking - Bank Account", "label": "Cuenta corriente bancaria" },
+        { "value": "Savings - Bank Account", "label": "Cuenta de ahorros bancaria" },
+        { "value": "Annuities", "label": "Anualidades" },
+        { "value": "Stocks, Bonds, Certificates of Deposit", "label": "Acciones, bonos, certificados de depósito" },
+        { "value": "Retirement or Educational Account", "label": "Cuenta de jubilación o educativa" },
+        { "value": "Real Estate Holdings", "label": "Bienes raíces" },
+        { "value": "Personal Property (net value)", "label": "Bienes personales (valor neto)" }
+      ]
+    },
+    "ativo5_valor": { "label": "Activo 5 — Valor en dólares estadounidenses (opcional)" },
+    "ativo6_tipo": {
+      "label": "Activo 6 — Tipo (opcional)",
+      "options": [
+        { "value": "N/A", "label": "N/A" },
+        { "value": "Checking - Bank Account", "label": "Cuenta corriente bancaria" },
+        { "value": "Savings - Bank Account", "label": "Cuenta de ahorros bancaria" },
+        { "value": "Annuities", "label": "Anualidades" },
+        { "value": "Stocks, Bonds, Certificates of Deposit", "label": "Acciones, bonos, certificados de depósito" },
+        { "value": "Retirement or Educational Account", "label": "Cuenta de jubilación o educativa" },
+        { "value": "Real Estate Holdings", "label": "Bienes raíces" },
+        { "value": "Personal Property (net value)", "label": "Bienes personales (valor neto)" }
+      ]
+    },
+    "ativo6_valor": { "label": "Activo 6 — Valor en dólares estadounidenses (opcional)" },
+    "ativo_total": { "label": "Valor total de todos los activos anteriores (en dólares estadounidenses)" },
+    "sponsor_intencao_contribuicao_especifica": {
+      "label": "Además del apoyo financiero general, ¿tiene la intención de hacer contribuciones específicas para cubrir las necesidades básicas de vida del/de la beneficiario(a) (por ejemplo, vivienda, ayuda para encontrar empleo, inscripción escolar)?",
+      "options": [
+        { "value": "sim", "label": "Sí" },
+        { "value": "nao", "label": "No" }
+      ]
+    },
+    "sponsor_descricao_contribuicao": {
+      "label": "Describa las contribuciones específicas que proporcionará",
+      "hint": "Por ejemplo: proporcionar vivienda segura y adecuada (incluya la dirección), ayudar a conseguir empleo una vez autorizado(a) para trabajar, inscripción escolar, inscripción en beneficios elegibles."
+    },
+    "benef_sobrenome": { "label": "Apellido del/de la beneficiario(a)" },
+    "benef_nome_proprio": { "label": "Nombre del/de la beneficiario(a)" },
+    "benef_nome_meio": { "label": "Segundo nombre del/de la beneficiario(a)" },
+    "benef_outro_nome1_sobrenome": { "label": "Otro nombre usado por el/la beneficiario(a) 1 — Apellido" },
+    "benef_outro_nome1_nome": { "label": "Otro nombre usado por el/la beneficiario(a) 1 — Nombre" },
+    "benef_outro_nome1_meio": { "label": "Otro nombre usado por el/la beneficiario(a) 1 — Segundo nombre" },
+    "benef_outro_nome2_sobrenome": { "label": "Otro nombre usado por el/la beneficiario(a) 2 — Apellido" },
+    "benef_outro_nome2_nome": { "label": "Otro nombre usado por el/la beneficiario(a) 2 — Nombre" },
+    "benef_outro_nome2_meio": { "label": "Otro nombre usado por el/la beneficiario(a) 2 — Segundo nombre" },
+    "benef_data_nascimento": { "label": "Fecha de nacimiento del/de la beneficiario(a)" },
+    "benef_sexo": {
+      "label": "Sexo del/de la beneficiario(a)",
+      "options": [
+        { "value": "M", "label": "Masculino" },
+        { "value": "F", "label": "Femenino" }
+      ]
+    },
+    "benef_alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number) del/de la beneficiario(a), si tiene",
+      "hint": "9 dígitos, sin la letra \"A\" (el formulario ya imprime \"A-\" antes del campo). Déjelo en blanco si la persona nunca ha tenido un A-Number."
+    },
+    "benef_nascimento_pais": { "label": "Lugar de nacimiento del/de la beneficiario(a) — País" },
+    "benef_nascimento_provincia": { "label": "Lugar de nacimiento del/de la beneficiario(a) — Estado o Provincia" },
+    "benef_nascimento_cidade": { "label": "Lugar de nacimiento del/de la beneficiario(a) — Ciudad" },
+    "benef_cidadania_pais": { "label": "País de ciudadanía o nacionalidad del/de la beneficiario(a)" },
+    "benef_estado_civil": {
+      "label": "Estado civil del/de la beneficiario(a)",
+      "options": [
+        { "value": "S", "label": "Soltero(a), nunca casado(a)" },
+        { "value": "M", "label": "Casado(a)" },
+        { "value": "D", "label": "Divorciado(a)" },
+        { "value": "W", "label": "Viudo(a)" },
+        { "value": "E", "label": "Separado(a) legalmente" },
+        { "value": "A", "label": "Matrimonio anulado" },
+        { "value": "O", "label": "Otro" }
+      ]
+    },
+    "benef_estado_civil_outro": { "label": "Si \"Otro\": explique el estado civil del/de la beneficiario(a)" },
+    "benef_end_correio_cuidado_de": { "label": "Dirección postal del/de la beneficiario(a) — A nombre de (opcional)" },
+    "benef_end_correio_rua": { "label": "Dirección postal del/de la beneficiario(a) — Número y nombre de la calle" },
+    "benef_end_correio_tipo_unidade": {
+      "label": "Dirección postal del/de la beneficiario(a) — Tipo de unidad (si tiene)",
+      "options": [
+        { "value": "APT", "label": "Apartamento" },
+        { "value": "STE", "label": "Suite" },
+        { "value": "FLR", "label": "Piso" }
+      ]
+    },
+    "benef_end_correio_numero_unidade": { "label": "Dirección postal del/de la beneficiario(a) — Número de unidad" },
+    "benef_end_correio_cidade": { "label": "Dirección postal del/de la beneficiario(a) — Ciudad" },
+    "benef_end_correio_estado": { "label": "Dirección postal del/de la beneficiario(a) — Estado (EE. UU.)" },
+    "benef_end_correio_cep": { "label": "Dirección postal del/de la beneficiario(a) — Código postal (EE. UU.)" },
+    "benef_end_correio_provincia": { "label": "Dirección postal del/de la beneficiario(a) — Provincia (si es fuera de EE. UU.)" },
+    "benef_end_correio_codigo_postal": { "label": "Dirección postal del/de la beneficiario(a) — Código postal (si es fuera de EE. UU.)" },
+    "benef_end_correio_pais": { "label": "Dirección postal del/de la beneficiario(a) — País" },
+    "benef_end_fisico_diferente": {
+      "label": "¿La dirección física del/de la beneficiario(a) es diferente de la dirección postal indicada arriba?",
+      "options": [
+        { "value": "sim", "label": "Sí" },
+        { "value": "nao", "label": "No" }
+      ]
+    },
+    "benef_end_fisico_cuidado_de": { "label": "Dirección física del/de la beneficiario(a) — A nombre de (opcional)" },
+    "benef_end_fisico_rua": { "label": "Dirección física del/de la beneficiario(a) — Número y nombre de la calle" },
+    "benef_end_fisico_tipo_unidade": {
+      "label": "Dirección física del/de la beneficiario(a) — Tipo de unidad (si tiene)",
+      "options": [
+        { "value": "APT", "label": "Apartamento" },
+        { "value": "STE", "label": "Suite" },
+        { "value": "FLR", "label": "Piso" }
+      ]
+    },
+    "benef_end_fisico_numero_unidade": { "label": "Dirección física del/de la beneficiario(a) — Número de unidad" },
+    "benef_end_fisico_cidade": { "label": "Dirección física del/de la beneficiario(a) — Ciudad" },
+    "benef_end_fisico_estado": { "label": "Dirección física del/de la beneficiario(a) — Estado (EE. UU.)" },
+    "benef_end_fisico_cep": { "label": "Dirección física del/de la beneficiario(a) — Código postal (EE. UU.)" },
+    "benef_end_fisico_provincia": { "label": "Dirección física del/de la beneficiario(a) — Provincia (si es fuera de EE. UU.)" },
+    "benef_end_fisico_codigo_postal": { "label": "Dirección física del/de la beneficiario(a) — Código postal (si es fuera de EE. UU.)" },
+    "benef_end_fisico_pais": { "label": "Dirección física del/de la beneficiario(a) — País" },
+    "benef_estadia_data_inicio": {
+      "label": "Fecha de inicio de la estadía prevista del/de la beneficiario(a) en los EE. UU.",
+      "hint": "Normalmente coincide con la fecha de inicio del programa académico (F-1) o la fecha de entrada planeada como turista (B-2)."
+    },
+    "benef_estadia_tem_data_fim": {
+      "label": "¿Hay una fecha de finalización prevista para esta estadía?",
+      "options": [
+        { "value": "sim", "label": "Sí, tengo una fecha prevista" },
+        { "value": "nao", "label": "No, sin fecha de finalización definida" }
+      ]
+    },
+    "benef_estadia_data_fim": { "label": "Fecha de finalización prevista de la estadía" },
+    "sponsor_certifica_leitura": {
+      "label": "¿Cómo confirma que leyó y comprendió esta declaración?",
+      "hint": "Si necesita un(a) intérprete, complete también su información en la siguiente sección (Parte 6).",
+      "options": [
+        { "value": "proprio", "label": "Puedo leer y entender inglés, y he leído y comprendido cada pregunta e instrucción de este formulario" },
+        { "value": "interprete", "label": "Un(a) intérprete me leyó y tradujo cada pregunta e instrucción en un idioma que entiendo" }
+      ]
+    },
+    "sponsor_idioma_fluente": { "label": "¿En qué idioma tiene fluidez (el mismo usado por el/la intérprete)?" },
+    "sponsor_usou_preparador": {
+      "label": "¿Alguien (por ejemplo, un(a) abogado(a) o preparador(a)) le ayudó a preparar esta declaración?",
+      "options": [
+        { "value": "sim", "label": "Sí" },
+        { "value": "nao", "label": "No" }
+      ]
+    },
+    "sponsor_preparador_nome": { "label": "Nombre completo de la persona que preparó esta declaración" },
+    "sponsor_telefone_diurno": { "label": "Su número de teléfono diurno (para contacto sobre esta declaración)" },
+    "sponsor_telefone_celular_decl": { "label": "Su número de teléfono celular (si tiene)" },
+    "sponsor_email_decl": { "label": "Su correo electrónico (si tiene)" },
+    "sponsor_data_assinatura": {
+      "label": "Fecha de la firma del/de la patrocinador(a)",
+      "hint": "Normalmente la fecha en que el formulario realmente se firmará a mano antes de enviarlo."
+    },
+    "interprete_sobrenome": { "label": "Apellido del/de la intérprete" },
+    "interprete_nome": { "label": "Nombre del/de la intérprete" },
+    "interprete_empresa_organizacao": { "label": "Nombre de la empresa u organización del/de la intérprete (si tiene)" },
+    "interprete_telefone_diurno": { "label": "Número de teléfono diurno del/de la intérprete" },
+    "interprete_telefone_celular": { "label": "Número de teléfono celular del/de la intérprete (si tiene)" },
+    "interprete_email": { "label": "Correo electrónico del/de la intérprete (si tiene)" },
+    "interprete_idioma": { "label": "Idioma en el que el/la intérprete tiene fluidez" },
+    "interprete_data_assinatura": { "label": "Fecha de la firma del/de la intérprete" },
+    "prep_sobrenome": { "label": "Apellido del/de la preparador(a)" },
+    "prep_nome": { "label": "Nombre del/de la preparador(a)" },
+    "prep_empresa_organizacao": { "label": "Nombre de la empresa u organización del/de la preparador(a) (si tiene)" },
+    "prep_telefone_diurno": { "label": "Número de teléfono diurno del/de la preparador(a)" },
+    "prep_telefone_celular": { "label": "Número de teléfono celular del/de la preparador(a) (si tiene)" },
+    "prep_email": { "label": "Correo electrónico del/de la preparador(a) (si tiene)" },
+    "prep_data_assinatura": { "label": "Fecha de la firma del/de la preparador(a)" }
+  }
+}

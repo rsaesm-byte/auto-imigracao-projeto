@@ -1,0 +1,204 @@
+{
+  "tagline": "A declaração de apoio financeiro para benefícios temporários — turista, estudante ou noivo(a) K-1",
+  "tagline_en": "The financial support declaration for temporary benefits — visitor, student, or K-1 fiancé(e)",
+  "tagline_es": "La declaración de apoyo financiero para beneficios temporales — turista, estudiante o prometido(a) K-1",
+
+  "what_is": [
+    "O Formulário I-134 (Declaration of Financial Support) é uma declaração formal, assinada sob pena de perjúrio, em que uma pessoa nos Estados Unidos se compromete a sustentar financeiramente outra pessoa durante sua permanência temporária no país.",
+    "Ele não é protocolado sozinho: é enviado como documento de apoio junto ao pedido principal — neste produto, junto ao Formulário I-539 de Mudança de Status para Estudante (F-1) ou Turista (B-2), quando o(a) requerente não comprova recursos próprios suficientes."
+  ],
+  "what_is_en": [
+    "Form I-134 (Declaration of Financial Support) is a formal declaration, signed under penalty of perjury, in which a person in the United States commits to financially supporting someone else during their temporary stay in the country.",
+    "It isn't filed on its own: it's submitted as supporting evidence alongside the main application — in this product, alongside the Form I-539 Change of Status to Student (F-1) or Visitor (B-2), when the applicant can't show enough resources of their own."
+  ],
+  "what_is_es": [
+    "El Formulario I-134 (Declaration of Financial Support) es una declaración formal, firmada bajo pena de perjurio, en la que una persona en los Estados Unidos se compromete a sostener financieramente a otra persona durante su permanencia temporal en el país.",
+    "No se presenta por sí solo: se envía como documento de respaldo junto con la solicitud principal — en este producto, junto con el Formulario I-539 de Cambio de Estatus a Estudiante (F-1) o Turista (B-2), cuando el/la solicitante no comprueba recursos propios suficientes."
+  ],
+
+  "who_needs": [
+    "Quem está pedindo Mudança de Status para Turista (B-2) e não consegue comprovar, sozinho(a), meios financeiros para hospedagem, alimentação e demais despesas durante a estadia.",
+    "Quem está pedindo Mudança de Status para Estudante (F-1) e precisa comprovar fundos suficientes para cobrir ao menos o primeiro ano de estudos — mensalidade e custo de vida, conforme o valor indicado no Formulário I-20 emitido pela escola.",
+    "Em ambos os casos, quem preenche este formulário é o(a) patrocinador(a) que vai custear a estadia — tipicamente um familiar ou amigo que seja cidadão(ã) americano(a) ou residente permanente legal (LPR)."
+  ],
+  "who_needs_en": [
+    "Anyone requesting a Change of Status to Visitor (B-2) who can't show, on their own, the financial means for lodging, food, and other expenses during the stay.",
+    "Anyone requesting a Change of Status to Student (F-1) who needs to show enough funds to cover at least the first year of study — tuition and living costs, per the amount shown on the school's Form I-20.",
+    "In both cases, this form is filled out by the sponsor who will cover the stay — typically a relative or friend who is a US citizen or lawful permanent resident (LPR)."
+  ],
+  "who_needs_es": [
+    "Quien está solicitando el Cambio de Estatus a Turista (B-2) y no puede comprobar, por sí solo(a), los medios financieros para hospedaje, alimentación y demás gastos durante la estadía.",
+    "Quien está solicitando el Cambio de Estatus a Estudiante (F-1) y necesita comprobar fondos suficientes para cubrir al menos el primer año de estudios — matrícula y costo de vida, según el monto indicado en el Formulario I-20 emitido por la escuela.",
+    "En ambos casos, este formulario lo completa el/la patrocinador(a) que costeará la estadía — típicamente un familiar o amigo(a) que sea ciudadano(a) estadounidense o residente permanente legal (LPR)."
+  ],
+
+  "eligibility": [
+    "Para servir de patrocinador(a) neste formulário, você deve ser residente permanente legal (green card) ou cidadão(ã) americano(a) — não há alternativa para quem está em outro status de não imigrante.",
+    "Este produto cobre apenas o cenário em que o(a) patrocinador(a) preenche o I-134 em nome de OUTRA pessoa (o(a) beneficiário(a), tipicamente o(a) requerente de um I-539). Se você é o(a) próprio(a) beneficiário(a) preenchendo por conta própria (Parte 4 do formulário), essa parte específica não é automatizada aqui — fale com a nossa equipe.",
+    "É preciso um Formulário I-134 separado para cada beneficiário: se o pedido de I-539 inclui cônjuge e filhos como co-requerentes, prepare um I-134 para cada um deles."
+  ],
+  "eligibility_en": [
+    "To act as sponsor on this form, you must be a lawful permanent resident (green card holder) or a US citizen — there's no alternative for someone in another nonimmigrant status.",
+    "This product only covers the scenario where the sponsor fills out the I-134 on behalf of ANOTHER person (the beneficiary, typically an I-539 applicant). If you are the beneficiary filling it out for yourself (Part 4 of the form), that specific part isn't automated here — please contact our team.",
+    "A separate Form I-134 is needed for each beneficiary: if the I-539 application includes a spouse and children as co-applicants, prepare one I-134 for each of them."
+  ],
+  "eligibility_es": [
+    "Para actuar como patrocinador(a) en este formulario, usted debe ser residente permanente legal (green card) o ciudadano(a) estadounidense — no hay alternativa para quien está en otro estatus de no inmigrante.",
+    "Este producto cubre solo el escenario en que el/la patrocinador(a) completa el I-134 en nombre de OTRA persona (el/la beneficiario(a), típicamente el/la solicitante de un I-539). Si usted es el/la propio(a) beneficiario(a) completándolo por su cuenta (Parte 4 del formulario), esa parte específica no está automatizada aquí — comuníquese con nuestro equipo.",
+    "Se necesita un Formulario I-134 separado por cada beneficiario(a): si la solicitud de I-539 incluye a cónyuge e hijos(as) como co-solicitantes, prepare un I-134 para cada uno(a) de ellos(as)."
+  ],
+
+  "required_evidence": [
+    "Cópia da declaração de imposto de renda federal mais recente (ou transcript do IRS).",
+    "Extratos bancários recentes que comprovem o saldo disponível.",
+    "Carta do empregador com o salário e/ou contracheques recentes.",
+    "A renda deve ser confortavelmente suficiente para sustentar a própria família do(a) patrocinador(a) mais o(a) beneficiário(a) — as Poverty Guidelines do HHS servem de referência."
+  ],
+  "required_evidence_en": [
+    "Copy of the most recent federal income tax return (or IRS transcript).",
+    "Recent bank statements showing the available balance.",
+    "Employer letter with salary and/or recent pay stubs.",
+    "Income must be comfortably enough to support the sponsor's own household plus the beneficiary — the HHS Poverty Guidelines serve as a reference point."
+  ],
+  "required_evidence_es": [
+    "Copia de la declaración de impuestos federal más reciente (o transcript del IRS).",
+    "Estados de cuenta bancarios recientes que comprueben el saldo disponible.",
+    "Carta del empleador con el salario y/o comprobantes de pago recientes.",
+    "El ingreso debe ser cómodamente suficiente para sostener al propio hogar del/de la patrocinador(a) más al/a la beneficiario(a) — las Poverty Guidelines del HHS sirven de referencia."
+  ],
+
+  "whats_included": [
+    "Formulário oficial da USCIS preenchido eletronicamente, campo a campo, pronto para revisar e assinar.",
+    "Checklist de documentos de apoio personalizado (declaração de imposto de renda, extratos bancários, carta do empregador).",
+    "Opção de vincular o I-134 diretamente ao pedido de I-539 do(a) beneficiário(a), direto do seu painel.",
+    "Progresso salvo automaticamente: feche e volte quando quiser, sem perder nada."
+  ],
+  "whats_included_en": [
+    "Official USCIS form filled out electronically, field by field, ready to review and sign.",
+    "Personalized supporting-document checklist (tax return, bank statements, employer letter).",
+    "Option to link the I-134 directly to the beneficiary's I-539 application, right from your dashboard.",
+    "Progress saved automatically: close it and come back whenever you want, without losing anything."
+  ],
+  "whats_included_es": [
+    "Formulario oficial de USCIS completado electrónicamente, campo por campo, listo para revisar y firmar.",
+    "Lista de verificación de documentos de respaldo personalizada (declaración de impuestos, estados de cuenta bancarios, carta del empleador).",
+    "Opción de vincular el I-134 directamente a la solicitud de I-539 del/de la beneficiario(a), desde su panel.",
+    "Progreso guardado automáticamente: ciérrelo y regrese cuando quiera, sin perder nada."
+  ],
+
+  "how_it_works": [
+    "Responda um questionário guiado em português — você só vê as perguntas que realmente se aplicam ao seu caso.",
+    "Revise o resumo completo das suas respostas e ajuste qualquer uma antes de continuar.",
+    "Baixe o PDF oficial preenchido, pronto para assinar e anexar ao pedido do(a) beneficiário(a)."
+  ],
+  "how_it_works_en": [
+    "Answer a guided questionnaire in Portuguese — you only see the questions that actually apply to your case.",
+    "Review the full summary of your answers and adjust anything before continuing.",
+    "Download the completed official PDF, ready to sign and attach to the beneficiary's application."
+  ],
+  "how_it_works_es": [
+    "Responda un cuestionario guiado en español — usted solo ve las preguntas que realmente se aplican a su caso.",
+    "Revise el resumen completo de sus respuestas y ajuste cualquier cosa antes de continuar.",
+    "Descargue el PDF oficial completado, listo para firmar y adjuntar a la solicitud del/de la beneficiario(a)."
+  ],
+
+  "common_mistakes": [
+    "Confundir o I-134 com o I-864 (Affidavit of Support): o I-864 é para processos de green card e cria uma obrigação legal executável de longo prazo; o I-134 é para benefícios temporários (turista, estudante, noivo(a) K-1) e tem caráter apenas declaratório.",
+    "Usar o I-134A no lugar do I-134: o I-134A serve só para programas específicos de parole (ex.: Uniting for Ukraine) e nunca deve ser usado em mudança de status.",
+    "Preparar um único I-134 para toda a família: se o pedido inclui cônjuge e filhos como co-requerentes do I-539, é preciso um I-134 por beneficiário.",
+    "Anexar uma carta informal de patrocínio no lugar do I-134 — isso é um motivo conhecido de Pedido de Evidência Adicional (RFE) quando o patrocinador é LPR ou cidadão(ã) americano(a).",
+    "Usar uma edição desatualizada do formulário — confira sempre a edição vigente em uscis.gov/i-134 antes de protocolar.",
+    "Depender só do I-134 sem o restante da evidência do caso: no B-2, os vínculos com o país de origem continuam sendo avaliados; no F-1, o I-20 e o SEVIS continuam obrigatórios."
+  ],
+  "common_mistakes_en": [
+    "Confusing the I-134 with the I-864 (Affidavit of Support): the I-864 is for green card cases and creates a long-term, legally enforceable obligation; the I-134 is for temporary benefits (visitor, student, K-1 fiancé(e)) and is only declaratory.",
+    "Using Form I-134A instead of the I-134: the I-134A is only for specific parole programs (e.g. Uniting for Ukraine) and should never be used for a change of status.",
+    "Preparing a single I-134 for the whole family: if the application includes a spouse and children as I-539 co-applicants, you need one I-134 per beneficiary.",
+    "Attaching an informal sponsorship letter instead of the I-134 — this is a known trigger for a Request for Evidence (RFE) when the sponsor is an LPR or US citizen.",
+    "Using an outdated form edition — always check the current edition at uscis.gov/i-134 before filing.",
+    "Relying on the I-134 alone without the rest of the case evidence: for B-2, ties to the home country are still weighed; for F-1, the I-20 and SEVIS record are still required."
+  ],
+  "common_mistakes_es": [
+    "Confundir el I-134 con el I-864 (Affidavit of Support): el I-864 es para procesos de green card y crea una obligación legal exigible a largo plazo; el I-134 es para beneficios temporales (turista, estudiante, prometido(a) K-1) y tiene carácter solo declaratorio.",
+    "Usar el I-134A en lugar del I-134: el I-134A sirve solo para programas específicos de parole (ej.: Uniting for Ukraine) y nunca debe usarse en un cambio de estatus.",
+    "Preparar un único I-134 para toda la familia: si la solicitud incluye a cónyuge e hijos(as) como co-solicitantes del I-539, se necesita un I-134 por beneficiario(a).",
+    "Adjuntar una carta informal de patrocinio en lugar del I-134 — esto es un motivo conocido de Pedido de Evidencia Adicional (RFE) cuando el/la patrocinador(a) es LPR o ciudadano(a) estadounidense.",
+    "Usar una edición desactualizada del formulario — verifique siempre la edición vigente en uscis.gov/i-134 antes de presentar la solicitud.",
+    "Depender solo del I-134 sin el resto de la evidencia del caso: en el B-2, los vínculos con el país de origen se siguen evaluando; en el F-1, el I-20 y el registro SEVIS siguen siendo obligatorios."
+  ],
+
+  "faq": [
+    {
+      "q": "O I-134 tem taxa de protocolo?",
+      "a": "Não. A USCIS não cobra taxa própria pelo I-134 quando ele é usado como evidência de apoio financeiro dentro de um pedido de mudança de status (I-539) — é um formulário de declaração, não uma petição por si só."
+    },
+    {
+      "q": "Qual a diferença entre o I-134 e o I-864?",
+      "a": "O I-864 é usado em processos de green card e cria uma obrigação legal executável de longo prazo. O I-134 é usado em benefícios temporários (turista, estudante, noivo(a) K-1) e tem caráter apenas declaratório — não gera o mesmo tipo de obrigação legal."
+    },
+    {
+      "q": "Preciso de um I-134 para cada pessoa da família?",
+      "a": "Sim. Se o pedido de I-539 inclui cônjuge e filhos como co-requerentes, prepare um Formulário I-134 separado para cada um deles."
+    },
+    {
+      "q": "Uma carta de patrocínio simples não basta?",
+      "a": "Quando o(a) patrocinador(a) é residente permanente legal ou cidadão(ã) americano(a), o USCIS costuma esperar algo mais formal do que uma carta. Usar o I-134 reduz bastante o risco de um Pedido de Evidência Adicional (RFE) e de atraso no processamento."
+    },
+    {
+      "q": "Para onde envio o I-134 preenchido?",
+      "a": "Ele não é enviado separadamente à USCIS — entregue o formulário e os documentos de apoio para a pessoa que está sendo patrocinada, para que ela inclua tudo junto com o pacote do Formulário I-539 principal."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "Does the I-134 have a filing fee?",
+      "a": "No. USCIS doesn't charge its own fee for the I-134 when it's used as financial-support evidence inside a change-of-status (I-539) application — it's a declaration form, not a petition on its own."
+    },
+    {
+      "q": "What's the difference between the I-134 and the I-864?",
+      "a": "The I-864 is used in green card cases and creates a long-term, legally enforceable obligation. The I-134 is used for temporary benefits (visitor, student, K-1 fiancé(e)) and is only declaratory — it doesn't create the same kind of legal obligation."
+    },
+    {
+      "q": "Do I need one I-134 per family member?",
+      "a": "Yes. If the I-539 application includes a spouse and children as co-applicants, prepare a separate Form I-134 for each of them."
+    },
+    {
+      "q": "Isn't a simple sponsorship letter enough?",
+      "a": "When the sponsor is a lawful permanent resident or US citizen, USCIS usually expects something more formal than a letter. Using the I-134 significantly lowers the risk of a Request for Evidence (RFE) and processing delays."
+    },
+    {
+      "q": "Where do I send the completed I-134?",
+      "a": "It isn't sent separately to USCIS — hand the form and supporting documents to the person being sponsored, so they can include everything together with the main Form I-539 package."
+    }
+  ],
+  "faq_es": [
+    {
+      "q": "¿El I-134 tiene tarifa de protocolo?",
+      "a": "No. USCIS no cobra tarifa propia por el I-134 cuando se usa como evidencia de apoyo financiero dentro de una solicitud de cambio de estatus (I-539) — es un formulario de declaración, no una petición por sí sola."
+    },
+    {
+      "q": "¿Cuál es la diferencia entre el I-134 y el I-864?",
+      "a": "El I-864 se usa en procesos de green card y crea una obligación legal exigible a largo plazo. El I-134 se usa en beneficios temporales (turista, estudiante, prometido(a) K-1) y tiene carácter solo declaratorio — no genera el mismo tipo de obligación legal."
+    },
+    {
+      "q": "¿Necesito un I-134 para cada persona de la familia?",
+      "a": "Sí. Si la solicitud de I-539 incluye a cónyuge e hijos(as) como co-solicitantes, prepare un Formulario I-134 separado para cada uno(a) de ellos(as)."
+    },
+    {
+      "q": "¿No basta con una carta de patrocinio simple?",
+      "a": "Cuando el/la patrocinador(a) es residente permanente legal o ciudadano(a) estadounidense, USCIS suele esperar algo más formal que una carta. Usar el I-134 reduce considerablemente el riesgo de un Pedido de Evidencia Adicional (RFE) y de retrasos en el procesamiento."
+    },
+    {
+      "q": "¿Adónde envío el I-134 completado?",
+      "a": "No se envía por separado a USCIS — entregue el formulario y los documentos de respaldo a la persona que está siendo patrocinada, para que ella lo incluya junto con el paquete del Formulario I-539 principal."
+    }
+  ],
+
+  "related_note": "Usado como evidência de apoio financeiro nos serviços de Mudança de Status para Estudante (F-1) e Turista (B-2) do Formulário I-539, quando o(a) requerente não comprova recursos próprios suficientes.",
+  "related_note_en": "Used as financial-support evidence in the Form I-539 Change of Status to Student (F-1) and Visitor (B-2) services, when the applicant can't show enough resources of their own.",
+  "related_note_es": "Se usa como evidencia de apoyo financiero en los servicios de Cambio de Estatus a Estudiante (F-1) y Turista (B-2) del Formulario I-539, cuando el/la solicitante no comprueba recursos propios suficientes.",
+
+  "legal_note": "Esta ferramenta organiza suas informações e preenche o formulário oficial — ela não avalia elegibilidade nem presta aconselhamento jurídico. Este material tem caráter informativo e de organização documental, e não constitui aconselhamento jurídico.",
+  "legal_note_en": "This tool organizes your information and fills out the official form — it doesn't assess eligibility or provide legal advice. This material is informational and for document-organization purposes only, and does not constitute legal advice.",
+  "legal_note_es": "Esta herramienta organiza su información y completa el formulario oficial — no evalúa elegibilidad ni brinda asesoramiento jurídico. Este material tiene carácter informativo y de organización documental, y no constituye asesoramiento jurídico."
+}

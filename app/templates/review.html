@@ -6,7 +6,7 @@
 {% block content %}
 <h1>{{ t('review_title') }} — {{ submission.form_slug|upper }}</h1>
 
-{% if get_lang() == "en" and not form_translated %}
+{% if get_lang() != "pt" and not form_translated %}
 <div class="flash" style="background:var(--accent-soft);color:var(--accent-dark);border-color:var(--accent);">
   {{ t('form_not_translated_notice') }}
 </div>

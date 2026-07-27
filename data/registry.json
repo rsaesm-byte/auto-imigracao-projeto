@@ -6,6 +6,7 @@
     "I-130": {
       "name": "Petition for Alien Relative",
       "name_pt": "Petição para Familiar Estrangeiro",
+      "name_es": "Petición para Familiar Extranjero",
       "edition": "04/01/24",
       "edition_iso": "2024-04-01",
       "official_url": "https://www.uscis.gov/i-130",
@@ -86,6 +87,7 @@
     "I-130A": {
       "name": "Supplemental Information for Spouse Beneficiary",
       "name_pt": "Informação Suplementar para Beneficiário(a) Cônjuge",
+      "name_es": "Información Suplementaria para el (la) Beneficiario(a) Cónyuge",
       "edition": "04/01/24",
       "edition_iso": "2024-04-01",
       "official_url": "https://www.uscis.gov/i-130a",
@@ -142,6 +144,7 @@
     "I-765": {
       "name": "Application for Employment Authorization",
       "name_pt": "Autorização de Trabalho",
+      "name_es": "Autorización de Trabajo",
       "edition": "08/21/25",
       "edition_iso": "2025-08-21",
       "official_url": "https://www.uscis.gov/i-765",
@@ -222,6 +225,7 @@
     "I-485": {
       "name": "Application to Register Permanent Residence or Adjust Status",
       "name_pt": "Pedido de Registro de Residência Permanente ou Ajuste de Status",
+      "name_es": "Solicitud de Registro de Residencia Permanente o Ajuste de Estatus",
       "edition": "01/20/25",
       "edition_iso": "2025-01-20",
       "official_url": "https://www.uscis.gov/i-485",
@@ -304,6 +308,7 @@
     "I-864": {
       "name": "Affidavit of Support Under Section 213A of the INA",
       "name_pt": "Declaração de Suporte Financeiro",
+      "name_es": "Declaración de Apoyo Financiero",
       "edition": "10/17/24",
       "edition_iso": "2024-10-17",
       "official_url": "https://www.uscis.gov/i-864",
@@ -361,6 +366,7 @@
     "I-751": {
       "name": "Petition to Remove Conditions on Residence",
       "name_pt": "Petição para Remover as Condições de Residência",
+      "name_es": "Petición para Eliminar las Condiciones de Residencia",
       "edition": "04/01/24",
       "edition_iso": "2024-04-01",
       "official_url": "https://www.uscis.gov/i-751",
@@ -417,6 +423,7 @@
     "N-400": {
       "name": "Application for Naturalization",
       "name_pt": "Pedido de Naturalização",
+      "name_es": "Solicitud de Naturalización",
       "edition": "01/20/25",
       "edition_iso": "2025-01-20",
       "official_url": "https://www.uscis.gov/n-400",
@@ -480,6 +487,7 @@
     "I-90": {
       "name": "Application to Replace Permanent Resident Card",
       "name_pt": "Substituição do Cartão de Residente Permanente (Green Card)",
+      "name_es": "Sustitución de la Tarjeta de Residente Permanente (Green Card)",
       "edition": "01/20/25",
       "edition_iso": "2025-01-20",
       "official_url": "https://www.uscis.gov/i-90",
@@ -548,6 +556,7 @@
     "I-539": {
       "name": "Application to Extend/Change Nonimmigrant Status",
       "name_pt": "Extensão ou Mudança de Status de Não Imigrante",
+      "name_es": "Extensión o Cambio de Estatus de No Inmigrante",
       "edition": "08/28/24",
       "edition_iso": "2024-08-28",
       "official_url": "https://www.uscis.gov/i-539",
@@ -613,6 +622,7 @@
     "G-1145": {
       "name": "E-Notification of Application/Petition Acceptance",
       "name_pt": "Notificação Eletrônica de Aceitação de Petição",
+      "name_es": "Notificación Electrónica de Aceptación de Petición",
       "edition": "09/26/14",
       "edition_iso": "2014-09-26",
       "official_url": "https://www.uscis.gov/g-1145",
@@ -660,6 +670,7 @@
     "G-1450": {
       "name": "Authorization for Credit Card Transactions",
       "name_pt": "Autorização para Pagamento por Cartão de Crédito",
+      "name_es": "Autorización de Pago con Tarjeta de Crédito",
       "edition": "02/06/26",
       "edition_iso": "2026-02-06",
       "official_url": "https://www.uscis.gov/g-1450",
@@ -714,6 +725,7 @@
     "G-1650": {
       "name": "Authorization for ACH Transactions",
       "name_pt": "Autorização para Débito Bancário (ACH)",
+      "name_es": "Autorización de Débito Bancario (ACH)",
       "edition": "06/03/25",
       "edition_iso": "2025-06-03",
       "official_url": "https://www.uscis.gov/g-1650",
@@ -766,6 +778,7 @@
     "I-131": {
       "name": "Application for Travel Document",
       "name_pt": "Autorização de Viagem (Advance Parole)",
+      "name_es": "Autorización de Viaje (Advance Parole)",
       "edition": "01/20/25",
       "edition_iso": "2025-01-20",
       "official_url": "https://www.uscis.gov/i-131",
@@ -833,6 +846,7 @@
     "I-693": {
       "name": "Report of Medical Examination and Vaccination Record",
       "name_pt": "Relatório de Exame Médico e Registro de Vacinação",
+      "name_es": "Informe de Examen Médico y Registro de Vacunación",
       "edition": "01/20/25",
       "edition_iso": "2025-01-20",
       "official_url": "https://www.uscis.gov/i-693",
@@ -844,6 +858,7 @@
       "reference_only": true,
       "reference_only_note": "Não preenchemos este formulário — ele só pode ser completado e assinado por um médico credenciado pela USCIS (civil surgeon), diretamente com o cliente, e entregue em envelope selado. Disponibilizamos o PDF oficial em branco apenas para o cliente conhecer o documento com antecedência, e orientamos a busca por um médico credenciado pela ferramenta oficial da USCIS.",
       "reference_only_note_en": "We don't fill out this form — it can only be completed and signed by a USCIS-designated civil surgeon, directly with the client, and delivered in a sealed envelope. We provide the official blank PDF only so the client can see the document ahead of time, and we point them to USCIS's own tool to find a credentialed doctor.",
+      "reference_only_note_es": "No completamos este formulario — solo puede ser completado y firmado por un médico designado por USCIS (civil surgeon), directamente con el cliente, y entregado en un sobre sellado. Ofrecemos el PDF oficial en blanco únicamente para que el cliente conozca el documento con antelación, y lo orientamos a buscar un médico acreditado a través de la herramienta oficial de USCIS.",
       "civil_surgeon_finder_url": "https://www.uscis.gov/tools/find-a-civil-surgeon",
       "fees": {
         "filing": {
@@ -852,9 +867,15 @@
           "paper": 0,
           "notes": "Não tem taxa de protocolo junto à USCIS — o custo é a consulta/exame cobrado diretamente pelo médico credenciado (civil surgeon), que varia por região e não é fixado pela USCIS."
         },
-        "biometric": {"amount": 0, "notes": "Não aplicável"},
+        "biometric": {
+          "amount": 0,
+          "notes": "Não aplicável"
+        },
         "special_cases": {
-          "fee_waiver": {"eligible": false, "notes": "Não aplicável — não é protocolado junto à USCIS por conta própria, é anexado ao I-485 pelo próprio médico em envelope selado"}
+          "fee_waiver": {
+            "eligible": false,
+            "notes": "Não aplicável — não é protocolado junto à USCIS por conta própria, é anexado ao I-485 pelo próprio médico em envelope selado"
+          }
         },
         "total_typical": 0,
         "currency": "USD",
@@ -873,7 +894,9 @@
           "notes": "Entregue junto com o I-485, em envelope selado pelo médico — não preenchido por este produto"
         }
       },
-      "related_forms": ["I-485"],
+      "related_forms": [
+        "I-485"
+      ],
       "eligibility_summary": {
         "who_files": "Não é 'preenchido' pelo requerente — é completado inteiramente pelo médico credenciado (civil surgeon) durante o exame médico exigido para o ajuste de status (I-485)",
         "notes": "Formulário apenas de referência neste produto: disponibilizamos o PDF oficial em branco para o cliente ver como é, mas não coletamos respostas nem preenchemos este documento. Veja references/compliance.md."
@@ -882,6 +905,7 @@
     "I-539A": {
       "name": "Supplemental Information for Application to Extend/Change Nonimmigrant Status",
       "name_pt": "Informação Suplementar para Extensão/Mudança de Status de Não Imigrante",
+      "name_es": "Información Suplementaria para Extensión/Cambio de Estatus de No Inmigrante",
       "edition": "08/28/24",
       "edition_iso": "2024-08-28",
       "official_url": "https://www.uscis.gov/i-539",
@@ -936,6 +960,7 @@
     "I-134": {
       "name": "Declaration of Financial Support",
       "name_pt": "Declaração de Apoio Financeiro",
+      "name_es": "Declaración de Apoyo Financiero",
       "edition": "01/20/25",
       "edition_iso": "2025-01-20",
       "official_url": "https://www.uscis.gov/i-134",

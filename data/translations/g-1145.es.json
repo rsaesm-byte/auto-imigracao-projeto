@@ -1,0 +1,13 @@
+{
+  "title": "G-1145 — Notificación electrónica de aceptación de solicitud/petición",
+  "sections": {
+    "notificacao": "Detalles de la notificación"
+  },
+  "questions": {
+    "g1145_sobrenome": {"label": "Apellido del solicitante o peticionario"},
+    "g1145_nome": {"label": "Nombre del solicitante o peticionario"},
+    "g1145_nome_meio": {"label": "Segundo nombre (si tiene)"},
+    "g1145_email": {"label": "Correo electrónico para recibir la notificación", "hint": "Este es el canal principal de notificación — verifique que esté escrito correctamente."},
+    "g1145_celular": {"label": "Teléfono móvil para SMS (opcional)", "hint": "Solo números, sin espacios, guiones ni paréntesis — por ejemplo, 5551234567. Déjelo en blanco si no desea recibir SMS."}
+  }
+}

@@ -1,0 +1,1940 @@
+{
+  "title": "Solicitud de Registro de Residencia Permanente o Ajuste de Estatus — I-485",
+  "sections": {
+    "motivo": "Partes 1 y 2 — Tipo de Solicitud y Categoría de Inmigrante",
+    "basico": "Parte 1 — Información Básica",
+    "outros_nomes": "Parte 1 — Otros Nombres Usados",
+    "enderecos": "Parte 1 — Domicilios",
+    "entrada_eua": "Parte 1 — Última Llegada a los EE. UU. / Formulario I-94",
+    "info_pessoal": "Parte 1 — Información Personal y Seguro Social",
+    "affidavit": "Parte 3 — Exención de la Declaración de Apoyo Financiero",
+    "adicional": "Parte 4 — Información Adicional / Empleo y Educación",
+    "pais": "Parte 5 — Información Sobre sus Padres",
+    "matrimonial": "Parte 6 — Historial Matrimonial",
+    "filhos": "Parte 7 — Información Sobre sus Hijos",
+    "biografico": "Parte 8 — Información Biográfica",
+    "membresia": "Parte 9 — Membresía en Organizaciones",
+    "elegibilidade": "Parte 9 — Elegibilidad y Causales de Inadmisibilidad",
+    "public_charge": "Parte 9 — Carga Pública",
+    "assinatura": "Parte 10 — Declaración del Solicitante",
+    "interprete": "Parte 11 — Intérprete",
+    "preparador": "Parte 12 — Preparador"
+  },
+  "questions": {
+    "aplicando_245i": {
+      "label": "¿Está solicitando el ajuste de estatus con base en la Sección 245(i) del INA?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "La Sección 245(i) es una regla especial que le permite ajustar su estatus sin salir de los EE. UU. incluso si ingresó sin inspección o violó su estatus — pero solo si una petición (I-130 o I-140) o una certificación laboral se presentó a su nombre en o antes del 30/4/2001. Requiere una tarifa adicional de $1,000. Si no está seguro(a) de que esto aplica a usted, responda 'No' y confirme con el equipo."
+    },
+    "aplicando_cspa": {
+      "label": "¿Tiene 21 años de edad o más y está solicitando el ajuste de estatus como hijo(a), con base en el Child Status Protection Act (CSPA)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El CSPA (Child Status Protection Act) es una ley que, en ciertos casos, le permite seguir siendo considerado(a) 'hijo(a)' para fines de inmigración incluso después de cumplir 21 años, restando el tiempo que una petición pasó esperando la aprobación de USCIS. Es un cálculo técnico — si usted tiene 21 años o más y está solicitando con base en ser hijo(a) de alguien, confirme con el equipo antes de responder."
+    },
+    "aplicante_principal_alien_number": {
+      "label": "Solicitante principal (si usted es un(a) solicitante derivado(a)) — Número de Registro de Extranjero (A-Number)",
+      "hint": "Complete esto solo si está solicitando una Green Card como dependiente de otra persona — por ejemplo, su cónyuge está solicitando con base en su propio empleo, y usted solicita solo porque está casado(a) con él/ella. En ese caso, indique aquí el A-Number de ESA PERSONA (el/la solicitante principal), no el suyo. Si usted califica por su propia cuenta, deje esto en blanco."
+    },
+    "aplicante_principal_meio": {
+      "label": "Solicitante principal (si usted es un(a) solicitante derivado(a)) — Segundo nombre",
+      "hint": "Complete esto solo si está solicitando una Green Card como dependiente de otra persona — por ejemplo, su cónyuge está solicitando con base en su propio empleo, y usted solicita solo porque está casado(a) con él/ella. En ese caso, indique aquí el segundo nombre de ESA PERSONA (el/la solicitante principal), no el suyo. Si usted califica por su propia cuenta, deje esto en blanco."
+    },
+    "aplicante_principal_nome": {
+      "label": "Solicitante principal (si usted es un(a) solicitante derivado(a)) — Nombre",
+      "hint": "Complete esto solo si está solicitando una Green Card como dependiente de otra persona — por ejemplo, su cónyuge está solicitando con base en su propio empleo, y usted solicita solo porque está casado(a) con él/ella (no por calificación propia). En ese caso, indique aquí el nombre de ESA PERSONA (el/la solicitante principal), no el suyo. Si usted califica por su propia cuenta, deje esto en blanco."
+    },
+    "aplicante_principal_data_nascimento": {
+      "label": "Solicitante principal (si usted es un(a) solicitante derivado(a)) — Fecha de nacimiento (MM/DD/AAAA)",
+      "hint": "Complete esto solo si está solicitando una Green Card como dependiente de otra persona — por ejemplo, su cónyuge está solicitando con base en su propio empleo, y usted solicita solo porque está casado(a) con él/ella. En ese caso, indique aquí la fecha de nacimiento de ESA PERSONA (el/la solicitante principal), no la suya. Si usted califica por su propia cuenta, deje esto en blanco."
+    },
+    "aplicante_principal_sobrenome": {
+      "label": "Solicitante principal (si usted es un(a) solicitante derivado(a)) — Apellido",
+      "hint": "Complete esto solo si está solicitando una Green Card como dependiente de otra persona — por ejemplo, su cónyuge está solicitando con base en su propio empleo, y usted solicita solo porque está casado(a) con él/ella. En ese caso, indique aquí el apellido de ESA PERSONA (el/la solicitante principal), no el suyo. Si usted califica por su propia cuenta, deje esto en blanco."
+    },
+    "categoria_imigrante": {
+      "label": "¿En qué categoría de inmigrante basa esta solicitud de ajuste de estatus?",
+      "options": {
+        "familia_conjuge_cidadao": "Cónyuge de un(a) ciudadano(a) estadounidense",
+        "familia_filho_menor21_cidadao": "Hijo(a) soltero(a) menor de 21 años de un(a) ciudadano(a) estadounidense",
+        "familia_pai_mae_cidadao": "Padre/madre de un(a) ciudadano(a) estadounidense (ciudadano(a) de 21 años de edad o más)",
+        "familia_noivo_k1k2": "Admitido(a) como prometido(a), o hijo(a) de un(a) prometido(a), de un(a) ciudadano(a) estadounidense (K-1/K-2)",
+        "familia_viuvo_cidadao": "Viudo(a) de un(a) ciudadano(a) estadounidense",
+        "familia_conjuge_filho_pai_militar_ndaa": "Cónyuge, hijo(a) o padre/madre de un miembro de las fuerzas armadas de EE. UU. fallecido en servicio activo (NDAA)",
+        "familia_filho_maior21_cidadao": "Hijo(a) soltero(a) de un(a) ciudadano(a) estadounidense, de 21 años de edad o más",
+        "familia_filho_casado_cidadao": "Hijo(a) casado(a) de un(a) ciudadano(a) estadounidense",
+        "familia_irmao_irma_cidadao": "Hermano(a) de un(a) ciudadano(a) estadounidense (ciudadano(a) de 21 años de edad o más)",
+        "familia_conjuge_lpr": "Cónyuge de un(a) residente permanente legal",
+        "familia_filho_menor21_lpr": "Hijo(a) soltero(a) menor de 21 años de un(a) residente permanente legal",
+        "familia_filho_maior21_lpr": "Hijo(a) soltero(a), de 21 años de edad o más, de un(a) residente permanente legal",
+        "vawa_conjuge": "Autopeticionario(a) VAWA — cónyuge (víctima de violencia doméstica)",
+        "vawa_filho": "Autopeticionario(a) VAWA — hijo(a) (víctima de violencia doméstica)",
+        "vawa_pai_mae": "Autopeticionario(a) VAWA — padre/madre (víctima de violencia doméstica)",
+        "emp_habilidade_extraordinaria": "Basado en empleo — extranjero(a) con habilidad extraordinaria",
+        "emp_professor_pesquisador": "Basado en empleo — profesor(a) o investigador(a) destacado(a)",
+        "emp_executivo_multinacional": "Basado en empleo — ejecutivo(a) o gerente multinacional",
+        "emp_profissional_grau_avancado": "Basado en empleo — profesional con título de posgrado, o extranjero(a) con habilidad excepcional",
+        "emp_profissional_bacharel": "Basado en empleo — profesional con título universitario (bachelor's degree)",
+        "emp_trabalhador_qualificado": "Basado en empleo — trabajador(a) calificado(a)",
+        "emp_outro_trabalhador": "Basado en empleo — otro(a) trabajador(a)",
+        "emp_national_interest_waiver": "Basado en empleo — dispensa de interés nacional (NIW)",
+        "esp_imigrante_juvenil": "Inmigrante especial juvenil (SIJ)",
+        "esp_afegao_iraquiano": "Inmigrante especial de nacionalidad afgana o iraquí",
+        "esp_locutor_internacional": "Locutor(a) internacional",
+        "esp_g4_nato6": "Empleado(a), o familiar de un(a) empleado(a), de una organización internacional G-4 o NATO-6",
+        "esp_forcas_armadas_seis_seis": "Miembro de las fuerzas armadas de EE. UU. (programa Six and Six)",
+        "esp_canal_panama": "Empleado(a) de la Zona del Canal de Panamá",
+        "esp_medico": "Médico(a) inmigrante especial",
+        "esp_empregado_governo_exterior": "Empleado(a) del gobierno de EE. UU. destinado(a) en el exterior",
+        "esp_trabalhador_religioso_outro": "Trabajador(a) religioso(a) (que no sea ministro)",
+        "esp_ministro_religioso": "Ministro(a) religioso(a)",
+        "asilo": "Asilado(a)",
+        "refugiado": "Refugiado(a)",
+        "vitima_trafico_t": "Víctima de trata de personas (no inmigrante T)",
+        "vitima_crime_u": "Víctima de actividad criminal calificada (no inmigrante U)",
+        "cuban_adjustment_act": "Cuban Adjustment Act",
+        "cuban_adjustment_vitima_violencia": "Víctima de violencia doméstica — Cuban Adjustment Act",
+        "haitian_fairness_dependente": "Estatus de dependiente — Haitian Refugee Immigrant Fairness Act",
+        "haitian_fairness_vitima_violencia": "Víctima de violencia doméstica — Haitian Refugee Immigrant Fairness Act",
+        "lautenberg_parolee": "Parolee Lautenberg",
+        "diplomata_secao13": "Diplomático(a) o funcionario(a) que no puede regresar a su país de origen (Sección 13)",
+        "vietnam_camboja_laos_pl106_429": "Nacional de Vietnam, Camboya o Laos (Ley Pública 106-429)",
+        "amerasian_act": "Amerasian Act",
+        "diversity_visa": "Programa de Visa de Diversidad (Lotería)",
+        "registry_1972": "Residencia continua en los EE. UU. desde antes del 1 de enero de 1972 (Registry)",
+        "nascido_status_diplomatico": "Nacido(a) en los Estados Unidos de un(a) diplomático(a) extranjero(a)",
+        "s_nonimmigrant": "No inmigrante S y familiares calificados",
+        "outra_elegibilidade": "Otra categoría de elegibilidad"
+      },
+      "hint": "Elija la categoría que corresponde al motivo por el que usted es elegible para una Green Card (basada en familia, empleo, asilo, lotería de visas, etc.) — generalmente la misma categoría de la petición (I-130/I-140) ya aprobada a su favor. Si no está seguro(a) de qué opción usar, confirme con el equipo antes de responder — elegir la incorrecta puede retrasar o poner en riesgo el caso."
+    },
+    "categoria_imigrante_outro_texto": {
+      "label": "Si seleccionó \"Otra categoría de elegibilidad\", describa cuál"
+    },
+    "diversity_visa_numero": {
+      "label": "Número de orden del Programa de Visa de Diversidad (Lotería)",
+      "hint": "Solo aplica si usted ganó la Lotería de Visa de Diversidad. Es el número de orden de su confirmación de selección para el programa — no es una fecha, a pesar del formato del campo."
+    },
+    "emp_140_parente_envolvido": {
+      "label": "¿Un familiar presentó la petición basada en empleo (Formulario I-140) a su favor, o un familiar posee el 5% o más de la empresa que la presentó?",
+      "options": {
+        "na": "No aplica — estoy ajustando estatus con base en un Formulario I-140 autopeticionado",
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Responda 'Sí' solo si un familiar suyo es quien presentó la petición de empleo (I-140) a su favor, O si usted mismo(a) posee el 5% o más de la empresa que presentó esa petición. Este tipo de relación requiere documentación adicional para comprobar que la oferta de empleo es genuina."
+    },
+    "emp_140_parente_status": {
+      "label": "¿Cuál es el estatus migratorio de ese familiar?",
+      "options": {
+        "cidadao": "Ciudadano(a) estadounidense",
+        "nacional": "Nacional estadounidense",
+        "lpr": "Residente permanente legal",
+        "nenhum_destes": "Ninguna de estas opciones"
+      }
+    },
+    "emp_140_parente_tipo": {
+      "label": "¿Cuál es su relación con esa persona?",
+      "options": {
+        "pai": "Padre",
+        "mae": "Madre",
+        "filho": "Hijo/Hija",
+        "filho_adulto": "Hijo adulto",
+        "filha_adulta": "Hija adulta",
+        "irmao": "Hermano",
+        "irma": "Hermana",
+        "nenhum_destes": "Ninguna de estas opciones"
+      }
+    },
+    "eoir_remocao": {
+      "label": "¿Está solicitando el ajuste de estatus ante el Tribunal de Inmigración (EOIR) mientras se encuentra en un proceso de expulsión, exclusión, rescisión o deportación?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El EOIR (Executive Office for Immigration Review) es el tribunal de inmigración — distinto de USCIS. Responda 'Sí' solo si está solicitando este ajuste de estatus como parte de un proceso ya abierto ante un juez de inmigración (no solo una solicitud regular ante USCIS). Si no está seguro(a), probablemente sea 'No' — confirme con el equipo en caso de duda."
+    },
+    "peticao_subjacente_data_prioridade": {
+      "label": "Petición subyacente — Fecha de prioridad",
+      "hint": "Es la fecha en que se presentó originalmente la petición que le da elegibilidad para la Green Card (I-130 o I-140) — determina su lugar en la fila de visas. Encuentre esta fecha en el Aviso de Acción I-797 que recibió cuando la petición fue aprobada, en el campo 'Priority Date'."
+    },
+    "peticao_subjacente_recibo": {
+      "label": "Petición subyacente — Número de recibo",
+      "hint": "Número de recibo de la petición (I-130 o I-140) ya aprobada a su favor. Encuéntrelo en el Aviso de Acción I-797 que recibió de USCIS, en el campo 'Receipt Number' — comienza con 3 letras (por ejemplo, EAC, WAC, SRC, LIN)."
+    },
+    "tipo_aplicante": {
+      "label": "Usted está presentando este Formulario I-485 como:",
+      "options": {
+        "principal": "Solicitante principal",
+        "derivativo": "Solicitante derivado(a) (dependiente de otro(a) solicitante)"
+      },
+      "hint": "'Solicitante principal' es la persona que califica por la base directa del caso (por ejemplo, el propio cónyuge/hijo(a) de un(a) ciudadano(a), o el/la trabajador(a) en un caso basado en empleo). 'Solicitante derivado(a)' es alguien que obtiene elegibilidad para la Green Card solo por ser cónyuge o hijo(a) del/de la solicitante principal — no por calificación propia."
+    },
+    "ultima_entrada_admitido_como": {
+      "label": "Última llegada a los EE. UU. — Admitido(a) como",
+      "hint": "El código/estatus bajo el cual fue admitido(a) en el puerto de entrada (por ejemplo, B2, F1, etc.) — se encuentra en su Formulario I-94 (i94.cbp.dhs.gov) o en el sello de su pasaporte."
+    },
+    "ultima_entrada_outro": {
+      "label": "Última llegada a los EE. UU. — Otro"
+    },
+    "ultima_entrada_paroled_como": {
+      "label": "Última llegada a los EE. UU. — Admitido(a) bajo palabra (paroled) como",
+      "hint": "El motivo/categoría de libertad condicional (parole) bajo la cual fue liberado(a) en el puerto de entrada (distinto de ser formalmente 'admitido(a)') — se encuentra en su Formulario I-94 (i94.cbp.dhs.gov)."
+    },
+    "ultima_entrada_tipo": {
+      "label": "Última llegada a los EE. UU. — Tipo",
+      "options": {
+        "admitido": "Fui inspeccionado(a) y admitido(a) en un puerto de entrada",
+        "paroled": "Fui inspeccionado(a) y admitido(a) bajo palabra (paroled) en un puerto de entrada",
+        "sem_admissao_parole": "Ingresé a los EE. UU. sin inspección ni libertad condicional",
+        "outro": "Otro"
+      },
+      "hint": "'Admitido(a)' = un oficial de inmigración lo(a) dejó entrar formalmente al país. 'Paroled' = fue dejado(a) entrar sin ser admitido(a) formalmente (una situación temporal/humanitaria). 'Sin inspección ni parole' = ingresó sin pasar por ningún control oficial. Verifique cuál aplica en su Formulario I-94 (i94.cbp.dhs.gov) — esta distinción afecta directamente su elegibilidad, así que confirme con el equipo en caso de duda."
+    },
+    "alien_number": {
+      "label": "Número de Registro de Extranjero (A-Number)",
+      "hint": "9 dígitos, sin guiones. Déjelo en blanco si nunca ha recibido un A-Number."
+    },
+    "cidadania_pais": {
+      "label": "País de ciudadanía o nacionalidad"
+    },
+    "data_nascimento": {
+      "label": "Fecha de nacimiento"
+    },
+    "nascimento_cidade": {
+      "label": "Ciudad/pueblo de nacimiento"
+    },
+    "nascimento_pais": {
+      "label": "País de nacimiento"
+    },
+    "nome_meio": {
+      "label": "Segundo nombre"
+    },
+    "nome_nome": {
+      "label": "Nombre"
+    },
+    "nome_sobrenome": {
+      "label": "Apellido"
+    },
+    "outra_data_nascimento": {
+      "label": "¿Alguna vez ha usado otra fecha de nacimiento?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "outro_alien_number_usado": {
+      "label": "¿Alguna vez ha usado o se le ha emitido otro Número de Registro de Extranjero (A-Number)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sexo": {
+      "label": "Sexo",
+      "options": {
+        "feminino": "Femenino",
+        "masculino": "Masculino"
+      }
+    },
+    "tem_alien_number": {
+      "label": "¿Tiene un Número de Registro de Extranjero (A-Number)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "uscis_online": {
+      "label": "Número de Cuenta en Línea de USCIS (si tiene)",
+      "hint": "12 dígitos, sin guiones."
+    },
+    "outro_nome1_meio": {
+      "label": "Otro nombre usado 1 — Segundo nombre"
+    },
+    "outro_nome1_nome": {
+      "label": "Otro nombre usado 1 — Nombre"
+    },
+    "outro_nome1_sobrenome": {
+      "label": "Otro nombre usado 1 — Apellido"
+    },
+    "outro_nome2_meio": {
+      "label": "Otro nombre usado 2 — Segundo nombre"
+    },
+    "outro_nome2_nome": {
+      "label": "Otro nombre usado 2 — Nombre"
+    },
+    "outro_nome2_sobrenome": {
+      "label": "Otro nombre usado 2 — Apellido"
+    },
+    "end_ant_ate": {
+      "label": "Domicilio anterior — Fecha de fin (MM/DD/AAAA)"
+    },
+    "end_ant_cep": {
+      "label": "Domicilio anterior — Código postal (ZIP)"
+    },
+    "end_ant_cidade": {
+      "label": "Domicilio anterior — Ciudad"
+    },
+    "end_ant_codigo_postal": {
+      "label": "Domicilio anterior — Código postal"
+    },
+    "end_ant_cuidados_de": {
+      "label": "Domicilio anterior — A la atención de (si aplica)"
+    },
+    "end_ant_desde": {
+      "label": "Domicilio anterior — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "end_ant_estado": {
+      "label": "Domicilio anterior — Estado (abreviatura)"
+    },
+    "end_ant_num_unidade": {
+      "label": "Domicilio anterior — Número de unidad"
+    },
+    "end_ant_pais": {
+      "label": "Domicilio anterior — País"
+    },
+    "end_ant_provincia": {
+      "label": "Domicilio anterior — Provincia"
+    },
+    "end_ant_rua": {
+      "label": "Domicilio anterior — Número y nombre de la calle"
+    },
+    "end_ant_tipo_unidade": {
+      "label": "Domicilio anterior — Tipo de unidad (apt/ste/flr)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_correio_cep": {
+      "label": "Domicilio postal — Código postal (ZIP)"
+    },
+    "end_correio_cidade": {
+      "label": "Domicilio postal — Ciudad"
+    },
+    "end_correio_cuidados_de": {
+      "label": "Domicilio postal — A la atención de (si aplica)"
+    },
+    "end_correio_estado": {
+      "label": "Domicilio postal — Estado (abreviatura)"
+    },
+    "end_correio_igual_fisico": {
+      "label": "Domicilio postal — ¿Es igual a su domicilio físico?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Indique si el domicilio donde usted VIVE actualmente es el mismo domicilio al que USCIS debe enviar la correspondencia. Si son diferentes, a continuación completará su domicilio físico por separado."
+    },
+    "end_correio_num_unidade": {
+      "label": "Domicilio postal — Número de unidad"
+    },
+    "end_correio_rua": {
+      "label": "Domicilio postal — Número y nombre de la calle"
+    },
+    "end_correio_tipo_unidade": {
+      "label": "Domicilio postal — Tipo de unidad (apt/ste/flr)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_ext_ate": {
+      "label": "Último domicilio fuera de los EE. UU. — Fecha de fin (MM/DD/AAAA)"
+    },
+    "end_ext_cep": {
+      "label": "Último domicilio fuera de los EE. UU. — Código postal (ZIP)"
+    },
+    "end_ext_cidade": {
+      "label": "Último domicilio fuera de los EE. UU. — Ciudad"
+    },
+    "end_ext_codigo_postal": {
+      "label": "Último domicilio fuera de los EE. UU. — Código postal"
+    },
+    "end_ext_desde": {
+      "label": "Último domicilio fuera de los EE. UU. — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "end_ext_estado": {
+      "label": "Último domicilio fuera de los EE. UU. — Estado (abreviatura)"
+    },
+    "end_ext_num_unidade": {
+      "label": "Último domicilio fuera de los EE. UU. — Número de unidad"
+    },
+    "end_ext_pais": {
+      "label": "Último domicilio fuera de los EE. UU. — País"
+    },
+    "end_ext_provincia": {
+      "label": "Último domicilio fuera de los EE. UU. — Provincia"
+    },
+    "end_ext_rua": {
+      "label": "Último domicilio fuera de los EE. UU. — Número y nombre de la calle"
+    },
+    "end_ext_tipo_unidade": {
+      "label": "Último domicilio fuera de los EE. UU. — Tipo de unidad (apt/ste/flr)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "end_fisico_cep": {
+      "label": "Domicilio físico actual — Código postal (ZIP)"
+    },
+    "end_fisico_cidade": {
+      "label": "Domicilio físico actual — Ciudad"
+    },
+    "end_fisico_cuidados_de": {
+      "label": "Domicilio físico actual — A la atención de (si aplica)"
+    },
+    "end_fisico_desde": {
+      "label": "Domicilio físico actual — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "end_fisico_estado": {
+      "label": "Domicilio físico actual — Estado (abreviatura)"
+    },
+    "end_fisico_num_unidade": {
+      "label": "Domicilio físico actual — Número de unidad"
+    },
+    "end_fisico_rua": {
+      "label": "Domicilio físico actual — Número y nombre de la calle"
+    },
+    "end_fisico_tipo_unidade": {
+      "label": "Domicilio físico actual — Tipo de unidad (apt/ste/flr)",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "mora_atual_5anos": {
+      "label": "¿Ha vivido en su domicilio físico actual durante al menos 5 años?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "chegou_como_tripulante": {
+      "label": "En su última llegada, ¿vino a unirse a una embarcación como marinero/tripulante, o a prestar servicio a bordo de una embarcación o aeronave?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "'Tripulante' significa alguien que llega a los EE. UU. trabajando a bordo de un barco o avión (marinero, miembro de tripulación), no como pasajero ordinario. La mayoría de los solicitantes responde 'No'."
+    },
+    "i94_data_expiracao_estadia": {
+      "label": "Formulario I-94 — Fecha de vencimiento de la estadía autorizada"
+    },
+    "i94_nome": {
+      "label": "Formulario I-94 — Nombre"
+    },
+    "i94_numero": {
+      "label": "Formulario I-94 — Número",
+      "hint": "Número de 11 dígitos de su registro de llegada/salida. Búsquelo e imprímalo en i94.cbp.dhs.gov usando su pasaporte."
+    },
+    "i94_sobrenome": {
+      "label": "Formulario I-94 — Apellido"
+    },
+    "i94_status_imigracao": {
+      "label": "Formulario I-94 — Estatus migratorio"
+    },
+    "passaporte_data_expiracao": {
+      "label": "Pasaporte/documento de viaje — Fecha de vencimiento (MM/DD/AAAA)"
+    },
+    "passaporte_numero": {
+      "label": "Pasaporte/documento de viaje — Número"
+    },
+    "passaporte_pais_emissao": {
+      "label": "Pasaporte/documento de viaje — País de emisión"
+    },
+    "primeira_vez_presente_eua": {
+      "label": "¿Su última llegada fue la primera vez que estuvo físicamente presente en los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "status_atual_data_expiracao": {
+      "label": "Estatus migratorio actual — Fecha de vencimiento (MM/DD/AAAA)",
+      "hint": "Fecha hasta la cual su estatus actual es válido. Encuéntrela en su Formulario I-94 (i94.cbp.dhs.gov) o en el sello/aviso de aprobación de su visa."
+    },
+    "status_atual_imigracao": {
+      "label": "Estatus migratorio actual — Estatus",
+      "hint": "El estatus migratorio en el que usted se encuentra HOY (por ejemplo, B2, F1, residente condicional, etc.) — no debe confundirse con su estatus al momento de la última entrada, si ha cambiado desde entonces."
+    },
+    "ultima_entrada_cidade": {
+      "label": "Última llegada a los EE. UU. — Ciudad"
+    },
+    "ultima_entrada_data": {
+      "label": "Última llegada a los EE. UU. — Fecha"
+    },
+    "ultima_entrada_estado": {
+      "label": "Última llegada a los EE. UU. — Estado (abreviatura)"
+    },
+    "visto_crewman": {
+      "label": "¿Alguna vez se le ha emitido una visa de tripulante (\"alien crewman\")?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Una visa de categoría D, emitida a marineros/tripulación de embarcaciones y aeronaves — no la visa ordinaria de turista/trabajo. La mayoría de los solicitantes responde 'No'."
+    },
+    "visto_data_emissao": {
+      "label": "Fecha de emisión de la visa de no inmigrante usada en su última llegada (MM/DD/AAAA)"
+    },
+    "visto_imigrante_data_decisao": {
+      "label": "Solicitud de visa de inmigrante anterior — Fecha de la decisión"
+    },
+    "visto_imigrante_decisao": {
+      "label": "Solicitud de visa de inmigrante anterior — Decisión",
+      "hint": "Si anteriormente solicitó una visa de inmigrante (Green Card tramitada fuera de los EE. UU., a través de un consulado), indique el resultado: aprobada, denegada, retirada, etc."
+    },
+    "visto_numero": {
+      "label": "Número de la visa de no inmigrante usada en su última llegada"
+    },
+    "ssa_consentimento_divulgacao": {
+      "label": "¿Autoriza la divulgación de información de esta solicitud a la Administración del Seguro Social (SSA) con el propósito de asignar un SSN y emitir una tarjeta de Seguro Social?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Al autorizar esto, USCIS comparte automáticamente sus datos con la Administración del Seguro Social (SSA) para que pueda emitir su Número de Seguro Social (SSN) y/o tarjeta junto con su Green Card, sin que usted necesite visitar una oficina de la SSA por separado. La mayoría de los solicitantes responde 'Sí'."
+    },
+    "ssa_ja_emitiu_cartao": {
+      "label": "¿La Administración del Seguro Social (SSA) ya le ha emitido oficialmente una tarjeta de Seguro Social?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "ssa_quer_cartao": {
+      "label": "¿Desea que la SSA le emita una tarjeta de Seguro Social?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "ssn": {
+      "label": "Número de Seguro Social (SSN)",
+      "hint": "9 dígitos, sin guiones. Déjelo en blanco si nunca ha recibido un SSN."
+    },
+    "embaixada_cidade": {
+      "label": "Embajada/consulado donde solicitó — Ciudad"
+    },
+    "embaixada_pais": {
+      "label": "Embajada/consulado donde solicitó — País"
+    },
+    "isencao_affidavit_motivo": {
+      "label": "Motivo de la exención de presentar la Declaración de Apoyo Financiero (Sección 213A del INA)",
+      "options": {
+        "40_trimestres": "Tengo (o se me pueden acreditar) 40 trimestres calificados de trabajo en los EE. UU.",
+        "menor18_filho_cidadao": "Soy menor de 18 años, soltero(a), e hijo(a) de un(a) ciudadano(a) estadounidense",
+        "viuvo_cidadao": "Estoy solicitando como viudo(a) de un(a) ciudadano(a) estadounidense",
+        "vawa": "Estoy solicitando como autopeticionario(a) VAWA",
+        "nao_precisa": "No aplica ninguna exención a mi caso, y no estoy obligado(a) a presentar la Declaración de Apoyo Financiero",
+        "precisa_apresentar": "No aplica ninguna exención — debo presentar la Declaración de Apoyo Financiero"
+      },
+      "hint": "La Declaración de Apoyo Financiero (Sección 213A del INA / Formulario I-864) es una garantía financiera normalmente exigida — solo se exime en casos específicos (por ejemplo, usted ya tiene 40 trimestres calificados de trabajo en EE. UU., es huérfano(a) adoptado(a) por un(a) ciudadano(a) estadounidense, o su caso es basado en empleo y usted posee el 5% o más de la empresa patrocinadora). Si no está seguro(a) de calificar para una exención, confirme con el equipo — la mayoría de los casos NO están exentos."
+    },
+    "emp1_ate": {
+      "label": "Empleador/escuela actual — Fecha de fin (MM/DD/AAAA)"
+    },
+    "emp1_desde": {
+      "label": "Empleador/escuela actual — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "emp1_end_cep": {
+      "label": "Empleador/escuela actual — Código postal del domicilio"
+    },
+    "emp1_end_cidade": {
+      "label": "Empleador/escuela actual — Ciudad del domicilio"
+    },
+    "emp1_end_codigo_postal": {
+      "label": "Empleador/escuela actual — Código postal del domicilio"
+    },
+    "emp1_end_estado": {
+      "label": "Empleador/escuela actual — Estado del domicilio"
+    },
+    "emp1_end_num_unidade": {
+      "label": "Empleador/escuela actual — Número de unidad del domicilio"
+    },
+    "emp1_end_pais": {
+      "label": "Empleador/escuela actual — País del domicilio"
+    },
+    "emp1_end_provincia": {
+      "label": "Empleador/escuela actual — Provincia del domicilio"
+    },
+    "emp1_end_rua": {
+      "label": "Empleador/escuela actual — Calle del domicilio"
+    },
+    "emp1_end_tipo_unidade": {
+      "label": "Empleador/escuela actual — Tipo de unidad del domicilio",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "emp1_nome": {
+      "label": "Empleador/escuela actual — Nombre"
+    },
+    "emp1_ocupacao": {
+      "label": "Empleador/escuela actual — Ocupación"
+    },
+    "emp2_ate": {
+      "label": "Empleador/escuela anterior — Fecha de fin (MM/DD/AAAA)"
+    },
+    "emp2_desde": {
+      "label": "Empleador/escuela anterior — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "emp2_end_cep": {
+      "label": "Empleador/escuela anterior — Código postal del domicilio"
+    },
+    "emp2_end_cidade": {
+      "label": "Empleador/escuela anterior — Ciudad del domicilio"
+    },
+    "emp2_end_codigo_postal": {
+      "label": "Empleador/escuela anterior — Código postal del domicilio"
+    },
+    "emp2_end_estado": {
+      "label": "Empleador/escuela anterior — Estado del domicilio"
+    },
+    "emp2_end_num_unidade": {
+      "label": "Empleador/escuela anterior — Número de unidad del domicilio"
+    },
+    "emp2_end_pais": {
+      "label": "Empleador/escuela anterior — País del domicilio"
+    },
+    "emp2_end_provincia": {
+      "label": "Empleador/escuela anterior — Provincia del domicilio"
+    },
+    "emp2_end_rua": {
+      "label": "Empleador/escuela anterior — Calle del domicilio"
+    },
+    "emp2_end_tipo_unidade": {
+      "label": "Empleador/escuela anterior — Tipo de unidad del domicilio",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "emp2_nome": {
+      "label": "Empleador/escuela anterior — Nombre"
+    },
+    "ja_pediu_visto_imigrante": {
+      "label": "¿Alguna vez ha solicitado una visa de inmigrante para obtener residencia permanente en una Embajada o Consulado de EE. UU. en el extranjero?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "lpr_status_rescindido": {
+      "label": "¿Alguna vez ha tenido estatus de residente permanente legal que después fue rescindido bajo la Sección 246 del INA?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "'Rescindir' el estatus de residente permanente es distinto de perderlo por deportación — ocurre cuando USCIS descubre, dentro de los 5 años posteriores a la concesión, que la persona en realidad no era elegible para la Green Card que recibió. La mayoría de los solicitantes responde 'No'."
+    },
+    "pediu_residencia_antes": {
+      "label": "¿Alguna vez ha solicitado la residencia permanente anteriormente, estando en los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "pai1_data_nascimento": {
+      "label": "Padre/Madre 1 — Fecha de nacimiento"
+    },
+    "pai1_nascimento_meio": {
+      "label": "Padre/Madre 1 — Segundo nombre de nacimiento"
+    },
+    "pai1_nascimento_nome": {
+      "label": "Padre/Madre 1 — Nombre de nacimiento"
+    },
+    "pai1_nascimento_sobrenome": {
+      "label": "Padre/Madre 1 — Apellido de nacimiento"
+    },
+    "pai1_nome": {
+      "label": "Padre/Madre 1 — Nombre"
+    },
+    "pai1_nome_meio": {
+      "label": "Padre/Madre 1 — Segundo nombre"
+    },
+    "pai1_pais_nascimento": {
+      "label": "Padre/Madre 1 — País de nacimiento"
+    },
+    "pai1_sobrenome": {
+      "label": "Padre/Madre 1 — Apellido"
+    },
+    "pai2_data_nascimento": {
+      "label": "Padre/Madre 2 — Fecha de nacimiento"
+    },
+    "pai2_nascimento_meio": {
+      "label": "Padre/Madre 2 — Segundo nombre de nacimiento"
+    },
+    "pai2_nascimento_nome": {
+      "label": "Padre/Madre 2 — Nombre de nacimiento"
+    },
+    "pai2_nascimento_sobrenome": {
+      "label": "Padre/Madre 2 — Apellido de nacimiento"
+    },
+    "pai2_nome": {
+      "label": "Padre/Madre 2 — Nombre"
+    },
+    "pai2_nome_meio": {
+      "label": "Padre/Madre 2 — Segundo nombre"
+    },
+    "pai2_pais_nascimento": {
+      "label": "Padre/Madre 2 — País de nacimiento"
+    },
+    "pai2_sobrenome": {
+      "label": "Padre/Madre 2 — Apellido"
+    },
+    "casamento_cidade": {
+      "label": "Matrimonio actual — Ciudad"
+    },
+    "casamento_estado_provincia": {
+      "label": "Matrimonio actual — Estado/Provincia"
+    },
+    "casamento_pais": {
+      "label": "Matrimonio actual — País"
+    },
+    "conjuge_alien_number": {
+      "label": "Cónyuge actual — Número de Registro de Extranjero (A-Number)"
+    },
+    "conjuge_aplicando_junto": {
+      "label": "Cónyuge actual — ¿Solicita junto con usted?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "conjuge_data_nascimento": {
+      "label": "Cónyuge actual — Fecha de nacimiento"
+    },
+    "conjuge_end_cep": {
+      "label": "Cónyuge actual — Código postal del domicilio"
+    },
+    "conjuge_end_cidade": {
+      "label": "Cónyuge actual — Ciudad del domicilio"
+    },
+    "conjuge_end_codigo_postal": {
+      "label": "Cónyuge actual — Código postal del domicilio"
+    },
+    "conjuge_end_estado": {
+      "label": "Cónyuge actual — Estado del domicilio"
+    },
+    "conjuge_end_num_unidade": {
+      "label": "Cónyuge actual — Número de unidad del domicilio"
+    },
+    "conjuge_end_pais": {
+      "label": "Cónyuge actual — País del domicilio"
+    },
+    "conjuge_end_provincia": {
+      "label": "Cónyuge actual — Provincia del domicilio"
+    },
+    "conjuge_end_rua": {
+      "label": "Cónyuge actual — Calle del domicilio"
+    },
+    "conjuge_end_tipo_unidade": {
+      "label": "Cónyuge actual — Tipo de unidad del domicilio",
+      "options": {
+        "apt": "Apt",
+        "ste": "Ste",
+        "flr": "Flr"
+      }
+    },
+    "conjuge_filho_43b_43i": {
+      "label": "¿Es usted cónyuge o hijo(a) de alguien que alguna vez haya participado en alguna de las actividades mencionadas anteriormente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Estas preguntas (INA 212(a)(3)(B)) se refieren a familiares de personas involucradas en terrorismo, sabotaje, secuestro de vehículos, o uso de armas contra personas — las mismas actividades preguntadas más adelante en la Parte 9 de este formulario. No se refiere a actividades ordinarias. La gran mayoría de los solicitantes responde 'No'."
+    },
+    "conjuge_filho_traficante": {
+      "label": "¿Es usted cónyuge o hijo(a) de alguien que traficó ilícitamente una sustancia controlada, y ha recibido usted a sabiendas algún beneficio financiero de esa actividad en los últimos 5 años?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Solo aplica si un familiar suyo (no usted) traficó sustancias controladas Y usted, sabiéndolo, recibió algún beneficio financiero de esa actividad en los últimos 5 años. La mayoría de los solicitantes responde 'No'."
+    },
+    "conjuge_filho_trafico_pessoas": {
+      "label": "¿Es usted cónyuge o hijo(a) de alguien involucrado(a) en la trata de personas, y ha recibido usted a sabiendas algún beneficio financiero de esa actividad en los últimos 5 años?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Solo aplica si un familiar suyo (no usted) estuvo involucrado(a) en trata de personas Y usted, sabiéndolo, recibió algún beneficio financiero de esa actividad en los últimos 5 años. La mayoría de los solicitantes responde 'No'."
+    },
+    "conjuge_meio": {
+      "label": "Cónyuge actual — Segundo nombre"
+    },
+    "conjuge_militar": {
+      "label": "Cónyuge actual — Militar",
+      "options": {
+        "nao": "No",
+        "sim": "Sí",
+        "na": "No aplica"
+      }
+    },
+    "conjuge_nome": {
+      "label": "Cónyuge actual — Nombre"
+    },
+    "conjuge_pais_nascimento": {
+      "label": "Cónyuge actual — País de nacimiento"
+    },
+    "conjuge_sobrenome": {
+      "label": "Cónyuge actual — Apellido"
+    },
+    "casamento_data": {
+      "label": "Fecha del matrimonio con su cónyuge actual (MM/DD/AAAA)"
+    },
+    "estado_civil": {
+      "label": "Estado civil actual",
+      "options": {
+        "divorciado": "Divorciado(a)",
+        "solteiro": "Soltero(a), nunca casado(a)",
+        "viuvo": "Viudo(a)",
+        "casado": "Casado(a)",
+        "anulado": "Matrimonio anulado",
+        "separado_legalmente": "Separado(a) legalmente"
+      }
+    },
+    "ex_casamento_cidade": {
+      "label": "Matrimonio anterior — Ciudad"
+    },
+    "ex_casamento_como_terminou": {
+      "label": "Matrimonio anterior — Cómo terminó",
+      "options": {
+        "conjuge_falecido": "Fallecimiento del cónyuge",
+        "anulado": "Anulado",
+        "outro": "Otro (explique)",
+        "divorciado": "Divorcio"
+      }
+    },
+    "ex_casamento_data_fim": {
+      "label": "Fecha en que el matrimonio anterior terminó legalmente (MM/DD/AAAA)"
+    },
+    "ex_casamento_estado_provincia": {
+      "label": "Matrimonio anterior — Estado/Provincia"
+    },
+    "ex_casamento_outro_explicacao": {
+      "label": "Matrimonio anterior — Otro, explique"
+    },
+    "ex_casamento_pais": {
+      "label": "Matrimonio anterior — País"
+    },
+    "ex_casamento_data": {
+      "label": "Fecha del matrimonio con su cónyuge anterior (MM/DD/AAAA)"
+    },
+    "ex_conjuge_data_nascimento": {
+      "label": "Excónyuge (cónyuge anterior) — Fecha de nacimiento"
+    },
+    "ex_conjuge_meio": {
+      "label": "Excónyuge (cónyuge anterior) — Segundo nombre"
+    },
+    "ex_conjuge_nome": {
+      "label": "Excónyuge (cónyuge anterior) — Nombre"
+    },
+    "ex_conjuge_pais_cidadania": {
+      "label": "Excónyuge (cónyuge anterior) — País de ciudadanía"
+    },
+    "ex_conjuge_pais_nascimento": {
+      "label": "Excónyuge (cónyuge anterior) — País de nacimiento"
+    },
+    "ex_conjuge_sobrenome": {
+      "label": "Excónyuge (cónyuge anterior) — Apellido"
+    },
+    "numero_casamentos": {
+      "label": "¿Cuántas veces se ha casado (incluyendo su matrimonio actual, matrimonios en el extranjero, y matrimonios anulados)?"
+    },
+    "filho1_alien_number": {
+      "label": "Hijo(a) 1 — Número de Registro de Extranjero (A-Number)"
+    },
+    "filho1_aplicando_separado": {
+      "label": "Hijo(a) 1 — ¿Presenta un Formulario I-485 por separado?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "filho1_data_nascimento": {
+      "label": "Hijo(a) 1 — Fecha de nacimiento"
+    },
+    "filho1_meio": {
+      "label": "Hijo(a) 1 — Segundo nombre"
+    },
+    "filho1_nome": {
+      "label": "Hijo(a) 1 — Nombre"
+    },
+    "filho1_pais_nascimento": {
+      "label": "Hijo(a) 1 — País de nacimiento"
+    },
+    "filho1_relacao": {
+      "label": "Hijo(a) 1 — Relación con usted"
+    },
+    "filho1_sobrenome": {
+      "label": "Hijo(a) 1 — Apellido"
+    },
+    "filho2_alien_number": {
+      "label": "Hijo(a) 2 — Número de Registro de Extranjero (A-Number)"
+    },
+    "filho2_aplicando_separado": {
+      "label": "Hijo(a) 2 — ¿Presenta un Formulario I-485 por separado?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "filho2_data_nascimento": {
+      "label": "Hijo(a) 2 — Fecha de nacimiento"
+    },
+    "filho2_meio": {
+      "label": "Hijo(a) 2 — Segundo nombre"
+    },
+    "filho2_nome": {
+      "label": "Hijo(a) 2 — Nombre"
+    },
+    "filho2_pais_nascimento": {
+      "label": "Hijo(a) 2 — País de nacimiento"
+    },
+    "filho2_relacao": {
+      "label": "Hijo(a) 2 — Relación con usted"
+    },
+    "filho2_sobrenome": {
+      "label": "Hijo(a) 2 — Apellido"
+    },
+    "total_filhos": {
+      "label": "Número total de hijos vivos que tiene, en cualquier parte del mundo",
+      "hint": "Cuente a TODOS sus hijos biológicos y adoptivos vivos, en cualquier parte del mundo, de cualquier relación — incluso los que no inmigrarán con usted y los que ya son adultos."
+    },
+    "altura_pes": {
+      "label": "Estatura — pies"
+    },
+    "altura_polegadas": {
+      "label": "Estatura — pulgadas"
+    },
+    "cor_cabelo": {
+      "label": "Color de cabello",
+      "options": {
+        "careca": "Calvo (sin cabello)",
+        "preto": "Negro",
+        "loiro": "Rubio",
+        "castanho": "Castaño",
+        "grisalho": "Canoso",
+        "ruivo": "Pelirrojo",
+        "arenoso": "Arenoso",
+        "branco": "Blanco",
+        "outro": "Otro/Desconocido"
+      }
+    },
+    "cor_olhos": {
+      "label": "Color de ojos",
+      "options": {
+        "azul": "Azul",
+        "preto": "Negro",
+        "castanho": "Café/Marrón",
+        "cinza": "Gris",
+        "verde": "Verde",
+        "avela": "Avellana",
+        "marrom_avermelhado": "Marrón rojizo",
+        "rosa": "Rosado",
+        "outro": "Otro/Desconocido"
+      }
+    },
+    "etnia": {
+      "label": "Etnia",
+      "options": {
+        "hispanico": "Hispano o Latino",
+        "nao_hispanico": "No Hispano o Latino"
+      },
+      "hint": "Una pregunta separada de la 'raza' a continuación — esta solo pregunta si usted se identifica como hispano/latino o no, independientemente de su raza."
+    },
+    "peso_centena": {
+      "label": "Peso en libras (lb) — 1er dígito",
+      "hint": "1er dígito de su peso en libras (lb). Por ejemplo, si su peso es 155 lb, este campo es '1'. Si su peso solo tiene 2 dígitos (por ejemplo, 95 lb), deje este campo en blanco."
+    },
+    "peso_dezena": {
+      "label": "Peso en libras (lb) — 2do dígito",
+      "hint": "2do dígito de su peso en libras (lb). Por ejemplo, si su peso es 155 lb, este campo es '5'."
+    },
+    "peso_unidade": {
+      "label": "Peso en libras (lb) — 3er dígito",
+      "hint": "3er (último) dígito de su peso en libras (lb). Por ejemplo, si su peso es 155 lb, este campo es '5'."
+    },
+    "raca_asiatico": {
+      "label": "Raza: Asiático",
+      "options": {
+        "sim": "Sí, marcar"
+      }
+    },
+    "raca_branco": {
+      "label": "Raza: Blanco",
+      "options": {
+        "sim": "Sí, marcar"
+      }
+    },
+    "raca_havaiano_pacifico": {
+      "label": "Raza: Nativo de Hawái u otra isla del Pacífico",
+      "options": {
+        "sim": "Sí, marcar"
+      }
+    },
+    "raca_indigena_americano": {
+      "label": "Raza: Indígena americano o nativo de Alaska",
+      "options": {
+        "sim": "Sí, marcar"
+      }
+    },
+    "raca_negro": {
+      "label": "Raza: Negro o afroamericano",
+      "options": {
+        "sim": "Sí, marcar"
+      }
+    },
+    "membro_organizacao": {
+      "label": "¿Alguna vez ha sido miembro de, ha participado en, o de alguna manera se ha asociado con alguna organización, asociación, fondo, fundación, partido, club, sociedad, o grupo similar, en los EE. UU. o en cualquier otro lugar del mundo?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Esto es deliberadamente amplio en alcance — incluye iglesias, sindicatos, equipos deportivos, clubes estudiantiles, asociaciones profesionales, partidos políticos, ONG, etc., no solo organizaciones 'sospechosas'. Si alguna vez ha formado parte de algún grupo organizado, incluso uno ordinario, responda 'Sí' y anótelo en los siguientes ítems."
+    },
+    "org1_ate": {
+      "label": "Organización 1 — Fecha de fin (MM/DD/AAAA)"
+    },
+    "org1_cidade": {
+      "label": "Organización 1 — Ciudad"
+    },
+    "org1_desde": {
+      "label": "Organización 1 — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "org1_envolvimento": {
+      "label": "Organización 1 — Descripción de su participación"
+    },
+    "org1_estado_provincia": {
+      "label": "Organización 1 — Estado/Provincia"
+    },
+    "org1_natureza": {
+      "label": "Organización 1 — Naturaleza de la organización"
+    },
+    "org1_nome": {
+      "label": "Organización 1 — Nombre"
+    },
+    "org1_pais": {
+      "label": "Organización 1 — País"
+    },
+    "org2_ate": {
+      "label": "Organización 2 — Fecha de fin (MM/DD/AAAA)"
+    },
+    "org2_cidade": {
+      "label": "Organización 2 — Ciudad"
+    },
+    "org2_desde": {
+      "label": "Organización 2 — Fecha de inicio (MM/DD/AAAA)"
+    },
+    "org2_envolvimento": {
+      "label": "Organización 2 — Descripción de su participación"
+    },
+    "org2_estado_provincia": {
+      "label": "Organización 2 — Estado/Provincia"
+    },
+    "org2_natureza": {
+      "label": "Organización 2 — Naturaleza de la organización"
+    },
+    "org2_nome": {
+      "label": "Organización 2 — Nombre"
+    },
+    "org2_pais": {
+      "label": "Organización 2 — País"
+    },
+    "acompanha_inadmissivel_medico": {
+      "label": "¿Está acompañando a un(a) extranjero(a) inadmisible que ha sido certificado(a) médicamente como incapacitado(a) (por enfermedad, discapacidad, o minoría de edad) y que requiere su protección o tutela?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "ajudou_contrabando_estrangeiro": {
+      "label": "¿Alguna vez ha ayudado, alentado o asistido a sabiendas a alguna persona a ingresar o intentar ingresar a los Estados Unidos ilegalmente (contrabando de extranjeros)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "ajudou_trafico_pessoas": {
+      "label": "¿Alguna vez ha ayudado, alentado o trabajado a sabiendas con otros para traficar personas con fines de actos sexuales comerciales o servidumbre involuntaria?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "alegou_cidadania_falsa": {
+      "label": "¿Alguna vez ha declarado falsamente ser ciudadano(a) estadounidense (por escrito o de cualquier otra manera)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "ameacou_conspirou_planejou": {
+      "label": "¿Alguna vez ha amenazado, intentado, conspirado o planeado realizar alguna de las actividades descritas anteriormente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "apoio_atividades_grupo": {
+      "label": "¿Alguna vez ha proporcionado dinero, bienes, servicios, o cualquier otro apoyo a un grupo que haya participado en alguna de las actividades descritas anteriormente?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "apoio_individuo_grupo": {
+      "label": "¿Alguna vez ha proporcionado dinero, bienes, servicios, o cualquier otra asistencia a un individuo, grupo, u organización que haya participado en alguna de las actividades descritas anteriormente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "asilo_data_concessao": {
+      "label": "Fecha en que se concedió el asilo (MM/DD/AAAA)"
+    },
+    "cometeu_crime": {
+      "label": "¿Alguna vez ha cometido un delito de cualquier tipo (incluso si no fue arrestado(a), citado(a), acusado(a), o condenado(a))?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "condenado_crime": {
+      "label": "¿Alguna vez se ha declarado culpable, o ha sido condenado(a), por un delito (incluso si la condena fue posteriormente anulada, sellada, borrada, indultada, o sujeta a algún otro tipo de clemencia)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "condenado_desercao_forcas_armadas": {
+      "label": "¿Alguna vez ha sido condenado(a) por deserción de las fuerzas armadas de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "condicoes_restritas_liberdade": {
+      "label": "¿Alguna vez ha sido sentenciado(a) por un juez, o se le han impuesto condiciones que restringieron su libertad (tiempo en prisión, sentencia suspendida, arresto domiciliario, libertad condicional o supervisada, tratamiento por drogas/alcohol, servicio comunitario, etc.)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "cumpriu_residencia_estrangeira": {
+      "label": "Si respondió Sí a la pregunta anterior: ¿ha cumplido con el requisito de residencia en el extranjero?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Solo aparece si respondió 'Sí' a la pregunta anterior sobre una visa J. Indique si ya cumplió el tiempo requerido (2 años) en su país de origen después del programa de intercambio, satisfaciendo este requisito."
+    },
+    "deixou_eua_evitar_servico_militar": {
+      "label": "¿Alguna vez ha salido, o permanecido fuera, de los Estados Unidos para evitar el servicio o entrenamiento militar durante un período de guerra o emergencia nacional?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "derrubar_governo_eua": {
+      "label": "¿Tiene la intención de participar en alguna actividad cuyo propósito sea oponerse, controlar, o derrocar por la fuerza al Gobierno de EE. UU.?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "dispensado_treinamento_militar": {
+      "label": "¿Alguna vez ha sido eximido(a) de ese entrenamiento o servicio por ser extranjero(a)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "documento_fraudulento_imigracao": {
+      "label": "¿Alguna vez ha presentado documentación alterada, fraudulenta, o falsificada a alguna autoridad de EE. UU. para obtener, o intentar obtener, algún beneficio migratorio?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "em_processo_remocao": {
+      "label": "¿Está usted ahora, o alguna vez ha estado, en un proceso de exclusión, deportación, rescisión, o expulsión, incluyendo la expulsión acelerada?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El 'proceso de expulsión' (removal proceedings) es el proceso formal del tribunal de inmigración (no de USCIS) que puede llevar a la deportación — distinto de simplemente estar fuera de estatus. La mayoría de los solicitantes nunca ha pasado por esto y responde 'No'."
+    },
+    "entrou_sem_inspecao": {
+      "label": "¿Alguna vez ha ingresado a los Estados Unidos sin ser inspeccionado(a) y admitido(a), o inspeccionado(a) y admitido(a) bajo palabra (paroled)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "'Sin inspección' significa que usted ingresó a los EE. UU. sin pasar por un puesto de control fronterizo/migratorio oficial (por ejemplo, cruzó a pie lejos de un puesto de control) — distinto de ingresar con una visa y luego permanecer más tiempo del permitido, lo cual SÍ se considera entrada con inspección. Esta distinción afecta significativamente la elegibilidad — confirme con el equipo si tiene alguna duda sobre cómo ingresó."
+    },
+    "espionagem_sabotagem": {
+      "label": "¿Tiene la intención de participar en actividades de espionaje o sabotaje en los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "excluido_deportado_removido": {
+      "label": "¿Alguna vez ha sido excluido(a), deportado(a), o expulsado(a) de los Estados Unidos, o ha salido de los Estados Unidos por su cuenta después de recibir una orden de exclusión, deportación, o expulsión?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "exerceu_imunidade_diplomatica": {
+      "label": "¿Alguna vez ha ejercido inmunidad (diplomática o de otro tipo) para evitar ser procesado(a) por un delito en los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "faltou_processo_remocao": {
+      "label": "¿Alguna vez no ha comparecido, o no ha permanecido, en algún proceso de expulsión iniciado en su contra en o después del 1 de abril de 1997?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "ferir_gravemente": {
+      "label": "¿Alguna vez ha herido, o intentado herir, grave e intencionalmente a alguna persona?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "funcionario_governo_estrangeiro": {
+      "label": "¿Alguna vez se ha desempeñado como funcionario(a) de un gobierno extranjero particularmente responsable de violaciones a la libertad religiosa?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "genocidio": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de alguna otra manera en un genocidio?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "grupo_arma_contra_pessoa": {
+      "label": "¿Alguna vez ha sido miembro de, ayudado, o participado en algún grupo, unidad, u organización en la que usted u otros miembros usaron algún tipo de arma contra alguna persona, o amenazaron con hacerlo?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "grupo_armado_paramilitar": {
+      "label": "¿Alguna vez ha servido en, sido miembro de, ayudado, o participado en algún grupo armado (paramilitar, de autodefensa, vigilante, rebelde, o guerrillero)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "incitou_causar_morte": {
+      "label": "¿Alguna vez ha incitado, en circunstancias que indiquen la intención de causar la muerte o lesiones corporales graves, alguna de las actividades descritas anteriormente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "intencao_atividade_perigo_seguranca": {
+      "label": "¿Tiene la intención de participar en alguna actividad que pueda poner en peligro el bienestar, la seguridad, o la protección de los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "intencao_atividades_43b_43e": {
+      "label": "¿Tiene la intención de participar en alguna de las actividades mencionadas anteriormente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "intencao_vicio_comercializado": {
+      "label": "¿Tiene la intención de participar en juegos de azar ilegales, o en cualquier otra forma de vicio comercializado (prostitución, contrabando de extranjeros, pornografía infantil), en los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "j_visitante_intercambio_2anos": {
+      "label": "¿Alguna vez ha sido un(a) visitante de intercambio no inmigrante J sujeto(a) al requisito de residencia en el extranjero de dos años?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Aplica a quienes tuvieron una visa J-1/J-2 (visitante de intercambio) sujeta al requisito de residir 2 años en su país de origen antes de regresar a los EE. UU. bajo otro estatus. Si nunca ha tenido una visa J, responda 'No'."
+    },
+    "lavagem_dinheiro": {
+      "label": "¿Alguna vez ha participado en lavado de dinero, o ha ayudado o conspirado para participar en lavado de dinero, o tiene la intención de hacerlo?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "matar_tentar_matar": {
+      "label": "¿Alguna vez ha matado, o intentado matar, a alguna persona?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "mentiu_documentacao_visto": {
+      "label": "¿Alguna vez ha mentido, ocultado, o tergiversado información en una solicitud de visa, documentación de entrada, o cualquier otro beneficio migratorio?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "nacionalidade_status_antes_de_sair": {
+      "label": "Si respondió Sí a la pregunta anterior: ¿cuál era su nacionalidad o estatus migratorio inmediatamente antes de salir (por ejemplo, ciudadano(a)/nacional de EE. UU., residente permanente legal, no inmigrante, con libertad condicional (parolee), presente sin admisión ni libertad condicional, u otro)?",
+      "hint": "Describa su situación migratoria exactamente ANTES de salir/permanecer fuera de los EE. UU. para evitar el servicio militar (pregunta anterior) — no su situación actual."
+    },
+    "negado_admissao": {
+      "label": "¿Alguna vez se le ha negado la admisión a los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "negado_visto": {
+      "label": "¿Alguna vez se le ha negado una visa para los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "obteve_waiver_residencia_estrangeira": {
+      "label": "Si respondió Sí y luego No a las dos preguntas anteriores: ¿recibió una dispensa (waiver), o una recomendación favorable del Departamento de Estado?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "'Dispensa' (waiver) aquí es una exención formal del requisito de residencia de 2 años en el país de origen, otorgada por el Departamento de Estado (por ejemplo, por dificultad extrema, persecución, o una solicitud de su gobierno de origen). Responda 'Sí' solo si efectivamente obtuvo esta dispensa por escrito."
+    },
+    "ordem_civil_penalidade_274c": {
+      "label": "¿Está sujeto(a) a una orden final de sanción civil por violar la Sección 274C del INA (uso de documentos fraudulentos)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "La Sección 274C del INA cubre el uso/presentación de documentos migratorios fraudulentos o de documentos de otra persona. Responda 'Sí' solo si ya ha recibido una orden FINAL de sanción civil (multa) específicamente por esto — es poco común. La mayoría de los solicitantes responde 'No'."
+    },
+    "ordem_final_exclusao_remocao": {
+      "label": "¿Alguna vez se le ha emitido una orden final de exclusión, deportación, o expulsión?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "ordem_remocao_reinstada": {
+      "label": "¿Alguna vez se le ha reinstaurado una orden anterior de exclusión, deportación, o expulsión?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "outra_atividade_ilegal": {
+      "label": "¿Tiene la intención de participar en alguna otra actividad ilegal?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "outra_data_nascimento_1": {
+      "label": "Cualquier otra fecha de nacimiento usada anteriormente — opción 1 (MM/DD/AAAA)"
+    },
+    "outra_data_nascimento_2": {
+      "label": "Cualquier otra fecha de nacimiento usada anteriormente — opción 2 (MM/DD/AAAA)"
+    },
+    "outro_alien_number_1": {
+      "label": "Cualquier otro Número de Registro de Extranjero (A-Number) usado anteriormente — opción 1"
+    },
+    "outro_alien_number_2": {
+      "label": "Cualquier otro Número de Registro de Extranjero (A-Number) usado anteriormente — opción 2"
+    },
+    "participou_grupo_armado": {
+      "label": "¿Alguna vez ha participado en, o sido miembro de, un grupo u organización que haya realizado alguna de las actividades descritas anteriormente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "partido_comunista_totalitario": {
+      "label": "¿Alguna vez ha sido miembro de, o se ha afiliado de alguna manera con, el Partido Comunista o cualquier otro partido totalitario (en los EE. UU. o en el extranjero)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "pediu_alivio_remocao": {
+      "label": "¿Alguna vez ha solicitado algún tipo de alivio o protección contra la expulsión, exclusión, o deportación?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "El 'alivio de la expulsión' incluye solicitudes como asilo, cancelación de la expulsión, suspensión de la deportación, protección bajo la Convención contra la Tortura, y otras — presentadas ante un juez de inmigración. Si nunca ha estado en un proceso de expulsión, la respuesta es 'No'."
+    },
+    "pediu_isencao_treinamento_militar": {
+      "label": "¿Alguna vez ha solicitado una exención o baja del entrenamiento o servicio en las fuerzas armadas de EE. UU. por ser extranjero(a)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "planeja_poligamia": {
+      "label": "¿Planea practicar la poligamia en los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "polizao_navio_aeronave": {
+      "label": "¿Alguna vez se ha ocultado como polizón en una embarcación o aeronave que llegó a los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "presenca_ilegal_desde_1997": {
+      "label": "Desde el 1 de abril de 1997, ¿alguna vez ha estado presente ilegalmente en los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "La 'presencia ilegal' es el tiempo pasado en los EE. UU. sin un estatus válido y autorizado — contado desde el 1/4/1997 (cuando esta regla entró en vigor). Acumular más de 180 días o 1 año de presencia ilegal puede activar barras de reingreso de 3 o 10 años. Este es un cálculo importante — si alguna vez ha estado en los EE. UU. sin estatus válido, confirme con el equipo antes de responder."
+    },
+    "preso_citado_detido": {
+      "label": "¿Alguna vez ha sido arrestado(a), citado(a), acusado(a), o admitido(a) en un programa de desvío, o detenido(a) por cualquier motivo por un oficial de la ley de cualquier país?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Incluye cualquier arresto, incluso sin una condena — y también 'programas de desvío' (un programa que reemplaza un caso penal formal por algo como clases/servicio comunitario, generalmente sin resultar en una condena). Responda 'Sí' incluso si el caso fue posteriormente desestimado, sellado, o indultado."
+    },
+    "procurou_prostitutas": {
+      "label": "¿Alguna vez ha buscado o procurado, directa o indirectamente, prostitutas o personas con fines de prostitución?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "prostituicao": {
+      "label": "¿Alguna vez ha ejercido la prostitución, o viene a los Estados Unidos para ejercer la prostitución?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "recebeu_partida_voluntaria_nao_cumpriu": {
+      "label": "¿Alguna vez se le ha concedido la salida voluntaria por un oficial de inmigración o juez, pero no salió dentro del plazo concedido?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "La 'salida voluntaria' es el permiso otorgado por un juez/oficial de inmigración para que usted salga de los EE. UU. por su cuenta dentro de un plazo, evitando una orden formal de deportación en su expediente. Responda 'Sí' solo si recibió este permiso y NO salió dentro del plazo acordado."
+    },
+    "recebeu_proventos_prostituicao": {
+      "label": "¿Alguna vez ha recibido las ganancias de, o dinero derivado de, la prostitución?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "recrutou_membros_grupo": {
+      "label": "¿Alguna vez ha reclutado miembros para, o solicitado dinero para, un grupo que haya realizado alguna de las actividades descritas anteriormente?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "recrutou_menor15_hostilidades": {
+      "label": "¿Alguna vez ha reclutado, alistado, o utilizado a alguna persona menor de 15 años para participar en hostilidades, o intentado o trabajado con otros para hacerlo?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "reentrada_apos_deportacao": {
+      "label": "Desde el 1 de abril de 1997, ¿ha vuelto a ingresar o intentado volver a ingresar a los Estados Unidos sin inspección después de haber sido deportado(a), excluido(a), o expulsado(a)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Solo aplica si, DESPUÉS de ser deportado(a)/excluido(a)/expulsado(a), intentó regresar a los EE. UU. sin pasar por una inspección oficial. La mayoría de los solicitantes responde 'No'."
+    },
+    "reentrada_apos_presenca_ilegal_1ano": {
+      "label": "Desde el 1 de abril de 1997, ¿ha vuelto a ingresar o intentado volver a ingresar a los Estados Unidos sin inspección después de haber estado presente ilegalmente por más de un año en total?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Solo aplica si, después de acumular más de 1 año de presencia ilegal en los EE. UU. (ver la pregunta de presencia ilegal anterior), intentó reingresar sin inspección. La mayoría de los solicitantes responde 'No'."
+    },
+    "refugiado_data_admissao": {
+      "label": "Fecha de admisión inicial como refugiado(a) (MM/DD/AAAA)"
+    },
+    "renunciou_cidadania_evitar_impostos": {
+      "label": "¿Alguna vez ha renunciado a la ciudadanía estadounidense para evitar ser gravado(a) con impuestos por los Estados Unidos?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "reteve_custodia_filho_cidadao": {
+      "label": "¿Alguna vez ha ayudado a detener, retener, o negar la custodia de un(a) hijo(a) ciudadano(a) estadounidense fuera de los Estados Unidos a una persona a quien se le otorgó la custodia legal de ese(a) niño(a)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sabia_beneficio_trafico": {
+      "label": "Si respondió Sí a la pregunta anterior: ¿sabía, o razonablemente debería haber sabido, que el beneficio resultó de esa actividad?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "sabia_beneficio_trafico_pessoas": {
+      "label": "Si respondió Sí a la pregunta anterior: ¿sabía, o razonablemente debería haber sabido, que el beneficio resultó de esa actividad?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "sequestro_assassinato_sabotagem": {
+      "label": "¿Alguna vez ha cometido secuestro, asesinato, o sabotaje de un vehículo, aeronave, o embarcación?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "servico_militar_policial": {
+      "label": "¿Alguna vez ha servido en, sido miembro de, ayudado, o participado en alguna unidad militar o policial?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "tortura": {
+      "label": "¿Alguna vez ha ordenado, incitado, cometido, ayudado, o participado de alguna otra manera en actos de tortura?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "trabalhou_prisao_detencao": {
+      "label": "¿Alguna vez ha trabajado, sido voluntario(a), o prestado servicio de alguna otra manera en alguna prisión, campo de prisioneros, o centro de detención, o dirigido o participado en alguna actividad que implicara la detención de personas?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "trabalhou_sem_autorizacao": {
+      "label": "¿Alguna vez ha trabajado en los Estados Unidos sin autorización?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "trafico_servidao_involuntaria": {
+      "label": "¿Alguna vez ha traficado a una persona con fines de servidumbre involuntaria, servidumbre por deudas, o peonaje?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "trafico_severo_razao_presenca_ilegal": {
+      "label": "Si respondió Sí: ¿fue una forma grave de trata de personas al menos una razón central de su presencia ilegal?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "trafico_sexual_forca_coercao": {
+      "label": "¿Alguna vez ha inducido, mediante fuerza, fraude, o coerción, la trata de otra persona con fines de actos sexuales comerciales (trata sexual)?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "traficou_substancia_controlada": {
+      "label": "¿Alguna vez ha traficado, se ha beneficiado de, o ha ayudado a sabiendas en el tráfico ilícito de una sustancia controlada?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "treinamento_armas": {
+      "label": "¿Alguna vez ha recibido entrenamiento con armas, entrenamiento paramilitar, o cualquier otro tipo de entrenamiento militar?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "usou_arma_explosivo": {
+      "label": "¿Alguna vez ha usado un arma o explosivo con la intención de poner en peligro la seguridad de alguien o dañar propiedad?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "usou_menor15_hostilidades": {
+      "label": "¿Alguna vez ha utilizado a una persona menor de 15 años para participar en hostilidades (combate, sabotaje, o transporte de suministros), o intentado o trabajado con otros para hacerlo?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "vendeu_armas": {
+      "label": "¿Alguna vez ha vendido, proporcionado, o transportado armas, o ayudado a alguien a hacerlo, sabiendo o creyendo que serían usadas contra otra persona?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "violar_lei_exportacao": {
+      "label": "¿Tiene la intención de participar en alguna actividad que viole una ley relacionada con la exportación de bienes, tecnología, o información sensible desde los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "violou_lei_substancia_controlada": {
+      "label": "¿Alguna vez ha violado (o intentado o conspirado para violar) alguna ley relacionada con sustancias controladas?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "violou_liberdade_religiosa": {
+      "label": "Si respondió Sí a la pregunta anterior: ¿fue usted responsable de, o llevó a cabo directamente, violaciones a la libertad religiosa?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      },
+      "hint": "Solo aplica si usted se desempeñó como funcionario(a) de un gobierno extranjero directamente responsable de perseguir personas por motivos religiosos. La mayoría de los solicitantes responde 'No'."
+    },
+    "violou_status_nao_imigrante": {
+      "label": "¿Alguna vez ha violado los términos o condiciones de su estatus de no inmigrante?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "votou_ilegalmente": {
+      "label": "¿Alguna vez ha votado en violación de alguna ley, estatuto, ordenanza, o reglamento Federal, Estatal, o local de los Estados Unidos?",
+      "options": {
+        "nao": "No",
+        "sim": "Sí"
+      }
+    },
+    "beneficio_1_categoria_isenta": {
+      "label": "Beneficio recibido 1 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Indique si, al momento de recibir este beneficio, usted estaba en una categoría migratoria EXENTA de la evaluación de carga pública (vea la pregunta 'Categoría exenta de carga pública' en la sección anterior) — esto puede significar que este beneficio específico no cuenta en su contra."
+    },
+    "beneficio_1_data_fim": {
+      "label": "Beneficio recibido 1 — Fecha de fin"
+    },
+    "beneficio_1_data_inicio": {
+      "label": "Beneficio recibido 1 — Fecha de inicio"
+    },
+    "beneficio_1_nome": {
+      "label": "Beneficio recibido 1 — Nombre"
+    },
+    "beneficio_1_valor": {
+      "label": "Beneficio recibido 1 — Monto en dólares"
+    },
+    "beneficio_2_categoria_isenta": {
+      "label": "Beneficio recibido 2 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "beneficio_2_data_fim": {
+      "label": "Beneficio recibido 2 — Fecha de fin"
+    },
+    "beneficio_2_data_inicio": {
+      "label": "Beneficio recibido 2 — Fecha de inicio"
+    },
+    "beneficio_2_nome": {
+      "label": "Beneficio recibido 2 — Nombre"
+    },
+    "beneficio_2_valor": {
+      "label": "Beneficio recibido 2 — Monto en dólares"
+    },
+    "beneficio_3_categoria_isenta": {
+      "label": "Beneficio recibido 3 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "beneficio_4_categoria_isenta": {
+      "label": "Beneficio recibido 4 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "institucionalizacao_1_categoria_isenta": {
+      "label": "Institucionalización 1 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "institucionalizacao_1_data_fim": {
+      "label": "Institucionalización 1 — Fecha de fin"
+    },
+    "institucionalizacao_1_data_inicio": {
+      "label": "Institucionalización 1 — Fecha de inicio"
+    },
+    "institucionalizacao_1_motivo": {
+      "label": "Institucionalización 1 — Motivo"
+    },
+    "institucionalizacao_1_nome": {
+      "label": "Institucionalización 1 — Nombre"
+    },
+    "institucionalizacao_2_categoria_isenta": {
+      "label": "Institucionalización 2 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "institucionalizacao_2_data_fim": {
+      "label": "Institucionalización 2 — Fecha de fin"
+    },
+    "institucionalizacao_2_data_inicio": {
+      "label": "Institucionalización 2 — Fecha de inicio"
+    },
+    "institucionalizacao_2_motivo": {
+      "label": "Institucionalización 2 — Motivo"
+    },
+    "institucionalizacao_2_nome": {
+      "label": "Institucionalización 2 — Nombre"
+    },
+    "institucionalizacao_3_categoria_isenta": {
+      "label": "Institucionalización 3 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "institucionalizacao_3_data_fim": {
+      "label": "Institucionalización 3 — Fecha de fin"
+    },
+    "institucionalizacao_3_data_inicio": {
+      "label": "Institucionalización 3 — Fecha de inicio"
+    },
+    "institucionalizacao_3_motivo": {
+      "label": "Institucionalización 3 — Motivo"
+    },
+    "institucionalizacao_3_nome": {
+      "label": "Institucionalización 3 — Nombre"
+    },
+    "institucionalizacao_4_categoria_isenta": {
+      "label": "Institucionalización 4 — ¿Categoría exenta de carga pública?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "institucionalizacao_4_data_fim": {
+      "label": "Institucionalización 4 — Fecha de fin"
+    },
+    "institucionalizacao_4_data_inicio": {
+      "label": "Institucionalización 4 — Fecha de inicio"
+    },
+    "institucionalizacao_4_motivo": {
+      "label": "Institucionalización 4 — Motivo"
+    },
+    "institucionalizacao_4_nome": {
+      "label": "Institucionalización 4 — Nombre"
+    },
+    "public_charge_ativos": {
+      "label": "Carga Pública — Activos",
+      "options": {
+        "0_18400": "$0 a $18,400",
+        "18401_136000": "$18,401 a $136,000",
+        "136001_321400": "$136,001 a $321,400",
+        "321401_707100": "$321,401 a $707,100",
+        "acima_707100": "Más de $707,100"
+      },
+      "hint": "Sume el valor total de sus activos: efectivo en cuentas, inversiones, bienes raíces (menos deudas), etc. — no necesita ser exacto, elija el rango más cercano."
+    },
+    "public_charge_escolaridade": {
+      "label": "Carga Pública — Educación",
+      "options": {
+        "menos_ensino_medio": "Menos de la educación secundaria completa",
+        "college_sem_grau": "1 o más años de universidad, sin título",
+        "ensino_medio_ged": "Diploma de escuela secundaria, GED, o equivalente",
+        "associate": "Título de asociado (Associate's degree)",
+        "mestrado": "Maestría",
+        "profissional": "Título profesional (JD, MD, DMD, etc.)",
+        "doutorado": "Doctorado",
+        "bacharelado": "Licenciatura (Bachelor's degree)"
+      }
+    },
+    "public_charge_grau_escolar_detalhe": {
+      "label": "Carga Pública — Detalle del nivel educativo"
+    },
+    "public_charge_isento_categoria": {
+      "label": "Carga Pública — Categoría exenta",
+      "options": {
+        "afegao_iraquiano": "Inmigrante especial de nacionalidad afgana o iraquí",
+        "refugiado": "Refugiado(a) (Formulario I-590/I-730)",
+        "vitima_crime_u": "Víctima de actividad criminal calificada (U)",
+        "asilado": "Asilado(a) (Formulario I-589/I-730)",
+        "u_status_valido": "Categoría distinta a 245(m), pero con estatus U válido",
+        "vawa": "Autopeticionario(a) VAWA",
+        "imigrante_juvenil": "Inmigrante especial juvenil",
+        "cuban_adjustment": "Cuban Adjustment Act",
+        "haitian_fairness_vitima": "Víctima de violencia — Haitian Fairness Act",
+        "trafico_t": "Víctima de trata de personas (T)",
+        "cuban_adjustment_vitima": "Víctima de violencia — Cuban Adjustment Act",
+        "haitian_fairness": "Haitian Refugee Immigrant Fairness Act",
+        "t_status_pendente_valido": "Categoría distinta a 245(l), con una solicitud T pendiente o estatus T válido",
+        "registry_1972": "Residencia continua desde antes de 1972 (Registry)",
+        "nacara": "NACARA — Nicaragüenses y centroamericanos",
+        "amerasian": "Amerasian Homecoming Act",
+        "polaco_hungaro_parolee": "Parolee polaco(a) o húngaro(a)",
+        "cuban_haitian_entrant": "Entrante cubano(a)/haitiano(a) (Ley de 1986)",
+        "lautenberg_parolee": "Parolee Lautenberg",
+        "vietnam_camboja_laos": "Nacional de Vietnam, Camboya, o Laos",
+        "indigena_americano_canada": "Indígena americano nacido(a) en Canadá",
+        "liberian_ndaa": "Liberian Refugee Immigration Fairness (NDAA 2020)",
+        "ndaa_militar": "Cónyuge/hijo(a)/padre-madre de un miembro de las fuerzas armadas en servicio activo (NDAA)",
+        "nenhuma_completar_57_66": "No aplica ninguna exención — completaré los ítems 57-66",
+        "sirio": "Nacional sirio(a) (Ley Pública 106-378)"
+      },
+      "hint": "La 'carga pública' es la evaluación que hace USCIS para determinar si es probable que usted dependa de asistencia gubernamental en el futuro. Algunas categorías de inmigrantes (asilados, víctimas de trata/crimen con visa T/U, VAWA, etc.) están EXENTAS de esta evaluación. Si usted pertenece a alguna de las categorías listadas, selecciónela — de lo contrario, elija 'no aplica ninguna exención'."
+    },
+    "public_charge_passivos": {
+      "label": "Carga Pública — Pasivos",
+      "options": {
+        "0": "$0",
+        "1_10100": "$1 a $10,100",
+        "10101_57700": "$10,101 a $57,700",
+        "57701_186800": "$57,701 a $186,800",
+        "acima_186800": "Más de $186,800"
+      },
+      "hint": "Pasivos = el total de sus deudas (tarjetas de crédito, préstamos, financiamientos, etc.). Elija el rango más cercano al monto total que debe."
+    },
+    "public_charge_renda_anual": {
+      "label": "Carga Pública — Ingreso anual",
+      "options": {
+        "0_27000": "$0 a $27,000",
+        "27001_52000": "$27,001 a $52,000",
+        "52001_85000": "$52,001 a $85,000",
+        "85001_141000": "$85,001 a $141,000",
+        "acima_141000": "Más de $141,000"
+      },
+      "hint": "Su ingreso anual bruto individual (antes de impuestos) — no el ingreso de toda la familia, a menos que otros miembros ya estén contados como parte de su hogar para fines de manutención."
+    },
+    "public_charge_tamanho_domicilio": {
+      "label": "Carga Pública — Tamaño del hogar",
+      "hint": "Cuente a usted mismo(a) + su cónyuge + cualquier dependiente que viva con usted y dependa financieramente de usted (aunque no esté también solicitando una Green Card)."
+    },
+    "recebeu_beneficio_assistencia": {
+      "label": "¿Alguna vez ha recibido Ingreso Suplementario de Seguridad (SSI), Asistencia Temporal para Familias Necesitadas (TANF), o un programa estatal, tribal, o local de beneficios en efectivo para el mantenimiento de ingresos (\"General Assistance\")?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "recebeu_institucionalizacao": {
+      "label": "¿Alguna vez ha recibido institucionalización a largo plazo a expensas del gobierno?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "celular": {
+      "label": "Número de teléfono móvil"
+    },
+    "data_assinatura": {
+      "label": "Fecha de la firma (MM/DD/AAAA)"
+    },
+    "email": {
+      "label": "Dirección de correo electrónico"
+    },
+    "telefone": {
+      "label": "Número de teléfono durante el día"
+    },
+    "int_celular": {
+      "label": "Intérprete — Número de teléfono móvil"
+    },
+    "int_data_assinatura": {
+      "label": "Intérprete — Fecha de la firma (MM/DD/AAAA)"
+    },
+    "int_email": {
+      "label": "Intérprete — Dirección de correo electrónico"
+    },
+    "int_idioma": {
+      "label": "Intérprete — Idioma"
+    },
+    "int_nome": {
+      "label": "Intérprete — Nombre"
+    },
+    "int_organizacao": {
+      "label": "Intérprete — Nombre de la empresa u organización"
+    },
+    "int_sobrenome": {
+      "label": "Intérprete — Apellido"
+    },
+    "int_telefone": {
+      "label": "Intérprete — Número de teléfono durante el día"
+    },
+    "prep_celular": {
+      "label": "Preparador(a) — Número de teléfono móvil"
+    },
+    "prep_data_assinatura": {
+      "label": "Preparador(a) — Fecha de la firma (MM/DD/AAAA)"
+    },
+    "prep_email": {
+      "label": "Preparador(a) — Dirección de correo electrónico"
+    },
+    "prep_nome": {
+      "label": "Preparador(a) — Nombre"
+    },
+    "prep_organizacao": {
+      "label": "Preparador(a) — Nombre de la empresa u organización"
+    },
+    "prep_sobrenome": {
+      "label": "Preparador(a) — Apellido"
+    },
+    "prep_telefone": {
+      "label": "Preparador(a) — Número de teléfono durante el día"
+    }
+  }
+}

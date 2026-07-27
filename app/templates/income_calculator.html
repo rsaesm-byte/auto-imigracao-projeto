@@ -79,7 +79,7 @@
   <p class="elig-msg tone-info">
     {{ t('income_calc_result_threshold') }}
     <strong>${{ "{:,.0f}".format(result.threshold) }}</strong>
-    ({{ result.region_label_en if get_lang() == "en" else result.region_label }},
+    ({% if get_lang() == "en" %}{{ result.region_label_en }}{% elif get_lang() == "es" %}{{ result.region_label_es }}{% else %}{{ result.region_label }}{% endif %},
     {{ t('income_calc_result_household_of') }} {{ result.household_size }})
   </p>
   <p class="elig-msg tone-info">

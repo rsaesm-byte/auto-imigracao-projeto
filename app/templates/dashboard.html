@@ -21,6 +21,15 @@
   </div>
 </div>
 
+<a class="card hero start-for-other-card" href="{{ url_for('wizard.start_for_other') }}">
+  <div class="start-for-other-text">
+    <span class="start-for-other-eyebrow">{{ icon('sparkle', 14) }} {{ t('start_for_other_eyebrow') }}</span>
+    <h2>{{ t('start_for_other_title') }}</h2>
+    <p class="muted" style="margin:0;">{{ t('start_for_other_subtitle') }}</p>
+  </div>
+  <span class="btn start-for-other-btn">{{ t('start_for_other_cta') }} →</span>
+</a>
+
 <div class="card">
   <h2>{{ t('dashboard_in_progress') }}</h2>
   {% if submissions %}
@@ -54,6 +63,9 @@
               <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--accent);text-decoration:underline;cursor:pointer;font-size:0.88rem;padding:0;">{{ t('pkg_add_i134') }}</button>
             </form>
           {% endif %}
+          <form method="post" action="{{ url_for('wizard.delete_submission', submission_id=s.id) }}" style="display:inline;margin-left:10px;" onsubmit="return confirm('{{ t('confirm_delete_form') }}');">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#b91c1c;text-decoration:underline;cursor:pointer;font-size:0.88rem;padding:0;">{{ t('action_delete') }}</button>
+          </form>
         </td>
       </tr>
       {% if s.form_slug != "i-539-cartas" %}
@@ -98,6 +110,9 @@
                   {% else %}
                     <a href="{{ url_for('wizard.wizard_view', submission_id=dep.id) }}">{{ t('action_continue') }} →</a>
                   {% endif %}
+                  <form method="post" action="{{ url_for('wizard.delete_submission', submission_id=dep.id) }}" style="display:inline;margin-left:10px;" onsubmit="return confirm('{{ t('confirm_delete_form') }}');">
+                    <button type="submit" class="icon-btn" style="background:none;border:none;color:#b91c1c;text-decoration:underline;cursor:pointer;font-size:0.86rem;padding:0;">{{ t('action_delete') }}</button>
+                  </form>
                 </td>
               </tr>
               {% endfor %}
@@ -124,6 +139,9 @@
                   {% else %}
                     <a href="{{ url_for('wizard.wizard_view', submission_id=dep.id) }}">{{ t('action_continue') }} →</a>
                   {% endif %}
+                  <form method="post" action="{{ url_for('wizard.delete_submission', submission_id=dep.id) }}" style="display:inline;margin-left:10px;" onsubmit="return confirm('{{ t('confirm_delete_form') }}');">
+                    <button type="submit" class="icon-btn" style="background:none;border:none;color:#b91c1c;text-decoration:underline;cursor:pointer;font-size:0.86rem;padding:0;">{{ t('action_delete') }}</button>
+                  </form>
                 </td>
               </tr>
               {% endfor %}

@@ -1,0 +1,413 @@
+{
+  "title": "Declaración Jurada de Patrocinio Bajo la Sección 213A del INA — I-864",
+  "sections": {
+    "motivo": "Parte 1 — Motivo de la Presentación",
+    "sponsor_basico": "Parte 2 — Información Básica Sobre Usted (Patrocinador)",
+    "sponsor_end": "Parte 2 — Sus Direcciones (Patrocinador)",
+    "sponsor_outros": "Parte 2 — Información Adicional Sobre Usted (Patrocinador)",
+    "imigrante": "Parte 3 — Información Sobre el/la Inmigrante Principal",
+    "familia": "Parte 4 — Inmigrantes Patrocinados",
+    "household": "Parte 5 — Tamaño del Hogar",
+    "emprego_renda": "Parte 6 — Empleo e Ingresos del Patrocinador",
+    "impostos": "Parte 6 — Información de la Declaración de Impuestos Federal",
+    "ativos": "Parte 7 — Uso de Activos para Complementar el Ingreso",
+    "assinatura": "Parte 8 — Declaración del Patrocinador",
+    "interprete": "Parte 9 — Intérprete",
+    "preparador": "Parte 10 — Preparador(a)"
+  },
+  "questions": {
+    "motivo_patrocinio": {
+      "label": "Usted presenta esta declaración jurada de patrocinio porque:",
+      "options": {
+        "peticionario": "Soy el/la peticionario(a) — presenté o estoy presentando la petición de inmigrante para mi familiar",
+        "peticionario_trabalhador": "Presenté una petición de trabajador extranjero en nombre del/de la inmigrante",
+        "proprietario_5pct": "Tengo una participación de propiedad de al menos el 5% en la entidad que presentó una petición de trabajador extranjero",
+        "unico_patrocinador_conjunto": "Soy el/la único(a) patrocinador(a) conjunto(a)",
+        "um_dos_dois_patrocinadores_conjuntos": "Soy el/la primero(a) o segundo(a) de dos patrocinadores conjuntos",
+        "patrocinador_substituto": "El/la peticionario(a) original falleció — soy el/la patrocinador(a) sustituto(a)"
+      },
+      "hint": "Elija la opción que describe por qué está firmando esta declaración. La mayoría de los casos familiares usan \"Soy el/la peticionario(a)\". Use \"patrocinador conjunto\" si está ayudando porque el ingreso del/de la peticionario(a) por sí solo no es suficiente, y \"patrocinador sustituto\" solo si el/la peticionario(a) original falleció."
+    },
+    "motivo_trabalhador_relacao": {
+      "label": "¿Cuál es su relación con el/la inmigrante (petición de trabajador extranjero)?",
+      "hint": "Solo aplica si usted es el/la empleador(a) que presentó la petición de empleo (I-140) para el/la inmigrante. Describa su puesto/función en su empresa."
+    },
+    "motivo_proprietario_negocio": {
+      "label": "Nombre de la empresa/organización en la que tiene una participación de propiedad",
+      "hint": "Solo aplica si usted tiene al menos un 5% de participación de propiedad en la empresa que presentó la petición basada en empleo para el/la inmigrante -- no es el escenario típico de patrocinio familiar."
+    },
+    "motivo_proprietario_relacao": {
+      "label": "¿Cuál es su relación con el/la inmigrante?",
+      "hint": "Describa su relación con la empresa (por ejemplo, socio(a), propietario(a)) y con el/la inmigrante -- este apartado solo aplica al patrocinio mediante al menos un 5% de participación de propiedad."
+    },
+    "patrocinador_conjunto_ordem": {
+      "label": "¿Es usted el/la primero(a) o segundo(a) de los dos patrocinadores conjuntos?",
+      "options": {
+        "primeiro": "Primero(a)",
+        "segundo": "Segundo(a)"
+      },
+      "hint": "Solo aplica si usted es un(a) patrocinador(a) conjunto(a) (no el/la único(a)). Cada inmigrante puede tener hasta 2 patrocinadores conjuntos, cada uno presentando su propio Formulario I-864 y cada uno debiendo cumplir el requisito de ingreso de forma independiente."
+    },
+    "motivo_substituto_relacao": {
+      "label": "¿Cuál es su relación con el/la inmigrante (patrocinador sustituto)?",
+      "hint": "Solo aplica si el/la peticionario(a) original del I-130 falleció. Solo ciertos familiares pueden servir como patrocinador(a) sustituto(a): cónyuge, padre/madre, suegro(a), hermano(a), hijo(a) adulto(a) (18+), yerno/nuera, cuñado(a), abuelo(a), nieto(a), o tutor(a) legal."
+    },
+    "sponsor_sobrenome": { "label": "Apellido del/de la patrocinador(a)" },
+    "sponsor_nome": { "label": "Nombre del/de la patrocinador(a)" },
+    "sponsor_nome_meio": { "label": "Segundo nombre del/de la patrocinador(a)" },
+    "sponsor_end_correio_cuidados_de": { "label": "Dirección postal — A nombre de (si tiene)" },
+    "sponsor_end_correio_rua": { "label": "Dirección postal — Número y nombre de la calle" },
+    "sponsor_end_correio_tipo_unidade": {
+      "label": "Dirección postal — Tipo de unidad (si aplica)",
+      "options": {
+        "apt": "Apto",
+        "ste": "Suite",
+        "flr": "Piso"
+      }
+    },
+    "sponsor_end_correio_num_unidade": { "label": "Dirección postal — Número de unidad" },
+    "sponsor_end_correio_cidade": { "label": "Dirección postal — Ciudad" },
+    "sponsor_end_correio_estado": { "label": "Dirección postal — Estado (abreviatura, si es EE. UU.)" },
+    "sponsor_end_correio_cep": { "label": "Dirección postal — Código postal (si es EE. UU.)" },
+    "sponsor_end_correio_provincia": { "label": "Dirección postal — Provincia (si es fuera de EE. UU.)" },
+    "sponsor_end_correio_codigo_postal": { "label": "Dirección postal — Código postal (si es fuera de EE. UU.)" },
+    "sponsor_end_correio_pais": { "label": "Dirección postal — País" },
+    "sponsor_end_fisico_igual_correio": {
+      "label": "¿Su dirección física actual es la misma que la dirección postal indicada arriba?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sponsor_end_fisico_rua": { "label": "Dirección física — Número y nombre de la calle" },
+    "sponsor_end_fisico_tipo_unidade": {
+      "label": "Dirección física — Tipo de unidad (si aplica)",
+      "options": {
+        "apt": "Apto",
+        "ste": "Suite",
+        "flr": "Piso"
+      }
+    },
+    "sponsor_end_fisico_num_unidade": { "label": "Dirección física — Número de unidad" },
+    "sponsor_end_fisico_cidade": { "label": "Dirección física — Ciudad" },
+    "sponsor_end_fisico_estado": { "label": "Dirección física — Estado (abreviatura, si es EE. UU.)" },
+    "sponsor_end_fisico_cep": { "label": "Dirección física — Código postal (si es EE. UU.)" },
+    "sponsor_end_fisico_provincia": { "label": "Dirección física — Provincia (si es fuera de EE. UU.)" },
+    "sponsor_end_fisico_codigo_postal": { "label": "Dirección física — Código postal (si es fuera de EE. UU.)" },
+    "sponsor_end_fisico_pais": { "label": "Dirección física — País" },
+    "sponsor_pais_domicilio": {
+      "label": "País de domicilio",
+      "hint": "Normalmente EE. UU., incluso si vive temporalmente en el extranjero -- el \"domicilio\" es donde tiene intención de residir permanentemente, no necesariamente donde vive actualmente."
+    },
+    "sponsor_data_nascimento": { "label": "Fecha de nacimiento (MM/DD/AAAA)" },
+    "sponsor_pais_nascimento": { "label": "País de nacimiento" },
+    "sponsor_ssn": {
+      "label": "Número de Seguro Social (SSN)",
+      "hint": "Formato: XXX-XX-XXXX. Obligatorio para el/la patrocinador(a)."
+    },
+    "sponsor_status_imigracao": {
+      "label": "Su estatus migratorio",
+      "options": {
+        "cidadao": "Soy ciudadano(a) estadounidense",
+        "nacional": "Soy nacional estadounidense",
+        "residente_permanente": "Soy residente permanente legal"
+      },
+      "hint": "Usted debe ser ciudadano(a) estadounidense, nacional estadounidense, o residente permanente legal para firmar este formulario como patrocinador(a)."
+    },
+    "sponsor_alien_number": { "label": "Número de Registro de Extranjero (A-Number), si tiene" },
+    "sponsor_uscis_online": { "label": "Número de Cuenta en Línea de USCIS, si tiene" },
+    "sponsor_servico_militar_ativo": {
+      "label": "¿Está actualmente en servicio activo en las Fuerzas Armadas de EE. UU. o la Guardia Costera?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Si está en servicio activo en las Fuerzas Armadas de EE. UU., el requisito mínimo de ingreso es menor (100% de la línea de pobreza federal en lugar de 125%)."
+    },
+    "imigrante_sobrenome": { "label": "Apellido del/de la inmigrante principal" },
+    "imigrante_nome": { "label": "Nombre del/de la inmigrante principal" },
+    "imigrante_nome_meio": { "label": "Segundo nombre del/de la inmigrante principal" },
+    "imigrante_end_cuidados_de": { "label": "Dirección — A nombre de (si tiene)" },
+    "imigrante_end_rua": { "label": "Dirección — Número y nombre de la calle" },
+    "imigrante_end_tipo_unidade": {
+      "label": "Dirección — Tipo de unidad (si aplica)",
+      "options": {
+        "apt": "Apto",
+        "ste": "Suite",
+        "flr": "Piso"
+      }
+    },
+    "imigrante_end_num_unidade": { "label": "Dirección — Número de unidad" },
+    "imigrante_end_cidade": { "label": "Dirección — Ciudad" },
+    "imigrante_end_estado": { "label": "Dirección — Estado (abreviatura, si es EE. UU.)" },
+    "imigrante_end_cep": { "label": "Dirección — Código postal (si es EE. UU.)" },
+    "imigrante_end_provincia": { "label": "Dirección — Provincia (si es fuera de EE. UU.)" },
+    "imigrante_end_codigo_postal": { "label": "Dirección — Código postal (si es fuera de EE. UU.)" },
+    "imigrante_end_pais": { "label": "Dirección — País" },
+    "imigrante_pais_cidadania": { "label": "País de ciudadanía/nacionalidad" },
+    "imigrante_data_nascimento": { "label": "Fecha de nacimiento (MM/DD/AAAA)" },
+    "imigrante_alien_number": { "label": "Número de Registro de Extranjero (A-Number), si tiene" },
+    "imigrante_uscis_online": { "label": "Número de Cuenta en Línea de USCIS, si tiene" },
+    "imigrante_telefone": { "label": "Número de teléfono diurno" },
+    "patrocina_principal": {
+      "label": "¿Está patrocinando al/a la inmigrante principal indicado(a) arriba?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No — solo estoy patrocinando a miembros de la familia"
+      },
+      "hint": "Responda \"Sí\" en el caso común en que este I-864 es para el/la mismo(a) inmigrante ya identificado(a) arriba. Solo sería \"No\" en una situación inusual de patrocinador conjunto/sustituto donde esta copia del formulario cubre solo a un(a) familiar dependiente, no al/a la inmigrante principal -- poco común; confirme con nuestro equipo si no está seguro(a)."
+    },
+    "patrocina_familia_mesma_data": {
+      "label": "¿Está patrocinando a familiares que inmigran al mismo tiempo (dentro de 6 meses) que el/la inmigrante principal?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Los familiares que planean inmigrar dentro de los 6 meses posteriores al/a la inmigrante principal cuentan para el tamaño de su hogar en esta misma declaración."
+    },
+    "patrocina_familia_mais_tarde": {
+      "label": "¿Está patrocinando a familiares que inmigran más de 6 meses después del/de la inmigrante principal?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Los familiares que no inmigrarán hasta más de 6 meses después normalmente necesitan un nuevo Formulario I-864 presentado más adelante -- algunos casos igual piden incluirlos aquí; confirme con nuestro equipo si no está seguro(a)."
+    },
+    "familia1_sobrenome": { "label": "Familiar 1 — Apellido" },
+    "familia1_nome": { "label": "Familiar 1 — Nombre" },
+    "familia1_nome_meio": { "label": "Familiar 1 — Segundo nombre" },
+    "familia1_relacao": { "label": "Familiar 1 — Relación con el/la inmigrante principal" },
+    "familia1_data_nascimento": { "label": "Familiar 1 — Fecha de nacimiento (MM/DD/AAAA)" },
+    "familia1_alien_number": { "label": "Familiar 1 — Número de Registro de Extranjero (A-Number), si tiene" },
+    "familia1_uscis_online": { "label": "Familiar 1 — Número de Cuenta en Línea de USCIS, si tiene" },
+    "familia2_sobrenome": { "label": "Familiar 2 — Apellido" },
+    "familia2_nome": { "label": "Familiar 2 — Nombre" },
+    "familia2_nome_meio": { "label": "Familiar 2 — Segundo nombre" },
+    "familia2_relacao": { "label": "Familiar 2 — Relación con el/la inmigrante principal" },
+    "familia2_data_nascimento": { "label": "Familiar 2 — Fecha de nacimiento (MM/DD/AAAA)" },
+    "familia2_alien_number": { "label": "Familiar 2 — Número de Registro de Extranjero (A-Number), si tiene" },
+    "familia2_uscis_online": { "label": "Familiar 2 — Número de Cuenta en Línea de USCIS, si tiene" },
+    "familia3_sobrenome": { "label": "Familiar 3 — Apellido" },
+    "familia3_nome": { "label": "Familiar 3 — Nombre" },
+    "familia3_nome_meio": { "label": "Familiar 3 — Segundo nombre" },
+    "familia3_relacao": { "label": "Familiar 3 — Relación con el/la inmigrante principal" },
+    "familia3_data_nascimento": { "label": "Familiar 3 — Fecha de nacimiento (MM/DD/AAAA)" },
+    "familia3_alien_number": { "label": "Familiar 3 — Número de Registro de Extranjero (A-Number), si tiene" },
+    "familia3_uscis_online": { "label": "Familiar 3 — Número de Cuenta en Línea de USCIS, si tiene" },
+    "familia4_sobrenome": { "label": "Familiar 4 — Apellido" },
+    "familia4_nome": { "label": "Familiar 4 — Nombre" },
+    "familia4_nome_meio": { "label": "Familiar 4 — Segundo nombre" },
+    "familia4_relacao": { "label": "Familiar 4 — Relación con el/la inmigrante principal" },
+    "familia4_data_nascimento": { "label": "Familiar 4 — Fecha de nacimiento (MM/DD/AAAA)" },
+    "familia4_alien_number": { "label": "Familiar 4 — Número de Registro de Extranjero (A-Number), si tiene" },
+    "familia4_uscis_online": { "label": "Familiar 4 — Número de Cuenta en Línea de USCIS, si tiene" },
+    "total_imigrantes_patrocinados": { "label": "Número total de inmigrantes que está patrocinando en esta declaración" },
+    "household_voce_mesmo": {
+      "label": "Usted mismo(a) (normalmente '1')",
+      "hint": "Cuéntese a usted mismo(a) como 1."
+    },
+    "household_conjuge": {
+      "label": "Cónyuge, si está casado(a) y no se ha contado arriba (número, o '0')",
+      "hint": "Cuente a su cónyuge aquí solo si NO es el/la mismo(a) inmigrante principal que está patrocinando (en ese caso ya está contado(a) en otro lugar) y no ha sido agregado(a) en otro campo."
+    },
+    "household_filhos_dependentes": {
+      "label": "Hijos(as) dependientes no contados(as) arriba (número, o '0')",
+      "hint": "Hijos(as) solteros(as) menores de 21 años que dependen financieramente de usted, incluso si no viven con usted -- no vuelva a contar a nadie ya incluido en \"Familiares\" arriba."
+    },
+    "household_outros_dependentes": {
+      "label": "Otros dependientes no contados arriba (número, o '0')",
+      "hint": "Cualquier persona que haya reclamado como dependiente en su declaración de impuestos federal más reciente, además de quienes ya se contaron arriba."
+    },
+    "household_outros_patrocinados_antes": {
+      "label": "Otras personas patrocinadas anteriormente en el Formulario I-864/I-864EZ que todavía están bajo su responsabilidad (número, o '0')",
+      "hint": "Las personas que usted patrocinó anteriormente en un I-864/I-864EZ todavía cuentan para su hogar hasta que se conviertan en ciudadanos(as) estadounidenses o acumulen 40 trimestres de trabajo -- en la práctica, 40 \"trimestres\" (créditos) del Seguro Social equivalen aproximadamente a 10 años de trabajo legal en EE. UU. (puede ganar como máximo 4 créditos por año) -- incluso si ya no viven con usted."
+    },
+    "household_parentes_mesma_residencia": {
+      "label": "Hermanos(as), padres, o hijos(as) adultos(as) en la misma residencia que combinan ingresos mediante el Formulario I-864A (número, o '0')",
+      "hint": "Cuente solo a familiares (hermanos(as), padres, hijos(as) adultos(as)) que vivan con usted Y cuyo ingreso esté combinando con el suyo mediante el Formulario I-864A -- no a todos los que simplemente vivan en el mismo hogar."
+    },
+    "household_total": {
+      "label": "Tamaño total del hogar (suma de todos los ítems anteriores)",
+      "hint": "Verifique esta suma cuidadosamente: un error aquí puede cambiar su ingreso mínimo exigido. Si no está seguro(a) de quién cuenta, confirme con nuestro equipo antes de presentar la solicitud."
+    },
+    "sponsor_empregado": {
+      "label": "¿Está empleado(a) actualmente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sponsor_ocupacao_atual": { "label": "Su ocupación actual (lo que hace como empleado(a))" },
+    "sponsor_empregador1_nome": { "label": "Nombre del Empleador 1" },
+    "sponsor_empregador2_nome": { "label": "Nombre del Empleador 2 (si aplica)" },
+    "sponsor_autonomo": {
+      "label": "¿Es trabajador(a) independiente?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sponsor_autonomo_ocupacao": { "label": "Ocupación como trabajador(a) independiente" },
+    "sponsor_aposentado": {
+      "label": "¿Está jubilado(a)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sponsor_aposentado_desde": { "label": "Jubilado(a) desde (MM/DD/AAAA)" },
+    "sponsor_desempregado": {
+      "label": "¿Está desempleado(a)?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      }
+    },
+    "sponsor_desempregado_desde": { "label": "Desempleado(a) desde (MM/DD/AAAA)" },
+    "sponsor_renda_individual_atual": {
+      "label": "Su ingreso anual individual actual (USD)",
+      "hint": "Su ingreso ACTUAL, no necesariamente lo que reportó en su declaración de impuestos más reciente -- si cambió de trabajo o recibió un aumento, use la cifra de hoy."
+    },
+    "pessoa1_nome": {
+      "label": "Ingreso de otro miembro del hogar — Persona 1: Nombre",
+      "hint": "Complete esto solo si está combinando el ingreso de alguien de su hogar para cumplir el requisito mínimo -- esa persona deberá firmar un Formulario I-864A separado (a menos que sea el/la propio(a) inmigrante principal)."
+    },
+    "pessoa1_relacao": { "label": "Persona 1 — Relación con usted" },
+    "pessoa1_renda": {
+      "label": "Persona 1 — Ingreso actual (USD)",
+      "hint": "El ingreso actual de esa persona -- se sumará al suyo en el total del ingreso del hogar."
+    },
+    "pessoa2_nome": {
+      "label": "Persona 2 — Nombre",
+      "hint": "Complete esto solo si está combinando el ingreso de alguien de su hogar para cumplir el requisito mínimo -- esa persona deberá firmar un Formulario I-864A separado (a menos que sea el/la propio(a) inmigrante principal)."
+    },
+    "pessoa2_relacao": { "label": "Persona 2 — Relación con usted" },
+    "pessoa2_renda": {
+      "label": "Persona 2 — Ingreso actual (USD)",
+      "hint": "El ingreso actual de esa persona -- se sumará al suyo en el total del ingreso del hogar."
+    },
+    "pessoa3_nome": {
+      "label": "Persona 3 — Nombre",
+      "hint": "Complete esto solo si está combinando el ingreso de alguien de su hogar para cumplir el requisito mínimo -- esa persona deberá firmar un Formulario I-864A separado (a menos que sea el/la propio(a) inmigrante principal)."
+    },
+    "pessoa3_relacao": { "label": "Persona 3 — Relación con usted" },
+    "pessoa3_renda": {
+      "label": "Persona 3 — Ingreso actual (USD)",
+      "hint": "El ingreso actual de esa persona -- se sumará al suyo en el total del ingreso del hogar."
+    },
+    "pessoa4_nome": {
+      "label": "Persona 4 — Nombre",
+      "hint": "Complete esto solo si está combinando el ingreso de alguien de su hogar para cumplir el requisito mínimo -- esa persona deberá firmar un Formulario I-864A separado (a menos que sea el/la propio(a) inmigrante principal)."
+    },
+    "pessoa4_relacao": { "label": "Persona 4 — Relación con usted" },
+    "pessoa4_renda": {
+      "label": "Persona 4 — Ingreso actual (USD)",
+      "hint": "El ingreso actual de esa persona -- se sumará al suyo en el total del ingreso del hogar."
+    },
+    "renda_familiar_total": {
+      "label": "Ingreso total anual actual del hogar (USD)",
+      "hint": "Suma de su ingreso individual más el ingreso de todos los indicados arriba. Se compara con las Pautas Federales de Pobreza."
+    },
+    "pessoas_completaram_i864a": {
+      "label": "¿Las personas indicadas arriba completaron el Formulario I-864A?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "El Formulario I-864A es un contrato en el que la persona cuyo ingreso está usando se compromete legalmente a ayudar a mantener al/a la inmigrante junto con usted -- obligatorio para todos los indicados arriba cuyo ingreso se contó, excepto el/la propio(a) inmigrante principal en algunos casos."
+    },
+    "pessoa_nao_precisa_i864a": {
+      "label": "¿Alguna de las personas indicadas es el/la propio(a) inmigrante principal (sin dependientes acompañantes), lo que lo/la eximiría del Formulario I-864A?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Si el ingreso que está combinando pertenece al/a la propio(a) inmigrante principal (no a otro miembro del hogar), es posible que no necesite un I-864A separado en este caso específico -- confirme esta excepción con nuestro equipo antes de presentar la solicitud."
+    },
+    "pessoa_nao_precisa_i864a_nome": { "label": "Nombre de esa persona" },
+    "declarou_impostos_3anos": {
+      "label": "¿Presentó una declaración de impuestos federal para cada uno de los 3 años fiscales más recientes?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Solo debe adjuntarse la declaración del año fiscal más reciente. Adjuntar los 2 años anteriores es opcional y normalmente solo ayuda si su ingreso venía disminuyendo y quiere demostrar estabilidad."
+    },
+    "imposto_ano1_ano": { "label": "Año fiscal más reciente" },
+    "imposto_ano1_renda": { "label": "Ingreso total reportado ese año (USD, o 'cero'/'N/A')" },
+    "imposto_ano2_ano": { "label": "2.º año fiscal más reciente (opcional)" },
+    "imposto_ano2_renda": { "label": "Ingreso total reportado ese año (opcional)" },
+    "imposto_ano3_ano": { "label": "3.er año fiscal más reciente (opcional)" },
+    "imposto_ano3_renda": { "label": "Ingreso total reportado ese año (opcional)" },
+    "nao_precisou_declarar_impostos": {
+      "label": "¿No estuvo obligado(a) a presentar una declaración de impuestos federal porque su ingreso estaba por debajo del umbral de presentación del IRS?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No"
+      },
+      "hint": "Marque esto solo si su ingreso ese año estaba LEGALMENTE por debajo del umbral que exige presentar una declaración -- no es lo mismo que simplemente elegir no presentarla. Si no está seguro(a), confirme con nuestro equipo."
+    },
+    "ativo_saldo_contas": {
+      "label": "Saldo de todas las cuentas corrientes/de ahorro (USD)",
+      "hint": "Complete esta Parte 7 solo si su ingreso NO es suficiente para cumplir las Pautas Federales de Pobreza."
+    },
+    "ativo_imoveis": {
+      "label": "Valor neto de bienes raíces (valor tasado menos deuda hipotecaria) (USD)",
+      "hint": "El valor de la propiedad MENOS cualquier saldo pendiente de hipoteca o préstamo -- no el valor bruto de la propiedad."
+    },
+    "ativo_acoes_titulos": { "label": "Valor neto de acciones, bonos, certificados de depósito, y otros activos (USD)" },
+    "ativo_total_patrocinador": {
+      "label": "Total de sus activos (suma de los ítems anteriores) (USD)",
+      "hint": "Sume los ítems anteriores. Los activos solo ayudan si el ingreso por sí solo no es suficiente: generalmente necesita activos por aproximadamente 3 veces la diferencia (si es ciudadano(a) patrocinando a cónyuge o hijo(a)) o 5 veces la diferencia (en otros casos)."
+    },
+    "ativo_total_membros_familia": { "label": "Total de activos de miembros del hogar (Formulario I-864A) (USD)" },
+    "ativo_imigrante_saldo_contas": {
+      "label": "Activos del/de la inmigrante principal — Saldos de cuentas (USD)",
+      "hint": "Complete esta sección solo si el/la propio(a) inmigrante principal tiene activos en EE. UU. que puedan ayudar a complementar el ingreso del/de la patrocinador(a) -- una situación poco común. En la mayoría de los casos, déjelo en blanco."
+    },
+    "ativo_imigrante_imoveis": { "label": "Activos del/de la inmigrante principal — Bienes raíces (USD)" },
+    "ativo_imigrante_acoes_titulos": { "label": "Activos del/de la inmigrante principal — Acciones/bonos (USD)" },
+    "ativo_imigrante_total": { "label": "Activos del/de la inmigrante principal — Total (USD)" },
+    "ativo_valor_total_geral": {
+      "label": "Valor total de todos los activos (USD)",
+      "hint": "Total de todos los activos usados para complementar el ingreso -- los suyos, los de cualquier miembro del hogar (mediante I-864A), y los del/de la inmigrante principal, cuando aplique."
+    },
+    "leu_ingles": {
+      "label": "Declaración del/de la patrocinador(a)",
+      "options": {
+        "leu_ingles": "Puedo leer y entender inglés, y he leído y comprendido cada pregunta e instrucción de esta declaración jurada de patrocinio, así como mis respuestas",
+        "leu_interprete": "El/la intérprete nombrado(a) en la Parte 9 me leyó cada pregunta, instrucción y mis respuestas en un idioma que entiendo con fluidez"
+      },
+      "hint": "Seleccione la segunda opción solo si necesitó un(a) intérprete para entender el formulario en otro idioma -- en ese caso, complete también la Parte 9 con la información del/de la intérprete."
+    },
+    "idioma_interprete": { "label": "¿En qué idioma le leyó el/la intérprete el formulario?" },
+    "preparador_ajudou": {
+      "label": "¿Alguien preparó este formulario por usted, a su solicitud y basándose únicamente en la información que usted proporcionó?",
+      "options": {
+        "sim": "Sí",
+        "nao": "No, lo completé yo mismo(a)"
+      },
+      "hint": "Un(a) \"preparador(a)\" es alguien que le ayudó a completar el formulario basándose únicamente en la información que usted proporcionó (por ejemplo, un(a) consultor(a)) -- diferente de un(a) intérprete, quien solo tradujo."
+    },
+    "preparador_nome": { "label": "Nombre del/de la preparador(a)" },
+    "sponsor_telefone": { "label": "Número de teléfono diurno" },
+    "sponsor_celular": { "label": "Número de teléfono celular (si tiene)" },
+    "sponsor_email": { "label": "Correo electrónico (si tiene)" },
+    "sponsor_data_assinatura": { "label": "Fecha de la firma (completada el día de la presentación, MM/DD/AAAA)" },
+    "int_sobrenome": { "label": "Intérprete — Apellido" },
+    "int_nome": { "label": "Intérprete — Nombre" },
+    "int_organizacao": { "label": "Intérprete — Nombre de la empresa u organización (si tiene)" },
+    "int_telefone": { "label": "Intérprete — Número de teléfono diurno" },
+    "int_celular": { "label": "Intérprete — Número de teléfono celular (si tiene)" },
+    "int_email": { "label": "Intérprete — Correo electrónico (si tiene)" },
+    "int_idioma": { "label": "Intérprete — Idioma de fluidez" },
+    "int_data_assinatura": { "label": "Intérprete — Fecha de la firma (MM/DD/AAAA)" },
+    "prep_sobrenome": { "label": "Preparador(a) — Apellido" },
+    "prep_nome": { "label": "Preparador(a) — Nombre" },
+    "prep_organizacao": { "label": "Preparador(a) — Nombre de la empresa u organización (si tiene)" },
+    "prep_telefone": { "label": "Preparador(a) — Número de teléfono diurno" },
+    "prep_celular": { "label": "Preparador(a) — Número de teléfono celular (si tiene)" },
+    "prep_email": { "label": "Preparador(a) — Correo electrónico (si tiene)" },
+    "prep_data_assinatura": { "label": "Preparador(a) — Fecha de la firma (MM/DD/AAAA)" }
+  }
+}
