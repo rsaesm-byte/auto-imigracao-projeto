@@ -498,7 +498,7 @@ table.submissions a:hover { text-decoration: underline; }
   stroke: var(--accent);
   stroke-width: 2.5;
   stroke-linecap: round;
-  stroke-dasharray: 1127; /* comprimento real da curva (calculado), não normalizado --
+  stroke-dasharray: 1263; /* comprimento real da curva (calculado), não normalizado --
                              pathLength não é respeitado quando o dash é animado via CSS */
   opacity: 0.45;
 }
@@ -951,11 +951,11 @@ table.submissions a:hover { text-decoration: underline; }
   }
   @keyframes flightTrailDraw { to { stroke-dashoffset: 0; } }
   .flight-plane-layer .flight-trail {
-    stroke-dashoffset: 1127;
+    stroke-dashoffset: 1263;
     animation: flightTrailDraw 2.4s ease 0.2s forwards;
   }
   .flight-plane-layer .flight-plane {
-    offset-path: path("M935,615 C860,655 660,650 505,570 C375,502 315,435 350,378 C385,322 458,330 468,382 C476,422 432,440 402,412 C440,375 501,384 545,351");
+    offset-path: path("M289,479 C180,460 90,400 70,320 C50,220 70,120 160,70 C260,20 380,15 460,55 C520,90 520,180 470,260 C460,330 501,384 545,351");
     offset-rotate: auto;
     offset-distance: 0%;
     animation: flightMove 2.4s cubic-bezier(.4,.05,.5,.95) 0.2s forwards,
