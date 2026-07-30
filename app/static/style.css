@@ -1120,7 +1120,13 @@ table.submissions a:hover { text-decoration: underline; }
   border-radius: 50%;
   border: none;
   cursor: pointer;
-  background: linear-gradient(135deg, var(--accent-grad-a), var(--accent-grad-b));
+  background-color: var(--accent);
+  background-image:
+    url('logo-mark.png'),
+    linear-gradient(135deg, var(--accent-grad-a), var(--accent-grad-b));
+  background-size: 68%, cover;
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
   color: #fff;
   display: flex;
   align-items: center;
@@ -1129,6 +1135,7 @@ table.submissions a:hover { text-decoration: underline; }
   z-index: 40;
   transition: transform 0.15s ease;
 }
+.chat-fab svg { filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.35)); }
 .chat-fab:hover { transform: scale(1.06); }
 
 .chat-panel {
