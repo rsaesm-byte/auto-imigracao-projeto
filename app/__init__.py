@@ -104,6 +104,7 @@ def create_app() -> Flask:
     from app.income_calculator import income_calculator_bp
     from app.visa_bulletin import visa_bulletin_bp
     from app.chatbot import chatbot_bp
+    from app.about import about_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(wizard_bp)
     app.register_blueprint(eligibility_bp)
@@ -113,6 +114,7 @@ def create_app() -> Flask:
     app.register_blueprint(income_calculator_bp)
     app.register_blueprint(visa_bulletin_bp)
     app.register_blueprint(chatbot_bp)
+    app.register_blueprint(about_bp)
 
     from app.i18n import get_lang, t
     app.jinja_env.globals["t"] = t

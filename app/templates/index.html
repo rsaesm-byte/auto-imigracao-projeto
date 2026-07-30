@@ -156,6 +156,30 @@
   </div>
 </section>
 
+{% if reviews and reviews.reviews %}
+<section class="section-block">
+  <h2 class="section-title">{{ t('reviews_title') }}</h2>
+  <p class="muted" style="text-align:center;margin:-16px 0 20px;">{{ t('reviews_subtitle') }}</p>
+  <div class="reviews-strip">
+    {% for r in reviews.reviews %}
+    <div class="card review-card reveal" style="transition-delay:{{ (loop.index0 % 6) * 45 }}ms;">
+      <div class="review-card-head">
+        <img class="review-avatar" src="{{ url_for('static', filename='reviews/' + r.photo) }}" alt="{{ r.name }}" loading="lazy">
+        <div>
+          <div class="review-name">{{ r.name }}</div>
+          <div class="review-stars">{{ '★' * r.rating }}</div>
+        </div>
+      </div>
+      <p class="review-text">{{ r.text }}</p>
+    </div>
+    {% endfor %}
+  </div>
+  <p class="muted" style="text-align:center;font-size:0.85rem;">
+    <a href="{{ reviews.source_url }}" target="_blank" rel="noopener noreferrer">{{ t('reviews_cta_google') }} ↗</a>
+  </p>
+</section>
+{% endif %}
+
 <section class="section-block">
   <h2 class="section-title">{{ icon('megaphone', 20) }} {{ t('news_title') }}</h2>
   <p class="muted" style="text-align:center;margin:-16px 0 24px;">{{ t('news_subtitle') }}</p>

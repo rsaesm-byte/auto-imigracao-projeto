@@ -162,6 +162,15 @@ def _load_registry_entry(slug: str) -> dict:
     return reg["forms"].get(FORM_SLUGS.get(slug, slug.upper()), {})
 
 
+def _load_reviews() -> dict:
+    """Avaliações reais do Google (Saes Professional Services), fixas em
+    data/reviews.json -- texto original do cliente, sem tradução por
+    idioma (mesma convenção de um depoimento real: mantém a língua em que
+    foi escrito)."""
+    import json
+    return json.loads((ROOT / "data" / "reviews.json").read_text(encoding="utf-8"))
+
+
 def _form_display_name(slug: str) -> str:
     """Nome do formulário na vitrine (landing/dashboard) -- em inglês
     quando o site está em inglês, já que o nome oficial do formulário é
@@ -302,7 +311,8 @@ def index():
             "enabled": False, "reference_note": note,
             "civil_surgeon_url": entry.get("civil_surgeon_finder_url"),
         })
-    return render_template("index.html", catalog=catalog, news_items=get_latest_news())
+    return render_template("index.html", catalog=catalog, news_items=get_latest_news(),
+                           reviews=_load_reviews())
 
 
 @wizard_bp.route("/servicos")

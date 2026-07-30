@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}{{ content.hero_title }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <p class="eyebrow"><span class="eyebrow-star">★</span> {{ content.hero_eyebrow }}</p>
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ content.hero_title }}</h1>
+  {% for p in content.mission %}
+  <p class="hero-subtitle" style="margin:0 0 10px;max-width:720px;">{{ p }}</p>
+  {% endfor %}
+</section>
+
+<div class="card">
+  <div class="stats-grid">
+    {% for s in content.stats %}
+    <div class="stat-tile">
+      <span class="stat-number">{{ s.number }}</span>
+      <span class="stat-label">{{ s.label }}</span>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ content.team_title }}</h2>
+  <p class="muted">{{ content.team_subtitle }}</p>
+  <p class="muted" style="line-height:1.6;">{{ content.team_intro }}</p>
+  <div class="team-grid">
+    {% for member in content.team %}
+    <div class="team-card">
+      <img src="{{ url_for('static', filename='team/' + member.photo) }}" alt="{{ member.name }}" class="team-photo" loading="lazy">
+      <div class="team-name">{{ member.name }}</div>
+      {% if member.role %}<div class="team-role">{{ member.role }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <div class="founder-grid">
+    <img src="{{ url_for('static', filename='team/' + content.founder.photo) }}" alt="{{ content.founder.name }}" class="founder-photo" loading="lazy">
+    <div>
+      <h2 style="margin-bottom:2px;">{{ content.founder.name }}</h2>
+      <p class="muted" style="margin-top:0;">{{ content.founder.role }}</p>
+      {% for p in content.founder.bio %}
+      <p style="line-height:1.6;">{{ p }}</p>
+      {% endfor %}
+      <h3>{{ content.founder.credentials_title }}</h3>
+      <ul class="service-bullets founder-credentials">
+        {% for c in content.founder.credentials %}
+        <li><strong>{{ c.title }}</strong><br><span class="muted">{{ c.org }}</span></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ content.contact_title }}</h2>
+  <ul class="service-bullets">
+    <li>{{ content.contact_phone_label }}: <a href="tel:{{ content.contact.phone_href }}">{{ content.contact.phone }}</a></li>
+    <li>{{ content.contact_email_label }}: <a href="mailto:{{ content.contact.email }}">{{ content.contact.email }}</a></li>
+    <li>{{ content.contact_address_label }}: {{ content.contact.address }}</li>
+  </ul>
+</div>
+
+<div class="card hero" style="text-align:center;">
+  <h2>{{ content.cta_title }}</h2>
+  <p>{{ content.cta_subtitle }}</p>
+  <a class="btn" style="background:#fff;color:var(--accent);" href="{{ url_for('auth.signup') }}">{{ t('cta_signup') }}</a>
+</div>
+
+{% endblock %}

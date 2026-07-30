@@ -1,0 +1,104 @@
+{
+  "hero_eyebrow": "Quem somos",
+  "hero_eyebrow_en": "Who we are",
+  "hero_eyebrow_es": "Quiénes somos",
+  "hero_title": "Sobre Nós",
+  "hero_title_en": "About Us",
+  "hero_title_es": "Acerca de Nosotros",
+
+  "mission": [
+    "Na SAES Professional Services, acreditamos que a jornada de cada imigrante merece uma abordagem estratégica e confiável. Com mais de 18 anos de experiência, somos especializados em processos de imigração, traduções juramentadas e planejamento financeiro, garantindo que nossos clientes alcancem seus objetivos nos Estados Unidos com confiança e segurança.",
+    "Seja para solicitar um visto de estudante ou turista, mudar seu status de imigração, ou organizar seu futuro financeiro, nossa equipe dedicada oferece soluções personalizadas para te guiar em cada etapa.",
+    "Seu futuro começa com a orientação certa. Vamos fazer isso acontecer juntos!"
+  ],
+  "mission_en": [
+    "At SAES Professional Services, we believe that every immigrant's journey deserves a strategic and reliable approach. With over 18 years of experience, we specialize in immigration processes, certified translations, and financial planning, ensuring that our clients achieve their goals in the United States with confidence and security.",
+    "Whether you're applying for a student or tourist visa, changing your immigration status, or organizing your financial future, our dedicated team provides personalized solutions to guide you through every step.",
+    "Your future starts with the right guidance. Let's make it happen together!"
+  ],
+  "mission_es": [
+    "En SAES Professional Services, creemos que el viaje de cada inmigrante merece un enfoque estratégico y confiable. Con más de 18 años de experiencia, nos especializamos en procesos migratorios, traducciones juradas y planificación financiera, garantizando que nuestros clientes alcancen sus objetivos en los Estados Unidos con confianza y seguridad.",
+    "Ya sea que esté solicitando una visa de estudiante o turista, cambiando su estatus migratorio, u organizando su futuro financiero, nuestro equipo dedicado ofrece soluciones personalizadas para guiarlo en cada paso.",
+    "Su futuro comienza con la orientación correcta. ¡Hagamos esto realidad juntos!"
+  ],
+
+  "stats": [
+    { "number": "18+", "label": "Anos de experiência", "label_en": "Years of experience", "label_es": "Años de experiencia" },
+    { "number": "10.000+", "label": "Clientes atendidos", "label_en": "Clients served", "label_es": "Clientes atendidos" },
+    { "number": "1.500+", "label": "Vistos emitidos", "label_en": "Visas issued", "label_es": "Visas emitidas" },
+    { "number": "97%", "label": "Taxa de aprovação", "label_en": "Approval rate", "label_es": "Tasa de aprobación" }
+  ],
+
+  "team_title": "Conheça Nossa Equipe",
+  "team_title_en": "Meet Our Team",
+  "team_title_es": "Conozca a Nuestro Equipo",
+  "team_subtitle": "Seu parceiro de confiança em imigração e planejamento financeiro",
+  "team_subtitle_en": "Your Trusted Partner in Immigration & Financial Planning",
+  "team_subtitle_es": "Su socio de confianza en inmigración y planificación financiera",
+  "team_intro": "Na SAES, reunimos uma equipe multidisciplinar e altamente qualificada que compartilha a mesma missão: oferecer orientação, clareza e suporte personalizado para cada cliente.",
+  "team_intro_en": "At SAES, we have assembled a highly skilled, multidisciplinary team that shares the same mission: to provide guidance, clarity, and personalized support for every client.",
+  "team_intro_es": "En SAES, hemos reunido un equipo multidisciplinario y altamente calificado que comparte la misma misión: brindar orientación, claridad y apoyo personalizado a cada cliente.",
+  "team": [
+    { "name": "Alessandra Saes", "role": "Fundadora & CEO", "role_en": "Founder & CEO", "role_es": "Fundadora y CEO", "photo": "alessandra.jpg" },
+    { "name": "Bárbara Soares", "role": "", "role_en": "", "role_es": "", "photo": "barbara.jpg" },
+    { "name": "Ricardo Saes", "role": "", "role_en": "", "role_es": "", "photo": "ricardo.jpg" }
+  ],
+
+  "founder": {
+    "name": "Alessandra Saes",
+    "role": "Fundadora & CEO | SAES Professional Services",
+    "role_en": "Founder & CEO | SAES Professional Services",
+    "role_es": "Fundadora y CEO | SAES Professional Services",
+    "photo": "alessandra-portrait.jpg",
+    "bio": [
+      "Com mais de 20 anos de experiência profissional, Alessandra Saes é uma especialista altamente qualificada em consultoria de imigração, planejamento financeiro e gestão de negócios para imigrantes nos Estados Unidos.",
+      "Ela começou sua carreira na educação antes de expandir para a gestão de escolas internacionais e consultoria educacional. Em 2015, fundou a SAES Professional Services, estabelecendo-se como uma autoridade de confiança em consultoria de imigração e finanças. Ao lado de sua equipe altamente qualificada, ela já impactou positivamente milhares de vidas, ajudando imigrantes a alcançar estabilidade e sucesso nos EUA através de estratégias personalizadas e bem estruturadas."
+    ],
+    "bio_en": [
+      "With over 20 years of professional experience, Alessandra Saes is a highly qualified expert in immigration consulting, financial planning, and business management for immigrants in the United States.",
+      "She began her career in education before expanding into international school management and educational consulting. In 2015, she founded SAES Professional Services, establishing herself as a trusted authority in immigration and financial consulting. Alongside her highly skilled team, she has positively impacted thousands of lives, helping immigrants achieve stability and success in the U.S. through personalized and well-structured strategies."
+    ],
+    "bio_es": [
+      "Con más de 20 años de experiencia profesional, Alessandra Saes es una experta altamente calificada en consultoría de inmigración, planificación financiera y gestión empresarial para inmigrantes en los Estados Unidos.",
+      "Comenzó su carrera en la educación antes de expandirse hacia la gestión de escuelas internacionales y la consultoría educativa. En 2015, fundó SAES Professional Services, estableciéndose como una autoridad de confianza en consultoría de inmigración y finanzas. Junto a su equipo altamente calificado, ha impactado positivamente miles de vidas, ayudando a inmigrantes a alcanzar estabilidad y éxito en los EE. UU. a través de estrategias personalizadas y bien estructuradas."
+    ],
+    "credentials_title": "Formação Acadêmica & Certificações",
+    "credentials_title_en": "Academic Background & Certifications",
+    "credentials_title_es": "Formación Académica y Certificaciones",
+    "credentials": [
+      { "title": "Bacharelado em Administração de Empresas (BBA)", "title_en": "Bachelor of Business Administration (BBA)", "title_es": "Licenciatura en Administración de Empresas (BBA)", "org": "Salem State University" },
+      { "title": "Liderança e Tomada de Decisão", "title_en": "Leadership and Decision Making", "title_es": "Liderazgo y Toma de Decisiones", "org": "Harvard Division of Continuing Education" },
+      { "title": "SHRM Essentials of Human Resources", "title_en": "SHRM Essentials of Human Resources", "title_es": "SHRM Essentials of Human Resources", "org": "Society for Human Resource Management" },
+      { "title": "Certificado de Excelência em Gestão", "title_en": "Management Excellence Certificate", "title_es": "Certificado de Excelencia en Gestión", "org": "American Management Association" },
+      { "title": "Certificação em Contabilidade (Bookkeeping)", "title_en": "Bookkeepers Certification", "title_es": "Certificación en Contabilidad (Bookkeeping)", "org": "Booksly LLC" }
+    ]
+  },
+
+  "contact_title": "Fale Conosco",
+  "contact_title_en": "Contact Us",
+  "contact_title_es": "Contáctenos",
+  "contact_phone_label": "Telefone",
+  "contact_phone_label_en": "Phone",
+  "contact_phone_label_es": "Teléfono",
+  "contact_email_label": "E-mail",
+  "contact_email_label_en": "Email",
+  "contact_email_label_es": "Correo electrónico",
+  "contact_address_label": "Endereço",
+  "contact_address_label_en": "Address",
+  "contact_address_label_es": "Dirección",
+  "contact": {
+    "phone": "+1 781-520-9935",
+    "phone_href": "+17815209935",
+    "email": "saes.professionalservices@gmail.com",
+    "address": "Wrentham, MA - EUA",
+    "address_en": "Wrentham, MA - USA",
+    "address_es": "Wrentham, MA - EE. UU."
+  },
+
+  "cta_title": "Vamos começar sua jornada",
+  "cta_title_en": "Let's start your journey",
+  "cta_title_es": "Comencemos su camino",
+  "cta_subtitle": "Fale com nossa equipe ou crie sua conta gratuita para preparar seus formulários agora mesmo.",
+  "cta_subtitle_en": "Talk to our team or create your free account to start preparing your forms right now.",
+  "cta_subtitle_es": "Hable con nuestro equipo o cree su cuenta gratuita para empezar a preparar sus formularios ahora mismo."
+}
