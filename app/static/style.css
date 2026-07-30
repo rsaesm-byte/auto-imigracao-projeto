@@ -1,22 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700;800&family=Open+Sans:wght@400;600;700&display=swap');
 
 :root {
-  --bg: #F3F4F6;
-  --bg-pattern: #EAEEF3;
+  --bg: #F5F6F7;
+  --bg-pattern: #EAEBEC;
   --card: #ffffff;
-  --text: #12213D;
-  --muted: #5B6B85;
-  --border: #DFE3EA;
+  --text: #252629;
+  --muted: #385E66;
+  --border: #EAEBEC;
 
-  --accent: #0A2E6C;
-  --accent-dark: #082450;
-  --accent-soft: #E7EEF6;
-  --accent-grad-a: #0A2E6C;
-  --accent-grad-b: #4D8FAC;
+  /* Paleta oficial da Saes Professional Services, extraída do site real
+     (saesprofessional.com -- kit de cores globais do Elementor):
+     primary #205B5B, secondary/dourado #E2AE53, text #252629, accent #55A891 */
+  --accent: #205B5B;
+  --accent-dark: #133838;
+  --accent-soft: #E9EFEF;
+  --accent-grad-a: #205B5B;
+  --accent-grad-b: #55A891;
 
-  --cta: #E44D3A;
-  --cta-dark: #C63E2D;
-  --cta-soft: #FCE9E6;
+  --cta: #E2AE53;
+  --cta-dark: #AE8A50;
+  --cta-soft: #FBF3E5;
 
   --error: #C63E2D;
   --error-bg: #FCE9E6;
@@ -25,9 +28,9 @@
   --success-bg: #EAF6EF;
   --success-border: #BFE3CD;
 
-  --shadow-sm: 0 1px 2px rgba(10, 46, 108, 0.07);
-  --shadow-md: 0 4px 16px rgba(10, 46, 108, 0.09), 0 1px 3px rgba(10, 46, 108, 0.06);
-  --shadow-lg: 0 12px 32px rgba(10, 46, 108, 0.14), 0 2px 6px rgba(10, 46, 108, 0.07);
+  --shadow-sm: 0 1px 2px rgba(32, 91, 91, 0.09);
+  --shadow-md: 0 4px 16px rgba(32, 91, 91, 0.12), 0 1px 3px rgba(32, 91, 91, 0.08);
+  --shadow-lg: 0 12px 32px rgba(32, 91, 91, 0.18), 0 2px 6px rgba(32, 91, 91, 0.09);
 
   --radius: 12px;
   --radius-sm: 8px;
@@ -39,7 +42,7 @@ body {
   font-family: 'Open Sans', -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   background:
     radial-gradient(circle at 10% 0%, var(--bg-pattern) 0%, transparent 45%),
-    radial-gradient(circle at 90% 10%, #E7EEF6 0%, transparent 40%),
+    radial-gradient(circle at 90% 10%, #E9EFEF 0%, transparent 40%),
     var(--bg);
   background-attachment: fixed;
   color: var(--text);
@@ -71,16 +74,12 @@ header.topbar {
 header.topbar .brand {
   color: var(--text);
   text-decoration: none;
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: -0.01em;
   display: flex;
   align-items: center;
-  gap: 8px;
 }
-header.topbar .brand .brand-mark {
+header.topbar .brand .brand-logo {
   display: block;
-  height: 28px;
+  height: 42px;
   width: auto;
 }
 header.topbar a.logout { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
@@ -230,7 +229,7 @@ input:focus, select:focus {
 .btn {
   display: inline-block;
   background: var(--cta);
-  color: white;
+  color: var(--text);
   border: none;
   border-radius: var(--radius-sm);
   padding: 11px 20px;
@@ -251,7 +250,7 @@ input:focus, select:focus {
 .btn.secondary:hover { background: var(--accent-soft); box-shadow: none; }
 .btn + .btn { margin-left: 10px; }
 .btn.block { display: block; width: 100%; text-align: center; margin: 6px 0; }
-.icon-btn { display: inline-flex; align-items: center; gap: 6px; }
+.icon-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); }
 
 /* ---- Flash messages ---- */
 .flash {
@@ -343,7 +342,7 @@ input:focus, select:focus {
   color: white;
   display: flex; align-items: center; justify-content: center;
   flex-shrink: 0;
-  box-shadow: 0 6px 14px -4px rgba(10, 46, 108, 0.4);
+  box-shadow: 0 6px 14px -4px rgba(32, 91, 91, 0.4);
 }
 .question-hint {
   display: flex;
@@ -419,7 +418,7 @@ table.submissions a:hover { text-decoration: underline; }
   position: relative;
   padding: 56px 20px 44px;
   overflow: hidden;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='560' viewBox='0 0 560 560'%3E%3Cpath d='M10 540C150 470 200 320 340 250S 520 90 550 20' fill='none' stroke='%230A2E6C' stroke-width='2' stroke-dasharray='2 15' stroke-linecap='round' opacity='0.10'/%3E%3Cpath d='M550 20l4.6 10 10.9 1.6-7.9 7.7 1.9 10.9-9.5-5-9.5 5 1.9-10.9-7.9-7.7 10.9-1.6z' fill='%230A2E6C' opacity='0.14'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='560' height='560' viewBox='0 0 560 560'%3E%3Cpath d='M10 540C150 470 200 320 340 250S 520 90 550 20' fill='none' stroke='%23205B5B' stroke-width='2' stroke-dasharray='2 15' stroke-linecap='round' opacity='0.10'/%3E%3Cpath d='M550 20l4.6 10 10.9 1.6-7.9 7.7 1.9 10.9-9.5-5-9.5 5 1.9-10.9-7.9-7.7 10.9-1.6z' fill='%23E2AE53' opacity='0.16'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 480px 480px;
@@ -427,7 +426,7 @@ table.submissions a:hover { text-decoration: underline; }
 
 /* ---- Variante "compact": cabeçalho colorido das páginas internas
    (Serviços, Pacotes, Elegibilidade, Exame de cidadania, detalhes) --
-   mesmo motivo do hero, só que como um banner navy/steel de verdade,
+   mesmo motivo do hero, só que como um banner teal de verdade,
    não só o fundo da página. */
 .hero-landing.compact {
   background-image:
@@ -456,7 +455,7 @@ table.submissions a:hover { text-decoration: underline; }
 .page.bg-blobs {
   position: relative;
   overflow: hidden;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cpath d='M8 400C110 350 150 230 260 180S 400 60 412 15' fill='none' stroke='%234D8FAC' stroke-width='2' stroke-dasharray='2 14' stroke-linecap='round' opacity='0.10'/%3E%3Cpath d='M412 15l4 8.8 9.6 1.4-7 6.8 1.6 9.6-8.2-4.3-8.2 4.3 1.6-9.6-7-6.8 9.6-1.4z' fill='%230A2E6C' opacity='0.12'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='420' viewBox='0 0 420 420'%3E%3Cpath d='M8 400C110 350 150 230 260 180S 400 60 412 15' fill='none' stroke='%23205B5B' stroke-width='2' stroke-dasharray='2 14' stroke-linecap='round' opacity='0.10'/%3E%3Cpath d='M412 15l4 8.8 9.6 1.4-7 6.8 1.6 9.6-8.2-4.3-8.2 4.3 1.6-9.6-7-6.8 9.6-1.4z' fill='%23E2AE53' opacity='0.14'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: top right;
   background-size: 340px 340px;
@@ -549,7 +548,7 @@ table.submissions a:hover { text-decoration: underline; }
   font-weight: 800;
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 14px;
-  box-shadow: 0 6px 14px -4px rgba(10, 46, 108, 0.45);
+  box-shadow: 0 6px 14px -4px rgba(32, 91, 91, 0.45);
 }
 .step-card h3 { margin: 0 0 8px; font-size: 1.02rem; }
 

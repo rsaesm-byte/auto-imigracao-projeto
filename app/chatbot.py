@@ -46,7 +46,7 @@ RATE_LIMIT_WINDOW_SECONDS = 60 * 60
 
 _SYSTEM_BASE = {
     "pt": (
-        "Você é o assistente virtual do site auto-imigração/MigroUSA, uma ferramenta de "
+        "Você é o assistente virtual do site auto-imigração/Saes Professional Services, uma ferramenta de "
         "preparação autodirigida de formulários de imigração dos EUA (USCIS) -- I-130, I-485, "
         "I-765, I-864, I-751, I-90, N-400, I-539 e Cartas Complementares do I-539. Responda em "
         "português, em frases curtas e diretas, como um chat de suporte -- NUNCA como um "
@@ -65,7 +65,7 @@ _SYSTEM_BASE = {
         "- Se não souber a resposta com confiança, diga isso em vez de inventar."
     ),
     "en": (
-        "You are the virtual assistant for the auto-imigração/MigroUSA site, a self-directed "
+        "You are the virtual assistant for the auto-imigração/Saes Professional Services site, a self-directed "
         "USCIS immigration form-preparation tool -- I-130, I-485, I-765, I-864, I-751, I-90, "
         "N-400, I-539, and I-539 Supplementary Letters. Reply in English, short and direct, like "
         "a support chat -- NEVER a long document: at most 3-4 short sentences per reply, no "
@@ -83,7 +83,7 @@ _SYSTEM_BASE = {
         "- If you don't know the answer confidently, say so instead of making it up."
     ),
     "es": (
-        "Usted es el asistente virtual del sitio auto-imigração/MigroUSA, una herramienta autodirigida "
+        "Usted es el asistente virtual del sitio auto-imigração/Saes Professional Services, una herramienta autodirigida "
         "de preparación de formularios de inmigración de USCIS -- I-130, I-485, I-765, I-864, "
         "I-751, I-90, N-400, I-539 y Cartas Complementarias del I-539. Responda en español, en "
         "frases cortas y directas, como un chat de soporte -- NUNCA como un documento largo: como "

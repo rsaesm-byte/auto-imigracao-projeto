@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ t('app_name') }}{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=5">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=6">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=2">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -13,8 +13,7 @@
   {% block top_accent %}{% endblock %}
   <header class="topbar">
     <a class="brand" href="{{ url_for('wizard.dashboard') if current_user.is_authenticated else url_for('wizard.index') }}">
-      <img class="brand-mark" src="{{ url_for('static', filename='logo-mark.png') }}" width="24" height="28" alt="">
-      {{ t('app_name') }}
+      <img class="brand-logo" src="{{ url_for('static', filename='logo-full.png') }}" alt="{{ t('app_name') }}">
     </a>
     <div class="topbar-right">
       <a class="logout" href="{{ url_for('wizard.dashboard') if current_user.is_authenticated else url_for('wizard.index') }}">{{ t('nav_home') }}</a>
