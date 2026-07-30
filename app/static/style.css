@@ -1134,21 +1134,11 @@ table.submissions a:hover { text-decoration: underline; }
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url('logo-mark.png');
+  background-image: url('img/symbol-black.png');
   background-size: 72%;
   background-position: center;
   background-repeat: no-repeat;
-  opacity: 0.22;
-}
-.chat-fab::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.4);
+  opacity: 0.32;
 }
 .chat-fab svg {
   position: relative;
