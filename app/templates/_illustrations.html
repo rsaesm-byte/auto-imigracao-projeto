@@ -182,7 +182,8 @@
    Formato e pontos (ponto A de partida, ponto B de chegada) marcados pelo
    próprio cliente por cima de um screenshot real da home.
 
-   O ponto de partida (46,387, ponto A do cliente) e o de chegada (545,351,
+   O ponto de partida (99,412, ponto A do cliente, ajustado depois pra ficar
+   mais perto do botão "Criar conta grátis") e o de chegada (545,351,
    ponto B do cliente, ângulo ~-37°, apontando pro badge-2/documento -- mesma
    direção que o próprio caminho segue a partir do pino) foram calibrados
    empiricamente: o cliente marcou A/B com círculos coloridos em cima de um
@@ -203,12 +204,9 @@
    texto do hero e o avião passaria por cima do título. #}
 <div class="flight-plane-layer" aria-hidden="true">
   <svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMax slice" focusable="false">
-    <path class="flight-trail" fill="none"
-          d="M46,387 C20,300 20,180 90,90 C180,20 320,10 460,50
-             C520,90 520,180 470,260 C460,330 501,384 545,351"/>
     <g class="flight-plane">
       <image href="{{ url_for('static', filename='img/flight-plane.png') }}"
-             x="-65" y="-25.2" width="130" height="50.4"/>
+             x="-44.2" y="-17.12" width="88.4" height="34.24"/>
     </g>
   </svg>
 </div>
