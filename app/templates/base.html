@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ t('app_name') }}{% endblock %}</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=6">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=7">
   <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=2">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
@@ -19,11 +19,19 @@
       <a class="logout" href="{{ url_for('wizard.dashboard') if current_user.is_authenticated else url_for('wizard.index') }}">{{ t('nav_home') }}</a>
       <a class="logout" href="{{ url_for('wizard.services') }}">{{ t('nav_services') }}</a>
       <a class="logout" href="{{ url_for('packages.index') }}">{{ t('nav_packages') }}</a>
-      <a class="logout" href="{{ url_for('eligibility.index') }}">{{ t('nav_eligibility') }}</a>
-      <a class="logout" href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
-      <a class="logout" href="{{ url_for('medical_exam.index') }}">{{ t('nav_medical_exam') }}</a>
-      <a class="logout" href="{{ url_for('income_calculator.index') }}">{{ t('nav_income_calc') }}</a>
-      <a class="logout" href="{{ url_for('visa_bulletin.index') }}">{{ t('nav_visa_bulletin') }}</a>
+      <div class="nav-dropdown">
+        <button type="button" class="logout nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+          {{ t('nav_free_tools') }}
+          <svg class="nav-dropdown-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="nav-dropdown-menu" hidden>
+          <a href="{{ url_for('visa_bulletin.index') }}">{{ t('nav_visa_bulletin') }}</a>
+          <a href="{{ url_for('income_calculator.index') }}">{{ t('nav_income_calc') }}</a>
+          <a href="{{ url_for('medical_exam.index') }}">{{ t('nav_medical_exam') }}</a>
+          <a href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
+          <a href="{{ url_for('eligibility.index') }}">{{ t('nav_eligibility') }}</a>
+        </div>
+      </div>
       {% if current_user.is_authenticated %}
         <span class="muted">{{ current_user.email }}</span>
         <a class="logout" href="{{ url_for('auth.logout') }}">{{ t('nav_logout') }}</a>
@@ -95,6 +103,33 @@
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
       els.forEach(function (el) { obs.observe(el); });
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var wrap = document.querySelector('.nav-dropdown');
+      if (!wrap) return;
+      var toggle = wrap.querySelector('.nav-dropdown-toggle');
+      var menu = wrap.querySelector('.nav-dropdown-menu');
+      function close() {
+        menu.hidden = true;
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+      function open() {
+        menu.hidden = false;
+        toggle.setAttribute('aria-expanded', 'true');
+      }
+      toggle.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (menu.hidden) { open(); } else { close(); }
+      });
+      document.addEventListener('click', function (e) {
+        if (!menu.hidden && !wrap.contains(e.target)) close();
+      });
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') close();
+      });
     })();
   </script>
 

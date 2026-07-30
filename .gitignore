@@ -4,3 +4,5 @@ instance/
 output/users/
 .env
 .claude/settings.local.json
+waitress.out.log
+waitress.err.log

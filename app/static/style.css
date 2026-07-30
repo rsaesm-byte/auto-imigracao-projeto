@@ -85,6 +85,46 @@ header.topbar .brand .brand-logo {
 header.topbar a.logout { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
 header.topbar a.logout:hover { color: var(--text); }
 
+/* ---- Nav dropdown ("Ferramentas Gratuitas") ---- */
+.nav-dropdown { position: relative; }
+.nav-dropdown-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+}
+.nav-dropdown-caret { transition: transform 0.15s ease; }
+.nav-dropdown-toggle[aria-expanded="true"] .nav-dropdown-caret { transform: rotate(180deg); }
+.nav-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%);
+  min-width: 220px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-lg);
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  z-index: 20;
+}
+.nav-dropdown-menu[hidden] { display: none; }
+.nav-dropdown-menu a {
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.88rem;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+  white-space: nowrap;
+}
+.nav-dropdown-menu a:hover { background: var(--accent-soft); color: var(--accent); }
+
 /* ---- Headings ---- */
 h1, h2, h3, .brand, .step-num, .form-tile .name, .service-card-name {
   font-family: 'Montserrat', -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -896,22 +936,8 @@ table.submissions a:hover { text-decoration: underline; }
   line-height: 1.6;
 }
 
-/* ---- Toque sutil da bandeira americana (só na página inicial) ----
-   Faixa fina em tons oficiais da bandeira (navy/vermelho), discreta o
-   bastante pra não brigar com o indigo da marca -- o navy já é bem
-   próximo do indigo usado no resto do app, então some no conjunto em vez
-   de destoar. */
-.flag-bar {
-  display: flex;
-  height: 4px;
-  width: 100%;
-}
-.flag-bar span { flex: 1; }
-.flag-bar .navy { background: #3c3b6e; }
-.flag-bar .red { background: #b22234; }
-
 .eyebrow-star {
-  color: #3c3b6e;
+  color: var(--accent);
   opacity: 0.55;
   font-size: 0.85em;
   margin-right: 2px;
