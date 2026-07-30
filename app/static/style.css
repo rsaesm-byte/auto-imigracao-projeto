@@ -485,6 +485,24 @@ table.submissions a:hover { text-decoration: underline; }
    O motivo de fundo (arco pontilhado + estrela) ecoa a própria seta/estrela
    do logo, no lugar dos blobs de gradiente borrado -- mais fiel à marca e
    menos "clichê de IA genérica". */
+.flight-scene { position: relative; z-index: 0; }
+.flight-plane-layer {
+  display: none; /* só liga em @media (prefers-reduced-motion: no-preference) abaixo */
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.flight-plane-layer svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.flight-plane-layer .flight-trail {
+  stroke: var(--accent);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-dasharray: 1127; /* comprimento real da curva (calculado), não normalizado --
+                             pathLength não é respeitado quando o dash é animado via CSS */
+  opacity: 0.45;
+}
+
 .hero-landing {
   position: relative;
   padding: 56px 20px 44px;
@@ -565,6 +583,11 @@ table.submissions a:hover { text-decoration: underline; }
   .hero-illustration, .journey-illustration { max-width: 280px; }
   .handoff-illustration { max-width: 260px; }
   .hero-ctas { justify-content: center; }
+  /* Nesta largura o gráfico do caminho sobe pra cima do texto (order:-1
+     acima), então o avião de fundo passaria bem por cima do título -- mais
+     poluição visual que graça. Mais simples desligar aqui do que redesenhar
+     a curva por breakpoint. */
+  .flight-plane-layer { display: none !important; }
 }
 .hero-title {
   font-size: 2.5rem;
@@ -913,6 +936,32 @@ table.submissions a:hover { text-decoration: underline; }
     animation: heroArtIn 0.8s ease 0.3s forwards, bob 3.6s ease-in-out 1.4s infinite;
   }
 
+  /* Avião de fundo (flight_plane(), _illustrations.html) -- decola da região
+     das estatísticas e "pousa" perto do gráfico do caminho em 2.6s; a
+     sequência do caminho logo abaixo (pino/linhas/peça) só começa DEPOIS
+     disso -- todos os delays da sequência original foram deslocados em
+     +2.6s (mesmos intervalos relativos entre as etapas, só começando mais
+     tarde) pra dar a impressão de "o avião pousa, aí a jornada começa". */
+  .flight-plane-layer { display: block; }
+  @keyframes flightMove { to { offset-distance: 100%; } }
+  @keyframes flightFade {
+    0% { opacity: 0; }
+    8%, 88% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes flightTrailDraw { to { stroke-dashoffset: 0; } }
+  .flight-plane-layer .flight-trail {
+    stroke-dashoffset: 1127;
+    animation: flightTrailDraw 2.4s ease 0.2s forwards;
+  }
+  .flight-plane-layer .flight-plane {
+    offset-path: path("M935,615 C860,655 660,650 505,570 C375,502 315,435 350,378 C385,322 458,330 468,382 C476,422 432,440 402,412 C440,375 501,384 545,351");
+    offset-rotate: auto;
+    offset-distance: 0%;
+    animation: flightMove 2.4s cubic-bezier(.4,.05,.5,.95) 0.2s forwards,
+               flightFade 2.6s ease 0.2s forwards;
+  }
+
   /* Animação de introdução da home (journey_illustration(), _illustrations.html):
      4 etapas reveladas em sequência -- reaproveita badgePop/badgePulse/twinkle
      já existentes acima; journeyLineDraw e journeyCapCycle/journeyCapIn são as
@@ -933,30 +982,30 @@ table.submissions a:hover { text-decoration: underline; }
     transform-origin: center;
     opacity: 0;
   }
-  .journey-illustration .journey-badge-2 { animation: badgePop 0.5s ease-out 1.6s both; }
-  .journey-illustration .journey-badge-3 { animation: badgePop 0.5s ease-out 2.8s both; }
+  .journey-illustration .journey-badge-2 { animation: badgePop 0.5s ease-out 4.2s both; }
+  .journey-illustration .journey-badge-3 { animation: badgePop 0.5s ease-out 5.4s both; }
   .journey-illustration .journey-badge-4 {
-    animation: badgePop 0.5s ease-out 4s both, badgePulse 3.4s ease-in-out 4.5s infinite;
+    animation: badgePop 0.5s ease-out 6.6s both, badgePulse 3.4s ease-in-out 7.1s infinite;
   }
 
   .journey-illustration .journey-pin {
     transform-box: fill-box;
     transform-origin: bottom center;
     opacity: 0;
-    animation: badgePop 0.4s ease-out 0.1s both;
+    animation: badgePop 0.4s ease-out 2.7s both;
   }
 
   .journey-illustration .journey-line-1 {
     stroke-dasharray: 220; stroke-dashoffset: 220;
-    animation: journeyLineDraw 0.6s ease 1s forwards;
+    animation: journeyLineDraw 0.6s ease 3.6s forwards;
   }
   .journey-illustration .journey-line-2 {
     stroke-dasharray: 170; stroke-dashoffset: 170;
-    animation: journeyLineDraw 0.6s ease 2.2s forwards;
+    animation: journeyLineDraw 0.6s ease 4.8s forwards;
   }
   .journey-illustration .journey-line-3 {
     stroke-dasharray: 230; stroke-dashoffset: 230;
-    animation: journeyLineDraw 0.6s ease 3.5s forwards;
+    animation: journeyLineDraw 0.6s ease 6.1s forwards;
   }
 
   {# A peça (o ícone da pessoa) "pula" de marco em marco, tipo tabuleiro --
@@ -974,13 +1023,13 @@ table.submissions a:hover { text-decoration: underline; }
   @keyframes gamePieceFadeIn { from { opacity: 0; } to { opacity: 1; } }
   .journey-illustration .game-piece {
     opacity: 0;
-    animation: gamePieceFadeIn 0.4s ease-out 0.3s both, gamePieceMove 4.5s ease-in-out 0.3s both;
+    animation: gamePieceFadeIn 0.4s ease-out 2.9s both, gamePieceMove 4.5s ease-in-out 2.9s both;
   }
 
-  .journey-caption .jc-1 { animation: journeyCapCycle 1.5s ease-in-out 0s both; }
-  .journey-caption .jc-2 { animation: journeyCapCycle 1.3s ease-in-out 1.6s both; }
-  .journey-caption .jc-3 { animation: journeyCapCycle 1.3s ease-in-out 2.9s both; }
-  .journey-caption .jc-4 { animation: journeyCapIn 0.6s ease-out 4.1s both; }
+  .journey-caption .jc-1 { animation: journeyCapCycle 1.5s ease-in-out 2.6s both; }
+  .journey-caption .jc-2 { animation: journeyCapCycle 1.3s ease-in-out 4.2s both; }
+  .journey-caption .jc-3 { animation: journeyCapCycle 1.3s ease-in-out 5.5s both; }
+  .journey-caption .jc-4 { animation: journeyCapIn 0.6s ease-out 6.7s both; }
 
   /* Ilustração de start_for_other.html (handoff_illustration(),
      _illustrations.html): os dois cartões "entram" em sequência, a seta

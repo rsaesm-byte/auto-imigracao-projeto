@@ -1,48 +1,52 @@
 {% extends "base.html" %}
 {% from "_icons.html" import icon %}
-{% from "_illustrations.html" import journey_illustration %}
+{% from "_illustrations.html" import journey_illustration, flight_plane %}
 {% block title %}{{ t('landing_title') }}{% endblock %}
 {% block page_class %}wide{% endblock %}
 {% block content %}
 
-<section class="hero-landing">
-  <div class="hero-landing-grid">
-    <div class="hero-landing-text">
-      <p class="eyebrow"><span class="eyebrow-star">★</span> {{ t('hero_eyebrow') }}</p>
-      <h1 class="hero-title">{{ t('hero_title_1') }}<br>{{ t('hero_title_2') }}</h1>
-      <p class="hero-subtitle">{{ t('hero_subtitle') }}</p>
-      <div class="hero-ctas">
-        <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('cta_signup') }}</a>
-        <a class="btn secondary" href="{{ url_for('auth.login') }}">{{ t('cta_login') }}</a>
+<div class="flight-scene">
+  {{ flight_plane() }}
+
+  <section class="hero-landing">
+    <div class="hero-landing-grid">
+      <div class="hero-landing-text">
+        <p class="eyebrow"><span class="eyebrow-star">★</span> {{ t('hero_eyebrow') }}</p>
+        <h1 class="hero-title">{{ t('hero_title_1') }}<br>{{ t('hero_title_2') }}</h1>
+        <p class="hero-subtitle">{{ t('hero_subtitle') }}</p>
+        <div class="hero-ctas">
+          <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('cta_signup') }}</a>
+          <a class="btn secondary" href="{{ url_for('auth.login') }}">{{ t('cta_login') }}</a>
+        </div>
+      </div>
+      <div class="hero-landing-art">
+        {{ journey_illustration() }}
       </div>
     </div>
-    <div class="hero-landing-art">
-      {{ journey_illustration() }}
-    </div>
-  </div>
-</section>
+  </section>
 
-<section class="section-block">
-  <h2 class="section-title">{{ t('stats_title') }}</h2>
-  <div class="stats-grid">
-    <div class="stat-tile reveal" style="transition-delay:0ms;">
-      <span class="stat-number">{{ t('stat_years_number') }}</span>
-      <span class="stat-label">{{ t('stat_years_label') }}</span>
+  <section class="section-block">
+    <h2 class="section-title">{{ t('stats_title') }}</h2>
+    <div class="stats-grid">
+      <div class="stat-tile reveal" style="transition-delay:0ms;">
+        <span class="stat-number">{{ t('stat_years_number') }}</span>
+        <span class="stat-label">{{ t('stat_years_label') }}</span>
+      </div>
+      <div class="stat-tile reveal" style="transition-delay:70ms;">
+        <span class="stat-number">{{ t('stat_clients_number') }}</span>
+        <span class="stat-label">{{ t('stat_clients_label') }}</span>
+      </div>
+      <div class="stat-tile reveal" style="transition-delay:140ms;">
+        <span class="stat-number">{{ t('stat_forms_number') }}</span>
+        <span class="stat-label">{{ t('stat_forms_label') }}</span>
+      </div>
+      <div class="stat-tile reveal" style="transition-delay:210ms;">
+        <span class="stat-number">{{ t('stat_bilingual_number') }}</span>
+        <span class="stat-label">{{ t('stat_bilingual_label') }}</span>
+      </div>
     </div>
-    <div class="stat-tile reveal" style="transition-delay:70ms;">
-      <span class="stat-number">{{ t('stat_clients_number') }}</span>
-      <span class="stat-label">{{ t('stat_clients_label') }}</span>
-    </div>
-    <div class="stat-tile reveal" style="transition-delay:140ms;">
-      <span class="stat-number">{{ t('stat_forms_number') }}</span>
-      <span class="stat-label">{{ t('stat_forms_label') }}</span>
-    </div>
-    <div class="stat-tile reveal" style="transition-delay:210ms;">
-      <span class="stat-number">{{ t('stat_bilingual_number') }}</span>
-      <span class="stat-label">{{ t('stat_bilingual_label') }}</span>
-    </div>
-  </div>
-</section>
+  </section>
+</div>
 
 <section class="section-block">
   <h2 class="section-title">{{ t('how_it_works_title') }}</h2>

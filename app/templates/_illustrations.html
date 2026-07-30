@@ -170,6 +170,48 @@
 </p>
 {% endmacro %}
 
+{% macro flight_plane() %}
+{# Camada de fundo, só da home: um avião "decola" lá de baixo (região das
+   estatísticas), faz uma curva/loop e pousa EXATAMENTE em cima do pino do
+   gráfico do caminho (journey_illustration, acima) -- aí a sequência já
+   existente do caminho (pino → linhas → peça pulando) começa sozinha, com o
+   delay de cada etapa empurrado pra depois do "pouso" (ver style.css).
+
+   O ponto final da curva (545,351) e o ângulo de chegada (~-37°, apontando
+   pro badge-2/documento, mesma direção que o próprio caminho segue a partir
+   do pino) foram calibrados empiricamente: renderizou-se a página com
+   marcadores de cor única exatamente no início/fim da curva e no pino,
+   tirou-se um screenshot e mediu-se a posição real em pixel de cada um
+   (script Python, detecção de cor) pra achar a escala/offset entre o viewBox
+   desta camada (1000x700, preserveAspectRatio="xMidYMax slice") e a posição
+   real do pino na tela -- os dois SVGs escalam de forma independente e não
+   têm nenhuma relação matemática óbvia entre si, então só deu pra acertar o
+   pouso medindo o resultado renderizado de verdade, não só calculando os
+   dois viewBoxes no papel. Calibrado para a largura de tela testada (~1300px);
+   em larguras muito diferentes o pouso pode não ficar tão exato (mesmo
+   trade-off de qualquer background decorativo com "slice" scaling).
+   Escondida por padrão (só aparece dentro de
+   @media (prefers-reduced-motion: no-preference), mesmo padrão do resto do
+   arquivo) e desligada também abaixo de 820px (ver style.css) porque nessa
+   largura o gráfico do caminho sobe pra cima do texto do hero e o avião
+   passaria por cima do título. #}
+<div class="flight-plane-layer" aria-hidden="true">
+  <svg viewBox="0 0 1000 700" preserveAspectRatio="xMidYMax slice" focusable="false">
+    <path class="flight-trail" fill="none"
+          d="M935,615 C860,655 660,650 505,570 C375,502 315,435 350,378
+             C385,322 458,330 468,382 C476,422 432,440 402,412
+             C440,375 501,384 545,351"/>
+    <g class="flight-plane">
+      <path d="M-58,4 L38,3 L58,-4 L66,-1 L59,3 L38,8 L-18,13 L-29,21
+               L-37,21 L-30,8 L-58,7 Z" fill="#205B5B"/>
+      <path d="M8,-1 L27,-24 L36,-24 L23,-2 Z" fill="#205B5B"/>
+      <path d="M8,7 L25,27 L34,27 L21,7 Z" fill="#205B5B" opacity="0.82"/>
+      <circle cx="28" cy="1" r="2.6" fill="#E2AE53"/>
+    </g>
+  </svg>
+</div>
+{% endmacro %}
+
 {% macro auth_illustration() %}
 <svg viewBox="0 0 300 460" class="auth-illustration" aria-hidden="true" focusable="false">
   <defs>
