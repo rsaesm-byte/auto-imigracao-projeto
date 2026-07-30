@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}{{ content.hero_title }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <p class="eyebrow"><span class="eyebrow-star">★</span> {{ content.hero_eyebrow }}</p>
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ content.hero_title }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:640px;">{{ content.hero_subtitle }}</p>
+</section>
+
+<div class="card" style="border-left:4px solid var(--cta);">
+  <p class="muted" style="margin:0;line-height:1.6;">{{ content.safety_note }}</p>
+</div>
+
+<div class="services-grid">
+  <div class="card service-card" style="text-align:center;">
+    <h2 class="service-card-name">{{ content.zelle_title }}</h2>
+    <img src="{{ url_for('static', filename=content.zelle_qr) }}" alt="Zelle QR code"
+         style="width:160px;height:160px;margin:0 auto 14px;display:block;border-radius:var(--radius-sm);border:1px solid var(--border);">
+    <p style="font-size:1.2rem;font-weight:700;margin:0 0 6px;">{{ content.zelle_phone }}</p>
+    <p class="muted" style="font-size:0.85rem;margin:0 0 2px;">{{ content.zelle_enrolled_label }}: <strong>{{ content.zelle_enrolled_name }}</strong></p>
+    <p class="muted" style="font-size:0.85rem;margin:0;">{{ content.zelle_note }}</p>
+  </div>
+
+  <div class="card service-card" style="text-align:center;">
+    <h2 class="service-card-name">{{ content.venmo_title }}</h2>
+    <img src="{{ url_for('static', filename=content.venmo_qr) }}" alt="Venmo QR code"
+         style="width:160px;height:160px;margin:0 auto 14px;display:block;border-radius:var(--radius-sm);border:1px solid var(--border);">
+    <p style="font-size:1.1rem;font-weight:700;margin:0 0 6px;">{{ content.venmo_name }}</p>
+    <p class="muted" style="font-size:0.9rem;margin:0;">{{ content.venmo_handle }}</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ content.wire_title }}</h2>
+  <p class="muted" style="margin-top:-10px;">{{ content.wire_subtitle }}</p>
+  <ul class="service-bullets">
+    <li><strong>{{ content.wire_account_label }}:</strong> {{ content.wire_account_number }}</li>
+  </ul>
+  <h3>{{ content.wire_routing_title }}</h3>
+  <ul class="service-bullets">
+    <li>
+      <strong>{{ content.wire_routing_paper_label }}:</strong> {{ content.wire_routing_paper_number }}<br>
+      <span class="muted" style="font-size:0.85rem;">{{ content.wire_routing_paper_note }}</span>
+    </li>
+    <li>
+      <strong>{{ content.wire_routing_wires_label }}:</strong> {{ content.wire_routing_wires_number }}<br>
+      <span class="muted" style="font-size:0.85rem;">{{ content.wire_routing_wires_note }}</span>
+    </li>
+  </ul>
+</div>
+
+<div class="card">
+  <h2>{{ content.card_title }}</h2>
+  <p style="line-height:1.6;margin:0;">{{ content.card_body }}</p>
+</div>
+
+{% endblock %}
