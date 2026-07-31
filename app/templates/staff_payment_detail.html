@@ -1,0 +1,73 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — {{ case_label }}{% endblock %}
+{% block content %}
+<p style="margin-bottom:18px;">
+  <a href="javascript:history.back()" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">← Voltar</a>
+</p>
+
+<div class="card hero">
+  <h1>{{ case_label }}</h1>
+  <p style="opacity:0.92;margin:0;">Cliente (login): {{ client_email }} — Valor: ${{ "%.2f"|format(payment.amount_cents / 100) }} — Forma: {{ payment.method or '—' }}</p>
+  {% if payment.client_name or payment.client_phone %}
+  <p style="opacity:0.92;margin:6px 0 0;">Contato informado no checkout: {{ payment.client_name or '—' }}{% if payment.client_email %} — {{ payment.client_email }}{% endif %}{% if payment.client_phone %} — {{ payment.client_phone }}{% endif %}</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Comprovante e status</h2>
+  {% if payment.finalized_at %}
+  <span class="badge completed">Finalizado ({{ payment.finalized_at.strftime('%d/%m/%Y %H:%M') }})</span>
+  {% elif payment.status == 'confirmed' %}
+  <span class="badge completed">Aprovado{% if payment.confirmed_at %} ({{ payment.confirmed_at.strftime('%d/%m/%Y %H:%M') }}){% endif %}</span>
+  {% else %}
+  <span class="badge in_progress">Aguardando aprovação</span>
+  {% endif %}
+  {% if payment.finalized_at %}
+  <span class="badge {{ 'completed' if payment.review_requested else 'in_progress' }}">{{ 'Review solicitado' if payment.review_requested else 'Review ainda não solicitado' }}</span>
+  {% endif %}
+  {% if payment.proof_path %}
+  <p style="margin-top:12px;"><a href="{{ url_for('staff.payment_proof', payment_id=payment.id) }}">Baixar comprovante</a></p>
+  {% endif %}
+
+  {% if payment.status != 'confirmed' %}
+  <form method="post" action="{{ url_for('staff.confirm_payment', payment_id=payment.id) }}" style="margin-top:12px;">
+    <button type="submit" class="btn">Aprovar pagamento</button>
+  </form>
+  {% elif not payment.finalized_at %}
+  <form method="post" action="{{ url_for('staff.finalize_payment', payment_id=payment.id) }}" style="margin-top:12px;">
+    <button type="submit" class="btn">Marcar como finalizado</button>
+  </form>
+  {% elif not payment.review_requested %}
+  <form method="post" action="{{ url_for('staff.request_review', payment_id=payment.id) }}" style="margin-top:12px;">
+    <button type="submit" class="btn">Solicitar review</button>
+  </form>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Formulários deste caso</h2>
+  {% if submissions %}
+  <table class="submissions">
+    <thead><tr><th>Formulário</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for s in submissions %}
+      <tr>
+        <td><strong>{{ form_display_name(s.form_slug) }}</strong></td>
+        <td><span class="badge {{ s.status }}">{{ 'Concluído' if s.status == 'completed' else 'Em andamento' }}</span></td>
+        <td>
+          <a href="{{ url_for('staff.submission_answers', submission_id=s.id) }}">Ver respostas</a>
+          {% if s.filled_pdf_path %}
+          <a href="{{ url_for('staff.submission_pdf', submission_id=s.id) }}" style="margin-left:10px;">Baixar PDF</a>
+          {% else %}
+          <span class="muted" style="margin-left:10px;">PDF ainda não gerado</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">Nenhum formulário encontrado para este caso.</p>
+  {% endif %}
+</div>
+{% endblock %}

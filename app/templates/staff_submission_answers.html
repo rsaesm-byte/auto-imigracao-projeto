@@ -1,0 +1,28 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — {{ form_name }}{% endblock %}
+{% block content %}
+<p style="margin-bottom:18px;">
+  <a href="javascript:history.back()" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">← Voltar</a>
+</p>
+
+<div class="card hero">
+  <h1>{{ form_name }}</h1>
+  <p style="opacity:0.92;margin:0;">Respostas preenchidas pelo cliente -- visualização só-leitura, disponível mesmo antes do pagamento ser aprovado (o cliente só consegue gerar o PDF final depois disso).</p>
+</div>
+
+<div class="card">
+  <h2>Respostas ({{ answered|length }})</h2>
+  {% if answered %}
+  <table class="submissions">
+    {% for question, display in answered %}
+    <tr>
+      <td style="width:55%;">{{ question.label.rstrip(" *") }}</td>
+      <td>{{ display }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+  {% else %}
+  <p class="muted">Nenhuma resposta preenchida ainda.</p>
+  {% endif %}
+</div>
+{% endblock %}

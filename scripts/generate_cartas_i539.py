@@ -3,15 +3,17 @@
 questionário separado data/questionnaires/i-539-cartas.json:
 
 - Resumo da narrativa pessoal: compila as respostas do cliente às
-  perguntas de narrativa (data/prompts/i539-eos-narrative.txt para EOS,
-  i539-cos-narrative.txt para COS B2/F1/F2 documentam o roteiro completo)
-  em um PDF "Uso Interno" — não é a carta final, serve de base para a
-  equipe redigir a carta pessoal de extensão/mudança de status à mão.
-  (A geração automática da carta final via IA -- Gemini, API do Google --
-  existe no código, `draft_narrative_letter`/`build_drafted_narrative_letter`,
-  mas está pausada por decisão do usuário: `generate_all()` não a chama.
-  Para reativar, basta trocar o builder de volta para
-  `build_drafted_narrative_letter` e configurar GEMINI_API_KEY.)
+  perguntas de narrativa em um PDF "Uso Interno" -- usado apenas como
+  fallback (ver abaixo). A carta final é redigida automaticamente via IA
+  (Gemini, API do Google, `draft_narrative_letter`/
+  `build_drafted_narrative_letter`), com o prompt dedicado de cada serviço
+  (data/prompts/i539-eos-narrative.txt, i539-b2-narrative.txt,
+  i539-f1-narrative.txt, i539-f2-narrative.txt -- ver
+  NARRATIVE_PROMPT_FILE_BY_SERVICE) como system prompt e as respostas do
+  cliente como contexto -- sempre em inglês, pronta para revisão e
+  assinatura. Se GEMINI_API_KEY não estiver configurada ou a chamada
+  falhar, `build_narrative_document` cai automaticamente para o resumo cru
+  das respostas (Uso Interno) em vez de deixar o documento faltando.
 - Carta de Endereço (assinada pelo titular do comprovante de endereço, se
   não for o próprio requerente) — em inglês, pronta para imprimir e assinar.
 - Carta de Patrocínio (assinada pelo patrocinador financeiro, se os
@@ -64,14 +66,21 @@ if load_dotenv is not None:
 # (quota zerada no tier gratuito para o modelo Pro).
 GEMINI_MODEL = "gemini-flash-latest"
 GEMINI_URL = f"https://generativelanguage.googleapis.com/v1beta/models/{GEMINI_MODEL}:generateContent"
-# Cada serviço usa um dos dois prompts do usuário — EOS é específico pra
-# extensão; o mesmo prompt de COS (genérico) serve pros 3 alvos de mudança
-# de status, já que o usuário só forneceu um prompt de COS pros três.
+# Cada serviço tem seu próprio prompt do usuário, um por alvo real de
+# extensão/mudança de status (data/prompts/i539-<servico>-narrative.txt).
+# Até 2026-07-31 os 3 alvos de mudança de status (B2/F1/F2) compartilhavam
+# um único prompt genérico (i539-cos-narrative.txt, focado em estudo nos
+# EUA) porque o usuário só tinha fornecido um prompt de COS para os três —
+# ele não fazia sentido pra quem está pedindo B2 (turista) ou F2
+# (dependente), só coincidentemente funcionava razoável pra F1. Substituído
+# por 3 prompts dedicados, um por serviço, derivados dos modelos de carta
+# reais que a equipe já usa (_COS_Letter_B2/F1/F2.docx) — i539-cos-
+# narrative.txt continua no repositório sem uso, mantido só como histórico.
 NARRATIVE_PROMPT_FILE_BY_SERVICE = {
     "eos": "i539-eos-narrative.txt",
-    "cos_b2": "i539-cos-narrative.txt",
-    "cos_f1": "i539-cos-narrative.txt",
-    "cos_f2": "i539-cos-narrative.txt",
+    "cos_b2": "i539-b2-narrative.txt",
+    "cos_f1": "i539-f1-narrative.txt",
+    "cos_f2": "i539-f2-narrative.txt",
 }
 
 SERVICE_LABELS = {
@@ -511,16 +520,24 @@ def build_narrative_summary(answers: dict, qdata: dict, out_path: Path) -> Path 
     return out_path
 
 
+def build_narrative_document(answers: dict, qdata: dict, out_path: Path) -> Path | None:
+    """Tenta redigir a carta narrativa final via Gemini; se faltar API key,
+    faltar prompt, ou a chamada falhar (draft_narrative_letter retorna None
+    em qualquer um desses casos, sem levantar exceção), cai para o resumo
+    cru das respostas em vez de deixar o documento inteiro faltando."""
+    result = build_drafted_narrative_letter(answers, qdata, out_path)
+    if result:
+        return result
+    return build_narrative_summary(answers, qdata, out_path)
+
+
 # ── Main ─────────────────────────────────────────────────────────────────
 
 def generate_all(answers: dict, out_dir: Path) -> list[Path]:
     qdata = load_questionnaire()
     generated = []
     builders = [
-        # Geração via IA (Gemini) pausada por decisão do usuário -- ver
-        # docstring do módulo. Troque a linha abaixo por
-        # build_drafted_narrative_letter para reativar.
-        ("i-539-carta-narrativa-resumo.pdf", lambda p: build_narrative_summary(answers, qdata, p)),
+        ("i-539-carta-narrativa.pdf", lambda p: build_narrative_document(answers, qdata, p)),
         ("i-539-carta-endereco.pdf", lambda p: build_address_letter(answers, p)),
         ("i-539-carta-patrocinio.pdf", lambda p: build_sponsorship_letter(answers, p)),
         ("i-539-carta-empregador.pdf", lambda p: build_employer_letter(answers, p)),

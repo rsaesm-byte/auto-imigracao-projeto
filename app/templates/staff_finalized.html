@@ -1,0 +1,15 @@
+{% extends "staff_base.html" %}
+{% from "_staff_payments_table.html" import payments_table %}
+{% from "_staff_range_pills.html" import range_pills %}
+{% block title %}Staff — Finalizados{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Finalizados</h1>
+  <p style="opacity:0.92;margin:0;">Casos encerrados. Veja a aba "Solicitar Review" para os que ainda faltam receber o pedido de avaliação.</p>
+</div>
+
+<div class="card">
+  {{ range_pills('staff.finalized', range_key, range_labels) }}
+  {{ payments_table(payments, "finalized_at", "Finalizado em", show_review=True, empty_message="Nenhum caso finalizado neste período.") }}
+</div>
+{% endblock %}

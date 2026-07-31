@@ -72,3 +72,44 @@ def generate_document_checklist_for_submission(form_slug: str, answers: dict,
     """Checklist de documentos de suporte condicionado às respostas reais —
     só disponível para formulários com data/document_rules/<slug>.json."""
     return build_document_checklist(form_slug, answers, out_dir, lang=lang)
+
+
+# Cada uma das 4 cartas de terceiro do I-539 agora é sua própria submissão
+# (form_slug próprio, ver app/wizard.py::CARTA_LETTER_SLUGS), em vez de
+# tudo vir junto de uma resposta combinada de i-539-cartas. Cada builder já
+# checa sua própria pergunta de gate e devolve None se a carta não for
+# necessária para aquele caso -- generate() em wizard.py trata None como
+# "carta não necessária", não como erro.
+_CARTA_LETTER_BUILDERS = None
+
+
+def _load_carta_letter_builders():
+    global _CARTA_LETTER_BUILDERS
+    if _CARTA_LETTER_BUILDERS is None:
+        from scripts.generate_cartas_i539 import (build_address_letter,
+                                                    build_business_caretaker_letter,
+                                                    build_employer_letter,
+                                                    build_sponsorship_letter)
+        _CARTA_LETTER_BUILDERS = {
+            "i539-carta-endereco": build_address_letter,
+            "i539-carta-patrocinio": build_sponsorship_letter,
+            "i539-carta-empregador": build_employer_letter,
+            "i539-carta-empresa": build_business_caretaker_letter,
+        }
+    return _CARTA_LETTER_BUILDERS
+
+
+def generate_carta_letter_for_submission(form_slug: str, answers: dict,
+                                          out_path: Path) -> Path | None:
+    builder = _load_carta_letter_builders()[form_slug]
+    return builder(answers, out_path)
+
+
+def generate_narrative_letter_for_submission(answers: dict, out_path: Path) -> Path | None:
+    """Carta narrativa pessoal do I-539 (i-539-cartas) -- redigida por IA
+    (Gemini) com fallback automático para o resumo cru das respostas se a
+    chave não estiver configurada ou a chamada falhar. Ver
+    scripts/generate_cartas_i539.py::build_narrative_document."""
+    from scripts.generate_cartas_i539 import build_narrative_document, load_questionnaire
+    qdata = load_questionnaire()
+    return build_narrative_document(answers, qdata, out_path)

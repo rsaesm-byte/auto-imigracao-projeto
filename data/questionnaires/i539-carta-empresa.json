@@ -1,0 +1,153 @@
+{
+  "form": "I539-CARTA-EMPRESA",
+  "title": "Carta de Responsável pela Empresa",
+  "description": "Formulário para gerar a Carta de Responsável pela Empresa (Letter of Business Management During Absence), assinada pelo próprio requerente, nomeando quem vai administrar sua empresa durante a estadia nos Estados Unidos. Em inglês, pronta para impressão e assinatura. Campos marcados com * são obrigatórios.",
+  "sections": [
+    {
+      "id": "requerente",
+      "title": "Requerente"
+    },
+    {
+      "id": "carta_empresa_cuidador",
+      "title": "Carta de Responsável pela Empresa"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_completo_requerente",
+      "section": "requerente",
+      "label": "Nome completo do requerente (para quem as cartas serão escritas)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "tem_empresa_propria",
+      "section": "vinculo_profissional",
+      "label": "Você tem uma empresa registrada em seu nome no seu país de origem?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim, tenho empresa própria"
+        },
+        {
+          "value": "nao",
+          "label": "Não, preciso de uma carta de um empregador"
+        }
+      ],
+      "hint": "Esta carta é para quem TEM empresa própria e precisa nomear quem vai administrá-la durante a ausência. Se você não tem empresa própria, use o formulário \"Carta do Empregador\" em vez deste."
+    },
+    {
+      "id": "carta_empresa_nome",
+      "section": "carta_empresa_cuidador",
+      "label": "Nome da sua empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cnpj",
+      "section": "carta_empresa_cuidador",
+      "label": "Número do CNPJ/registro estadual da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_endereco",
+      "section": "carta_empresa_cuidador",
+      "label": "Endereço completo da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_proprietario_cpf",
+      "section": "carta_empresa_cuidador",
+      "label": "Seu número de identificação fiscal (CPF), como proprietário",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_nome",
+      "section": "carta_empresa_cuidador",
+      "label": "Nome completo da pessoa que vai cuidar da empresa enquanto você estiver nos EUA",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_cargo",
+      "section": "carta_empresa_cuidador",
+      "label": "Cargo/função dessa pessoa na empresa, ou grau de parentesco com você",
+      "type": "text",
+      "required": true,
+      "hint": "IMPORTANTE: responda em INGLÊS — este texto entra direto na carta em inglês. Ex.: business partner, manager, accountant, spouse, son/daughter, etc.",
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_cpf",
+      "section": "carta_empresa_cuidador",
+      "label": "CPF de quem vai cuidar da empresa",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_email",
+      "section": "carta_empresa_cuidador",
+      "label": "E-mail de quem vai cuidar da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_telefone",
+      "section": "carta_empresa_cuidador",
+      "label": "Telefone de quem vai cuidar da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_empresa_cuidador_endereco",
+      "section": "carta_empresa_cuidador",
+      "label": "Endereço de quem vai cuidar da empresa",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "sim"
+      }
+    }
+  ]
+}

@@ -14,10 +14,17 @@
     <div class="auth-icon">{{ icon('lock', 22) }}</div>
     <h1>{{ t('login_heading') }}</h1>
     <p class="muted">{{ t('login_subtitle') }}</p>
+
+    <div class="login-role-toggle" role="group" aria-label="{{ t('login_role_label') }}" style="display:flex;gap:8px;margin:16px 0;border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;">
+      <button type="button" class="login-role-btn{{ ' active' if (login_as or 'client') == 'client' }}" data-role="client" style="flex:1;padding:9px 10px;border:none;border-radius:calc(var(--radius-sm) - 2px);font-weight:600;font-size:0.85rem;cursor:pointer;">{{ t('login_role_client') }}</button>
+      <button type="button" class="login-role-btn{{ ' active' if login_as == 'staff' }}" data-role="staff" style="flex:1;padding:9px 10px;border:none;border-radius:calc(var(--radius-sm) - 2px);font-weight:600;font-size:0.85rem;cursor:pointer;">{{ t('login_role_staff') }}</button>
+    </div>
+
     <form method="post">
       <input type="hidden" name="next" value="{{ next_url }}">
-      <label for="email">{{ t('field_email') }}</label>
-      <input type="email" id="email" name="email" value="{{ email }}" required autofocus>
+      <input type="hidden" name="login_as" id="login_as" value="{{ login_as or 'client' }}">
+      <label for="email" id="email-label">{{ t('login_field_email_or_username') if login_as == 'staff' else t('field_email') }}</label>
+      <input type="text" id="email" name="email" value="{{ email }}" autocomplete="username" required autofocus>
 
       <label for="password">{{ t('field_password') }}</label>
       <input type="password" id="password" name="password" required>
@@ -32,4 +39,23 @@
     </p>
   </div>
 </div>
+<script>
+  (function () {
+    var buttons = document.querySelectorAll('.login-role-btn');
+    var hidden = document.getElementById('login_as');
+    var label = document.getElementById('email-label');
+    var labels = {
+      client: {{ t('field_email')|tojson }},
+      staff: {{ t('login_field_email_or_username')|tojson }}
+    };
+    buttons.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        buttons.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        hidden.value = btn.dataset.role;
+        label.textContent = labels[btn.dataset.role];
+      });
+    });
+  })();
+</script>
 {% endblock %}

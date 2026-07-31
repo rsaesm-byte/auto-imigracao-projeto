@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}{{ t('payment_checkout_title') }} — {{ case.label }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('payment_checkout_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:640px;">{{ case.label }}</p>
+</section>
+
+<div class="card">
+  <p class="muted" style="margin:0 0 4px;">{{ t('payment_amount_due') }}</p>
+  <p style="font-size:2.2rem;font-weight:800;margin:0;">{{ amount_display }}</p>
+</div>
+
+{% if payment and payment.status == "pending" %}
+<div class="flash" style="background:var(--accent-soft);color:var(--accent-dark);border-color:var(--accent);">
+  {{ t('payment_already_submitted_notice') }}
+</div>
+{% endif %}
+
+<form method="post" enctype="multipart/form-data">
+  <div class="card">
+    <h2>{{ t('payment_contact_title') }}</h2>
+    <p class="muted" style="margin-top:-8px;">{{ t('payment_contact_hint') }}</p>
+    <label for="client_name">{{ t('payment_contact_name') }}</label>
+    <input type="text" id="client_name" name="client_name" value="{{ payment.client_name if payment else '' }}" required>
+    <label for="client_email">{{ t('payment_contact_email') }}</label>
+    <input type="email" id="client_email" name="client_email" value="{{ payment.client_email if payment else current_user.email }}" required>
+    <label for="client_phone">{{ t('payment_contact_phone') }}</label>
+    <input type="tel" id="client_phone" name="client_phone" value="{{ payment.client_phone if payment else '' }}" placeholder="+1 555 555 5555" required>
+  </div>
+
+  <div class="card">
+    <h2>{{ t('payment_choose_method') }}</h2>
+    <div class="services-grid">
+      <label class="card service-card" style="cursor:pointer;margin-bottom:0;display:block;">
+        <input type="radio" name="method" value="zelle" required style="margin-bottom:8px;"> <strong>Zelle</strong>
+        <p class="muted" style="font-size:0.85rem;margin:6px 0 0;">
+          {{ payment_content.zelle_phone }}<br>{{ payment_content.zelle_enrolled_label }}: {{ payment_content.zelle_enrolled_name }}
+        </p>
+      </label>
+      <label class="card service-card" style="cursor:pointer;margin-bottom:0;display:block;">
+        <input type="radio" name="method" value="venmo" style="margin-bottom:8px;"> <strong>Venmo</strong>
+        <p class="muted" style="font-size:0.85rem;margin:6px 0 0;">{{ payment_content.venmo_name }}<br>{{ payment_content.venmo_handle }}</p>
+      </label>
+      <label class="card service-card" style="cursor:pointer;margin-bottom:0;display:block;">
+        <input type="radio" name="method" value="wire" style="margin-bottom:8px;"> <strong>{{ payment_content.wire_title }}</strong>
+        <p class="muted" style="font-size:0.85rem;margin:6px 0 0;">
+          {{ payment_content.wire_account_label }}: {{ payment_content.wire_account_number }}<br>
+          {{ payment_content.wire_routing_wires_label }}: {{ payment_content.wire_routing_wires_number }}
+        </p>
+      </label>
+      <label class="card service-card" style="cursor:pointer;margin-bottom:0;display:block;">
+        <input type="radio" name="method" value="credit_card" style="margin-bottom:8px;"> <strong>{{ payment_content.card_title }}</strong>
+        <p class="muted" style="font-size:0.85rem;margin:6px 0 0;">{{ payment_content.card_body }}</p>
+      </label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>{{ t('payment_upload_proof') }}</h2>
+    <p class="muted" style="margin-top:-8px;">{{ t('payment_upload_hint') }}</p>
+    <input type="file" name="proof" accept=".pdf,.png,.jpg,.jpeg,.webp,.heic" required>
+  </div>
+
+  <div class="card" style="text-align:right;">
+    <button type="submit" class="btn">{{ t('payment_confirm_send') }}</button>
+  </div>
+</form>
+{% endblock %}

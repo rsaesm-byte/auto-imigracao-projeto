@@ -1,0 +1,55 @@
+{% extends "staff_base.html" %}
+{% from "_staff_payments_table.html" import payments_table %}
+{% block title %}Staff — Aprovações Pendentes{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Aprovações Pendentes</h1>
+  <p style="opacity:0.92;margin:0;">Comprovante enviado, aguardando conferência. Acesse "Detalhes" para ver as respostas preenchidas antes de aprovar. Ao aprovar, o WhatsApp do cliente abre automaticamente com uma mensagem pronta.</p>
+</div>
+
+<div class="card">
+  {{ payments_table(payments, "created_at", "Enviado em", show_confirm=True, empty_message="Nenhum pagamento pendente no momento.") }}
+</div>
+
+{% if cartas_cases %}
+<div class="card">
+  <h2>Cartas Complementares (I-539) — legado</h2>
+  <p style="opacity:0.92;margin:0 0 12px;">Casos de Cartas Complementares ainda aguardando confirmação de pagamento (fluxo próprio, separado do gate geral acima).</p>
+  <div style="overflow-x:auto;">
+  <table class="submissions" style="min-width:820px;">
+    <thead>
+      <tr>
+        <th>Cliente (login)</th>
+        <th>Requerente</th>
+        <th>Serviço</th>
+        <th>Status</th>
+        <th>Atualizado</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in cartas_cases %}
+      {% set answers = c.get_answers() %}
+      <tr>
+        <td class="muted">{{ c.user.email }}</td>
+        <td>{{ answers.get('nome_completo_requerente', '—') }}</td>
+        <td>{{ answers.get('servico', '—') }}</td>
+        <td><span class="badge {{ c.status }}">
+          {{ 'Concluído' if c.status == 'completed' else 'Em andamento' }}
+        </span></td>
+        <td class="muted">{{ c.updated_at.strftime("%d/%m/%Y %H:%M") }}</td>
+        <td style="white-space:nowrap;">
+          <form method="post" action="{{ url_for('staff.toggle_paid', submission_id=c.id) }}">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">
+              Marcar como pago
+            </button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

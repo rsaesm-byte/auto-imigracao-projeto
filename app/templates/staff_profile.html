@@ -1,0 +1,58 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Meu Perfil{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Meu Perfil</h1>
+  <p style="opacity:0.92;margin:0;">Essas informações são só suas — preencha como preferir.</p>
+</div>
+
+<div class="card">
+  <h2>Dados do perfil</h2>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;align-items:flex-start;">
+    <div style="text-align:center;">
+      {% if current_user.photo_path %}
+      <img src="{{ url_for('staff.profile_photo', user_id=current_user.id) }}" alt="Foto de perfil"
+           style="width:120px;height:120px;border-radius:50%;object-fit:cover;border:1px solid var(--border);">
+      {% else %}
+      <div style="width:120px;height:120px;border-radius:50%;background:var(--accent-soft);color:var(--accent-dark);display:flex;align-items:center;justify-content:center;font-size:2.4rem;font-weight:800;border:1px solid var(--border);">
+        {{ current_user.email[0]|upper }}
+      </div>
+      {% endif %}
+    </div>
+    <form method="post" action="{{ url_for('staff.update_profile') }}" enctype="multipart/form-data" style="flex:1;min-width:280px;">
+      <label for="photo">Foto de perfil</label>
+      <input type="file" id="photo" name="photo" accept=".png,.jpg,.jpeg,.webp">
+
+      <label for="job_title">Cargo</label>
+      <input type="text" id="job_title" name="job_title" value="{{ current_user.job_title or '' }}" placeholder="Ex: Especialista em Imigração">
+
+      <label for="profile_email">E-mail (login)</label>
+      <input type="text" id="profile_email" value="{{ current_user.email }}" disabled style="opacity:0.6;">
+
+      <label for="personal_phone">Telefone pessoal</label>
+      <input type="tel" id="personal_phone" name="personal_phone" value="{{ current_user.personal_phone or '' }}" placeholder="+1 555 555 5555">
+
+      <label for="work_phone">Telefone de trabalho</label>
+      <input type="tel" id="work_phone" name="work_phone" value="{{ current_user.work_phone or '' }}" placeholder="+1 555 555 5555">
+
+      <label for="work_hours">Horário de trabalho</label>
+      <input type="text" id="work_hours" name="work_hours" value="{{ current_user.work_hours or '' }}" placeholder="Ex: Seg-Sex, 9h-18h">
+
+      <button type="submit" class="btn" style="margin-top:12px;">Salvar perfil</button>
+    </form>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Alterar senha</h2>
+  <form method="post" action="{{ url_for('staff.change_password') }}" style="max-width:360px;">
+    <label for="current_password">Senha atual</label>
+    <input type="password" id="current_password" name="current_password" required>
+    <label for="new_password">Nova senha</label>
+    <input type="password" id="new_password" name="new_password" required>
+    <label for="new_password_confirm">Confirmar nova senha</label>
+    <input type="password" id="new_password_confirm" name="new_password_confirm" required>
+    <button type="submit" class="btn" style="margin-top:12px;">Alterar senha</button>
+  </form>
+</div>
+{% endblock %}

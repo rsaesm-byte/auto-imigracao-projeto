@@ -1,0 +1,109 @@
+{
+  "form": "I539-CARTA-PATROCINIO",
+  "title": "Carta de Patrocínio Financeiro",
+  "description": "Formulário para gerar a Declaração de Patrocínio Financeiro (Affidavit of Financial Sponsorship), assinada pelo patrocinador, quando os extratos bancários usados como prova de suporte financeiro não são do próprio requerente. Em inglês, pronta para impressão e assinatura. Campos marcados com * são obrigatórios.",
+  "sections": [
+    {
+      "id": "requerente",
+      "title": "Requerente"
+    },
+    {
+      "id": "carta_patrocinio",
+      "title": "Carta de Patrocínio"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_completo_requerente",
+      "section": "requerente",
+      "label": "Nome completo do requerente (para quem as cartas serão escritas)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "patrocinio_terceiro",
+      "section": "carta_patrocinio",
+      "label": "Os extratos bancários usados como prova de suporte financeiro estão no nome de outra pessoa (patrocinador)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, são meus próprios extratos"
+        }
+      ],
+      "hint": "Se a resposta for \"Não\", esta carta não é necessária para o seu caso."
+    },
+    {
+      "id": "carta_patrocinio_nome",
+      "section": "carta_patrocinio",
+      "label": "Nome completo do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_email",
+      "section": "carta_patrocinio",
+      "label": "E-mail do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_telefone",
+      "section": "carta_patrocinio",
+      "label": "Telefone do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_endereco",
+      "section": "carta_patrocinio",
+      "label": "Endereço completo do patrocinador",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_parentesco",
+      "section": "carta_patrocinio",
+      "label": "Grau de parentesco do patrocinador com você",
+      "type": "text",
+      "required": true,
+      "hint": "IMPORTANTE: responda em INGLÊS — este texto entra direto na carta em inglês. Ex.: father, mother, brother, sister, spouse, friend, etc.",
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "carta_patrocinio_cidade_nascimento",
+      "section": "carta_patrocinio",
+      "label": "Cidade e estado de nascimento do patrocinador",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "patrocinio_terceiro",
+        "equals": "sim"
+      }
+    }
+  ]
+}

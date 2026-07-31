@@ -13,6 +13,9 @@
   {% for pkg in packages %}
   <div class="card service-card">
     <h2 class="service-card-name">{{ pkg.name }}</h2>
+    {% if pkg.price_cents is not none %}
+    <p style="font-size:1.3rem;font-weight:800;margin:2px 0 8px;">${{ '%.0f'|format(pkg.price_cents / 100) }}</p>
+    {% endif %}
     <p class="muted service-card-desc">{{ pkg.description }}</p>
     <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_includes') }}</p>
     <p class="muted" style="font-size:0.85rem;margin-bottom:16px;">{{ pkg.form_names|join(" · ") }}</p>

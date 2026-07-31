@@ -12,6 +12,10 @@
 
 <section class="hero-landing compact" style="padding:24px 28px 32px;">
   <h1 class="hero-title" style="font-size:1.9rem;">{{ name }}</h1>
+  {% if price_cents is not none %}
+  <p style="font-size:1.7rem;font-weight:800;margin:4px 0 2px;">${{ '%.0f'|format(price_cents / 100) }}</p>
+  <p class="hero-subtitle" style="margin:0 0 14px;font-size:0.82rem;opacity:0.85;">{{ t('pkg_our_price_disclaimer') }}</p>
+  {% endif %}
   <p class="hero-subtitle" style="margin:0 0 22px;max-width:640px;">{{ description }}</p>
   <div class="hero-ctas" style="justify-content:flex-start;flex-wrap:wrap;">
     {% if current_user.is_authenticated %}

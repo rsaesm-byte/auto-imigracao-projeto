@@ -6,3 +6,5 @@ output/users/
 .claude/settings.local.json
 waitress.out.log
 waitress.err.log
+waitress.log
+cloudflared.log

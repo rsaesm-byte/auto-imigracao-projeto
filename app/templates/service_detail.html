@@ -85,6 +85,24 @@
 </div>
 {% endif %}
 
+{% if our_fee_individual is not none or our_fee_package is not none %}
+<div class="card">
+  <h2>{{ t('svc_h_our_fee') }}</h2>
+  <div class="service-fee-grid">
+    {% if our_fee_individual is not none %}
+    <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(our_fee_individual / 100) }}</span><span class="muted">{{ t('svc_our_fee_individual_label') }}</span></div>
+    {% endif %}
+    {% if our_fee_package is not none %}
+    <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(our_fee_package / 100) }}</span><span class="muted">{{ t('svc_our_fee_package_label') }}</span></div>
+    {% endif %}
+  </div>
+  {% if our_fee_individual is none and our_fee_package is not none %}
+  <p class="muted" style="margin-top:12px;font-size:0.85rem;">{{ t('svc_our_fee_individual_none_note') }}</p>
+  {% endif %}
+  <p class="muted" style="margin-top:8px;font-size:0.85rem;">{{ t('svc_our_fee_disclaimer') }}</p>
+</div>
+{% endif %}
+
 {% if slug == "i-751" %}
 <div class="card">
   <h2>{{ t('svc_h_filing_calculator') }}</h2>

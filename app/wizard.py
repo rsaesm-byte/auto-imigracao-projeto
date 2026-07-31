@@ -29,8 +29,10 @@ from app.models import FormSubmission
 from app.services.news_service import get_latest_news
 from app.services.pdf_service import (document_checklist_available,
                                        fill_form_for_submission,
+                                       generate_carta_letter_for_submission,
                                        generate_checklist_for_submission,
                                        generate_document_checklist_for_submission,
+                                       generate_narrative_letter_for_submission,
                                        missing_required_fields)
 from scripts.run_questionnaire import DATE_RE, US_STATES, active_questions
 
@@ -41,10 +43,13 @@ OUTPUT_USERS_DIR = ROOT / "output" / "users"
 
 # todos os formulários do projeto, na ordem em que aparecem na página
 # inicial e no dashboard. "i-539-cartas" é um pseudo-formulário: não tem PDF
-# oficial/mapping próprio (ver PDF_BACKED_FORMS abaixo) -- gera o resumo da
-# narrativa + até 4 cartas complementares (endereço/patrocínio/empregador/
-# responsável pela empresa) via scripts/generate_cartas_i539.py, não
-# scripts/fill_form.py.
+# oficial/mapping próprio (ver PDF_BACKED_FORMS abaixo) -- gera só a carta
+# narrativa pessoal via scripts/generate_cartas_i539.py, não
+# scripts/fill_form.py. As 4 cartas de terceiro (endereço/patrocínio/
+# empregador/responsável pela empresa) que antes vinham juntas nessa mesma
+# submissão viraram formulários próprios (CARTA_LETTER_SLUGS abaixo),
+# vinculados a este caso via parent_submission_id -- mesmo padrão do
+# I-539A/I-134 (ver add_carta_letter).
 FORM_SLUGS_ORDER = ["i-130", "i-130a", "i-485", "i-765", "i-131", "i-864", "i-751",
                     "i-90", "n-400", "i-539", "i-134", "i-539-cartas"]
 
@@ -68,7 +73,40 @@ FORM_SLUGS_ORDER = ["i-130", "i-130a", "i-485", "i-765", "i-131", "i-864", "i-75
 # (data/service_pages/i-134.json) e aparece na grade principal como
 # qualquer outro formulário -- o atalho "adicionar ao I-539" continua
 # funcionando do mesmo jeito, em paralelo.
-AUXILIARY_FORM_SLUGS = ["g-1145", "g-1450", "g-1650", "i-539a"]
+# As 4 cartas de terceiro do I-539, cada uma um formulário próprio vinculado
+# a um caso "I-539 — Cartas Complementares" (parent_submission_id) -- ver
+# add_carta_letter() e _cartas_case(). Nome de exibição próprio (não vem do
+# registry.json oficial da USCIS, já que essas cartas não são formulários
+# oficiais) por idioma, mesmo padrão de CARTAS_DISPLAY_NAME abaixo.
+CARTA_LETTER_SLUGS = [
+    "i539-carta-endereco", "i539-carta-patrocinio",
+    "i539-carta-empregador", "i539-carta-empresa",
+]
+
+AUXILIARY_FORM_SLUGS = ["g-1145", "g-1450", "g-1650", "i-539a"] + CARTA_LETTER_SLUGS
+
+CARTA_LETTER_DISPLAY_NAME = {
+    "i539-carta-endereco": {
+        "pt": "Carta de Confirmação de Endereço",
+        "en": "Address Confirmation Letter",
+        "es": "Carta de Confirmación de Dirección",
+    },
+    "i539-carta-patrocinio": {
+        "pt": "Carta de Patrocínio Financeiro",
+        "en": "Financial Sponsorship Letter",
+        "es": "Carta de Patrocinio Financiero",
+    },
+    "i539-carta-empregador": {
+        "pt": "Carta do Empregador",
+        "en": "Employer Letter",
+        "es": "Carta del Empleador",
+    },
+    "i539-carta-empresa": {
+        "pt": "Carta de Responsável pela Empresa",
+        "en": "Business Caretaker Letter",
+        "es": "Carta del Responsable de la Empresa",
+    },
+}
 
 # Valores reais da pergunta "servico" em data/questionnaires/i-539.json --
 # usado por wizard.start() para pré-preencher essa pergunta quando o
@@ -171,16 +209,22 @@ def _load_reviews() -> dict:
     return json.loads((ROOT / "data" / "reviews.json").read_text(encoding="utf-8"))
 
 
-def _form_display_name(slug: str) -> str:
+def _form_display_name(slug: str, lang: str | None = None) -> str:
     """Nome do formulário na vitrine (landing/dashboard) -- em inglês
     quando o site está em inglês, já que o nome oficial do formulário é
     em inglês mesmo (é o nome real que a USCIS usa); traduzido (name_pt/
     name_es) nos outros idiomas, com fallback pro nome em português se o
-    idioma atual ainda não tiver essa variante preenchida no registro."""
+    idioma atual ainda não tiver essa variante preenchida no registro.
+    `lang` força um idioma específico (usado pela mensagem do WhatsApp em
+    app/payment_gate.py, que precisa do rótulo sempre em inglês
+    independente do idioma da sessão) -- por padrão usa o idioma da sessão."""
     from app.i18n import DEFAULT_LANG, get_lang
-    lang = get_lang()
+    lang = lang or get_lang()
     if slug == "i-539-cartas":
         return CARTAS_DISPLAY_NAME.get(lang, CARTAS_DISPLAY_NAME[DEFAULT_LANG])
+    if slug in CARTA_LETTER_DISPLAY_NAME:
+        names = CARTA_LETTER_DISPLAY_NAME[slug]
+        return names.get(lang, names[DEFAULT_LANG])
     entry = _load_registry_entry(slug)
     if lang == "en":
         return entry.get("name", slug.upper())
@@ -385,6 +429,8 @@ def service_detail(slug: str):
 
     calc_result, calc_error, calc_form = _run_filing_date_calculator(slug)
 
+    from app.services.pricing import in_package_price_cents, individual_price_cents
+
     return render_template(
         "service_detail.html",
         slug=slug,
@@ -396,6 +442,8 @@ def service_detail(slug: str):
         calc_result=calc_result,
         calc_error=calc_error,
         calc_form=calc_form,
+        our_fee_individual=individual_price_cents(slug),
+        our_fee_package=in_package_price_cents(slug),
     )
 
 
@@ -478,6 +526,8 @@ def dashboard():
                            dependents_by_parent=dependents_by_parent,
                            dependent_form_enabled=("i-539a" in ENABLED_FORMS),
                            i134_form_enabled=("i-134" in ENABLED_FORMS),
+                           carta_letters_enabled=all(s in ENABLED_FORMS for s in CARTA_LETTER_SLUGS),
+                           carta_letter_slugs=CARTA_LETTER_SLUGS,
                            news_items=get_latest_news())
 
 
@@ -485,6 +535,12 @@ def dashboard():
 @login_required
 def start(slug: str):
     if slug not in ENABLED_FORMS:
+        abort(404)
+    if slug in CARTA_LETTER_SLUGS:
+        # Só alcançáveis a partir de um caso "I-539 — Cartas Complementares"
+        # já existente (ver add_carta_letter) -- nunca direto, senão a
+        # submissão nasceria órfã (sem parent_submission_id) e _cartas_case()
+        # não teria como aplicar o gate de pagamento a ela.
         abort(404)
 
     existing = (
@@ -521,6 +577,8 @@ def start(slug: str):
 def new_attempt(slug: str):
     """Inicia uma tentativa nova (ignora qualquer in_progress existente)."""
     if slug not in ENABLED_FORMS:
+        abort(404)
+    if slug in CARTA_LETTER_SLUGS:
         abort(404)
     submission = FormSubmission(user_id=current_user.id, form_slug=slug)
     prefill, sources = _build_autofill(current_user.id, slug)
@@ -609,6 +667,55 @@ def add_i134(parent_submission_id: int):
     SessionLocal.add(sponsor_submission)
     SessionLocal.commit()
     return redirect(url_for("wizard.wizard_view", submission_id=sponsor_submission.id))
+
+
+@wizard_bp.route("/wizard/<int:parent_submission_id>/cartas/<kind>/adicionar", methods=["POST"])
+@login_required
+def add_carta_letter(parent_submission_id: int, kind: str):
+    """Cria uma nova submissão para uma das 4 cartas de terceiro do I-539
+    (endereco/patrocinio/empregador/empresa), vinculada ao caso "I-539 —
+    Cartas Complementares" (parent_submission_id) -- mesma arquitetura de
+    add_dependent()/add_i134() acima: zero código novo no motor do wizard,
+    só mais um FormSubmission com parent_submission_id preenchido. `kind` é
+    o sufixo depois de "i539-carta-" (endereco/patrocinio/empregador/
+    empresa), nunca o slug inteiro, pra manter a URL curta.
+
+    O nome completo do requerente já digitado na narrativa é copiado como
+    pré-preenchimento (mesmo mecanismo de "autofilled" usado pelo
+    cross-form autofill em _build_autofill, então a UI mostra o aviso
+    normal de "auto-preenchido" e o usuário sempre confirma antes de
+    seguir) -- assim a pessoa não digita o próprio nome de novo em cada
+    carta."""
+    parent = _get_owned_submission(parent_submission_id)
+    if parent.form_slug != "i-539-cartas":
+        abort(400)
+    slug = f"i539-carta-{kind}"
+    if slug not in CARTA_LETTER_SLUGS or slug not in ENABLED_FORMS:
+        abort(404)
+
+    # Só uma de cada carta por caso -- não deixa criar uma segunda por
+    # engano (duplo clique, replay do POST etc.), só reabre a que já existe.
+    existing = (
+        SessionLocal.query(FormSubmission)
+        .filter_by(user_id=current_user.id, form_slug=slug, parent_submission_id=parent.id)
+        .first()
+    )
+    if existing:
+        return redirect(url_for("wizard.wizard_view", submission_id=existing.id))
+
+    letter_submission = FormSubmission(
+        user_id=current_user.id, form_slug=slug,
+        parent_submission_id=parent.id, package_slug=parent.package_slug,
+    )
+    applicant_name = parent.get_answers().get("nome_completo_requerente")
+    if applicant_name:
+        letter_submission.set_answers({"nome_completo_requerente": applicant_name})
+        letter_submission.set_autofilled({"nome_completo_requerente": parent.form_slug})
+    else:
+        letter_submission.set_answers({})
+    SessionLocal.add(letter_submission)
+    SessionLocal.commit()
+    return redirect(url_for("wizard.wizard_view", submission_id=letter_submission.id))
 
 
 RECEIPT_NUMBER_RE = re.compile(r"^[A-Z]{3}\d{10}$")
@@ -848,10 +955,99 @@ def review(submission_id: int):
         display = _display_value(q, value)
         answered.append((q, display))
 
+    cartas_case = _cartas_case(submission)
+
+    payment_case = _payment_case(submission)
+    payment_status = None
+    payment_amount_display = None
+    checkout_url = None
+    if payment_case is not None:
+        from app.services.pricing import find_payment_for_case
+        payment = find_payment_for_case(payment_case)
+        payment_status = payment.status if payment is not None else "unpaid"
+        payment_amount_display = f"${payment_case.price_cents / 100:,.2f}"
+        checkout_url = url_for("payment_gate.checkout", submission_id=submission.id)
+
     from app.i18n import get_lang
     return render_template(
         "review.html", submission=submission, missing=missing, answered=answered,
-        form_translated=_questionnaire_has_translation(submission.form_slug, get_lang()))
+        form_translated=_questionnaire_has_translation(submission.form_slug, get_lang()),
+        cartas_case_paid=(cartas_case.paid if cartas_case is not None else None),
+        payment_status=payment_status, payment_amount_display=payment_amount_display,
+        checkout_url=checkout_url)
+
+
+def _cartas_case(submission: FormSubmission) -> FormSubmission | None:
+    """Devolve a submissão "I-539 — Cartas Complementares" que rege o
+    pagamento de `submission`: ela mesma, se `submission` já for o caso; a
+    submissão-pai, se `submission` for uma das 4 cartas de terceiro
+    vinculadas (ver CARTA_LETTER_SLUGS); None para qualquer outro
+    formulário (não gated por pagamento). Não confundir com o `parent`
+    genérico do I-539A/I-134 -- só as Cartas Complementares têm gate de
+    pagamento hoje."""
+    if submission.form_slug == "i-539-cartas":
+        return submission
+    if submission.form_slug in CARTA_LETTER_SLUGS and submission.parent_submission_id:
+        return SessionLocal.get(FormSubmission, submission.parent_submission_id)
+    return None
+
+
+def _payment_case(submission: FormSubmission):
+    """Caso de pagamento genérico (Zelle/Venmo/cartão/wire + comprovante,
+    ver app/payment_gate.py) para qualquer formulário avulso ou pacote com
+    preço em data/service_fees.json -- nunca para as Cartas Complementares
+    do I-539, que têm o gate mais simples de _cartas_case() acima. Devolve
+    None quando não há gate (Cartas/carta de terceiro, ou preço não
+    definido -- ex.: formulários vendidos "somente em pacote" quando
+    preenchidos avulsos, fora do fluxo normal de /pacotes).
+
+    I-134 é tratado à parte: nunca herda o caso do I-539 pai (ao contrário
+    de todo outro dependente, que soma no caso da raiz via `root` abaixo)
+    porque seu preço muda conforme o contexto -- $75 quando o I-539 pai
+    pertence a um pacote de mudança/extensão de status (EOS/COS), $100
+    quando o I-539 pai foi preenchido avulso (decisão do usuário,
+    2026-07-31)."""
+    from app.services.pricing import (PaymentCase, in_package_price_cents,
+                                       individual_price_cents, package_display_name,
+                                       package_price_cents)
+    if submission.form_slug == "i-539-cartas" or submission.form_slug in CARTA_LETTER_SLUGS:
+        return None
+    if submission.form_slug == "i-134":
+        price = (in_package_price_cents("i-134") if submission.package_slug
+                  else individual_price_cents("i-134"))
+        if not price:
+            return None
+        return PaymentCase(kind="form", key=str(submission.id), price_cents=price,
+                            label=_form_display_name("i-134"),
+                            label_en=_form_display_name("i-134", lang="en"))
+    if submission.package_slug:
+        price = package_price_cents(submission.package_slug)
+        if not price:
+            return None
+        return PaymentCase(kind="package", key=submission.package_slug, price_cents=price,
+                            label=package_display_name(submission.package_slug),
+                            label_en=package_display_name(submission.package_slug, lang="en"))
+    root = submission
+    while root.parent_submission_id:
+        root = SessionLocal.get(FormSubmission, root.parent_submission_id)
+    price = individual_price_cents(root.form_slug)
+    if not price:
+        return None
+    return PaymentCase(kind="form", key=str(root.id), price_cents=price,
+                        label=_form_display_name(root.form_slug),
+                        label_en=_form_display_name(root.form_slug, lang="en"))
+
+
+def _payment_status_for(submission: FormSubmission) -> str | None:
+    """Usado pelos templates (registrado como global Jinja `payment_status_for`
+    em app/__init__.py) para mostrar o selo de pagamento no dashboard --
+    None quando o formulário não é gated, senão "unpaid"/"pending"/"confirmed"."""
+    from app.services.pricing import find_payment_for_case
+    case = _payment_case(submission)
+    if case is None:
+        return None
+    payment = find_payment_for_case(case)
+    return payment.status if payment is not None else "unpaid"
 
 
 @wizard_bp.route("/wizard/<int:submission_id>/generate", methods=["POST"])
@@ -865,11 +1061,32 @@ def generate(submission_id: int):
         flash("Ainda há campos obrigatórios sem resposta.", "error")
         return redirect(url_for("wizard.review", submission_id=submission.id))
 
+    cartas_case = _cartas_case(submission)
+    if cartas_case is not None and not cartas_case.paid:
+        flash("Este caso ainda aguarda confirmação de pagamento. Entre em contato "
+              "com a nossa equipe para liberar a geração das cartas.", "error")
+        return redirect(url_for("wizard.review", submission_id=submission.id))
+
+    payment_case = _payment_case(submission)
+    if payment_case is not None:
+        from app.services.pricing import find_payment_for_case
+        payment = find_payment_for_case(payment_case)
+        if payment is None or payment.status != "confirmed":
+            flash("Este caso ainda aguarda confirmação de pagamento. Finalize o "
+                  "pagamento para liberar a geração do documento.", "error")
+            return redirect(url_for("wizard.review", submission_id=submission.id))
+
     lang = get_lang()
     out_dir = _submission_dir(submission)
 
     if submission.form_slug == "i-539-cartas":
-        _generate_cartas(submission, answers, out_dir)
+        pdf_path = out_dir / "i-539-carta-narrativa.pdf"
+        result = generate_narrative_letter_for_submission(answers, pdf_path)
+        submission.filled_pdf_path = str(result) if result else None
+    elif submission.form_slug in CARTA_LETTER_SLUGS:
+        pdf_path = out_dir / f"{submission.form_slug}.pdf"
+        result = generate_carta_letter_for_submission(submission.form_slug, answers, pdf_path)
+        submission.filled_pdf_path = str(result) if result else None
     else:
         pdf_path = out_dir / f"{submission.form_slug}-preenchido.pdf"
         fill_form_for_submission(submission.form_slug, answers, pdf_path, patch_xfa=True)
@@ -893,10 +1110,11 @@ def generate(submission_id: int):
 
 
 def _generate_cartas(submission: FormSubmission, answers: dict, out_dir: Path) -> None:
-    """Gera o resumo da narrativa + as cartas complementares aplicáveis
-    (scripts/generate_cartas_i539.py) e empacota tudo num único zip -- o
-    modelo FormSubmission só tem colunas fixas para um PDF por vez, e aqui
-    o número de documentos gerados varia por caso (0 a 5)."""
+    """OBSOLETO desde 2026-07-31 (as 4 cartas de terceiro viraram
+    formulários próprios, ver CARTA_LETTER_SLUGS) -- generate() não chama
+    mais esta função para submissões novas. Mantida só porque
+    download_cartas()/cartas_zip_path ainda servem zips já gerados antes
+    dessa mudança; não apagar sem migrar esses registros antigos."""
     import zipfile
     from scripts.generate_cartas_i539 import generate_all
 

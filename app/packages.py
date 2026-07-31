@@ -45,6 +45,7 @@ def _pick(pkg: dict, key: str, lang: str):
 @packages_bp.route("/")
 def index():
     from app.i18n import get_lang
+    from app.services.pricing import package_price_cents
     from app.wizard import _form_display_name
     lang = get_lang()
     packages = []
@@ -55,6 +56,7 @@ def index():
             "name": _pick(pkg, "name", lang),
             "description": _pick(pkg, "description", lang),
             "form_names": [_form_display_name(i["slug"]) for i in form_items],
+            "price_cents": package_price_cents(pkg["slug"]),
         })
     return render_template("packages_index.html", packages=packages)
 
@@ -94,6 +96,8 @@ def detail(slug: str):
                 "note": _pick(item, "note", lang),
             })
 
+    from app.services.pricing import package_price_cents
+
     return render_template(
         "packages_detail.html",
         slug=slug,
@@ -101,6 +105,7 @@ def detail(slug: str):
         description=_pick(pkg, "description", lang),
         items=items,
         eligibility_quiz=pkg.get("eligibility_quiz"),
+        price_cents=package_price_cents(slug),
     )
 
 

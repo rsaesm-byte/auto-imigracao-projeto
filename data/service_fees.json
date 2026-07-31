@@ -1,0 +1,40 @@
+{
+  "_note": "Valor inicial/histórico só -- desde a criação de ServiceFee (app/models.py) a fonte da verdade em produção é o banco (semeado uma vez a partir deste arquivo por app/__init__.py::_seed_service_fees quando a tabela está vazia; editável pela equipe na aba Preços do painel /staff). Preços cobrados pela Saes Professional Services por serviço (diferente da taxa oficial da USCIS, que fica em data/registry.json). Valores em centavos de dólar. null = não vendido separadamente nesse contexto. Fonte original: tabela 'Valores SAes' (print de planilha, 2026-07-31). Os totais de pacote de GC AOS/GC ROC/Cidadania/GC Replacement foram confirmados manualmente pelo usuário no chat em vez de somados formulário a formulário (a soma dos componentes 'in_package' de GC AOS daria $570, mas o valor real cobrado é $400) -- por isso 'package' e 'in_package' não precisam bater.",
+  "individual": {
+    "i-130": 40000,
+    "i-130a": null,
+    "i-485": null,
+    "i-765": null,
+    "i-864": null,
+    "i-864a": 5000,
+    "i-131": 10000,
+    "i-539": null,
+    "i-134": 10000,
+    "i-90": 10000,
+    "i-751": 14000,
+    "n-400": 20000
+  },
+  "in_package": {
+    "i-130": 15000,
+    "i-130a": 0,
+    "i-485": 15000,
+    "i-765": 8000,
+    "i-864": 13000,
+    "i-864a": 3000,
+    "i-131": 6000,
+    "i-539": 25000,
+    "i-134": 7500,
+    "i-90": 10000,
+    "i-751": 14000,
+    "n-400": 20000
+  },
+  "package": {
+    "gc-aos": 40000,
+    "gc-consular": 30000,
+    "gc-roc": 14000,
+    "cidadania": 20000,
+    "gc-replacement": 10000,
+    "i539-eos": 25000,
+    "i539-cos": 25000
+  }
+}

@@ -1,0 +1,27 @@
+{% extends "staff_base.html" %}
+{% from "_staff_price_table.html" import price_table %}
+{% block title %}Staff — Preços{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Preços</h1>
+  <p style="opacity:0.92;margin:0;">Altere o valor cobrado por cada formulário ou pacote — a mudança aparece imediatamente nas páginas de Serviços e Pacotes do site, sem precisar reiniciar o servidor. Deixe o campo em branco para marcar como "não vendido separadamente".</p>
+</div>
+
+<div class="card">
+  <h2>Individual</h2>
+  <p class="muted" style="margin-top:-8px;">Valor cobrado quando o cliente preenche o formulário avulso, fora de um pacote.</p>
+  {{ price_table(grouped.individual) }}
+</div>
+
+<div class="card">
+  <h2>Dentro de um pacote</h2>
+  <p class="muted" style="margin-top:-8px;">Valor deste formulário quando ele é usado dentro de um pacote (hoje só se aplica de fato ao I-134).</p>
+  {{ price_table(grouped.in_package) }}
+</div>
+
+<div class="card">
+  <h2>Pacotes (total)</h2>
+  <p class="muted" style="margin-top:-8px;">Valor total cobrado pelo pacote inteiro.</p>
+  {{ price_table(grouped.package) }}
+</div>
+{% endblock %}

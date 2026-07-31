@@ -21,6 +21,7 @@
       <a class="logout" href="{{ url_for('packages.index') }}">{{ t('nav_packages') }}</a>
       <a class="logout" href="{{ url_for('about.index') }}">{{ t('nav_about') }}</a>
       <a class="logout" href="{{ url_for('payment_methods.index') }}">{{ t('nav_payment_methods') }}</a>
+      <a class="logout" href="https://saesprofessional.com/" target="_blank" rel="noopener noreferrer">{{ t('nav_website') }}</a>
       <div class="nav-dropdown">
         <button type="button" class="logout nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
           {{ t('nav_free_tools') }}
@@ -84,6 +85,15 @@
   </div>
 
   <footer class="site-footer">
+    {% from "_icons.html" import icon %}
+    <div class="footer-social" style="display:flex;justify-content:center;gap:16px;margin-bottom:14px;flex-wrap:wrap;">
+      <a href="https://maps.app.goo.gl/oLs5K41NwUkFyTyU6" target="_blank" rel="noopener noreferrer" title="Google Maps" aria-label="Google Maps">{{ icon('map-pin', 20) }}</a>
+      <a href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer" title="WhatsApp" aria-label="WhatsApp">{{ icon('whatsapp', 20) }}</a>
+      <a href="mailto:saes.professionalservices@gmail.com" title="Email" aria-label="Email">{{ icon('mail', 20) }}</a>
+      <a href="https://www.instagram.com/alessandra.saes/" target="_blank" rel="noopener noreferrer" title="Instagram" aria-label="Instagram">{{ icon('instagram', 20) }}</a>
+      <a href="https://www.facebook.com/alessandrasaes.professionalservices" target="_blank" rel="noopener noreferrer" title="Facebook" aria-label="Facebook">{{ icon('facebook', 20) }}</a>
+      <a href="https://www.youtube.com/@AlessandraSaes" target="_blank" rel="noopener noreferrer" title="YouTube" aria-label="YouTube">{{ icon('youtube', 20) }}</a>
+    </div>
     <p>{{ t('footer_disclaimer') }}</p>
   </footer>
 

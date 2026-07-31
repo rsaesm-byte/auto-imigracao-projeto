@@ -48,22 +48,42 @@ def signup():
 @auth_bp.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        email = request.form.get("email", "").strip().lower()
+        identifier = request.form.get("email", "").strip().lower()
         password = request.form.get("password", "")
         next_url = request.form.get("next") or request.args.get("next") or ""
+        # "client" ou "staff" -- qual aba o usuário escolheu no toggle de
+        # app/templates/login.html. Só muda o destino pós-login e, para
+        # "staff", exige is_staff=True -- não é uma segunda credencial,
+        # a equipe usa a mesma senha da conta, só entra por uma aba
+        # separada que leva direto pro painel próprio (ver app/staff.py,
+        # app/templates/staff_base.html).
+        login_as = request.form.get("login_as", "client")
 
-        user = SessionLocal.query(User).filter_by(email=email).first()
+        # Aceita e-mail OU username (só a equipe tem username preenchido
+        # hoje, ver app/models.py::User.username / app/staff.py::profile) --
+        # tenta e-mail primeiro por ser o caso comum, cai pro username se
+        # não achar.
+        user = SessionLocal.query(User).filter_by(email=identifier).first()
+        if user is None:
+            user = SessionLocal.query(User).filter_by(username=identifier).first()
+        email = identifier
         if user is None or not check_password_hash(user.password_hash, password):
-            flash("E-mail ou senha incorretos.", "error")
-            return render_template("login.html", email=email, next_url=next_url)
+            flash("E-mail/usuário ou senha incorretos.", "error")
+            return render_template("login.html", email=email, next_url=next_url, login_as=login_as)
         if not user.is_active:
             flash("Esta conta está desativada.", "error")
-            return render_template("login.html", email=email, next_url=next_url)
+            return render_template("login.html", email=email, next_url=next_url, login_as=login_as)
+        if login_as == "staff" and not user.is_staff:
+            flash("Esta conta não tem acesso à área da equipe Saes Professional.", "error")
+            return render_template("login.html", email=email, next_url=next_url, login_as=login_as)
 
         login_user(user)
+        if login_as == "staff":
+            return redirect(url_for("staff.dashboard"))
         return redirect(next_url or url_for("wizard.dashboard"))
 
-    return render_template("login.html", email="", next_url=request.args.get("next") or "")
+    login_as = request.args.get("login_as", "client")
+    return render_template("login.html", email="", next_url=request.args.get("next") or "", login_as=login_as)
 
 
 @auth_bp.route("/logout")

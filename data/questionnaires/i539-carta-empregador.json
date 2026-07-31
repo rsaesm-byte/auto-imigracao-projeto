@@ -1,0 +1,141 @@
+{
+  "form": "I539-CARTA-EMPREGADOR",
+  "title": "Carta do Empregador",
+  "description": "Formulário para gerar a Carta do Empregador (Letter of Employment), assinada pelo empregador, para requerentes que não têm empresa própria e precisam demonstrar vínculo empregatício e intenção de retorno. Em inglês, pronta para impressão e assinatura. Campos marcados com * são obrigatórios.",
+  "sections": [
+    {
+      "id": "requerente",
+      "title": "Requerente"
+    },
+    {
+      "id": "carta_empregador",
+      "title": "Carta do Empregador"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_completo_requerente",
+      "section": "requerente",
+      "label": "Nome completo do requerente (para quem as cartas serão escritas)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "tem_empresa_propria",
+      "section": "vinculo_profissional",
+      "label": "Você tem uma empresa registrada em seu nome no seu país de origem?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim, tenho empresa própria"
+        },
+        {
+          "value": "nao",
+          "label": "Não, preciso de uma carta de um empregador"
+        }
+      ],
+      "hint": "Esta carta é para quem NÃO tem empresa própria e precisa de uma carta assinada pelo empregador. Se você tem empresa própria, use o formulário \"Carta de Responsável pela Empresa\" em vez deste."
+    },
+    {
+      "id": "carta_empregador_nome_empresa",
+      "section": "carta_empregador",
+      "label": "Nome da empresa empregadora",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_nome",
+      "section": "carta_empregador",
+      "label": "Nome completo do proprietário da empresa (empregador)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_endereco_empresa",
+      "section": "carta_empregador",
+      "label": "Endereço completo da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_cpf",
+      "section": "carta_empregador",
+      "label": "Número de identificação fiscal do proprietário (CPF)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_cnpj",
+      "section": "carta_empregador",
+      "label": "Número do CNPJ/registro estadual da empresa (se houver)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_email",
+      "section": "carta_empregador",
+      "label": "E-mail do proprietário da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_telefone",
+      "section": "carta_empregador",
+      "label": "Telefone do proprietário da empresa",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_requerente_cpf",
+      "section": "carta_empregador",
+      "label": "Seu número de identificação fiscal (CPF, do requerente)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_empregador_proprietario_cidade_nascimento",
+      "section": "carta_empregador",
+      "label": "Cidade e estado de nascimento do proprietário",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_empresa_propria",
+        "equals": "nao"
+      }
+    }
+  ]
+}

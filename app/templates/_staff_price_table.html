@@ -1,0 +1,27 @@
+{% macro price_table(items, empty_message='Nenhum item nesta categoria.') %}
+{% if items %}
+<table class="submissions">
+  <thead><tr><th>Item</th><th>Valor atual</th><th>Novo valor</th><th></th></tr></thead>
+  <tbody>
+    {% for item in items %}
+    {% set fee = item.fee %}
+    <tr>
+      <td>{{ item.label }}</td>
+      <td class="muted">{{ '$%.2f'|format(fee.price_cents / 100) if fee.price_cents is not none else 'Não vendido separadamente' }}</td>
+      <td colspan="2">
+        <form method="post" action="{{ url_for('staff.update_price', fee_id=fee.id) }}" style="display:flex;gap:8px;align-items:center;">
+          <span class="muted">$</span>
+          <input type="number" step="0.01" min="0" name="price_dollars"
+                 value="{{ '%.2f'|format(fee.price_cents / 100) if fee.price_cents is not none else '' }}"
+                 placeholder="—" style="max-width:120px;">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Salvar</button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p class="muted">{{ empty_message }}</p>
+{% endif %}
+{% endmacro %}

@@ -1,0 +1,132 @@
+{
+  "form": "I539-CARTA-ENDERECO",
+  "title": "Carta de Confirmação de Endereço",
+  "description": "Formulário para gerar a Carta de Confirmação de Endereço, assinada pelo titular do comprovante de endereço do requerente, quando esse comprovante não está no nome do próprio requerente. Em inglês, pronta para impressão e assinatura. Campos marcados com * são obrigatórios.",
+  "sections": [
+    {
+      "id": "requerente",
+      "title": "Requerente"
+    },
+    {
+      "id": "carta_endereco",
+      "title": "Carta de Endereço"
+    }
+  ],
+  "questions": [
+    {
+      "id": "nome_completo_requerente",
+      "section": "requerente",
+      "label": "Nome completo do requerente (para quem as cartas serão escritas)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_comprovante_proprio",
+      "section": "carta_endereco",
+      "label": "O comprovante de endereço recente do seu país de origem está no SEU PRÓPRIO nome?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não, está no nome de outra pessoa"
+        }
+      ],
+      "hint": "Se a resposta for \"Sim\", esta carta não é necessária para o seu caso."
+    },
+    {
+      "id": "carta_endereco_titular_nome",
+      "section": "carta_endereco",
+      "label": "Nome completo do titular do comprovante de endereço",
+      "type": "text",
+      "required": true,
+      "hint": "Pessoa em cujo nome está a conta de água, luz, internet, etc.",
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_endereco",
+      "section": "carta_endereco",
+      "label": "Endereço completo (igual ao do comprovante)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_tax_id",
+      "section": "carta_endereco",
+      "label": "Número de identificação fiscal do titular (CPF ou equivalente)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_doc_id",
+      "section": "carta_endereco",
+      "label": "Número de identificação (RG ou documento equivalente) do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_email",
+      "section": "carta_endereco",
+      "label": "E-mail do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_telefone",
+      "section": "carta_endereco",
+      "label": "Telefone do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_cidade_nascimento",
+      "section": "carta_endereco",
+      "label": "Cidade e estado de nascimento do titular",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "carta_endereco_titular_parentesco",
+      "section": "carta_endereco",
+      "label": "Grau de parentesco do titular com você",
+      "type": "text",
+      "required": true,
+      "hint": "IMPORTANTE: responda em INGLÊS — este texto entra direto na carta em inglês. Ex.: father, mother, brother, sister, son, daughter, friend, etc.",
+      "show_if": {
+        "question": "endereco_comprovante_proprio",
+        "equals": "nao"
+      }
+    }
+  ]
+}
