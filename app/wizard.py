@@ -23,6 +23,7 @@ from flask import (Blueprint, abort, flash, redirect, render_template,
                     request, send_file, session, url_for)
 from flask_login import current_user, login_required
 
+from app.crm_models import Case, Client, VisaDraftType
 from app.db import SessionLocal
 from app.i18n import SUPPORTED_LANGS
 from app.models import FormSubmission, Payment
@@ -83,7 +84,14 @@ CARTA_LETTER_SLUGS = [
     "i539-carta-empregador", "i539-carta-empresa",
 ]
 
-AUXILIARY_FORM_SLUGS = ["g-1145", "g-1450", "g-1650", "i-539a"] + CARTA_LETTER_SLUGS
+# "ds160" também não tem página de serviço/formulário público próprio --
+# de propósito (pedido do usuário): só fica alcançável quando a equipe
+# marca no CRM que o cliente contratou visto B1/B2 ou F1/F2
+# (Case.ds160_visa_type, ver app/crm_models.py::VisaDraftType). Ver
+# _ds160_gate_case()/dashboard() abaixo pro gate, e start() pra
+# re-checagem de segurança (não basta esconder o link -- a rota em si
+# recusa sem o gate).
+AUXILIARY_FORM_SLUGS = ["g-1145", "g-1450", "g-1650", "i-539a", "ds160"] + CARTA_LETTER_SLUGS
 
 CARTA_LETTER_DISPLAY_NAME = {
     "i539-carta-endereco": {
@@ -139,6 +147,12 @@ CARTAS_DISPLAY_NAME = {
     "pt": "I-539 — Cartas Complementares",
     "en": "I-539 — Supplementary Letters",
     "es": "I-539 — Cartas Complementarias",
+}
+
+DS160_DISPLAY_NAME = {
+    "pt": "Rascunho — Visto Americano (DS-160)",
+    "en": "Draft — US Visa (DS-160)",
+    "es": "Borrador — Visa Americana (DS-160)",
 }
 
 
@@ -222,6 +236,8 @@ def _form_display_name(slug: str, lang: str | None = None) -> str:
     lang = lang or get_lang()
     if slug == "i-539-cartas":
         return CARTAS_DISPLAY_NAME.get(lang, CARTAS_DISPLAY_NAME[DEFAULT_LANG])
+    if slug == "ds160":
+        return DS160_DISPLAY_NAME.get(lang, DS160_DISPLAY_NAME[DEFAULT_LANG])
     if slug in CARTA_LETTER_DISPLAY_NAME:
         names = CARTA_LETTER_DISPLAY_NAME[slug]
         return names.get(lang, names[DEFAULT_LANG])
@@ -522,12 +538,22 @@ def dashboard():
         {"slug": slug, "name": _form_display_name(slug)}
         for slug in list(FORM_SLUGS_ORDER) + MAIN_GRID_EXTRA_SLUGS
     ]
+
+    # "ds160" nunca entra no catalog público acima -- só aparece aqui
+    # quando a equipe já marcou o gate no CRM (ver _ds160_gate_case) e o
+    # usuário ainda não tem nenhuma submissão desse slug (uma vez criada,
+    # ela já aparece sozinha na tabela "Em andamento" via `submissions`
+    # genérico, sem precisar de nada especial aqui).
+    ds160_gate_case = _ds160_gate_case(current_user.id)
+    ds160_already_started = any(s.form_slug == "ds160" for s in submissions)
+
     return render_template("dashboard.html", submissions=top_level, catalog=catalog,
                            dependents_by_parent=dependents_by_parent,
                            dependent_form_enabled=("i-539a" in ENABLED_FORMS),
                            i134_form_enabled=("i-134" in ENABLED_FORMS),
                            carta_letters_enabled=all(s in ENABLED_FORMS for s in CARTA_LETTER_SLUGS),
                            carta_letter_slugs=CARTA_LETTER_SLUGS,
+                           ds160_gate_case=None if ds160_already_started else ds160_gate_case,
                            news_items=get_latest_news())
 
 
@@ -542,6 +568,15 @@ def start(slug: str):
         # submissão nasceria órfã (sem parent_submission_id) e _cartas_case()
         # não teria como aplicar o gate de pagamento a ela.
         abort(404)
+
+    ds160_case = None
+    if slug == "ds160":
+        # Re-checagem de verdade, não só esconder o link: mesmo que o
+        # usuário descubra/salve esta URL, sem o gate marcado no CRM
+        # (ver _ds160_gate_case) a rota recusa igual.
+        ds160_case = _ds160_gate_case(current_user.id)
+        if ds160_case is None:
+            abort(404)
 
     existing = (
         SessionLocal.query(FormSubmission)
@@ -565,6 +600,12 @@ def start(slug: str):
     prefill, sources = _build_autofill(current_user.id, slug)
     if slug == "i-539" and request.args.get("servico") in I539_SERVICO_VALUES:
         prefill["servico"] = request.args["servico"]
+    if slug == "ds160" and ds160_case is not None:
+        # A equipe já sabe qual visto é (marcou o gate) -- pré-preenche
+        # pra não perguntar de novo, mas o cliente ainda pode conferir/
+        # mudar na primeira pergunta do questionário.
+        prefill["tipo_visto"] = ds160_case.ds160_visa_type.value
+        submission.case_id = ds160_case.id
     submission.set_answers(prefill)
     submission.set_autofilled(sources)
     SessionLocal.add(submission)
@@ -990,6 +1031,25 @@ def review(submission_id: int):
         checkout_url=checkout_url)
 
 
+def _ds160_gate_case(user_id: int) -> Case | None:
+    """Caso do CRM (app/crm_models.py) que libera o rascunho de DS-160 para
+    este usuário -- None enquanto nenhuma equipe marcou
+    Case.ds160_visa_type (ver app/crm_staff_pipeline.py::
+    case_ds160_gate_update). Usado tanto pra decidir se o tile aparece no
+    dashboard quanto, de novo, dentro de start() -- esconder o link não
+    basta, a rota tem que recusar sozinha (ver docstring de
+    AUXILIARY_FORM_SLUGS)."""
+    client = SessionLocal.query(Client).filter_by(user_id=user_id).first()
+    if client is None:
+        return None
+    return (
+        SessionLocal.query(Case)
+        .filter(Case.client_id == client.id, Case.ds160_visa_type.is_not(None))
+        .order_by(Case.updated_at.desc())
+        .first()
+    )
+
+
 def _cartas_case(submission: FormSubmission) -> FormSubmission | None:
     """Devolve a submissão "I-539 — Cartas Complementares" que rege o
     pagamento de `submission`: ela mesma, se `submission` já for o caso; a
@@ -1023,7 +1083,7 @@ def _payment_case(submission: FormSubmission):
     from app.services.pricing import (PaymentCase, in_package_price_cents,
                                        individual_price_cents, package_display_name,
                                        package_price_cents)
-    if submission.form_slug == "i-539-cartas" or submission.form_slug in CARTA_LETTER_SLUGS:
+    if submission.form_slug in ("i-539-cartas", "ds160") or submission.form_slug in CARTA_LETTER_SLUGS:
         return None
     if submission.form_slug == "i-134":
         price = (in_package_price_cents("i-134") if submission.package_slug
@@ -1100,6 +1160,13 @@ def generate(submission_id: int):
         pdf_path = out_dir / f"{submission.form_slug}.pdf"
         result = generate_carta_letter_for_submission(submission.form_slug, answers, pdf_path)
         submission.filled_pdf_path = str(result) if result else None
+    elif submission.form_slug == "ds160":
+        from scripts.generate_ds160_draft import build_ds160_draft
+        pdf_path = out_dir / "ds160-rascunho.pdf"
+        client_name = " ".join(filter(None, [
+            answers.get("nome_passaporte"), answers.get("sobrenome_passaporte")])) or current_user.email
+        build_ds160_draft(answers, pdf_path, client_name=client_name)
+        submission.ds160_draft_pdf_path = str(pdf_path)
     else:
         pdf_path = out_dir / f"{submission.form_slug}-preenchido.pdf"
         fill_form_for_submission(submission.form_slug, answers, pdf_path, patch_xfa=True)
@@ -1167,6 +1234,15 @@ def download_cartas(submission_id: int):
     if not submission.cartas_zip_path:
         abort(404)
     return send_file(submission.cartas_zip_path, as_attachment=True)
+
+
+@wizard_bp.route("/wizard/<int:submission_id>/download/ds160")
+@login_required
+def download_ds160(submission_id: int):
+    submission = _get_owned_submission(submission_id)
+    if not submission.ds160_draft_pdf_path:
+        abort(404)
+    return send_file(submission.ds160_draft_pdf_path, as_attachment=True)
 
 
 @wizard_bp.route("/wizard/<int:submission_id>/download/documents")

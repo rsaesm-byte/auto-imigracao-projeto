@@ -111,6 +111,16 @@ class ServiceMode(str, enum.Enum):
     full_service = "full_service"
 
 
+class VisaDraftType(str, enum.Enum):
+    """Controla o rascunho de DS-160 (app/wizard.py, form_slug "ds160") --
+    a equipe marca aqui quando o caso é de fato um pedido de visto de
+    turismo/negócios (B1/B2) ou estudante (F1/F2) contratado pelo cliente;
+    até marcar, o cliente não vê nem consegue abrir esse questionário
+    (gate no dashboard, ver wizard.dashboard/_ds160_gate_case)."""
+    b1_b2 = "b1_b2"
+    f1_f2 = "f1_f2"
+
+
 class CaseStatus(str, enum.Enum):
     lead_capture = "lead_capture"
     onboarding = "onboarding"
@@ -557,6 +567,10 @@ class Case(Base):
     # "Go to Next Step" do Notion (Can the next step be done?) -- gate
     # manual que o responsável liga quando o caso está pronto para avançar.
     ready_for_next_step: Mapped[bool] = mapped_column(default=False)
+    # Gate do rascunho de DS-160 (ver VisaDraftType acima) -- None até a
+    # equipe marcar; enquanto None, o cliente não vê o questionário no
+    # dashboard nem consegue abrir /forms/ds160/start (app/wizard.py).
+    ds160_visa_type: Mapped[VisaDraftType | None] = mapped_column(SAEnum(VisaDraftType), default=None)
 
     responsible_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None, index=True)
     field_office_id: Mapped[int | None] = mapped_column(ForeignKey("crm_field_offices.id"), default=None)

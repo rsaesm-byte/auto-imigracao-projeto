@@ -9,7 +9,8 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, u
 from flask_login import current_user, login_required
 
 from app.crm_models import (Case, CaseStatus, Client, ClientTier, Lead,
-                             LeadQuality, LeadSource, LeadStage, ServiceMode)
+                             LeadQuality, LeadSource, LeadStage, ServiceMode,
+                             VisaDraftType)
 from app.db import SessionLocal
 from app.models import User
 from app.services import crm_service as svc
@@ -56,6 +57,20 @@ def case_status_update(case_id: int):
     case.case_status = new_status
     SessionLocal.commit()
     return redirect(request.referrer or url_for("crm_pipeline.cases_kanban"))
+
+
+@crm_pipeline_bp.route("/casos/<int:case_id>/ds160", methods=["POST"])
+def case_ds160_gate_update(case_id: int):
+    """Liga/desliga o gate do rascunho de DS-160 (app/wizard.py, form_slug
+    "ds160") -- enquanto None, o cliente não vê nem consegue abrir esse
+    questionário, mesmo sabendo a URL (ver wizard.start)."""
+    case = SessionLocal.get(Case, case_id)
+    if case is None:
+        abort(404)
+    case.ds160_visa_type = svc.parse_enum(VisaDraftType, request.form.get("ds160_visa_type"))
+    SessionLocal.commit()
+    flash("Rascunho DS-160 atualizado.", "success")
+    return redirect(request.referrer or url_for("crm_pipeline.client_detail", client_id=case.client_id))
 
 
 # --------------------------------------------------------------------------

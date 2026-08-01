@@ -528,5 +528,8 @@
   "my_financial_plan_progress_status_in_progress": "En progreso",
   "my_financial_plan_progress_status_needs_attention": "Necesita atención",
   "my_financial_plan_progress_status_at_risk": "En riesgo",
-  "my_financial_plan_progress_status_completed": "Completado"
+  "my_financial_plan_progress_status_completed": "Completado",
+  "ds160_tile_title": "Borrador — Visa Americana (DS-160)",
+  "ds160_tile_subtitle": "Complete el borrador para su visa de turista/negocios o de estudiante -- nuestro equipo usará sus respuestas para completar el DS-160 oficial.",
+  "download_ds160_draft": "Descargar borrador del DS-160 (PDF)"
 }

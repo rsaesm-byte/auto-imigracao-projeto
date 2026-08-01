@@ -1,0 +1,137 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Editar perfil de {{ fc.full_name }}{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Editar perfil — {{ fc.full_name }}</h1>
+  <p style="opacity:0.92;margin:0;"><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}" style="color:#fff;">← Voltar ao detalhe</a></p>
+</div>
+
+<form method="post">
+  <div class="card">
+    <h2>Identificação e contato</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div><label class="muted">Nome</label><br><input type="text" name="full_name" value="{{ fc.full_name }}" required></div>
+      <div><label class="muted">E-mail</label><br><input type="email" name="email" value="{{ fc.email or '' }}"></div>
+      <div><label class="muted">Telefone</label><br><input type="text" name="phone_number" value="{{ fc.phone_number or '' }}"></div>
+      <div><label class="muted">Data de nascimento</label><br><input type="date" name="dob" value="{{ fc.dob.isoformat() if fc.dob else '' }}"></div>
+      <div>
+        <label class="muted">Estado civil</label><br>
+        <select name="marital_status"><option value="">—</option>
+          {% for m in marital_statuses %}<option value="{{ m.value }}" {{ 'selected' if fc.marital_status == m }}>{{ m.value|title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div><label class="muted">Ocupação</label><br><input type="text" name="occupation" value="{{ fc.occupation or '' }}"></div>
+      <div><label class="muted">Empregador</label><br><input type="text" name="employer" value="{{ fc.employer or '' }}"></div>
+      <div>
+        <label class="muted">Idioma preferido</label><br>
+        <select name="preferred_language"><option value="">—</option>
+          {% for l in languages %}<option value="{{ l.value }}" {{ 'selected' if fc.preferred_language == l }}>{{ l.value|upper }}</option>{% endfor %}
+        </select>
+      </div>
+    </div>
+    <p class="muted" style="margin:14px 0 4px;">Plataformas de reunião</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      {% for p in meeting_platforms %}
+      <label style="font-size:0.85rem;"><input type="checkbox" name="meeting_platforms" value="{{ p.value }}" {{ 'checked' if p in selected_platforms }}> {{ p.value|replace('_',' ')|title }}</label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Programa e progresso</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div><label class="muted">Valor do pacote (USD)</label><br><input type="number" step="0.01" min="0" name="package_value_dollars" value="{{ '%.2f'|format(fc.package_value_cents / 100) if fc.package_value_cents else '' }}"></div>
+      <div><label class="muted">Sessões contratadas</label><br><input type="number" min="0" name="total_sessions_purchased" value="{{ fc.total_sessions_purchased or '' }}"></div>
+      <div><label class="muted">Matrícula</label><br><input type="date" name="enrollment_at" value="{{ fc.enrollment_at.isoformat() if fc.enrollment_at else '' }}"></div>
+      <div><label class="muted">Diagnóstico</label><br><input type="date" name="diagnostic_at" value="{{ fc.diagnostic_at.isoformat() if fc.diagnostic_at else '' }}"></div>
+      <div><label class="muted">Meta de conclusão</label><br><input type="date" name="target_completion_at" value="{{ fc.target_completion_at.isoformat() if fc.target_completion_at else '' }}"></div>
+      <div>
+        <label class="muted">Status de progresso</label><br>
+        <select name="progress_status">{% for s in progress_statuses %}<option value="{{ s.value }}" {{ 'selected' if fc.progress_status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Aderência a homework</label><br>
+        <select name="homework_adherence"><option value="">—</option>{% for h in homework_levels %}<option value="{{ h.value }}" {{ 'selected' if fc.homework_adherence == h }}>{{ h.value|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Compliance do cliente</label><br>
+        <select name="client_compliance"><option value="">—</option>{% for c in compliance_levels %}<option value="{{ c.value }}" {{ 'selected' if fc.client_compliance == c }}>{{ c.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Review de 90 dias</label><br>
+        <select name="review_90day_status">{% for r in review_statuses %}<option value="{{ r.value }}" {{ 'selected' if fc.review_90day_status == r }}>{{ r.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Programa de continuidade</label><br>
+        <select name="continuity_program">{% for c in continuity_programs %}<option value="{{ c.value }}" {{ 'selected' if fc.continuity_program == c }}>{{ c.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div><label class="muted">NPS</label><br><input type="number" min="0" max="10" name="nps_score" value="{{ fc.nps_score if fc.nps_score is not none else '' }}"></div>
+      <div>
+        <label class="muted">Prioridade</label><br>
+        <select name="priority_level">{% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if fc.priority_level == p }}>{{ p.value|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Foco atual</label><br>
+        <select name="current_focus_area"><option value="">—</option>{% for f in focus_areas %}<option value="{{ f.value }}" {{ 'selected' if fc.current_focus_area == f }}>{{ f.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+    </div>
+    <div style="margin-top:12px;display:grid;gap:10px;max-width:600px;">
+      <label class="muted">Conquistas/marcos<br><textarea name="wins_milestones" rows="2" style="width:100%;">{{ fc.wins_milestones or '' }}</textarea></label>
+      <label class="muted">Plano de ação<br><textarea name="action_plan" rows="2" style="width:100%;">{{ fc.action_plan or '' }}</textarea></label>
+      <label class="muted">Soluções recomendadas<br><textarea name="recommended_solutions" rows="2" style="width:100%;">{{ fc.recommended_solutions or '' }}</textarea></label>
+      <label class="muted">Notas<br><textarea name="notes" rows="2" style="width:100%;">{{ fc.notes or '' }}</textarea></label>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>Perfil financeiro</h2>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div>
+        <label class="muted">Faixa de renda familiar</label><br>
+        <select name="household_income_range"><option value="">—</option>{% for r in income_ranges %}<option value="{{ r.value }}" {{ 'selected' if fc.household_income_range == r }}>{{ r.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div><label class="muted">Renda mensal (USD)</label><br><input type="number" step="0.01" min="0" name="monthly_household_income_dollars" value="{{ '%.2f'|format(fc.monthly_household_income_cents / 100) if fc.monthly_household_income_cents else '' }}"></div>
+      <div><label class="muted">Despesas mensais (USD)</label><br><input type="number" step="0.01" min="0" name="monthly_expenses_dollars" value="{{ '%.2f'|format(fc.monthly_expenses_cents / 100) if fc.monthly_expenses_cents else '' }}"></div>
+      <div>
+        <label class="muted">Fundo de emergência</label><br>
+        <select name="emergency_fund_status"><option value="">—</option>{% for e in emergency_fund_statuses %}<option value="{{ e.value }}" {{ 'selected' if fc.emergency_fund_status == e }}>{{ e.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div><label class="muted">Credit Score</label><br><input type="number" min="300" max="850" name="credit_score" value="{{ fc.credit_score if fc.credit_score is not none else '' }}"></div>
+      <div><label class="muted">Ativos totais (USD)</label><br><input type="number" step="0.01" min="0" name="total_assets_dollars" value="{{ '%.2f'|format(fc.total_assets_cents / 100) if fc.total_assets_cents else '' }}"></div>
+      <div><label class="muted">Dívidas totais (USD)</label><br><input type="number" step="0.01" min="0" name="total_liabilities_dollars" value="{{ '%.2f'|format(fc.total_liabilities_cents / 100) if fc.total_liabilities_cents else '' }}"></div>
+      <div><label class="muted">Caixa/banco (USD)</label><br><input type="number" step="0.01" min="0" name="cash_banking_dollars" value="{{ '%.2f'|format(fc.cash_banking_cents / 100) if fc.cash_banking_cents else '' }}"></div>
+      <div><label class="muted">Investimentos (USD)</label><br><input type="number" step="0.01" min="0" name="investments_dollars" value="{{ '%.2f'|format(fc.investments_cents / 100) if fc.investments_cents else '' }}"></div>
+      <div><label class="muted">Imóveis (USD)</label><br><input type="number" step="0.01" min="0" name="real_estate_dollars" value="{{ '%.2f'|format(fc.real_estate_cents / 100) if fc.real_estate_cents else '' }}"></div>
+      <div><label class="muted">Veículos (USD)</label><br><input type="number" step="0.01" min="0" name="vehicles_dollars" value="{{ '%.2f'|format(fc.vehicles_cents / 100) if fc.vehicles_cents else '' }}"></div>
+      <div><label class="muted">Aposentadoria (USD)</label><br><input type="number" step="0.01" min="0" name="retirement_dollars" value="{{ '%.2f'|format(fc.retirement_cents / 100) if fc.retirement_cents else '' }}"></div>
+      <div><label class="muted">Valor do negócio próprio (USD)</label><br><input type="number" step="0.01" min="0" name="business_ownership_value_dollars" value="{{ '%.2f'|format(fc.business_ownership_value_cents / 100) if fc.business_ownership_value_cents else '' }}"></div>
+      <div><label class="muted">Dívida em cartão de crédito (USD)</label><br><input type="number" step="0.01" min="0" name="credit_card_debt_dollars" value="{{ '%.2f'|format(fc.credit_card_debt_cents / 100) if fc.credit_card_debt_cents else '' }}"></div>
+    </div>
+
+    <p class="muted" style="margin:14px 0 4px;">Fontes de renda</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      {% for s in income_source_types %}
+      <label style="font-size:0.85rem;"><input type="checkbox" name="income_sources" value="{{ s.id }}" {{ 'checked' if s.id in selected_income_sources }}> {{ s.name }}</label>
+      {% endfor %}
+    </div>
+
+    <p class="muted" style="margin:14px 0 4px;">Metas financeiras</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      {% for g in financial_goals %}
+      <label style="font-size:0.85rem;"><input type="checkbox" name="financial_goals" value="{{ g.id }}" {{ 'checked' if g.id in selected_goals }}> {{ g.name }}</label>
+      {% endfor %}
+    </div>
+
+    <p class="muted" style="margin:14px 0 4px;">Principais desafios</p>
+    <div style="display:flex;gap:14px;flex-wrap:wrap;">
+      {% for c in financial_challenges %}
+      <label style="font-size:0.85rem;"><input type="checkbox" name="financial_challenges" value="{{ c.id }}" {{ 'checked' if c.id in selected_challenges }}> {{ c.name }}</label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="card">
+    <button type="submit" class="btn">Salvar perfil</button>
+  </div>
+</form>
+{% endblock %}

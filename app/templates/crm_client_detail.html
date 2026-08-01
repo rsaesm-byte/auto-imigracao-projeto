@@ -40,6 +40,15 @@
       Documentos pendentes: {{ pending|map(attribute='name')|join(', ') }}
     </div>
     {% endif %}
+    <form method="post" action="{{ url_for('crm_pipeline.case_ds160_gate_update', case_id=case.id) }}" style="margin-top:8px;display:inline-flex;gap:6px;align-items:center;">
+      <label class="muted" style="font-size:0.8rem;">Rascunho DS-160:</label>
+      <select name="ds160_visa_type" style="font-size:0.8rem;">
+        <option value="" {{ 'selected' if not case.ds160_visa_type }}>Nenhum (não contratado)</option>
+        <option value="b1_b2" {{ 'selected' if case.ds160_visa_type and case.ds160_visa_type.value == 'b1_b2' }}>B1/B2 — Turismo/Negócios</option>
+        <option value="f1_f2" {{ 'selected' if case.ds160_visa_type and case.ds160_visa_type.value == 'f1_f2' }}>F1/F2 — Estudante</option>
+      </select>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Salvar</button>
+    </form>
   </div>
   {% endfor %}
   {% else %}

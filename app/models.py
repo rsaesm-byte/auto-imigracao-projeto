@@ -87,6 +87,12 @@ class FormSubmission(Base):
     # Só usado pelo pseudo-formulário "i-539-cartas" (sem PDF oficial próprio):
     # zip com o resumo da narrativa + as cartas complementares aplicáveis.
     cartas_zip_path: Mapped[str | None] = mapped_column(default=None)
+    # Só usado pelo pseudo-formulário "ds160" (idem, sem PDF/AcroForm
+    # oficial -- o DS-160 de verdade só existe online no CEAC): PDF com a
+    # marca Saes reunindo todas as respostas, gerado por
+    # scripts/generate_ds160_draft.py para a equipe usar ao preencher o
+    # formulário oficial.
+    ds160_draft_pdf_path: Mapped[str | None] = mapped_column(default=None)
     # Campos do "núcleo de identidade" pré-preenchidos automaticamente a
     # partir de outra submissão do mesmo usuário (ver
     # app/wizard.py::_build_autofill), ainda não confirmados pelo usuário

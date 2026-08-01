@@ -31,6 +31,29 @@ def _ensure_cartas_zip_path_column() -> None:
             conn.commit()
 
 
+def _ensure_ds160_draft_pdf_column() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para a
+    coluna nova do pseudo-formulário "ds160" (ds160_draft_pdf_path)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(form_submissions)"))]
+        if "ds160_draft_pdf_path" not in cols:
+            conn.execute(text("ALTER TABLE form_submissions ADD COLUMN ds160_draft_pdf_path VARCHAR"))
+            conn.commit()
+
+
+def _ensure_case_ds160_visa_type_column() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para o gate
+    do rascunho de DS-160 (Case.ds160_visa_type, ver
+    app/crm_models.py::VisaDraftType)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_cases)"))]
+        if "ds160_visa_type" not in cols:
+            conn.execute(text("ALTER TABLE crm_cases ADD COLUMN ds160_visa_type VARCHAR"))
+            conn.commit()
+
+
 def _ensure_package_columns() -> None:
     """Mesma lógica de _ensure_cartas_zip_path_column() acima, para as duas
     colunas novas da feature de pacotes (parent_submission_id, package_slug)."""
@@ -315,6 +338,8 @@ def create_app() -> Flask:
     _ensure_staff_profile_columns()
     _ensure_crm_case_link_columns()
     _ensure_financial_payment_link_column()
+    _ensure_ds160_draft_pdf_column()
+    _ensure_case_ds160_visa_type_column()
     _seed_service_fees()
     _seed_crm_lookups()
     _seed_crm_financial_lookups()

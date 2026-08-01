@@ -528,5 +528,8 @@
   "my_financial_plan_progress_status_in_progress": "Em andamento",
   "my_financial_plan_progress_status_needs_attention": "Precisa de atenção",
   "my_financial_plan_progress_status_at_risk": "Em risco",
-  "my_financial_plan_progress_status_completed": "Concluído"
+  "my_financial_plan_progress_status_completed": "Concluído",
+  "ds160_tile_title": "Rascunho — Visto Americano (DS-160)",
+  "ds160_tile_subtitle": "Preencha o rascunho para o seu visto de turismo/negócios ou de estudante -- a equipe vai usar suas respostas para preencher o DS-160 oficial.",
+  "download_ds160_draft": "Baixar rascunho do DS-160 (PDF)"
 }

@@ -10,12 +10,24 @@ from datetime import datetime, timezone
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from app.crm_financial_models import (CoachingSession, FinancialClient,
-                                       FinancialClientStatus, FinancialTask,
-                                       FinancialTaskCategory, ProgramType,
+from app.crm_financial_models import (ClientComplianceLevel, CoachingSession,
+                                       ContinuityProgram, EmergencyFundStatus,
+                                       FinancialChallenge, FinancialClient,
+                                       FinancialClientChallenge,
+                                       FinancialClientGoal,
+                                       FinancialClientIncomeSource,
+                                       FinancialClientMeetingPlatform,
+                                       FinancialClientStatus, FinancialGoal,
+                                       FinancialProgressStatus, FinancialTask,
+                                       FinancialTaskCategory, FocusArea,
+                                       HomeworkAdherenceLevel,
+                                       HouseholdIncomeRange, MeetingPlatform,
+                                       NinetyDayReviewStatus, ProgramType,
                                        SessionType, TaskDifficulty,
                                        TaskResponsibleParty)
-from app.crm_models import PaymentStatus, Priority, TaskStatus
+from app.crm_models import (IncomeSourceType, MaritalStatus,
+                             PreferredLanguage, PaymentStatus, Priority,
+                             TaskStatus)
 from app.db import SessionLocal
 from app.models import User
 from app.services import crm_financial_service as fsvc
@@ -114,6 +126,121 @@ def client_detail(financial_client_id: int):
         pending_tasks=fsvc.pending_financial_tasks(fc),
         homework_completion_pct=fsvc.homework_completion_pct,
         session_types=list(SessionType), staff_users=svc.staff_users())
+
+
+def _sync_checkbox_set(model, fk_column: str, other_column: str, financial_client_id: int,
+                        selected_ids: list[int]) -> None:
+    """Substitui o conjunto inteiro de uma relação M2M (ver
+    app/crm_financial_models.py -- meeting_platforms/income_sources/goals/
+    challenges) pelos ids marcados no formulário: apaga tudo que já
+    existia pra este cliente e recria só o que veio marcado. Mais simples
+    e sem risco de duplicata do que tentar comparar diff a diff."""
+    SessionLocal.query(model).filter_by(**{fk_column: financial_client_id}).delete()
+    for value in selected_ids:
+        SessionLocal.add(model(**{fk_column: financial_client_id, other_column: value}))
+
+
+@crm_financial_bp.route("/<int:financial_client_id>/perfil", methods=["GET", "POST"])
+def client_profile_edit(financial_client_id: int):
+    fc = SessionLocal.get(FinancialClient, financial_client_id)
+    if fc is None:
+        abort(404)
+
+    if request.method == "POST":
+        fc.full_name = request.form.get("full_name", "").strip() or fc.full_name
+        fc.email = request.form.get("email", "").strip() or None
+        fc.phone_number = request.form.get("phone_number", "").strip() or None
+        fc.dob = svc.parse_date(request.form.get("dob"))
+        fc.marital_status = svc.parse_enum(MaritalStatus, request.form.get("marital_status"))
+        fc.occupation = request.form.get("occupation", "").strip() or None
+        fc.employer = request.form.get("employer", "").strip() or None
+        fc.preferred_language = svc.parse_enum(PreferredLanguage, request.form.get("preferred_language"))
+
+        fc.package_value_cents = svc.parse_dollars_to_cents(request.form.get("package_value_dollars", ""))
+        fc.total_sessions_purchased = svc.parse_int(request.form.get("total_sessions_purchased"))
+        fc.enrollment_at = svc.parse_date(request.form.get("enrollment_at"))
+        fc.diagnostic_at = svc.parse_date(request.form.get("diagnostic_at"))
+        fc.target_completion_at = svc.parse_date(request.form.get("target_completion_at"))
+        fc.progress_status = svc.parse_enum(
+            FinancialProgressStatus, request.form.get("progress_status"),
+            default=FinancialProgressStatus.not_started)
+        fc.homework_adherence = svc.parse_enum(HomeworkAdherenceLevel, request.form.get("homework_adherence"))
+        fc.client_compliance = svc.parse_enum(ClientComplianceLevel, request.form.get("client_compliance"))
+        fc.review_90day_status = svc.parse_enum(
+            NinetyDayReviewStatus, request.form.get("review_90day_status"),
+            default=NinetyDayReviewStatus.not_scheduled)
+        fc.continuity_program = svc.parse_enum(
+            ContinuityProgram, request.form.get("continuity_program"), default=ContinuityProgram.none)
+        fc.nps_score = svc.parse_int(request.form.get("nps_score"))
+        fc.priority_level = svc.parse_enum(Priority, request.form.get("priority_level"), default=Priority.medium)
+        fc.current_focus_area = svc.parse_enum(FocusArea, request.form.get("current_focus_area"))
+        fc.wins_milestones = request.form.get("wins_milestones", "").strip() or None
+        fc.action_plan = request.form.get("action_plan", "").strip() or None
+        fc.recommended_solutions = request.form.get("recommended_solutions", "").strip() or None
+        fc.notes = request.form.get("notes", "").strip() or None
+
+        fc.household_income_range = svc.parse_enum(
+            HouseholdIncomeRange, request.form.get("household_income_range"))
+        fc.monthly_household_income_cents = svc.parse_dollars_to_cents(
+            request.form.get("monthly_household_income_dollars", ""))
+        fc.monthly_expenses_cents = svc.parse_dollars_to_cents(request.form.get("monthly_expenses_dollars", ""))
+        fc.emergency_fund_status = svc.parse_enum(EmergencyFundStatus, request.form.get("emergency_fund_status"))
+        fc.credit_score = svc.parse_int(request.form.get("credit_score"))
+        fc.total_assets_cents = svc.parse_dollars_to_cents(request.form.get("total_assets_dollars", ""))
+        fc.total_liabilities_cents = svc.parse_dollars_to_cents(request.form.get("total_liabilities_dollars", ""))
+        fc.cash_banking_cents = svc.parse_dollars_to_cents(request.form.get("cash_banking_dollars", ""))
+        fc.investments_cents = svc.parse_dollars_to_cents(request.form.get("investments_dollars", ""))
+        fc.real_estate_cents = svc.parse_dollars_to_cents(request.form.get("real_estate_dollars", ""))
+        fc.vehicles_cents = svc.parse_dollars_to_cents(request.form.get("vehicles_dollars", ""))
+        fc.retirement_cents = svc.parse_dollars_to_cents(request.form.get("retirement_dollars", ""))
+        fc.business_ownership_value_cents = svc.parse_dollars_to_cents(
+            request.form.get("business_ownership_value_dollars", ""))
+        fc.credit_card_debt_cents = svc.parse_dollars_to_cents(request.form.get("credit_card_debt_dollars", ""))
+
+        platforms = [svc.parse_enum(MeetingPlatform, v) for v in request.form.getlist("meeting_platforms")]
+        SessionLocal.query(FinancialClientMeetingPlatform).filter_by(financial_client_id=fc.id).delete()
+        for platform in platforms:
+            if platform is not None:
+                SessionLocal.add(FinancialClientMeetingPlatform(financial_client_id=fc.id, platform=platform))
+
+        income_source_ids = [i for i in (svc.parse_int(v) for v in request.form.getlist("income_sources"))
+                              if i is not None]
+        _sync_checkbox_set(FinancialClientIncomeSource, "financial_client_id", "income_source_type_id",
+                            fc.id, income_source_ids)
+
+        goal_ids = [i for i in (svc.parse_int(v) for v in request.form.getlist("financial_goals"))
+                    if i is not None]
+        _sync_checkbox_set(FinancialClientGoal, "financial_client_id", "financial_goal_id", fc.id, goal_ids)
+
+        challenge_ids = [i for i in (svc.parse_int(v) for v in request.form.getlist("financial_challenges"))
+                          if i is not None]
+        _sync_checkbox_set(FinancialClientChallenge, "financial_client_id", "financial_challenge_id",
+                            fc.id, challenge_ids)
+
+        SessionLocal.commit()
+        flash("Perfil atualizado.", "success")
+        return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
+
+    selected_platforms = {p.platform for p in fc.meeting_platforms}
+    selected_income_sources = {s.income_source_type_id for s in fc.income_sources}
+    selected_goals = {g.financial_goal_id for g in fc.goals}
+    selected_challenges = {c.financial_challenge_id for c in fc.challenges}
+
+    return render_template(
+        "crm_financial_client_profile.html", fc=fc,
+        marital_statuses=list(MaritalStatus), languages=list(PreferredLanguage),
+        progress_statuses=list(FinancialProgressStatus),
+        homework_levels=list(HomeworkAdherenceLevel), compliance_levels=list(ClientComplianceLevel),
+        review_statuses=list(NinetyDayReviewStatus), continuity_programs=list(ContinuityProgram),
+        priorities=list(Priority), focus_areas=list(FocusArea),
+        income_ranges=list(HouseholdIncomeRange), emergency_fund_statuses=list(EmergencyFundStatus),
+        meeting_platforms=list(MeetingPlatform), selected_platforms=selected_platforms,
+        income_source_types=SessionLocal.query(IncomeSourceType).order_by(IncomeSourceType.name).all(),
+        selected_income_sources=selected_income_sources,
+        financial_goals=SessionLocal.query(FinancialGoal).order_by(FinancialGoal.name).all(),
+        selected_goals=selected_goals,
+        financial_challenges=SessionLocal.query(FinancialChallenge).order_by(FinancialChallenge.name).all(),
+        selected_challenges=selected_challenges)
 
 
 @crm_financial_bp.route("/<int:financial_client_id>/sessoes/nova", methods=["POST"])

@@ -11,7 +11,7 @@
 </div>
 
 <div class="card">
-  <h2>Perfil</h2>
+  <h2>Perfil <a href="{{ url_for('crm_financial.client_profile_edit', financial_client_id=fc.id) }}" style="font-size:0.78rem;font-weight:600;">Editar perfil completo</a></h2>
   <p class="muted">E-mail: {{ fc.email or '—' }} · Telefone: {{ fc.phone_number or '—' }}</p>
   <p class="muted">Progresso: {{ crm_badge(fc.progress_status) }}
     {% if completion_pct is not none %}· {{ completion_pct }}% do programa ({{ sessions_completed }}/{{ fc.total_sessions_purchased }} sessões){% endif %}

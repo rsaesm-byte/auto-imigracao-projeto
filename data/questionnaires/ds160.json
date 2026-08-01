@@ -1,0 +1,3576 @@
+{
+  "form": "ds160",
+  "title": "Rascunho — Visto Americano (DS-160)",
+  "description": "Rascunho para pedido de visto de não-imigrante (B1/B2 turismo/negócios ou F1/F2 estudante) junto ao Consulado Americano. As respostas abaixo serão usadas pela equipe da Saes Professional Services para preencher o DS-160 oficial no sistema do Departamento de Estado (CEAC) -- não existe PDF oficial para este formulário, ele só existe online. Responda com atenção: nenhum campo pode ficar em branco no DS-160 real, e qualquer erro pode atrasar ou comprometer seu processo.",
+  "sections": [
+    {
+      "id": "tipo_visto",
+      "title": "Tipo de Visto"
+    },
+    {
+      "id": "pessoal",
+      "title": "Informações Pessoais"
+    },
+    {
+      "id": "endereco_contato",
+      "title": "Endereço e Contato"
+    },
+    {
+      "id": "passaporte",
+      "title": "Passaporte"
+    },
+    {
+      "id": "viagem",
+      "title": "Informações sobre a Viagem aos EUA"
+    },
+    {
+      "id": "acompanhantes",
+      "title": "Companheiros de Viagem"
+    },
+    {
+      "id": "viagens_anteriores",
+      "title": "Viagens e Vistos Anteriores aos EUA"
+    },
+    {
+      "id": "contato_eua",
+      "title": "Contato nos EUA"
+    },
+    {
+      "id": "familia",
+      "title": "Informações Familiares"
+    },
+    {
+      "id": "trabalho_atual",
+      "title": "Trabalho ou Escola Atual"
+    },
+    {
+      "id": "trabalho_anterior",
+      "title": "Trabalho ou Escola Anteriores"
+    },
+    {
+      "id": "educacao",
+      "title": "Formação Educacional"
+    },
+    {
+      "id": "info_adicional",
+      "title": "Informações Adicionais"
+    },
+    {
+      "id": "seguranca",
+      "title": "Segurança e Antecedentes"
+    }
+  ],
+  "questions": [
+    {
+      "id": "tipo_visto",
+      "section": "tipo_visto",
+      "label": "Qual visto você está solicitando?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "b1_b2",
+          "label": "B1/B2 — Turismo ou Negócios"
+        },
+        {
+          "value": "f1_f2",
+          "label": "F1/F2 — Estudante ou dependente de estudante"
+        }
+      ],
+      "hint": "Já vem preenchido conforme o que a equipe registrou no seu caso -- confirme antes de continuar."
+    },
+    {
+      "id": "consulado",
+      "section": "tipo_visto",
+      "label": "Consulado americano onde pretende fazer a entrevista",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "brasilia",
+          "label": "Brasília"
+        },
+        {
+          "value": "recife",
+          "label": "Recife"
+        },
+        {
+          "value": "rio_de_janeiro",
+          "label": "Rio de Janeiro"
+        },
+        {
+          "value": "sao_paulo",
+          "label": "São Paulo"
+        },
+        {
+          "value": "porto_alegre",
+          "label": "Porto Alegre"
+        }
+      ],
+      "hint": "Preencha mesmo que seja renovação de visto."
+    },
+    {
+      "id": "solicitando_via_agencia",
+      "section": "tipo_visto",
+      "label": "Você está solicitando o visto através de uma agência (além da Saes)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "nao",
+          "label": "Não, sou o solicitante direto"
+        },
+        {
+          "value": "sim",
+          "label": "Sim, estou usando outra agência também"
+        }
+      ]
+    },
+    {
+      "id": "nome_agencia",
+      "section": "tipo_visto",
+      "label": "Nome da agência",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "solicitando_via_agencia",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sobrenome_passaporte",
+      "section": "pessoal",
+      "label": "Sobrenome (exatamente como no passaporte)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_passaporte",
+      "section": "pessoal",
+      "label": "Nome e nome(s) do meio (exatamente como no passaporte)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nome_alfabeto_nativo",
+      "section": "pessoal",
+      "label": "Nome completo no alfabeto nativo (se o passaporte não usa alfabeto latino)",
+      "type": "text",
+      "required": false,
+      "hint": "Se não se aplica ao seu caso, escreva \"Não se aplica\"."
+    },
+    {
+      "id": "outros_nomes",
+      "section": "pessoal",
+      "label": "Você já usou outros nomes (solteira, religioso, profissional, pseudônimo)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "outros_nomes_sobrenomes",
+      "section": "pessoal",
+      "label": "Outros sobrenomes utilizados",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "outros_nomes",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "outros_nomes_nomes",
+      "section": "pessoal",
+      "label": "Outros nomes utilizados",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "outros_nomes",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "sexo",
+      "section": "pessoal",
+      "label": "Sexo",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "masculino",
+          "label": "Masculino"
+        },
+        {
+          "value": "feminino",
+          "label": "Feminino"
+        }
+      ]
+    },
+    {
+      "id": "estado_civil_ds160",
+      "section": "pessoal",
+      "label": "Estado civil oficial",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "casado",
+          "label": "Casado(a)"
+        },
+        {
+          "value": "solteiro",
+          "label": "Solteiro(a)"
+        },
+        {
+          "value": "viuvo",
+          "label": "Viúvo(a)"
+        },
+        {
+          "value": "divorciado",
+          "label": "Divorciado(a)"
+        },
+        {
+          "value": "separado",
+          "label": "Separado(a) legalmente"
+        },
+        {
+          "value": "uniao_estavel",
+          "label": "União estável (com ou sem contrato)"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        }
+      ]
+    },
+    {
+      "id": "estado_civil_outro_detalhe",
+      "section": "pessoal",
+      "label": "Especifique o estado civil",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": "outro"
+      }
+    },
+    {
+      "id": "data_nascimento",
+      "section": "pessoal",
+      "label": "Data de nascimento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "cidade_nascimento",
+      "section": "pessoal",
+      "label": "Cidade de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "estado_nascimento",
+      "section": "pessoal",
+      "label": "Estado de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pais_nascimento",
+      "section": "pessoal",
+      "label": "País de nascimento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "nacionalidade",
+      "section": "pessoal",
+      "label": "Nacionalidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "outra_nacionalidade",
+      "section": "pessoal",
+      "label": "Possui (ou já possuiu) outra nacionalidade além da informada acima?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "outra_nacionalidade_qual",
+      "section": "pessoal",
+      "label": "Qual outra nacionalidade",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "outra_nacionalidade",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "outra_nacionalidade_passaporte",
+      "section": "pessoal",
+      "label": "Número do passaporte dessa outra nacionalidade (se possuir passaporte válido)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "outra_nacionalidade",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "cpf",
+      "section": "pessoal",
+      "label": "Número do CPF (se não possuir, escreva \"Não se aplica\")",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "rg",
+      "section": "pessoal",
+      "label": "Número do RG",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "ssn_eua",
+      "section": "pessoal",
+      "label": "Possui Social Security Number (SSN) americano? Informe o número (ou \"Não se aplica\")",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "itin_eua",
+      "section": "pessoal",
+      "label": "Possui número de identificação fiscal americano (ITIN/Taxpayer ID)? Informe (ou \"Não se aplica\")",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "endereco_rua",
+      "section": "endereco_contato",
+      "label": "Endereço residencial — Rua/Avenida, número e complemento",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_bairro",
+      "section": "endereco_contato",
+      "label": "Bairro",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_cidade",
+      "section": "endereco_contato",
+      "label": "Cidade",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_estado",
+      "section": "endereco_contato",
+      "label": "Estado",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_cep",
+      "section": "endereco_contato",
+      "label": "CEP",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "endereco_pais",
+      "section": "endereco_contato",
+      "label": "País",
+      "type": "text",
+      "required": false,
+      "hint": "Deixe em branco se for o Brasil."
+    },
+    {
+      "id": "endereco_correspondencia_igual",
+      "section": "endereco_contato",
+      "label": "O endereço acima é para onde seu passaporte deve ser enviado após o processo?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "correspondencia_rua",
+      "section": "endereco_contato",
+      "label": "Endereço de correspondência — Rua/Avenida, número e complemento",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_correspondencia_igual",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "correspondencia_bairro",
+      "section": "endereco_contato",
+      "label": "Bairro (correspondência)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_correspondencia_igual",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "correspondencia_cidade",
+      "section": "endereco_contato",
+      "label": "Cidade (correspondência)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_correspondencia_igual",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "correspondencia_estado",
+      "section": "endereco_contato",
+      "label": "Estado (correspondência)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_correspondencia_igual",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "correspondencia_cep",
+      "section": "endereco_contato",
+      "label": "CEP (correspondência)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "endereco_correspondencia_igual",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "telefone_residencial",
+      "section": "endereco_contato",
+      "label": "Telefone residencial com DDD",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "telefone_celular",
+      "section": "endereco_contato",
+      "label": "Telefone celular com DDD",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "telefone_comercial",
+      "section": "endereco_contato",
+      "label": "Telefone do trabalho ou escola (se estudante) com DDD (ou \"Não se aplica\")",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "email",
+      "section": "endereco_contato",
+      "label": "E-mail",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "outros_telefones_5anos",
+      "section": "endereco_contato",
+      "label": "Você utilizou outros números de telefone nos últimos 5 anos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "outros_telefones_quais",
+      "section": "endereco_contato",
+      "label": "Quais números",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "outros_telefones_5anos",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "outros_emails_5anos",
+      "section": "endereco_contato",
+      "label": "Você utilizou outros endereços de e-mail nos últimos 5 anos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "outros_emails_quais",
+      "section": "endereco_contato",
+      "label": "Quais e-mails",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "outros_emails_5anos",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "usa_redes_sociais",
+      "section": "endereco_contato",
+      "label": "Você usou alguma plataforma de rede social nos últimos 5 anos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Não informe senhas, só o nome de usuário/identificador de cada plataforma."
+    },
+    {
+      "id": "redes_sociais_plataformas",
+      "section": "endereco_contato",
+      "label": "Quais plataformas (marque todas que usou)",
+      "type": "checkbox_group",
+      "required": false,
+      "options": [
+        {
+          "value": "facebook",
+          "label": "Facebook"
+        },
+        {
+          "value": "instagram",
+          "label": "Instagram"
+        },
+        {
+          "value": "linkedin",
+          "label": "LinkedIn"
+        },
+        {
+          "value": "youtube",
+          "label": "YouTube"
+        },
+        {
+          "value": "twitter_x",
+          "label": "Twitter/X"
+        },
+        {
+          "value": "tiktok",
+          "label": "TikTok"
+        },
+        {
+          "value": "outra",
+          "label": "Outra"
+        }
+      ],
+      "show_if": {
+        "question": "usa_redes_sociais",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "redes_sociais_usuarios",
+      "section": "endereco_contato",
+      "label": "Para cada plataforma marcada acima, informe o nome de usuário (um por linha)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "usa_redes_sociais",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "outra_presenca_online",
+      "section": "endereco_contato",
+      "label": "Deseja informar presença em outros sites/apps (fora redes sociais) usados nos últimos 5 anos para criar ou compartilhar conteúdo?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "outra_presenca_online_quais",
+      "section": "endereco_contato",
+      "label": "Quais",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "outra_presenca_online",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "passaporte_numero",
+      "section": "passaporte",
+      "label": "Número do passaporte",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "passaporte_book_number",
+      "section": "passaporte",
+      "label": "Número de controle do passaporte (Book Number) -- não se aplica a passaporte brasileiro",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "passaporte_cidade_emissao",
+      "section": "passaporte",
+      "label": "Cidade onde foi emitido",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "passaporte_estado_emissao",
+      "section": "passaporte",
+      "label": "Estado onde foi emitido",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "passaporte_pais_emissao",
+      "section": "passaporte",
+      "label": "País onde foi emitido",
+      "type": "text",
+      "required": false,
+      "hint": "Deixe em branco se for o Brasil."
+    },
+    {
+      "id": "passaporte_data_emissao",
+      "section": "passaporte",
+      "label": "Data de emissão",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "passaporte_data_expiracao",
+      "section": "passaporte",
+      "label": "Data de expiração/vencimento",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "passaporte_perdido",
+      "section": "passaporte",
+      "label": "Já teve algum passaporte roubado ou perdido?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "passaporte_perdido_numero",
+      "section": "passaporte",
+      "label": "Número do passaporte perdido/roubado (escreva \"Não sei\" se não souber)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "passaporte_perdido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "passaporte_perdido_pais",
+      "section": "passaporte",
+      "label": "País que emitiu esse passaporte",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "passaporte_perdido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "passaporte_perdido_detalhes",
+      "section": "passaporte",
+      "label": "Mês/ano aproximado e como perdeu ou foi roubado",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "passaporte_perdido",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "aplicante_principal",
+      "section": "viagem",
+      "label": "Você é o aplicante principal deste pedido de visto?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "hint": "Você NÃO é o aplicante principal se estiver viajando para acompanhar cônjuge/parente que vai trabalhar (H1/L1) ou estudar (F/J/M/Q) -- isso é o \"visto de acompanhante\"."
+    },
+    {
+      "id": "aplicante_principal_sobrenome",
+      "section": "viagem",
+      "label": "Sobrenome do aplicante principal",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "aplicante_principal",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "aplicante_principal_nome",
+      "section": "viagem",
+      "label": "Nome do aplicante principal",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "aplicante_principal",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "aplicante_principal_categoria",
+      "section": "viagem",
+      "label": "Categoria do visto do aplicante principal e, se souber, número da petição/SEVIS ID",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "aplicante_principal",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "motivo_viagem_b1b2",
+      "section": "viagem",
+      "label": "Finalidade da viagem",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "negocios",
+          "label": "Negócios/conferência (B1)"
+        },
+        {
+          "value": "turismo",
+          "label": "Turismo/visita familiar (B2)"
+        },
+        {
+          "value": "negocios_turismo",
+          "label": "Negócios e turismo (B1/B2)"
+        },
+        {
+          "value": "fronteira",
+          "label": "Visto de fronteira (BCC)"
+        },
+        {
+          "value": "outro",
+          "label": "Outro"
+        }
+      ],
+      "show_if": {
+        "question": "tipo_visto",
+        "equals": "b1_b2"
+      }
+    },
+    {
+      "id": "motivo_viagem_b1b2_outro",
+      "section": "viagem",
+      "label": "Especifique a finalidade",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "motivo_viagem_b1b2",
+        "equals": "outro"
+      }
+    },
+    {
+      "id": "f1f2_nome_escola",
+      "section": "viagem",
+      "label": "Nome da instituição de ensino nos EUA",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tipo_visto",
+        "equals": "f1_f2"
+      }
+    },
+    {
+      "id": "f1f2_endereco_escola",
+      "section": "viagem",
+      "label": "Endereço completo da instituição de ensino",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tipo_visto",
+        "equals": "f1_f2"
+      }
+    },
+    {
+      "id": "f1f2_sevis_id",
+      "section": "viagem",
+      "label": "Número do SEVIS ID (do formulário I-20)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tipo_visto",
+        "equals": "f1_f2"
+      }
+    },
+    {
+      "id": "f1f2_curso",
+      "section": "viagem",
+      "label": "Curso/programa pretendido",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tipo_visto",
+        "equals": "f1_f2"
+      }
+    },
+    {
+      "id": "f1f2_data_inicio_curso",
+      "section": "viagem",
+      "label": "Data de início do curso/programa",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "tipo_visto",
+        "equals": "f1_f2"
+      }
+    },
+    {
+      "id": "tem_plano_viagem",
+      "section": "viagem",
+      "label": "Você já tem planos específicos de viagem (passagens compradas)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "viagem_data_chegada",
+      "section": "viagem",
+      "label": "Data de chegada nos EUA",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viagem_voo_chegada",
+      "section": "viagem",
+      "label": "Número do voo de desembarque",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viagem_cidade_desembarque",
+      "section": "viagem",
+      "label": "Cidade de desembarque nos EUA",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viagem_data_saida",
+      "section": "viagem",
+      "label": "Data de saída dos EUA",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viagem_cidade_saida",
+      "section": "viagem",
+      "label": "Cidade de onde vai partir ao sair dos EUA",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viagem_locais_visitar",
+      "section": "viagem",
+      "label": "Outras cidades/estados que pretende visitar",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viagem_data_chegada_aproximada",
+      "section": "viagem",
+      "label": "Data aproximada de chegada nos EUA",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "viagem_tempo_permanencia_pretendido",
+      "section": "viagem",
+      "label": "Tempo de permanência pretendido (em dias/meses)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "viagem_endereco_eua_pretendido",
+      "section": "viagem",
+      "label": "Endereço pretendido nos EUA (hotel -- não precisa de reserva -- ou residência de amigos, com no mínimo cidade e estado)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_plano_viagem",
+        "equals": "nao"
+      }
+    },
+    {
+      "id": "quem_paga_viagem",
+      "section": "viagem",
+      "label": "Quem vai pagar a viagem?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "proprios_recursos",
+          "label": "Recursos próprios — eu mesmo(a) pagarei"
+        },
+        {
+          "value": "outra_pessoa",
+          "label": "Outra pessoa física"
+        },
+        {
+          "value": "empresa",
+          "label": "Empresa/organização"
+        }
+      ]
+    },
+    {
+      "id": "pagador_nome",
+      "section": "viagem",
+      "label": "Nome completo de quem vai pagar",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "outra_pessoa"
+      }
+    },
+    {
+      "id": "pagador_telefone",
+      "section": "viagem",
+      "label": "Telefone com DDD de quem vai pagar",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "outra_pessoa"
+      }
+    },
+    {
+      "id": "pagador_email",
+      "section": "viagem",
+      "label": "E-mail de quem vai pagar (ou \"Não se aplica\")",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "outra_pessoa"
+      }
+    },
+    {
+      "id": "pagador_parentesco",
+      "section": "viagem",
+      "label": "Parentesco/relação do pagador com você",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "outra_pessoa"
+      }
+    },
+    {
+      "id": "pagador_endereco",
+      "section": "viagem",
+      "label": "Endereço completo de quem vai pagar (ou \"mesmo endereço do aplicante\")",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "outra_pessoa"
+      }
+    },
+    {
+      "id": "pagador_empresa_nome",
+      "section": "viagem",
+      "label": "Nome completo da empresa/organização pagadora",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "empresa"
+      }
+    },
+    {
+      "id": "pagador_empresa_telefone",
+      "section": "viagem",
+      "label": "Telefone com DDD da empresa pagadora",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "empresa"
+      }
+    },
+    {
+      "id": "pagador_empresa_relacao",
+      "section": "viagem",
+      "label": "Relação da empresa com você (ex.: empregador)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "empresa"
+      }
+    },
+    {
+      "id": "pagador_empresa_endereco",
+      "section": "viagem",
+      "label": "Endereço completo da empresa pagadora (ou \"mesmo endereço do aplicante\")",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "quem_paga_viagem",
+        "equals": "empresa"
+      }
+    },
+    {
+      "id": "viaja_acompanhado",
+      "section": "acompanhantes",
+      "label": "Existem outras pessoas viajando com você?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "acompanhante_1_nome",
+      "section": "acompanhantes",
+      "label": "Acompanhante 1 — nome completo",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_1_parentesco",
+      "section": "acompanhantes",
+      "label": "Acompanhante 1 — parentesco/relação",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_2_nome",
+      "section": "acompanhantes",
+      "label": "Acompanhante 2 — nome completo",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_2_parentesco",
+      "section": "acompanhantes",
+      "label": "Acompanhante 2 — parentesco/relação",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_3_nome",
+      "section": "acompanhantes",
+      "label": "Acompanhante 3 — nome completo",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_3_parentesco",
+      "section": "acompanhantes",
+      "label": "Acompanhante 3 — parentesco/relação",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_4_nome",
+      "section": "acompanhantes",
+      "label": "Acompanhante 4 — nome completo",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "acompanhante_4_parentesco",
+      "section": "acompanhantes",
+      "label": "Acompanhante 4 — parentesco/relação",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "viaja_acompanhado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viaja_em_grupo",
+      "section": "acompanhantes",
+      "label": "Está viajando com alguma agência de turismo, grupo ou organização?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "viaja_em_grupo_nome",
+      "section": "acompanhantes",
+      "label": "Nome do grupo/agência/organização",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "viaja_em_grupo",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ja_esteve_eua",
+      "section": "viagens_anteriores",
+      "label": "Você já esteve nos Estados Unidos alguma vez?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "visita_1_data_chegada",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 1 — data de chegada",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_1_tempo_permanencia",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 1 — tempo de permanência (dias/meses)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_2_data_chegada",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 2 — data de chegada",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_2_tempo_permanencia",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 2 — tempo de permanência (dias/meses)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_3_data_chegada",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 3 — data de chegada",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_3_tempo_permanencia",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 3 — tempo de permanência (dias/meses)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_4_data_chegada",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 4 — data de chegada",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_4_tempo_permanencia",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 4 — tempo de permanência (dias/meses)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_5_data_chegada",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 5 — data de chegada",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visita_5_tempo_permanencia",
+      "section": "viagens_anteriores",
+      "label": "Viagem anterior 5 — tempo de permanência (dias/meses)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "ja_esteve_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "tem_habilitacao_eua",
+      "section": "viagens_anteriores",
+      "label": "Você possui (ou já possuiu) carteira de habilitação americana (Driver License)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "habilitacao_eua_numero",
+      "section": "viagens_anteriores",
+      "label": "Número da licença (escreva \"Não sei\" se não souber)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_habilitacao_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "habilitacao_eua_estado",
+      "section": "viagens_anteriores",
+      "label": "Estado americano emissor",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_habilitacao_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ja_teve_visto_eua",
+      "section": "viagens_anteriores",
+      "label": "Você já teve um visto americano emitido antes?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "visto_anterior_data_emissao",
+      "section": "viagens_anteriores",
+      "label": "Data de emissão do último visto",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "ja_teve_visto_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visto_anterior_numero",
+      "section": "viagens_anteriores",
+      "label": "Número do visto (8 dígitos, em vermelho no canto inferior)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "ja_teve_visto_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visto_anterior_tipo",
+      "section": "viagens_anteriores",
+      "label": "Tipo do visto anterior (turismo, negócios, estudante etc.)",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "ja_teve_visto_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visto_mesmo_tipo",
+      "section": "viagens_anteriores",
+      "label": "Está solicitando o mesmo tipo de visto do anterior?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "show_if": {
+        "question": "ja_teve_visto_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visto_mesmo_pais_residencia",
+      "section": "viagens_anteriores",
+      "label": "Está solicitando no mesmo país onde o visto anterior foi emitido e que é sua residência principal?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "show_if": {
+        "question": "ja_teve_visto_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "ja_deu_digitais_10_dedos",
+      "section": "viagens_anteriores",
+      "label": "Alguma vez, ao entrar nos EUA ou obter um visto, colheram suas digitais dos 10 dedos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "visto_perdido_roubado",
+      "section": "viagens_anteriores",
+      "label": "Você já teve algum visto americano perdido ou roubado?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "visto_perdido_roubado_detalhes",
+      "section": "viagens_anteriores",
+      "label": "Informe o ano do extravio/roubo",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "visto_perdido_roubado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visto_cancelado_revogado",
+      "section": "viagens_anteriores",
+      "label": "Você já teve algum visto americano cancelado ou revogado?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "visto_cancelado_revogado_detalhes",
+      "section": "viagens_anteriores",
+      "label": "Explique quando, onde e o tipo de visto cancelado",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "visto_cancelado_revogado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "visto_negado_entrada_negada",
+      "section": "viagens_anteriores",
+      "label": "Alguma vez já lhe negaram um visto americano, negaram sua entrada nos EUA, ou retiraram seu cartão de admissão, ou você desistiu de um pedido de entrada?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "visto_negado_entrada_negada_detalhes",
+      "section": "viagens_anteriores",
+      "label": "Informe o ano e o motivo alegado",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "visto_negado_entrada_negada",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "peticao_imigrante_seu_nome",
+      "section": "viagens_anteriores",
+      "label": "Alguém já deu entrada em uma petição de imigrante em seu nome?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "peticao_imigrante_seu_nome_detalhes",
+      "section": "viagens_anteriores",
+      "label": "Explique de que petição se trata e por quê",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "peticao_imigrante_seu_nome",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "tem_contato_eua",
+      "section": "contato_eua",
+      "label": "Você possui alguma organização ou pessoa de contato nos EUA (parente, amigo, contato comercial)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "contato_eua_nome",
+      "section": "contato_eua",
+      "label": "Nome completo do contato",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "contato_eua_empresa",
+      "section": "contato_eua",
+      "label": "Nome da empresa/organização (se aplicável)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "contato_eua_parentesco",
+      "section": "contato_eua",
+      "label": "Relação/parentesco com você",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "contato_eua_endereco",
+      "section": "contato_eua",
+      "label": "Endereço completo do contato",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "contato_eua_telefone",
+      "section": "contato_eua",
+      "label": "Telefone com DDD do contato",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "contato_eua_email",
+      "section": "contato_eua",
+      "label": "E-mail do contato (ou \"Não se aplica\")",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "contato_eua_status",
+      "section": "contato_eua",
+      "label": "Situação migratória do contato nos EUA",
+      "type": "radio",
+      "required": false,
+      "options": [
+        {
+          "value": "cidadao",
+          "label": "Cidadão americano"
+        },
+        {
+          "value": "residente_permanente",
+          "label": "Residente permanente legal"
+        },
+        {
+          "value": "outro",
+          "label": "Outra/não sei"
+        }
+      ],
+      "show_if": {
+        "question": "tem_contato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pai_nome",
+      "section": "familia",
+      "label": "Nome completo do pai",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "pai_data_nascimento",
+      "section": "familia",
+      "label": "Data de nascimento do pai",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "pai_nos_eua",
+      "section": "familia",
+      "label": "Seu pai se encontra nos EUA?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "pai_situacao_eua",
+      "section": "familia",
+      "label": "Situação do pai nos EUA",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "cidadao",
+          "label": "Cidadão americano"
+        },
+        {
+          "value": "residente_permanente",
+          "label": "Residente permanente legal"
+        },
+        {
+          "value": "nao_imigrante",
+          "label": "Não-imigrante (turista, estudante etc.)"
+        },
+        {
+          "value": "outro",
+          "label": "Outro/não sei"
+        }
+      ],
+      "show_if": {
+        "question": "pai_nos_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "mae_nome",
+      "section": "familia",
+      "label": "Nome completo da mãe",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "mae_data_nascimento",
+      "section": "familia",
+      "label": "Data de nascimento da mãe",
+      "type": "date",
+      "required": false
+    },
+    {
+      "id": "mae_nos_eua",
+      "section": "familia",
+      "label": "Sua mãe se encontra nos EUA?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "mae_situacao_eua",
+      "section": "familia",
+      "label": "Situação da mãe nos EUA",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "cidadao",
+          "label": "Cidadão americano"
+        },
+        {
+          "value": "residente_permanente",
+          "label": "Residente permanente legal"
+        },
+        {
+          "value": "nao_imigrante",
+          "label": "Não-imigrante (turista, estudante etc.)"
+        },
+        {
+          "value": "outro",
+          "label": "Outro/não sei"
+        }
+      ],
+      "show_if": {
+        "question": "mae_nos_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "tem_parente_imediato_eua",
+      "section": "familia",
+      "label": "Você possui algum outro parente imediato (não os pais) nos Estados Unidos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "parente_imediato_nome",
+      "section": "familia",
+      "label": "Nome completo do parente",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_parente_imediato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "parente_imediato_parentesco",
+      "section": "familia",
+      "label": "Grau de parentesco",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_parente_imediato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "parente_imediato_status",
+      "section": "familia",
+      "label": "Situação migratória do parente nos EUA",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "cidadao",
+          "label": "Cidadão americano"
+        },
+        {
+          "value": "residente_permanente",
+          "label": "Residente permanente legal"
+        },
+        {
+          "value": "outro",
+          "label": "Outra/não sei"
+        }
+      ],
+      "show_if": {
+        "question": "tem_parente_imediato_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "conjuge_nome",
+      "section": "familia",
+      "label": "Nome completo do cônjuge atual (ou anterior, se divorciado/separado/viúvo). Se solteiro(a), escreva \"Não se aplica\"",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "casado",
+          "uniao_estavel",
+          "divorciado",
+          "separado",
+          "viuvo"
+        ]
+      }
+    },
+    {
+      "id": "conjuge_data_nascimento",
+      "section": "familia",
+      "label": "Data de nascimento do cônjuge",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "casado",
+          "uniao_estavel",
+          "divorciado",
+          "separado",
+          "viuvo"
+        ]
+      }
+    },
+    {
+      "id": "conjuge_nacionalidade",
+      "section": "familia",
+      "label": "Nacionalidade do cônjuge",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "casado",
+          "uniao_estavel",
+          "divorciado",
+          "separado",
+          "viuvo"
+        ]
+      }
+    },
+    {
+      "id": "conjuge_cidade_nascimento",
+      "section": "familia",
+      "label": "Cidade/estado/país de nascimento do cônjuge",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "casado",
+          "uniao_estavel",
+          "divorciado",
+          "separado",
+          "viuvo"
+        ]
+      }
+    },
+    {
+      "id": "conjuge_endereco",
+      "section": "familia",
+      "label": "Endereço do cônjuge (ou \"mesmo endereço do aplicante\")",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "casado",
+          "uniao_estavel",
+          "divorciado",
+          "separado",
+          "viuvo"
+        ]
+      }
+    },
+    {
+      "id": "data_casamento",
+      "section": "familia",
+      "label": "Data de casamento",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "casado",
+          "uniao_estavel",
+          "divorciado",
+          "separado",
+          "viuvo"
+        ]
+      }
+    },
+    {
+      "id": "data_divorcio",
+      "section": "familia",
+      "label": "Data do divórcio (se aplicável)",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "divorciado",
+          "separado"
+        ]
+      }
+    },
+    {
+      "id": "motivo_fim_casamento",
+      "section": "familia",
+      "label": "Como o casamento terminou (motivo resumido)",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "estado_civil_ds160",
+        "equals": [
+          "divorciado",
+          "separado"
+        ]
+      }
+    },
+    {
+      "id": "ocupacao_atual",
+      "section": "trabalho_atual",
+      "label": "Ocupação/profissão atual (se desempregado ou estudante, explique)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "empresa_escola_nome",
+      "section": "trabalho_atual",
+      "label": "Nome da empresa ou instituição de ensino",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "empresa_escola_cnpj",
+      "section": "trabalho_atual",
+      "label": "CNPJ (caso seja proprietário do negócio)",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "empresa_escola_endereco",
+      "section": "trabalho_atual",
+      "label": "Endereço completo da empresa/escola",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "empresa_escola_telefone",
+      "section": "trabalho_atual",
+      "label": "Telefone com DDD da empresa/escola",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "empresa_escola_data_inicio",
+      "section": "trabalho_atual",
+      "label": "Data de início nesse emprego/curso/ocupação",
+      "type": "date",
+      "required": true
+    },
+    {
+      "id": "cargo_funcao",
+      "section": "trabalho_atual",
+      "label": "Cargo/função",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "salario_mensal_bruto",
+      "section": "trabalho_atual",
+      "label": "Renda/salário mensal bruto em reais (se estudante ou desempregado, escreva \"Não se aplica\")",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "descricao_atividades",
+      "section": "trabalho_atual",
+      "label": "Breve descrição das atividades profissionais (ou curso/série, se estudante)",
+      "type": "text",
+      "required": true
+    },
+    {
+      "id": "anos_experiencia_area",
+      "section": "trabalho_atual",
+      "label": "Quantos anos de experiência possui na área de atuação/formação?",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "carteira_profissional",
+      "section": "trabalho_atual",
+      "label": "Carteira funcional/registro profissional (CREA, CRM, CRP, OAB etc.), se possuir",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "menos_5_anos_trabalho_atual",
+      "section": "trabalho_anterior",
+      "label": "Você está há menos de 5 anos no seu emprego/ocupação atual?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "teve_emprego_anterior",
+      "section": "trabalho_anterior",
+      "label": "Teve algum emprego anterior ao atual (nos últimos 5 anos)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ],
+      "show_if": {
+        "question": "menos_5_anos_trabalho_atual",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_empresa",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — nome da empresa/instituição",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_endereco",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — endereço completo",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_telefone",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — telefone com DDD",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_cargo",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — cargo e breve descrição das funções",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_supervisor",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — nome completo do supervisor/gerente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_data_admissao",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — data de admissão",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_1_data_demissao",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 1 — data de saída",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_empresa",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — nome da empresa/instituição",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_endereco",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — endereço completo",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_telefone",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — telefone com DDD",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_cargo",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — cargo e breve descrição das funções",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_supervisor",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — nome completo do supervisor/gerente",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_data_admissao",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — data de admissão",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "emprego_anterior_2_data_demissao",
+      "section": "trabalho_anterior",
+      "label": "Emprego anterior 2 — data de saída",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "teve_emprego_anterior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "tem_formacao_superior",
+      "section": "educacao",
+      "label": "Possui graduação, MBA, pós-graduação ou curso técnico concluído?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "escola_1_nome",
+      "section": "educacao",
+      "label": "Instituição de ensino 1 — nome",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_1_endereco",
+      "section": "educacao",
+      "label": "Instituição de ensino 1 — endereço completo",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_1_curso",
+      "section": "educacao",
+      "label": "Instituição de ensino 1 — curso",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_1_data_inicio",
+      "section": "educacao",
+      "label": "Instituição de ensino 1 — mês/ano de início",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_1_data_conclusao",
+      "section": "educacao",
+      "label": "Instituição de ensino 1 — mês/ano de conclusão",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_2_nome",
+      "section": "educacao",
+      "label": "Instituição de ensino 2 — nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_2_endereco",
+      "section": "educacao",
+      "label": "Instituição de ensino 2 — endereço completo",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_2_curso",
+      "section": "educacao",
+      "label": "Instituição de ensino 2 — curso",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_2_data_inicio",
+      "section": "educacao",
+      "label": "Instituição de ensino 2 — mês/ano de início",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_2_data_conclusao",
+      "section": "educacao",
+      "label": "Instituição de ensino 2 — mês/ano de conclusão",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_3_nome",
+      "section": "educacao",
+      "label": "Instituição de ensino 3 — nome",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_3_endereco",
+      "section": "educacao",
+      "label": "Instituição de ensino 3 — endereço completo",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_3_curso",
+      "section": "educacao",
+      "label": "Instituição de ensino 3 — curso",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_3_data_inicio",
+      "section": "educacao",
+      "label": "Instituição de ensino 3 — mês/ano de início",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_3_data_conclusao",
+      "section": "educacao",
+      "label": "Instituição de ensino 3 — mês/ano de conclusão",
+      "type": "date",
+      "required": false,
+      "show_if": {
+        "question": "tem_formacao_superior",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "idiomas_fluentes",
+      "section": "educacao",
+      "label": "Idiomas que fala fluentemente, além do português",
+      "type": "text",
+      "required": false
+    },
+    {
+      "id": "viajou_outros_paises_5anos",
+      "section": "info_adicional",
+      "label": "Você viajou para outros países (fora os EUA) nos últimos 5 anos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "viajou_outros_paises_quais",
+      "section": "info_adicional",
+      "label": "Quais países",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "viajou_outros_paises_5anos",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "pertence_cla_tribo",
+      "section": "info_adicional",
+      "label": "Pertence a algum clã ou tribo?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "participa_caridade",
+      "section": "info_adicional",
+      "label": "Já pertenceu, contribuiu ou trabalhou para alguma organização de caridade ou social?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "participa_caridade_nome",
+      "section": "info_adicional",
+      "label": "Nome da organização",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "participa_caridade",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "habilidade_armas_explosivos",
+      "section": "info_adicional",
+      "label": "Possui alguma habilidade ou treinamento específico em armas de fogo, explosivos, ou experiência nuclear, biológica ou química?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "habilidade_armas_explosivos_detalhes",
+      "section": "info_adicional",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "habilidade_armas_explosivos",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "servico_militar",
+      "section": "info_adicional",
+      "label": "Você já prestou serviço militar?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "servico_militar_pais",
+      "section": "info_adicional",
+      "label": "País onde prestou o serviço",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "servico_militar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "servico_militar_batalhao",
+      "section": "info_adicional",
+      "label": "Batalhão/tipo de serviço/ramo das forças armadas",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "servico_militar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "servico_militar_patente",
+      "section": "info_adicional",
+      "label": "Posição/patente",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "servico_militar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "servico_militar_especialidade",
+      "section": "info_adicional",
+      "label": "Especialidade militar",
+      "type": "text",
+      "required": false,
+      "show_if": {
+        "question": "servico_militar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "servico_militar_data_inicio",
+      "section": "info_adicional",
+      "label": "Data de início do serviço",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "servico_militar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "servico_militar_data_fim",
+      "section": "info_adicional",
+      "label": "Data de término do serviço",
+      "type": "date",
+      "required": true,
+      "show_if": {
+        "question": "servico_militar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "unidade_paramilitar",
+      "section": "info_adicional",
+      "label": "Já serviu, foi membro, ou esteve envolvido com uma unidade paramilitar, unidade de vigilantes, grupo rebelde, grupo de guerrilha, ou organização insurgente?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "unidade_paramilitar_detalhes",
+      "section": "info_adicional",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "unidade_paramilitar",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "doenca_transmissivel",
+      "section": "seguranca",
+      "label": "Você tem uma doença transmissível de importância para a saúde pública, como tuberculose (TB)?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "doenca_transmissivel_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "doenca_transmissivel",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "disturbio_mental_fisico",
+      "section": "seguranca",
+      "label": "Você tem um distúrbio mental ou físico que represente ou possa representar uma ameaça para a segurança ou bem-estar de si mesmo ou de outros?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "disturbio_mental_fisico_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "disturbio_mental_fisico",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "viciado_drogas",
+      "section": "seguranca",
+      "label": "Você é ou já foi viciado(a) em drogas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "viciado_drogas_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "viciado_drogas",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "preso_condenado",
+      "section": "seguranca",
+      "label": "Alguma vez você já foi preso(a) ou condenado(a) por qualquer ofensa ou crime, mesmo que objeto de indulto, anistia ou ação similar?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "preso_condenado_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "preso_condenado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "violou_substancias_controladas",
+      "section": "seguranca",
+      "label": "Alguma vez você violou, ou participou de conspiração para violar, qualquer lei relativa a substâncias controladas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "violou_substancias_controladas_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "violou_substancias_controladas",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "prostituicao",
+      "section": "seguranca",
+      "label": "Você vem para os EUA para exercer prostituição/comercialização ilegal, ou esteve envolvido(a) em prostituição ou na busca de prostitutas nos últimos 10 anos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "prostituicao_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "prostituicao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "lavagem_dinheiro",
+      "section": "seguranca",
+      "label": "Alguma vez você já esteve envolvido(a) ou procurou se envolver em lavagem de dinheiro?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "lavagem_dinheiro_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "lavagem_dinheiro",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "trafico_pessoas_cometeu",
+      "section": "seguranca",
+      "label": "Você já cometeu ou conspirou para cometer uma ofensa de tráfico de pessoas nos Estados Unidos ou fora deles?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "trafico_pessoas_cometeu_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "trafico_pessoas_cometeu",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "trafico_pessoas_ajudou",
+      "section": "seguranca",
+      "label": "Você já ajudou, incitou, ou conspirou conscientemente com alguém que cometeu ou conspirou para cometer tráfico de pessoas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "trafico_pessoas_ajudou_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "trafico_pessoas_ajudou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "trafico_pessoas_beneficiou",
+      "section": "seguranca",
+      "label": "Você é cônjuge, filho(a) de uma pessoa que cometeu tráfico de pessoas e, nos últimos 5 anos, se beneficiou conscientemente dessas atividades?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "trafico_pessoas_beneficiou_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "trafico_pessoas_beneficiou",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "espionagem_sabotagem",
+      "section": "seguranca",
+      "label": "Você procurará se envolver em espionagem, sabotagem, violação de controle de exportação, ou qualquer outra atividade ilegal nos Estados Unidos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "espionagem_sabotagem_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "espionagem_sabotagem",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "terrorismo",
+      "section": "seguranca",
+      "label": "Você procurará se envolver em atividades terroristas nos EUA, ou já está envolvido(a) com atividades terroristas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "terrorismo_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "terrorismo",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "apoio_financeiro_terrorista",
+      "section": "seguranca",
+      "label": "Alguma vez você já prestou ou pretendeu prestar apoio financeiro ou outro tipo de apoio a terroristas ou organizações terroristas?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "apoio_financeiro_terrorista_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "apoio_financeiro_terrorista",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "membro_organizacao_terrorista",
+      "section": "seguranca",
+      "label": "Você é membro ou representante de uma organização terrorista?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "membro_organizacao_terrorista_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "membro_organizacao_terrorista",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "genocidio",
+      "section": "seguranca",
+      "label": "Alguma vez você já ordenou, incitou, esteve comprometido, assistiu ou participou de genocídio?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "genocidio_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "genocidio",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "tortura",
+      "section": "seguranca",
+      "label": "Alguma vez você já cometeu, ordenou, incitou, assistiu ou participou de atos de tortura?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "tortura_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "tortura",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "execucoes_violencia",
+      "section": "seguranca",
+      "label": "Você já cometeu, ordenou, incitou ou participou de execuções extrajudiciais, assassinatos políticos, ou outros atos de violência?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "execucoes_violencia_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "execucoes_violencia",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "criancas_soldado",
+      "section": "seguranca",
+      "label": "Você já se envolveu no recrutamento ou uso de crianças soldado?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "criancas_soldado_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "criancas_soldado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "liberdade_religiosa",
+      "section": "seguranca",
+      "label": "Alguma vez você foi responsável, direta ou indiretamente, por graves violações da liberdade religiosa?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "liberdade_religiosa_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "liberdade_religiosa",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "controle_populacional_forcado",
+      "section": "seguranca",
+      "label": "Você já esteve diretamente envolvido no estabelecimento ou fiscalização de controles populacionais forçando aborto ou esterilização contra a livre vontade de alguém?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "controle_populacional_forcado_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "controle_populacional_forcado",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "transplante_orgaos_coercitivo",
+      "section": "seguranca",
+      "label": "Você já esteve diretamente envolvido no transplante coercitivo de órgãos humanos ou tecidos corporais?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "transplante_orgaos_coercitivo_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "transplante_orgaos_coercitivo",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "audiencia_deportacao",
+      "section": "seguranca",
+      "label": "Alguma vez você já foi objeto de uma audiência de deportação ou remoção?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "audiencia_deportacao_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "audiencia_deportacao",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "fraude_visto_beneficio",
+      "section": "seguranca",
+      "label": "Alguma vez você já procurou obter, ou ajudou terceiros a obter, um visto ou qualquer benefício de imigração dos EUA por fraude, falsa declaração ou outros meios ilícitos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "fraude_visto_beneficio_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "fraude_visto_beneficio",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "audiencia_inadmissibilidade",
+      "section": "seguranca",
+      "label": "Você participou de uma audiência sobre inadmissibilidade nos últimos cinco anos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "audiencia_inadmissibilidade_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "audiencia_inadmissibilidade",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "overstay_violacao_visto",
+      "section": "seguranca",
+      "label": "Você já ultrapassou o prazo concedido por um funcionário de imigração, violando os termos de um visto americano?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "overstay_violacao_visto_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "overstay_violacao_visto",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "custodia_crianca_fora_eua",
+      "section": "seguranca",
+      "label": "Alguma vez você já manteve fora dos EUA uma criança cidadã americana, separada da pessoa com a guarda legal por um tribunal dos EUA?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "custodia_crianca_fora_eua_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "custodia_crianca_fora_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "votou_ilegalmente_eua",
+      "section": "seguranca",
+      "label": "Você já votou nos Estados Unidos em violação de qualquer lei ou regulamento?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "votou_ilegalmente_eua_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "votou_ilegalmente_eua",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "renuncia_cidadania_impostos",
+      "section": "seguranca",
+      "label": "Alguma vez você já renunciou à cidadania americana com a finalidade de evitar o pagamento de impostos?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "renuncia_cidadania_impostos_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "renuncia_cidadania_impostos",
+        "equals": "sim"
+      }
+    },
+    {
+      "id": "escola_publica_f_sem_reembolso",
+      "section": "seguranca",
+      "label": "Você já frequentou uma escola pública como estudante (F) ou uma escola secundária pública, depois de 30 de novembro de 1996, sem reembolsar a escola pelo custo do ensino?",
+      "type": "radio",
+      "required": true,
+      "options": [
+        {
+          "value": "sim",
+          "label": "Sim"
+        },
+        {
+          "value": "nao",
+          "label": "Não"
+        }
+      ]
+    },
+    {
+      "id": "escola_publica_f_sem_reembolso_detalhes",
+      "section": "seguranca",
+      "label": "Explique / informe os detalhes",
+      "type": "text",
+      "required": true,
+      "show_if": {
+        "question": "escola_publica_f_sem_reembolso",
+        "equals": "sim"
+      }
+    }
+  ]
+}

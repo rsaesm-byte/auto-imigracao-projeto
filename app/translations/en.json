@@ -528,5 +528,8 @@
   "my_financial_plan_progress_status_in_progress": "In progress",
   "my_financial_plan_progress_status_needs_attention": "Needs attention",
   "my_financial_plan_progress_status_at_risk": "At risk",
-  "my_financial_plan_progress_status_completed": "Completed"
+  "my_financial_plan_progress_status_completed": "Completed",
+  "ds160_tile_title": "Draft — US Visa (DS-160)",
+  "ds160_tile_subtitle": "Fill out the draft for your tourist/business or student visa -- our team will use your answers to complete the official DS-160.",
+  "download_ds160_draft": "Download DS-160 draft (PDF)"
 }

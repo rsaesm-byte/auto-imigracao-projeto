@@ -21,6 +21,13 @@
   </div>
 </div>
 
+{% if ds160_gate_case %}
+<a class="card hero" href="{{ url_for('wizard.start', slug='ds160') }}" style="display:block;text-decoration:none;">
+  <h2 style="margin:0 0 4px;color:#fff;">{{ t('ds160_tile_title') }}</h2>
+  <p style="opacity:0.92;margin:0;">{{ t('ds160_tile_subtitle') }}</p>
+</a>
+{% endif %}
+
 <a class="card hero start-for-other-card" href="{{ url_for('wizard.start_for_other') }}">
   <div class="start-for-other-text">
     <span class="start-for-other-eyebrow">{{ icon('sparkle', 14) }} {{ t('start_for_other_eyebrow') }}</span>
