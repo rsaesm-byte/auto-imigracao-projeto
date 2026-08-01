@@ -28,7 +28,9 @@
     </div>
   {% else %}
     <div class="hero-ctas" style="justify-content:flex-start;flex-wrap:wrap;">
-      {% if current_user.is_authenticated %}
+      {% if contact_only %}
+        <a class="btn" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer">{{ t('services_cta_contact_team') }}</a>
+      {% elif current_user.is_authenticated %}
         <a class="btn" href="{{ url_for('wizard.start', slug=slug) }}">{{ t('services_cta_start') }}</a>
       {% else %}
         <a class="btn" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
@@ -303,7 +305,9 @@
 
 <section class="card hero" style="text-align:center;">
   <h1 style="font-size:1.3rem;">{{ name }}</h1>
-  {% if current_user.is_authenticated %}
+  {% if contact_only %}
+    <a class="btn secondary" style="background:white;margin-top:8px;" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer">{{ t('services_cta_contact_team') }}</a>
+  {% elif current_user.is_authenticated %}
     <a class="btn secondary" style="background:white;margin-top:8px;" href="{{ url_for('wizard.start', slug=slug) }}">{{ t('services_cta_start') }}</a>
   {% else %}
     <a class="btn secondary" style="background:white;margin-top:8px;" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>

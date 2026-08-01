@@ -155,6 +155,24 @@ DS160_DISPLAY_NAME = {
     "es": "Borrador — Visa Americana (DS-160)",
 }
 
+# Vistos de não-imigrante vendidos pela Saes -- listados em /servicos a
+# pedido do usuário, mas SEM botão de autoatendimento (diferente de todo
+# outro item de FORM_SLUGS_ORDER): o processo é conduzido pela equipe do
+# início ao fim (contrata -> equipe abre o Case no CRM -> só then o
+# rascunho de DS-160 é liberado, ver AUXILIARY_FORM_SLUGS/_ds160_gate_case
+# acima). "Começar" aqui vira "Fale com a equipe" no template, nunca
+# wizard.start -- por isso NÃO entram em FORM_SLUGS_ORDER/ENABLED_FORMS.
+VISA_SERVICE_SLUGS = ["visto-b1-b2", "visto-f1-f2"]
+
+VISA_SERVICE_DISPLAY_NAME = {
+    "visto-b1-b2": {"pt": "Visto B1/B2 — Turismo e Negócios",
+                     "en": "B1/B2 Visa — Tourism and Business",
+                     "es": "Visa B1/B2 — Turismo y Negocios"},
+    "visto-f1-f2": {"pt": "Visto F1/F2 — Estudante",
+                     "en": "F1/F2 Visa — Student",
+                     "es": "Visa F1/F2 — Estudiante"},
+}
+
 
 def _load_questionnaire(slug: str) -> dict:
     """Carrega o questionário em português e, se o idioma da sessão não for
@@ -238,6 +256,9 @@ def _form_display_name(slug: str, lang: str | None = None) -> str:
         return CARTAS_DISPLAY_NAME.get(lang, CARTAS_DISPLAY_NAME[DEFAULT_LANG])
     if slug == "ds160":
         return DS160_DISPLAY_NAME.get(lang, DS160_DISPLAY_NAME[DEFAULT_LANG])
+    if slug in VISA_SERVICE_DISPLAY_NAME:
+        names = VISA_SERVICE_DISPLAY_NAME[slug]
+        return names.get(lang, names[DEFAULT_LANG])
     if slug in CARTA_LETTER_DISPLAY_NAME:
         names = CARTA_LETTER_DISPLAY_NAME[slug]
         return names.get(lang, names[DEFAULT_LANG])
@@ -379,8 +400,12 @@ def index():
 def services():
     catalog = [
         {"slug": slug, "name": _form_display_name(slug),
-         "enabled": slug in ENABLED_FORMS}
+         "enabled": slug in ENABLED_FORMS, "contact_only": False}
         for slug in FORM_SLUGS_ORDER
+    ]
+    catalog += [
+        {"slug": slug, "name": _form_display_name(slug), "enabled": False, "contact_only": True}
+        for slug in VISA_SERVICE_SLUGS
     ]
     return render_template("services.html", catalog=catalog)
 
@@ -430,14 +455,14 @@ SERVICE_TO_ELIGIBILITY_QUIZ = {
 
 @wizard_bp.route("/servicos/<slug>", methods=["GET", "POST"])
 def service_detail(slug: str):
-    if slug not in FORM_SLUGS_ORDER:
+    if slug not in FORM_SLUGS_ORDER and slug not in VISA_SERVICE_SLUGS:
         abort(404)
     content_path = ROOT / "data" / "service_pages" / f"{slug}.json"
     if not content_path.exists():
         abort(404)
 
     content = _load_service_content(slug)
-    registry_entry = _load_registry_entry(slug) if slug != "i-539-cartas" else {}
+    registry_entry = {} if slug == "i-539-cartas" or slug in VISA_SERVICE_SLUGS else _load_registry_entry(slug)
     related_catalog = [
         {"slug": s, "name": _form_display_name(s)}
         for s in FORM_SLUGS_ORDER if s != slug
@@ -460,6 +485,7 @@ def service_detail(slug: str):
         calc_form=calc_form,
         our_fee_individual=individual_price_cents(slug),
         our_fee_package=in_package_price_cents(slug),
+        contact_only=slug in VISA_SERVICE_SLUGS,
     )
 
 

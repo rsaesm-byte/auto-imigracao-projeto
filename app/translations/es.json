@@ -531,5 +531,9 @@
   "my_financial_plan_progress_status_completed": "Completado",
   "ds160_tile_title": "Borrador — Visa Americana (DS-160)",
   "ds160_tile_subtitle": "Complete el borrador para su visa de turista/negocios o de estudiante -- nuestro equipo usará sus respuestas para completar el DS-160 oficial.",
-  "download_ds160_draft": "Descargar borrador del DS-160 (PDF)"
+  "download_ds160_draft": "Descargar borrador del DS-160 (PDF)",
+  "services_cta_contact_team": "Hable con nuestro equipo",
+  "badge_contact_team": "Atendido por el equipo",
+  "svc_desc_visto-b1-b2": "Visa de turismo o negocios (B1/B2) gestionada por nuestro equipo de principio a fin hasta la entrevista consular, incluyendo el borrador y la presentación del DS-160.",
+  "svc_desc_visto-f1-f2": "Visa de estudiante o dependiente de estudiante (F1/F2) gestionada por nuestro equipo de principio a fin hasta la entrevista consular, incluyendo el borrador y la presentación del DS-160."
 }

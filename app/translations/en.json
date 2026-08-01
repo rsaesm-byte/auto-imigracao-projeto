@@ -531,5 +531,9 @@
   "my_financial_plan_progress_status_completed": "Completed",
   "ds160_tile_title": "Draft — US Visa (DS-160)",
   "ds160_tile_subtitle": "Fill out the draft for your tourist/business or student visa -- our team will use your answers to complete the official DS-160.",
-  "download_ds160_draft": "Download DS-160 draft (PDF)"
+  "download_ds160_draft": "Download DS-160 draft (PDF)",
+  "services_cta_contact_team": "Talk to our team",
+  "badge_contact_team": "Handled by our team",
+  "svc_desc_visto-b1-b2": "Tourist or business visa (B1/B2) handled by our team from start to your consular interview, including the DS-160 draft and filing.",
+  "svc_desc_visto-f1-f2": "Student or student-dependent visa (F1/F2) handled by our team from start to your consular interview, including the DS-160 draft and filing."
 }

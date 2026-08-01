@@ -531,5 +531,9 @@
   "my_financial_plan_progress_status_completed": "Concluído",
   "ds160_tile_title": "Rascunho — Visto Americano (DS-160)",
   "ds160_tile_subtitle": "Preencha o rascunho para o seu visto de turismo/negócios ou de estudante -- a equipe vai usar suas respostas para preencher o DS-160 oficial.",
-  "download_ds160_draft": "Baixar rascunho do DS-160 (PDF)"
+  "download_ds160_draft": "Baixar rascunho do DS-160 (PDF)",
+  "services_cta_contact_team": "Fale com a nossa equipe",
+  "badge_contact_team": "Atendimento com a equipe",
+  "svc_desc_visto-b1-b2": "Visto de turismo ou negócios (B1/B2) conduzido pela nossa equipe do início à entrevista consular, incluindo o rascunho e preenchimento do DS-160.",
+  "svc_desc_visto-f1-f2": "Visto de estudante ou dependente de estudante (F1/F2) conduzido pela nossa equipe do início à entrevista consular, incluindo o rascunho e preenchimento do DS-160."
 }

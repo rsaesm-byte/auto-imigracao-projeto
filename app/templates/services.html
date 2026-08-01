@@ -16,6 +16,8 @@
       <span class="slug">{{ form.slug|upper }}</span>
       {% if form.enabled %}
         <span class="badge completed">{{ t('badge_available') }}</span>
+      {% elif form.contact_only %}
+        <span class="badge in_progress">{{ t('badge_contact_team') }}</span>
       {% else %}
         <span class="badge in_progress">{{ t('badge_soon') }}</span>
       {% endif %}
@@ -29,6 +31,8 @@
       {% else %}
         <a class="btn secondary" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
       {% endif %}
+    {% elif form.contact_only %}
+      <a class="btn secondary" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer">{{ t('services_cta_contact_team') }}</a>
     {% endif %}
   </div>
   {% endfor %}

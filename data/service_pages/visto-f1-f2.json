@@ -1,0 +1,170 @@
+{
+  "tagline": "Visto de estudante (ou dependente de estudante) para os Estados Unidos",
+  "tagline_en": "Student (or student dependent) visa for the United States",
+  "tagline_es": "Visa de estudiante (o dependiente de estudiante) para Estados Unidos",
+  "what_is": [
+    "O visto F1 é para quem foi aceito num programa de estudos em tempo integral nos EUA (escola, faculdade, intercâmbio) e já recebeu o formulário I-20 da instituição. O F2 é para o cônjuge e filhos do titular do F1.",
+    "A Saes conduz o processo do início ao fim: coletamos suas informações num rascunho completo, preenchemos o DS-160 oficial por você no sistema do consulado (CEAC), confirmamos o pagamento da taxa SEVIS e te preparamos para a entrevista."
+  ],
+  "what_is_en": [
+    "The F1 visa is for anyone accepted into a full-time study program in the US (school, college, exchange program) who has already received Form I-20 from the institution. F2 is for the spouse and children of the F1 holder.",
+    "Saes handles the process from start to finish: we collect your information in a complete draft, fill out the official DS-160 for you in the consulate's system (CEAC), confirm payment of the SEVIS fee, and prepare you for the interview."
+  ],
+  "what_is_es": [
+    "La visa F1 es para quien fue aceptado en un programa de estudios de tiempo completo en EE.UU. (escuela, universidad, intercambio) y ya recibió el formulario I-20 de la institución. La F2 es para el cónyuge e hijos del titular de la F1.",
+    "Saes conduce el proceso de principio a fin: recopilamos su información en un borrador completo, completamos el DS-160 oficial por usted en el sistema del consulado (CEAC), confirmamos el pago de la tarifa SEVIS y lo preparamos para la entrevista."
+  ],
+  "who_needs": [
+    "Quem foi aceito e já recebeu o I-20 de uma escola/faculdade americana certificada pelo SEVP (F1), e o cônjuge/filhos que vão acompanhar o estudante (F2)."
+  ],
+  "who_needs_en": [
+    "Anyone accepted and already issued Form I-20 by a SEVP-certified US school/college (F1), and the spouse/children accompanying the student (F2)."
+  ],
+  "who_needs_es": [
+    "Quien fue aceptado y ya recibió el I-20 de una escuela/universidad estadounidense certificada por el SEVP (F1), y el cónyuge/hijos que acompañarán al estudiante (F2)."
+  ],
+  "eligibility": [
+    "Ter o Formulário I-20 emitido pela instituição de ensino, com o número SEVIS.",
+    "Comprovar recursos financeiros suficientes para custear os estudos e a estadia.",
+    "Demonstrar intenção de retornar ao país de origem após concluir os estudos.",
+    "Ter pago a taxa SEVIS antes da entrevista."
+  ],
+  "eligibility_en": [
+    "Have Form I-20 issued by the school, with the SEVIS number.",
+    "Show sufficient financial resources to cover tuition and living expenses.",
+    "Show intent to return to your home country after finishing your studies.",
+    "Have paid the SEVIS fee before the interview."
+  ],
+  "eligibility_es": [
+    "Tener el Formulario I-20 emitido por la institución, con el número SEVIS.",
+    "Demostrar recursos financieros suficientes para cubrir los estudios y la estadía.",
+    "Demostrar intención de regresar a su país de origen después de terminar los estudios.",
+    "Haber pagado la tarifa SEVIS antes de la entrevista."
+  ],
+  "required_evidence": [
+    "Formulário I-20 assinado, com número SEVIS.",
+    "Comprovante de pagamento da taxa SEVIS (I-901).",
+    "Passaporte válido (com validade de pelo menos 6 meses além da viagem pretendida).",
+    "Comprovante financeiro (do estudante ou do patrocinador).",
+    "Para F2: certidão de casamento (cônjuge) ou nascimento (filhos) e I-20 próprio de cada dependente."
+  ],
+  "required_evidence_en": [
+    "Signed Form I-20, with SEVIS number.",
+    "Proof of SEVIS fee (Form I-901) payment.",
+    "Valid passport (valid for at least 6 months beyond the intended trip).",
+    "Proof of financial support (student's own or sponsor's).",
+    "For F2: marriage certificate (spouse) or birth certificate (children) and each dependent's own I-20."
+  ],
+  "required_evidence_es": [
+    "Formulario I-20 firmado, con número SEVIS.",
+    "Comprobante de pago de la tarifa SEVIS (Formulario I-901).",
+    "Pasaporte válido (vigente por al menos 6 meses más allá del viaje previsto).",
+    "Comprobante financiero (propio del estudiante o del patrocinador).",
+    "Para F2: acta de matrimonio (cónyuge) o de nacimiento (hijos) e I-20 propio de cada dependiente."
+  ],
+  "whats_included": [
+    "Rascunho completo do DS-160 preenchido junto com você (e cada dependente F2), em português.",
+    "Preenchimento do DS-160 oficial no sistema do consulado (CEAC) para o titular e dependentes.",
+    "Orientação sobre a taxa SEVIS e a taxa consular (MRV).",
+    "Preparação para a entrevista consular.",
+    "Acompanhamento da equipe até a conclusão do processo."
+  ],
+  "whats_included_en": [
+    "Complete DS-160 draft filled out together with you (and each F2 dependent), in Portuguese.",
+    "Filing of the official DS-160 in the consulate's system (CEAC) for the applicant and dependents.",
+    "Guidance on the SEVIS fee and the consular (MRV) fee.",
+    "Consular interview preparation.",
+    "Team support through to the end of the process."
+  ],
+  "whats_included_es": [
+    "Borrador completo del DS-160 completado junto con usted (y cada dependiente F2), en portugués.",
+    "Presentación del DS-160 oficial en el sistema del consulado (CEAC) para el titular y dependientes.",
+    "Orientación sobre la tarifa SEVIS y la tarifa consular (MRV).",
+    "Preparación para la entrevista consular.",
+    "Acompañamiento del equipo hasta el final del proceso."
+  ],
+  "how_it_works": [
+    "Você contrata o serviço com a nossa equipe e envia o I-20 recebido da instituição.",
+    "Você (e cada dependente F2, se houver) preenche nosso rascunho completo do DS-160, em português.",
+    "Nossa equipe revisa as respostas, preenche o DS-160 oficial no CEAC e confere tudo com você.",
+    "Você paga a taxa SEVIS e a taxa consular, agenda a entrevista, e te preparamos para o dia."
+  ],
+  "how_it_works_en": [
+    "You hire the service with our team and send us the I-20 you received from the school.",
+    "You (and each F2 dependent, if any) fill out our complete DS-160 draft, in Portuguese.",
+    "Our team reviews the answers, files the official DS-160 in CEAC, and confirms everything with you.",
+    "You pay the SEVIS fee and consular fee, schedule the interview, and we prepare you for the day."
+  ],
+  "how_it_works_es": [
+    "Contrata el servicio con nuestro equipo y nos envía el I-20 recibido de la institución.",
+    "Usted (y cada dependiente F2, si los hay) completa nuestro borrador completo del DS-160, en portugués.",
+    "Nuestro equipo revisa las respuestas, presenta el DS-160 oficial en el CEAC y confirma todo con usted.",
+    "Usted paga la tarifa SEVIS y la tarifa consular, programa la entrevista, y lo preparamos para el día."
+  ],
+  "common_mistakes": [
+    "Deixar campos do DS-160 em branco -- o sistema do consulado não aceita respostas incompletas.",
+    "Esquecer de informar o SEVIS ID correto no DS-160 (precisa bater exatamente com o I-20).",
+    "Não pagar a taxa SEVIS antes da entrevista.",
+    "Cada dependente F2 precisa do próprio DS-160 -- não dá pra incluir todos num só."
+  ],
+  "common_mistakes_en": [
+    "Leaving DS-160 fields blank -- the consulate's system doesn't accept incomplete answers.",
+    "Entering the wrong SEVIS ID on the DS-160 (it must exactly match the I-20).",
+    "Not paying the SEVIS fee before the interview.",
+    "Each F2 dependent needs their own DS-160 -- you can't combine everyone into one."
+  ],
+  "common_mistakes_es": [
+    "Dejar campos del DS-160 en blanco -- el sistema del consulado no acepta respuestas incompletas.",
+    "Ingresar el SEVIS ID incorrecto en el DS-160 (debe coincidir exactamente con el I-20).",
+    "No pagar la tarifa SEVIS antes de la entrevista.",
+    "Cada dependiente F2 necesita su propio DS-160 -- no se puede incluir a todos en uno solo."
+  ],
+  "faq": [
+    {
+      "q": "Meu cônjuge e filhos precisam de visto separado?",
+      "a": "Sim -- cada um precisa do próprio I-20 (categoria F2) e do próprio DS-160, mesmo sendo dependentes."
+    },
+    {
+      "q": "Posso trabalhar nos EUA com visto F1?",
+      "a": "Só em situações específicas autorizadas pela escola/USCIS (ex.: CPT/OPT) -- fale com nossa equipe sobre o seu caso."
+    },
+    {
+      "q": "A taxa SEVIS é a mesma coisa que a taxa do visto?",
+      "a": "Não -- são duas taxas separadas: a SEVIS (paga uma vez, ligada ao I-20) e a consular MRV (paga para agendar a entrevista)."
+    }
+  ],
+  "faq_en": [
+    {
+      "q": "Do my spouse and children need a separate visa?",
+      "a": "Yes -- each needs their own I-20 (F2 category) and their own DS-160, even as dependents."
+    },
+    {
+      "q": "Can I work in the US on an F1 visa?",
+      "a": "Only in specific situations authorized by the school/USCIS (e.g. CPT/OPT) -- talk to our team about your case."
+    },
+    {
+      "q": "Is the SEVIS fee the same as the visa fee?",
+      "a": "No -- they're two separate fees: SEVIS (paid once, tied to the I-20) and the consular MRV fee (paid to schedule the interview)."
+    }
+  ],
+  "faq_es": [
+    {
+      "q": "¿Mi cónyuge e hijos necesitan una visa separada?",
+      "a": "Sí -- cada uno necesita su propio I-20 (categoría F2) y su propio DS-160, aunque sean dependientes."
+    },
+    {
+      "q": "¿Puedo trabajar en EE.UU. con visa F1?",
+      "a": "Solo en situaciones específicas autorizadas por la escuela/USCIS (ej. CPT/OPT) -- hable con nuestro equipo sobre su caso."
+    },
+    {
+      "q": "¿La tarifa SEVIS es lo mismo que la tarifa de la visa?",
+      "a": "No -- son dos tarifas separadas: la SEVIS (se paga una vez, ligada al I-20) y la consular MRV (se paga para programar la entrevista)."
+    }
+  ],
+  "related_note": "Precisa de visto de turismo/negócios em vez de estudante? Veja o serviço B1/B2.",
+  "related_note_en": "Need a tourism/business visa instead of student? See the B1/B2 service.",
+  "related_note_es": "¿Necesita una visa de turismo/negocios en vez de estudiante? Vea el servicio B1/B2.",
+  "legal_note": "Esta ferramenta organiza suas informações e apoia o preenchimento do DS-160 -- ela não avalia elegibilidade nem presta aconselhamento jurídico. Em casos complexos, procure um advogado de imigração.",
+  "legal_note_en": "This tool organizes your information and supports filling out the DS-160 -- it does not assess eligibility or provide legal advice. For complex cases, consult an immigration attorney.",
+  "legal_note_es": "Esta herramienta organiza su información y apoya el llenado del DS-160 -- no evalúa elegibilidad ni brinda asesoría legal. Para casos complejos, consulte a un abogado de inmigración."
+}
