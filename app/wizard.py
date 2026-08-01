@@ -25,7 +25,7 @@ from flask_login import current_user, login_required
 
 from app.db import SessionLocal
 from app.i18n import SUPPORTED_LANGS
-from app.models import FormSubmission
+from app.models import FormSubmission, Payment
 from app.services.news_service import get_latest_news
 from app.services.pdf_service import (document_checklist_available,
                                        fill_form_for_submission,
@@ -757,6 +757,19 @@ def delete_submission(submission_id: int):
         .filter_by(parent_submission_id=submission.id)
         .all()
     )
+
+    # Um Payment (histórico de cobrança de verdade, ver app/models.py) pode
+    # apontar pra esta submissão ou por um de seus dependentes via
+    # submission_id -- desde que app/db.py passou a ligar
+    # PRAGMA foreign_keys=ON, apagar a submissão sem soltar essa referência
+    # primeiro quebraria o commit abaixo com IntegrityError. O pagamento em
+    # si nunca é apagado (dinheiro de verdade já trocou de mãos), só perde
+    # a referência pra uma submissão que não existe mais.
+    submission_ids = [submission.id] + [c.id for c in children]
+    (SessionLocal.query(Payment)
+     .filter(Payment.submission_id.in_(submission_ids))
+     .update({Payment.submission_id: None}, synchronize_session=False))
+
     for child in children:
         shutil.rmtree(_submission_dir(child), ignore_errors=True)
         SessionLocal.delete(child)

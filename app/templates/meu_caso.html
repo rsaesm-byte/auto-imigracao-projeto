@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}{{ t('my_case_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ t('my_case_title') }}</h1>
+  <p style="opacity:0.92;margin:0;">{{ t('my_case_subtitle') }}</p>
+</div>
+
+{% if not cases %}
+<div class="card">
+  <p class="muted">{{ t('my_case_no_cases') }}</p>
+</div>
+{% endif %}
+
+{% for item in cases %}
+{% set case = item.case %}
+<div class="card">
+  <h2>{{ case.title }}</h2>
+  <p style="margin:0 0 10px;">
+    {{ crm_badge(case.case_status, label=t('my_case_status_' ~ case.case_status.value)) }}
+    <span class="badge status-neutral">{{ t('my_case_mode_' ~ case.service_mode.value) }}</span>
+  </p>
+  <p class="muted" style="margin:0 0 16px;">
+    <strong>{{ t('my_case_deadline_label') }}:</strong>
+    {% if case.service_deadline %}
+      {{ case.service_deadline.strftime("%m/%d/%Y") if get_lang() == "en" else case.service_deadline.strftime("%d/%m/%Y") }}
+    {% else %}
+      {{ t('my_case_no_deadline') }}
+    {% endif %}
+  </p>
+
+  <h3 style="font-size:1rem;">{{ t('my_case_pending_documents_title') }}</h3>
+  {% if item.pending_documents %}
+  <table class="submissions" style="margin:0 0 16px;">
+    <thead>
+      <tr><th>{{ t('my_case_table_document') }}</th><th>{{ t('my_case_doc_requested_on') }}</th></tr>
+    </thead>
+    <tbody>
+      {% for doc in item.pending_documents %}
+      <tr>
+        <td>{{ doc.name }} <span class="muted">({{ t('my_case_doctype_' ~ doc.document_type.value) }})</span></td>
+        <td class="muted">
+          {% if doc.requested_at %}
+            {{ doc.requested_at.strftime("%m/%d/%Y") if get_lang() == "en" else doc.requested_at.strftime("%d/%m/%Y") }}
+          {% else %}
+            —
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted" style="margin:0 0 16px;">{{ t('my_case_no_pending_documents') }}</p>
+  {% endif %}
+</div>
+{% endfor %}
+
+<div class="card">
+  <h2>{{ t('my_case_communications_title') }}</h2>
+  {% if recent_communications %}
+  <table class="submissions">
+    <thead>
+      <tr><th>{{ t('my_case_table_subject') }}</th><th>{{ t('table_updated') }}</th></tr>
+    </thead>
+    <tbody>
+      {% for comm in recent_communications %}
+      <tr>
+        <td>
+          <strong>{{ comm.subject }}</strong>
+          <span class="muted">— {{ t('my_case_comm_direction_' ~ comm.direction.value) }}</span>
+          {% if comm.summary %}<div class="muted" style="font-size:0.86rem;">{{ comm.summary }}</div>{% endif %}
+        </td>
+        <td class="muted">
+          {{ comm.occurred_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else comm.occurred_at.strftime("%d/%m/%Y %H:%M") }}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">{{ t('my_case_no_communications') }}</p>
+  {% endif %}
+</div>
+{% endblock %}

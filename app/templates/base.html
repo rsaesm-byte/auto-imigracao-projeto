@@ -36,6 +36,12 @@
         </div>
       </div>
       {% if current_user.is_authenticated %}
+        {% if has_crm_case %}
+        <a class="logout" href="{{ url_for('crm_client.meu_caso') }}">{{ t('nav_my_case') }}</a>
+        {% endif %}
+        {% if has_financial_plan %}
+        <a class="logout" href="{{ url_for('crm_financial_client.meu_plano') }}">{{ t('nav_financial_plan') }}</a>
+        {% endif %}
         <span class="muted">{{ current_user.email }}</span>
         <a class="logout" href="{{ url_for('auth.logout') }}">{{ t('nav_logout') }}</a>
       {% else %}

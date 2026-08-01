@@ -1,0 +1,51 @@
+{
+  "lead_sources": [
+    "Referral", "Referral (Client)", "Referral (Mila)", "Referral (Ex-Client)",
+    "Referral (YES VISA)", "Referral (Make it Easy)", "Google", "Google Ads",
+    "Facebook Ads", "LinkedIn Ads", "Instagram Ads", "Twitter Ads",
+    "TikTok Ads", "Instagram", "Social Media", "Website", "Web Search",
+    "Whatsapp Campaign", "Whatsapp Group", "Ale's Church", "Ale's Friends",
+    "Church", "Financial Course", "Friend", "MILA", "Previous Client",
+    "Contacted Before", "Other", "Unknown"
+  ],
+  "ad_sources": [
+    "Google Ads", "Facebook Ads", "LinkedIn Ads", "Instagram Ads",
+    "Twitter Ads", "TikTok Ads", "Whatsapp Campaign", "Other", "Unknown"
+  ],
+  "contact_channels": [
+    "Email", "Phone", "WhatsApp", "SMS", "In-person", "Shared Folder",
+    "Email + WhatsApp", "WhatsApp + Phone Call", "Other"
+  ],
+  "field_offices": [
+    {"name": "USCIS National Benefits Center",
+     "address": "P.O. Box 648003, Lee's Summit, MO 64002"},
+    {"name": "SCOPS Texas Facility",
+     "address": "6046 N Belt Line Rd, Irving, TX 75038-0001"}
+  ],
+  "fee_types": [
+    "Partnership Fee", "Application Fee", "Tuition Fee", "Sevis Fee",
+    "Dependent Fee", "Translator Fee", "School Fee", "College Fee",
+    "USCIS Fee", "Saes Fee", "Postage - Express Mailing",
+    "Postage - Standard Mailing", "Refund", "RFE Photos", "I-134"
+  ],
+  "close_loss_reasons": [
+    "Needs a Different Service", "Lost Contact", "Too Expensive", "No Answer",
+    "Needs a Lawyer", "Did Not Need the Service Anymore", "Tried 3 Times",
+    "Wants to Save Money", "Needs to Strengthen the Profile",
+    "The Service Is for Another Person", "Client Returned to Home Country",
+    "Politely Refused Our Services", "Chose Another Company",
+    "Used Another Number", "No-show", "Too Complicated",
+    "Can't Follow Procedures", "Complained About Terms/Conditions",
+    "Too Busy"
+  ],
+  "income_source_types": [
+    "Own Business", "Self-Employed Professional", "Employee (Full-Time)",
+    "Employee (Part-Time)", "Public Employee", "Rental Income",
+    "Investments", "Pension/Retirement", "Family Support",
+    "Government Assistance", "Other"
+  ],
+  "payment_methods": [
+    "Credit Card", "Debit Card", "Bank Transfer", "Wire Transfer", "Cash",
+    "Check", "Zelle", "Cash App", "Venmo", "PayPal", "Invoice", "Other"
+  ]
+}

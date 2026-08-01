@@ -141,6 +141,131 @@ def _ensure_payment_lifecycle_columns() -> None:
             conn.commit()
 
 
+def _ensure_crm_case_link_columns() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para o
+    `case_id` opcional novo em form_submissions e payments (ver
+    app/models.py) -- liga cada um a um Case do CRM (app/crm_models.py)
+    quando existir, sem quebrar nenhuma linha já gravada antes do CRM
+    existir (fica NULL).
+
+    A cláusula `REFERENCES crm_cases(id)` no próprio ADD COLUMN é
+    obrigatória, não cosmética: SQLite só faz cumprir uma foreign key que
+    esteja de fato na definição da coluna (confirmado empiricamente) --
+    sem ela, `PRAGMA foreign_keys=ON` (app/db.py) não protegeria nada
+    nestas duas colunas em nenhum banco que já existia antes deste
+    deploy (o cenário real de produção), permitindo um case_id órfão
+    silencioso."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        for table in ("form_submissions", "payments"):
+            cols = [row[1] for row in conn.execute(text(f"PRAGMA table_info({table})"))]
+            if "case_id" not in cols:
+                conn.execute(text(
+                    f"ALTER TABLE {table} ADD COLUMN case_id INTEGER REFERENCES crm_cases(id)"))
+                conn.commit()
+
+
+def _ensure_financial_payment_link_column() -> None:
+    """`crm_payments_ledger` (Fase 1) ganha `financial_client_id` opcional
+    e `client_id` vira opcional também (Fase 2 -- Coaching Financeiro reusa
+    o mesmo ledger em vez de duplicar "Payments" por linha de negócio, ver
+    app/crm_models.py::PaymentLedgerEntry). `client_id` já existia como
+    NOT NULL desde a Fase 1 -- SQLite não altera nullability de uma coluna
+    existente via ALTER TABLE, só via recriar a tabela. Como esta tabela é
+    nova (criada nesta mesma leva de mudanças) e nenhuma instalação real
+    ainda gravou nela, o caminho simples (recriar do zero) é seguro; a
+    checagem de linha vazia é só uma trava de segurança caso essa premissa
+    deixe de valer no futuro -- aí some **precisa** de uma migração de
+    verdade (copiar dados pra uma tabela nova), não deste atalho."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_payments_ledger)"))]
+        if "financial_client_id" in cols:
+            return
+        count = conn.execute(text("SELECT COUNT(*) FROM crm_payments_ledger")).scalar()
+        if count and count > 0:
+            raise RuntimeError(
+                "crm_payments_ledger já tem linhas e precisa ganhar financial_client_id "
+                "(coaching financeiro) -- isso exige uma migração de verdade (recriar a "
+                "tabela preservando os dados), não o atalho de _ensure_financial_payment_link_column(). "
+                "Pare e escreva essa migração antes de continuar.")
+        from app.crm_models import PaymentLedgerEntry
+        PaymentLedgerEntry.__table__.drop(engine)
+        PaymentLedgerEntry.__table__.create(engine)
+
+
+def _seed_crm_lookups() -> None:
+    """Semeia as tabelas de lookup do CRM (app/crm_models.py) a partir de
+    data/crm_lookups.json -- mesmo padrão de _seed_service_fees() abaixo:
+    só roda por tabela vazia, pra nunca sobrescrever um valor que a equipe
+    já tenha editado/adicionado depois do seed inicial."""
+    import json
+    from app.db import SessionLocal
+    from app.crm_models import (AdSource, CloseLossReason, ContactChannel,
+                                 FeeType, FieldOffice, IncomeSourceType,
+                                 LeadSource, PaymentMethodLookup)
+
+    path = Path(__file__).resolve().parent.parent / "data" / "crm_lookups.json"
+    raw = json.loads(path.read_text(encoding="utf-8"))
+
+    simple_lookups = {
+        "lead_sources": LeadSource,
+        "ad_sources": AdSource,
+        "contact_channels": ContactChannel,
+        "fee_types": FeeType,
+        "close_loss_reasons": CloseLossReason,
+        "income_source_types": IncomeSourceType,
+        "payment_methods": PaymentMethodLookup,
+    }
+    for key, model in simple_lookups.items():
+        if SessionLocal.query(model).first() is not None:
+            continue
+        for name in raw.get(key, []):
+            SessionLocal.add(model(name=name))
+
+    if SessionLocal.query(FieldOffice).first() is None:
+        for entry in raw.get("field_offices", []):
+            SessionLocal.add(FieldOffice(name=entry["name"], address=entry.get("address")))
+
+    SessionLocal.commit()
+
+
+def _seed_crm_financial_lookups() -> None:
+    """Semeia os lookups novos do Coaching Financeiro (Fase 2) a partir de
+    data/crm_financial_lookups.json. As tabelas totalmente novas
+    (financial_goals/challenges/task_categories) seguem o mesmo padrão de
+    _seed_crm_lookups() (só roda por tabela vazia). `close_loss_reasons`
+    já existe da Fase 1 com outras linhas -- aqui só ACRESCENTA os motivos
+    específicos de coaching que ainda não estiverem lá (checagem por nome,
+    não por tabela vazia, já que a tabela não está vazia)."""
+    import json
+    from app.db import SessionLocal
+    from app.crm_models import CloseLossReason
+    from app.crm_financial_models import (FinancialChallenge, FinancialGoal,
+                                           FinancialTaskCategory)
+
+    path = Path(__file__).resolve().parent.parent / "data" / "crm_financial_lookups.json"
+    raw = json.loads(path.read_text(encoding="utf-8"))
+
+    simple_lookups = {
+        "financial_goals": FinancialGoal,
+        "financial_challenges": FinancialChallenge,
+        "financial_task_categories": FinancialTaskCategory,
+    }
+    for key, model in simple_lookups.items():
+        if SessionLocal.query(model).first() is not None:
+            continue
+        for name in raw.get(key, []):
+            SessionLocal.add(model(name=name))
+
+    existing_reasons = {r.name for r in SessionLocal.query(CloseLossReason).all()}
+    for name in raw.get("additional_close_loss_reasons", []):
+        if name not in existing_reasons:
+            SessionLocal.add(CloseLossReason(name=name))
+
+    SessionLocal.commit()
+
+
 def _seed_service_fees() -> None:
     """Semeia a tabela service_fees (nova, ver app/models.py::ServiceFee) a
     partir de data/service_fees.json -- só roda se a tabela estiver
@@ -172,7 +297,11 @@ def create_app() -> Flask:
         secret = "dev-only-insecure-secret-change-me"
     app.config["SECRET_KEY"] = secret
 
-    # Garante que todos os modelos foram importados antes do create_all().
+    # Garante que todos os modelos (inclusive o CRM) foram importados antes
+    # do create_all() -- SQLAlchemy ordena a criação das tabelas pelas
+    # dependências de FK sozinho, a ordem dos imports aqui não importa.
+    from app import crm_models  # noqa: F401
+    from app import crm_financial_models  # noqa: F401
     from app import models  # noqa: F401
     Base.metadata.create_all(engine)
     _ensure_cartas_zip_path_column()
@@ -184,7 +313,11 @@ def create_app() -> Flask:
     _ensure_payment_contact_columns()
     _ensure_payment_lifecycle_columns()
     _ensure_staff_profile_columns()
+    _ensure_crm_case_link_columns()
+    _ensure_financial_payment_link_column()
     _seed_service_fees()
+    _seed_crm_lookups()
+    _seed_crm_financial_lookups()
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"
@@ -208,6 +341,12 @@ def create_app() -> Flask:
     from app.payment_methods import payment_methods_bp
     from app.payment_gate import payment_gate_bp
     from app.staff import staff_bp
+    from app.crm_staff_pipeline import crm_pipeline_bp
+    from app.crm_staff_ops import crm_ops_bp
+    from app.crm_client import crm_client_bp
+    from app.crm_credentials import crm_credentials_bp
+    from app.crm_financial_staff import crm_financial_bp
+    from app.crm_financial_client import crm_financial_client_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(wizard_bp)
     app.register_blueprint(eligibility_bp)
@@ -221,6 +360,12 @@ def create_app() -> Flask:
     app.register_blueprint(payment_methods_bp)
     app.register_blueprint(payment_gate_bp)
     app.register_blueprint(staff_bp)
+    app.register_blueprint(crm_pipeline_bp)
+    app.register_blueprint(crm_ops_bp)
+    app.register_blueprint(crm_client_bp)
+    app.register_blueprint(crm_credentials_bp)
+    app.register_blueprint(crm_financial_bp)
+    app.register_blueprint(crm_financial_client_bp)
 
     from app.i18n import get_lang, t
     app.jinja_env.globals["t"] = t

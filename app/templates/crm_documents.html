@@ -1,0 +1,95 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Documentos do Caso{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Documentos — {{ case.title }}</h1>
+  <p style="opacity:0.92;margin:0;">Cliente: {{ case.client.full_name }}</p>
+</div>
+
+<div class="card">
+  <h2>Adicionar documento</h2>
+  <form method="post" action="{{ url_for('crm_ops.case_document_new', case_id=case.id) }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Nome</label><br>
+      <input type="text" name="name" required>
+    </div>
+    <div>
+      <label class="muted">Tipo</label><br>
+      <select name="document_type">
+        {% for dt in document_types %}<option value="{{ dt.value }}">{{ dt.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Idioma de tradução (se houver)</label><br>
+      <select name="translation_language">
+        <option value="">—</option>
+        {% for lang in translation_languages %}<option value="{{ lang.value }}">{{ lang.value|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Adicionar</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Documentos ({{ case.documents|length }})</h2>
+  {% if case.documents %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead>
+      <tr><th>Nome</th><th>Tipo</th><th>Progresso</th><th>Solicitado</th><th>Recebido</th><th>Tradução</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for d in case.documents %}
+      <tr>
+        {# Só vira link de verdade se começar com http(s):// -- nenhuma rota escreve
+           gdrive_url hoje, mas o campo é texto livre e um valor tipo "javascript:..."
+           executaria ao clicar (o autoescape do Jinja protege a tag, não o esquema). #}
+        <td>{{ d.name }}{% if d.gdrive_url and (d.gdrive_url.startswith('http://') or d.gdrive_url.startswith('https://')) %} <a href="{{ d.gdrive_url }}" target="_blank" rel="noopener">(Drive)</a>{% endif %}</td>
+        <td class="muted">{{ d.document_type.value|replace('_',' ')|title }}</td>
+        <td style="min-width:100px;">
+          <div style="background:var(--border);border-radius:999px;height:8px;overflow:hidden;">
+            <div style="width:{{ (d.progress/10*100)|round }}%;background:var(--accent);height:100%;"></div>
+          </div>
+        </td>
+        <td class="muted">{{ d.requested_at.strftime('%d/%m/%Y') if d.requested_at else '—' }}</td>
+        <td class="muted">
+          {% if d.received_at %}{{ d.received_at.strftime('%d/%m/%Y') }}
+          {% else %}
+          <form method="post" action="{{ url_for('crm_ops.document_receive', document_id=d.id) }}">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Marcar recebido</button>
+          </form>
+          {% endif %}
+        </td>
+        <td>
+          <form method="post" action="{{ url_for('crm_ops.document_translation_save', document_id=d.id) }}" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center;">
+            <select name="translator_id" style="font-size:0.78rem;">
+              <option value="">Tradutor —</option>
+              {% for u in staff_users %}
+              <option value="{{ u.id }}" {{ 'selected' if d.translation and d.translation.translator_id == u.id }}>{{ u.email }}</option>
+              {% endfor %}
+            </select>
+            <select name="status" style="font-size:0.78rem;">
+              {% for st in translation_statuses %}
+              <option value="{{ st.value }}" {{ 'selected' if d.translation and d.translation.status == st }}>{{ st.value|title }}</option>
+              {% endfor %}
+            </select>
+            <input type="date" name="deadline" value="{{ d.translation.deadline.isoformat() if d.translation and d.translation.deadline else '' }}" style="font-size:0.78rem;max-width:130px;">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Salvar</button>
+          </form>
+          {% if d.translation and d.translation.status.value != 'ready' %}
+          <form method="post" action="{{ url_for('crm_ops.document_translation_finish', document_id=d.id) }}" style="margin-top:4px;">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Finalizar review</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">Nenhum documento cadastrado ainda para este caso.</p>
+  {% endif %}
+</div>
+{% endblock %}

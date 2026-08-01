@@ -1,0 +1,154 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — {{ fc.full_name }} (Coaching){% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ fc.full_name }}</h1>
+  <p style="opacity:0.92;margin:0;">
+    {{ crm_badge(fc.client_status) }}
+    {% if fc.program_type %}· {{ fc.program_type.value|replace('_',' ')|title }}{% endif %}
+  </p>
+</div>
+
+<div class="card">
+  <h2>Perfil</h2>
+  <p class="muted">E-mail: {{ fc.email or '—' }} · Telefone: {{ fc.phone_number or '—' }}</p>
+  <p class="muted">Progresso: {{ crm_badge(fc.progress_status) }}
+    {% if completion_pct is not none %}· {{ completion_pct }}% do programa ({{ sessions_completed }}/{{ fc.total_sessions_purchased }} sessões){% endif %}
+  </p>
+  {% if next_session_at %}<p class="muted">Próxima sessão: {{ next_session_at.strftime('%d/%m/%Y %H:%M') }}</p>{% endif %}
+  {% if last_session_at %}<p class="muted">Última sessão: {{ last_session_at.strftime('%d/%m/%Y') }}</p>{% endif %}
+  {% if net_worth_cents is not none %}<p class="muted">Patrimônio líquido: ${{ '%.2f'|format(net_worth_cents / 100) }}</p>{% endif %}
+</div>
+
+<div class="card">
+  <h2>Pagamento</h2>
+  {% if fc.package_value_cents %}
+  <p class="muted">
+    Pacote: ${{ '%.2f'|format(fc.package_value_cents / 100) }} ·
+    Pago: ${{ '%.2f'|format(amount_paid_cents / 100) }} ·
+    Saldo: ${{ '%.2f'|format((remaining_balance_cents or 0) / 100) }}
+    {% if payment_status %}· {{ crm_badge(payment_status) }}{% endif %}
+  </p>
+  <p class="muted">Lançamentos detalhados na aba <a href="{{ url_for('crm_ops.payments') }}">Pagamentos (CRM)</a> (filtre pelo cliente).</p>
+  {% else %}
+  <p class="muted">Nenhum pacote vendido ainda.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Sessões de Coaching</h2>
+  {% if fc.sessions %}
+  <table class="submissions" style="margin:0 0 16px;">
+    <thead><tr><th>#</th><th>Tipo</th><th>Data</th><th>Homework</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for s in fc.sessions %}
+      <tr>
+        <td>{{ s.session_number }}</td>
+        <td>{{ s.session_type.value|replace('_',' ')|title if s.session_type else '—' }}</td>
+        <td class="muted">{{ s.session_date.strftime('%d/%m/%Y %H:%M') if s.session_date else '—' }}</td>
+        <td class="muted">{% set hw = homework_completion_pct(s) %}{{ hw ~ '%' if hw is not none else '—' }}</td>
+        <td>{{ 'Concluída' if s.completed else 'Agendada' }}</td>
+        <td>
+          {% if not s.completed %}
+          <form method="post" action="{{ url_for('crm_financial.session_complete', session_id=s.id) }}">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Marcar concluída</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted" style="margin:0 0 16px;">Nenhuma sessão registrada ainda.</p>
+  {% endif %}
+
+  <details>
+    <summary style="cursor:pointer;font-size:0.86rem;color:var(--muted);">Adicionar sessão</summary>
+    <form method="post" action="{{ url_for('crm_financial.session_new', financial_client_id=fc.id) }}" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+      <div>
+        <label class="muted">Tipo</label><br>
+        <select name="session_type">
+          <option value="">—</option>
+          {% for t in session_types %}<option value="{{ t.value }}">{{ t.value|replace('_',' ')|title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Tópico principal</label><br>
+        <input type="text" name="main_topic">
+      </div>
+      <div>
+        <label class="muted">Data/hora</label><br>
+        <input type="datetime-local" name="session_date">
+      </div>
+      <div>
+        <label class="muted">Coach</label><br>
+        <select name="coach_id">
+          <option value="">—</option>
+          {% for u in staff_users %}<option value="{{ u.id }}">{{ u.email }}</option>{% endfor %}
+        </select>
+      </div>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Adicionar</button>
+    </form>
+  </details>
+</div>
+
+<div class="card">
+  <h2>Tarefas de Casa</h2>
+  {% if fc.tasks %}
+  <table class="submissions" style="margin:0 0 16px;">
+    <thead><tr><th>Tarefa</th><th>Responsável</th><th>Prazo</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for t in fc.tasks %}
+      <tr>
+        <td>{{ t.task_name }}</td>
+        <td class="muted">{{ t.responsible_party.value|title }}</td>
+        <td class="muted">{{ t.due_date.strftime('%d/%m/%Y') if t.due_date else '—' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('crm_financial.task_update_status', task_id=t.id) }}" style="display:inline-flex;gap:4px;">
+            <select name="status" onchange="this.form.submit()" style="font-size:0.78rem;">
+              <option value="not_started" {{ 'selected' if t.status.value == 'not_started' }}>Não iniciada</option>
+              <option value="in_progress" {{ 'selected' if t.status.value == 'in_progress' }}>Em andamento</option>
+              <option value="done" {{ 'selected' if t.status.value == 'done' }}>Concluída</option>
+            </select>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted" style="margin:0 0 16px;">Nenhuma tarefa registrada ainda.</p>
+  {% endif %}
+
+  <details>
+    <summary style="cursor:pointer;font-size:0.86rem;color:var(--muted);">Adicionar tarefa</summary>
+    <form method="post" action="{{ url_for('crm_financial.task_new', financial_client_id=fc.id) }}" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+      <div>
+        <label class="muted">Tarefa</label><br>
+        <input type="text" name="task_name" required>
+      </div>
+      <div>
+        <label class="muted">Categoria</label><br>
+        <select name="category_id">
+          <option value="">—</option>
+          {% for c in categories %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Responsável</label><br>
+        <select name="responsible_party">
+          <option value="client">Cliente</option>
+          <option value="coach">Coach</option>
+        </select>
+      </div>
+      <div>
+        <label class="muted">Prazo</label><br>
+        <input type="date" name="due_date">
+      </div>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Adicionar</button>
+    </form>
+  </details>
+</div>
+{% endblock %}

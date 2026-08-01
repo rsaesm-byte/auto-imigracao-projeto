@@ -1,0 +1,27 @@
+{
+  "financial_goals": [
+    "Protect Family", "Reduce Expenses", "Create Monthly Budget",
+    "Financial Freedom", "Build Wealth", "Increase Income",
+    "Retirement Planning", "Save for College", "Buy a Car", "Buy a House",
+    "Start Investing", "Improve Credit Score", "Pay Off Debt",
+    "Build Emergency Fund", "Create Financial Goals", "Money Management",
+    "Other"
+  ],
+  "financial_challenges": [
+    "Financial Stress", "No Investment Strategy", "Credit Problems",
+    "Low Income", "Lack of Financial Knowledge", "Bills Paid Late",
+    "College Funding", "No Retirement Plan", "Overspending",
+    "Poor Money Management", "No Emergency Fund", "Cannot Save Money",
+    "No Budget", "Debt", "Other"
+  ],
+  "financial_task_categories": [
+    "Budgeting", "Savings", "Debt Reduction", "Investments",
+    "Credit Improvement", "Banking", "Insurance", "Taxes",
+    "Estate Planning", "Income Growth", "Financial Education",
+    "Documentation", "Annual Review"
+  ],
+  "additional_close_loss_reasons": [
+    "Lost Interested", "Don't Want to Share Their Numbers",
+    "Can't Use Excel", "Can't Use Notion", "Got Scared"
+  ]
+}

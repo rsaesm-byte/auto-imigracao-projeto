@@ -1,0 +1,17 @@
+{# Pílula de status genérica pro CRM -- app/crm_models.py tem dezenas de
+   enums (CaseStatus, TaskStatus, PaymentStatus, LeadStage, ...), mapear cor
+   por valor exato não escala. Classifica por *significado* semântico via
+   palavra-chave no valor do enum, cai em "neutral" pra qualquer coisa que
+   não reconheça (ver classes .status-* em app/static/style.css). #}
+{% macro crm_badge(value, label=None) %}
+{%- set v = value.value if value is not string else value -%}
+{%- set positive_kw = ['approved', 'done', 'paid', 'closed_won', 'ready', 'confirmed', 'completed'] -%}
+{%- set negative_kw = ['denied', 'lost', 'gave_up', 'closed_lost', 'in_dispute', 'written_off', 'not_qualified', 'refunded'] -%}
+{%- set warning_kw = ['pending', 'waiting_translation', 'in_progress', 'review', 'negotiation', 'proposal_sent', 'invoice_sent', 'partially_paid', 'quoted', 'not_started'] -%}
+{%- if v in positive_kw -%}{%- set cls = 'status-positive' -%}
+{%- elif v in negative_kw -%}{%- set cls = 'status-negative' -%}
+{%- elif v in warning_kw -%}{%- set cls = 'status-warning' -%}
+{%- else -%}{%- set cls = 'status-neutral' -%}
+{%- endif -%}
+<span class="badge {{ cls }}">{{ label or v|replace('_', ' ')|title }}</span>
+{%- endmacro %}

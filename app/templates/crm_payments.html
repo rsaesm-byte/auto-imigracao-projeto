@@ -1,0 +1,122 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Pagamentos (CRM){% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Pagamentos</h1>
+  <p style="opacity:0.92;margin:0;">Ledger financeiro completo — a receber (clientes) e a pagar (taxas, tradutores, USCIS etc). Diferente do gate de checkout do site, que continua funcionando à parte.</p>
+</div>
+
+{% if new_form %}
+<div class="card">
+  <h2>Novo lançamento</h2>
+  <form method="post" action="{{ url_for('crm_ops.payment_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Cliente é de</label><br>
+      <select name="owner_type" id="owner_type" onchange="document.getElementById('owner_client').hidden = this.value !== 'client'; document.getElementById('owner_financial').hidden = this.value !== 'financial_client';">
+        <option value="client">Imigração</option>
+        <option value="financial_client">Coaching Financeiro</option>
+      </select>
+    </div>
+    <div id="owner_client">
+      <label class="muted">Cliente (imigração)</label><br>
+      <select name="owner_id_client">
+        {% for c in clients_list %}<option value="{{ c.id }}">{{ c.full_name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div id="owner_financial" hidden>
+      <label class="muted">Cliente (coaching)</label><br>
+      <select name="owner_id_financial">
+        {% for fc in financial_clients_list %}<option value="{{ fc.id }}">{{ fc.full_name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Descrição</label><br>
+      <input type="text" name="description" required>
+    </div>
+    <div>
+      <label class="muted">Valor (USD)</label><br>
+      <input type="number" step="0.01" min="0" name="amount_dollars" required style="max-width:120px;">
+    </div>
+    <div>
+      <label class="muted">Moeda</label><br>
+      <select name="currency">{% for cur in currencies %}<option value="{{ cur.value }}">{{ cur.value|upper }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">Direção</label><br>
+      <select name="direction">{% for d in directions %}<option value="{{ d.value }}">{{ 'A receber' if d.value == 'receivable' else 'A pagar' }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">Status</label><br>
+      <select name="status">{% for s in statuses %}<option value="{{ s.value }}">{{ s.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">Vencimento</label><br>
+      <input type="date" name="due_date">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Criar</button>
+  </form>
+</div>
+{% else %}
+
+<div class="card">
+  <form method="get" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
+    <div>
+      <label class="muted">Mês</label><br>
+      <select name="mes" onchange="this.form.submit()">
+        <option value="">Todos</option>
+        {% for m in months %}<option value="{{ m }}" {{ 'selected' if m == mes }}>{{ m }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Direção</label><br>
+      <select name="direcao" onchange="this.form.submit()">
+        <option value="">Todas</option>
+        <option value="receivable" {{ 'selected' if direcao == 'receivable' }}>A receber</option>
+        <option value="payable" {{ 'selected' if direcao == 'payable' }}>A pagar</option>
+      </select>
+    </div>
+    <a href="{{ url_for('crm_ops.payment_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ Novo lançamento</a>
+  </form>
+</div>
+
+<div class="card">
+  {% if payments %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead>
+      <tr><th>Descrição</th><th>Cliente</th><th>Valor</th><th>Direção</th><th>Status</th><th>Vencimento</th><th>Pago em</th></tr>
+    </thead>
+    <tbody>
+      {% for p in payments %}
+      <tr>
+        <td>{{ p.description }}</td>
+        <td class="muted">
+          {% if p.client_id in clients %}{{ clients[p.client_id].full_name }}
+          {% elif p.financial_client_id in financial_clients %}{{ financial_clients[p.financial_client_id].full_name }} (coaching)
+          {% else %}—{% endif %}
+        </td>
+        <td>{{ '$%.2f'|format(p.amount_cents / 100) }} {{ p.currency.value|upper }}</td>
+        <td>{{ crm_badge(p.direction, 'A receber' if p.direction.value == 'receivable' else 'A pagar') }}</td>
+        <td>
+          <form method="post" action="{{ url_for('crm_ops.payment_update_status', payment_id=p.id) }}" style="display:inline-flex;gap:4px;">
+            <select name="status" onchange="this.form.submit()" style="font-size:0.78rem;">
+              {% for s in statuses %}
+              <option value="{{ s.value }}" {{ 'selected' if p.status == s }}>{{ s.value|replace('_',' ')|title }}</option>
+              {% endfor %}
+            </select>
+          </form>
+        </td>
+        <td class="muted">{{ p.due_date.strftime('%d/%m/%Y') if p.due_date else '—' }}</td>
+        <td class="muted">{{ p.payment_date.strftime('%d/%m/%Y') if p.payment_date else '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">Nenhum lançamento encontrado com esses filtros.</p>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

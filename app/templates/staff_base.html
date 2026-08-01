@@ -36,6 +36,18 @@
     <a href="{{ url_for('staff.finalized') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'finalized' else 'color:var(--text);' }}">Finalizados</a>
     <a href="{{ url_for('staff.review_queue') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'review' else 'color:var(--text);' }}">Solicitar Review</a>
     <a href="{{ url_for('staff.prices') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'prices' else 'color:var(--text);' }}">Preços</a>
+    <span style="width:1px;background:var(--border);margin:6px 4px;"></span>
+    {# CRM (app/crm_staff_pipeline.py, app/crm_staff_ops.py) -- destaque via
+       request.blueprint/request.endpoint (setados pelo Flask sozinho),
+       em vez de pedir pra cada rota passar active_tab explicitamente. #}
+    <a href="{{ url_for('crm_pipeline.cases_kanban') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint == 'crm_pipeline.cases_kanban' else 'color:var(--text);' }}">CRM: Casos</a>
+    <a href="{{ url_for('crm_pipeline.leads_kanban') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_pipeline.leads_kanban', 'crm_pipeline.lead_new', 'crm_pipeline.lead_convert') else 'color:var(--text);' }}">Leads</a>
+    <a href="{{ url_for('crm_pipeline.clients_list') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_pipeline.clients_list', 'crm_pipeline.client_new', 'crm_pipeline.client_detail') else 'color:var(--text);' }}">Clientes</a>
+    <a href="{{ url_for('crm_ops.payments') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_ops.payments', 'crm_ops.payment_new') else 'color:var(--text);' }}">Pagamentos (CRM)</a>
+    <a href="{{ url_for('crm_ops.communications') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_ops.communications', 'crm_ops.communications_follow_ups', 'crm_ops.communication_new') else 'color:var(--text);' }}">Comunicações</a>
+    <a href="{{ url_for('crm_ops.tasks') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_ops.tasks', 'crm_ops.task_new') else 'color:var(--text);' }}">Tarefas</a>
+    <span style="width:1px;background:var(--border);margin:6px 4px;"></span>
+    <a href="{{ url_for('crm_financial.clients_kanban') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.blueprint == 'crm_financial' else 'color:var(--text);' }}">Coaching Financeiro</a>
   </nav>
 
   <div class="page wide bg-blobs">

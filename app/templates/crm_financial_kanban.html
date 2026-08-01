@@ -1,0 +1,38 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Coaching Financeiro{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Coaching Financeiro</h1>
+  <p style="opacity:0.92;margin:0;">Funil de clientes do programa de coaching financeiro (6 sessões). Ledger de pagamentos reusa a mesma aba "Pagamentos (CRM)" do módulo imigratório.</p>
+</div>
+
+<div class="card" style="display:flex;gap:10px;">
+  <a href="{{ url_for('crm_financial.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ Novo cliente</a>
+  <a href="{{ url_for('crm_financial.kpis') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">Ver KPIs mensais</a>
+</div>
+
+<div class="crm-kanban">
+  {% for status in statuses %}
+  <div class="crm-kanban-col">
+    <h3>{{ crm_badge(status) }} ({{ by_status[status]|length }})</h3>
+    {% for fc in by_status[status] %}
+    <div class="crm-kanban-card">
+      <h4><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}">{{ fc.full_name }}</a></h4>
+      {% if fc.package_value_cents %}
+      <div class="muted">Saldo: ${{ '%.2f'|format((remaining_balance_cents(fc) or 0) / 100) }}</div>
+      {% endif %}
+      {% set remaining = sessions_remaining(fc) %}
+      {% if remaining is not none %}<div class="muted">{{ remaining }} sessões restantes</div>{% endif %}
+      <form method="post" action="{{ url_for('crm_financial.client_status_update', financial_client_id=fc.id) }}">
+        <select name="client_status">
+          {% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if s == status }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
+        </select>
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Mover</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

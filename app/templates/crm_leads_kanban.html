@@ -1,0 +1,122 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Leads (CRM){% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Leads</h1>
+  <p style="opacity:0.92;margin:0;">Funil de vendas — do primeiro contato ao fechamento. Fechar um lead como "Convertido" cria automaticamente o Cliente e o Caso.</p>
+</div>
+
+{% if convert_lead %}
+<div class="card">
+  <h2>Converter lead — {{ convert_lead.name }}</h2>
+  <p class="muted">Fechar este lead cria um Cliente e um Caso novos. Escolha o modo de atendimento e o título do caso.</p>
+  <form method="post" action="{{ url_for('crm_pipeline.lead_convert', lead_id=convert_lead.id) }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Modo de atendimento</label><br>
+      <select name="service_mode" required>
+        {% for m in service_modes %}
+        <option value="{{ m.value }}">{{ 'Auto-atendimento' if m.value == 'self_service' else 'Serviço completo' }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div style="flex:1;min-width:260px;">
+      <label class="muted">Título do caso</label><br>
+      <input type="text" name="case_title" value="{{ suggested_title }}" required style="width:100%;">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Converter</button>
+    <a href="{{ url_for('crm_pipeline.leads_kanban') }}" class="muted">Cancelar</a>
+  </form>
+</div>
+
+{% elif new_form %}
+<div class="card">
+  <h2>Novo lead</h2>
+  <form method="post" action="{{ url_for('crm_pipeline.lead_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Nome</label><br>
+      <input type="text" name="name" required>
+    </div>
+    <div>
+      <label class="muted">Qualidade</label><br>
+      <select name="quality"><option value="">—</option>{% for q in qualities %}<option value="{{ q.value }}">{{ q.value|title }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">Origem</label><br>
+      <select name="lead_source_id"><option value="">—</option>{% for s in lead_sources %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">E-mail</label><br>
+      <input type="email" name="contact_email">
+    </div>
+    <div>
+      <label class="muted">Telefone</label><br>
+      <input type="text" name="contact_phone">
+    </div>
+    <div>
+      <label class="muted">Valor do negócio (USD)</label><br>
+      <input type="number" step="0.01" min="0" name="deal_value_dollars" style="max-width:120px;">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Criar</button>
+  </form>
+</div>
+
+{% else %}
+
+<div class="card">
+  <a href="{{ url_for('crm_pipeline.lead_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ Novo lead</a>
+</div>
+
+<div class="crm-kanban">
+  {% for stage in stages %}
+  <div class="crm-kanban-col">
+    <h3>{{ crm_badge(stage) }} ({{ by_stage[stage]|length }})</h3>
+    {% for lead in by_stage[stage] %}
+    <div class="crm-kanban-card">
+      <h4>{{ lead.name }}</h4>
+      {% if lead.quality %}<div class="muted">Qualidade: {{ lead.quality.value|title }}</div>{% endif %}
+      <div class="muted">Origem: {{ sources[lead.lead_source_id].name if lead.lead_source_id in sources else '—' }}</div>
+      {% if lead.deal_value_cents %}<div class="muted">Valor: {{ '$%.2f'|format(lead.deal_value_cents / 100) }}</div>{% endif %}
+      {% if lead.assigned_to_id in users %}<div class="muted">Responsável: {{ users[lead.assigned_to_id].email }}</div>{% endif %}
+      <form method="post" action="{{ url_for('crm_pipeline.lead_stage_update', lead_id=lead.id) }}">
+        <select name="stage">
+          {% for s in stages %}<option value="{{ s.value }}" {{ 'selected' if s == stage }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
+        </select>
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Mover</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>Leads por origem</h2>
+  {% for name, count in source_counts %}
+  <div style="margin-bottom:8px;">
+    <div class="muted" style="font-size:0.8rem;">{{ name }} ({{ count }})</div>
+    <div style="background:var(--border);border-radius:999px;height:8px;">
+      <div style="width:{{ (count / max_count * 100)|round }}%;background:var(--accent);height:8px;border-radius:999px;"></div>
+    </div>
+  </div>
+  {% else %}
+  <p class="muted">Nenhum lead cadastrado ainda.</p>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>Taxa de conversão por origem</h2>
+  {% for name, pct in source_conversion %}
+  <div style="margin-bottom:8px;">
+    <div class="muted" style="font-size:0.8rem;">{{ name }} ({{ pct }}%)</div>
+    <div style="background:var(--border);border-radius:999px;height:8px;">
+      <div style="width:{{ pct }}%;background:var(--success);height:8px;border-radius:999px;"></div>
+    </div>
+  </div>
+  {% else %}
+  <p class="muted">Nenhum lead cadastrado ainda.</p>
+  {% endfor %}
+</div>
+
+{% endif %}
+{% endblock %}

@@ -112,6 +112,12 @@ class FormSubmission(Base):
     # terceiro vinculada a este caso.
     paid: Mapped[bool] = mapped_column(default=False)
     paid_at: Mapped[datetime | None] = mapped_column(default=None)
+    # Liga esta submissão a um Case do CRM (app/crm_models.py) quando o
+    # formulário faz parte de um caso gerenciado (full_service) ou o
+    # próprio cliente self_service tem um Case aberto para acompanhamento
+    # -- opcional e nullable de propósito: toda submissão que já existia
+    # antes do CRM continua funcionando sem nenhum Case associado.
+    case_id: Mapped[int | None] = mapped_column(ForeignKey("crm_cases.id"), default=None, index=True)
 
     user: Mapped[User] = relationship(back_populates="submissions")
 
@@ -175,6 +181,11 @@ class Payment(Base):
     # cliente -- só faz sentido depois de finalizado.
     finalized_at: Mapped[datetime | None] = mapped_column(default=None)
     review_requested: Mapped[bool] = mapped_column(default=False)
+    # Mesmo link opcional que FormSubmission.case_id acima -- ver
+    # app/crm_models.py::PaymentLedgerEntry.gate_payment_id para a ligação
+    # inversa (o ledger financeiro completo do CRM aponta pra cá quando é
+    # a mesma transação, em vez de duplicar o registro).
+    case_id: Mapped[int | None] = mapped_column(ForeignKey("crm_cases.id"), default=None, index=True)
 
 
 class ServiceFee(Base):

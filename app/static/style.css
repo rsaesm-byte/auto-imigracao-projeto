@@ -490,6 +490,29 @@ table.submissions a:hover { text-decoration: underline; }
 .badge.in_progress { background: #fef3c7; color: #92400e; }
 .badge.completed { background: var(--success-bg); color: var(--success); }
 
+/* Pílulas de status genéricas do CRM (app/crm_models.py tem dezenas de
+   enums -- mapear cor por valor individual não escala; ver macro
+   crm_badge() em app/templates/_crm_badge.html, que decide qual destas 4
+   classes usar por *significado* semântico, não por valor exato). */
+.badge.status-positive { background: var(--success-bg); color: var(--success); }
+.badge.status-negative { background: #fee2e2; color: #991b1b; }
+.badge.status-warning { background: #fef3c7; color: #92400e; }
+.badge.status-neutral { background: var(--border); color: var(--text); }
+
+/* ---- Kanban simples (Casos/Leads/Tarefas do CRM) -- sem JS/drag-and-drop,
+   só colunas de cards com um form de mover por card, consistente com o
+   resto do site (100% server-rendered). ---- */
+.crm-kanban { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
+.crm-kanban-col { flex: 0 0 260px; background: var(--accent-soft); border-radius: var(--radius-sm); padding: 10px; }
+.crm-kanban-col h3 { font-size: 0.85rem; margin: 0 0 10px; padding: 0 4px; }
+.crm-kanban-card {
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 10px; margin-bottom: 8px; font-size: 0.85rem;
+}
+.crm-kanban-card h4 { margin: 0 0 6px; font-size: 0.88rem; }
+.crm-kanban-card form { margin-top: 8px; display: flex; gap: 6px; }
+.crm-kanban-card select { flex: 1; font-size: 0.78rem; }
+
 /* ---- Landing page ----
    O motivo de fundo (arco pontilhado + estrela) ecoa a própria seta/estrela
    do logo, no lugar dos blobs de gradiente borrado -- mais fiel à marca e

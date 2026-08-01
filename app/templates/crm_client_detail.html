@@ -1,0 +1,49 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — {{ client.full_name }} (CRM){% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ client.full_name }}</h1>
+  <p style="opacity:0.92;margin:0;">
+    {{ client.email or 'Sem e-mail cadastrado' }}
+    {% if client.tier %} · Tier {{ client.tier.value }}{% endif %}
+  </p>
+</div>
+
+<div class="card">
+  <h2>Identificação e contato</h2>
+  <p class="muted" style="margin:2px 0;">Telefone (US): {{ client.us_phone or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Telefone (país de origem): {{ client.home_phone or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Endereço (US): {{ client.us_address or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">País de origem: {{ client.country_of_origin or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Idioma preferido: {{ client.preferred_language.value if client.preferred_language else '—' }}</p>
+  <p style="margin-top:10px;"><a href="{{ url_for('crm_credentials.detail', client_id=client.id) }}">Ver credenciais (USCIS/Embaixada)</a></p>
+</div>
+
+<div class="card">
+  <h2>Casos</h2>
+  {% if client.cases %}
+  {% for case in client.cases %}
+  <div style="border-top:1px solid var(--border);padding:10px 0;">
+    <strong>{{ case.title }}</strong> {{ crm_badge(case.case_status) }}
+    <div class="muted">
+      {{ 'Auto-atendimento' if case.service_mode.value == 'self_service' else 'Serviço completo' }}
+      {% if case.service_deadline %} · Prazo: {{ case.service_deadline.strftime('%d/%m/%Y') }}{% endif %}
+    </div>
+    <div style="margin-top:4px;">
+      <a href="{{ url_for('crm_pipeline.cases_kanban') }}" class="muted" style="font-size:0.8rem;">Ver no kanban →</a>
+      · <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Documentos →</a>
+    </div>
+    {% set pending = pending_by_case.get(case.id, []) %}
+    {% if pending %}
+    <div class="muted" style="margin-top:6px;font-size:0.82rem;">
+      Documentos pendentes: {{ pending|map(attribute='name')|join(', ') }}
+    </div>
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">Nenhum caso aberto para este cliente ainda.</p>
+  {% endif %}
+</div>
+{% endblock %}
