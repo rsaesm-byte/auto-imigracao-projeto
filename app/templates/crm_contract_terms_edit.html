@@ -1,0 +1,40 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Terms & Conditions{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Terms &amp; Conditions</h1>
+  <p style="opacity:0.92;margin:0;">Shared text shown on every contract the client signs — "General Terms" (all contracts), the payment-fees clause (service contracts only), and the intro paragraph for the standalone Terms &amp; Conditions document. Markdown supported (headings, bullets, **bold**). Changes apply immediately.</p>
+</div>
+
+<div class="card">
+  <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="muted" style="font-size:0.85rem;">← All templates</a>
+</div>
+
+<form method="post" action="{{ url_for('crm_contracts.terms_edit') }}">
+  {% for section, section_label, hint in [
+      ('general_terms', 'General Terms (shown on every contract)', None),
+      ('payment_separate', 'Government fees clause (service contracts only)', None),
+      ('tc_intro', 'Terms & Conditions intro paragraph (T&C document only)', None),
+  ] %}
+  <div class="card">
+    <h2 style="font-size:1rem;">{{ section_label }}</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+      <div>
+        <label class="muted" style="font-size:0.8rem;">English (canonical)</label>
+        <textarea name="{{ section }}_en" rows="6" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ fields[section ~ '_en'] }}</textarea>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.8rem;">Português</label>
+        <textarea name="{{ section }}_pt" rows="6" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ fields[section ~ '_pt'] }}</textarea>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.8rem;">Español</label>
+        <textarea name="{{ section }}_es" rows="6" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ fields[section ~ '_es'] }}</textarea>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <button type="submit" class="btn" style="padding:10px 20px;">Save</button>
+</form>
+{% endblock %}

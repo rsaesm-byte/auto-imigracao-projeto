@@ -8,10 +8,11 @@ from __future__ import annotations
 from flask import Blueprint, abort, flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required
 
-from app.crm_models import (Case, CaseStatus, Client, ClientTier, Lead,
-                             LeadQuality, LeadSource, LeadStage,
-                             ProgressCategory, ProgressStatus, ServiceMode,
-                             VisaDraftType)
+from app.crm_models import (Case, CaseStatus, Client, ClientTier,
+                             CloseLossReason, ContactChannel, Lead,
+                             LeadQuality, LeadSource, LeadStage, LeadTier,
+                             ProgressCategory, ProgressStatus, ServiceCatalog,
+                             ServiceMode, VisaDraftType)
 from app.db import SessionLocal
 from app.models import User
 from app.services import crm_service as svc
@@ -126,9 +127,82 @@ def lead_stage_update(lead_id: int):
         # virar cliente/caso sem antes decidir service_mode e o título do
         # caso (ver lead_convert() abaixo).
         return redirect(url_for("crm_pipeline.lead_convert", lead_id=lead.id))
+    if new_stage == LeadStage.closed_lost and lead.lost_at is None:
+        # "Data da Desistência" -- pedido do usuário 2026-08-02, preenchida
+        # automaticamente na primeira vez que o lead entra em closed_lost
+        # (nunca sobrescrita depois, mesma convenção de closed_at em
+        # convert_lead_to_client_and_case).
+        lead.lost_at = svc.today()
     lead.stage = new_stage
     SessionLocal.commit()
     return redirect(request.referrer or url_for("crm_pipeline.leads_kanban"))
+
+
+@crm_pipeline_bp.route("/leads/<int:lead_id>")
+def lead_detail(lead_id: int):
+    lead = SessionLocal.get(Lead, lead_id)
+    if lead is None:
+        abort(404)
+    lead_sources = SessionLocal.query(LeadSource).order_by(LeadSource.name).all()
+    contact_channels = SessionLocal.query(ContactChannel).order_by(ContactChannel.name).all()
+    close_loss_reasons = SessionLocal.query(CloseLossReason).order_by(CloseLossReason.name).all()
+    services = SessionLocal.query(ServiceCatalog).order_by(ServiceCatalog.name).all()
+    interested_ids = set(svc.lead_interested_service_ids(lead.id))
+    return render_template(
+        "crm_lead_detail.html", lead=lead, lead_sources=lead_sources, contact_channels=contact_channels,
+        close_loss_reasons=close_loss_reasons, services=services, interested_ids=interested_ids,
+        qualities=list(LeadQuality), tiers=list(LeadTier), stages=list(LeadStage),
+        service_modes=list(ServiceMode), days_to_close=svc.days_to_close(lead))
+
+
+@crm_pipeline_bp.route("/leads/<int:lead_id>/salvar", methods=["POST"])
+def lead_update(lead_id: int):
+    lead = SessionLocal.get(Lead, lead_id)
+    if lead is None:
+        abort(404)
+
+    name = request.form.get("name", "").strip()
+    if not name:
+        flash("Name is required.", "error")
+        return redirect(url_for("crm_pipeline.lead_detail", lead_id=lead_id))
+
+    lead.name = name
+    lead.contact_email = request.form.get("contact_email", "").strip() or None
+    lead.contact_phone = request.form.get("contact_phone", "").strip() or None
+    lead.city_region = request.form.get("city_region", "").strip() or None
+    lead.notes = request.form.get("notes", "").strip() or None
+    lead.contact_attempts = svc.parse_int(request.form.get("contact_attempts"))
+    lead.lead_source_id = svc.parse_int(request.form.get("lead_source_id"))
+    lead.contact_channel_id = svc.parse_int(request.form.get("contact_channel_id"))
+    lead.close_loss_reason_id = svc.parse_int(request.form.get("close_loss_reason_id"))
+    lead.quality = svc.parse_enum(LeadQuality, request.form.get("quality"))
+    lead.tier = svc.parse_enum(LeadTier, request.form.get("tier"))
+    lead.interested_service_mode = svc.parse_enum(ServiceMode, request.form.get("interested_service_mode"))
+    lead.deal_value_cents = svc.parse_dollars_to_cents(request.form.get("deal_value_dollars", ""))
+    lead.first_contact_at = svc.parse_date(request.form.get("first_contact_at"))
+    lead.proposal_at = svc.parse_date(request.form.get("proposal_at"))
+    lead.closed_at = svc.parse_date(request.form.get("closed_at"))
+    lead.lost_at = svc.parse_date(request.form.get("lost_at"))
+
+    service_ids = [svc.parse_int(v) for v in request.form.getlist("interested_service_ids")]
+    svc.set_lead_interested_services(lead.id, [s for s in service_ids if s is not None])
+
+    SessionLocal.commit()
+    flash("Lead updated.", "success")
+    return redirect(url_for("crm_pipeline.lead_detail", lead_id=lead_id))
+
+
+@crm_pipeline_bp.route("/leads/<int:lead_id>/excluir", methods=["POST"])
+def lead_delete(lead_id: int):
+    lead = SessionLocal.get(Lead, lead_id)
+    if lead is None:
+        abort(404)
+    from app.crm_models import LeadInterestedService
+    SessionLocal.query(LeadInterestedService).filter_by(lead_id=lead_id).delete()
+    SessionLocal.delete(lead)
+    SessionLocal.commit()
+    flash("Lead deleted.", "success")
+    return redirect(url_for("crm_pipeline.leads_kanban"))
 
 
 @crm_pipeline_bp.route("/leads/<int:lead_id>/converter", methods=["GET", "POST"])

@@ -74,8 +74,9 @@
        data-action-template="{{ url_for('crm_pipeline.lead_stage_update', lead_id=999999) }}">
     <h3>{{ crm_badge(stage) }} ({{ by_stage[stage]|length }})</h3>
     {% for lead in by_stage[stage] %}
-    <div class="crm-kanban-card" draggable="true" data-item-id="{{ lead.id }}">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ lead.id }}" data-lead-context-menu="true">
       <h4>{{ lead.name }}</h4>
+      {% if lead.tier %}<div class="muted">{{ '⭐' * (lead.tier.value[-1]|int) }}</div>{% endif %}
       {% if lead.quality %}<div class="muted">Quality: {{ lead.quality.value|title }}</div>{% endif %}
       <div class="muted">Source: {{ sources[lead.lead_source_id].name if lead.lead_source_id in sources else '—' }}</div>
       {% if lead.deal_value_cents %}<div class="muted">Value: {{ '$%.2f'|format(lead.deal_value_cents / 100) }}</div>{% endif %}
@@ -86,6 +87,47 @@
   {% endfor %}
 </div>
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
+
+{# Menu de botão direito (Editar/Excluir) -- pedido do usuário 2026-08-02:
+   "ser possível clicar com botão direito e deletar, editar". Só nos
+   cartões de Lead (data-lead-context-menu), não nos outros kanbans. #}
+<div id="lead-context-menu" class="lead-context-menu" hidden>
+  <a href="#" data-action="edit">Edit</a>
+  <a href="#" data-action="delete">Delete</a>
+</div>
+<form id="lead-delete-form" method="post" style="display:none;"></form>
+<script>
+  (function () {
+    var menu = document.getElementById('lead-context-menu');
+    var deleteForm = document.getElementById('lead-delete-form');
+    var activeLeadId = null;
+
+    document.querySelectorAll('.crm-kanban-card[data-lead-context-menu]').forEach(function (card) {
+      card.addEventListener('contextmenu', function (e) {
+        e.preventDefault();
+        activeLeadId = card.dataset.itemId;
+        menu.style.left = e.pageX + 'px';
+        menu.style.top = e.pageY + 'px';
+        menu.hidden = false;
+      });
+    });
+
+    document.addEventListener('click', function () { menu.hidden = true; });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') menu.hidden = true; });
+
+    menu.querySelector('[data-action="edit"]').addEventListener('click', function (e) {
+      e.preventDefault();
+      if (activeLeadId) window.location.href = '/staff/crm/leads/' + activeLeadId;
+    });
+    menu.querySelector('[data-action="delete"]').addEventListener('click', function (e) {
+      e.preventDefault();
+      if (!activeLeadId) return;
+      if (!confirm('Delete this lead permanently? This cannot be undone.')) return;
+      deleteForm.action = '/staff/crm/leads/' + activeLeadId + '/excluir';
+      deleteForm.submit();
+    });
+  })();
+</script>
 
 <div class="card">
   <h2>Leads by source</h2>

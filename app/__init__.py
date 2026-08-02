@@ -380,6 +380,87 @@ def _ensure_document_status_column() -> None:
             conn.commit()
 
 
+def _ensure_lead_columns() -> None:
+    """Novos campos de Lead pedidos pelo usuário 2026-08-02 ("Data da
+    Desistência", "Número de tentativas", "Cidade/Região", "Anotações",
+    "Interessado em" [ServiceMode], "Lead Tier" 1-5 estrelas)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_leads)"))]
+        if "lost_at" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN lost_at DATE"))
+        if "contact_attempts" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN contact_attempts INTEGER"))
+        if "city_region" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN city_region VARCHAR"))
+        if "notes" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN notes TEXT"))
+        if "interested_service_mode" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN interested_service_mode VARCHAR"))
+        if "tier" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN tier VARCHAR"))
+        conn.commit()
+
+
+def _seed_company_contract_terms() -> None:
+    """Linha única (id=1) com o texto editável dos "Termos Gerais" que
+    aparece em todo contrato do cliente -- pedido do usuário 2026-08-02
+    ("alterar o contrato da empresa... termos etc"). Semeada com o
+    conteúdo que antes vivia fixo em app/translations/{pt,en,es}.json
+    (contract_term_no_legal_advice/no_guarantee/refund/payment_separate/
+    contract_terms_body), pra não regredir visualmente no primeiro boot
+    depois desta migração -- dali em diante o staff edita livremente em
+    /staff/crm/contratos/termos, sem tocar em nenhum arquivo."""
+    from app.db import SessionLocal
+    from app.crm_models import CompanyContractTerms
+
+    if SessionLocal.get(CompanyContractTerms, 1) is not None:
+        return
+
+    SessionLocal.add(CompanyContractTerms(
+        id=1,
+        general_terms_en=(
+            "- Saes Professional Services is not a law firm and does not provide legal advice.\n"
+            "- Results with USCIS or any government agency cannot be guaranteed.\n"
+            "- Full refund only if requested within 3 days of purchase and before any work has "
+            "started. No refunds after the service has begun."
+        ),
+        general_terms_pt=(
+            "- A Saes Professional Services não é um escritório de advocacia e não presta "
+            "consultoria jurídica.\n"
+            "- Não há garantia de resultado junto à USCIS ou qualquer órgão governamental.\n"
+            "- Reembolso integral somente se solicitado em até 3 dias após a compra e antes do "
+            "início do serviço. Sem reembolso após o início do serviço."
+        ),
+        general_terms_es=(
+            "- Saes Professional Services no es un bufete de abogados y no brinda asesoría legal.\n"
+            "- No se puede garantizar el resultado ante USCIS ni ninguna agencia gubernamental.\n"
+            "- Reembolso completo solo si se solicita dentro de los 3 días posteriores a la compra "
+            "y antes de que comience el servicio. No hay reembolsos después de que el servicio "
+            "haya comenzado."
+        ),
+        payment_separate_en="Government filing fees (USCIS/consular) are not included and are paid separately.",
+        payment_separate_pt="As taxas governamentais (USCIS/consulares) não estão incluídas e são pagas separadamente.",
+        payment_separate_es="Las tarifas gubernamentales (USCIS/consulares) no están incluidas y se pagan por separado.",
+        tc_intro_en=(
+            "By signing, I confirm that I have read, understood, and agree to Saes Professional "
+            "Services' Terms & Conditions, including the policies on refunds, payment, and the "
+            "scope of services described above."
+        ),
+        tc_intro_pt=(
+            "Ao assinar, confirmo que li, entendi e concordo com os Termos e Condições da Saes "
+            "Professional Services, incluindo as políticas de reembolso, pagamento e o escopo dos "
+            "serviços descritos acima."
+        ),
+        tc_intro_es=(
+            "Al firmar, confirmo que he leído, entendido y acepto los Términos y Condiciones de "
+            "Saes Professional Services, incluyendo las políticas de reembolso, pago y el alcance "
+            "de los servicios descritos anteriormente."
+        ),
+    ))
+    SessionLocal.commit()
+
+
 def _seed_translators() -> None:
     """Pré-cadastra os 5 tradutores já usados pela equipe hoje (pedido do
     usuário 2026-08-02) -- só o nome; endereço/telefone/idiomas/forma de
@@ -511,11 +592,13 @@ def create_app() -> Flask:
     _migrate_service_mode_full_service()
     _ensure_onboarding_applicant_columns()
     _ensure_document_status_column()
+    _ensure_lead_columns()
     _seed_service_fees()
     _seed_crm_lookups()
     _seed_crm_financial_lookups()
     _seed_saes_procedure_services()
     _seed_translators()
+    _seed_company_contract_terms()
     _backfill_case_for_confirmed_payments()
 
     login_manager = LoginManager()

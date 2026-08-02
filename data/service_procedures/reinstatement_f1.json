@@ -1,8 +1,8 @@
 {
   "service_id": "reinstatement_f1",
-  "name": "Reinstatement to F-1",
-  "name_pt": "Reintegração ao Status F-1 (Reinstatement)",
-  "name_es": "Restablecimiento del Estatus F-1 (Reinstatement)",
+  "name": "Reinstatement to F-1 (Form I-539)",
+  "name_pt": "Reintegração ao Status F-1 (Reinstatement, Formulário I-539)",
+  "name_es": "Restablecimiento del Estatus F-1 (Reinstatement, Formulario I-539)",
   "forms": [
     "I-539",
     "I-539A",

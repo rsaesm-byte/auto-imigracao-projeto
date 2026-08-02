@@ -102,6 +102,19 @@ class LeadQuality(str, enum.Enum):
     cold = "cold"
 
 
+class LeadTier(str, enum.Enum):
+    """Classificação manual de 1 a 5 estrelas (pedido do usuário,
+    2026-08-02: "⭐, ⭐⭐, ⭐⭐⭐, ⭐⭐⭐⭐, ⭐⭐⭐⭐⭐") -- deliberadamente um campo
+    à parte de `LeadQuality` (hot/warm/cold, já existente e usado no
+    formulário de criação rápida): são duas escalas diferentes que o
+    negócio pediu para conviver, não uma substituição uma da outra."""
+    star_1 = "star_1"
+    star_2 = "star_2"
+    star_3 = "star_3"
+    star_4 = "star_4"
+    star_5 = "star_5"
+
+
 class ServiceMode(str, enum.Enum):
     """Os modelos de negócio da Saes (confirmado com o usuário, 2026-08-01):
     o cliente conduz o próprio processo (produto Auto-Imigração "Faça Você
@@ -610,6 +623,28 @@ class Lead(Base):
     first_contact_at: Mapped[date | None] = mapped_column(Date, default=None)
     proposal_at: Mapped[date | None] = mapped_column(Date, default=None)
     closed_at: Mapped[date | None] = mapped_column(Date, default=None)
+    # "Data da Desistência" -- pedido do usuário 2026-08-02: distinto de
+    # `closed_at` (que só marca um fechamento GANHO, ver
+    # crm_service.convert_lead_to_client_and_case). Preenchido quando o
+    # stage vira closed_lost (ver crm_staff_pipeline.lead_stage_update).
+    lost_at: Mapped[date | None] = mapped_column(Date, default=None)
+    # "Número de tentativas" -- contador manual de tentativas de contato,
+    # incrementado/editado pelo colaborador na tela de edição do lead.
+    contact_attempts: Mapped[int | None] = mapped_column(default=None)
+    # "Cidade/Região" -- texto livre (não é um lookup fechado como
+    # ContactChannel/LeadSource, região não é vocabulário fixo do produto).
+    city_region: Mapped[str | None] = mapped_column(default=None)
+    # "Anotações" -- markdown livre, mesmo conversor hand-rolled já usado em
+    # CaseTrackedForm.notes_markdown (app/services/text_format.py).
+    notes: Mapped[str | None] = mapped_column(Text, default=None)
+    # "Interessado em" -- pedido do usuário 2026-08-02: distinto do serviço
+    # específico (ver LeadInterestedService abaixo, "Serviço que está
+    # interessado") -- este é o MODELO de atendimento que o lead está
+    # considerando (fazer sozinho vs. equipe Standard/Plus), mesmo enum
+    # ServiceMode já usado em Case.service_mode em todo o resto do CRM.
+    interested_service_mode: Mapped[ServiceMode | None] = mapped_column(SAEnum(ServiceMode), default=None)
+    # "Lead Tier" (1 a 5 estrelas) -- ver LeadTier acima.
+    tier: Mapped[LeadTier | None] = mapped_column(SAEnum(LeadTier), default=None)
     assigned_to_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None, index=True)
     close_loss_reason_id: Mapped[int | None] = mapped_column(ForeignKey("crm_close_loss_reasons.id"), default=None)
     # Preenchido quando o lead vira cliente de fato -- é a "conversão" que
@@ -1215,3 +1250,41 @@ class CaseContract(Base):
     case: Mapped[Case] = relationship(back_populates="contracts")
     service: Mapped[ServiceCatalog | None] = relationship()
     payment_method: Mapped[PaymentMethodLookup | None] = relationship()
+
+
+class CompanyContractTerms(Base):
+    """O texto dos "Termos Gerais" que aparece em TODO contrato do cliente
+    (Standard/Plus de qualquer serviço, e também os Termos e Condições
+    autônomos) -- singleton (sempre id=1), mesma convenção de
+    `StaffNavGlobalLayout` (app/models.py). Pedido do usuário 2026-08-02:
+    "visualizar os contratos de cada serviço e alterar o contrato da
+    empresa por lá, exemplos termos etc, antes de disponibilizar o
+    contrato para os clientes" -- antes deste modelo, este texto vivia
+    fixo em app/translations/{pt,en,es}.json (contract_term_no_legal_advice/
+    no_guarantee/refund/payment_separate/contract_terms_body), sem nenhuma
+    tela pra editar sem mexer direto no arquivo.
+
+    Cada campo é markdown livre (app/services/text_format.py::
+    markdown_lite_to_html, mesmo conversor de CaseTrackedForm.notes_markdown),
+    não mais uma lista fixa de 3-4 frases -- dá ao staff controle total do
+    texto, não só permissão pra editar item por item de uma lista fechada.
+    `general_terms_*` aparece em QUALQUER contrato; `payment_separate_*` só
+    quando document_type=service_contract (contrato tem preço); `tc_intro_*`
+    só quando document_type=terms_and_conditions -- mesma condicionalidade
+    que já existia no template antes de virar editável (ver
+    app/templates/meu_contrato.html)."""
+    __tablename__ = "crm_company_contract_terms"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    general_terms_en: Mapped[str] = mapped_column(Text)
+    general_terms_pt: Mapped[str] = mapped_column(Text)
+    general_terms_es: Mapped[str] = mapped_column(Text)
+    payment_separate_en: Mapped[str] = mapped_column(Text)
+    payment_separate_pt: Mapped[str] = mapped_column(Text)
+    payment_separate_es: Mapped[str] = mapped_column(Text)
+    tc_intro_en: Mapped[str] = mapped_column(Text)
+    tc_intro_pt: Mapped[str] = mapped_column(Text)
+    tc_intro_es: Mapped[str] = mapped_column(Text)
+
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+    updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)

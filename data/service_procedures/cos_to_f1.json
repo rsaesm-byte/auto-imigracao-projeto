@@ -1,8 +1,8 @@
 {
   "service_id": "cos_to_f1",
-  "name": "Change of Status to F-1 (COS to F-1, incl. F-2 → F-1)",
-  "name_pt": "Mudança de Status para F-1 (COS para F-1, incl. F-2 → F-1)",
-  "name_es": "Cambio de Estatus a F-1 (COS a F-1, incl. F-2 → F-1)",
+  "name": "Change of Status to F-1 (COS to F-1, Form I-539, incl. F-2 → F-1)",
+  "name_pt": "Mudança de Status para F-1 (COS para F-1, Formulário I-539, incl. F-2 → F-1)",
+  "name_es": "Cambio de Estatus a F-1 (COS a F-1, Formulario I-539, incl. F-2 → F-1)",
   "forms": [
     "I-539",
     "I-539A",

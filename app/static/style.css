@@ -118,6 +118,36 @@ header.topbar .brand .brand-logo {
 header.topbar a.logout, header.topbar button.logout { color: var(--muted); text-decoration: none; font-size: 0.88rem; }
 header.topbar a.logout:hover, header.topbar button.logout:hover { color: var(--text); }
 
+/* ---- World clocks strip (NY/Chicago/Denver/LA + São Paulo) -- pedido do
+   usuário 2026-08-02, mostrado na home (deslogado) e no topo do painel do
+   cliente/colaborador quando logados. ---- */
+.world-clocks {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 8px 28px;
+  background: var(--bg-alt, #f4f6f5);
+  border-bottom: 1px solid var(--border);
+  font-size: 0.78rem;
+}
+.world-clocks-label { color: var(--muted); font-weight: 600; margin-right: 4px; }
+
+/* ---- Conteúdo renderizado por markdown_lite_to_html (Case Tracking notes,
+   Termos Gerais editáveis do contrato) ---- */
+.markdown-body :first-child { margin-top: 0; }
+.markdown-body :last-child { margin-bottom: 0; }
+.markdown-body ul { padding-left: 20px; margin: 8px 0; }
+.markdown-body li { margin-bottom: 4px; }
+.markdown-body p { margin: 8px 0; }
+.world-clock { display: flex; align-items: baseline; gap: 5px; white-space: nowrap; }
+.world-clock .wc-city { color: var(--muted); }
+.world-clock .wc-time { font-weight: 700; color: var(--accent); font-variant-numeric: tabular-nums; }
+.staff-topbar-wrap .world-clocks, header.topbar + .world-clocks { position: sticky; top: 0; z-index: 9; }
+@media (max-width: 720px) {
+  .world-clocks { gap: 10px; padding: 6px 16px; font-size: 0.72rem; }
+}
+
 /* ---- Nav dropdown ("Ferramentas Gratuitas") ---- */
 .nav-dropdown { position: relative; }
 .nav-dropdown-toggle {
@@ -876,6 +906,49 @@ table.submissions a:hover { text-decoration: underline; }
 .service-card-name { font-size: 1.05rem; margin: 0 0 10px; }
 .service-card-desc { flex: 1; line-height: 1.55; margin: 0 0 18px; }
 .service-card .btn { align-self: flex-start; }
+
+/* ---- Menu de botão direito nos cartões de Lead (Edit/Delete) ---- */
+.lead-context-menu {
+  position: absolute;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  z-index: 1000;
+  min-width: 120px;
+  overflow: hidden;
+}
+.lead-context-menu a {
+  display: block;
+  padding: 9px 16px;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.lead-context-menu a:hover { background: var(--accent-soft); }
+.lead-context-menu a[data-action="delete"] { color: #c0392b; }
+
+/* ---- Pacotes: banner de contraste atrás de cada caminho ("Faça Você
+   Mesmo" / "Deixe que um profissional faça por você") -- pedido do
+   usuário (2026-08-02): destacar visualmente as duas seções, uma cor por
+   caminho, ecoando a mesma cor já usada na tagline do cartão seletor logo
+   acima (--accent para DIY, --cta-dark para profissional). */
+.path-section-banner {
+  border-radius: var(--radius);
+  padding: 22px 28px;
+  margin: 40px 0 18px;
+  box-shadow: var(--shadow-md);
+  scroll-margin-top: 20px;
+}
+.path-section-banner.diy {
+  background: linear-gradient(135deg, var(--accent-grad-a) 0%, var(--accent-grad-b) 100%);
+}
+.path-section-banner.pro {
+  background: linear-gradient(135deg, var(--cta-dark) 0%, var(--cta) 100%);
+}
+.path-section-banner h2 { color: white; margin: 0 0 4px; }
+.path-section-banner p { color: rgba(255, 255, 255, 0.92); margin: 0; }
+.path-section-banner p + p { margin-top: 4px; }
 
 /* ---- About page: team + founder ---- */
 .team-grid {

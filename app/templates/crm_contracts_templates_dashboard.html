@@ -1,0 +1,32 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Contract Templates{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Contract Templates</h1>
+  <p style="opacity:0.92;margin:0;">What clients see before they sign — per-service pricing includes/excludes, plus the shared Terms &amp; Conditions text. Edit here BEFORE requesting a signature from a client.</p>
+</div>
+
+<div class="card" style="display:flex;gap:10px;align-items:center;">
+  <a href="{{ url_for('crm_contracts.terms_edit') }}" class="btn secondary" style="padding:8px 16px;font-size:0.85rem;">Edit shared Terms &amp; Conditions →</a>
+  <a href="{{ url_for('crm_contracts.dashboard') }}" class="muted" style="font-size:0.85rem;">← Back to Contracts</a>
+</div>
+
+<div class="card">
+  <table class="submissions">
+    <thead><tr><th>Service</th><th>Standard</th><th>Plus (Online)</th><th>Plus (Paper)</th><th></th><th></th></tr></thead>
+    <tbody>
+      {% for s in services %}
+      <tr>
+        <td>{{ s.name }}</td>
+        <td class="muted">{% if s.base_price_cents is not none %}${{ '%.2f'|format(s.base_price_cents / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% if s.plus_price_cents is not none %}${{ '%.2f'|format(s.plus_price_cents / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% if s.plus_price_paper_cents is not none %}${{ '%.2f'|format(s.plus_price_paper_cents / 100) }}{% else %}—{% endif %}</td>
+        <td><a href="{{ url_for('crm_contracts.template_edit', slug=s.slug) }}" style="font-size:0.8rem;">Edit →</a></td>
+        <td><a href="{{ url_for('crm_contracts.template_preview', slug=s.slug) }}" style="font-size:0.8rem;">Preview →</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

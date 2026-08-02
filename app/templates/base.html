@@ -81,6 +81,13 @@
     </div>
   </header>
 
+  {# Faixa de relógios: home (deslogado) e qualquer página do cliente
+     logado -- pedido do usuário 2026-08-02. #}
+  {% if current_user.is_authenticated or request.endpoint == 'wizard.index' %}
+    {% set label = t('world_clocks_label') %}
+    {% include "_world_clocks.html" %}
+  {% endif %}
+
   <div class="page {% block page_class %}{% endblock %}">
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% for category, message in messages %}

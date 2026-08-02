@@ -1,8 +1,8 @@
 {
   "service_id": "eos_b2",
-  "name": "Extension of Status B-2 (EOS B-2)",
-  "name_pt": "Extensão de Status B-2 (EOS B-2)",
-  "name_es": "Extensión de Estatus B-2 (EOS B-2)",
+  "name": "Extension of Status B-2 (EOS B-2, Form I-539)",
+  "name_pt": "Extensão de Status B-2 (EOS B-2, Formulário I-539)",
+  "name_es": "Extensión de Estatus B-2 (EOS B-2, Formulario I-539)",
   "forms": [
     "I-539",
     "I-539A"

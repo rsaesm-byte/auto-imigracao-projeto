@@ -1,0 +1,34 @@
+{# Faixa de relógios ao vivo -- pedido do usuário 2026-08-02: mostrar
+   NY/Chicago/Denver/LA + São Paulo na home (deslogado), e pro cliente/
+   colaborador quando logados (ver base.html/staff_base.html/index.html,
+   os 3 únicos lugares que incluem este parcial). `label` é passado pelo
+   chamador -- trilíngue via t() do lado do cliente, texto fixo em inglês
+   do lado do staff (painel do colaborador é sempre inglês, ver
+   memory/feedback_staff_interface_english.md). Hora calculada 100% no
+   navegador (Intl.DateTimeFormat com `timeZone`) -- nenhum valor vem do
+   servidor, então nunca fica desatualizado por cache de página. #}
+<div class="world-clocks">
+  <span class="world-clocks-label">{{ label }}</span>
+  <div class="world-clock" data-tz="America/New_York"><span class="wc-city">New York</span><span class="wc-time">--:--</span></div>
+  <div class="world-clock" data-tz="America/Chicago"><span class="wc-city">Chicago</span><span class="wc-time">--:--</span></div>
+  <div class="world-clock" data-tz="America/Denver"><span class="wc-city">Denver</span><span class="wc-time">--:--</span></div>
+  <div class="world-clock" data-tz="America/Los_Angeles"><span class="wc-city">Los Angeles</span><span class="wc-time">--:--</span></div>
+  <div class="world-clock" data-tz="America/Sao_Paulo"><span class="wc-city">São Paulo</span><span class="wc-time">--:--</span></div>
+</div>
+<script>
+  (function () {
+    function update() {
+      var now = new Date();
+      document.querySelectorAll('.world-clock').forEach(function (el) {
+        var timeEl = el.querySelector('.wc-time');
+        try {
+          timeEl.textContent = new Intl.DateTimeFormat('en-US', {
+            timeZone: el.dataset.tz, hour: '2-digit', minute: '2-digit', hour12: true
+          }).format(now);
+        } catch (e) { /* unsupported timezone data on an old browser -- leave placeholder */ }
+      });
+    }
+    update();
+    setInterval(update, 30000);
+  })();
+</script>

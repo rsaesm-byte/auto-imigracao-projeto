@@ -168,6 +168,7 @@ def contract_view(contract_id: int):
     svc.open_contract_for_review, idempotente/nunca regride)."""
     from app.i18n import get_lang, t  # noqa: F401 (t usado no template via jinja global)
     from app.services.service_procedures import load_service_procedure, service_display_name
+    from app.services.text_format import markdown_lite_to_html
 
     contract = _owned_contract(contract_id)
     svc.open_contract_for_review(contract)
@@ -192,11 +193,23 @@ def contract_view(contract_id: int):
             tier_includes = template.get(f"{base_field}_includes{suffix}", [])
             tier_excludes = template.get(f"{base_field}_excludes{suffix}", [])
 
+    # Termos gerais editáveis pelo staff (/staff/crm/contratos/termos, pedido
+    # do usuário 2026-08-02) -- renderizados de markdown pro mesmo idioma da
+    # sessão, com fallback pro inglês se o campo daquele idioma vier vazio.
+    lang = get_lang()
+    terms = svc.get_company_contract_terms()
+    lang_suffix = lang if lang in ("pt", "es") else "en"
+    general_terms_md = getattr(terms, f"general_terms_{lang_suffix}") or terms.general_terms_en
+    if contract.document_type == ContractDocumentType.service_contract:
+        general_terms_md += "\n- " + (getattr(terms, f"payment_separate_{lang_suffix}") or terms.payment_separate_en)
+    general_terms_html = markdown_lite_to_html(general_terms_md)
+    tc_intro_html = markdown_lite_to_html(getattr(terms, f"tc_intro_{lang_suffix}") or terms.tc_intro_en)
+
     payment_methods = SessionLocal.query(PaymentMethodLookup).order_by(PaymentMethodLookup.name).all()
     return render_template(
         "meu_contrato.html", contract=contract, client=contract.case.client, service_name=service_name,
         price_cents=price_cents, tier_includes=tier_includes, tier_excludes=tier_excludes,
-        payment_methods=payment_methods)
+        payment_methods=payment_methods, general_terms_html=general_terms_html, tc_intro_html=tc_intro_html)
 
 
 @crm_client_bp.route("/meu-caso/contrato/<int:contract_id>/assinar", methods=["POST"])

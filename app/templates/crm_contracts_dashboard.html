@@ -8,6 +8,11 @@
   <p style="opacity:0.92;margin:0;">Signature status for every service contract and Terms &amp; Conditions request. To request a new signature, open a client's case (Clients → case → Contracts →).</p>
 </div>
 
+<div class="card" style="display:flex;gap:10px;align-items:center;">
+  <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="btn secondary" style="padding:8px 16px;font-size:0.85rem;">Contract templates →</a>
+  <span class="muted" style="font-size:0.85rem;">View and edit what clients see before requesting a signature (pricing includes/excludes per service, and the shared Terms &amp; Conditions text).</span>
+</div>
+
 <div class="card" style="display:flex;gap:8px;flex-wrap:wrap;">
   <a href="{{ url_for('crm_contracts.dashboard') }}" style="padding:6px 14px;border-radius:999px;font-size:0.82rem;font-weight:600;text-decoration:none;border:1px solid var(--border);{{ 'background:var(--accent);color:#fff;border-color:var(--accent);' if not status_filter else 'color:var(--text);' }}">All ({{ counts.values()|sum }})</a>
   {% for s in statuses %}

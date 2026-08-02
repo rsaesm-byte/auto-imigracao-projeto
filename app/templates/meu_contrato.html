@@ -37,18 +37,13 @@
 </div>
 {% else %}
 <div class="card">
-  <p>{{ t('contract_terms_body') }}</p>
+  <div class="markdown-body">{{ tc_intro_html|safe }}</div>
 </div>
 {% endif %}
 
 <div class="card">
   <h2>{{ t('contract_general_terms_title') }}</h2>
-  <ul>
-    <li class="muted">{{ t('contract_term_no_legal_advice') }}</li>
-    <li class="muted">{{ t('contract_term_no_guarantee') }}</li>
-    <li class="muted">{{ t('contract_term_refund') }}</li>
-    {% if contract.document_type.value == 'service_contract' %}<li class="muted">{{ t('contract_term_payment_separate') }}</li>{% endif %}
-  </ul>
+  <div class="markdown-body muted">{{ general_terms_html|safe }}</div>
 </div>
 
 {% if contract.status.value == 'signed' %}

@@ -35,6 +35,25 @@ def load_service_procedure(slug: str) -> dict | None:
     return _cache[slug]
 
 
+def save_service_procedure_lists(slug: str, updates: dict[str, list[str]]) -> None:
+    """Sobrescreve os campos de `updates` (ex.: standard_includes/
+    standard_includes_pt/standard_includes_es/standard_excludes/...)
+    direto no JSON em disco e invalida o cache em memória deste slug --
+    pedido do usuário 2026-08-02: "visualizar e alterar" o contrato de
+    cada serviço direto pela UI, sem precisar editar o arquivo à mão nem
+    reiniciar o servidor (a limitação de cache documentada na sessão de
+    Contracts era exatamente essa: mudar o arquivo no disco não bastava
+    sem reboot -- esta função invalida `_cache[slug]` no mesmo request
+    que grava, então a próxima leitura já vê o valor novo)."""
+    path = PROCEDURES_DIR / f"{slug}.json"
+    if not path.exists():
+        raise FileNotFoundError(slug)
+    data = json.loads(path.read_text(encoding="utf-8"))
+    data.update(updates)
+    path.write_text(json.dumps(data, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    _cache.pop(slug, None)
+
+
 def phase1_documents(slug: str) -> list[str]:
     """Em inglês -- é o que vira `RequiredDocument.label` (ver
     apply_service_procedure_checklist), porque o painel do staff que

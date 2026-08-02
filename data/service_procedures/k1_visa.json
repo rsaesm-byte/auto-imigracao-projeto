@@ -1,0 +1,211 @@
+{
+  "service_id": "k1_visa",
+  "name": "K-1 Fiancé(e) Visa (Form I-129F)",
+  "name_pt": "Visto de Noivo(a) K-1 (Formulário I-129F)",
+  "name_es": "Visa de Novio(a) K-1 (Formulario I-129F)",
+  "forms": [
+    "I-129F",
+    "DS-160"
+  ],
+  "channel": "uscis_to_nvc_to_consular",
+  "actor_blocks": [],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "U.S. passport or proof of citizenship (petitioner)",
+        "Government-issued ID (petitioner)",
+        "Proof of domicile in the U.S. (petitioner)",
+        "Divorce decree(s) or death certificate of former spouse (petitioner, if applicable)",
+        "Valid passport (beneficiary)",
+        "Birth certificate (beneficiary)",
+        "Divorce decree(s) or death certificate of former spouse (beneficiary, if applicable)",
+        "Photos together",
+        "Proof of relationship history (at least one in-person meeting within the last 2 years)",
+        "Joint documents (if applicable)",
+        "Affidavits from friends/family (if applicable)",
+        "Police certificate(s) (beneficiary, all required countries)"
+      ],
+      "documents_pt": [
+        "Passaporte americano ou comprovante de cidadania (peticionário)",
+        "Identidade oficial (peticionário)",
+        "Comprovante de domicílio nos EUA (peticionário)",
+        "Sentença(s) de divórcio ou certidão de óbito do ex-cônjuge (peticionário, se aplicável)",
+        "Passaporte válido (beneficiário)",
+        "Certidão de nascimento (beneficiário)",
+        "Sentença(s) de divórcio ou certidão de óbito do ex-cônjuge (beneficiário, se aplicável)",
+        "Fotos do casal juntos",
+        "Provas do histórico do relacionamento (pelo menos um encontro presencial nos últimos 2 anos)",
+        "Documentos conjuntos (se aplicável)",
+        "Declarações de amigos/família (se aplicável)",
+        "Certidão(ões) de antecedentes criminais (beneficiário, todos os países exigidos)"
+      ],
+      "documents_es": [
+        "Pasaporte estadounidense o comprobante de ciudadanía (peticionario)",
+        "Identificación oficial (peticionario)",
+        "Comprobante de domicilio en EE. UU. (peticionario)",
+        "Sentencia(s) de divorcio o acta de defunción del excónyuge (peticionario, si aplica)",
+        "Pasaporte válido (beneficiario)",
+        "Acta de nacimiento (beneficiario)",
+        "Sentencia(s) de divorcio o acta de defunción del excónyuge (beneficiario, si aplica)",
+        "Fotos de la pareja juntos",
+        "Pruebas del historial de la relación (al menos un encuentro en persona en los últimos 2 años)",
+        "Documentos conjuntos (si aplica)",
+        "Declaraciones de amigos/familiares (si aplica)",
+        "Certificado(s) de antecedentes penales (beneficiario, todos los países requeridos)"
+      ],
+      "steps": [
+        "Define relationship timeline",
+        "Explain how the couple met",
+        "Confirm at least one in-person meeting within the required 2-year window (or exemption grounds)"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Explain relationship development",
+        "Confirm consistency across all evidence",
+        "Confirm no missing documentation",
+        "Confirm relationship is genuine and well documented",
+        "Confirm timeline is consistent across documents",
+        "Confirm no inconsistencies in history",
+        "Confirm no red flags (fraud suspicion)",
+        "Identify and mitigate risks",
+        "Create, configure, and organize required online accounts (USCIS, CEAC, etc.)",
+        "Organize supporting documents"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Form I-129F prepared",
+        "Supporting documents organized",
+        "Petition reviewed (1st review)",
+        "Petition reviewed (final review)",
+        "Petition submitted to USCIS",
+        "Case received by National Visa Center (NVC)",
+        "Case forwarded to U.S. Embassy/Consulate",
+        "DS-160 completed (beneficiary)",
+        "Consular interview scheduled",
+        "Medical exam completed (beneficiary)",
+        "Financial evidence organized",
+        "Interview instructions sent to client"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Consular interview attended",
+        "Outcome recorded (Approved / Denied / Administrative processing)",
+        "K-1 visa issued (if approved)",
+        "Entry instructions explained (90-day window to marry)",
+        "Post-entry marriage and Adjustment of Status guidance provided",
+        "Follow-up completed"
+      ]
+    }
+  ],
+  "free_consultation_minutes": 15,
+  "pricing": {
+    "standard_usd": 600,
+    "plus_usd": 1400,
+    "plus_paper_usd": null,
+    "notes": "No separate paper-filing tier -- Form I-129F is USCIS-filed once regardless of tier; Standard vs. Plus differs in scope of support (interview prep, RFE responses, printing/mailing, consular-stage guidance), not filing method.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos, 'K1_VISA_CONTRACT_ENG.pdf'), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Completion of the Form I-129F",
+    "Standard checklist and document orientation",
+    "Creation, configuration, and organization of required online accounts (USCIS, CEAC, etc.)",
+    "Final package sent via email for client printing and mailing",
+    "Ongoing support via email or WhatsApp"
+  ],
+  "standard_excludes": [
+    "Interview preparation",
+    "Responses to RFEs or NOIDs",
+    "Printing and mailing by SAES",
+    "E-Request(s)",
+    "Change of address (Form AR-11)",
+    "Certified translations",
+    "Consular stage support (CEAC, DS-160, NVC document upload, etc.)"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Complete preparation and filing of the Form I-129F",
+    "Preparation and organization of all petitioner documentation",
+    "Response to RFEs/NOIDs from USCIS at no additional cost",
+    "Preparation for the consular interview for both Petitioner and Beneficiary",
+    "E-Requests, case follow-up and inquiries to USCIS",
+    "Change of Address (Form AR-11) submission when required",
+    "Printing and full assembly of the USCIS package, when applicable",
+    "Guidance on consular steps, including DS-160, financial evidence, and appointment instructions"
+  ],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Preenchimento do Formulário I-129F",
+    "Checklist padrão e orientação sobre documentos",
+    "Criação, configuração e organização das contas online necessárias (USCIS, CEAC, etc.)",
+    "Pacote final enviado por e-mail para impressão e envio pelo cliente",
+    "Suporte contínuo por e-mail ou WhatsApp"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Preparación del Formulario I-129F",
+    "Lista de verificación estándar y orientación sobre documentos",
+    "Creación, configuración y organización de las cuentas en línea necesarias (USCIS, CEAC, etc.)",
+    "Paquete final enviado por correo electrónico para impresión y envío por el cliente",
+    "Apoyo continuo por correo electrónico o WhatsApp"
+  ],
+  "standard_excludes_pt": [
+    "Preparação para entrevista",
+    "Respostas a RFE ou NOID",
+    "Impressão e envio pela SAES",
+    "E-Request(s)",
+    "Mudança de endereço (Formulário AR-11)",
+    "Traduções juramentadas/certificadas",
+    "Apoio na etapa consular (CEAC, DS-160, upload de documentos no NVC, etc.)"
+  ],
+  "standard_excludes_es": [
+    "Preparación para la entrevista",
+    "Respuestas a RFE o NOID",
+    "Impresión y envío por SAES",
+    "E-Request(s)",
+    "Cambio de dirección (Formulario AR-11)",
+    "Traducciones certificadas",
+    "Apoyo en la etapa consular (CEAC, DS-160, carga de documentos en el NVC, etc.)"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Preparação completa e protocolo do Formulário I-129F",
+    "Preparação e organização de toda a documentação do peticionário",
+    "Resposta a RFE/NOID da USCIS sem custo adicional",
+    "Preparação para a entrevista consular, tanto para o Peticionário quanto para o Beneficiário",
+    "E-Requests, acompanhamento do caso e consultas à USCIS",
+    "Protocolo de Mudança de Endereço (Formulário AR-11) quando necessário",
+    "Impressão e montagem completa do pacote da USCIS, quando aplicável",
+    "Orientação sobre as etapas consulares, incluindo DS-160, provas financeiras e instruções de agendamento"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Preparación completa y presentación del Formulario I-129F",
+    "Preparación y organización de toda la documentación del peticionario",
+    "Respuesta a RFE/NOID de USCIS sin costo adicional",
+    "Preparación para la entrevista consular, tanto para el Peticionario como para el Beneficiario",
+    "E-Requests, seguimiento del caso y consultas a USCIS",
+    "Presentación de Cambio de Dirección (Formulario AR-11) cuando sea necesario",
+    "Impresión y ensamblaje completo del paquete de USCIS, cuando aplique",
+    "Orientación sobre los pasos consulares, incluyendo DS-160, evidencia financiera e instrucciones de la cita"
+  ],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

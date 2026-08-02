@@ -468,6 +468,7 @@
   "payment_contact_phone": "Phone (WhatsApp)",
   "nav_my_case": "My Case",
   "nav_translations": "Translations",
+  "world_clocks_label": "Our local times",
   "my_case_payment_due_title": "Payment due",
   "my_case_payment_due_note": "Please pay using the method you selected when signing (Zelle, Venmo, wire transfer, or credit card) and let our team know once it's sent — we'll confirm receipt here.",
   "my_case_contracts_pending_title": "Contracts pending your signature",

@@ -107,3 +107,119 @@ def contract_cancel(contract_id: int):
     SessionLocal.commit()
     flash("Signature request cancelled.", "success")
     return redirect(url_for("crm_contracts.case_contracts", case_id=case_id))
+
+
+# --------------------------------------------------------------------------
+# Modelos de contrato por serviço -- pedido do usuário 2026-08-02:
+# "visualizar os contratos de cada serviço e alterar o contrato da
+# empresa por lá, exemplos termos etc, antes de disponibilizar o contrato
+# para os clientes". Edita direto o que a tela de assinatura do cliente
+# (app/crm_client.py::contract_view, template meu_contrato.html) lê --
+# preço (Prices, já editável), includes/excludes por tier (aqui) e os
+# Termos Gerais compartilhados (aqui, CompanyContractTerms).
+# --------------------------------------------------------------------------
+
+@crm_contracts_bp.route("/modelos")
+def templates_dashboard():
+    services = SessionLocal.query(ServiceCatalog).filter(ServiceCatalog.slug.is_not(None)).order_by(
+        ServiceCatalog.name).all()
+    return render_template("crm_contracts_templates_dashboard.html", services=services)
+
+
+@crm_contracts_bp.route("/modelos/<slug>", methods=["GET", "POST"])
+def template_edit(slug: str):
+    from app.services.service_procedures import (load_service_procedure,
+                                                   save_service_procedure_lists)
+
+    template = load_service_procedure(slug)
+    if template is None:
+        abort(404)
+    service = SessionLocal.query(ServiceCatalog).filter_by(slug=slug).first()
+    if service is None:
+        abort(404)
+
+    fields = ("standard_includes", "standard_excludes", "plus_includes", "plus_excludes")
+    langs = ("", "_pt", "_es")  # "" = English (canonical)
+
+    if request.method == "POST":
+        updates = {}
+        for field in fields:
+            for lang_suffix in langs:
+                key = f"{field}{lang_suffix}"
+                raw = request.form.get(key, "")
+                updates[key] = [line.strip() for line in raw.splitlines() if line.strip()]
+        save_service_procedure_lists(slug, updates)
+        flash("Contract template updated.", "success")
+        return redirect(url_for("crm_contracts.template_edit", slug=slug))
+
+    lists = {
+        f"{field}{lang_suffix}": "\n".join(template.get(f"{field}{lang_suffix}", []))
+        for field in fields for lang_suffix in langs
+    }
+    return render_template(
+        "crm_contract_template_edit.html", slug=slug, service=service, template=template, lists=lists)
+
+
+@crm_contracts_bp.route("/modelos/<slug>/previa")
+def template_preview(slug: str):
+    """Mostra exatamente o que o cliente veria (preço real, includes/
+    excludes, termos gerais) sem precisar criar uma solicitação de
+    assinatura de verdade -- staff escolhe tier + idioma de visualização."""
+    from app.services.service_procedures import load_service_procedure, service_display_name
+    from app.services.text_format import markdown_lite_to_html
+
+    template = load_service_procedure(slug)
+    service = SessionLocal.query(ServiceCatalog).filter_by(slug=slug).first()
+    if template is None or service is None:
+        abort(404)
+
+    tier = svc.parse_enum(ContractTier, request.args.get("tier"), default=ContractTier.standard)
+    preview_lang = request.args.get("lang", "pt")
+    if preview_lang not in ("pt", "en", "es"):
+        preview_lang = "pt"
+
+    price_cents = {
+        ContractTier.standard: service.base_price_cents,
+        ContractTier.plus_online: service.plus_price_cents,
+        ContractTier.plus_paper: service.plus_price_paper_cents,
+    }.get(tier)
+
+    suffix = f"_{preview_lang}" if preview_lang in ("pt", "es") else ""
+    base_field = "standard" if tier == ContractTier.standard else "plus"
+    tier_includes = template.get(f"{base_field}_includes{suffix}", [])
+    tier_excludes = template.get(f"{base_field}_excludes{suffix}", [])
+
+    terms = svc.get_company_contract_terms()
+    lang_suffix = preview_lang if preview_lang in ("pt", "es") else "en"
+    general_terms_md = getattr(terms, f"general_terms_{lang_suffix}") or terms.general_terms_en
+    general_terms_md += "\n- " + (getattr(terms, f"payment_separate_{lang_suffix}") or terms.payment_separate_en)
+    general_terms_html = markdown_lite_to_html(general_terms_md)
+
+    return render_template(
+        "crm_contract_template_preview.html", slug=slug,
+        service_name=service_display_name(slug, preview_lang), price_cents=price_cents,
+        tier_includes=tier_includes, tier_excludes=tier_excludes, general_terms_html=general_terms_html,
+        tier=tier, preview_lang=preview_lang, tiers=list(ContractTier))
+
+
+@crm_contracts_bp.route("/termos", methods=["GET", "POST"])
+def terms_edit():
+    terms = svc.get_company_contract_terms()
+
+    if request.method == "POST":
+        for lang_suffix in ("en", "pt", "es"):
+            setattr(terms, f"general_terms_{lang_suffix}", request.form.get(f"general_terms_{lang_suffix}", "").strip())
+            setattr(terms, f"payment_separate_{lang_suffix}",
+                    request.form.get(f"payment_separate_{lang_suffix}", "").strip())
+            setattr(terms, f"tc_intro_{lang_suffix}", request.form.get(f"tc_intro_{lang_suffix}", "").strip())
+        terms.updated_by_user_id = current_user.id
+        SessionLocal.commit()
+        flash("Terms & Conditions updated.", "success")
+        return redirect(url_for("crm_contracts.terms_edit"))
+
+    fields = {
+        f"{section}_{lang_suffix}": getattr(terms, f"{section}_{lang_suffix}")
+        for section in ("general_terms", "payment_separate", "tc_intro")
+        for lang_suffix in ("en", "pt", "es")
+    }
+    return render_template("crm_contract_terms_edit.html", fields=fields)

@@ -1,8 +1,8 @@
 {
   "service_id": "cos_to_b2",
-  "name": "Change of Status to B-2 (COS to B-2)",
-  "name_pt": "Mudança de Status para B-2 (COS para B-2)",
-  "name_es": "Cambio de Estatus a B-2 (COS a B-2)",
+  "name": "Change of Status to B-2 (COS to B-2, Form I-539)",
+  "name_pt": "Mudança de Status para B-2 (COS para B-2, Formulário I-539)",
+  "name_es": "Cambio de Estatus a B-2 (COS a B-2, Formulario I-539)",
   "forms": [
     "I-539",
     "I-539A"

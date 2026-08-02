@@ -45,6 +45,12 @@
     </div>
   </header>
 
+  {# World clocks -- pedido do usuário 2026-08-02. Painel do colaborador é
+     sempre inglês (ver memory/feedback_staff_interface_english.md), então o
+     rótulo aqui é texto fixo, não t(). #}
+  {% set label = "Time zones" %}
+  {% include "_world_clocks.html" %}
+
   {# Nav order/groups are per-collaborator (app/staff_nav.py::resolve_nav_layout,
      StaffNavLayout in app/models.py) -- "Edit navigation" below lets a
      collaborator drag tabs to reorder and drop one onto another to bundle

@@ -1,8 +1,8 @@
 {
   "service_id": "cos_to_f2",
-  "name": "Change of Status to F-2 (COS to F-2)",
-  "name_pt": "Mudança de Status para F-2 (COS para F-2)",
-  "name_es": "Cambio de Estatus a F-2 (COS a F-2)",
+  "name": "Change of Status to F-2 (COS to F-2, Form I-539)",
+  "name_pt": "Mudança de Status para F-2 (COS para F-2, Formulário I-539)",
+  "name_es": "Cambio de Estatus a F-2 (COS a F-2, Formulario I-539)",
   "forms": [
     "I-539",
     "I-539A",

@@ -26,8 +26,10 @@
   </a>
 </div>
 
-<h2 id="diy" style="margin:32px 0 4px;scroll-margin-top:20px;">{{ t('packages_path_diy_title') }}</h2>
-<p class="muted" style="margin:0 0 16px;">{{ t('packages_path_diy_tagline') }} — {{ t('packages_path_diy_desc') }}</p>
+<div id="diy" class="path-section-banner diy">
+  <h2>{{ t('packages_path_diy_title') }}</h2>
+  <p>{{ t('packages_path_diy_tagline') }} — {{ t('packages_path_diy_desc') }}</p>
+</div>
 <div class="services-grid">
   {% for pkg in packages %}
   <div class="card service-card">
@@ -43,10 +45,12 @@
   {% endfor %}
 </div>
 
-<h2 id="professional" style="margin:40px 0 4px;scroll-margin-top:20px;">{{ t('packages_path_pro_title') }}</h2>
-<p class="muted" style="margin:0 0 4px;">{{ t('packages_path_pro_tagline') }} — {{ t('packages_path_pro_desc') }}</p>
-<p class="muted" style="margin:0 0 4px;font-size:0.9rem;">{{ t('packages_tier_explainer') }}</p>
-<p class="muted" style="margin:0 0 16px;font-size:0.85rem;">{{ t('services_communication_policy') }}</p>
+<div id="professional" class="path-section-banner pro">
+  <h2>{{ t('packages_path_pro_title') }}</h2>
+  <p>{{ t('packages_path_pro_tagline') }} — {{ t('packages_path_pro_desc') }}</p>
+  <p style="font-size:0.9rem;">{{ t('packages_tier_explainer') }}</p>
+  <p style="font-size:0.85rem;">{{ t('services_communication_policy') }}</p>
+</div>
 <div class="services-grid">
   {% for svc in professional_services %}
   <div class="card service-card">

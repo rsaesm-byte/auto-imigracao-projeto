@@ -14,12 +14,13 @@ from datetime import date, datetime, timedelta, timezone
 from itertools import groupby
 
 from app.crm_models import (Case, CaseContract, CaseStatus, CaseTrackedForm,
-                             Client, ContractStatus, ContractTier, Currency,
-                             Document, DocumentStatus, DocumentTranslation,
-                             Lead, LeadStage, PaymentDirection,
-                             PaymentLedgerEntry, PaymentStatus, ProcessStatus,
-                             ServiceCatalog, ServiceMode, ServiceRole,
-                             TranslationSpeedTier, Translator)
+                             Client, CompanyContractTerms, ContractStatus,
+                             ContractTier, Currency, Document, DocumentStatus,
+                             DocumentTranslation, Lead, LeadInterestedService,
+                             LeadStage, PaymentDirection, PaymentLedgerEntry,
+                             PaymentStatus, ProcessStatus, ServiceCatalog,
+                             ServiceMode, ServiceRole, TranslationSpeedTier,
+                             Translator)
 from app.db import SessionLocal
 from app.models import User
 
@@ -133,6 +134,26 @@ def days_to_close(lead: Lead) -> int | None:
     if lead.first_contact_at is None or lead.closed_at is None:
         return None
     return (lead.closed_at - lead.first_contact_at).days
+
+
+def lead_interested_service_ids(lead_id: int) -> list[int]:
+    """IDs de ServiceCatalog que o lead está considerando ("Serviço que
+    está interessado", pedido do usuário 2026-08-02) -- LeadInterestedService
+    é uma tabela de associação pura (sem `relationship()` declarado em Lead
+    de propósito, ver crm_models.py), então lida direto aqui."""
+    return [
+        row.service_id for row in
+        SessionLocal.query(LeadInterestedService).filter_by(lead_id=lead_id).all()
+    ]
+
+
+def set_lead_interested_services(lead_id: int, service_ids: list[int]) -> None:
+    """Substitui por completo o conjunto de serviços de interesse do lead
+    (padrão "apagar tudo e reinserir" -- a lista costuma ser pequena o
+    bastante pra isso ser mais simples do que calcular um diff)."""
+    SessionLocal.query(LeadInterestedService).filter_by(lead_id=lead_id).delete()
+    for service_id in service_ids:
+        SessionLocal.add(LeadInterestedService(lead_id=lead_id, service_id=service_id))
 
 
 def processing_time_days(case: Case) -> int | None:
@@ -264,6 +285,15 @@ def service_installment_amount_cents(service: ServiceCatalog, installments: int)
     if service.base_price_cents is None or installments <= 0:
         return None
     return round(service.base_price_cents / installments)
+
+
+def get_company_contract_terms() -> CompanyContractTerms:
+    """A linha única (id=1) dos "Termos Gerais" editáveis (pedido do
+    usuário 2026-08-02) -- semeada no boot (app/__init__.py::
+    _seed_company_contract_terms), então sempre existe; get() aqui em vez
+    de query solta é só pra manter o padrão singleton explícito de
+    resolve_nav_layout/StaffNavGlobalLayout (app/staff_nav.py)."""
+    return SessionLocal.get(CompanyContractTerms, 1)
 
 
 def contract_price_cents(contract: CaseContract) -> int | None:
@@ -464,6 +494,7 @@ def convert_lead_to_client_and_case(
     client = Client(
         user_id=user_id, full_name=lead.name, email=lead.contact_email,
         us_phone=lead.contact_phone, us_phone_has=bool(lead.contact_phone),
+        city_country=lead.city_region,
     )
     SessionLocal.add(client)
     SessionLocal.flush()  # precisa do client.id antes de criar o Case abaixo
