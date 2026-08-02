@@ -1,0 +1,217 @@
+{
+  "service_id": "reinstatement_f1",
+  "name": "Reinstatement to F-1",
+  "name_pt": "Reintegração ao Status F-1 (Reinstatement)",
+  "name_es": "Restablecimiento del Estatus F-1 (Reinstatement)",
+  "forms": [
+    "I-539",
+    "I-539A",
+    "Reinstatement I-20 (issued by DSO)"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [
+    "SPONSOR_BLOCK",
+    "I134_BLOCK",
+    "ADDRESS_HOST_BLOCK",
+    "EMPLOYER_BLOCK",
+    "SEVIS_STUDENT_BLOCK"
+  ],
+  "tip": "If possible, reuse the sponsor from the prior COS.",
+  "phases": [
+    {
+      "name": "Document Collection & Review",
+      "documents": [
+        "Passport (biographical page)",
+        "Visa page",
+        "I-94 record",
+        "Previous USCIS receipts",
+        "DS forms (if any)",
+        "Proof of current U.S. address",
+        "Marriage / birth certificate (if applicable)",
+        "Bank statements (last 3 months)",
+        "Sponsor ID / personal information / signed letter (if applicable)",
+        "High school diploma / transcript",
+        "College diploma / transcripts (if applicable)",
+        "DSO letter explaining the SEVIS termination (termination school)",
+        "DSO letter recommending reinstatement (termination school)",
+        "School transcript",
+        "DSO letter on academic progress and full course of study",
+        "DSO letter with timeline",
+        "Acceptance letter (new school, if different)",
+        "New I-20 with reinstatement (new school, if different)",
+        "DSO letter on full course of study (new school, if different)",
+        "DSO letter on first contact and timeline (new school, if different)"
+      ],
+      "documents_pt": [
+        "Passaporte (página biográfica)",
+        "Página do visto",
+        "Registro I-94",
+        "Recibos anteriores da USCIS",
+        "Formulários DS (se houver)",
+        "Comprovante de endereço atual nos EUA",
+        "Certidão de casamento/nascimento (se aplicável)",
+        "Extratos bancários (últimos 3 meses)",
+        "Identidade/informações do patrocinador, carta assinada (se aplicável)",
+        "Diploma e histórico do ensino médio",
+        "Diploma e histórico universitário (se aplicável)",
+        "Carta do DSO explicando o encerramento do SEVIS (escola do encerramento)",
+        "Carta do DSO recomendando a reintegração (escola do encerramento)",
+        "Histórico escolar",
+        "Carta do DSO sobre progresso acadêmico e curso completo",
+        "Carta do DSO com a linha do tempo dos fatos",
+        "Carta de aceitação (nova escola, se diferente)",
+        "Novo I-20 com reintegração (nova escola, se diferente)",
+        "Carta do DSO sobre curso completo (nova escola, se diferente)",
+        "Carta do DSO sobre primeiro contato e linha do tempo (nova escola, se diferente)"
+      ],
+      "documents_es": [
+        "Pasaporte (página biográfica)",
+        "Página de la visa",
+        "Registro I-94",
+        "Recibos anteriores de USCIS",
+        "Formularios DS (si los hay)",
+        "Comprobante de domicilio actual en EE. UU.",
+        "Acta de matrimonio/nacimiento (si aplica)",
+        "Estados de cuenta bancarios (últimos 3 meses)",
+        "Identificación/información del patrocinador, carta firmada (si aplica)",
+        "Diploma/historial de escuela secundaria",
+        "Diploma/historial universitario (si aplica)",
+        "Carta del DSO explicando la terminación del SEVIS (escuela de terminación)",
+        "Carta del DSO recomendando el restablecimiento (escuela de terminación)",
+        "Historial académico",
+        "Carta del DSO sobre progreso académico y curso completo",
+        "Carta del DSO con la cronología de los hechos",
+        "Carta de aceptación (nueva escuela, si es diferente)",
+        "Nuevo I-20 con restablecimiento (nueva escuela, si es diferente)",
+        "Carta del DSO sobre curso completo (nueva escuela, si es diferente)",
+        "Carta del DSO sobre primer contacto y cronología (nueva escuela, si es diferente)"
+      ],
+      "steps": [
+        "Decide: sponsor vs. self-supported",
+        "Define sponsor location",
+        "Draft personal narrative about the SEVIS termination and reinstatement process -- detailed explanation of the violation, timeline of events, commitment to compliance",
+        "Explain the reason for the original COS (if there was one)",
+        "Gather proof of ties to home country (family, residence, employment, academic history)",
+        "Confirm academic history is consistent with the study plan"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Draft explanation, address, employer, and sponsor letters (if applicable)",
+        "Review documents for translation",
+        "Quote translations"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Original application reviewed",
+        "Email sent with list of required documents",
+        "Link for document upload folders sent",
+        "Each document reviewed",
+        "Google Drive folder created per item (organization + payments and translations)",
+        "USCIS account created (if applicable)",
+        "Form I-539 started",
+        "Personal information included",
+        "Supporting documents uploaded",
+        "Supporting letters uploaded",
+        "New I-20 (reinstatement) uploaded",
+        "Application reviewed (1st review)",
+        "Application reviewed (final review)"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Application submitted (mail or online)",
+        "Payment completed",
+        "Receipt notice generated (I-797C)",
+        "Receipt saved in Drive",
+        "Client notified",
+        "Client instructed to maintain full-time study",
+        "Client instructed NOT to work",
+        "Case monitoring started"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 480,
+    "plus_usd": 1095,
+    "plus_paper_usd": 1220,
+    "notes": "Baseline = School (ESL/language school) variant. Same contract also prices a University variant higher: Standard $580, Plus Online $1,195, Plus Paper $1,320 — quote the University price for a college/university reinstatement case.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "Reinstatement request letter based on 18 years of experience",
+    "Discount on document translation"
+  ],
+  "standard_excludes": [
+    "Certified translations (charged separately)",
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Translation of supporting letters",
+    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
+    "Full case tracking until USCIS decision"
+  ],
+  "plus_excludes": [
+    "Certified translations (charged separately)"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Carta de solicitação de reintegração baseada em 18 anos de experiência",
+    "Desconto na tradução de documentos"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Carta de solicitud de restablecimiento basada en 18 años de experiencia",
+    "Descuento en la traducción de documentos"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)",
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Tradução das cartas de apoio",
+    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
+    "Acompanhamento completo do caso até a decisão da USCIS"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Traducción de las cartas de respaldo",
+    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
+    "Seguimiento completo del caso hasta la decisión de USCIS"
+  ],
+  "plus_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)"
+  ]
+}

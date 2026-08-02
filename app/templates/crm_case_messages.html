@@ -1,0 +1,79 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Case Messages{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Messages — {{ case.title }}</h1>
+  <p style="opacity:0.92;margin:0;">Client: {{ case.client.full_name }}</p>
+  <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">View document tracker (CRM) →</a>
+  · <a href="{{ url_for('crm_ops.case_procedure', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">View procedure →</a>
+</div>
+
+<div class="card">
+  <details open>
+    <summary style="cursor:pointer;font-size:0.9rem;font-weight:600;">+ New message</summary>
+    <form method="post" action="{{ url_for('crm_ops.case_message_new', case_id=case.id) }}" enctype="multipart/form-data" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+      <div>
+        <label class="muted">Type</label><br>
+        <select name="message_type">{% for mt in message_types %}<option value="{{ mt.value }}">{{ mt.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Priority</label><br>
+        <select name="priority">{% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if p.value == 'medium' }}>{{ p.value|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Deadline</label><br>
+        <input type="date" name="due_at">
+      </div>
+      <div style="flex-basis:100%;">
+        <label class="muted">Message</label><br>
+        <textarea name="body" required rows="3" style="width:100%;"></textarea>
+      </div>
+      <div>
+        <label class="muted">Attach a document</label><br>
+        {# Native <input type="file"> renders its button/label text using the
+           BROWSER's own UI language, not the page's `lang` -- ignores this
+           staff panel's "always English" rule if the browser is set to pt/es.
+           Hidden + replaced with a styled label so the text is always ours. #}
+        <label for="attachment-file" class="icon-btn" style="display:inline-block;border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;cursor:pointer;font-size:0.82rem;">Choose file</label>
+        <input type="file" name="attachment" id="attachment-file" style="display:none;" onchange="document.getElementById('attachment-filename').textContent = this.files.length ? this.files[0].name : 'No file chosen';">
+        <span id="attachment-filename" class="muted" style="font-size:0.82rem;">No file chosen</span>
+      </div>
+      <button type="submit" class="btn">Send</button>
+    </form>
+  </details>
+</div>
+
+<div class="card">
+  <h2>Thread</h2>
+  {% if messages %}
+  {% for msg in messages %}
+  <div style="border-top:1px solid var(--border);padding:10px 0;">
+    <p style="margin:0 0 4px;">
+      <strong>{{ msg.message_type.value|replace('_',' ')|title }}</strong>
+      <span class="badge status-neutral">{{ msg.priority.value|title }}</span>
+      {{ crm_badge(msg.status) }}
+      <span class="muted" style="font-size:0.8rem;">
+        — {{ 'Client' if msg.author_role.value == 'client' else (authors[msg.created_by_id].email if msg.created_by_id in authors else 'Staff') }}
+      </span>
+    </p>
+    <p style="margin:0 0 4px;white-space:pre-wrap;">{{ msg.body }}</p>
+    <p class="muted" style="margin:0 0 6px;font-size:0.8rem;">
+      {{ msg.created_at.strftime('%m/%d/%Y %I:%M %p') }}
+      {% if msg.due_at %} · Deadline: {{ msg.due_at.strftime('%m/%d/%Y') }}{% endif %}
+      {% if msg.attachment_path %} · <a href="{{ url_for('crm_ops.case_message_attachment', message_id=msg.id) }}">View attachment</a>{% endif %}
+    </p>
+    <form method="post" action="{{ url_for('crm_ops.case_message_status_update', message_id=msg.id) }}" style="display:inline-flex;gap:6px;align-items:center;">
+      <label class="muted" style="font-size:0.8rem;">Status:</label>
+      <select name="status" style="font-size:0.8rem;">
+        {% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if msg.status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Save</button>
+    </form>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">No messages on this case yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

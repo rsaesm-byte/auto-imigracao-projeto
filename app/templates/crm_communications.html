@@ -1,71 +1,71 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
-{% block title %}Staff — Comunicações{% endblock %}
+{% block title %}Staff — Communications{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>{{ 'Follow-ups pendentes' if follow_ups else 'Comunicações' }}</h1>
-  <p style="opacity:0.92;margin:0;">Log de contatos com clientes e controle de follow-up.</p>
+  <h1>{{ 'Pending Follow-ups' if follow_ups else 'Communications' }}</h1>
+  <p style="opacity:0.92;margin:0;">Log of client contacts and follow-up tracking.</p>
 </div>
 
 {% if new_form %}
 <div class="card">
-  <h2>Registrar comunicação</h2>
+  <h2>Log communication</h2>
   <form method="post" action="{{ url_for('crm_ops.communication_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
     <div>
-      <label class="muted">Cliente</label><br>
+      <label class="muted">Client</label><br>
       <select name="client_id" required>{% for c in clients_list %}<option value="{{ c.id }}">{{ c.full_name }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Assunto</label><br>
+      <label class="muted">Subject</label><br>
       <input type="text" name="subject" required>
     </div>
     <div>
-      <label class="muted">Direção</label><br>
-      <select name="direction">{% for d in directions %}<option value="{{ d.value }}">{{ 'Saída (para o cliente)' if d.value == 'outbound' else 'Entrada (do cliente)' }}</option>{% endfor %}</select>
+      <label class="muted">Direction</label><br>
+      <select name="direction">{% for d in directions %}<option value="{{ d.value }}">{{ 'Outbound (to client)' if d.value == 'outbound' else 'Inbound (from client)' }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Canal</label><br>
+      <label class="muted">Channel</label><br>
       <select name="channel_id"><option value="">—</option>{% for ch in channels_list %}<option value="{{ ch.id }}">{{ ch.name }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Próximo follow-up</label><br>
+      <label class="muted">Next follow-up</label><br>
       <input type="date" name="next_followup_at">
     </div>
     <div style="flex-basis:100%;">
-      <label class="muted">Resumo</label><br>
+      <label class="muted">Summary</label><br>
       <textarea name="summary" rows="2" style="width:100%;"></textarea>
     </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Registrar</button>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Log</button>
   </form>
 </div>
 {% else %}
 
 <div class="card">
-  <a href="{{ url_for('crm_ops.communication_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;margin-right:10px;">+ Nova comunicação</a>
-  <a href="{{ url_for('crm_ops.communications_follow_ups') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">Ver follow-ups pendentes</a>
+  <a href="{{ url_for('crm_ops.communication_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;margin-right:10px;">+ New communication</a>
+  <a href="{{ url_for('crm_ops.communications_follow_ups') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">View pending follow-ups</a>
 </div>
 
 <div class="card">
   {% if communications %}
   <div style="overflow-x:auto;">
   <table class="submissions">
-    <thead><tr><th>Assunto</th><th>Cliente</th><th>Data</th><th>Direção</th><th>Canal</th><th>Follow-up</th></tr></thead>
+    <thead><tr><th>Subject</th><th>Client</th><th>Date</th><th>Direction</th><th>Channel</th><th>Follow-up</th></tr></thead>
     <tbody>
       {% for c in communications %}
       <tr>
         <td>{{ c.subject }}{% if c.summary %}<br><span class="muted">{{ c.summary }}</span>{% endif %}</td>
         <td class="muted">{{ clients[c.client_id].full_name if c.client_id in clients else '—' }}</td>
-        <td class="muted">{{ c.occurred_at.strftime('%d/%m/%Y %H:%M') }}</td>
-        <td>{{ crm_badge(c.direction, 'Saída' if c.direction.value == 'outbound' else 'Entrada') }}</td>
+        <td class="muted">{{ c.occurred_at.strftime('%m/%d/%Y %H:%M') }}</td>
+        <td>{{ crm_badge(c.direction, 'Outbound' if c.direction.value == 'outbound' else 'Inbound') }}</td>
         <td class="muted">{{ channels[c.channel_id].name if c.channel_id in channels else '—' }}</td>
-        <td class="muted">{{ c.next_followup_at.strftime('%d/%m/%Y') if c.next_followup_at else '—' }}</td>
+        <td class="muted">{{ c.next_followup_at.strftime('%m/%d/%Y') if c.next_followup_at else '—' }}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   </div>
   {% else %}
-  <p class="muted">Nenhuma comunicação encontrada.</p>
+  <p class="muted">No communications found.</p>
   {% endif %}
 </div>
 {% endif %}

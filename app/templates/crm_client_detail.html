@@ -5,54 +5,108 @@
 <div class="card hero">
   <h1>{{ client.full_name }}</h1>
   <p style="opacity:0.92;margin:0;">
-    {{ client.email or 'Sem e-mail cadastrado' }}
+    {{ client.email or 'No email on file' }}
     {% if client.tier %} · Tier {{ client.tier.value }}{% endif %}
   </p>
 </div>
 
 <div class="card">
-  <h2>Identificação e contato</h2>
-  <p class="muted" style="margin:2px 0;">Telefone (US): {{ client.us_phone or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Telefone (país de origem): {{ client.home_phone or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Endereço (US): {{ client.us_address or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">País de origem: {{ client.country_of_origin or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Idioma preferido: {{ client.preferred_language.value if client.preferred_language else '—' }}</p>
-  <p style="margin-top:10px;"><a href="{{ url_for('crm_credentials.detail', client_id=client.id) }}">Ver credenciais (USCIS/Embaixada)</a></p>
+  <h2>Identification and contact</h2>
+  <p class="muted" style="margin:2px 0;">Phone (US): {{ client.us_phone or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Phone (home country): {{ client.home_phone or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Address (US): {{ client.us_address or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Country of origin: {{ client.country_of_origin or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">Preferred language: {{ client.preferred_language.value if client.preferred_language else '—' }}</p>
+  <p style="margin-top:10px;"><a href="{{ url_for('crm_credentials.detail', client_id=client.id) }}">View credentials (USCIS/Embassy)</a></p>
 </div>
 
+{% if client.dependents %}
 <div class="card">
-  <h2>Casos</h2>
+  <h2>Dependents</h2>
+  <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Filled in by the client themselves on the post-payment onboarding screen.</p>
+  <ul style="margin:0;">
+    {% for dep in client.dependents %}
+    <li>{{ dep.full_name }} — {{ dep.email or '—' }} · {{ dep.us_phone or '—' }}</li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>Cases</h2>
   {% if client.cases %}
   {% for case in client.cases %}
   <div style="border-top:1px solid var(--border);padding:10px 0;">
     <strong>{{ case.title }}</strong> {{ crm_badge(case.case_status) }}
     <div class="muted">
-      {{ 'Auto-atendimento' if case.service_mode.value == 'self_service' else 'Serviço completo' }}
-      {% if case.service_deadline %} · Prazo: {{ case.service_deadline.strftime('%d/%m/%Y') }}{% endif %}
+      {{ {'self_service': 'Self-service', 'saes_standard': 'Saes Standard', 'saes_plus': 'Saes Plus'}[case.service_mode.value] }}
+      {% if case.service_deadline %} · Deadline: {{ case.service_deadline.strftime('%m/%d/%Y') }}{% endif %}
     </div>
     <div style="margin-top:4px;">
-      <a href="{{ url_for('crm_pipeline.cases_kanban') }}" class="muted" style="font-size:0.8rem;">Ver no kanban →</a>
-      · <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Documentos →</a>
+      <a href="{{ url_for('crm_pipeline.cases_kanban') }}" class="muted" style="font-size:0.8rem;">View in kanban →</a>
+      · <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Documents →</a>
+      · <a href="{{ url_for('crm_ops.case_procedure', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Procedure →</a>
+      · <a href="{{ url_for('crm_ops.case_messages', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Messages →</a>
+      · <a href="{{ url_for('crm_tracking.case_tracking', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Tracking{% if case.tracked_forms %} ({{ case.tracked_forms|length }}){% endif %} →</a>
+      · <a href="{{ url_for('crm_contracts.case_contracts', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Contracts{% if case.contracts %} ({{ case.contracts|length }}){% endif %} →</a>
     </div>
     {% set pending = pending_by_case.get(case.id, []) %}
     {% if pending %}
     <div class="muted" style="margin-top:6px;font-size:0.82rem;">
-      Documentos pendentes: {{ pending|map(attribute='name')|join(', ') }}
+      Pending documents: {{ pending|map(attribute='name')|join(', ') }}
     </div>
     {% endif %}
     <form method="post" action="{{ url_for('crm_pipeline.case_ds160_gate_update', case_id=case.id) }}" style="margin-top:8px;display:inline-flex;gap:6px;align-items:center;">
-      <label class="muted" style="font-size:0.8rem;">Rascunho DS-160:</label>
+      <label class="muted" style="font-size:0.8rem;">DS-160 draft:</label>
       <select name="ds160_visa_type" style="font-size:0.8rem;">
-        <option value="" {{ 'selected' if not case.ds160_visa_type }}>Nenhum (não contratado)</option>
-        <option value="b1_b2" {{ 'selected' if case.ds160_visa_type and case.ds160_visa_type.value == 'b1_b2' }}>B1/B2 — Turismo/Negócios</option>
-        <option value="f1_f2" {{ 'selected' if case.ds160_visa_type and case.ds160_visa_type.value == 'f1_f2' }}>F1/F2 — Estudante</option>
+        <option value="" {{ 'selected' if not case.ds160_visa_type }}>None (not contracted)</option>
+        <option value="b1_b2" {{ 'selected' if case.ds160_visa_type and case.ds160_visa_type.value == 'b1_b2' }}>B1/B2 — Tourism/Business</option>
+        <option value="f1_f2" {{ 'selected' if case.ds160_visa_type and case.ds160_visa_type.value == 'f1_f2' }}>F1/F2 — Student</option>
       </select>
-      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Salvar</button>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Save</button>
     </form>
+
+    {# Acompanhamento -- pedido do usuário 2026-08-02: rastreador de tarefas
+       (formulários, cartas, organização de documentos, solicitações
+       internas) visível aqui pro staff E no "Meu Caso" do cliente
+       (app/crm_client.py). #}
+    <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">
+      <div class="muted" style="font-size:0.8rem;font-weight:600;margin-bottom:6px;">Progress tracking</div>
+      {% if case.progress_items %}
+      <ul style="margin:0 0 8px;padding-left:0;list-style:none;">
+        {% for item in case.progress_items %}
+        <li style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:4px 0;font-size:0.82rem;">
+          <span style="min-width:160px;">{{ item.title }}</span>
+          <span class="muted" style="font-size:0.75rem;">{{ item.category.value|replace('_',' ')|title }}</span>
+          <form method="post" action="{{ url_for('crm_ops.case_progress_status_update', item_id=item.id) }}" style="display:inline-flex;gap:4px;">
+            <select name="status" style="font-size:0.75rem;">
+              {% for s in progress_statuses %}
+              <option value="{{ s.value }}" {{ 'selected' if item.status == s }}>{{ s.value|replace('_',' ')|title }}</option>
+              {% endfor %}
+            </select>
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 6px;">Save</button>
+          </form>
+          <form method="post" action="{{ url_for('crm_ops.case_progress_delete', item_id=item.id) }}">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.72rem;">Remove</button>
+          </form>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+      <form method="post" action="{{ url_for('crm_ops.case_progress_new', case_id=case.id) }}" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+        <input type="text" name="title" placeholder="New progress item (e.g. I-130 form)" style="font-size:0.78rem;min-width:220px;">
+        <select name="category" style="font-size:0.78rem;">
+          {% for c in progress_categories %}
+          <option value="{{ c.value }}">{{ c.value|replace('_',' ')|title }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:3px 10px;">+ Add</button>
+      </form>
+    </div>
   </div>
   {% endfor %}
   {% else %}
-  <p class="muted">Nenhum caso aberto para este cliente ainda.</p>
+  <p class="muted">No open cases for this client yet.</p>
   {% endif %}
 </div>
 {% endblock %}

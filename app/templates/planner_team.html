@@ -1,0 +1,47 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Team Planner{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Team Planner</h1>
+  <p style="opacity:0.92;margin:0;">See every staff member's blocks for the week side by side -- useful to know who's available.</p>
+</div>
+
+<div class="card" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <a href="{{ url_for('planner.planner_team', week=prev_week) }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;">← Previous week</a>
+  <strong>{{ monday.strftime('%b %d') }} – {{ days[-1].strftime('%b %d, %Y') }}</strong>
+  <a href="{{ url_for('planner.planner_team', week=next_week) }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;">Next week →</a>
+  <a href="{{ url_for('planner.planner_week') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;margin-left:auto;">My week</a>
+</div>
+
+<div class="card">
+  <div style="overflow-x:auto;">
+  <table class="submissions" style="min-width:900px;">
+    <thead>
+      <tr>
+        <th>Staff</th>
+        {% for day in days %}<th>{{ day.strftime('%a %m/%d') }}{{ ' •' if day == today }}</th>{% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+      {% for u in staff_users %}
+      <tr>
+        <td class="muted">{{ u.email }}</td>
+        {% for day in days %}
+        <td style="vertical-align:top;min-width:130px;">
+          {% for block in grid.get(u.id, {}).get(day, []) %}
+          <div style="font-size:0.76rem;margin-bottom:6px;{{ 'opacity:0.5;' if block.completed }}">
+            <strong>{{ block.start_at.strftime('%H:%M') }}</strong> {{ block.title }}
+            {% if block.client %}<br><span class="muted">{{ block.client.full_name }}</span>{% endif %}
+          </div>
+          {% else %}
+          <span class="muted" style="font-size:0.76rem;">—</span>
+          {% endfor %}
+        </td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+</div>
+{% endblock %}

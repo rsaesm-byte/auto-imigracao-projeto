@@ -1,0 +1,138 @@
+{
+  "service_id": "i290b_appeal_motion",
+  "name": "Notice of Appeal or Motion (Form I-290B)",
+  "name_pt": "Recurso ou Moção (Formulário I-290B)",
+  "name_es": "Apelación o Moción (Formulario I-290B)",
+  "forms": [
+    "I-290B"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [
+    "ADDRESS_HOST_BLOCK",
+    "EMPLOYER_BLOCK",
+    "SPONSOR_BLOCK"
+  ],
+  "deadline_driven": true,
+  "phases": [
+    {
+      "name": "Document Collection & Review",
+      "documents": [
+        "Full copy of the previous application",
+        "Forms previously submitted",
+        "Supporting documents previously submitted",
+        "Receipt notices"
+      ],
+      "documents_pt": [
+        "Cópia completa da aplicação anterior",
+        "Formulários enviados anteriormente",
+        "Documentos de apoio enviados anteriormente",
+        "Avisos de recibo"
+      ],
+      "documents_es": [
+        "Copia completa de la solicitud anterior",
+        "Formularios presentados anteriormente",
+        "Documentos de apoyo presentados anteriormente",
+        "Avisos de recibo"
+      ],
+      "steps": [
+        "Review the decision notice",
+        "Confirm the deadline",
+        "Identify all requested items",
+        "Meeting to discuss every item",
+        "Review original application",
+        "Confirm date of decision",
+        "Confirm deadline to file I-290B",
+        "Gather chronological explanation of events",
+        "Clarify inconsistencies",
+        "Email sent with the list of required documents",
+        "Link for the upload-documents folders sent",
+        "Each document reviewed"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Draft explanation letter for every item in the I-290B notice",
+        "Draft address letter (if applicable)",
+        "Draft employer letter (if applicable)",
+        "Draft sponsor letter (if applicable)",
+        "Review documents for translation",
+        "Quote translations"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Form I-290B completed",
+        "Supporting documents attached",
+        "Application reviewed",
+        "Submitted",
+        "Payment completed"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Receipt received",
+        "Case tracking started",
+        "Client notified",
+        "Follow-up scheduled"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 480,
+    "plus_usd": null,
+    "plus_paper_usd": null,
+    "notes": "'Affordable Package' — no Plus tier exists for this service. Mandatory $70 non-refundable consultation fee.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Review of the denial/decision and grounds for appeal or motion",
+    "I-290B preparation based on 18 years of experience"
+  ],
+  "standard_excludes": [
+    "Certified translations (charged separately)",
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Revisão do indeferimento/decisão e dos fundamentos para recurso ou moção",
+    "Preparação do I-290B baseada em 18 anos de experiência"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión de la denegación/decisión y de los fundamentos para la apelación o moción",
+    "Preparación del I-290B basada en 18 años de experiencia"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)",
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [],
+  "plus_includes_es": [],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

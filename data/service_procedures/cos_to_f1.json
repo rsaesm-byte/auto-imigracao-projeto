@@ -1,0 +1,241 @@
+{
+  "service_id": "cos_to_f1",
+  "name": "Change of Status to F-1 (COS to F-1, incl. F-2 → F-1)",
+  "name_pt": "Mudança de Status para F-1 (COS para F-1, incl. F-2 → F-1)",
+  "name_es": "Cambio de Estatus a F-1 (COS a F-1, incl. F-2 → F-1)",
+  "forms": [
+    "I-539",
+    "I-539A",
+    "New I-20 (SEVP school)"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [
+    "SPONSOR_BLOCK",
+    "I134_BLOCK",
+    "ADDRESS_HOST_BLOCK",
+    "EMPLOYER_BLOCK",
+    "SEVIS_STUDENT_BLOCK"
+  ],
+  "phases": [
+    {
+      "name": "Document Collection & Review",
+      "documents": [
+        "Passport (biographical page)",
+        "Visa page",
+        "I-94 record",
+        "Previous USCIS receipts or approval (if any)",
+        "DS forms (if any)",
+        "Proof of current U.S. address",
+        "Marriage / birth certificate (if applicable)",
+        "Tourism photos",
+        "Bank statements (last 3 months)",
+        "Sponsor ID / personal information / signed letter (if applicable)",
+        "High school diploma / transcript",
+        "College diploma / transcripts (if applicable)",
+        "Current I-94, passport, visa, receipt/approval, SEVIS payment (if already F-1/F-2)",
+        "Marriage/birth certificate (if applicable, current F-1 case)",
+        "I-20 (new and initial)",
+        "Acceptance letter",
+        "DSO letter about current progress at school"
+      ],
+      "documents_pt": [
+        "Passaporte (página biográfica)",
+        "Página do visto",
+        "Registro I-94",
+        "Recibos ou aprovações anteriores da USCIS (se houver)",
+        "Formulários DS (se houver)",
+        "Comprovante de endereço atual nos EUA",
+        "Certidão de casamento/nascimento (se aplicável)",
+        "Fotos de turismo",
+        "Extratos bancários (últimos 3 meses)",
+        "Identidade/informações do patrocinador, carta assinada (se aplicável)",
+        "Diploma e histórico do ensino médio",
+        "Diploma e histórico universitário (se aplicável)",
+        "I-94, passaporte, visto, recibo/aprovação, comprovante SEVIS (se já é F-1/F-2)",
+        "Certidão de casamento/nascimento (se aplicável, caso F-1 atual)",
+        "I-20 (novo e inicial)",
+        "Carta de aceitação",
+        "Carta do DSO sobre progresso atual na escola"
+      ],
+      "documents_es": [
+        "Pasaporte (página biográfica)",
+        "Página de la visa",
+        "Registro I-94",
+        "Recibos o aprobaciones anteriores de USCIS (si los hay)",
+        "Formularios DS (si los hay)",
+        "Comprobante de domicilio actual en EE. UU.",
+        "Acta de matrimonio/nacimiento (si aplica)",
+        "Fotos de turismo",
+        "Estados de cuenta bancarios (últimos 3 meses)",
+        "Identificación/información del patrocinador, carta firmada (si aplica)",
+        "Diploma/historial de escuela secundaria",
+        "Diploma/historial universitario (si aplica)",
+        "I-94, pasaporte, visa, recibo/aprobación, comprobante de pago SEVIS (si ya es F-1/F-2)",
+        "Acta de matrimonio/nacimiento (si aplica, caso F-1 actual)",
+        "I-20 (nuevo e inicial)",
+        "Carta de aceptación",
+        "Carta del DSO sobre el progreso actual en la escuela"
+      ],
+      "steps": [
+        "Decide: sponsor vs. self-supported",
+        "If sponsor: in the U.S. or home country?",
+        "Collect security questions",
+        "Draft the client's personal narrative",
+        "Define reason for COS",
+        "For F-2 to F-1: explain why the change is legitimate and how it supports a real, credible career and academic plan",
+        "Gather proof of ties to home country (family, residence, employment, academic history)",
+        "Confirm academic history is consistent with the study plan"
+      ]
+    },
+    {
+      "name": "School Application",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "School forms and documentation prepared",
+        "Email sent with documents",
+        "School fee paid",
+        "English test taken",
+        "I-20 and acceptance letter received"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Draft explanation letter (reason for COS) + B-2 photos",
+        "Draft address letter",
+        "Draft employer letter",
+        "Draft sponsor letter",
+        "Review documents for translation",
+        "Quote translations"
+      ]
+    },
+    {
+      "name": "Application Execution (USCIS)",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "USCIS account created (if applicable)",
+        "Form I-539 started",
+        "Supporting documents uploaded",
+        "Supporting letters uploaded",
+        "Application reviewed (1st review)",
+        "Application reviewed (final review)"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Application submitted (online or mail)",
+        "Payment completed",
+        "Receipt notice generated (I-797C)",
+        "Receipt saved in Drive",
+        "Client notified",
+        "Post-submission instructions sent to client",
+        "Case tracking explained",
+        "Follow-up scheduled",
+        "Case under monitoring"
+      ]
+    }
+  ],
+  "free_consultation_minutes": 15,
+  "pricing": {
+    "standard_usd": 480,
+    "plus_usd": 1175,
+    "plus_paper_usd": 1300,
+    "notes": "Baseline = Language School variant. The same contract also prices a College variant higher: Standard $700, Plus Online $1,395, Plus Paper $1,520 — quote the College price when the client is transitioning to a college/university program instead of a language school.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete checklist of required documents",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "COS cover letter based on 18 years of experience",
+    "Recommendation of two schools based on location, schedule, and cost",
+    "Discount on document translation",
+    "Discount on RFE response (quoted separately)"
+  ],
+  "standard_excludes": [
+    "Certified translations (billed separately)",
+    "Case tracking after submission (client's responsibility)",
+    "School application fees and SEVIS fee"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Translation of address/sponsor/employer letters",
+    "RFE response included",
+    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
+    "Final review and detailed mailing instructions",
+    "Full case tracking until USCIS decision",
+    "No convenience fee when paying SEVIS/school/USCIS fees with the SAES card"
+  ],
+  "plus_excludes": [
+    "Certified translations (billed separately)",
+    "SEVIS fee and school fees"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo dos documentos necessários",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Carta de apresentação do COS baseada em 18 anos de experiência",
+    "Recomendação de duas escolas com base em localização, horário e custo",
+    "Desconto na tradução de documentos",
+    "Desconto na resposta a RFE (orçado separadamente)"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de los documentos necesarios",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Carta de presentación del COS basada en 18 años de experiencia",
+    "Recomendación de dos escuelas según ubicación, horario y costo",
+    "Descuento en la traducción de documentos",
+    "Descuento en la respuesta a RFE (cotizado por separado)"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Acompanhamento do caso após o envio (responsabilidade do cliente)",
+    "Taxas de inscrição escolar e taxa do SEVIS"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (facturadas por separado)",
+    "Seguimiento del caso después del envío (responsabilidad del cliente)",
+    "Tarifas de inscripción escolar y tarifa de SEVIS"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Tradução das cartas de endereço/patrocinador/empregador",
+    "Resposta a RFE inclusa",
+    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
+    "Revisão final e instruções detalhadas de envio",
+    "Acompanhamento completo do caso até a decisão da USCIS",
+    "Sem taxa de conveniência ao pagar taxas do SEVIS/escola/USCIS com o cartão da SAES"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Traducción de las cartas de domicilio/patrocinador/empleador",
+    "Respuesta a RFE incluida",
+    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
+    "Revisión final e instrucciones detalladas de envío",
+    "Seguimiento completo del caso hasta la decisión de USCIS",
+    "Sin tarifa de conveniencia al pagar tarifas de SEVIS/escuela/USCIS con la tarjeta de SAES"
+  ],
+  "plus_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Taxa do SEVIS e taxas escolares"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas (facturadas por separado)",
+    "Tarifa de SEVIS y tarifas escolares"
+  ]
+}

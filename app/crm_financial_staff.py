@@ -67,7 +67,7 @@ def client_status_update(financial_client_id: int):
         abort(404)
     new_status = svc.parse_enum(FinancialClientStatus, request.form.get("client_status"))
     if new_status is None:
-        flash("Status inválido.", "error")
+        flash("Invalid status.", "error")
         return redirect(request.referrer or url_for("crm_financial.clients_kanban"))
     fc.client_status = new_status
     SessionLocal.commit()
@@ -79,7 +79,7 @@ def client_new():
     if request.method == "POST":
         full_name = request.form.get("full_name", "").strip()
         if not full_name:
-            flash("Nome é obrigatório.", "error")
+            flash("Name is required.", "error")
             return redirect(url_for("crm_financial.client_new"))
 
         fc = FinancialClient(
@@ -92,7 +92,7 @@ def client_new():
         )
         SessionLocal.add(fc)
         SessionLocal.commit()
-        flash("Cliente de coaching cadastrado.", "success")
+        flash("Coaching client created.", "success")
         return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
 
     from app.crm_models import LeadSource
@@ -218,7 +218,7 @@ def client_profile_edit(financial_client_id: int):
                             fc.id, challenge_ids)
 
         SessionLocal.commit()
-        flash("Perfil atualizado.", "success")
+        flash("Profile updated.", "success")
         return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
 
     selected_platforms = {p.platform for p in fc.meeting_platforms}
@@ -268,7 +268,7 @@ def session_new(financial_client_id: int):
     )
     SessionLocal.add(session)
     SessionLocal.commit()
-    flash("Sessão adicionada.", "success")
+    flash("Session added.", "success")
     return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
 
 
@@ -290,7 +290,7 @@ def task_new(financial_client_id: int):
 
     task_name = request.form.get("task_name", "").strip()
     if not task_name:
-        flash("Nome da tarefa é obrigatório.", "error")
+        flash("Task name is required.", "error")
         return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
 
     task = FinancialTask(
@@ -307,7 +307,7 @@ def task_new(financial_client_id: int):
     )
     SessionLocal.add(task)
     SessionLocal.commit()
-    flash("Tarefa adicionada.", "success")
+    flash("Task added.", "success")
     return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
 
 

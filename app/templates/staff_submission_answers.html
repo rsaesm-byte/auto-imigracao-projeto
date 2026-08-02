@@ -2,16 +2,16 @@
 {% block title %}Staff — {{ form_name }}{% endblock %}
 {% block content %}
 <p style="margin-bottom:18px;">
-  <a href="javascript:history.back()" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">← Voltar</a>
+  <a href="javascript:history.back()" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">← Back</a>
 </p>
 
 <div class="card hero">
   <h1>{{ form_name }}</h1>
-  <p style="opacity:0.92;margin:0;">Respostas preenchidas pelo cliente -- visualização só-leitura, disponível mesmo antes do pagamento ser aprovado (o cliente só consegue gerar o PDF final depois disso).</p>
+  <p style="opacity:0.92;margin:0;">Answers filled in by the client -- read-only view, available even before the payment is approved (the client can only generate the final PDF after that).</p>
 </div>
 
 <div class="card">
-  <h2>Respostas ({{ answered|length }})</h2>
+  <h2>Answers ({{ answered|length }})</h2>
   {% if answered %}
   <table class="submissions">
     {% for question, display in answered %}
@@ -22,7 +22,7 @@
     {% endfor %}
   </table>
   {% else %}
-  <p class="muted">Nenhuma resposta preenchida ainda.</p>
+  <p class="muted">No answers filled in yet.</p>
   {% endif %}
 </div>
 {% endblock %}

@@ -26,7 +26,8 @@ from flask_login import current_user, login_required
 from app.crm_models import Case, Client, VisaDraftType
 from app.db import SessionLocal
 from app.i18n import SUPPORTED_LANGS
-from app.models import FormSubmission, Payment
+from app.models import (FormSubmission, Payment, PostPaymentOnboarding,
+                         RequiredDocument)
 from app.services.news_service import get_latest_news
 from app.services.pdf_service import (document_checklist_available,
                                        fill_form_for_submission,
@@ -398,14 +399,34 @@ def index():
 
 @wizard_bp.route("/servicos")
 def services():
+    """Vitrine com TODOS os serviços que a Saes oferece, sejam eles
+    "Faça Você Mesmo" (o cliente preenche sozinho) ou conduzidos por um
+    profissional da equipe -- pedido do usuário (2026-08-02): "em
+    serviços você deverá mostrar todos os serviços que a Saes
+    professional oferece". A DECISÃO de como contratar (sozinho vs. com
+    a equipe, e em qual nível -- Standard/Plus) fica em /pacotes, não
+    aqui -- esta página é só "o que existe", não "como comprar"."""
     catalog = [
         {"slug": slug, "name": _form_display_name(slug),
-         "enabled": slug in ENABLED_FORMS, "contact_only": False}
+         "enabled": slug in ENABLED_FORMS, "contact_only": False, "has_detail_page": True}
         for slug in FORM_SLUGS_ORDER
     ]
     catalog += [
-        {"slug": slug, "name": _form_display_name(slug), "enabled": False, "contact_only": True}
+        {"slug": slug, "name": _form_display_name(slug), "enabled": False,
+         "contact_only": True, "has_detail_page": True}
         for slug in VISA_SERVICE_SLUGS
+    ]
+
+    from app.crm_models import ServiceCatalog
+    from app.i18n import get_lang
+    from app.services.service_procedures import service_display_name
+    procedure_services = SessionLocal.query(ServiceCatalog).filter(
+        ServiceCatalog.slug.is_not(None)).order_by(ServiceCatalog.name).all()
+    lang = get_lang()
+    catalog += [
+        {"slug": s.slug, "name": service_display_name(s.slug, lang), "enabled": False,
+         "contact_only": True, "has_detail_page": False}
+        for s in procedure_services
     ]
     return render_template("services.html", catalog=catalog)
 
@@ -572,6 +593,7 @@ def dashboard():
     # genérico, sem precisar de nada especial aqui).
     ds160_gate_case = _ds160_gate_case(current_user.id)
     ds160_already_started = any(s.form_slug == "ds160" for s in submissions)
+    pending_onboardings = _pending_onboardings(current_user.id)
 
     return render_template("dashboard.html", submissions=top_level, catalog=catalog,
                            dependents_by_parent=dependents_by_parent,
@@ -580,6 +602,7 @@ def dashboard():
                            carta_letters_enabled=all(s in ENABLED_FORMS for s in CARTA_LETTER_SLUGS),
                            carta_letter_slugs=CARTA_LETTER_SLUGS,
                            ds160_gate_case=None if ds160_already_started else ds160_gate_case,
+                           pending_onboardings=pending_onboardings,
                            news_items=get_latest_news())
 
 
@@ -1074,6 +1097,27 @@ def _ds160_gate_case(user_id: int) -> Case | None:
         .order_by(Case.updated_at.desc())
         .first()
     )
+
+
+def _pending_onboardings(user_id: int) -> list[PostPaymentOnboarding]:
+    """Onboardings pós-pagamento (app/onboarding.py) deste usuário que ainda
+    precisam de atenção -- endereço não confirmado, ou existe pelo menos um
+    documento pending/rejected. Usado só para o aviso no dashboard; a rota
+    /pendencias/<payment_id> em si não depende disto."""
+    rows = (
+        SessionLocal.query(PostPaymentOnboarding)
+        .join(Payment, Payment.id == PostPaymentOnboarding.payment_id)
+        .filter(Payment.user_id == user_id)
+        .all()
+    )
+    pending = []
+    for o in rows:
+        if not o.address_confirmed:
+            pending.append(o)
+            continue
+        if any(d.status in ("pending", "rejected") for d in o.documents):
+            pending.append(o)
+    return pending
 
 
 def _cartas_case(submission: FormSubmission) -> FormSubmission | None:

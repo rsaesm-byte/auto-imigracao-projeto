@@ -22,7 +22,7 @@
     {{ crm_badge(case.case_status, label=t('my_case_status_' ~ case.case_status.value)) }}
     <span class="badge status-neutral">{{ t('my_case_mode_' ~ case.service_mode.value) }}</span>
   </p>
-  <p class="muted" style="margin:0 0 16px;">
+  <p class="muted" style="margin:0 0 {{ '4px' if client.status_expiration else '16px' }};">
     <strong>{{ t('my_case_deadline_label') }}:</strong>
     {% if case.service_deadline %}
       {{ case.service_deadline.strftime("%m/%d/%Y") if get_lang() == "en" else case.service_deadline.strftime("%d/%m/%Y") }}
@@ -30,6 +30,55 @@
       {{ t('my_case_no_deadline') }}
     {% endif %}
   </p>
+  {% if client.status_expiration %}
+  <p class="muted" style="margin:0 0 16px;">
+    <strong>{{ t('my_case_status_expiration_label') }}:</strong>
+    {{ client.status_expiration.strftime("%m/%d/%Y") if get_lang() == "en" else client.status_expiration.strftime("%d/%m/%Y") }}
+  </p>
+  {% endif %}
+
+  {% set pending_payments = case.payments|selectattr('status.value', 'in', ['pending', 'invoice_sent'])|list %}
+  {% if pending_payments %}
+  <div style="background:#fef3c7;border-radius:var(--radius-sm);padding:12px 16px;margin:0 0 16px;">
+    <h3 style="font-size:1rem;margin-top:0;">{{ t('my_case_payment_due_title') }}</h3>
+    {% for p in pending_payments %}
+    <p style="margin:4px 0;">{{ p.description }} — <strong>${{ '%.2f'|format(p.amount_cents / 100) }}</strong></p>
+    {% endfor %}
+    <p class="muted" style="font-size:0.82rem;margin:4px 0 0;">{{ t('my_case_payment_due_note') }}</p>
+  </div>
+  {% endif %}
+
+  {% set pending_contracts = case.contracts|selectattr('status.value', 'in', ['not_started', 'in_review'])|list %}
+  {% if pending_contracts %}
+  <div style="background:var(--accent-soft);border-radius:var(--radius-sm);padding:12px 16px;margin:0 0 16px;">
+    <h3 style="font-size:1rem;margin-top:0;">{{ t('my_case_contracts_pending_title') }}</h3>
+    <ul style="margin:0;padding-left:0;list-style:none;">
+      {% for c in pending_contracts %}
+      <li style="padding:4px 0;">
+        <a href="{{ url_for('crm_client.contract_view', contract_id=c.id) }}">
+          {% if c.document_type.value == 'service_contract' %}{{ c.service.name if c.service else '' }}{% else %}{{ t('contract_terms_page_title') }}{% endif %}
+          — {{ t('my_case_contract_link') }}
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  {% endif %}
+
+  <h3 style="font-size:1rem;">{{ t('my_case_progress_title') }}</h3>
+  {% if case.progress_items %}
+  <ul style="margin:0 0 16px;padding-left:0;list-style:none;">
+    {% for pitem in case.progress_items %}
+    <li style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:5px 0;border-bottom:1px solid var(--border);font-size:0.9rem;">
+      <span style="min-width:180px;">{{ pitem.title }}</span>
+      <span class="muted" style="font-size:0.8rem;">{{ t('my_case_progress_category_' ~ pitem.category.value) }}</span>
+      {{ crm_badge(pitem.status, label=t('my_case_progress_status_' ~ pitem.status.value)) }}
+    </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted" style="margin:0 0 16px;">{{ t('my_case_no_progress_items') }}</p>
+  {% endif %}
 
   <h3 style="font-size:1rem;">{{ t('my_case_pending_documents_title') }}</h3>
   {% if item.pending_documents %}
@@ -55,6 +104,59 @@
   {% else %}
   <p class="muted" style="margin:0 0 16px;">{{ t('my_case_no_pending_documents') }}</p>
   {% endif %}
+
+  <h3 style="font-size:1rem;">{{ t('my_case_messages_title') }}</h3>
+  {% if item.messages %}
+  <div style="margin:0 0 12px;">
+    {% for msg in item.messages %}
+    <div style="border-top:1px solid var(--border);padding:10px 0;">
+      <p style="margin:0 0 4px;">
+        <strong>{{ t('my_case_msgtype_' ~ msg.message_type.value) }}</strong>
+        <span class="badge status-neutral">{{ t('my_case_priority_' ~ msg.priority.value) }}</span>
+        {{ crm_badge(msg.status, label=t('my_case_msgstatus_' ~ msg.status.value)) }}
+        <span class="muted" style="font-size:0.8rem;">
+          — {{ t('my_case_msg_from_client') if msg.author_role.value == 'client' else t('my_case_msg_from_team') }}
+        </span>
+      </p>
+      <p style="margin:0 0 4px;white-space:pre-wrap;">{{ msg.body }}</p>
+      <p class="muted" style="margin:0;font-size:0.8rem;">
+        {{ msg.created_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else msg.created_at.strftime("%d/%m/%Y %H:%M") }}
+        {% if msg.due_at %} · {{ t('my_case_msg_due') }}: {{ msg.due_at.strftime("%m/%d/%Y") if get_lang() == "en" else msg.due_at.strftime("%d/%m/%Y") }}{% endif %}
+        {% if msg.attachment_path %} · <a href="{{ url_for('crm_client.message_attachment', message_id=msg.id) }}">{{ t('my_case_msg_attachment') }}</a>{% endif %}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted" style="margin:0 0 12px;">{{ t('my_case_no_messages') }}</p>
+  {% endif %}
+
+  <details>
+    <summary style="cursor:pointer;font-size:0.9rem;font-weight:600;">{{ t('my_case_msg_new') }}</summary>
+    <form method="post" action="{{ url_for('crm_client.case_message_new', case_id=case.id) }}" enctype="multipart/form-data" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+      <div>
+        <label class="muted">{{ t('my_case_msg_field_type') }}</label><br>
+        <select name="message_type">{% for mt in message_types %}<option value="{{ mt.value }}">{{ t('my_case_msgtype_' ~ mt.value) }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">{{ t('my_case_msg_field_priority') }}</label><br>
+        <select name="priority">{% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if p.value == 'medium' }}>{{ t('my_case_priority_' ~ p.value) }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">{{ t('my_case_msg_field_due') }}</label><br>
+        <input type="date" name="due_at">
+      </div>
+      <div style="flex-basis:100%;">
+        <label class="muted">{{ t('my_case_msg_field_body') }}</label><br>
+        <textarea name="body" required rows="3" style="width:100%;"></textarea>
+      </div>
+      <div>
+        <label class="muted">{{ t('my_case_msg_field_attachment') }}</label><br>
+        <input type="file" name="attachment">
+      </div>
+      <button type="submit" class="btn secondary">{{ t('my_case_msg_send') }}</button>
+    </form>
+  </details>
 </div>
 {% endfor %}
 

@@ -1,0 +1,94 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Time Tracking{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Time Tracking</h1>
+  <p style="opacity:0.92;margin:0;">Track time spent per client, case, or project -- start the timer in the header, or log time manually below.</p>
+</div>
+
+<div class="card">
+  <form method="get" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
+    <div>
+      <label class="muted">From</label><br>
+      <input type="date" name="from" value="{{ range_from }}">
+    </div>
+    <div>
+      <label class="muted">To</label><br>
+      <input type="date" name="to" value="{{ range_to }}">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Filter</button>
+  </form>
+</div>
+
+<div class="card">
+  <details>
+    <summary style="cursor:pointer;font-size:0.9rem;font-weight:600;">+ Log time manually</summary>
+    <form method="post" action="{{ url_for('planner.time_manual') }}" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+      <div style="flex:1;min-width:180px;">
+        <label class="muted">Description</label><br>
+        <input type="text" name="description" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Start</label><br>
+        <input type="datetime-local" name="started_at" required>
+      </div>
+      <div>
+        <label class="muted">End</label><br>
+        <input type="datetime-local" name="ended_at" required>
+      </div>
+      <div>
+        <label class="muted">Client</label><br>
+        <select name="client_id"><option value="">—</option>{% for c in clients %}<option value="{{ c.id }}">{{ c.full_name }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Case</label><br>
+        <select name="case_id"><option value="">—</option>{% for c in cases %}<option value="{{ c.id }}">{{ c.title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Project</label><br>
+        <select name="project_id"><option value="">—</option>{% for p in projects %}<option value="{{ p.id }}">{{ p.name }}</option>{% endfor %}</select>
+      </div>
+      <button type="submit" class="btn">Log entry</button>
+    </form>
+  </details>
+</div>
+
+<div class="card">
+  <h2>Totals by client/case/project</h2>
+  {% if total_by_label %}
+  {% set max_seconds = total_by_label[0][1] %}
+  {% for label, seconds in total_by_label %}
+  <div style="margin-bottom:8px;">
+    <div class="muted" style="font-size:0.8rem;">{{ label }} ({{ format_duration(seconds) }})</div>
+    <div style="background:var(--border);border-radius:999px;height:8px;">
+      <div style="width:{{ (seconds / max_seconds * 100)|round if max_seconds else 0 }}%;background:var(--accent);height:8px;border-radius:999px;"></div>
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">No time logged in this period.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Entries ({{ entries|length }})</h2>
+  {% if entries %}
+  <table class="submissions">
+    <thead><tr><th>Description</th><th>Client/Case/Project</th><th>Start</th><th>Duration</th><th>Source</th></tr></thead>
+    <tbody>
+      {% for e in entries %}
+      <tr>
+        <td>{{ e.description or '—' }}</td>
+        <td class="muted">{{ label_for(e) }}</td>
+        <td class="muted">{{ e.started_at.strftime('%m/%d/%Y %H:%M') }}</td>
+        <td>{{ format_duration(duration(e)) }}{{ ' (running)' if not e.ended_at }}</td>
+        <td class="muted">{{ e.source.value|title }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No time entries in this period.</p>
+  {% endif %}
+</div>
+{% endblock %}

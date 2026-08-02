@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}{{ t('onboarding_page_heading') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ t('onboarding_page_heading') }} — {{ case_label }}</h1>
+  <p style="opacity:0.92;margin:0;">{{ t('onboarding_page_intro') }}</p>
+</div>
+
+<div class="card">
+  <h2>{{ t('onboarding_address_heading') }}</h2>
+  <form method="post">
+    <input type="hidden" name="action" value="save_address">
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div><label class="muted">{{ t('onboarding_field_full_name') }}</label><br><input type="text" name="applicant_full_name" value="{{ onboarding.applicant_full_name or '' }}" required style="min-width:220px;"></div>
+      <div><label class="muted">{{ t('onboarding_field_email') }}</label><br><input type="email" name="applicant_email" value="{{ onboarding.applicant_email or '' }}" required></div>
+      <div><label class="muted">{{ t('onboarding_field_phone') }}</label><br><input type="tel" name="applicant_us_phone" value="{{ onboarding.applicant_us_phone or '' }}" required></div>
+    </div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;">
+      <div><label class="muted">{{ t('onboarding_field_address') }}</label><br><input type="text" name="us_address_line1" value="{{ onboarding.us_address_line1 or '' }}" required style="min-width:260px;"></div>
+      <div><label class="muted">{{ t('onboarding_field_complement') }}</label><br><input type="text" name="us_address_complement" value="{{ onboarding.us_address_complement or '' }}"></div>
+      <div><label class="muted">{{ t('onboarding_field_city') }}</label><br><input type="text" name="us_city" value="{{ onboarding.us_city or '' }}" required></div>
+      <div>
+        <label class="muted">{{ t('onboarding_field_state') }}</label><br>
+        <select name="us_state" required>
+          <option value="">—</option>
+          {% for s in us_states %}<option value="{{ s }}" {{ 'selected' if onboarding.us_state == s }}>{{ s }}</option>{% endfor %}
+        </select>
+      </div>
+      <div><label class="muted">{{ t('onboarding_field_zip') }}</label><br><input type="text" name="us_zip" value="{{ onboarding.us_zip or '' }}" required></div>
+    </div>
+
+    <p class="muted" style="margin:16px 0 6px;">{{ t('onboarding_dependents_label') }}</p>
+    {% for i in dependent_range %}
+    {% set dep = dependents_by_slot[i-1] %}
+    <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:6px;">
+      <div><label class="muted">{{ t('onboarding_dependent_name', n=i) }}</label><br><input type="text" name="dependent_{{ i }}_name" value="{{ dep.full_name if dep else '' }}"></div>
+      <div><label class="muted">{{ t('onboarding_dependent_email', n=i) }}</label><br><input type="email" name="dependent_{{ i }}_email" value="{{ dep.email if dep else '' }}"></div>
+      <div><label class="muted">{{ t('onboarding_dependent_phone', n=i) }}</label><br><input type="tel" name="dependent_{{ i }}_phone" value="{{ dep.us_phone if dep else '' }}"></div>
+    </div>
+    {% endfor %}
+
+    <button type="submit" class="btn" style="margin-top:12px;">{{ t('onboarding_update_btn') if onboarding.address_confirmed else t('onboarding_save_btn') }}</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>{{ t('onboarding_documents_heading') }}</h2>
+  {% if onboarding.documents %}
+  <table class="submissions">
+    <thead><tr><th>{{ t('onboarding_doc_col_name') }}</th><th>{{ t('onboarding_doc_col_status') }}</th><th>{{ t('onboarding_doc_col_notes') }}</th><th></th></tr></thead>
+    <tbody>
+      {% for doc in onboarding.documents %}
+      <tr>
+        <td>{{ translate_label(doc.label) }}</td>
+        <td>
+          {% if doc.status == 'pending' %}<span class="badge in_progress">{{ t('onboarding_status_pending') }}</span>
+          {% elif doc.status == 'uploaded' %}<span class="badge in_progress">{{ t('onboarding_status_uploaded') }}</span>
+          {% elif doc.status == 'approved' %}<span class="badge completed">{{ t('onboarding_status_approved') }}</span>
+          {% elif doc.status == 'rejected' %}<span class="badge" style="background:#fee2e2;color:#991b1b;">{{ t('onboarding_status_rejected') }}</span>
+          {% endif %}
+        </td>
+        <td class="muted">{{ doc.staff_notes or '—' }}</td>
+        <td>
+          {% if doc.file_path %}
+          <a href="{{ url_for('onboarding.document_file', document_id=doc.id) }}" style="font-size:0.82rem;">{{ t('onboarding_view_file') }}</a><br>
+          {% endif %}
+          {% if doc.status in ('pending', 'rejected') %}
+          <form method="post" action="{{ url_for('onboarding.upload_document', document_id=doc.id) }}" enctype="multipart/form-data" style="margin-top:4px;display:flex;gap:6px;align-items:center;">
+            <input type="file" name="file" required style="font-size:0.78rem;">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:4px 10px;">{{ t('onboarding_upload_btn') }}</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">{{ t('onboarding_no_documents_yet') }}</p>
+  {% endif %}
+</div>
+{% endblock %}

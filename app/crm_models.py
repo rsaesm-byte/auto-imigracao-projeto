@@ -103,12 +103,17 @@ class LeadQuality(str, enum.Enum):
 
 
 class ServiceMode(str, enum.Enum):
-    """Os dois modelos de negócio da Saes (confirmado com o usuário): o
-    cliente conduz o próprio processo (produto Auto-Imigração de hoje) ou a
-    equipe conduz o caso do início ao fim (o que o CRM do Notion existe
-    para gerenciar)."""
+    """Os modelos de negócio da Saes (confirmado com o usuário, 2026-08-01):
+    o cliente conduz o próprio processo (produto Auto-Imigração "Faça Você
+    Mesmo") ou a equipe conduz o caso do início ao fim -- nesse caso, em um
+    de dois níveis de atendimento ("Pacotes Completos"): Saes Standard ou
+    Saes Plus (acompanhamento até aprovação, RFE/AR-11/E-Request/ligações
+    à USCIS sem custo adicional, impressão e envio inclusos). Standard e
+    Plus cobrem os mesmos serviços do catálogo -- a diferença é nível de
+    atendimento do caso, não uma lista de serviços diferente."""
     self_service = "self_service"
-    full_service = "full_service"
+    saes_standard = "saes_standard"
+    saes_plus = "saes_plus"
 
 
 class VisaDraftType(str, enum.Enum):
@@ -159,6 +164,11 @@ class ServiceRole(str, enum.Enum):
     previous = "previous"
 
 
+class FilingMethod(str, enum.Enum):
+    paper = "paper"
+    online = "online"
+
+
 class DocumentType(str, enum.Enum):
     passport = "passport"
     visa = "visa"
@@ -182,15 +192,101 @@ class TranslationLanguage(str, enum.Enum):
 
 
 class TranslationStatus(str, enum.Enum):
+    """Superseded by `DocumentStatus` below (user request 2026-08-02: one
+    unified status vocabulary per document, covering translation states
+    too) -- kept defined only so any historical `DocumentTranslation.status`
+    value already in the database still deserializes; no longer written by
+    any route."""
     quoted = "quoted"
     in_progress = "in_progress"
     review = "review"
     ready = "ready"
 
 
+class DocumentStatus(str, enum.Enum):
+    """Unified per-document status -- replaces the old 0..10 `progress`
+    slider (kept as a column for backward compatibility, just unused by
+    any current UI) and the separate translation-only `TranslationStatus`
+    above. Covers both plain documents and documents that need
+    translation, since from the client's point of view it's the same
+    single status line. User request 2026-08-02."""
+    pending = "pending"
+    in_review = "in_review"
+    awaiting_document = "awaiting_document"
+    additional_info_needed = "additional_info_needed"
+    translation_quote_requested = "translation_quote_requested"
+    awaiting_translation = "awaiting_translation"
+    reviewing_translation = "reviewing_translation"
+    completed = "completed"
+
+
+class TranslationSpeedTier(str, enum.Enum):
+    """Client-facing pricing tier for a translation job -- decoupled from
+    whatever the Saes pays the translator (see DocumentTranslation below).
+    Prices themselves live in app/services/crm_service.py::
+    TRANSLATION_SPEED_PRICING, not here (this enum is just the vocabulary;
+    the $ amount is business logic that can change without a migration)."""
+    rush = "rush"
+    standard = "standard"
+
+
+class ProgressCategory(str, enum.Enum):
+    """What kind of work item a CaseProgressItem ("Acompanhamento") tracks
+    -- user request 2026-08-02: "formulários, cartas, organização dos
+    documentos de suporte, solicitações internas etc."."""
+    form = "form"
+    letter = "letter"
+    document_organization = "document_organization"
+    internal_request = "internal_request"
+    other = "other"
+
+
+class ProgressStatus(str, enum.Enum):
+    """Status vocabulary for CaseProgressItem -- deliberately its own enum,
+    not reusing TaskStatus (that one is for the staff-only Task model,
+    different vocabulary and never client-visible). User request
+    2026-08-02, exact 6 values requested."""
+    not_started = "not_started"
+    in_progress = "in_progress"
+    awaiting_document_or_info = "awaiting_document_or_info"
+    in_review = "in_review"
+    ready_to_finalize = "ready_to_finalize"
+    completed = "completed"
+
+
+class ContractDocumentType(str, enum.Enum):
+    """Which document a CaseContract signature request is for -- the
+    service contract itself (tied to a specific ServiceCatalog "Pacote
+    Completo" + tier) or the general Terms & Conditions (no service tie,
+    signed once). User request 2026-08-02."""
+    service_contract = "service_contract"
+    terms_and_conditions = "terms_and_conditions"
+
+
+class ContractTier(str, enum.Enum):
+    """Which priced tier this contract quotes -- mirrors the 3
+    independent price points ServiceCatalog now has (see its docstring),
+    since Plus itself splits into Online/Paper pricing in the real
+    contracts."""
+    standard = "standard"
+    plus_online = "plus_online"
+    plus_paper = "plus_paper"
+
+
+class ContractStatus(str, enum.Enum):
+    """Lifecycle of a contract signature request -- exact 4 values
+    requested by the user 2026-08-02 ("não começado, em análise (quando o
+    cliente abriu mas não assinou), assinado ou rejeitado")."""
+    not_started = "not_started"
+    in_review = "in_review"
+    signed = "signed"
+    rejected = "rejected"
+
+
 class Currency(str, enum.Enum):
     usd = "usd"
     brl = "brl"
+    cop = "cop"
     other = "other"
 
 
@@ -406,6 +502,26 @@ class Client(Base):
     cases: Mapped[list["Case"]] = relationship(back_populates="client")
     documents: Mapped[list["Document"]] = relationship(back_populates="client")
     communications: Mapped[list["Communication"]] = relationship(back_populates="client")
+    dependents: Mapped[list["ClientDependent"]] = relationship(
+        back_populates="client", cascade="all, delete-orphan")
+
+
+class ClientDependent(Base):
+    """Dados de contato por dependente -- normaliza o que antes só existia
+    como contador (`Client.has_dependents`/`n_dependents`). Preenchido pelo
+    próprio cliente na tela de onboarding pós-pagamento (app/onboarding.py,
+    campo telefone/e-mail por dependente) e sincronizado aqui direto
+    (pedido do usuário, 2026-08-01: "atualiza Client/Case diretamente")."""
+    __tablename__ = "crm_client_dependents"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    client_id: Mapped[int] = mapped_column(ForeignKey("crm_clients.id"), index=True)
+    full_name: Mapped[str]
+    email: Mapped[str | None] = mapped_column(default=None)
+    us_phone: Mapped[str | None] = mapped_column(default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+    client: Mapped[Client] = relationship(back_populates="dependents")
 
 
 class ClientCredential(Base):
@@ -524,7 +640,36 @@ class ServiceCatalog(Base):
     name: Mapped[str] = mapped_column(unique=True)
     description: Mapped[str | None] = mapped_column(Text, default=None)
     base_price_cents: Mapped[int | None] = mapped_column(default=None)
+    # Preço do nível "Saes Plus" -- pedido do usuário 2026-08-02, extraído
+    # dos contratos reais em Downloads/Contratos: cada um dos 15 "Pacotes
+    # Completos" tem um preço Standard (`base_price_cents`) E um preço
+    # Plus distinto (geralmente maior, cobre tradução/RFE/mailing/case
+    # tracking inclusos) -- um único preço não bastava, já que
+    # `Case.service_mode` (ServiceMode.saes_standard/saes_plus) já
+    # modelava os dois níveis como conceitos de primeira classe.
+    plus_price_cents: Mapped[int | None] = mapped_column(default=None)
+    # Preço "Plus" quando o processo é feito em papel/correio -- vários dos
+    # 15 contratos reais cobram um valor MAIOR pro Plus em papel do que
+    # pro Plus online (cobre impressão/montagem/postagem), ex.: EOS Plus
+    # online $975 vs. Plus papel $1.100. Quando None, `plus_price_cents`
+    # já é o único preço Plus (nem todo serviço tem essa distinção --
+    # GC Consular, K-1 e alguns outros não têm "processo online" no
+    # sentido de conta USCIS, então só têm um preço Plus).
+    plus_price_paper_cents: Mapped[int | None] = mapped_column(default=None)
     document_type: Mapped[DocumentType | None] = mapped_column(SAEnum(DocumentType), default=None)
+    # Chave estável (ex.: "eos_b2", "cos_to_f1") que liga este catálogo a um
+    # template de procedimento em data/service_procedures/<slug>.json (ver
+    # app/services/service_procedures.py) -- só preenchida pros 15 serviços
+    # "Pacotes Completos" (Saes Standard/Plus); NULL para entradas antigas
+    # sem procedimento formal ainda.
+    slug: Mapped[str | None] = mapped_column(unique=True, index=True, default=None)
+    # Auditoria de preço, mesmo par de colunas que ServiceFee (app/models.py)
+    # já tinha -- pedido do usuário 2026-08-02: "mesma lógica" (último
+    # preço praticado / data da última mudança / ajuste em massa por
+    # porcentagem) também pros 15 "Pacotes Completos", que até então não
+    # tinham UI de preço nenhuma (base_price_cents sempre None).
+    updated_at: Mapped[datetime | None] = mapped_column(DateTime, default=None, onupdate=_utcnow)
+    updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
 
     payment_plans: Mapped[list["ServicePaymentPlan"]] = relationship(
         back_populates="service", cascade="all, delete-orphan")
@@ -603,6 +748,14 @@ class Case(Base):
     payments: Mapped[list["PaymentLedgerEntry"]] = relationship(back_populates="case")
     communications: Mapped[list["Communication"]] = relationship(back_populates="case")
     tasks: Mapped[list["Task"]] = relationship(back_populates="case")
+    messages: Mapped[list["CaseMessage"]] = relationship(
+        back_populates="case", cascade="all, delete-orphan", order_by="CaseMessage.created_at.desc()")
+    tracked_forms: Mapped[list["CaseTrackedForm"]] = relationship(
+        back_populates="case", cascade="all, delete-orphan", order_by="CaseTrackedForm.created_at")
+    progress_items: Mapped[list["CaseProgressItem"]] = relationship(
+        back_populates="case", cascade="all, delete-orphan", order_by="CaseProgressItem.created_at")
+    contracts: Mapped[list["CaseContract"]] = relationship(
+        back_populates="case", cascade="all, delete-orphan", order_by="CaseContract.created_at.desc()")
 
 
 class CaseService(Base):
@@ -635,6 +788,32 @@ class CaseStepLog(Base):
     case: Mapped[Case] = relationship(back_populates="step_log")
 
 
+class CaseProgressItem(Base):
+    """Client-visible task/progress tracker per case ("Acompanhamento",
+    user request 2026-08-02) -- covers forms, letters, supporting-document
+    organization, internal requests, etc. Deliberately separate from
+    `Task` (staff-only operational scheduling -- meetings, internal
+    reviews -- never shown to the client) and from `CaseStepLog` (an
+    append-only "step done" audit trail with no notion of an in-progress
+    state). Shown both on the client's "Meu Caso" page (read-only) and on
+    the collaborator's client/case card (full CRUD)."""
+    __tablename__ = "crm_case_progress_items"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    case_id: Mapped[int] = mapped_column(ForeignKey("crm_cases.id"), index=True)
+
+    title: Mapped[str]
+    category: Mapped[ProgressCategory] = mapped_column(SAEnum(ProgressCategory), default=ProgressCategory.other)
+    status: Mapped[ProgressStatus] = mapped_column(
+        SAEnum(ProgressStatus), default=ProgressStatus.not_started, index=True)
+    notes: Mapped[str | None] = mapped_column(Text, default=None)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    case: Mapped[Case] = relationship(back_populates="progress_items")
+
+
 class Document(Base):
     __tablename__ = "crm_documents"
 
@@ -646,7 +825,8 @@ class Document(Base):
     document_type: Mapped[DocumentType] = mapped_column(SAEnum(DocumentType), default=DocumentType.other)
     translation_language: Mapped[TranslationLanguage | None] = mapped_column(
         SAEnum(TranslationLanguage), default=None)
-    progress: Mapped[int] = mapped_column(SmallInteger, default=0)  # 0..10, checado em crm_service
+    status: Mapped[DocumentStatus] = mapped_column(SAEnum(DocumentStatus), default=DocumentStatus.pending, index=True)
+    progress: Mapped[int] = mapped_column(SmallInteger, default=0)  # 0..10 -- superseded by `status` above, kept as-is (no UI reads it anymore)
     requested_at: Mapped[date | None] = mapped_column(Date, default=None)
     received_at: Mapped[date | None] = mapped_column(Date, default=None)
     file_path: Mapped[str | None] = mapped_column(default=None)
@@ -661,18 +841,88 @@ class Document(Base):
         back_populates="document", cascade="all, delete-orphan", uselist=False)
 
 
+class Translator(Base):
+    """Diretório próprio de tradutores terceirizados -- NÃO um `User` do
+    site (tradutores não fazem login aqui). Pré-cadastrados só pelo nome
+    via seed idempotente (app/__init__.py::_seed_translators, pedido do
+    usuário 2026-08-02: Rodrigo, Ricardo, Helio, Lucia, Samuel Eduardo) --
+    os demais campos ficam em branco até o staff completar a ficha.
+    `currency` é a moeda em que ESTE tradutor é pago (peso colombiano,
+    Real, etc. -- ver Currency acima), usada como padrão ao lançar uma
+    nova tradução dele."""
+    __tablename__ = "crm_translators"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    full_name: Mapped[str] = mapped_column(unique=True)
+    address: Mapped[str | None] = mapped_column(default=None)
+    phone: Mapped[str | None] = mapped_column(default=None)
+    languages: Mapped[str | None] = mapped_column(default=None)
+    payment_method: Mapped[str | None] = mapped_column(default=None)
+    bank_details: Mapped[str | None] = mapped_column(Text, default=None)
+    currency: Mapped[Currency] = mapped_column(SAEnum(Currency), default=Currency.usd)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    translations: Mapped[list["DocumentTranslation"]] = relationship(back_populates="translator")
+    payments: Mapped[list["TranslatorPayment"]] = relationship(
+        back_populates="translator", cascade="all, delete-orphan", order_by="TranslatorPayment.paid_at.desc()")
+
+
+class TranslatorPayment(Base):
+    """Histórico de pagamentos feitos a um tradutor -- registro manual do
+    staff (não um gateway de pagamento de verdade), pedido do usuário
+    2026-08-02 ("registros de pagamentos anteriores"). `document_translation_id`
+    é opcional -- um pagamento pode cobrir várias traduções de uma vez,
+    então não força 1:1 com um documento específico."""
+    __tablename__ = "crm_translator_payments"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    translator_id: Mapped[int] = mapped_column(ForeignKey("crm_translators.id"), index=True)
+    document_translation_id: Mapped[int | None] = mapped_column(
+        ForeignKey("crm_document_translations.document_id"), default=None)
+
+    amount_cents: Mapped[int]
+    currency: Mapped[Currency] = mapped_column(SAEnum(Currency), default=Currency.usd)
+    paid_at: Mapped[date] = mapped_column(Date)
+    notes: Mapped[str | None] = mapped_column(Text, default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+    translator: Mapped[Translator] = relationship(back_populates="payments")
+
+
 class DocumentTranslation(Base):
     """Extensão 1:1 de Document -- só existe para documentos que precisam
     de tradução. Substitui o banco externo "Translations/Review Tracker"
-    do Notion (inacessível pelo conector, referenciado só via rollup)."""
+    do Notion (inacessível pelo conector, referenciado só via rollup).
+
+    Dois valores monetários desacoplados de propósito (pedido do usuário
+    2026-08-02): o que a Saes PAGA ao tradutor
+    (`price_per_page_translator_currency_cents`, na moeda dele -- ver
+    `Translator.currency`) não é o que a Saes COBRA do cliente
+    (`speed_tier`, que decide o preço por página em dólar via
+    app/services/crm_service.py::TRANSLATION_SPEED_PRICING -- $32/página
+    em 1-2 dias úteis ou $30/página em 3-4 dias úteis). Nenhum total é
+    gravado como coluna -- página × preço é sempre calculado na leitura
+    (app/services/crm_service.py), mesma convenção do resto deste módulo
+    (ver docstring do topo do arquivo)."""
     __tablename__ = "crm_document_translations"
 
     document_id: Mapped[int] = mapped_column(ForeignKey("crm_documents.id"), primary_key=True)
-    translator_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None, index=True)
-    status: Mapped[TranslationStatus] = mapped_column(SAEnum(TranslationStatus), default=TranslationStatus.quoted)
+    translator_id: Mapped[int | None] = mapped_column(ForeignKey("crm_translators.id"), default=None, index=True)
+    speed_tier: Mapped[TranslationSpeedTier | None] = mapped_column(SAEnum(TranslationSpeedTier), default=None)
+
+    requested_at: Mapped[date | None] = mapped_column(Date, default=None)
+    delivered_at: Mapped[date | None] = mapped_column(Date, default=None)
+    page_count: Mapped[int | None] = mapped_column(default=None)
+
+    price_per_page_translator_currency_cents: Mapped[int | None] = mapped_column(default=None)
+    price_per_page_usd_cents: Mapped[int | None] = mapped_column(default=None)
+
     deadline: Mapped[date | None] = mapped_column(Date, default=None)
 
     document: Mapped[Document] = relationship(back_populates="translation")
+    translator: Mapped[Translator | None] = relationship(back_populates="translations")
 
 
 class PaymentLedgerEntry(Base):
@@ -754,6 +1004,64 @@ class Communication(Base):
     case: Mapped[Case | None] = relationship(back_populates="communications")
 
 
+class CaseMessageType(str, enum.Enum):
+    message = "message"
+    feedback = "feedback"
+    internal_request = "internal_request"
+    update = "update"
+    document_request = "document_request"
+    other = "other"
+
+
+class CaseMessageStatus(str, enum.Enum):
+    open = "open"
+    in_progress = "in_progress"
+    resolved = "resolved"
+
+
+class CaseMessageAuthorRole(str, enum.Enum):
+    client = "client"
+    staff = "staff"
+
+
+class CaseMessage(Base):
+    """Two-way in-app communication thread on a Case, visible to BOTH the
+    client ("Meu Caso") and staff (case detail, /staff/crm) -- deliberately
+    a separate table from `Communication` above, which is a staff-only
+    internal contact log (calls/emails made OUTSIDE the system, never
+    authored by the client). User request, 2026-08-02: "uma forma interna
+    de comunicação entre cliente/colaborador... para ficar tudo
+    centralizado dentro do card do cliente e do serviço que está em
+    andamento" -- covers messages, feedback, internal requests, status
+    updates, or any pending item, each with its own type/priority/status/
+    deadline/optional file attachment. `author_role` records who wrote it
+    (client vs. staff) since either side can start a thread entry here."""
+    __tablename__ = "crm_case_messages"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    case_id: Mapped[int] = mapped_column(ForeignKey("crm_cases.id"), index=True)
+    client_id: Mapped[int] = mapped_column(ForeignKey("crm_clients.id"), index=True)
+
+    message_type: Mapped[CaseMessageType] = mapped_column(
+        SAEnum(CaseMessageType), default=CaseMessageType.message)
+    priority: Mapped[Priority] = mapped_column(SAEnum(Priority), default=Priority.medium)
+    status: Mapped[CaseMessageStatus] = mapped_column(
+        SAEnum(CaseMessageStatus), default=CaseMessageStatus.open, index=True)
+    due_at: Mapped[date | None] = mapped_column(Date, default=None)
+
+    body: Mapped[str] = mapped_column(Text)
+    attachment_path: Mapped[str | None] = mapped_column(default=None)
+    attachment_name: Mapped[str | None] = mapped_column(default=None)
+
+    author_role: Mapped[CaseMessageAuthorRole] = mapped_column(SAEnum(CaseMessageAuthorRole))
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, index=True)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    case: Mapped[Case] = relationship(back_populates="messages")
+    client: Mapped[Client] = relationship()
+
+
 class Task(Base):
     __tablename__ = "crm_tasks"
 
@@ -794,3 +1102,116 @@ class TaskAttendee(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
 
     task: Mapped[Task] = relationship(back_populates="attendees")
+
+
+class CaseTrackedForm(Base):
+    """One USCIS form/petition being post-filing tracked within a Case --
+    deliberately its own child table, not more columns on `Case` (which
+    already has receipt_number/approval_date/etc. of its own, unused by any
+    UI so far, modeling a single-form case). A bundle like a Green Card
+    filing needs several forms tracked side by side under ONE case (I-130,
+    I-485, I-765, I-131), each with its own receipt/dates/checks -- a flat
+    column can't hold 4 values, so this is 1:N off `Case` instead. New
+    tab, user request 2026-08-02 ("Case tracking" inside the collaborator
+    panel).
+
+    `filing_method` decides which extra fields matter in the UI: `paper`
+    filings track the physical mail (USPS tracking number, predicted vs.
+    actual arrival at USCIS); `online` filings instead show the client's
+    USCIS account credentials (`ClientCredential`, service=uscis, reached
+    via app/crm_credentials.py -- never duplicated here, always the same
+    reveal-on-click + audit-logged screen)."""
+    __tablename__ = "crm_case_tracked_forms"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    case_id: Mapped[int] = mapped_column(ForeignKey("crm_cases.id"), index=True)
+
+    form_number: Mapped[str]
+    application_type: Mapped[str | None] = mapped_column(default=None)
+    filing_method: Mapped[FilingMethod] = mapped_column(SAEnum(FilingMethod), default=FilingMethod.online)
+    field_office_id: Mapped[int | None] = mapped_column(ForeignKey("crm_field_offices.id"), default=None)
+
+    receipt_number: Mapped[str | None] = mapped_column(default=None)
+    receipt_date: Mapped[date | None] = mapped_column(Date, default=None)
+    finalized_at: Mapped[date | None] = mapped_column(Date, default=None)
+    monitoring_started_at: Mapped[date | None] = mapped_column(Date, default=None)
+    approval_date: Mapped[date | None] = mapped_column(Date, default=None)
+    rfe_received: Mapped[bool] = mapped_column(default=False)
+
+    last_checked_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    next_check_at: Mapped[date | None] = mapped_column(Date, default=None)
+
+    # Paper filings only (left NULL for online filings -- gated in the UI
+    # by `filing_method`, not enforced at the DB level, same convention as
+    # the rest of this module).
+    uscis_received_at: Mapped[date | None] = mapped_column(Date, default=None)
+    expected_arrival_at: Mapped[date | None] = mapped_column(Date, default=None)
+    actual_arrival_at: Mapped[date | None] = mapped_column(Date, default=None)
+    usps_tracking_number: Mapped[str | None] = mapped_column(default=None)
+
+    # Free-form markdown notes for this tracked form -- rendered read-only
+    # via app/services/text_format.py::markdown_lite_to_html (hand-rolled,
+    # same convention as scripts/generate_cartas_i539.py's own minimal
+    # markdown-ish converter, to avoid a new dependency for this one field).
+    notes_markdown: Mapped[str | None] = mapped_column(Text, default=None)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    case: Mapped[Case] = relationship(back_populates="tracked_forms")
+    field_office: Mapped[FieldOffice | None] = relationship()
+
+
+class CaseContract(Base):
+    """A contract signature request -- either the service contract for a
+    specific "Pacote Completo" + tier, or the general Terms & Conditions.
+    Rendered to the client in their own site language (PT/EN/ES) with
+    their real contact info and the real system price for the selected
+    tier filled in, captured via an on-screen signature pad (a simulated
+    signature for UX/record-keeping, NOT a certified e-signature service
+    like DocuSign). User request 2026-08-02: new staff "Contracts" tab,
+    client-facing signing flow, auto payment request after signing.
+
+    `status` starts `not_started` the moment staff creates the request;
+    flips to `in_review` the first time the client opens the signing page
+    (never flips back); ends at `signed` or `rejected`. Only one of
+    `signed_at`/`rejected_at` is ever set."""
+    __tablename__ = "crm_case_contracts"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    case_id: Mapped[int] = mapped_column(ForeignKey("crm_cases.id"), index=True)
+    document_type: Mapped[ContractDocumentType] = mapped_column(SAEnum(ContractDocumentType))
+    # Só preenchido pra document_type=service_contract -- qual "Pacote
+    # Completo" e qual dos 3 preços (Standard/Plus Online/Plus Paper) foi
+    # cotado neste contrato. NULL pra Terms & Conditions (não tem preço).
+    service_catalog_id: Mapped[int | None] = mapped_column(ForeignKey("crm_services_catalog.id"), default=None)
+    tier: Mapped[ContractTier | None] = mapped_column(SAEnum(ContractTier), default=None)
+
+    status: Mapped[ContractStatus] = mapped_column(
+        SAEnum(ContractStatus), default=ContractStatus.not_started, index=True)
+
+    requested_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    requested_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    opened_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+
+    signed_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    signature_image_path: Mapped[str | None] = mapped_column(default=None)
+    selected_payment_method_id: Mapped[int | None] = mapped_column(ForeignKey("crm_payment_methods.id"), default=None)
+    signer_ip: Mapped[str | None] = mapped_column(default=None)
+
+    rejected_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    rejected_reason: Mapped[str | None] = mapped_column(Text, default=None)
+
+    # Preenchido quando a assinatura dispara automaticamente uma
+    # solicitação de pagamento (ver app/services/crm_service.py) -- link
+    # pro lançamento criado, pra nunca criar 2 solicitações da mesma
+    # assinatura se a rota rodar de novo por engano.
+    payment_ledger_entry_id: Mapped[int | None] = mapped_column(
+        ForeignKey("crm_payments_ledger.id"), default=None)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    case: Mapped[Case] = relationship(back_populates="contracts")
+    service: Mapped[ServiceCatalog | None] = relationship()
+    payment_method: Mapped[PaymentMethodLookup | None] = relationship()

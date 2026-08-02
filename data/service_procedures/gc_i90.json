@@ -1,0 +1,188 @@
+{
+  "service_id": "gc_i90",
+  "name": "Green Card — Renewal or Replacement (Form I-90)",
+  "name_pt": "Green Card — Renovação ou Substituição (Formulário I-90)",
+  "name_es": "Green Card — Renovación o Reemplazo (Formulario I-90)",
+  "forms": [
+    "I-90"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Copy of current/expired Green Card (front and back)",
+        "Valid passport (biographical page)",
+        "Previous passports (if any)",
+        "Marriage certificate (if applicable)",
+        "Death certificate of former spouse (if applicable)",
+        "Government-issued ID (if applicable)",
+        "Proof of current U.S. address",
+        "Marriage certificate (spouse cases, if applicable)",
+        "Photos together (if applicable)",
+        "Joint documents (if applicable)",
+        "Affidavits from friends/family (if applicable)",
+        "Form I-864 (if applicable)",
+        "Most recent tax return (if applicable)",
+        "W-2 / 1099 (if applicable)",
+        "Employment verification letter (if applicable)",
+        "Pay stubs (if applicable)",
+        "Bank statements (if applicable)",
+        "Copy of Social Security card"
+      ],
+      "documents_pt": [
+        "Cópia do Green Card atual/vencido (frente e verso)",
+        "Passaporte válido (página biográfica)",
+        "Passaportes anteriores (se houver)",
+        "Certidão de casamento (se aplicável)",
+        "Certidão de óbito do ex-cônjuge (se aplicável)",
+        "Identidade oficial (se aplicável)",
+        "Comprovante de endereço atual nos EUA",
+        "Certidão de casamento (casos de cônjuge, se aplicável)",
+        "Fotos do casal juntos (se aplicável)",
+        "Documentos conjuntos (se aplicável)",
+        "Declarações de amigos/família (se aplicável)",
+        "Formulário I-864 (se aplicável)",
+        "Declaração de imposto de renda mais recente (se aplicável)",
+        "Formulários W-2/1099 (se aplicável)",
+        "Carta de verificação de emprego (se aplicável)",
+        "Holerites (se aplicável)",
+        "Extratos bancários (se aplicável)",
+        "Cópia do cartão de Social Security"
+      ],
+      "documents_es": [
+        "Copia del Green Card actual/vencido (frente y reverso)",
+        "Pasaporte válido (página biográfica)",
+        "Pasaportes anteriores (si los hay)",
+        "Acta de matrimonio (si aplica)",
+        "Acta de defunción del excónyuge (si aplica)",
+        "Identificación oficial (si aplica)",
+        "Comprobante de domicilio actual en EE. UU.",
+        "Acta de matrimonio (casos de cónyuge, si aplica)",
+        "Fotos de la pareja juntos (si aplica)",
+        "Documentos conjuntos (si aplica)",
+        "Declaraciones de amigos/familiares (si aplica)",
+        "Formulario I-864 (si aplica)",
+        "Declaración de impuestos más reciente (si aplica)",
+        "Formularios W-2/1099 (si aplica)",
+        "Carta de verificación de empleo (si aplica)",
+        "Recibos de pago (si aplica)",
+        "Estados de cuenta bancarios (si aplica)",
+        "Copia de la tarjeta de Seguro Social"
+      ],
+      "steps": [
+        "Identify case type: RENEWAL or REPLACEMENT",
+        "Select the correct filing category",
+        "Prepare explanation (if replacement)",
+        "Confirm supporting documents are aligned with case type",
+        "Confirm all personal information",
+        "Confirm no missing documentation",
+        "Confirm no inconsistencies in personal data",
+        "Identify risks (if any)",
+        "Confirm height, weight, and eye color",
+        "Confirm city/state of birth",
+        "Confirm date became a permanent resident",
+        "Confirm city/state where applied for the Green Card",
+        "Confirm city/state where the Green Card was granted",
+        "Confirm mother's and father's full names",
+        "Confirm how long living at current address",
+        "Confirm last address change and whether immigration was notified",
+        "Confirm whether mailing address is the same as physical address"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "USCIS account created (if applicable)",
+        "Form I-90 started",
+        "Personal information completed",
+        "Green Card information entered",
+        "Filing category selected",
+        "Explanation included (if needed)",
+        "Supporting documents uploaded",
+        "Application reviewed (1st review)",
+        "Application reviewed (final review)",
+        "Biometrics appointment scheduled",
+        "Client notified",
+        "Biometrics completed"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Application submitted",
+        "Payment completed",
+        "Receipt notice generated (I-797C)",
+        "Receipt saved in Drive",
+        "Client notified",
+        "Case tracking explained",
+        "Processing time explained",
+        "Green Card delivery instructions shared",
+        "Follow-up scheduled"
+      ]
+    }
+  ],
+  "free_consultation_minutes": 15,
+  "pricing": {
+    "standard_usd": 350,
+    "plus_usd": 885,
+    "plus_paper_usd": 1070,
+    "notes": null,
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "I-90 preparation based on 18 years of experience"
+  ],
+  "standard_excludes": [
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
+    "Full case tracking until USCIS decision"
+  ],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Preparação do I-90 baseada em 18 anos de experiência"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Preparación del I-90 basada en 18 años de experiencia"
+  ],
+  "standard_excludes_pt": [
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
+    "Acompanhamento completo do caso até a decisão da USCIS"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
+    "Seguimiento completo del caso hasta la decisión de USCIS"
+  ],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

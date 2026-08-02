@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}{{ t('translations_page_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ t('translations_page_title') }}</h1>
+  <p style="opacity:0.92;margin:0;">{{ t('translations_page_subtitle') }}</p>
+</div>
+
+<div class="card">
+  {% if documents %}
+  <table class="submissions">
+    <thead>
+      <tr>
+        <th>{{ t('translations_table_document') }}</th>
+        <th>{{ t('translations_table_tier') }}</th>
+        <th>{{ t('translations_table_pages') }}</th>
+        <th>{{ t('translations_table_price_per_page') }}</th>
+        <th>{{ t('translations_table_total') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for d in documents %}
+      {% set price = client_price_per_page_cents(d.translation.speed_tier) %}
+      {% set total = client_total_cents(d.translation) %}
+      <tr>
+        <td>{{ d.name }}</td>
+        <td class="muted">{% if d.translation.speed_tier %}{{ t('translation_tier_' ~ d.translation.speed_tier.value) }}{% else %}—{% endif %}</td>
+        <td class="muted">{{ d.translation.page_count if d.translation.page_count is not none else '—' }}</td>
+        <td class="muted">{% if price is not none %}${{ '%.2f'|format(price / 100) }}{% else %}—{% endif %}</td>
+        <td>
+          {% if total is not none %}${{ '%.2f'|format(total / 100) }}{% else %}<span class="muted" style="font-size:0.82rem;">{{ t('translations_pending_pricing') }}</span>{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">{{ t('translations_no_documents') }}</p>
+  {% endif %}
+</div>
+{% endblock %}

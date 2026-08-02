@@ -54,6 +54,84 @@ def _ensure_case_ds160_visa_type_column() -> None:
             conn.commit()
 
 
+def _ensure_service_catalog_slug_column() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para a
+    coluna `slug` nova de ServiceCatalog (chave estável que liga um
+    serviço do catálogo a um template de procedimento em
+    data/service_procedures/<slug>.json, ver
+    app/services/service_procedures.py). Índice único criado à parte --
+    SQLite não aceita UNIQUE dentro de um ADD COLUMN."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_services_catalog)"))]
+        if "slug" not in cols:
+            conn.execute(text("ALTER TABLE crm_services_catalog ADD COLUMN slug VARCHAR"))
+            conn.commit()
+        conn.execute(text(
+            "CREATE UNIQUE INDEX IF NOT EXISTS ix_crm_services_catalog_slug "
+            "ON crm_services_catalog (slug)"))
+        conn.commit()
+
+
+def _ensure_service_catalog_price_columns() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, pras colunas
+    novas de preço/auditoria em ServiceCatalog: updated_at/
+    updated_by_user_id (2026-08-02, primeira leva) e plus_price_cents
+    (2026-08-02, mesmo dia, depois de ler os contratos reais em
+    Downloads/Contratos -- cada um dos 15 "Pacotes Completos" tem preço
+    Standard E Plus distintos). Ver docstring do modelo em
+    app/crm_models.py."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_services_catalog)"))]
+        if "updated_at" not in cols:
+            conn.execute(text("ALTER TABLE crm_services_catalog ADD COLUMN updated_at DATETIME"))
+            conn.commit()
+        if "updated_by_user_id" not in cols:
+            conn.execute(text("ALTER TABLE crm_services_catalog ADD COLUMN updated_by_user_id INTEGER"))
+            conn.commit()
+        if "plus_price_cents" not in cols:
+            conn.execute(text("ALTER TABLE crm_services_catalog ADD COLUMN plus_price_cents INTEGER"))
+            conn.commit()
+        if "plus_price_paper_cents" not in cols:
+            conn.execute(text("ALTER TABLE crm_services_catalog ADD COLUMN plus_price_paper_cents INTEGER"))
+            conn.commit()
+
+
+def _migrate_service_mode_full_service() -> None:
+    """`ServiceMode.full_service` virou dois níveis de atendimento
+    (`saes_standard`/`saes_plus`, ver app/crm_models.py::ServiceMode,
+    pedido do usuário 2026-08-01) -- qualquer `Case` gravado com o valor
+    antigo vira `saes_standard` (o nível "padrão"), idempotente e seguro
+    de rodar mesmo sem nenhuma linha para migrar."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        conn.execute(text(
+            "UPDATE crm_cases SET service_mode = 'saes_standard' WHERE service_mode = 'full_service'"))
+        conn.commit()
+
+
+def _ensure_onboarding_applicant_columns() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para os 2
+    campos novos do titular em post_payment_onboarding (nome completo,
+    telefone nos EUA) e o telefone por dependente em onboarding_dependents
+    -- pedido do usuário (2026-08-01) pra sincronizar com Client/
+    ClientDependent do CRM (ver app/onboarding.py::detail)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(post_payment_onboarding)"))]
+        if "applicant_full_name" not in cols:
+            conn.execute(text("ALTER TABLE post_payment_onboarding ADD COLUMN applicant_full_name VARCHAR"))
+            conn.commit()
+        if "applicant_us_phone" not in cols:
+            conn.execute(text("ALTER TABLE post_payment_onboarding ADD COLUMN applicant_us_phone VARCHAR"))
+            conn.commit()
+        dep_cols = [row[1] for row in conn.execute(text("PRAGMA table_info(onboarding_dependents)"))]
+        if "us_phone" not in dep_cols:
+            conn.execute(text("ALTER TABLE onboarding_dependents ADD COLUMN us_phone VARCHAR"))
+            conn.commit()
+
+
 def _ensure_package_columns() -> None:
     """Mesma lógica de _ensure_cartas_zip_path_column() acima, para as duas
     colunas novas da feature de pacotes (parent_submission_id, package_slug)."""
@@ -289,6 +367,36 @@ def _seed_crm_financial_lookups() -> None:
     SessionLocal.commit()
 
 
+def _ensure_document_status_column() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para a coluna
+    nova de status unificado de Document (DocumentStatus, pedido do
+    usuário 2026-08-02) -- default 'pending' pros 4 documentos já
+    existentes na tabela real."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_documents)"))]
+        if "status" not in cols:
+            conn.execute(text("ALTER TABLE crm_documents ADD COLUMN status VARCHAR DEFAULT 'pending'"))
+            conn.commit()
+
+
+def _seed_translators() -> None:
+    """Pré-cadastra os 5 tradutores já usados pela equipe hoje (pedido do
+    usuário 2026-08-02) -- só o nome; endereço/telefone/idiomas/forma de
+    pagamento/dados bancários ficam em branco até o staff completar a
+    ficha em /staff/crm/traducoes. Checagem por nome (não por tabela
+    vazia), pra permitir adicionar um tradutor novo no futuro sem duplicar
+    os 5 já semeados."""
+    from app.db import SessionLocal
+    from app.crm_models import Translator
+
+    existing_names = {t.full_name for t in SessionLocal.query(Translator).all()}
+    for name in ("Rodrigo", "Ricardo", "Helio", "Lucia", "Samuel Eduardo"):
+        if name not in existing_names:
+            SessionLocal.add(Translator(full_name=name))
+    SessionLocal.commit()
+
+
 def _seed_service_fees() -> None:
     """Semeia a tabela service_fees (nova, ver app/models.py::ServiceFee) a
     partir de data/service_fees.json -- só roda se a tabela estiver
@@ -310,6 +418,63 @@ def _seed_service_fees() -> None:
     SessionLocal.commit()
 
 
+def _seed_saes_procedure_services() -> None:
+    """Cria uma linha em ServiceCatalog (app/crm_models.py) por template em
+    data/service_procedures/*.json -- os 15 serviços "Pacotes Completos"
+    (Saes Standard/Plus, pedido do usuário 2026-08-01). Preço fica NULL
+    (ainda não definido pelo usuário) -- roda por `slug` individualmente
+    (não por "tabela vazia" como _seed_service_fees()) pra permitir
+    adicionar um serviço novo depois sem duplicar os já existentes, e
+    nunca sobrescreve `base_price_cents` se a equipe já tiver editado."""
+    import json
+    from app.db import SessionLocal
+    from app.crm_models import ServiceCatalog
+
+    dir_path = Path(__file__).resolve().parent.parent / "data" / "service_procedures"
+    if not dir_path.exists():
+        return
+    existing_by_slug = {
+        s.slug: s for s in SessionLocal.query(ServiceCatalog).filter(ServiceCatalog.slug.is_not(None)).all()
+    }
+    for file_path in sorted(dir_path.glob("*.json")):
+        raw = json.loads(file_path.read_text(encoding="utf-8"))
+        slug = raw["service_id"]
+        existing = existing_by_slug.get(slug)
+        if existing is None:
+            SessionLocal.add(ServiceCatalog(name=raw["name"], slug=slug))
+        elif existing.name != raw["name"]:
+            # `name` é sempre inglês (painel staff, ver feedback_staff_
+            # interface_english.md) -- sincroniza aqui se o template mudar
+            # de nome, sem nunca tocar em base_price_cents.
+            existing.name = raw["name"]
+    SessionLocal.commit()
+
+
+def _backfill_case_for_confirmed_payments() -> None:
+    """Roda uma vez por boot: cria o Client+Case do CRM que faltava pra
+    QUALQUER pagamento já confirmado antes desta migração existir (pedido
+    do usuário, 2026-08-02 -- ver app/staff.py::confirm_payment, que agora
+    faz isso automaticamente pra pagamentos confirmados dali em diante).
+    Sem isso, contas/pagamentos antigos continuariam sem "Meu Caso"
+    mesmo depois da correção. Idempotente: só processa payments com
+    case_id IS NULL, então uma segunda chamada não encontra nada a fazer."""
+    from app.models import Payment
+    from app.services import crm_service as svc
+
+    pending = (
+        SessionLocal.query(Payment)
+        .filter(Payment.status == "confirmed", Payment.case_id.is_(None))
+        .all()
+    )
+    if not pending:
+        return
+    from app.staff import _case_label
+    for payment in pending:
+        case = svc.get_or_create_case_for_payment(payment, case_title=_case_label(payment))
+        payment.case_id = case.id
+    SessionLocal.commit()
+
+
 def create_app() -> Flask:
     app = Flask(__name__)
 
@@ -325,6 +490,7 @@ def create_app() -> Flask:
     # dependências de FK sozinho, a ordem dos imports aqui não importa.
     from app import crm_models  # noqa: F401
     from app import crm_financial_models  # noqa: F401
+    from app import planner_models  # noqa: F401
     from app import models  # noqa: F401
     Base.metadata.create_all(engine)
     _ensure_cartas_zip_path_column()
@@ -340,9 +506,17 @@ def create_app() -> Flask:
     _ensure_financial_payment_link_column()
     _ensure_ds160_draft_pdf_column()
     _ensure_case_ds160_visa_type_column()
+    _ensure_service_catalog_slug_column()
+    _ensure_service_catalog_price_columns()
+    _migrate_service_mode_full_service()
+    _ensure_onboarding_applicant_columns()
+    _ensure_document_status_column()
     _seed_service_fees()
     _seed_crm_lookups()
     _seed_crm_financial_lookups()
+    _seed_saes_procedure_services()
+    _seed_translators()
+    _backfill_case_for_confirmed_payments()
 
     login_manager = LoginManager()
     login_manager.login_view = "auth.login"
@@ -370,8 +544,13 @@ def create_app() -> Flask:
     from app.crm_staff_ops import crm_ops_bp
     from app.crm_client import crm_client_bp
     from app.crm_credentials import crm_credentials_bp
+    from app.crm_case_tracking import crm_tracking_bp
+    from app.crm_translations import crm_translations_bp
+    from app.crm_contracts import crm_contracts_bp
     from app.crm_financial_staff import crm_financial_bp
     from app.crm_financial_client import crm_financial_client_bp
+    from app.onboarding import onboarding_bp
+    from app.planner import planner_bp
     app.register_blueprint(auth_bp)
     app.register_blueprint(wizard_bp)
     app.register_blueprint(eligibility_bp)
@@ -389,8 +568,42 @@ def create_app() -> Flask:
     app.register_blueprint(crm_ops_bp)
     app.register_blueprint(crm_client_bp)
     app.register_blueprint(crm_credentials_bp)
+    app.register_blueprint(crm_tracking_bp)
+    app.register_blueprint(crm_translations_bp)
+    app.register_blueprint(crm_contracts_bp)
     app.register_blueprint(crm_financial_bp)
     app.register_blueprint(crm_financial_client_bp)
+    app.register_blueprint(onboarding_bp)
+    app.register_blueprint(planner_bp)
+
+    @app.context_processor
+    def _inject_planner_running_timer():
+        # Registrado no nível do app (não de um blueprint específico) de
+        # propósito -- o widget de cronômetro aparece em staff_base.html,
+        # que é a base compartilhada por VÁRIOS blueprints (staff, CRM,
+        # planner); um context_processor de blueprint só injeta pras
+        # próprias views dele, deixaria o widget errado/ausente nas
+        # páginas de outro blueprint.
+        from flask_login import current_user as _cu
+        if not getattr(_cu, "is_authenticated", False) or not getattr(_cu, "is_staff", False):
+            return {}
+        from app.services.planner_service import running_entry_for
+        return {"planner_running_entry": running_entry_for(_cu.id)}
+
+    @app.context_processor
+    def _inject_staff_nav_slots():
+        # Same reasoning as _inject_planner_running_timer() above -- the
+        # nav bar itself lives in staff_base.html, shared by several
+        # blueprints, so this has to be an app-level context processor
+        # (a blueprint-scoped one would only fire for that blueprint's own
+        # routes, leaving the nav empty/wrong on every other blueprint's
+        # pages).
+        from flask import request as _req
+        from flask_login import current_user as _cu
+        if not getattr(_cu, "is_authenticated", False) or not getattr(_cu, "is_staff", False):
+            return {}
+        from app.staff_nav import resolve_nav_layout
+        return {"staff_nav_slots": resolve_nav_layout(_cu.id, _req.endpoint, _req.blueprint)}
 
     from app.i18n import get_lang, t
     app.jinja_env.globals["t"] = t

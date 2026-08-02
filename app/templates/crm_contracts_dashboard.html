@@ -1,0 +1,50 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Contracts{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Contracts</h1>
+  <p style="opacity:0.92;margin:0;">Signature status for every service contract and Terms &amp; Conditions request. To request a new signature, open a client's case (Clients → case → Contracts →).</p>
+</div>
+
+<div class="card" style="display:flex;gap:8px;flex-wrap:wrap;">
+  <a href="{{ url_for('crm_contracts.dashboard') }}" style="padding:6px 14px;border-radius:999px;font-size:0.82rem;font-weight:600;text-decoration:none;border:1px solid var(--border);{{ 'background:var(--accent);color:#fff;border-color:var(--accent);' if not status_filter else 'color:var(--text);' }}">All ({{ counts.values()|sum }})</a>
+  {% for s in statuses %}
+  <a href="{{ url_for('crm_contracts.dashboard', status=s.value) }}" style="padding:6px 14px;border-radius:999px;font-size:0.82rem;font-weight:600;text-decoration:none;border:1px solid var(--border);{{ 'background:var(--accent);color:#fff;border-color:var(--accent);' if status_filter == s.value else 'color:var(--text);' }}">
+    {{ s.value|replace('_',' ')|title }} ({{ counts[s] }})
+  </a>
+  {% endfor %}
+</div>
+
+<div class="card">
+  {% if rows %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead><tr><th>Client / Case</th><th>Document</th><th>Price</th><th>Status</th><th>Requested</th><th>Signed / Rejected</th><th></th></tr></thead>
+    <tbody>
+      {% for c in rows %}
+      <tr>
+        <td>{{ c.case.client.full_name }} — {{ c.case.title }}</td>
+        <td class="muted">
+          {% if c.document_type.value == 'service_contract' %}{{ c.service.name if c.service else '—' }} ({{ c.tier.value|replace('_',' ')|title if c.tier else '—' }}){% else %}Terms &amp; Conditions{% endif %}
+        </td>
+        <td class="muted">{% set p = price_cents(c) %}{% if p is not none %}${{ '%.2f'|format(p / 100) }}{% else %}—{% endif %}</td>
+        <td>{{ crm_badge(c.status) }}</td>
+        <td class="muted">{{ c.requested_at.strftime('%m/%d/%Y') }}</td>
+        <td class="muted">
+          {% if c.signed_at %}Signed {{ c.signed_at.strftime('%m/%d/%Y %I:%M %p') }}
+          {% elif c.rejected_at %}Rejected {{ c.rejected_at.strftime('%m/%d/%Y') }}
+          {% else %}—{% endif %}
+        </td>
+        <td><a href="{{ url_for('crm_contracts.case_contracts', case_id=c.case_id) }}" style="font-size:0.8rem;">Open →</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">No contracts in this filter yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

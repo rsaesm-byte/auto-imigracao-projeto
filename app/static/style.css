@@ -98,6 +98,8 @@ header.topbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 10px;
   position: sticky;
   top: 0;
   z-index: 10;
@@ -254,14 +256,58 @@ p.muted, .muted { color: var(--muted); font-size: 0.93rem; }
   text-align: center;
   gap: 4px;
 }
-.auth-art-panel .auth-illustration { width: 100%; max-width: 210px; height: auto; margin-bottom: 12px; }
-.auth-art-panel h2 { color: white; font-size: 1.15rem; margin: 0 0 8px; }
+.auth-art-panel .auth-illustration { width: 100%; max-width: 110px; height: auto; margin-bottom: 6px; }
+.auth-art-panel h2 { color: white; font-size: 1.15rem; margin: 0 0 6px; }
 .auth-art-panel p { color: rgba(255,255,255,0.85); font-size: 0.88rem; margin: 0; max-width: 30ch; }
+
+/* Painel esquerdo da aba "Saes Professional Team" (mockup do usuário,
+   2026-08-01) -- logo + canais de contato + headline + diferenciais +
+   assinatura, em vez da ilustração/texto genérico do lado Cliente. */
+.staff-art { width: 100%; text-align: left; }
+.staff-art-logo { width: 100%; max-width: 220px; height: auto; margin: 0 auto 26px; display: block; }
+.staff-art-channels { display: flex; align-items: center; justify-content: center; gap: 8px; margin-bottom: 18px; }
+.staff-art-channels .channel-icon {
+  width: 36px; height: 36px; border-radius: 50%;
+  background: rgba(255,255,255,0.12); border: 1.5px solid rgba(255,255,255,0.55);
+  display: flex; align-items: center; justify-content: center; color: #fff; flex-shrink: 0;
+}
+.staff-art-channels .channel-icon.whatsapp { background: #25D366; border-color: #25D366; }
+.staff-art-channels .channel-dots { flex: 0 1 30px; height: 0; border-top: 2px dotted rgba(255,255,255,0.5); }
+.staff-art-headline { color: #fff; font-size: 1.3rem; font-weight: 700; line-height: 1.35; margin: 0 0 16px; }
+.staff-art-headline .highlight { color: var(--cta); }
+.staff-art-features { list-style: none; padding: 0; margin: 0 0 16px; }
+.staff-art-features li { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; font-weight: 600; font-size: 0.92rem; color: #fff; }
+.staff-art-features li svg { flex-shrink: 0; color: var(--cta); }
+.staff-art-tagline { font-family: 'Aldo', cursive; font-size: 1.4rem; color: #fff; margin: 0; position: relative; }
+.staff-art-tagline .highlight { color: var(--cta); }
+.staff-art-tagline-swash { display: block; width: 150px; max-width: 70%; height: 14px; margin: 2px 0 0 auto; }
+/* Fundo dedicado da aba "Saes Professional Team" -- mais escuro que o
+   gradiente padrão do site pra não se confundir com o teal do próprio
+   logo (pedido do usuário, 2026-08-01). */
+.auth-art-panel.staff-mode { background: linear-gradient(160deg, #0B3230 0%, #1F5E54 100%); }
+@media (max-width: 700px) {
+  .staff-art-logo { max-width: 160px; margin-bottom: 18px; }
+}
 .auth-form-panel {
   padding: 40px 36px;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
 .auth-form-panel form { text-align: left; }
+/* Logo-mark como "carimbo" decorativo atrás do formulário (pedido do
+   usuário, 2026-08-01) -- opacidade bem baixa pra não competir com o
+   conteúdo real, atrás de tudo (z-index) mas ainda dentro do card. */
+.auth-stamp {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 340px; max-width: none;
+  transform: translate(-50%, -50%);
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+.auth-form-panel > *:not(.auth-stamp) { position: relative; z-index: 1; }
 .login-role-btn {
   background: none;
   color: var(--text);
@@ -283,6 +329,19 @@ p.muted, .muted { color: var(--muted); font-size: 0.93rem; }
   color: white;
   display: flex; align-items: center; justify-content: center;
   margin: 0 auto 16px;
+}
+
+/* Aba "Saes Professional Team" -- mesma tela, só os campos ganham um tom
+   dourado/creme (cor da marca, --cta-soft) pra diferenciar visualmente da
+   aba Cliente (pedido do usuário, 2026-08-01). */
+.auth-form-panel.staff-mode input[type=text],
+.auth-form-panel.staff-mode input[type=password] {
+  background: var(--cta-soft);
+  border-color: var(--cta);
+}
+.auth-form-panel.staff-mode input[type=text]:focus,
+.auth-form-panel.staff-mode input[type=password]:focus {
+  border-color: var(--cta-dark);
 }
 
 /* ---- Forms ---- */
@@ -499,19 +558,77 @@ table.submissions a:hover { text-decoration: underline; }
 .badge.status-warning { background: #fef3c7; color: #92400e; }
 .badge.status-neutral { background: var(--border); color: var(--text); }
 
-/* ---- Kanban simples (Casos/Leads/Tarefas do CRM) -- sem JS/drag-and-drop,
-   só colunas de cards com um form de mover por card, consistente com o
-   resto do site (100% server-rendered). ---- */
-.crm-kanban { display: flex; gap: 14px; overflow-x: auto; padding-bottom: 8px; }
-.crm-kanban-col { flex: 0 0 260px; background: var(--accent-soft); border-radius: var(--radius-sm); padding: 10px; }
+/* ---- Kanban (Casos/Leads/Tarefas/Financial Coaching do CRM) -- colunas de
+   cards, arrastáveis via HTML5 drag-and-drop nativo (app/static/kanban-dnd.js)
+   quando `.crm-kanban[data-draggable="true"]`; cada card ainda POSTa pra
+   rota de mudança de status já existente (nenhuma rota nova por causa do
+   drag), só que via um <form> montado em JS em vez do select+Move manual.
+   `.crm-board` (ver page_class por template) dá um container bem mais largo
+   que o `.page.wide` padrão (880px) -- pedido do usuário 2026-08-02: o
+   kanban ficava cortado, precisando rolar pra ver as próximas etapas. ---- */
+.crm-board { max-width: 1800px; }
+.crm-kanban {
+  display: flex; gap: 10px; overflow-x: auto; padding-bottom: 12px;
+  scrollbar-width: thin;
+}
+.crm-kanban::-webkit-scrollbar { height: 8px; }
+.crm-kanban::-webkit-scrollbar-thumb { background: var(--border); border-radius: 999px; }
+.crm-kanban-col {
+  flex: 0 0 225px; background: var(--accent-soft); border-radius: var(--radius-sm);
+  padding: 10px; transition: outline-color 0.12s ease, background-color 0.12s ease;
+}
+.crm-kanban-col.drag-over { outline: 2px dashed var(--accent); background: var(--accent-soft); }
 .crm-kanban-col h3 { font-size: 0.85rem; margin: 0 0 10px; padding: 0 4px; }
 .crm-kanban-card {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 10px; margin-bottom: 8px; font-size: 0.85rem;
 }
+.crm-kanban-card[draggable="true"] { cursor: grab; }
+.crm-kanban-card[draggable="true"]:active { cursor: grabbing; }
+.crm-kanban-card.dragging { opacity: 0.45; }
 .crm-kanban-card h4 { margin: 0 0 6px; font-size: 0.88rem; }
 .crm-kanban-card form { margin-top: 8px; display: flex; gap: 6px; }
 .crm-kanban-card select { flex: 1; font-size: 0.78rem; }
+
+/* ---- Staff nav "Edit navigation" mode (app/templates/staff_base.html) --
+   reorder/group tabs via HTML5 drag-and-drop, same technique as the
+   kanban boards above. A chip's left/right edge = reorder target, its
+   middle third = merge-into-group target (see the dragover handler that
+   toggles these three classes). ---- */
+.staff-nav-chip {
+  display: flex; align-items: center; gap: 6px; cursor: grab;
+  background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 8px 12px; font-size: 0.85rem; font-weight: 600;
+}
+.staff-nav-chip:active { cursor: grabbing; }
+.staff-nav-chip.dragging { opacity: 0.4; }
+.staff-nav-chip.drop-before { box-shadow: inset 3px 0 0 var(--accent); }
+.staff-nav-chip.drop-after { box-shadow: inset -3px 0 0 var(--accent); }
+.staff-nav-chip.drop-merge { background: var(--accent-soft); outline: 2px dashed var(--accent); }
+.staff-nav-chip-group { flex-direction: column; align-items: stretch; background: var(--accent-soft); }
+.staff-nav-group-label-input {
+  font-weight: 700; font-size: 0.85rem; border: 1px solid transparent; background: transparent;
+  padding: 2px 4px; border-radius: 4px; width: 100%;
+}
+.staff-nav-group-label-input:hover, .staff-nav-group-label-input:focus { border-color: var(--border); background: var(--card); }
+.staff-nav-chip-members { display: flex; gap: 4px; flex-wrap: wrap; }
+.staff-nav-chip-member {
+  display: inline-flex; align-items: center; gap: 4px; background: var(--card); border: 1px solid var(--border);
+  border-radius: 999px; padding: 3px 4px 3px 10px; font-size: 0.76rem; font-weight: 500; cursor: grab;
+}
+.staff-nav-chip-member:active { cursor: grabbing; }
+.staff-nav-chip-member.dragging { opacity: 0.4; }
+.staff-nav-chip-member.drop-before { box-shadow: inset 2px 0 0 var(--accent); }
+.staff-nav-chip-member.drop-after { box-shadow: inset -2px 0 0 var(--accent); }
+.staff-nav-chip-member button {
+  background: none; border: none; color: var(--text); cursor: pointer; font-size: 0.85rem;
+  line-height: 1; padding: 2px 6px; border-radius: 50%;
+}
+.staff-nav-chip-member button:hover { background: var(--border); }
+.staff-nav-chip-dissolve {
+  align-self: flex-start; background: none; border: none; color: var(--accent); cursor: pointer;
+  font-size: 0.74rem; padding: 2px 0; text-decoration: underline;
+}
 
 /* ---- Landing page ----
    O motivo de fundo (arco pontilhado + estrela) ecoa a própria seta/estrela
@@ -1127,6 +1244,8 @@ table.submissions a:hover { text-decoration: underline; }
 .topbar-right {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
+  row-gap: 8px;
   gap: 14px;
 }
 .lang-switch {

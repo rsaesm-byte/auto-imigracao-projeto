@@ -9,7 +9,8 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, u
 from flask_login import current_user, login_required
 
 from app.crm_models import (Case, CaseStatus, Client, ClientTier, Lead,
-                             LeadQuality, LeadSource, LeadStage, ServiceMode,
+                             LeadQuality, LeadSource, LeadStage,
+                             ProgressCategory, ProgressStatus, ServiceMode,
                              VisaDraftType)
 from app.db import SessionLocal
 from app.models import User
@@ -52,7 +53,7 @@ def case_status_update(case_id: int):
         abort(404)
     new_status = svc.parse_enum(CaseStatus, request.form.get("case_status"))
     if new_status is None:
-        flash("Status inválido.", "error")
+        flash("Invalid status.", "error")
         return redirect(request.referrer or url_for("crm_pipeline.cases_kanban"))
     case.case_status = new_status
     SessionLocal.commit()
@@ -69,7 +70,7 @@ def case_ds160_gate_update(case_id: int):
         abort(404)
     case.ds160_visa_type = svc.parse_enum(VisaDraftType, request.form.get("ds160_visa_type"))
     SessionLocal.commit()
-    flash("Rascunho DS-160 atualizado.", "success")
+    flash("DS-160 draft updated.", "success")
     return redirect(request.referrer or url_for("crm_pipeline.client_detail", client_id=case.client_id))
 
 
@@ -118,7 +119,7 @@ def lead_stage_update(lead_id: int):
         abort(404)
     new_stage = svc.parse_enum(LeadStage, request.form.get("stage"))
     if new_stage is None:
-        flash("Estágio inválido.", "error")
+        flash("Invalid stage.", "error")
         return redirect(request.referrer or url_for("crm_pipeline.leads_kanban"))
     if new_stage == LeadStage.closed_won and lead.converted_client_id is None:
         # Fechar um lead sempre passa pela tela de conversão -- não dá pra
@@ -140,13 +141,13 @@ def lead_convert(lead_id: int):
         service_mode = svc.parse_enum(ServiceMode, request.form.get("service_mode"))
         case_title = request.form.get("case_title", "").strip()
         if service_mode is None or not case_title:
-            flash("Modo de atendimento e título do caso são obrigatórios.", "error")
+            flash("Service tier and case title are required.", "error")
             return redirect(url_for("crm_pipeline.lead_convert", lead_id=lead.id))
 
         client, case = svc.convert_lead_to_client_and_case(
             lead, service_mode=service_mode, case_title=case_title)
         SessionLocal.commit()
-        flash(f"Lead convertido -- cliente e caso criados (#{case.id}).", "success")
+        flash(f"Lead converted -- client and case created (#{case.id}).", "success")
         return redirect(url_for("crm_pipeline.client_detail", client_id=client.id))
 
     suggested_title = f"Caso — {lead.name}"
@@ -161,7 +162,7 @@ def lead_new():
     if request.method == "POST":
         name = request.form.get("name", "").strip()
         if not name:
-            flash("Nome é obrigatório.", "error")
+            flash("Name is required.", "error")
             return redirect(url_for("crm_pipeline.lead_new"))
 
         lead = Lead(
@@ -175,7 +176,7 @@ def lead_new():
         )
         SessionLocal.add(lead)
         SessionLocal.commit()
-        flash("Lead criado.", "success")
+        flash("Lead created.", "success")
         return redirect(url_for("crm_pipeline.leads_kanban"))
 
     lead_sources = SessionLocal.query(LeadSource).order_by(LeadSource.name).all()
@@ -211,7 +212,7 @@ def client_new():
     if request.method == "POST":
         full_name = request.form.get("full_name", "").strip()
         if not full_name:
-            flash("Nome é obrigatório.", "error")
+            flash("Name is required.", "error")
             return redirect(url_for("crm_pipeline.client_new"))
 
         client = Client(
@@ -223,7 +224,7 @@ def client_new():
         )
         SessionLocal.add(client)
         SessionLocal.commit()
-        flash("Cliente cadastrado.", "success")
+        flash("Client created.", "success")
         return redirect(url_for("crm_pipeline.client_detail", client_id=client.id))
 
     return render_template("crm_clients.html", new_form=True, tiers=list(ClientTier),
@@ -236,4 +237,6 @@ def client_detail(client_id: int):
     if client is None:
         abort(404)
     pending_by_case = {case.id: svc.case_pending_documents(case) for case in client.cases}
-    return render_template("crm_client_detail.html", client=client, pending_by_case=pending_by_case)
+    return render_template(
+        "crm_client_detail.html", client=client, pending_by_case=pending_by_case,
+        progress_statuses=list(ProgressStatus), progress_categories=list(ProgressCategory))

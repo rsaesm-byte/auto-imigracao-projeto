@@ -1,0 +1,180 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Case Tracking — {{ case.title }}{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Case Tracking — {{ case.title }}</h1>
+  <p style="opacity:0.92;margin:0;">Client: <a href="{{ url_for('crm_pipeline.client_detail', client_id=case.client_id) }}" style="color:#fff;">{{ case.client.full_name }}</a></p>
+</div>
+
+<div class="card">
+  <h2>Add form</h2>
+  <p class="muted" style="font-size:0.82rem;margin-top:-6px;">
+    For bundles that need several forms tracked together (e.g. a Green Card package: I-130, I-485, I-765, I-131), add one entry per form here — filing method and field office are copied from the last form added, so only the form number needs to change.
+  </p>
+  <form method="post" action="{{ url_for('crm_tracking.tracking_new', case_id=case.id) }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Form number</label><br>
+      <input type="text" name="form_number" placeholder="e.g. I-130" required>
+    </div>
+    <div>
+      <label class="muted">Application type (optional)</label><br>
+      <input type="text" name="application_type" placeholder="e.g. Family-based petition" style="min-width:220px;">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">+ Add form</button>
+  </form>
+</div>
+
+{% if not case.tracked_forms %}
+<div class="card"><p class="muted">No forms are being tracked on this case yet — add one above.</p></div>
+{% endif %}
+
+{% for t in case.tracked_forms %}
+<div class="card">
+  <div style="display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:8px;">
+    <div>
+      <h2 style="margin-bottom:2px;">{{ t.form_number }}</h2>
+      {% if t.application_type %}<p class="muted" style="margin:0 0 6px;">{{ t.application_type }}</p>{% endif %}
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      {% if t.rfe_received %}<span class="badge status-warning">RFE/NOID received</span>{% endif %}
+      {% if t.next_check_at %}<span class="badge {{ 'status-negative' if is_overdue(t) else 'status-neutral' }}">Next check: {{ t.next_check_at.strftime('%m/%d/%Y') }}</span>{% endif %}
+    </div>
+  </div>
+
+  <form method="post" action="{{ url_for('crm_tracking.tracking_save', tracked_id=t.id) }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:10px;">
+      <div>
+        <label class="muted">Form number</label><br>
+        <input type="text" name="form_number" value="{{ t.form_number }}" required>
+      </div>
+      <div>
+        <label class="muted">Application type</label><br>
+        <input type="text" name="application_type" value="{{ t.application_type or '' }}">
+      </div>
+      <div>
+        <label class="muted">Filing method</label><br>
+        <select name="filing_method" class="tracking-filing-method" data-tracked-id="{{ t.id }}">
+          {% for m in filing_methods %}
+          <option value="{{ m.value }}" {{ 'selected' if t.filing_method == m }}>{{ 'Paper form' if m.value == 'paper' else 'Online account' }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Field office</label><br>
+        <select name="field_office_id">
+          <option value="">—</option>
+          {% for fo in field_offices %}
+          <option value="{{ fo.id }}" {{ 'selected' if t.field_office_id == fo.id }}>{{ fo.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Receipt number</label><br>
+        <input type="text" name="receipt_number" value="{{ t.receipt_number or '' }}">
+      </div>
+      <div>
+        <label class="muted">Receipt date</label><br>
+        <input type="date" name="receipt_date" value="{{ t.receipt_date.isoformat() if t.receipt_date else '' }}">
+      </div>
+      <div>
+        <label class="muted">Finalized on</label><br>
+        <input type="date" name="finalized_at" value="{{ t.finalized_at.isoformat() if t.finalized_at else '' }}">
+      </div>
+      <div>
+        <label class="muted">Monitoring started on</label><br>
+        <input type="date" name="monitoring_started_at" value="{{ t.monitoring_started_at.isoformat() if t.monitoring_started_at else '' }}">
+      </div>
+      <div>
+        <label class="muted">Approval date</label><br>
+        <input type="date" name="approval_date" value="{{ t.approval_date.isoformat() if t.approval_date else '' }}">
+      </div>
+      <div>
+        <label class="muted">Processing time</label><br>
+        <div style="padding:8px 0;">{% if processing_time[t.id] is not none %}{{ processing_time[t.id] }} days{% else %}<span class="muted">— (needs receipt + approval date)</span>{% endif %}</div>
+      </div>
+      <div>
+        <label class="muted">Last checked</label><br>
+        <div style="padding:8px 0;">{{ t.last_checked_at.strftime('%m/%d/%Y %I:%M %p') if t.last_checked_at else '—' }}</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;padding-top:20px;">
+        <input type="checkbox" name="rfe_received" id="rfe-{{ t.id }}" {{ 'checked' if t.rfe_received }}>
+        <label for="rfe-{{ t.id }}">Received RFE/NOID</label>
+      </div>
+    </div>
+
+    <div class="tracking-paper-fields" data-tracked-id="{{ t.id }}" style="display:{{ 'grid' if t.filing_method.value == 'paper' else 'none' }};grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+      <div>
+        <label class="muted">USCIS received the package on</label><br>
+        <input type="date" name="uscis_received_at" value="{{ t.uscis_received_at.isoformat() if t.uscis_received_at else '' }}">
+      </div>
+      <div>
+        <label class="muted">Expected arrival at USCIS</label><br>
+        <input type="date" name="expected_arrival_at" value="{{ t.expected_arrival_at.isoformat() if t.expected_arrival_at else '' }}">
+      </div>
+      <div>
+        <label class="muted">Actual arrival at USCIS</label><br>
+        <input type="date" name="actual_arrival_at" value="{{ t.actual_arrival_at.isoformat() if t.actual_arrival_at else '' }}">
+      </div>
+      <div>
+        <label class="muted">USPS tracking number</label><br>
+        <input type="text" name="usps_tracking_number" value="{{ t.usps_tracking_number or '' }}">
+        <div><a href="{{ usps_tracking_url }}" target="_blank" rel="noopener noreferrer" style="font-size:0.78rem;">Track on USPS →</a></div>
+      </div>
+    </div>
+
+    <div class="tracking-online-fields" data-tracked-id="{{ t.id }}" style="display:{{ 'block' if t.filing_method.value == 'online' else 'none' }};margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
+      <label class="muted">USCIS online account</label><br>
+      {% if uscis_credential %}
+      <p style="margin:4px 0;">Credentials on file.
+        <a href="{{ url_for('crm_credentials.detail', client_id=case.client_id) }}">View email/username, password and backup code →</a>
+      </p>
+      {% else %}
+      <p class="muted" style="margin:4px 0;">No USCIS credentials on file for this client yet.
+        <a href="{{ url_for('crm_credentials.detail', client_id=case.client_id) }}">Add them →</a>
+      </p>
+      {% endif %}
+    </div>
+
+    <div style="margin-top:14px;">
+      <label class="muted">Notes (markdown supported)</label><br>
+      <textarea name="notes_markdown" rows="4" style="width:100%;font-family:inherit;">{{ t.notes_markdown or '' }}</textarea>
+      {% if notes_html[t.id] %}
+      <div class="muted" style="font-size:0.85rem;margin-top:6px;padding:8px 10px;background:var(--accent-soft);border-radius:var(--radius-sm);">{{ notes_html[t.id]|safe }}</div>
+      {% endif %}
+    </div>
+
+    <div style="margin-top:14px;display:flex;gap:16px;flex-wrap:wrap;font-size:0.82rem;">
+      <a href="{{ uscis_case_status_url }}" target="_blank" rel="noopener noreferrer">Check case status →</a>
+      <a href="{{ uscis_processing_times_url }}" target="_blank" rel="noopener noreferrer">Check processing time →</a>
+      <a href="{{ uscis_field_office_url }}" target="_blank" rel="noopener noreferrer">Find field office →</a>
+    </div>
+
+    <div style="margin-top:14px;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Save</button>
+    </div>
+  </form>
+
+  <div style="margin-top:10px;display:flex;gap:10px;align-items:center;">
+    <form method="post" action="{{ url_for('crm_tracking.tracking_check', tracked_id=t.id) }}">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--accent);border-radius:var(--radius-sm);color:var(--accent);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Register check</button>
+    </form>
+    <form method="post" action="{{ url_for('crm_tracking.tracking_delete', tracked_id=t.id) }}" onsubmit="return confirm('Remove {{ t.form_number }} from tracking?');">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:#991b1b;cursor:pointer;font-size:0.82rem;padding:8px 14px;">Remove</button>
+    </form>
+  </div>
+</div>
+{% endfor %}
+
+<script>
+  document.querySelectorAll('.tracking-filing-method').forEach(function (select) {
+    select.addEventListener('change', function () {
+      var id = select.dataset.trackedId;
+      var isPaper = select.value === 'paper';
+      var paperBlock = document.querySelector('.tracking-paper-fields[data-tracked-id="' + id + '"]');
+      var onlineBlock = document.querySelector('.tracking-online-fields[data-tracked-id="' + id + '"]');
+      if (paperBlock) paperBlock.style.display = isPaper ? 'grid' : 'none';
+      if (onlineBlock) onlineBlock.style.display = isPaper ? 'none' : 'block';
+    });
+  });
+</script>
+{% endblock %}

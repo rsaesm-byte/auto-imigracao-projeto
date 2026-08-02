@@ -5,9 +5,9 @@
    não reconheça (ver classes .status-* em app/static/style.css). #}
 {% macro crm_badge(value, label=None) %}
 {%- set v = value.value if value is not string else value -%}
-{%- set positive_kw = ['approved', 'done', 'paid', 'closed_won', 'ready', 'confirmed', 'completed'] -%}
-{%- set negative_kw = ['denied', 'lost', 'gave_up', 'closed_lost', 'in_dispute', 'written_off', 'not_qualified', 'refunded'] -%}
-{%- set warning_kw = ['pending', 'waiting_translation', 'in_progress', 'review', 'negotiation', 'proposal_sent', 'invoice_sent', 'partially_paid', 'quoted', 'not_started'] -%}
+{%- set positive_kw = ['approved', 'done', 'paid', 'closed_won', 'ready', 'confirmed', 'completed', 'resolved', 'signed'] -%}
+{%- set negative_kw = ['denied', 'lost', 'gave_up', 'closed_lost', 'in_dispute', 'written_off', 'not_qualified', 'refunded', 'rejected'] -%}
+{%- set warning_kw = ['pending', 'waiting_translation', 'in_progress', 'review', 'in_review', 'reviewing_translation', 'negotiation', 'proposal_sent', 'invoice_sent', 'partially_paid', 'quoted', 'not_started', 'open'] -%}
 {%- if v in positive_kw -%}{%- set cls = 'status-positive' -%}
 {%- elif v in negative_kw -%}{%- set cls = 'status-negative' -%}
 {%- elif v in warning_kw -%}{%- set cls = 'status-warning' -%}

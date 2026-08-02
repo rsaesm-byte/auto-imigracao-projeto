@@ -1,69 +1,66 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
-{% block title %}Staff — Tarefas{% endblock %}
+{% block title %}Staff — Tasks{% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Tarefas</h1>
-  <p style="opacity:0.92;margin:0;">Hub operacional -- reuniões, revisões, solicitações internas.</p>
+  <h1>Tasks</h1>
+  <p style="opacity:0.92;margin:0;">Operations hub -- meetings, reviews, internal requests.</p>
 </div>
 
 {% if new_form %}
 <div class="card">
-  <h2>Nova tarefa</h2>
+  <h2>New task</h2>
   <form method="post" action="{{ url_for('crm_ops.task_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
     <div>
-      <label class="muted">Título</label><br>
+      <label class="muted">Title</label><br>
       <input type="text" name="title" required>
     </div>
     <div>
-      <label class="muted">Caso (opcional)</label><br>
+      <label class="muted">Case (optional)</label><br>
       <select name="case_id"><option value="">—</option>{% for c in cases_list %}<option value="{{ c.id }}">{{ c.title }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Tipo</label><br>
+      <label class="muted">Type</label><br>
       <select name="task_type"><option value="">—</option>{% for t in task_types %}<option value="{{ t.value }}">{{ t.value|replace('_',' ')|title }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Prioridade</label><br>
+      <label class="muted">Priority</label><br>
       <select name="priority">{% for p in priorities %}<option value="{{ p.value }}">{{ p.value|title }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Responsável</label><br>
+      <label class="muted">Owner</label><br>
       <select name="responsible_id"><option value="">—</option>{% for u in staff_users %}<option value="{{ u.id }}">{{ u.email }}</option>{% endfor %}</select>
     </div>
     <div>
-      <label class="muted">Prazo</label><br>
+      <label class="muted">Due date</label><br>
       <input type="date" name="due_date">
     </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Criar</button>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
   </form>
 </div>
 {% else %}
 
 <div class="card">
-  <a href="{{ url_for('crm_ops.task_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ Nova tarefa</a>
+  <a href="{{ url_for('crm_ops.task_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New task</a>
 </div>
 
-<div class="crm-kanban">
+<div class="crm-kanban" data-draggable="true">
   {% for status in statuses %}
-  <div class="crm-kanban-col">
+  <div class="crm-kanban-col" data-status-field="status" data-status-value="{{ status.value }}"
+       data-action-template="{{ url_for('crm_ops.task_update_status', task_id=999999) }}">
     <h3>{{ crm_badge(status) }} ({{ by_status[status]|length }})</h3>
     {% for t in by_status[status] %}
-    <div class="crm-kanban-card">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ t.id }}">
       <h4>{{ t.title }}</h4>
       {% if t.case_id in cases %}<div class="muted">{{ cases[t.case_id].title }}</div>{% endif %}
       {% if t.responsible_id in users %}<div class="muted">{{ users[t.responsible_id].email }}</div>{% endif %}
-      <div class="muted">Prioridade: {{ t.priority.value|title }}{% if t.due_date %} · Prazo: {{ t.due_date.strftime('%d/%m/%Y') }}{% endif %}</div>
-      <form method="post" action="{{ url_for('crm_ops.task_update_status', task_id=t.id) }}">
-        <select name="status">
-          {% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if s == status }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
-        </select>
-        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Mover</button>
-      </form>
+      <div class="muted">Priority: {{ t.priority.value|title }}{% if t.due_date %} · Due: {{ t.due_date.strftime('%m/%d/%Y') }}{% endif %}</div>
     </div>
     {% endfor %}
   </div>
   {% endfor %}
 </div>
+<script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
 {% endif %}
 {% endblock %}

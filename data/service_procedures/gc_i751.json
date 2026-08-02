@@ -1,0 +1,245 @@
+{
+  "service_id": "gc_i751",
+  "name": "Green Card — Removal of Conditions (Form I-751)",
+  "name_pt": "Green Card — Remoção de Condições (Formulário I-751)",
+  "name_es": "Green Card — Remoción de Condiciones (Formulario I-751)",
+  "forms": [
+    "I-751",
+    "G-1145 (optional)",
+    "G-1450/G-1650 (if applicable)"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Copy of current/expired Green Card (front and back)",
+        "Form I-751 completed and reviewed",
+        "Form G-1145 (optional -- e-notification)",
+        "Valid passport (biographical page) -- BOTH spouses",
+        "Naturalization certificate (petitioner)",
+        "Government-issued ID (if applicable)",
+        "Proof of current U.S. address",
+        "Lease agreement (both names)",
+        "Mortgage or property deed",
+        "Utility bills (electricity, internet, phone)",
+        "Driver's licenses with same address",
+        "Mail addressed to both spouses",
+        "Auto registration (same address)",
+        "Joint bank account statements",
+        "Joint credit cards",
+        "Tax returns (filed together)",
+        "Insurance policies (life, health, auto)",
+        "Car title (joint)",
+        "Loans/financing contracts",
+        "Wills / Power of Attorney",
+        "Birth certificates (both parents listed, if applicable)",
+        "Adoption records (if applicable)",
+        "School / medical records (if applicable)",
+        "Photos (timeline over 2 years)",
+        "Travel evidence (tickets, hotels)",
+        "Messages / emails / social media",
+        "Gifts / receipts",
+        "Events with family and friends",
+        "Certified translations for all non-English documents"
+      ],
+      "documents_pt": [
+        "Cópia do Green Card atual/vencido (frente e verso)",
+        "Formulário I-751 preenchido e revisado",
+        "Formulário G-1145 (opcional -- notificação eletrônica)",
+        "Passaporte válido (página biográfica) -- AMBOS os cônjuges",
+        "Certidão de naturalização (peticionário)",
+        "Identidade oficial (se aplicável)",
+        "Comprovante de endereço atual nos EUA",
+        "Contrato de locação (ambos os nomes)",
+        "Hipoteca ou escritura do imóvel",
+        "Contas de serviços (luz, internet, telefone)",
+        "Carteiras de motorista com o mesmo endereço",
+        "Correspondência endereçada aos dois cônjuges",
+        "Registro do veículo (mesmo endereço)",
+        "Extratos de conta bancária conjunta",
+        "Cartões de crédito conjuntos",
+        "Declarações de imposto de renda (declaradas em conjunto)",
+        "Apólices de seguro (vida, saúde, automóvel)",
+        "Título de veículo conjunto",
+        "Contratos de empréstimo/financiamento",
+        "Testamentos / Procuração",
+        "Certidões de nascimento dos filhos (ambos os pais listados, se aplicável)",
+        "Registros de adoção (se aplicável)",
+        "Registros escolares/médicos dos filhos (se aplicável)",
+        "Fotos (linha do tempo ao longo de 2 anos)",
+        "Comprovantes de viagens (passagens, hotéis)",
+        "Mensagens/e-mails/redes sociais",
+        "Presentes/recibos",
+        "Eventos com família e amigos",
+        "Traduções juramentadas de todos os documentos não em inglês"
+      ],
+      "documents_es": [
+        "Copia del Green Card actual/vencido (frente y reverso)",
+        "Formulario I-751 completado y revisado",
+        "Formulario G-1145 (opcional -- notificación electrónica)",
+        "Pasaporte válido (página biográfica) -- AMBOS cónyuges",
+        "Certificado de naturalización (peticionario)",
+        "Identificación oficial (si aplica)",
+        "Comprobante de domicilio actual en EE. UU.",
+        "Contrato de arrendamiento (ambos nombres)",
+        "Hipoteca o escritura de la propiedad",
+        "Facturas de servicios (electricidad, internet, teléfono)",
+        "Licencias de conducir con la misma dirección",
+        "Correspondencia dirigida a ambos cónyuges",
+        "Registro del vehículo (misma dirección)",
+        "Estados de cuenta bancaria conjunta",
+        "Tarjetas de crédito conjuntas",
+        "Declaraciones de impuestos (presentadas en conjunto)",
+        "Pólizas de seguro (vida, salud, auto)",
+        "Título del vehículo conjunto",
+        "Contratos de préstamo/financiamiento",
+        "Testamentos / Poder Notarial",
+        "Actas de nacimiento de los hijos (ambos padres listados, si aplica)",
+        "Registros de adopción (si aplica)",
+        "Registros escolares/médicos de los hijos (si aplica)",
+        "Fotos (cronología de 2 años)",
+        "Comprobantes de viajes (boletos, hoteles)",
+        "Mensajes/correos/redes sociales",
+        "Regalos/recibos",
+        "Eventos con familia y amigos",
+        "Traducciones certificadas de todos los documentos que no estén en inglés"
+      ],
+      "steps": [
+        "Gather at least 5 affidavits -- each with full name, address, date of birth of affiant, relationship to the couple, how they know the couple, frequency of contact",
+        "Collect statements signed under penalty of perjury",
+        "Gather correspondence history and other proof of shared life"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Draft cover letter (strong narrative)",
+        "Draft case explanation (relationship timeline)",
+        "Organize evidence chronologically",
+        "Finalize affidavits",
+        "Confirm evidence covers the entire 2-year period",
+        "Confirm no gaps in cohabitation",
+        "Confirm no inconsistencies",
+        "Confirm strong financial + emotional + residential proof",
+        "Explain address changes",
+        "Explain gaps in documents",
+        "Confirm no contradictions in forms"
+      ]
+    },
+    {
+      "name": "Application Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Final review of Form I-751",
+        "Signatures completed (both spouses)",
+        "Payment attached",
+        "Package assembled in correct order: Payment → Cover letter → G-1145 (optional) → Form I-751 → Supporting documents",
+        "Copies saved",
+        "Package mailed (USPS/courier) or submitted online",
+        "Tracking number saved"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Biometrics appointment scheduled",
+        "Client notified",
+        "Biometrics completed",
+        "Client prepared for interview (if required)",
+        "Updated documents ready for interview (if required)",
+        "Case timeline monitored (8-12 months average)",
+        "Follow-ups performed if needed",
+        "Receipt (I-797C) received",
+        "Case tracked online",
+        "Citizenship application process explained",
+        "Case tracking explained",
+        "Client notified",
+        "Follow-up scheduled"
+      ]
+    }
+  ],
+  "free_consultation_minutes": 15,
+  "pricing": {
+    "standard_usd": 800,
+    "plus_usd": 1485,
+    "plus_paper_usd": 1635,
+    "notes": null,
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting evidence of bona fide marriage/relationship",
+    "I-751 petition letter based on 18 years of experience",
+    "Discount on document translation"
+  ],
+  "standard_excludes": [
+    "Certified translations (charged separately)",
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Translation of supporting letters",
+    "RFE response included",
+    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
+    "Full case tracking until USCIS decision"
+  ],
+  "plus_excludes": [
+    "Certified translations (charged separately)"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização das provas de relacionamento/casamento genuíno",
+    "Carta da petição I-751 baseada em 18 anos de experiência",
+    "Desconto na tradução de documentos"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de las pruebas de matrimonio/relación de buena fe",
+    "Carta de la petición I-751 basada en 18 años de experiencia",
+    "Descuento en la traducción de documentos"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)",
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Tradução das cartas de apoio",
+    "Resposta a RFE inclusa",
+    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
+    "Acompanhamento completo do caso até a decisão da USCIS"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Traducción de las cartas de respaldo",
+    "Respuesta a RFE incluida",
+    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
+    "Seguimiento completo del caso hasta la decisión de USCIS"
+  ],
+  "plus_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)"
+  ]
+}

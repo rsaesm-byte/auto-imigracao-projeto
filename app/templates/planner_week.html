@@ -1,0 +1,96 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Weekly Planner{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Weekly Planner</h1>
+  <p style="opacity:0.92;margin:0;">Your personal schedule -- block time for tasks, meetings, calls, or focus work, Monday through Sunday.</p>
+</div>
+
+<div class="card" style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+  <a href="{{ url_for('planner.planner_week', week=prev_week) }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;">← Previous week</a>
+  <strong>{{ monday.strftime('%b %d') }} – {{ days[-1].strftime('%b %d, %Y') }}</strong>
+  <a href="{{ url_for('planner.planner_week', week=next_week) }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;">Next week →</a>
+  <a href="{{ url_for('planner.planner_team', week=monday.isoformat()) }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;margin-left:auto;">Team view</a>
+  <a href="{{ url_for('planner.projects_list') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;">Projects</a>
+  <a href="{{ url_for('planner.time_list') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 12px;text-decoration:none;">Time tracking</a>
+</div>
+
+<div class="card">
+  <details>
+    <summary style="cursor:pointer;font-size:0.9rem;font-weight:600;">+ Add time block</summary>
+    <form method="post" action="{{ url_for('planner.block_new') }}" style="margin-top:14px;display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+      <input type="hidden" name="week" value="{{ monday.isoformat() }}">
+      <div style="flex:1;min-width:200px;">
+        <label class="muted">Title</label><br>
+        <input type="text" name="title" required style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Start</label><br>
+        <input type="datetime-local" name="start_at" required>
+      </div>
+      <div>
+        <label class="muted">End</label><br>
+        <input type="datetime-local" name="end_at" required>
+      </div>
+      <div>
+        <label class="muted">Type</label><br>
+        <select name="block_type" onchange="document.getElementById('custom-block-type-wrap').style.display = (this.value === '__new__') ? 'inline-block' : 'none';">
+          {% for opt in block_type_options %}<option value="{{ opt }}">{{ opt|replace('_',' ')|title }}</option>{% endfor %}
+          <option value="__new__">+ Add new type…</option>
+        </select>
+      </div>
+      <div id="custom-block-type-wrap" style="display:none;">
+        <label class="muted">New type name</label><br>
+        <input type="text" name="custom_block_type" placeholder="e.g. Client Onboarding Call">
+      </div>
+      <div>
+        <label class="muted">Priority</label><br>
+        <select name="priority">{% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if p.value == 'medium' }}>{{ p.value|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Client</label><br>
+        <select name="client_id"><option value="">—</option>{% for c in clients %}<option value="{{ c.id }}">{{ c.full_name }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Case</label><br>
+        <select name="case_id"><option value="">—</option>{% for c in cases %}<option value="{{ c.id }}">{{ c.title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Project</label><br>
+        <select name="project_id"><option value="">—</option>{% for p in projects %}<option value="{{ p.id }}">{{ p.name }}</option>{% endfor %}</select>
+      </div>
+      <div style="flex-basis:100%;">
+        <label class="muted">Notes</label><br>
+        <input type="text" name="notes" style="width:100%;">
+      </div>
+      <button type="submit" class="btn">Add block</button>
+    </form>
+  </details>
+</div>
+
+<div class="crm-kanban">
+  {% for day in days %}
+  <div class="crm-kanban-col" style="{{ 'outline:2px solid var(--accent);' if day == today }}">
+    <h3>{{ day.strftime('%a, %b %d') }}{{ ' (today)' if day == today }}</h3>
+    {% for block in blocks_by_day.get(day, []) %}
+    <div class="crm-kanban-card" style="{{ 'opacity:0.55;' if block.completed }}">
+      <h4>{{ '✔ ' if block.completed }}{{ block.title }}</h4>
+      <div class="muted">{{ block.start_at.strftime('%H:%M') }}–{{ block.end_at.strftime('%H:%M') }} · {{ block.block_type|replace('_',' ')|title }} · {{ block.priority.value|title }}</div>
+      {% if block.client %}<div class="muted">Client: {{ block.client.full_name }}</div>{% endif %}
+      {% if block.case %}<div class="muted">Case: {{ block.case.title }}</div>{% endif %}
+      {% if block.project %}<div class="muted">Project: {{ block.project.name }}</div>{% endif %}
+      {% if block.notes %}<div class="muted">{{ block.notes }}</div>{% endif %}
+      <form method="post" action="{{ url_for('planner.block_complete', block_id=block.id) }}" style="display:inline;">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 6px;">{{ 'Undo' if block.completed else 'Done' }}</button>
+      </form>
+      <form method="post" action="{{ url_for('planner.block_delete', block_id=block.id) }}" style="display:inline;">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 6px;">Delete</button>
+      </form>
+    </div>
+    {% else %}
+    <p class="muted" style="font-size:0.8rem;">No blocks.</p>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+{% endblock %}

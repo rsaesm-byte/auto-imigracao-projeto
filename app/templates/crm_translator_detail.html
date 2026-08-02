@@ -1,0 +1,126 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — {{ translator.full_name }} (Translator){% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ translator.full_name }}</h1>
+  <p style="opacity:0.92;margin:0;">Translator profile, payment history, and assigned jobs.</p>
+</div>
+
+<div class="card">
+  <h2>Profile</h2>
+  <form method="post" action="{{ url_for('crm_translations.translator_save', translator_id=translator.id) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+    <div>
+      <label class="muted">Full name</label><br>
+      <input type="text" name="full_name" value="{{ translator.full_name }}" required>
+    </div>
+    <div>
+      <label class="muted">Phone</label><br>
+      <input type="text" name="phone" value="{{ translator.phone or '' }}">
+    </div>
+    <div>
+      <label class="muted">Address</label><br>
+      <input type="text" name="address" value="{{ translator.address or '' }}">
+    </div>
+    <div>
+      <label class="muted">Language(s) translated</label><br>
+      <input type="text" name="languages" value="{{ translator.languages or '' }}" placeholder="e.g. Portuguese, Spanish">
+    </div>
+    <div>
+      <label class="muted">Payment method</label><br>
+      <input type="text" name="payment_method" value="{{ translator.payment_method or '' }}" placeholder="e.g. Bank transfer, Zelle">
+    </div>
+    <div>
+      <label class="muted">Currency</label><br>
+      <select name="currency">
+        {% for c in currencies %}<option value="{{ c.value }}" {{ 'selected' if translator.currency == c }}>{{ c.value|upper }}</option>{% endfor %}
+      </select>
+    </div>
+    <div style="grid-column:1/-1;">
+      <label class="muted">Bank details</label><br>
+      <textarea name="bank_details" rows="3" style="width:100%;">{{ translator.bank_details or '' }}</textarea>
+    </div>
+    <div style="grid-column:1/-1;">
+      <button type="submit" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.82rem;padding:8px 16px;">Save profile</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Payment history</h2>
+  {% if translator.payments %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead><tr><th>Date</th><th>Amount</th><th>Notes</th></tr></thead>
+    <tbody>
+      {% for p in translator.payments %}
+      <tr>
+        <td class="muted">{{ p.paid_at.strftime('%m/%d/%Y') }}</td>
+        <td>{{ '%.2f'|format(p.amount_cents / 100) }} {{ p.currency.value|upper }}</td>
+        <td class="muted">{{ p.notes or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">No payments registered yet.</p>
+  {% endif %}
+
+  <form method="post" action="{{ url_for('crm_translations.translator_payment_new', translator_id=translator.id) }}"
+        style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;margin-top:12px;">
+    <div>
+      <label class="muted" style="font-size:0.78rem;">Amount</label><br>
+      <input type="text" name="amount" placeholder="0.00" required style="max-width:110px;">
+    </div>
+    <div>
+      <label class="muted" style="font-size:0.78rem;">Currency</label><br>
+      <select name="currency">
+        {% for c in currencies %}<option value="{{ c.value }}" {{ 'selected' if translator.currency == c }}>{{ c.value|upper }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted" style="font-size:0.78rem;">Date paid</label><br>
+      <input type="date" name="paid_at" required>
+    </div>
+    <div style="flex:1;min-width:180px;">
+      <label class="muted" style="font-size:0.78rem;">Notes</label><br>
+      <input type="text" name="notes" style="width:100%;">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Register payment</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Assigned jobs ({{ jobs|length }})</h2>
+  {% if jobs %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead><tr><th>Document</th><th>Client / Case</th><th>Requested</th><th>Delivered</th><th>Pages</th><th>Client total</th><th>Payout</th><th></th></tr></thead>
+    <tbody>
+      {% for t in jobs %}
+      <tr>
+        <td>{{ t.document.name }}</td>
+        <td class="muted">{{ t.document.case.client.full_name }} — {{ t.document.case.title }}</td>
+        <td class="muted">{{ t.requested_at.strftime('%m/%d/%Y') if t.requested_at else '—' }}</td>
+        <td class="muted">{{ t.delivered_at.strftime('%m/%d/%Y') if t.delivered_at else '—' }}</td>
+        <td class="muted">{{ t.page_count if t.page_count is not none else '—' }}</td>
+        <td class="muted">{% set ct = client_total_cents(t) %}{% if ct is not none %}${{ '%.2f'|format(ct / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">
+          {% set pu = payout_usd_cents(t) %}{% set pt = payout_translator_currency_cents(t) %}
+          {% if pt is not none %}{{ '%.2f'|format(pt / 100) }} {{ translator.currency.value|upper }}{% endif %}
+          {% if pu is not none %} / ${{ '%.2f'|format(pu / 100) }}{% endif %}
+          {% if pt is none and pu is none %}—{% endif %}
+        </td>
+        <td><a href="{{ url_for('crm_ops.case_documents', case_id=t.document.case_id) }}" style="font-size:0.8rem;">Open →</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">No translation jobs assigned to this translator yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

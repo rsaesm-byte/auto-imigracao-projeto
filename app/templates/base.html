@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}{{ t('app_name') }}{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=10">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=2">
+  <link rel="icon" type="image/png" id="favicon-link" href="{% block favicon %}{{ url_for('static', filename='favicon-client.png') }}?v=1{% endblock %}">
   <script src="https://unpkg.com/htmx.org@1.9.12"></script>
   <noscript><style>.reveal { opacity: 1 !important; transform: none !important; }</style></noscript>
 </head>
@@ -38,6 +38,7 @@
       {% if current_user.is_authenticated %}
         {% if has_crm_case %}
         <a class="logout" href="{{ url_for('crm_client.meu_caso') }}">{{ t('nav_my_case') }}</a>
+        <a class="logout" href="{{ url_for('crm_client.translations') }}">{{ t('nav_translations') }}</a>
         {% endif %}
         {% if has_financial_plan %}
         <a class="logout" href="{{ url_for('crm_financial_client.meu_plano') }}">{{ t('nav_financial_plan') }}</a>

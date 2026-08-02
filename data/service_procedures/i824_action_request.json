@@ -1,0 +1,145 @@
+{
+  "service_id": "i824_action_request",
+  "name": "Action on an Approved Application/Petition (Form I-824)",
+  "name_pt": "Ação sobre Petição Já Aprovada (Formulário I-824)",
+  "name_es": "Acción sobre Petición Ya Aprobada (Formulario I-824)",
+  "forms": [
+    "I-824"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [],
+  "note": "\"Activates\" an already-approved case -- duplicate approval notice, sends the case to NVC, or follow-to-join for family members. Does not create a new case. Precision-critical: must match the original petition exactly.",
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Original approval notice (I-797 -- NOA2 or approval notice)",
+        "Government-issued ID (petitioner)",
+        "Passport or proof of U.S. status (petitioner)",
+        "Passport (copy, beneficiary)",
+        "Birth certificate (beneficiary)",
+        "Relationship documents (if applicable)",
+        "Copy of I-130 / I-140 (if available)",
+        "Supporting documents from original case",
+        "Receipt notices",
+        "Approval notices",
+        "Proof of relationship (follow-to-join, if applicable)",
+        "Updated civil documents (if applicable)"
+      ],
+      "documents_pt": [
+        "Aviso de aprovação original (I-797 -- NOA2 ou aviso de aprovação)",
+        "Identidade oficial (peticionário)",
+        "Passaporte ou comprovante de status nos EUA (peticionário)",
+        "Passaporte (cópia, beneficiário)",
+        "Certidão de nascimento (beneficiário)",
+        "Documentos de relacionamento (se aplicável)",
+        "Cópia da I-130/I-140 (se disponível)",
+        "Documentos de apoio do caso original",
+        "Avisos de recibo",
+        "Avisos de aprovação",
+        "Comprovante de relacionamento (follow-to-join, se aplicável)",
+        "Documentos civis atualizados (se aplicável)"
+      ],
+      "documents_es": [
+        "Aviso de aprobación original (I-797 -- NOA2 o aviso de aprobación)",
+        "Identificación oficial (peticionario)",
+        "Pasaporte o comprobante de estatus en EE. UU. (peticionario)",
+        "Pasaporte (copia, beneficiario)",
+        "Acta de nacimiento (beneficiario)",
+        "Documentos de relación (si aplica)",
+        "Copia de la I-130/I-140 (si está disponible)",
+        "Documentos de apoyo del caso original",
+        "Avisos de recibo",
+        "Avisos de aprobación",
+        "Comprobante de relación (follow-to-join, si aplica)",
+        "Documentos civiles actualizados (si aplica)"
+      ],
+      "steps": [
+        "Confirm case number and type of original petition (I-130, I-140, etc.) and date of approval",
+        "Define the purpose of the I-824 (select the correct one): send case to NVC (consular processing) / request duplicate approval notice / follow-to-join request (family members) / request USCIS notify another office",
+        "Collect petitioner's contact information",
+        "Gather proof of eligibility for the requested action",
+        "Draft explanation letter: reason for filing, details of requested action, clarification of inconsistencies (recommended)"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Define the request purpose clearly (e.g., 1.a -- a duplicate approval notice)",
+        "Align supporting evidence (timeline of not receiving the original document)",
+        "Strategy: purpose must be clearly stated, must match original petition exactly, no inconsistencies with previous filing -- delays are common, accuracy is critical"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Form I-824 completed",
+        "Supporting documents attached",
+        "Application reviewed",
+        "Submitted",
+        "Payment completed"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Receipt received",
+        "Case tracking started",
+        "Client notified",
+        "Follow-up scheduled",
+        "If NVC: follow the consular process",
+        "If duplicate: confirm receipt",
+        "Guide next steps"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 250,
+    "plus_usd": null,
+    "plus_paper_usd": null,
+    "notes": "'All-Inclusive Package' — no Plus tier, and (unlike I-290B) no mandatory consultation fee.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "I-824 preparation based on 18 years of experience"
+  ],
+  "standard_excludes": [
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Preparação do I-824 baseada em 18 anos de experiência"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Preparación del I-824 basada en 18 años de experiencia"
+  ],
+  "standard_excludes_pt": [
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [],
+  "plus_includes_es": [],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

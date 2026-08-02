@@ -1,0 +1,52 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Case Tracking{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Case Tracking</h1>
+  <p style="opacity:0.92;margin:0;">Post-filing tracking for every USCIS form/petition on record — receipts, dates, checks, RFE/NOID.</p>
+</div>
+
+<div class="card" style="display:flex;gap:24px;flex-wrap:wrap;">
+  <div><span class="badge status-negative">{{ overdue_count }}</span> <span class="muted">check{{ 's' if overdue_count != 1 }} due</span></div>
+  <div><span class="badge status-warning">{{ rfe_count }}</span> <span class="muted">RFE/NOID received</span></div>
+  <div><span class="badge status-neutral">{{ rows|length }}</span> <span class="muted">form{{ 's' if rows|length != 1 }} tracked</span></div>
+</div>
+
+<div class="card">
+  {% if rows %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead>
+      <tr>
+        <th>Client</th><th>Case</th><th>Form</th><th>Method</th><th>Receipt #</th>
+        <th>Field office</th><th>Next check</th><th>RFE/NOID</th><th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for t in rows %}
+      <tr>
+        <td><a href="{{ url_for('crm_pipeline.client_detail', client_id=t.case.client_id) }}">{{ t.case.client.full_name }}</a></td>
+        <td class="muted">{{ t.case.title }}</td>
+        <td><strong>{{ t.form_number }}</strong>{% if t.application_type %}<div class="muted" style="font-size:0.78rem;">{{ t.application_type }}</div>{% endif %}</td>
+        <td class="muted">{{ 'Online account' if t.filing_method.value == 'online' else 'Paper form' }}</td>
+        <td class="muted">{{ t.receipt_number or '—' }}</td>
+        <td class="muted">{{ field_offices[t.field_office_id].name if t.field_office_id in field_offices else '—' }}</td>
+        <td>
+          {% if t.next_check_at %}
+            <span class="badge {{ 'status-negative' if is_overdue(t) else 'status-neutral' }}">{{ t.next_check_at.strftime('%m/%d/%Y') }}</span>
+          {% else %}
+            <span class="muted">—</span>
+          {% endif %}
+        </td>
+        <td>{% if t.rfe_received %}<span class="badge status-warning">Yes</span>{% else %}<span class="muted">No</span>{% endif %}</td>
+        <td><a href="{{ url_for('crm_tracking.case_tracking', case_id=t.case_id) }}" style="font-size:0.82rem;">Open →</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">No forms are being tracked yet. Open a case (Clients → case → Tracking) to start tracking one.</p>
+  {% endif %}
+</div>
+{% endblock %}

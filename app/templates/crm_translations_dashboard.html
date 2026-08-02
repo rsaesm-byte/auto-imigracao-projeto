@@ -1,0 +1,89 @@
+{% extends "staff_base.html" %}
+{% from "_staff_range_pills.html" import range_pills %}
+{% block title %}Staff — Translations{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Translations</h1>
+  <p style="opacity:0.92;margin:0;">Translator directory, payment history, and every translation job by period.</p>
+</div>
+
+<div class="card">
+  <h2>Translators</h2>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
+    {% for tr in translators %}
+    <a href="{{ url_for('crm_translations.translator_detail', translator_id=tr.id) }}"
+       style="padding:8px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);text-decoration:none;color:var(--text);font-weight:600;font-size:0.88rem;">
+      {{ tr.full_name }} <span class="muted" style="font-weight:400;">({{ tr.translations|length }})</span>
+    </a>
+    {% endfor %}
+  </div>
+  <form method="post" action="{{ url_for('crm_translations.translator_new') }}" style="display:flex;gap:8px;align-items:end;">
+    <div>
+      <label class="muted" style="font-size:0.78rem;">Add a new translator</label><br>
+      <input type="text" name="full_name" placeholder="Full name" required>
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">+ Add</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Translation jobs</h2>
+  {{ range_pills('crm_translations.dashboard', range_key, {
+       'this_month': 'This month', 'last_30_days': 'Last 30 days',
+       'previous_month': 'Previous month', 'all': 'All (by year/month)'}) }}
+
+  {% macro job_row(t) %}
+  <tr>
+    <td>{{ t.document.name }}</td>
+    <td class="muted">{{ t.document.case.client.full_name }} — {{ t.document.case.title }}</td>
+    <td class="muted">{{ t.translator.full_name if t.translator else '—' }}</td>
+    <td class="muted">{{ t.requested_at.strftime('%m/%d/%Y') if t.requested_at else '—' }}</td>
+    <td class="muted">{{ t.delivered_at.strftime('%m/%d/%Y') if t.delivered_at else '—' }}</td>
+    <td class="muted">{{ t.page_count if t.page_count is not none else '—' }}</td>
+    <td class="muted">{% set ct = client_total_cents(t) %}{% if ct is not none %}${{ '%.2f'|format(ct / 100) }}{% else %}—{% endif %}</td>
+    <td class="muted">
+      {% set pu = payout_usd_cents(t) %}{% set pt = payout_translator_currency_cents(t) %}
+      {% if pt is not none and t.translator %}{{ '%.2f'|format(pt / 100) }} {{ t.translator.currency.value|upper }}{% endif %}
+      {% if pu is not none %} / ${{ '%.2f'|format(pu / 100) }}{% endif %}
+      {% if pt is none and pu is none %}—{% endif %}
+    </td>
+    <td><a href="{{ url_for('crm_ops.case_documents', case_id=t.document.case_id) }}" style="font-size:0.8rem;">Open →</a></td>
+  </tr>
+  {% endmacro %}
+
+  {% if range_key == 'all' %}
+    {% if grouped_by_year %}
+    {% for year, months in grouped_by_year.items() %}
+    <h3 style="font-size:0.95rem;margin-top:16px;">{{ year }}</h3>
+    {% for month, jobs in months.items() %}
+    <div style="margin:8px 0;">
+      <div class="muted" style="font-size:0.82rem;font-weight:600;margin-bottom:4px;">
+        {{ ['', 'January','February','March','April','May','June','July','August','September','October','November','December'][month] }}
+      </div>
+      <div style="overflow-x:auto;">
+      <table class="submissions">
+        <thead><tr><th>Document</th><th>Client / Case</th><th>Translator</th><th>Requested</th><th>Delivered</th><th>Pages</th><th>Client total</th><th>Payout</th><th></th></tr></thead>
+        <tbody>{% for t in jobs %}{{ job_row(t) }}{% endfor %}</tbody>
+      </table>
+      </div>
+    </div>
+    {% endfor %}
+    {% endfor %}
+    {% else %}
+    <p class="muted">No translations with a request date on file yet.</p>
+    {% endif %}
+  {% else %}
+    {% if rows %}
+    <div style="overflow-x:auto;">
+    <table class="submissions">
+      <thead><tr><th>Document</th><th>Client / Case</th><th>Translator</th><th>Requested</th><th>Delivered</th><th>Pages</th><th>Client total</th><th>Payout</th><th></th></tr></thead>
+      <tbody>{% for t in rows %}{{ job_row(t) }}{% endfor %}</tbody>
+    </table>
+    </div>
+    {% else %}
+    <p class="muted">No translations in this period.</p>
+    {% endif %}
+  {% endif %}
+</div>
+{% endblock %}

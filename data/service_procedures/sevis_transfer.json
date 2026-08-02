@@ -1,0 +1,137 @@
+{
+  "service_id": "sevis_transfer",
+  "name": "School / College Transfer (SEVIS Transfer)",
+  "name_pt": "Transferência de Escola/Faculdade (Transferência SEVIS)",
+  "name_es": "Transferencia de Escuela/Universidad (Transferencia SEVIS)",
+  "forms": [
+    "SEVIS record transfer (no USCIS form)",
+    "New I-20"
+  ],
+  "channel": "school_sevis",
+  "actor_blocks": [
+    "SPONSOR_BLOCK",
+    "I134_BLOCK",
+    "SEVIS_STUDENT_BLOCK"
+  ],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Passport (biographical page)",
+        "Visa page",
+        "I-94 record",
+        "Previous USCIS approval",
+        "DS forms (if any)",
+        "Proof of current U.S. address",
+        "Marriage / birth certificate (if applicable)",
+        "Diploma / transcript (if applicable)",
+        "Bank statements (last 3 months)",
+        "New I-20"
+      ],
+      "documents_pt": [
+        "Passaporte (página biográfica)",
+        "Página do visto",
+        "Registro I-94",
+        "Aprovação anterior da USCIS",
+        "Formulários DS (se houver)",
+        "Comprovante de endereço atual nos EUA",
+        "Certidão de casamento/nascimento (se aplicável)",
+        "Diploma e histórico escolar (se aplicável)",
+        "Extratos bancários (últimos 3 meses)",
+        "Novo I-20"
+      ],
+      "documents_es": [
+        "Pasaporte (página biográfica)",
+        "Página de la visa",
+        "Registro I-94",
+        "Aprobación anterior de USCIS",
+        "Formularios DS (si los hay)",
+        "Comprobante de domicilio actual en EE. UU.",
+        "Acta de matrimonio/nacimiento (si aplica)",
+        "Diploma e historial académico (si aplica)",
+        "Estados de cuenta bancarios (últimos 3 meses)",
+        "Nuevo I-20"
+      ],
+      "steps": [
+        "Decide: sponsor vs. self-supported",
+        "Confirm academic history is consistent with the study plan",
+        "Identify current school (transfer from) and new school (transfer to)"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Email current school confirming the student can initiate the transfer + transfer date",
+        "Email new school regarding the transfer and required documents",
+        "Checklist emailed to the client",
+        "Transfer application form completed with document upload to the new school",
+        "Wait for the transfer-release form from the new school",
+        "Fill out the form and send it to the current school",
+        "SEVIS record transferred to the new school",
+        "New school issues a new I-20",
+        "New I-20 reviewed",
+        "Student signs the new I-20"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "New I-20 saved in Drive",
+        "Client notified",
+        "Check-in completed with new school"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 300,
+    "plus_usd": null,
+    "plus_paper_usd": null,
+    "notes": "Baseline = ESL-to-ESL transfer. Same contract prices ESL-to-College higher at $500 — quote that price when the transfer is into a college/university program.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Recommendation of two schools based on location, schedule, and cost",
+    "Transfer request coordination with both DSOs"
+  ],
+  "standard_excludes": [
+    "School application fees and SEVIS fee",
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Recomendação de duas escolas com base em localização, horário e custo",
+    "Coordenação da solicitação de transferência com ambos os DSOs"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Recomendación de dos escuelas según ubicación, horario y costo",
+    "Coordinación de la solicitud de transferencia con ambos DSO"
+  ],
+  "standard_excludes_pt": [
+    "Taxas de inscrição escolar e taxa do SEVIS",
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Tarifas de inscripción escolar y tarifa de SEVIS",
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [],
+  "plus_includes_es": [],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

@@ -1,0 +1,178 @@
+{
+  "service_id": "visa_f1",
+  "name": "Visa F-1 (Student, Consular)",
+  "name_pt": "Visto F-1 (Estudante, Consular)",
+  "name_es": "Visa F-1 (Estudiante, Consular)",
+  "forms": [
+    "DS-160",
+    "SEVIS I-901"
+  ],
+  "channel": "consular_dos",
+  "actor_blocks": [
+    "SPONSOR_BLOCK",
+    "SEVIS_STUDENT_BLOCK"
+  ],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Passport (biographical page)",
+        "Previous passports (if any)",
+        "I-94 record / travel record",
+        "Photo (U.S. visa standard)",
+        "DS-160 confirmation page (after completion)",
+        "Appointment confirmation (after scheduling)",
+        "High school diploma / transcript",
+        "College diploma / transcripts (if applicable)",
+        "Bank statements (last 6-12 months)",
+        "Sponsor bank statements (if applicable)",
+        "Sponsor letter, signed (if applicable)",
+        "Acceptance letter",
+        "I-20"
+      ],
+      "documents_pt": [
+        "Passaporte (página biográfica)",
+        "Passaportes anteriores (se houver)",
+        "Registro I-94 / histórico de viagens",
+        "Foto padrão para visto americano",
+        "Página de confirmação do DS-160 (após concluir)",
+        "Confirmação do agendamento (após agendar)",
+        "Diploma/histórico do ensino médio",
+        "Diploma/histórico universitário (se aplicável)",
+        "Extratos bancários (últimos 6-12 meses)",
+        "Extratos bancários do patrocinador (se aplicável)",
+        "Carta do patrocinador, assinada (se aplicável)",
+        "Carta de aceitação",
+        "I-20"
+      ],
+      "documents_es": [
+        "Pasaporte (página biográfica)",
+        "Pasaportes anteriores (si los hay)",
+        "Registro I-94 / historial de viajes",
+        "Foto estándar para visa americana",
+        "Página de confirmación del DS-160 (después de completarlo)",
+        "Confirmación de la cita (después de agendarla)",
+        "Diploma/historial de escuela secundaria",
+        "Diploma/historial universitario (si aplica)",
+        "Estados de cuenta bancarios (últimos 6-12 meses)",
+        "Estados de cuenta bancarios del patrocinador (si aplica)",
+        "Carta del patrocinador, firmada (si aplica)",
+        "Carta de aceptación",
+        "I-20"
+      ],
+      "steps": [
+        "Define whether a sponsor is needed -- U.S. citizen/permanent resident? relationship? sponsor ID/phone/email/address",
+        "Collect school name, English level, financial proof, tuition budget",
+        "Confirm current course end date, desired program and campus, course duration and study period, preferred days/time",
+        "School application submitted / school selected",
+        "Acceptance letter received / I-20 issued",
+        "Program start date confirmed",
+        "SEVIS ID verified / tuition amount confirmed",
+        "Confirm academic history is consistent with the study plan",
+        "Confirm financial capacity covers the full program",
+        "Confirm current status (B-2, J-1, etc.) and I-94 expiration",
+        "Confirm no overstay, unauthorized employment, or status violation",
+        "Define reason for studying in the U.S., reason for choosing this school/program, why now, career connection, future plans in home country"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Structure study plan: why this course, why this school, why the U.S., why now, career connection, return plan to home country",
+        "Confirm strong academic progression with no inconsistencies",
+        "Confirm strong non-immigrant intent with no gaps",
+        "Confirm financial evidence is consistent and answers align with DS-160",
+        "Identify and mitigate risks",
+        "Practice interview questions with short, objective answers",
+        "Memorize study plan naturally",
+        "Prepare financial explanation",
+        "Draft COS / employer / sponsor / address letters as needed",
+        "Prepare photos"
+      ]
+    },
+    {
+      "name": "Execution (Consular Process)",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "SEVIS fee (I-901) paid",
+        "DS-160 completed",
+        "DS-160 reviewed (1st review)",
+        "DS-160 reviewed (final review)",
+        "Visa fee paid (MRV)",
+        "Appointment scheduled",
+        "Biometrics appointment scheduled (if applicable)",
+        "Confirmation documents saved",
+        "Instructions sent to client"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Interview attended",
+        "Outcome recorded (Approved / Denied)",
+        "Passport tracking initiated",
+        "Visa issued (if approved)",
+        "Client notified",
+        "Entry instructions explained",
+        "SEVIS/I-20 usage explained",
+        "Travel guidance shared",
+        "School check-in instructions provided",
+        "Follow-up completed"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 480,
+    "plus_usd": null,
+    "plus_paper_usd": null,
+    "notes": "No Plus tier. Bundles F-1 primary applicant + F-2 dependents into one package (+$300 per additional dependent).",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "DS-160 preparation based on 18 years of experience",
+    "Interview preparation guidance",
+    "Google Drive link for document uploads"
+  ],
+  "standard_excludes": [
+    "MRV visa application fee ($185)",
+    "SEVIS I-901 fee ($350)",
+    "School fees"
+  ],
+  "plus_includes": [],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Preenchimento do DS-160 baseado em 18 anos de experiência",
+    "Orientação para preparação da entrevista",
+    "Link do Google Drive para envio de documentos"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Preparación del DS-160 basada en 18 años de experiencia",
+    "Orientación para la preparación de la entrevista",
+    "Enlace de Google Drive para subir documentos"
+  ],
+  "standard_excludes_pt": [
+    "Taxa MRV de solicitação de visto ($185)",
+    "Taxa SEVIS I-901 ($350)",
+    "Taxas escolares"
+  ],
+  "standard_excludes_es": [
+    "Tarifa MRV de solicitud de visa ($185)",
+    "Tarifa SEVIS I-901 ($350)",
+    "Tarifas escolares"
+  ],
+  "plus_includes_pt": [],
+  "plus_includes_es": [],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

@@ -1,0 +1,117 @@
+{
+  "service_id": "rfe_noid_response",
+  "name": "RFE / NOID Response",
+  "name_pt": "Resposta a RFE / NOID",
+  "name_es": "Respuesta a RFE / NOID",
+  "forms": [],
+  "channel": "uscis_domestic",
+  "actor_blocks": [
+    "ADDRESS_HOST_BLOCK",
+    "EMPLOYER_BLOCK",
+    "SPONSOR_BLOCK"
+  ],
+  "deadline_driven": true,
+  "phases": [
+    {
+      "name": "Document Collection & Review",
+      "documents": [
+        "Original application reviewed (copy)"
+      ],
+      "documents_pt": [
+        "Aplicação original revisada (cópia)"
+      ],
+      "documents_es": [
+        "Solicitud original revisada (copia)"
+      ],
+      "steps": [
+        "Review the RFE/NOID notice",
+        "Confirm the deadline",
+        "Identify all requested items",
+        "Email sent with the RFE/NOID quote and a brief description of each item",
+        "RFE/NOID meeting to discuss every item",
+        "Review original application",
+        "Email sent with the list of required documents",
+        "Link for the upload-documents folders sent",
+        "Each document reviewed",
+        "Google Drive folder created per RFE item (organization + payments and translations)"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Draft explanation letter for every item in the RFE/NOID notice",
+        "Draft address letter (if applicable)",
+        "Draft employer letter (if applicable)",
+        "Draft sponsor letter (if applicable)",
+        "Review documents for translation",
+        "Quote translations"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Documents organized in order in the folders",
+        "Response packet assembled",
+        "Final review completed"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Response submitted (mail or online, if applicable)",
+        "Submitted",
+        "Client notified",
+        "Case monitoring started"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 150,
+    "plus_usd": null,
+    "plus_paper_usd": null,
+    "notes": "Pricing depends on who filed the ORIGINAL application, not a Standard/Plus split: $150 base + $60/item if SAES filed the original application; $250 base + $90/item if another party filed the original. $150 stored as the default (most common case, SAES's own prior client) — confirm which applies before quoting.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Review of the RFE/NOID notice",
+    "RFE/NOID response letter based on 18 years of experience",
+    "Google Drive link for document uploads"
+  ],
+  "standard_excludes": [
+    "Certified translations (charged separately)"
+  ],
+  "plus_includes": [],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Revisão do aviso de RFE/NOID",
+    "Carta de resposta a RFE/NOID baseada em 18 anos de experiência",
+    "Link do Google Drive para envio de documentos"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Revisión del aviso de RFE/NOID",
+    "Carta de respuesta a RFE/NOID basada en 18 años de experiencia",
+    "Enlace de Google Drive para subir documentos"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)"
+  ],
+  "plus_includes_pt": [],
+  "plus_includes_es": [],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

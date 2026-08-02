@@ -1,0 +1,76 @@
+{% extends "staff_base.html" %}
+{% block title %}Documents — {{ case_label }} — Staff{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>{{ case_label }} — {{ client_email }}</h1>
+  <p class="muted">Payment #{{ payment.id }}</p>
+  <a href="{{ url_for('staff.documents_list') }}">&larr; Back to Documents</a>
+</div>
+
+<div class="card">
+  <h2>U.S. Address</h2>
+  {% if onboarding.address_confirmed %}
+  <p>
+    {{ onboarding.us_address_line1 }}{% if onboarding.us_address_complement %}, {{ onboarding.us_address_complement }}{% endif %}<br>
+    {{ onboarding.us_city }}, {{ onboarding.us_state }} {{ onboarding.us_zip }}<br>
+    Applicant email: {{ onboarding.applicant_email }}
+  </p>
+  {% if onboarding.dependents %}
+  <p class="muted" style="margin-bottom:4px;">Dependents:</p>
+  <ul style="margin-top:0;">
+    {% for dep in onboarding.dependents %}
+    <li>{{ dep.full_name }} — {{ dep.email or '—' }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {% else %}
+  <p class="muted">Client hasn't confirmed the address yet.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Document checklist</h2>
+  <form method="post" action="{{ url_for('staff.document_item_new', payment_id=payment.id) }}" style="display:flex;gap:8px;margin-bottom:18px;">
+    <input type="text" name="label" placeholder="Document name (e.g.: Passport, all pages)" required style="flex:1;">
+    <button type="submit" class="btn">Add to checklist</button>
+  </form>
+
+  {% if onboarding.documents %}
+  <table class="submissions">
+    <thead><tr><th>Document</th><th>Status</th><th>File</th><th>Review</th></tr></thead>
+    <tbody>
+      {% for doc in onboarding.documents %}
+      <tr>
+        <td>{{ doc.label }}</td>
+        <td>
+          {% if doc.status == 'pending' %}<span class="badge in_progress">Awaiting upload</span>
+          {% elif doc.status == 'uploaded' %}<span class="badge in_progress">Under review</span>
+          {% elif doc.status == 'approved' %}<span class="badge completed">Approved</span>
+          {% elif doc.status == 'rejected' %}<span class="badge" style="background:#fee2e2;color:#991b1b;">Rejected</span>
+          {% endif %}
+        </td>
+        <td>
+          {% if doc.file_path %}<a href="{{ url_for('staff.document_item_file', document_id=doc.id) }}">Download</a>{% else %}—{% endif %}
+        </td>
+        <td>
+          {% if doc.file_path %}
+          <form method="post" action="{{ url_for('staff.document_item_review', document_id=doc.id) }}" style="display:flex;flex-direction:column;gap:6px;max-width:320px;">
+            <textarea name="staff_notes" placeholder="Note (optional)" style="min-height:50px;font:inherit;">{{ doc.staff_notes or '' }}</textarea>
+            <div style="display:flex;gap:6px;">
+              <button type="submit" name="action" value="approve" class="btn" style="background:#16a34a;">Approve</button>
+              <button type="submit" name="action" value="reject" class="btn" style="background:#dc2626;">Reject</button>
+            </div>
+          </form>
+          {% else %}
+          <span class="muted">Awaiting upload from client</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No documents in the checklist yet -- add one above.</p>
+  {% endif %}
+</div>
+{% endblock %}

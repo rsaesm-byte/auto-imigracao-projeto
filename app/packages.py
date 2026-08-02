@@ -44,9 +44,17 @@ def _pick(pkg: dict, key: str, lang: str):
 
 @packages_bp.route("/")
 def index():
+    """Duas formas de contratar (pedido do usuário, 2026-08-02): "Faça
+    Você Mesmo" (pacotes de formulário avulso já existentes, o cliente
+    preenche sozinho) vs. "Deixe que um profissional faça por você" (os
+    15 serviços conduzidos pela equipe -- ver data/service_procedures/,
+    em dois níveis Saes Standard/Plus). Esta página é "como comprar";
+    "o que existe" fica em /servicos (ver app/wizard.py::services)."""
     from app.i18n import get_lang
     from app.services.pricing import package_price_cents
-    from app.wizard import _form_display_name
+    from app.services.service_procedures import load_service_procedure, service_display_name
+    from app.wizard import _form_display_name, VISA_SERVICE_SLUGS
+    from app.crm_models import ServiceCatalog
     lang = get_lang()
     packages = []
     for pkg in _load_packages():
@@ -58,7 +66,20 @@ def index():
             "form_names": [_form_display_name(i["slug"]) for i in form_items],
             "price_cents": package_price_cents(pkg["slug"]),
         })
-    return render_template("packages_index.html", packages=packages)
+
+    professional_services = []
+    for slug in VISA_SERVICE_SLUGS:
+        professional_services.append({"slug": slug, "name": _form_display_name(slug)})
+    procedure_rows = SessionLocal.query(ServiceCatalog).filter(ServiceCatalog.slug.is_not(None)).order_by(
+        ServiceCatalog.name).all()
+    for s in procedure_rows:
+        template = load_service_procedure(s.slug) or {}
+        professional_services.append({
+            "slug": s.slug, "name": service_display_name(s.slug, lang),
+            "free_consultation_minutes": template.get("free_consultation_minutes"),
+        })
+
+    return render_template("packages_index.html", packages=packages, professional_services=professional_services)
 
 
 @packages_bp.route("/<slug>")

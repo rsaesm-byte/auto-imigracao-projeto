@@ -1,0 +1,33 @@
+{% extends "staff_base.html" %}
+{% block title %}Documents — Staff{% endblock %}
+{% block content %}
+<div class="card">
+  <h1>Post-payment documents</h1>
+  <p class="muted">U.S. address and supporting-document checklist for each confirmed case.</p>
+</div>
+
+<div class="card">
+  {% if items %}
+  <table class="submissions">
+    <thead><tr><th>Client</th><th>Case</th><th>Address confirmed</th><th>Documents</th><th>Awaiting review</th><th></th></tr></thead>
+    <tbody>
+      {% for item in items %}
+      <tr>
+        <td>{{ item.client_email }}</td>
+        <td>{{ item.case_label }}</td>
+        <td>{{ 'Yes' if item.onboarding.address_confirmed else 'No' }}</td>
+        <td>{{ item.total_docs }}</td>
+        <td>
+          {% if item.pending_review %}<span class="badge in_progress">{{ item.pending_review }}</span>
+          {% else %}—{% endif %}
+        </td>
+        <td><a href="{{ url_for('staff.document_case_detail', payment_id=item.payment.id) }}">Open</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No cases with post-payment onboarding yet -- this appears here as soon as a payment is confirmed.</p>
+  {% endif %}
+</div>
+{% endblock %}

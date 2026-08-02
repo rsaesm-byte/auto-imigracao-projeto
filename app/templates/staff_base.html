@@ -3,13 +3,13 @@
    Website), sem chat widget, sem rodapé social. Só o essencial pra
    aprovar pagamentos e acessar os formulários dos clientes. #}
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>{% block title %}Staff — Saes Professional Services{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}?v=10">
-  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon.png') }}?v=2">
+  <link rel="icon" type="image/png" href="{{ url_for('static', filename='favicon-staff.png') }}?v=1">
 </head>
 <body>
   <header class="topbar">
@@ -18,6 +18,21 @@
     </a>
     <div class="topbar-right">
       <span class="badge in_progress">Saes Professional Team</span>
+      <div id="timer-widget" style="display:flex;align-items:center;gap:6px;font-size:0.82rem;">
+        {% if planner_running_entry %}
+        <span style="color:var(--success, #16a34a);font-weight:700;" id="timer-elapsed" data-started="{{ planner_running_entry.started_at.isoformat() }}Z">00:00:00</span>
+        <span class="muted" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ planner_running_entry.description or 'Untitled' }}</span>
+        <form method="post" action="{{ url_for('planner.time_stop') }}">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 8px;">⏹ Stop</button>
+        </form>
+        {% else %}
+        <form method="post" action="{{ url_for('planner.time_start') }}" style="display:flex;gap:4px;align-items:center;">
+          <input type="text" name="description" placeholder="What are you working on?" style="font-size:0.78rem;padding:4px 6px;width:190px;min-width:0;">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 8px;white-space:nowrap;">▶ Start</button>
+        </form>
+        {% endif %}
+        <button type="button" id="pomodoro-btn" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 8px;" title="Start a 25-minute Pomodoro focus timer">🍅 <span id="pomodoro-label">Pomodoro</span></button>
+      </div>
       <a href="{{ url_for('staff.profile') }}" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);">
         {% if current_user.photo_path %}
         <img src="{{ url_for('staff.profile_photo', user_id=current_user.id) }}" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);">
@@ -26,31 +41,60 @@
         {% endif %}
         <span class="muted">{{ current_user.email }}</span>
       </a>
-      <a class="logout" href="{{ url_for('auth.logout') }}">Sair</a>
+      <a class="logout" href="{{ url_for('auth.logout') }}">Log out</a>
     </div>
   </header>
 
-  <nav style="display:flex;gap:4px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--border);">
-    <a href="{{ url_for('staff.pending') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'pending' else 'color:var(--text);' }}">Aprovações Pendentes</a>
-    <a href="{{ url_for('staff.approved') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'approved' else 'color:var(--text);' }}">Aprovados</a>
-    <a href="{{ url_for('staff.finalized') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'finalized' else 'color:var(--text);' }}">Finalizados</a>
-    <a href="{{ url_for('staff.review_queue') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'review' else 'color:var(--text);' }}">Solicitar Review</a>
-    <a href="{{ url_for('staff.prices') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if active_tab == 'prices' else 'color:var(--text);' }}">Preços</a>
-    <span style="width:1px;background:var(--border);margin:6px 4px;"></span>
-    {# CRM (app/crm_staff_pipeline.py, app/crm_staff_ops.py) -- destaque via
-       request.blueprint/request.endpoint (setados pelo Flask sozinho),
-       em vez de pedir pra cada rota passar active_tab explicitamente. #}
-    <a href="{{ url_for('crm_pipeline.cases_kanban') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint == 'crm_pipeline.cases_kanban' else 'color:var(--text);' }}">CRM: Casos</a>
-    <a href="{{ url_for('crm_pipeline.leads_kanban') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_pipeline.leads_kanban', 'crm_pipeline.lead_new', 'crm_pipeline.lead_convert') else 'color:var(--text);' }}">Leads</a>
-    <a href="{{ url_for('crm_pipeline.clients_list') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_pipeline.clients_list', 'crm_pipeline.client_new', 'crm_pipeline.client_detail') else 'color:var(--text);' }}">Clientes</a>
-    <a href="{{ url_for('crm_ops.payments') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_ops.payments', 'crm_ops.payment_new') else 'color:var(--text);' }}">Pagamentos (CRM)</a>
-    <a href="{{ url_for('crm_ops.communications') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_ops.communications', 'crm_ops.communications_follow_ups', 'crm_ops.communication_new') else 'color:var(--text);' }}">Comunicações</a>
-    <a href="{{ url_for('crm_ops.tasks') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.endpoint in ('crm_ops.tasks', 'crm_ops.task_new') else 'color:var(--text);' }}">Tarefas</a>
-    <span style="width:1px;background:var(--border);margin:6px 4px;"></span>
-    <a href="{{ url_for('crm_financial.clients_kanban') }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if request.blueprint == 'crm_financial' else 'color:var(--text);' }}">Coaching Financeiro</a>
+  {# Nav order/groups are per-collaborator (app/staff_nav.py::resolve_nav_layout,
+     StaffNavLayout in app/models.py) -- "Edit navigation" below lets a
+     collaborator drag tabs to reorder and drop one onto another to bundle
+     them into a named dropdown group. staff_nav_slots is injected by an
+     app-level context processor (app/__init__.py) so it's available no
+     matter which blueprint rendered the current page. #}
+  <nav id="staff-nav-bar" style="display:flex;align-items:flex-start;gap:8px;justify-content:center;flex-wrap:wrap;padding:14px 20px;border-bottom:1px solid var(--border);position:relative;">
+    <div id="staff-nav-view" style="display:flex;gap:4px;flex-wrap:wrap;justify-content:center;">
+      {% for slot in staff_nav_slots %}
+        {% if slot.kind == 'group' %}
+        <div class="nav-dropdown">
+          <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false"
+                  style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;{{ 'background:var(--accent);color:#fff;' if slot.active else 'color:var(--text);' }}">
+            {{ slot.label }} <span class="nav-dropdown-caret">▾</span>
+          </button>
+          <div class="nav-dropdown-menu" hidden>
+            {# `slot['items']` (bracket, not dot) -- Jinja resolves `slot.items` to the
+               dict's builtin .items() method first, since `slot` is a plain dict and that
+               name collides; bracket access goes straight to __getitem__ instead. #}
+            {% for item in slot['items'] %}
+            <a href="{{ item.url }}">{{ item.label }}{% if item.badge_key == 'pending_documents_count' and pending_documents_count %} <span class="badge in_progress">{{ pending_documents_count }}</span>{% endif %}</a>
+            {% endfor %}
+          </div>
+        </div>
+        {% else %}
+        <a href="{{ slot.url }}" style="padding:8px 16px;border-radius:var(--radius-sm);font-weight:600;font-size:0.88rem;text-decoration:none;{{ 'background:var(--accent);color:#fff;' if slot.active else 'color:var(--text);' }}">
+          {{ slot.label }}{% if slot.badge_key == 'pending_documents_count' and pending_documents_count %} <span class="badge in_progress" style="margin-left:4px;">{{ pending_documents_count }}</span>{% endif %}
+        </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <button type="button" id="staff-nav-edit-toggle" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;white-space:nowrap;">✎ Edit navigation</button>
+
+    <div id="staff-nav-editor" hidden style="width:100%;">
+      <p class="muted" style="font-size:0.78rem;text-align:center;margin:4px 0 10px;">
+        Drag a tab to reorder it, or drag a tab within a group to reorder the group itself. Drop on the middle of another tab to group them together; drop on the left/right edge to reorder.
+      </p>
+      <div id="staff-nav-editor-chips" style="display:flex;gap:8px;flex-wrap:wrap;justify-content:center;"></div>
+      <div style="display:flex;gap:8px;justify-content:center;margin-top:12px;flex-wrap:wrap;">
+        <button type="button" id="staff-nav-save-global" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.82rem;padding:7px 16px;">Save for all collaborators</button>
+        <button type="button" id="staff-nav-save-personal" class="icon-btn" style="background:none;border:1px solid var(--accent);border-radius:var(--radius-sm);color:var(--accent);cursor:pointer;font-size:0.82rem;padding:7px 16px;">Save just for me</button>
+        <button type="button" id="staff-nav-cancel" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:7px 16px;">Cancel</button>
+        <form method="post" action="{{ url_for('staff.nav_reset') }}">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:#991b1b;cursor:pointer;font-size:0.82rem;padding:7px 16px;">Reset to default</button>
+        </form>
+      </div>
+    </div>
   </nav>
 
-  <div class="page wide bg-blobs">
+  <div class="page {% block page_class %}wide{% endblock %} bg-blobs">
     {% with messages = get_flashed_messages(with_categories=true) %}
       {% for category, message in messages %}
         <div class="flash {{ category }}">{{ message }}</div>
@@ -61,7 +105,333 @@
   </div>
 
   <footer class="site-footer">
-    <p>Painel interno da equipe — Saes Professional Services</p>
+    <p>Internal team panel — Saes Professional Services</p>
   </footer>
+
+  <script>
+    (function () {
+      var elapsedEl = document.getElementById('timer-elapsed');
+      if (elapsedEl) {
+        var started = new Date(elapsedEl.dataset.started);
+        function tick() {
+          var diff = Math.max(0, Math.floor((Date.now() - started.getTime()) / 1000));
+          var h = String(Math.floor(diff / 3600)).padStart(2, '0');
+          var m = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+          var s = String(diff % 60).padStart(2, '0');
+          elapsedEl.textContent = h + ':' + m + ':' + s;
+        }
+        tick();
+        setInterval(tick, 1000);
+      }
+
+      // Pomodoro -- client-side only (25 min focus countdown), não cria
+      // nenhum TimeEntry sozinho (o cronômetro de verdade acima é
+      // independente) -- só um lembrete visual pro colaborador.
+      var pomodoroBtn = document.getElementById('pomodoro-btn');
+      var pomodoroLabel = document.getElementById('pomodoro-label');
+      if (pomodoroBtn) {
+        var pomodoroInterval = null;
+        pomodoroBtn.addEventListener('click', function () {
+          if (pomodoroInterval) {
+            clearInterval(pomodoroInterval);
+            pomodoroInterval = null;
+            pomodoroLabel.textContent = 'Pomodoro';
+            pomodoroBtn.style.background = 'none';
+            return;
+          }
+          var remaining = 25 * 60;
+          pomodoroLabel.textContent = '25:00';
+          pomodoroInterval = setInterval(function () {
+            remaining -= 1;
+            if (remaining <= 0) {
+              clearInterval(pomodoroInterval);
+              pomodoroInterval = null;
+              pomodoroLabel.textContent = 'Done! 🎉';
+              pomodoroBtn.style.background = 'var(--cta)';
+              if (window.Notification && Notification.permission === 'granted') {
+                new Notification('Pomodoro complete!', { body: 'Time for a 5-minute break.' });
+              }
+              setTimeout(function () {
+                pomodoroLabel.textContent = 'Pomodoro';
+                pomodoroBtn.style.background = 'none';
+              }, 8000);
+              return;
+            }
+            var m = String(Math.floor(remaining / 60)).padStart(2, '0');
+            var s = String(remaining % 60).padStart(2, '0');
+            pomodoroLabel.textContent = m + ':' + s;
+          }, 1000);
+          if (window.Notification && Notification.permission === 'default') {
+            Notification.requestPermission();
+          }
+        });
+      }
+    })();
+  </script>
+
+  <script>
+    // Nav group dropdowns (view mode) -- generalized for however many
+    // groups exist (unlike base.html's single-dropdown version, since a
+    // customized staff nav can have several groups at once).
+    (function () {
+      document.querySelectorAll('#staff-nav-view .nav-dropdown').forEach(function (wrap) {
+        var toggle = wrap.querySelector('.nav-dropdown-toggle');
+        var menu = wrap.querySelector('.nav-dropdown-menu');
+        function close() { menu.hidden = true; toggle.setAttribute('aria-expanded', 'false'); }
+        function open() { menu.hidden = false; toggle.setAttribute('aria-expanded', 'true'); }
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (menu.hidden) { open(); } else { close(); }
+        });
+        document.addEventListener('click', function (e) {
+          if (!menu.hidden && !wrap.contains(e.target)) close();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') close();
+        });
+      });
+    })();
+  </script>
+
+  <script>
+    // "Edit navigation" -- reorder tabs and group them via drag-and-drop.
+    // State lives purely client-side until "Save" POSTs it as JSON to
+    // staff.nav_save; "Cancel" just reloads, discarding in-progress edits.
+    (function () {
+      var editBtn = document.getElementById('staff-nav-edit-toggle');
+      if (!editBtn) return;
+      var viewEl = document.getElementById('staff-nav-view');
+      var editorEl = document.getElementById('staff-nav-editor');
+      var chipsEl = document.getElementById('staff-nav-editor-chips');
+      var saveGlobalBtn = document.getElementById('staff-nav-save-global');
+      var savePersonalBtn = document.getElementById('staff-nav-save-personal');
+      var cancelBtn = document.getElementById('staff-nav-cancel');
+
+      var initialSlots = {{ staff_nav_slots|tojson }};
+      function toEditable(slots) {
+        return slots.map(function (s) {
+          if (s.kind === 'group') {
+            return { kind: 'group', label: s.label, items: s.items.map(function (i) { return { id: i.id, label: i.label }; }) };
+          }
+          return { kind: 'item', id: s.id, label: s.label };
+        });
+      }
+      var state = toEditable(initialSlots);
+      var dragged = null; // reference into `state` (top-level item/group being dragged)
+      var draggedMember = null; // { slot, item } -- a single tab being reordered WITHIN its own group
+
+      function renderChips() {
+        chipsEl.innerHTML = '';
+        state.forEach(function (slot) {
+          var chip = document.createElement('div');
+          chip.className = 'staff-nav-chip' + (slot.kind === 'group' ? ' staff-nav-chip-group' : ' staff-nav-chip-item');
+          chip.draggable = true;
+
+          if (slot.kind === 'item') {
+            chip.textContent = slot.label;
+          } else {
+            var labelInput = document.createElement('input');
+            labelInput.type = 'text';
+            labelInput.className = 'staff-nav-group-label-input';
+            labelInput.value = slot.label;
+            labelInput.addEventListener('input', function () { slot.label = labelInput.value || 'Group'; });
+            labelInput.addEventListener('mousedown', function (e) { e.stopPropagation(); });
+            labelInput.addEventListener('dragstart', function (e) { e.preventDefault(); e.stopPropagation(); });
+            chip.appendChild(labelInput);
+
+            var membersWrap = document.createElement('div');
+            membersWrap.className = 'staff-nav-chip-members';
+            slot.items.forEach(function (member) {
+              var m = document.createElement('span');
+              m.className = 'staff-nav-chip-member';
+              m.draggable = true;
+              m.appendChild(document.createTextNode(member.label));
+              var removeBtn = document.createElement('button');
+              removeBtn.type = 'button';
+              removeBtn.title = 'Remove from group';
+              removeBtn.textContent = '×';
+              removeBtn.addEventListener('click', function (e) {
+                e.stopPropagation();
+                var pos = slot.items.indexOf(member);
+                if (pos === -1) return;
+                slot.items.splice(pos, 1);
+                var groupPos = state.indexOf(slot);
+                state.splice(groupPos + 1, 0, { kind: 'item', id: member.id, label: member.label });
+                if (slot.items.length === 0) state.splice(state.indexOf(slot), 1);
+                renderChips();
+              });
+              m.appendChild(removeBtn);
+
+              // Reorder a tab WITHIN its own group by dragging it left/right
+              // of a sibling -- pedido do usuário 2026-08-02 (e.g. "CRM
+              // Cases" is first inside the "CRM" group, drag "Leads" to be
+              // first instead). `stopPropagation` on dragover/drop keeps the
+              // parent chip's own group/merge handlers below from also
+              // firing for the same event.
+              m.addEventListener('dragstart', function (e) {
+                e.stopPropagation();
+                draggedMember = { slot: slot, item: member };
+                m.classList.add('dragging');
+              });
+              m.addEventListener('dragend', function (e) {
+                e.stopPropagation();
+                m.classList.remove('dragging');
+                draggedMember = null;
+                membersWrap.querySelectorAll('.drop-before,.drop-after').forEach(function (el) {
+                  el.classList.remove('drop-before', 'drop-after');
+                });
+              });
+              m.addEventListener('dragover', function (e) {
+                if (!draggedMember || draggedMember.slot !== slot || draggedMember.item === member) return;
+                e.preventDefault();
+                e.stopPropagation();
+                var rect = m.getBoundingClientRect();
+                var relX = (e.clientX - rect.left) / rect.width;
+                m.classList.remove('drop-before', 'drop-after');
+                m.classList.add(relX < 0.5 ? 'drop-before' : 'drop-after');
+              });
+              m.addEventListener('dragleave', function (e) {
+                e.stopPropagation();
+                m.classList.remove('drop-before', 'drop-after');
+              });
+              m.addEventListener('drop', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
+                var zone = m.classList.contains('drop-before') ? 'before' : m.classList.contains('drop-after') ? 'after' : null;
+                m.classList.remove('drop-before', 'drop-after');
+                if (!draggedMember || zone === null || draggedMember.slot !== slot || draggedMember.item === member) return;
+
+                var fromIdx = slot.items.indexOf(draggedMember.item);
+                if (fromIdx === -1) return;
+                slot.items.splice(fromIdx, 1);
+                var targetIdx = slot.items.indexOf(member);
+                if (zone === 'after') targetIdx += 1;
+                slot.items.splice(targetIdx, 0, draggedMember.item);
+                draggedMember = null;
+                renderChips();
+              });
+
+              membersWrap.appendChild(m);
+            });
+            chip.appendChild(membersWrap);
+
+            var dissolveBtn = document.createElement('button');
+            dissolveBtn.type = 'button';
+            dissolveBtn.className = 'staff-nav-chip-dissolve';
+            dissolveBtn.textContent = 'Ungroup';
+            dissolveBtn.addEventListener('click', function (e) {
+              e.stopPropagation();
+              var pos = state.indexOf(slot);
+              var members = slot.items.map(function (i) { return { kind: 'item', id: i.id, label: i.label }; });
+              state.splice.apply(state, [pos, 1].concat(members));
+              renderChips();
+            });
+            chip.appendChild(dissolveBtn);
+          }
+
+          chip.addEventListener('dragstart', function (e) {
+            dragged = slot;
+            chip.classList.add('dragging');
+            e.dataTransfer.effectAllowed = 'move';
+          });
+          chip.addEventListener('dragend', function () {
+            chip.classList.remove('dragging');
+            dragged = null;
+            chipsEl.querySelectorAll('.drop-before,.drop-after,.drop-merge').forEach(function (c) {
+              c.classList.remove('drop-before', 'drop-after', 'drop-merge');
+            });
+          });
+          chip.addEventListener('dragover', function (e) {
+            if (!dragged || dragged === slot) return;
+            e.preventDefault();
+            var rect = chip.getBoundingClientRect();
+            var relX = (e.clientX - rect.left) / rect.width;
+            chip.classList.remove('drop-before', 'drop-after', 'drop-merge');
+            if (relX < 0.25) chip.classList.add('drop-before');
+            else if (relX > 0.75) chip.classList.add('drop-after');
+            else chip.classList.add('drop-merge');
+          });
+          chip.addEventListener('dragleave', function () {
+            chip.classList.remove('drop-before', 'drop-after', 'drop-merge');
+          });
+          chip.addEventListener('drop', function (e) {
+            e.preventDefault();
+            var zone = chip.classList.contains('drop-before') ? 'before'
+              : chip.classList.contains('drop-after') ? 'after'
+              : chip.classList.contains('drop-merge') ? 'merge' : null;
+            chip.classList.remove('drop-before', 'drop-after', 'drop-merge');
+            if (!dragged || zone === null || dragged === slot) return;
+
+            var fromIdx = state.indexOf(dragged);
+            var targetIdx = state.indexOf(slot);
+            if (fromIdx === -1 || targetIdx === -1) return;
+
+            if (zone === 'merge') {
+              if (slot.kind === 'group') {
+                if (dragged.kind === 'item') {
+                  slot.items.push({ id: dragged.id, label: dragged.label });
+                } else {
+                  slot.items = slot.items.concat(dragged.items);
+                }
+                state.splice(fromIdx, 1);
+              } else {
+                var newGroup = {
+                  kind: 'group', label: 'New group',
+                  items: (dragged.kind === 'group' ? dragged.items.slice() : [{ id: dragged.id, label: dragged.label }])
+                    .concat([{ id: slot.id, label: slot.label }]),
+                };
+                var lowIdx = Math.min(fromIdx, targetIdx), highIdx = Math.max(fromIdx, targetIdx);
+                state.splice(highIdx, 1);
+                state.splice(lowIdx, 1, newGroup);
+              }
+            } else {
+              state.splice(fromIdx, 1);
+              var insertAt = state.indexOf(slot);
+              if (zone === 'after') insertAt += 1;
+              state.splice(insertAt, 0, dragged);
+            }
+            dragged = null;
+            renderChips();
+          });
+
+          chipsEl.appendChild(chip);
+        });
+      }
+
+      editBtn.addEventListener('click', function () {
+        var entering = editorEl.hidden;
+        if (entering) {
+          state = toEditable(initialSlots);
+          renderChips();
+        }
+        editorEl.hidden = !entering;
+        viewEl.style.display = entering ? 'none' : 'flex';
+        editBtn.textContent = entering ? 'Close editor' : '✎ Edit navigation';
+      });
+
+      cancelBtn.addEventListener('click', function () { location.reload(); });
+
+      function saveLayout(scope) {
+        var payload = state.map(function (slot) {
+          if (slot.kind === 'group') {
+            return { kind: 'group', label: slot.label, items: slot.items.map(function (i) { return i.id; }) };
+          }
+          return { kind: 'item', id: slot.id };
+        });
+        fetch({{ url_for('staff.nav_save')|tojson }}, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ layout: payload, scope: scope }),
+        }).then(function (r) { return r.json(); }).then(function (data) {
+          if (data.ok) { location.reload(); } else { alert('Could not save the navigation layout.'); }
+        }).catch(function () { alert('Could not save the navigation layout.'); });
+      }
+
+      // "Save for all collaborators" vs. "Save just for me" -- pedido do
+      // usuário 2026-08-02.
+      saveGlobalBtn.addEventListener('click', function () { saveLayout('global'); });
+      savePersonalBtn.addEventListener('click', function () { saveLayout('personal'); });
+    })();
+  </script>
 </body>
 </html>

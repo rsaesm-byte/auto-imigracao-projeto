@@ -1,41 +1,38 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
-{% block title %}Staff — Casos (CRM){% endblock %}
+{% block title %}Staff — Cases (CRM){% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Casos</h1>
-  <p style="opacity:0.92;margin:0;">Hub central do CRM — um card por caso/processo imigratório, agrupado pelo estágio macro do funil.</p>
+  <h1>Cases</h1>
+  <p style="opacity:0.92;margin:0;">CRM central hub — one card per immigration case, grouped by the funnel's macro stage. Drag a card to move it to a different stage.</p>
 </div>
 
-<div class="crm-kanban">
+<div class="crm-kanban" data-draggable="true">
   {% for status in statuses %}
-  <div class="crm-kanban-col">
+  <div class="crm-kanban-col" data-status-field="case_status" data-status-value="{{ status.value }}"
+       data-action-template="{{ url_for('crm_pipeline.case_status_update', case_id=999999) }}">
     <h3>{{ crm_badge(status) }} ({{ by_status[status]|length }})</h3>
     {% for c in by_status[status] %}
-    <div class="crm-kanban-card">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ c.id }}">
       <h4>{{ c.title }}</h4>
       <div class="muted">{{ c.client.full_name }}</div>
       <div class="muted">
-        {{ 'Auto-atendimento' if c.service_mode.value == 'self_service' else 'Serviço completo' }}
-        · Prioridade: {{ c.priority.value|title }}
+        {{ {'self_service': 'Self-service', 'saes_standard': 'Saes Standard', 'saes_plus': 'Saes Plus'}[c.service_mode.value] }}
+        · Priority: {{ c.priority.value|title }}
       </div>
       {% if c.service_deadline %}
       {% set dtd = days_to_deadline(c) %}
-      <div class="muted">Prazo: {{ c.service_deadline.strftime('%d/%m/%Y') }}
-        {% if dtd is not none %}({{ dtd }} dia{{ 's' if dtd != 1 }}){% endif %}</div>
+      <div class="muted">Deadline: {{ c.service_deadline.strftime('%m/%d/%Y') }}
+        {% if dtd is not none %}({{ dtd }} day{{ 's' if dtd != 1 }}){% endif %}</div>
       {% endif %}
       <div style="margin-top:6px;">
-        <a href="{{ url_for('crm_pipeline.client_detail', client_id=c.client_id) }}" class="muted" style="font-size:0.8rem;">Ver cliente →</a>
+        <a href="{{ url_for('crm_pipeline.client_detail', client_id=c.client_id) }}" class="muted" style="font-size:0.8rem;">View client →</a>
       </div>
-      <form method="post" action="{{ url_for('crm_pipeline.case_status_update', case_id=c.id) }}">
-        <select name="case_status">
-          {% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if s == status }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
-        </select>
-        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Mover</button>
-      </form>
     </div>
     {% endfor %}
   </div>
   {% endfor %}
 </div>
+<script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
 {% endblock %}

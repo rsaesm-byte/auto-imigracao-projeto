@@ -1,21 +1,21 @@
-{# Tabela compartilhada pelas 4 abas do painel de staff (ver app/staff.py).
-   `payments` é a lista de dicts {payment, client_email, case_label}.
-   `date_field` é o atributo do Payment mostrado na coluna de data
-   (created_at/confirmed_at/finalized_at) -- acesso via p[date_field]
-   porque Jinja cai pra getattr() quando o objeto não tem __getitem__.
-   show_confirm/show_finalize/show_review ligam o botão de ação
-   correspondente (mutuamente exclusivos na prática, cada aba usa só um). #}
-{% macro payments_table(payments, date_field, date_label, show_confirm=False, show_finalize=False, show_review=False, empty_message='Nenhum pagamento encontrado.') %}
+{# Shared table used by the 4 tabs of the staff panel (see app/staff.py).
+   `payments` is the list of dicts {payment, client_email, case_label}.
+   `date_field` is the Payment attribute shown in the date column
+   (created_at/confirmed_at/finalized_at) -- accessed via p[date_field]
+   because Jinja falls back to getattr() when the object has no __getitem__.
+   show_confirm/show_finalize/show_review toggle the corresponding action
+   button (mutually exclusive in practice, each tab uses only one). #}
+{% macro payments_table(payments, date_field, date_label, show_confirm=False, show_finalize=False, show_review=False, empty_message='No payments found.') %}
 {% if payments %}
 <div style="overflow-x:auto;">
 <table class="submissions" style="min-width:960px;">
   <thead>
     <tr>
-      <th>Cliente</th>
-      <th>Contato</th>
-      <th>Serviço</th>
-      <th>Valor</th>
-      <th>Forma</th>
+      <th>Client</th>
+      <th>Contact</th>
+      <th>Service</th>
+      <th>Amount</th>
+      <th>Method</th>
       <th>{{ date_label }}</th>
       <th></th>
     </tr>
@@ -32,28 +32,28 @@
       <td>{{ item.case_label }}</td>
       <td>${{ "%.2f"|format(p.amount_cents / 100) }}</td>
       <td>{{ p.method or '—' }}</td>
-      <td class="muted">{{ p[date_field].strftime("%d/%m/%Y %H:%M") if p[date_field] else '—' }}</td>
+      <td class="muted">{{ p[date_field].strftime("%m/%d/%Y %H:%M") if p[date_field] else '—' }}</td>
       <td style="white-space:nowrap;">
         {% if p.proof_path %}
-        <a href="{{ url_for('staff.payment_proof', payment_id=p.id) }}">Comprovante</a>
+        <a href="{{ url_for('staff.payment_proof', payment_id=p.id) }}">Proof</a>
         {% endif %}
-        <a href="{{ url_for('staff.payment_detail', payment_id=p.id) }}" style="margin-left:10px;">Detalhes</a>
+        <a href="{{ url_for('staff.payment_detail', payment_id=p.id) }}" style="margin-left:10px;">Details</a>
         {% if show_confirm %}
         <form method="post" action="{{ url_for('staff.confirm_payment', payment_id=p.id) }}" style="display:inline;margin-left:10px;">
-          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Aprovar pagamento</button>
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Approve payment</button>
         </form>
         {% endif %}
         {% if show_finalize %}
         <form method="post" action="{{ url_for('staff.finalize_payment', payment_id=p.id) }}" style="display:inline;margin-left:10px;">
-          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Marcar como finalizado</button>
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Mark as finalized</button>
         </form>
         {% endif %}
         {% if show_review %}
           {% if p.review_requested %}
-          <span class="badge completed" style="margin-left:10px;">Review solicitado</span>
+          <span class="badge completed" style="margin-left:10px;">Review requested</span>
           {% else %}
           <form method="post" action="{{ url_for('staff.request_review', payment_id=p.id) }}" style="display:inline;margin-left:10px;">
-            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Solicitar review</button>
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Request review</button>
           </form>
           {% endif %}
         {% endif %}

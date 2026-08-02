@@ -1,15 +1,15 @@
 {% extends "staff_base.html" %}
-{% block title %}Staff — KPIs Coaching Financeiro{% endblock %}
+{% block title %}Staff — Financial Coaching KPIs{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>KPIs Mensais — Coaching Financeiro</h1>
-  <p style="opacity:0.92;margin:0;">Calculado na hora a partir dos dados reais (não é uma tabela mantida à mão, ao contrário do Notion original).</p>
+  <h1>Monthly KPIs — Financial Coaching</h1>
+  <p style="opacity:0.92;margin:0;">Calculated on the fly from real data (not a hand-maintained table, unlike the original Notion).</p>
 </div>
 
 <div class="card">
   <form method="get" style="display:flex;gap:10px;align-items:end;">
     <div>
-      <label class="muted">Mês</label><br>
+      <label class="muted">Month</label><br>
       <input type="month" name="mes" value="{{ mes }}" onchange="this.form.submit()">
     </div>
   </form>
@@ -18,16 +18,16 @@
 <div class="card">
   <table class="submissions">
     <tbody>
-      <tr><td class="muted">Novos leads no mês</td><td>{{ kpis.number_of_leads }}</td></tr>
-      <tr><td class="muted">Leads convertidos (fecharam no mês)</td><td>{{ kpis.leads_converted }}</td></tr>
-      <tr><td class="muted">Taxa de conversão</td><td>{{ (kpis.conversion_rate_pct ~ '%') if kpis.conversion_rate_pct is not none else '—' }}</td></tr>
-      <tr><td class="muted">Clientes ativos (agora)</td><td>{{ kpis.active_clients }}</td></tr>
-      <tr><td class="muted">Receita recebida no mês</td><td>${{ '%.2f'|format(kpis.total_revenue_cents / 100) }}</td></tr>
-      <tr><td class="muted">Ticket médio (fechados no mês)</td><td>{{ '$%.2f'|format(kpis.average_deal_size_cents / 100) if kpis.average_deal_size_cents is not none else '—' }}</td></tr>
-      <tr><td class="muted">Dias médios para fechar</td><td>{{ kpis.average_days_to_close if kpis.average_days_to_close is not none else '—' }}</td></tr>
-      <tr><td class="muted">NPS médio (fechados no mês)</td><td>{{ kpis.nps_average if kpis.nps_average is not none else '—' }}</td></tr>
-      <tr><td class="muted">Aderência alta a homework (%)</td><td>{{ (kpis.avg_homework_adherence_pct ~ '%') if kpis.avg_homework_adherence_pct is not none else '—' }}</td></tr>
-      <tr><td class="muted">Adesão à continuidade (programas concluídos)</td><td>{{ (kpis.continuity_adoption_rate_pct ~ '%') if kpis.continuity_adoption_rate_pct is not none else '—' }}</td></tr>
+      <tr><td class="muted">New leads this month</td><td>{{ kpis.number_of_leads }}</td></tr>
+      <tr><td class="muted">Converted leads (closed this month)</td><td>{{ kpis.leads_converted }}</td></tr>
+      <tr><td class="muted">Conversion rate</td><td>{{ (kpis.conversion_rate_pct ~ '%') if kpis.conversion_rate_pct is not none else '—' }}</td></tr>
+      <tr><td class="muted">Active clients (now)</td><td>{{ kpis.active_clients }}</td></tr>
+      <tr><td class="muted">Revenue received this month</td><td>${{ '%.2f'|format(kpis.total_revenue_cents / 100) }}</td></tr>
+      <tr><td class="muted">Average deal size (closed this month)</td><td>{{ '$%.2f'|format(kpis.average_deal_size_cents / 100) if kpis.average_deal_size_cents is not none else '—' }}</td></tr>
+      <tr><td class="muted">Average days to close</td><td>{{ kpis.average_days_to_close if kpis.average_days_to_close is not none else '—' }}</td></tr>
+      <tr><td class="muted">Average NPS (closed this month)</td><td>{{ kpis.nps_average if kpis.nps_average is not none else '—' }}</td></tr>
+      <tr><td class="muted">High homework adherence (%)</td><td>{{ (kpis.avg_homework_adherence_pct ~ '%') if kpis.avg_homework_adherence_pct is not none else '—' }}</td></tr>
+      <tr><td class="muted">Continuity adoption (completed programs)</td><td>{{ (kpis.continuity_adoption_rate_pct ~ '%') if kpis.continuity_adoption_rate_pct is not none else '—' }}</td></tr>
     </tbody>
   </table>
 </div>

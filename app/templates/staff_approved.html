@@ -1,15 +1,16 @@
 {% extends "staff_base.html" %}
 {% from "_staff_payments_table.html" import payments_table %}
 {% from "_staff_range_pills.html" import range_pills %}
-{% block title %}Staff — Aprovados{% endblock %}
+{% block title %}Staff — Approved{% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Aprovados</h1>
-  <p style="opacity:0.92;margin:0;">Pagamento já aprovado. Marque como "Finalizado" quando os documentos já tiverem sido entregues ao cliente e o caso estiver encerrado.</p>
+  <h1>Approved</h1>
+  <p style="opacity:0.92;margin:0;">Payment already approved. Mark as "Finalized" once the documents have been delivered to the client and the case is closed.</p>
 </div>
 
 <div class="card">
   {{ range_pills('staff.approved', range_key, range_labels) }}
-  {{ payments_table(payments, "confirmed_at", "Aprovado em", show_finalize=True, empty_message="Nenhum pagamento aprovado neste período.") }}
+  {{ payments_table(payments, "confirmed_at", "Approved on", show_finalize=True, empty_message="No approved payments in this period.") }}
 </div>
 {% endblock %}

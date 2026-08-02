@@ -1,0 +1,66 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Projects{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Projects</h1>
+  <p style="opacity:0.92;margin:0;">Internal projects -- separate from CRM Cases, for work that isn't tied to a specific client's immigration case.</p>
+  <a href="{{ url_for('planner.planner_week') }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">← Back to Weekly Planner</a>
+</div>
+
+<div class="card">
+  <h2>New project</h2>
+  <form method="post" action="{{ url_for('planner.project_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Name</label><br>
+      <input type="text" name="name" required>
+    </div>
+    <div style="flex:1;min-width:200px;">
+      <label class="muted">Description</label><br>
+      <input type="text" name="description" style="width:100%;">
+    </div>
+    <div>
+      <label class="muted">Owner</label><br>
+      <select name="owner_id"><option value="">—</option>{% for u in staff_users %}<option value="{{ u.id }}">{{ u.email }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">Client (optional)</label><br>
+      <select name="client_id"><option value="">—</option>{% for c in clients %}<option value="{{ c.id }}">{{ c.full_name }}</option>{% endfor %}</select>
+    </div>
+    <div>
+      <label class="muted">Color</label><br>
+      <input type="color" name="color" value="#205B5B">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
+  </form>
+</div>
+
+<div class="card">
+  {% if projects %}
+  <table class="submissions">
+    <thead><tr><th>Name</th><th>Owner</th><th>Client</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for p in projects %}
+      <tr>
+        <td>
+          <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:{{ p.color or 'var(--accent)' }};margin-right:6px;"></span>
+          {{ p.name }}{% if p.description %}<br><span class="muted" style="font-size:0.8rem;">{{ p.description }}</span>{% endif %}
+        </td>
+        <td class="muted">{{ p.owner.email if p.owner_id and p.owner else '—' }}</td>
+        <td class="muted">{{ p.client.full_name if p.client_id and p.client else '—' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('planner.project_status_update', project_id=p.id) }}">
+            <select name="status" onchange="this.form.submit()">
+              {% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if p.status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
+            </select>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No projects yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

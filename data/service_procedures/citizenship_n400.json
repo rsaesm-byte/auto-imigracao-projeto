@@ -1,0 +1,233 @@
+{
+  "service_id": "citizenship_n400",
+  "name": "Citizenship / Naturalization (Form N-400)",
+  "name_pt": "Cidadania / Naturalização (Formulário N-400)",
+  "name_es": "Ciudadanía / Naturalización (Formulario N-400)",
+  "forms": [
+    "N-400",
+    "G-1145 (optional)"
+  ],
+  "channel": "uscis_domestic",
+  "actor_blocks": [],
+  "reference_fee_note": "Reference (verify current amount): ~$760 paper / ~$710 online.",
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Form N-400 completed",
+        "Copy of current/expired Green Card (front and back)",
+        "Government-issued ID (driver's license)",
+        "Current passport",
+        "Previous passports (if any)",
+        "Proof of current U.S. address",
+        "Birth certificate",
+        "Marriage certificate (if applicable)",
+        "Divorce decree(s) (if applicable)",
+        "Death certificate (if applicable)",
+        "Children's birth certificates",
+        "Tax returns (last 5 years, or 3 years if marriage-based)",
+        "IRS transcripts",
+        "Proof of payment or IRS agreement (if applicable)",
+        "Criminal records (if applicable)",
+        "Court dispositions (if applicable)",
+        "Police reports (if applicable)",
+        "Proof spouse is a U.S. citizen (if marriage-based)",
+        "Marriage certificate (if marriage-based)",
+        "Certified translations for all non-English documents"
+      ],
+      "documents_pt": [
+        "Formulário N-400 preenchido",
+        "Cópia do Green Card atual/vencido (frente e verso)",
+        "Identidade oficial (carteira de motorista)",
+        "Passaporte atual",
+        "Passaportes anteriores (se houver)",
+        "Comprovante de endereço atual nos EUA",
+        "Certidão de nascimento",
+        "Certidão de casamento (se aplicável)",
+        "Sentença(s) de divórcio (se aplicável)",
+        "Certidão de óbito (se aplicável)",
+        "Certidões de nascimento dos filhos",
+        "Declarações de imposto de renda (últimos 5 anos, ou 3 anos se baseado em casamento)",
+        "Transcrições do IRS",
+        "Comprovante de pagamento ou acordo com o IRS (se aplicável)",
+        "Registros criminais (se aplicável)",
+        "Decisões judiciais (se aplicável)",
+        "Boletins de ocorrência (se aplicável)",
+        "Comprovante de que o cônjuge é cidadão americano (se baseado em casamento)",
+        "Certidão de casamento (se baseado em casamento)",
+        "Traduções juramentadas de todos os documentos não em inglês"
+      ],
+      "documents_es": [
+        "Formulario N-400 completado",
+        "Copia del Green Card actual/vencido (frente y reverso)",
+        "Identificación oficial (licencia de conducir)",
+        "Pasaporte actual",
+        "Pasaportes anteriores (si los hay)",
+        "Comprobante de domicilio actual en EE. UU.",
+        "Acta de nacimiento",
+        "Acta de matrimonio (si aplica)",
+        "Sentencia(s) de divorcio (si aplica)",
+        "Acta de defunción (si aplica)",
+        "Actas de nacimiento de los hijos",
+        "Declaraciones de impuestos (últimos 5 años, o 3 años si es basado en matrimonio)",
+        "Transcripciones del IRS",
+        "Comprobante de pago o acuerdo con el IRS (si aplica)",
+        "Antecedentes penales (si aplica)",
+        "Resoluciones judiciales (si aplica)",
+        "Reportes policiales (si aplica)",
+        "Comprobante de que el cónyuge es ciudadano estadounidense (si es basado en matrimonio)",
+        "Acta de matrimonio (si es basado en matrimonio)",
+        "Traducciones certificadas de todos los documentos que no estén en inglés"
+      ],
+      "steps": [
+        "Gather household income information",
+        "Gather full list of trips (last 5 years): from/to (mm/dd/yyyy), city/state/country",
+        "Gather passport stamps and travel tickets/records",
+        "Gather proof of marital union for the last 3 years (joint bank accounts, lease/mortgage, insurance, joint tax returns, photos, children), if marriage-based",
+        "Gather 3-5 affidavits of good moral character (friends/family/employer/religious leader) -- each with full name, ID, address, relationship and length of time knowing the beneficiary, good-moral-character information",
+        "Draft personal statement (good moral character)",
+        "Draft employer letter",
+        "Draft community involvement letter",
+        "Draft tax explanation letter (if needed)"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Confirm all answers are consistent and complete",
+        "Confirm last 5 years are fully covered (no gaps)",
+        "Confirm address history is complete",
+        "Confirm employment history is complete",
+        "Confirm travel history is complete",
+        "Explain trips longer than 6 months",
+        "Explain criminal history",
+        "Explain tax issues",
+        "Explain immigration violations",
+        "Confirm strong moral-character evidence",
+        "Confirm financial compliance",
+        "Confirm continuous residence preserved",
+        "Confirm physical presence requirements met"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Application reviewed and signed",
+        "Copy saved for records",
+        "Filing fee prepared ($760 paper / $710 online)",
+        "Package order: Payment → Cover letter → G-1145 (optional) → Form N-400 → Supporting documents",
+        "Mailed or submitted online",
+        "Tracking saved",
+        "Copy stored"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Application submitted",
+        "Payment completed",
+        "Receipt notice generated (I-797C)",
+        "Receipt saved in Drive",
+        "Client notified",
+        "Biometrics appointment scheduled",
+        "Client notified",
+        "Biometrics completed",
+        "Interview documents prepared: Green Card (original), driver's license, all passports, travel records, tax returns (3-5 years), marriage documents (if applicable), name-change documents (if applicable)",
+        "Civics questions prepared",
+        "Reading & writing (English test) prepared",
+        "Interview completed",
+        "Oath ceremony scheduled",
+        "Certificate of Naturalization received"
+      ]
+    }
+  ],
+  "free_consultation_minutes": 15,
+  "pricing": {
+    "standard_usd": 500,
+    "plus_usd": 1250,
+    "plus_paper_usd": null,
+    "notes": "Single Plus price (no online/paper split noted in the contract).",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "N-400 preparation based on 18 years of experience",
+    "Discount on document translation",
+    "Discount on RFE response (quoted after review)"
+  ],
+  "standard_excludes": [
+    "Certified translations (charged separately)",
+    "Case monitoring (client's responsibility)"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Translation of supporting letters",
+    "RFE response included",
+    "Printing, assembly, and mailing (client pays only the USCIS fee)",
+    "Full case tracking until USCIS decision",
+    "Civics/interview preparation support"
+  ],
+  "plus_excludes": [
+    "Certified translations (charged separately)"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Preparação do N-400 baseada em 18 anos de experiência",
+    "Desconto na tradução de documentos",
+    "Desconto na resposta a RFE (orçamento após revisão)"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Preparación del N-400 basada en 18 años de experiencia",
+    "Descuento en la traducción de documentos",
+    "Descuento en la respuesta a RFE (cotizado después de la revisión)"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Acompanhamento do caso (responsabilidade do cliente)"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)",
+    "Seguimiento del caso (responsabilidad del cliente)"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Tradução das cartas de apoio",
+    "Resposta a RFE inclusa",
+    "Impressão, montagem e envio pelo correio (cliente paga apenas a taxa da USCIS)",
+    "Acompanhamento completo do caso até a decisão da USCIS",
+    "Apoio na preparação para a prova de civismo/entrevista"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Traducción de las cartas de respaldo",
+    "Respuesta a RFE incluida",
+    "Impresión, ensamblaje y envío por correo (el cliente paga solo la tarifa de USCIS)",
+    "Seguimiento completo del caso hasta la decisión de USCIS",
+    "Apoyo en la preparación para el examen cívico/entrevista"
+  ],
+  "plus_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)"
+  ]
+}

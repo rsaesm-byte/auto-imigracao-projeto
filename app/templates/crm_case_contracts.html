@@ -1,0 +1,96 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — Contracts — {{ case.title }}{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Contracts — {{ case.title }}</h1>
+  <p style="opacity:0.92;margin:0;">Client: {{ case.client.full_name }}</p>
+</div>
+
+<div class="card">
+  <h2>Request a signature</h2>
+  <form method="post" action="{{ url_for('crm_contracts.contract_new', case_id=case.id) }}"
+        style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Document</label><br>
+      <select name="document_type" id="doc-type-select" style="font-size:0.9rem;">
+        {% for dt in document_types %}
+        <option value="{{ dt.value }}">{{ 'Service Contract' if dt.value == 'service_contract' else 'Terms & Conditions' }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div id="service-fields" style="display:flex;gap:10px;flex-wrap:wrap;">
+      <div>
+        <label class="muted">Service</label><br>
+        <select name="service_catalog_id">
+          <option value="">—</option>
+          {% for s in services %}
+          <option value="{{ s.id }}" {{ 'selected' if current_service and current_service.id == s.id }}>{{ s.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Tier</label><br>
+        <select name="tier">
+          {% for t in tiers %}
+          <option value="{{ t.value }}">{{ t.value|replace('_',' ')|title }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+    <button type="submit" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.82rem;padding:8px 16px;">Request signature</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Requests ({{ case.contracts|length }})</h2>
+  {% if case.contracts %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead><tr><th>Document</th><th>Price</th><th>Status</th><th>Requested</th><th>Signed / Rejected</th><th>Signature</th><th></th></tr></thead>
+    <tbody>
+      {% for c in case.contracts %}
+      <tr>
+        <td>
+          {% if c.document_type.value == 'service_contract' %}{{ c.service.name if c.service else '—' }}<div class="muted" style="font-size:0.78rem;">{{ c.tier.value|replace('_',' ')|title if c.tier else '' }}</div>{% else %}Terms &amp; Conditions{% endif %}
+        </td>
+        <td class="muted">{% set p = price_cents(c) %}{% if p is not none %}${{ '%.2f'|format(p / 100) }}{% else %}—{% endif %}</td>
+        <td>{{ crm_badge(c.status) }}</td>
+        <td class="muted">{{ c.requested_at.strftime('%m/%d/%Y') }}</td>
+        <td class="muted">
+          {% if c.signed_at %}{{ c.signed_at.strftime('%m/%d/%Y %I:%M %p') }}
+          {% elif c.rejected_at %}{{ c.rejected_at.strftime('%m/%d/%Y') }}{% if c.rejected_reason %} — {{ c.rejected_reason }}{% endif %}
+          {% else %}—{% endif %}
+        </td>
+        <td>
+          {% if c.signature_image_path %}<a href="{{ url_for('crm_contracts.signature_image', contract_id=c.id) }}" target="_blank" rel="noopener">View →</a>{% else %}—{% endif %}
+        </td>
+        <td>
+          {% if c.status.value != 'signed' %}
+          <form method="post" action="{{ url_for('crm_contracts.contract_cancel', contract_id=c.id) }}" onsubmit="return confirm('Cancel this signature request?');">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Cancel</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">No signature requests yet for this case.</p>
+  {% endif %}
+</div>
+
+<script>
+  (function () {
+    var select = document.getElementById('doc-type-select');
+    var serviceFields = document.getElementById('service-fields');
+    function sync() {
+      serviceFields.style.display = select.value === 'service_contract' ? 'flex' : 'none';
+    }
+    select.addEventListener('change', sync);
+    sync();
+  })();
+</script>
+{% endblock %}

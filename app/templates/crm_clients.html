@@ -1,32 +1,32 @@
 {% extends "staff_base.html" %}
-{% block title %}Staff — Clientes (CRM){% endblock %}
+{% block title %}Staff — Clients (CRM){% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Clientes</h1>
-  <p style="opacity:0.92;margin:0;">Cadastro central de clientes do CRM — auto-atendimento e serviço completo.</p>
+  <h1>Clients</h1>
+  <p style="opacity:0.92;margin:0;">CRM central client registry — self-service and full-service.</p>
 </div>
 
 {% if new_form %}
 <div class="card">
-  <h2>Novo cliente</h2>
+  <h2>New client</h2>
   <form method="post" action="{{ url_for('crm_pipeline.client_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
     <div>
-      <label class="muted">Nome completo</label><br>
+      <label class="muted">Full name</label><br>
       <input type="text" name="full_name" required>
     </div>
     <div>
-      <label class="muted">E-mail</label><br>
+      <label class="muted">Email</label><br>
       <input type="email" name="email">
     </div>
     <div>
-      <label class="muted">Telefone (US)</label><br>
+      <label class="muted">Phone (US)</label><br>
       <input type="text" name="us_phone">
     </div>
     <div>
       <label class="muted">Tier</label><br>
       <select name="tier"><option value="">—</option>{% for t in tiers %}<option value="{{ t.value }}">{{ t.value }}</option>{% endfor %}</select>
     </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Cadastrar</button>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
   </form>
 </div>
 {% else %}
@@ -34,11 +34,11 @@
 <div class="card">
   <form method="get" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
     <div>
-      <label class="muted">Buscar (nome ou e-mail)</label><br>
+      <label class="muted">Search (name or email)</label><br>
       <input type="text" name="q" value="{{ q }}">
     </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Buscar</button>
-    <a href="{{ url_for('crm_pipeline.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ Novo cliente</a>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Search</button>
+    <a href="{{ url_for('crm_pipeline.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New client</a>
   </form>
 </div>
 
@@ -47,7 +47,7 @@
   <div style="overflow-x:auto;">
   <table class="submissions">
     <thead>
-      <tr><th>Nome</th><th>E-mail</th><th>Tier</th><th>Telefone</th><th>Casos abertos</th><th></th></tr>
+      <tr><th>Name</th><th>Email</th><th>Tier</th><th>Phone</th><th>Open cases</th><th></th></tr>
     </thead>
     <tbody>
       {% for c in clients %}
@@ -57,14 +57,14 @@
         <td class="muted">{{ c.tier.value if c.tier else '—' }}</td>
         <td class="muted">{{ c.us_phone or c.home_phone or '—' }}</td>
         <td class="muted">{{ open_case_counts.get(c.id, 0) }}</td>
-        <td><a href="{{ url_for('crm_pipeline.client_detail', client_id=c.id) }}">Ver detalhe</a></td>
+        <td><a href="{{ url_for('crm_pipeline.client_detail', client_id=c.id) }}">View details</a></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
   </div>
   {% else %}
-  <p class="muted">Nenhum cliente encontrado.</p>
+  <p class="muted">No clients found.</p>
   {% endif %}
 </div>
 {% endif %}

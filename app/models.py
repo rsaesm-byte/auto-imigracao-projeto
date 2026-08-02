@@ -217,3 +217,110 @@ class ServiceFee(Base):
     price_cents: Mapped[int | None] = mapped_column(default=None)
     updated_at: Mapped[datetime] = mapped_column(default=_utcnow, onupdate=_utcnow)
     updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+
+
+class PostPaymentOnboarding(Base):
+    """Etapa que se abre pro cliente assim que um Payment é confirmado
+    (ver app/staff.py::confirm_payment) -- endereço completo nos EUA,
+    e-mail do titular/dependentes, e checklist de documentos de apoio
+    (RequiredDocument abaixo). Uma linha por Payment (não por
+    FormSubmission -- um pacote com várias submissões usa o mesmo
+    onboarding, mesma unidade de "caso" já usada em
+    app/staff.py::_case_label/_case_submissions)."""
+    __tablename__ = "post_payment_onboarding"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    payment_id: Mapped[int] = mapped_column(ForeignKey("payments.id"), unique=True, index=True)
+
+    # Nome completo/telefone do titular -- pedido do usuário (2026-08-01)
+    # pra sincronizar com Client.full_name/us_phone no CRM (ver
+    # app/onboarding.py::_sync_onboarding_to_crm).
+    applicant_full_name: Mapped[str | None] = mapped_column(default=None)
+    applicant_us_phone: Mapped[str | None] = mapped_column(default=None)
+    us_address_line1: Mapped[str | None] = mapped_column(default=None)
+    us_address_complement: Mapped[str | None] = mapped_column(default=None)
+    us_city: Mapped[str | None] = mapped_column(default=None)
+    us_state: Mapped[str | None] = mapped_column(default=None)
+    us_zip: Mapped[str | None] = mapped_column(default=None)
+    applicant_email: Mapped[str | None] = mapped_column(default=None)
+    # True assim que o cliente salva o formulário de endereço/e-mails pelo
+    # menos uma vez -- não significa que o staff já revisou nada, só que
+    # não está mais em branco.
+    address_confirmed: Mapped[bool] = mapped_column(default=False)
+
+    created_at: Mapped[datetime] = mapped_column(default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(default=_utcnow, onupdate=_utcnow)
+
+    dependents: Mapped[list["OnboardingDependent"]] = relationship(
+        back_populates="onboarding", cascade="all, delete-orphan")
+    documents: Mapped[list["RequiredDocument"]] = relationship(
+        back_populates="onboarding", cascade="all, delete-orphan")
+
+
+class OnboardingDependent(Base):
+    """E-mail de um dependente do titular (cônjuge, filho etc.) informado
+    na etapa de onboarding -- N por PostPaymentOnboarding."""
+    __tablename__ = "onboarding_dependents"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    onboarding_id: Mapped[int] = mapped_column(ForeignKey("post_payment_onboarding.id"), index=True)
+    full_name: Mapped[str]
+    email: Mapped[str | None] = mapped_column(default=None)
+    us_phone: Mapped[str | None] = mapped_column(default=None)
+
+    onboarding: Mapped[PostPaymentOnboarding] = relationship(back_populates="dependents")
+
+
+class RequiredDocument(Base):
+    """Um item do checklist de documentos de apoio -- criado manualmente
+    pelo staff por caso (não reusa data/document_rules/<form>.json de
+    propósito: cada caso pode precisar de uma lista diferente). O cliente
+    faz upload quando tem o documento em mãos e marca como enviado; o
+    staff aprova, reprova (com observação) ou pede reenvio."""
+    __tablename__ = "required_documents"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    onboarding_id: Mapped[int] = mapped_column(ForeignKey("post_payment_onboarding.id"), index=True)
+    label: Mapped[str]
+    status: Mapped[str] = mapped_column(default="pending", index=True)  # pending | uploaded | approved | rejected
+    file_path: Mapped[str | None] = mapped_column(default=None)
+    uploaded_at: Mapped[datetime | None] = mapped_column(default=None)
+    staff_notes: Mapped[str | None] = mapped_column(Text, default=None)
+    reviewed_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    reviewed_at: Mapped[datetime | None] = mapped_column(default=None)
+    created_at: Mapped[datetime] = mapped_column(default=_utcnow)
+
+    onboarding: Mapped[PostPaymentOnboarding] = relationship(back_populates="documents")
+
+
+class StaffNavLayout(Base):
+    """Per-collaborator customization of the /staff top nav bar -- order of
+    tabs + optional dropdown groups bundling several tabs together. User
+    request 2026-08-02: an "Edit navigation" mode where tabs can be
+    dragged to reorder and dropped onto each other to form a group. One
+    row per user; no row means "use the default order" (see
+    app/staff_nav.py::DEFAULT_LAYOUT) -- never a stored duplicate of it,
+    so a future new tab added to the registry shows up for everyone who
+    hasn't customized their nav without a migration."""
+    __tablename__ = "staff_nav_layouts"
+
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    layout_json: Mapped[str] = mapped_column(Text)
+    updated_at: Mapped[datetime] = mapped_column(default=_utcnow, onupdate=_utcnow)
+
+
+class StaffNavGlobalLayout(Base):
+    """Org-wide default nav layout -- a singleton (always id=1), separate
+    from the per-user `StaffNavLayout` above. User request 2026-08-02:
+    "Save for all collaborators" vs. "Save just for me" when editing the
+    nav. Resolution order (app/staff_nav.py::resolve_nav_layout): a
+    collaborator's own `StaffNavLayout` row wins if present; otherwise
+    this singleton if someone has ever saved one "for everyone"; otherwise
+    the hardcoded DEFAULT_LAYOUT. Never duplicated -- same convention as
+    StaffNavLayout (absence means "fall through to the next layer")."""
+    __tablename__ = "staff_nav_global_layout"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    layout_json: Mapped[str] = mapped_column(Text)
+    updated_at: Mapped[datetime] = mapped_column(default=_utcnow, onupdate=_utcnow)
+    updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)

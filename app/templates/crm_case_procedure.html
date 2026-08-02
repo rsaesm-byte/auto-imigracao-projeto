@@ -1,0 +1,116 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Case Procedure{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Procedure — {{ case.title }}</h1>
+  <p style="opacity:0.92;margin:0;">Client: {{ case.client.full_name }}</p>
+  <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">View document tracker (CRM) →</a>
+  · <a href="{{ url_for('crm_ops.case_messages', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">Messages →</a>
+</div>
+
+<div class="card">
+  <h2>"Full-Service Package" (Saes Standard/Plus)</h2>
+  <form method="post" action="{{ url_for('crm_ops.case_service_update', case_id=case.id) }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Service</label><br>
+      <select name="service_slug" required>
+        <option value="">—</option>
+        {% for s in services_with_slug %}
+        <option value="{{ s.slug }}" {{ 'selected' if current_service and current_service.id == s.id }}>{{ s.name }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Service tier</label><br>
+      <select name="service_mode" required>
+        <option value="">—</option>
+        {% for t in tiers %}
+        <option value="{{ t.value }}" {{ 'selected' if case.service_mode == t }}>{{ 'Saes Standard' if t.value == 'saes_standard' else 'Saes Plus' }}</option>
+        {% endfor %}
+      </select>
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Save</button>
+  </form>
+  {% if current_service and not template %}
+  <p class="muted" style="margin-top:10px;">This service doesn't have a procedure template registered yet.</p>
+  {% endif %}
+  {% if current_service and payment is none %}
+  <p class="muted" style="margin-top:10px;">The client's document checklist is only generated automatically once this case's payment is confirmed.</p>
+  {% endif %}
+</div>
+
+{% if template and template.pricing %}
+<div class="card">
+  <h2>Pricing &amp; what's included</h2>
+  <p class="muted" style="font-size:0.78rem;margin-top:-8px;">From the signed Saes Professional Services contract for this service.</p>
+  <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
+    <div><span class="muted" style="font-size:0.8rem;">Standard</span><br><strong style="font-size:1.1rem;">{{ '$%.2f'|format(template.pricing.standard_usd) if template.pricing.standard_usd is not none else '—' }}</strong></div>
+    {% if template.pricing.plus_usd is not none %}
+    <div><span class="muted" style="font-size:0.8rem;">Plus (Online)</span><br><strong style="font-size:1.1rem;">${{ '%.2f'|format(template.pricing.plus_usd) }}</strong></div>
+    {% endif %}
+    {% if template.pricing.plus_paper_usd is not none %}
+    <div><span class="muted" style="font-size:0.8rem;">Plus (Paper)</span><br><strong style="font-size:1.1rem;">${{ '%.2f'|format(template.pricing.plus_paper_usd) }}</strong></div>
+    {% endif %}
+  </div>
+  {% if template.pricing.notes %}
+  <p class="muted" style="font-size:0.82rem;">{{ template.pricing.notes }}</p>
+  {% endif %}
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:10px;">
+    <div>
+      <h3 style="font-size:0.9rem;margin-bottom:4px;">Standard includes</h3>
+      <ul style="margin:0 0 8px;">{% for item in template.standard_includes %}<li class="muted" style="font-size:0.85rem;">{{ item }}</li>{% endfor %}</ul>
+      {% if template.standard_excludes %}
+      <h3 style="font-size:0.85rem;margin-bottom:4px;color:#991b1b;">Standard excludes</h3>
+      <ul style="margin:0;">{% for item in template.standard_excludes %}<li class="muted" style="font-size:0.85rem;">{{ item }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% if template.plus_includes %}
+    <div>
+      <h3 style="font-size:0.9rem;margin-bottom:4px;">Plus includes</h3>
+      <ul style="margin:0 0 8px;">{% for item in template.plus_includes %}<li class="muted" style="font-size:0.85rem;">{{ item }}</li>{% endfor %}</ul>
+      {% if template.plus_excludes %}
+      <h3 style="font-size:0.85rem;margin-bottom:4px;color:#991b1b;">Plus excludes</h3>
+      <ul style="margin:0;">{% for item in template.plus_excludes %}<li class="muted" style="font-size:0.85rem;">{{ item }}</li>{% endfor %}</ul>
+      {% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+
+{% if template %}
+{% for phase in template.phases %}
+<div class="card">
+  <h2>{{ phase.name }}</h2>
+
+  {% if phase.documents %}
+  <p class="muted" style="margin-bottom:4px;">Documents (client checklist{% if payment %} -- <a href="{{ url_for('staff.document_case_detail', payment_id=payment.id) }}">view in /staff/documents →</a>{% endif %}):</p>
+  <ul style="margin-top:0;">
+    {% for doc in phase.documents %}<li class="muted">{{ doc }}</li>{% endfor %}
+  </ul>
+  {% endif %}
+
+  {% if phase.steps %}
+  <p class="muted" style="margin-bottom:4px;">Internal steps:</p>
+  <ul style="list-style:none;padding:0;margin:0;">
+    {% for step in phase.steps %}
+    <li style="padding:4px 0;">
+      <form method="post" action="{{ url_for('crm_ops.case_step_toggle', case_id=case.id) }}" style="display:inline;">
+        <input type="hidden" name="step_name" value="{{ step }}">
+        <button type="submit" style="background:none;border:none;cursor:pointer;padding:0;text-align:left;color:inherit;font:inherit;">
+          {% if step in done_steps %}
+          <span style="color:var(--success, #16a34a);">✔</span> <span style="text-decoration:line-through;opacity:0.7;">{{ step }}</span>
+          {% else %}
+          <span class="muted">☐</span> {{ step }}
+          {% endif %}
+        </button>
+      </form>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+</div>
+{% endfor %}
+{% endif %}
+{% endblock %}

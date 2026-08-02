@@ -1,0 +1,164 @@
+{
+  "service_id": "visa_b1b2",
+  "name": "Visa B-1/B-2 (Tourism / Business)",
+  "name_pt": "Visto B-1/B-2 (Turismo/Negócios)",
+  "name_es": "Visa B-1/B-2 (Turismo/Negocios)",
+  "forms": [
+    "DS-160"
+  ],
+  "channel": "consular_dos",
+  "actor_blocks": [
+    "SPONSOR_BLOCK"
+  ],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "Valid passport",
+        "Previous passports (if any)",
+        "I-94 record / travel record",
+        "Photo (U.S. visa standard)",
+        "DS-160 confirmation page",
+        "Appointment confirmation",
+        "Bank statements (last 6 months)",
+        "Sponsor bank statements (if applicable)",
+        "Tax return (last year)",
+        "Sponsor letter, signed (if applicable)"
+      ],
+      "documents_pt": [
+        "Passaporte válido",
+        "Passaportes anteriores (se houver)",
+        "Registro I-94 / histórico de viagens",
+        "Foto padrão para visto americano",
+        "Página de confirmação do DS-160",
+        "Confirmação do agendamento",
+        "Extratos bancários (últimos 6 meses)",
+        "Extratos bancários do patrocinador (se aplicável)",
+        "Declaração de imposto de renda (último ano)",
+        "Carta do patrocinador, assinada (se aplicável)"
+      ],
+      "documents_es": [
+        "Pasaporte válido",
+        "Pasaportes anteriores (si los hay)",
+        "Registro I-94 / historial de viajes",
+        "Foto estándar para visa americana",
+        "Página de confirmación del DS-160",
+        "Confirmación de la cita",
+        "Estados de cuenta bancarios (últimos 6 meses)",
+        "Estados de cuenta bancarios del patrocinador (si aplica)",
+        "Declaración de impuestos (último año)",
+        "Carta del patrocinador, firmada (si aplica)"
+      ],
+      "steps": [
+        "Confirm full legal name",
+        "Confirm date of birth",
+        "Gather address history",
+        "Gather travel history (last 5 years)",
+        "Check social media (if required)",
+        "Employment verification letter, job position & salary, length of employment",
+        "Confirm business registration (if self-employed)",
+        "Confirm income consistency",
+        "Identify sponsor (if applicable)",
+        "Gather proof of ties to home country (employment, property/lease, family, business, financial commitments)",
+        "Define travel purpose, planned dates, cities to visit, accommodation, estimated duration",
+        "Explain intent to return (return ticket, explanation of stay extension, ties to home country)",
+        "Review travel history in the U.S. (cities, activities, no unauthorized work, other countries visited)",
+        "Confirm educational background (if applicable)",
+        "Draft invitation letter / employer letter / sponsor letter / address letter as needed"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Clearly define purpose of trip",
+        "Confirm consistent travel plan (cities, states, dates)",
+        "Explain financial capability and proof of financial support",
+        "Clearly structure ties to home country",
+        "Reinforce strong return intent",
+        "Confirm profile consistent with B-2 intent and no immigrant intent",
+        "Check for no red flags (overstay, violations)",
+        "Confirm answers align with DS-160",
+        "Identify and mitigate risks",
+        "Practice interview questions with short, clear answers",
+        "Coach confidence and clarity",
+        "Organize supporting documents",
+        "Confirm client understands interview logic"
+      ]
+    },
+    {
+      "name": "Application Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "DS-160 form completed",
+        "DS-160 reviewed (1st review)",
+        "DS-160 reviewed (final review)",
+        "Visa fee paid",
+        "Appointment scheduled",
+        "Confirmation documents saved",
+        "Instructions sent to client"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Interview attended",
+        "Outcome recorded (Approved / Denied)",
+        "Interview feedback requested",
+        "Passport tracking initiated",
+        "Visa issued (if approved)",
+        "Client notified",
+        "Entry instructions provided",
+        "Travel guidance shared",
+        "Follow-up completed"
+      ]
+    }
+  ],
+  "pricing": {
+    "standard_usd": 380,
+    "plus_usd": null,
+    "plus_paper_usd": null,
+    "notes": "No Plus tier for this service.",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "DS-160 preparation based on 18 years of experience",
+    "Interview preparation guidance",
+    "Google Drive link for document uploads"
+  ],
+  "standard_excludes": [
+    "MRV visa application fee ($185, paid directly to the consulate)"
+  ],
+  "plus_includes": [],
+  "plus_excludes": [],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Preenchimento do DS-160 baseado em 18 anos de experiência",
+    "Orientação para preparação da entrevista",
+    "Link do Google Drive para envio de documentos"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Preparación del DS-160 basada en 18 años de experiencia",
+    "Orientación para la preparación de la entrevista",
+    "Enlace de Google Drive para subir documentos"
+  ],
+  "standard_excludes_pt": [
+    "Taxa MRV de solicitação de visto ($185, paga diretamente ao consulado)"
+  ],
+  "standard_excludes_es": [
+    "Tarifa MRV de solicitud de visa ($185, pagada directamente al consulado)"
+  ],
+  "plus_includes_pt": [],
+  "plus_includes_es": [],
+  "plus_excludes_pt": [],
+  "plus_excludes_es": []
+}

@@ -1,0 +1,171 @@
+{% extends "base.html" %}
+{% block title %}{{ service_name if contract.document_type.value == 'service_contract' else t('contract_terms_page_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{% if contract.document_type.value == 'service_contract' %}{{ service_name }}{% else %}{{ t('contract_terms_page_title') }}{% endif %}</h1>
+  <p style="opacity:0.92;margin:0;">{{ t('contract_page_title') }}</p>
+</div>
+
+<div class="card">
+  <h2>{{ t('contract_client_info_title') }}</h2>
+  <p class="muted" style="margin:2px 0;">{{ t('contract_field_name') }}: {{ client.full_name }}</p>
+  <p class="muted" style="margin:2px 0;">{{ t('contract_field_email') }}: {{ client.email or '—' }}</p>
+  <p class="muted" style="margin:2px 0;">{{ t('contract_field_phone') }}: {{ client.us_phone or client.home_phone or '—' }}</p>
+</div>
+
+{% if contract.document_type.value == 'service_contract' %}
+<div class="card">
+  <h2>{{ service_name }}</h2>
+  <p>
+    <span class="badge status-neutral">
+      {% if contract.tier.value == 'standard' %}{{ t('contract_tier_standard') }}
+      {% elif contract.tier.value == 'plus_online' %}{{ t('contract_tier_plus_online') }}
+      {% else %}{{ t('contract_tier_plus_paper') }}{% endif %}
+    </span>
+  </p>
+  <p style="font-size:1.3rem;font-weight:700;">{{ t('contract_price_label') }}: {% if price_cents is not none %}${{ '%.2f'|format(price_cents / 100) }}{% else %}—{% endif %}</p>
+
+  {% if tier_includes %}
+  <h3 style="font-size:0.95rem;">{{ t('contract_includes_title') }}</h3>
+  <ul>{% for item in tier_includes %}<li class="muted">{{ item }}</li>{% endfor %}</ul>
+  {% endif %}
+  {% if tier_excludes %}
+  <h3 style="font-size:0.95rem;">{{ t('contract_excludes_title') }}</h3>
+  <ul>{% for item in tier_excludes %}<li class="muted">{{ item }}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% else %}
+<div class="card">
+  <p>{{ t('contract_terms_body') }}</p>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>{{ t('contract_general_terms_title') }}</h2>
+  <ul>
+    <li class="muted">{{ t('contract_term_no_legal_advice') }}</li>
+    <li class="muted">{{ t('contract_term_no_guarantee') }}</li>
+    <li class="muted">{{ t('contract_term_refund') }}</li>
+    {% if contract.document_type.value == 'service_contract' %}<li class="muted">{{ t('contract_term_payment_separate') }}</li>{% endif %}
+  </ul>
+</div>
+
+{% if contract.status.value == 'signed' %}
+<div class="card">
+  <p><strong>{{ t('contract_already_signed') }} {{ contract.signed_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else contract.signed_at.strftime("%d/%m/%Y %H:%M") }}</strong></p>
+</div>
+{% elif contract.status.value == 'rejected' %}
+<div class="card">
+  <p class="muted">{{ t('contract_already_rejected') }}</p>
+</div>
+{% else %}
+<div class="card">
+  {% if contract.document_type.value == 'service_contract' %}
+  <h2>{{ t('contract_payment_method_title') }}</h2>
+  <select id="payment-method-select" style="margin-bottom:16px;">
+    <option value="">{{ t('contract_payment_method_placeholder') }}</option>
+    {% for m in payment_methods %}<option value="{{ m.id }}">{{ m.name }}</option>{% endfor %}
+  </select>
+  {% endif %}
+
+  <h2>{{ t('contract_signature_title') }}</h2>
+  <p class="muted" style="font-size:0.85rem;">{{ t('contract_signature_instructions') }}</p>
+  <p class="muted" style="font-size:0.85rem;">{{ t('contract_date_label') }}: <span id="sign-date-display"></span></p>
+
+  <canvas id="signature-pad" width="600" height="220" style="width:100%;max-width:600px;height:220px;border:1px solid var(--border);border-radius:var(--radius-sm);touch-action:none;background:#fff;"></canvas>
+  <div style="margin-top:8px;">
+    <button type="button" id="clear-signature-btn" class="btn secondary" style="padding:7px 16px;font-size:0.85rem;">{{ t('contract_clear_signature') }}</button>
+  </div>
+
+  <form method="post" action="{{ url_for('crm_client.contract_sign', contract_id=contract.id) }}" id="sign-form" style="margin-top:16px;">
+    <input type="hidden" name="signature_data" id="signature-data-input">
+    <input type="hidden" name="payment_method_id" id="payment-method-input">
+    <button type="submit" id="confirm-signature-btn" class="btn" disabled>{{ t('contract_confirm_signature') }}</button>
+  </form>
+  <form method="post" action="{{ url_for('crm_client.contract_reject', contract_id=contract.id) }}"
+        onsubmit="return confirm({{ t('contract_reject_confirm')|tojson }});" style="margin-top:8px;">
+    <button type="submit" class="btn secondary" style="padding:7px 16px;font-size:0.85rem;">{{ t('contract_reject') }}</button>
+  </form>
+</div>
+
+<script>
+  (function () {
+    var canvas = document.getElementById('signature-pad');
+    var ctx = canvas.getContext('2d');
+    ctx.lineWidth = 2.2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#1a1a1a';
+
+    var drawing = false;
+    var hasStrokes = false;
+    var lastX = 0, lastY = 0;
+
+    function canvasPos(evt) {
+      var rect = canvas.getBoundingClientRect();
+      var scaleX = canvas.width / rect.width;
+      var scaleY = canvas.height / rect.height;
+      var point = evt.touches ? evt.touches[0] : evt;
+      return { x: (point.clientX - rect.left) * scaleX, y: (point.clientY - rect.top) * scaleY };
+    }
+
+    function start(evt) {
+      evt.preventDefault();
+      drawing = true;
+      var p = canvasPos(evt);
+      lastX = p.x; lastY = p.y;
+    }
+    function move(evt) {
+      if (!drawing) return;
+      evt.preventDefault();
+      var p = canvasPos(evt);
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(p.x, p.y);
+      ctx.stroke();
+      lastX = p.x; lastY = p.y;
+      hasStrokes = true;
+      updateConfirmState();
+    }
+    function end() { drawing = false; }
+
+    canvas.addEventListener('mousedown', start);
+    canvas.addEventListener('mousemove', move);
+    window.addEventListener('mouseup', end);
+    canvas.addEventListener('touchstart', start, { passive: false });
+    canvas.addEventListener('touchmove', move, { passive: false });
+    canvas.addEventListener('touchend', end);
+
+    document.getElementById('clear-signature-btn').addEventListener('click', function () {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      hasStrokes = false;
+      updateConfirmState();
+    });
+
+    var paymentSelect = document.getElementById('payment-method-select');
+    var paymentInput = document.getElementById('payment-method-input');
+    if (paymentSelect) {
+      paymentSelect.addEventListener('change', function () {
+        paymentInput.value = paymentSelect.value;
+        updateConfirmState();
+      });
+    }
+
+    function updateConfirmState() {
+      var paymentOk = !paymentSelect || paymentSelect.value !== '';
+      document.getElementById('confirm-signature-btn').disabled = !(hasStrokes && paymentOk);
+    }
+
+    document.getElementById('sign-form').addEventListener('submit', function () {
+      document.getElementById('signature-data-input').value = canvas.toDataURL('image/png');
+    });
+
+    var dateDisplay = document.getElementById('sign-date-display');
+    var now = new Date();
+    dateDisplay.textContent = now.toLocaleString();
+
+    updateConfirmState();
+  })();
+</script>
+{% endif %}
+{% endblock %}

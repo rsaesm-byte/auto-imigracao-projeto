@@ -1,95 +1,155 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
-{% block title %}Staff — Documentos do Caso{% endblock %}
+{% block title %}Staff — Case Documents{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Documentos — {{ case.title }}</h1>
-  <p style="opacity:0.92;margin:0;">Cliente: {{ case.client.full_name }}</p>
+  <h1>Documents — {{ case.title }}</h1>
+  <p style="opacity:0.92;margin:0;">Client: {{ case.client.full_name }}</p>
 </div>
 
 <div class="card">
-  <h2>Adicionar documento</h2>
+  <h2>Add document</h2>
   <form method="post" action="{{ url_for('crm_ops.case_document_new', case_id=case.id) }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
     <div>
-      <label class="muted">Nome</label><br>
+      <label class="muted">Name</label><br>
       <input type="text" name="name" required>
     </div>
     <div>
-      <label class="muted">Tipo</label><br>
+      <label class="muted">Type</label><br>
       <select name="document_type">
         {% for dt in document_types %}<option value="{{ dt.value }}">{{ dt.value|replace('_',' ')|title }}</option>{% endfor %}
       </select>
     </div>
     <div>
-      <label class="muted">Idioma de tradução (se houver)</label><br>
+      <label class="muted">Translation language (if any)</label><br>
       <select name="translation_language">
         <option value="">—</option>
         {% for lang in translation_languages %}<option value="{{ lang.value }}">{{ lang.value|title }}</option>{% endfor %}
       </select>
     </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Adicionar</button>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Add</button>
   </form>
 </div>
 
 <div class="card">
-  <h2>Documentos ({{ case.documents|length }})</h2>
+  <h2>Documents ({{ case.documents|length }})</h2>
   {% if case.documents %}
-  <div style="overflow-x:auto;">
-  <table class="submissions">
-    <thead>
-      <tr><th>Nome</th><th>Tipo</th><th>Progresso</th><th>Solicitado</th><th>Recebido</th><th>Tradução</th><th></th></tr>
-    </thead>
-    <tbody>
-      {% for d in case.documents %}
-      <tr>
-        {# Só vira link de verdade se começar com http(s):// -- nenhuma rota escreve
-           gdrive_url hoje, mas o campo é texto livre e um valor tipo "javascript:..."
-           executaria ao clicar (o autoescape do Jinja protege a tag, não o esquema). #}
-        <td>{{ d.name }}{% if d.gdrive_url and (d.gdrive_url.startswith('http://') or d.gdrive_url.startswith('https://')) %} <a href="{{ d.gdrive_url }}" target="_blank" rel="noopener">(Drive)</a>{% endif %}</td>
-        <td class="muted">{{ d.document_type.value|replace('_',' ')|title }}</td>
-        <td style="min-width:100px;">
-          <div style="background:var(--border);border-radius:999px;height:8px;overflow:hidden;">
-            <div style="width:{{ (d.progress/10*100)|round }}%;background:var(--accent);height:100%;"></div>
-          </div>
-        </td>
-        <td class="muted">{{ d.requested_at.strftime('%d/%m/%Y') if d.requested_at else '—' }}</td>
-        <td class="muted">
-          {% if d.received_at %}{{ d.received_at.strftime('%d/%m/%Y') }}
-          {% else %}
-          <form method="post" action="{{ url_for('crm_ops.document_receive', document_id=d.id) }}">
-            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Marcar recebido</button>
-          </form>
-          {% endif %}
-        </td>
-        <td>
-          <form method="post" action="{{ url_for('crm_ops.document_translation_save', document_id=d.id) }}" style="display:flex;gap:4px;flex-wrap:wrap;align-items:center;">
-            <select name="translator_id" style="font-size:0.78rem;">
-              <option value="">Tradutor —</option>
-              {% for u in staff_users %}
-              <option value="{{ u.id }}" {{ 'selected' if d.translation and d.translation.translator_id == u.id }}>{{ u.email }}</option>
-              {% endfor %}
-            </select>
-            <select name="status" style="font-size:0.78rem;">
-              {% for st in translation_statuses %}
-              <option value="{{ st.value }}" {{ 'selected' if d.translation and d.translation.status == st }}>{{ st.value|title }}</option>
-              {% endfor %}
-            </select>
-            <input type="date" name="deadline" value="{{ d.translation.deadline.isoformat() if d.translation and d.translation.deadline else '' }}" style="font-size:0.78rem;max-width:130px;">
-            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Salvar</button>
-          </form>
-          {% if d.translation and d.translation.status.value != 'ready' %}
-          <form method="post" action="{{ url_for('crm_ops.document_translation_finish', document_id=d.id) }}" style="margin-top:4px;">
-            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Finalizar review</button>
-          </form>
-          {% endif %}
-        </td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
+  {% for d in case.documents %}
+  <div style="border-top:1px solid var(--border);padding:12px 0;">
+    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:start;">
+      <div>
+        <strong>{{ d.name }}</strong>
+        {# Only becomes a real link if it starts with http(s):// -- no route writes
+           gdrive_url today, but the field is free text and a value like
+           "javascript:..." would execute on click (Jinja's autoescape protects the
+           tag, not the scheme). #}
+        {% if d.gdrive_url and (d.gdrive_url.startswith('http://') or d.gdrive_url.startswith('https://')) %} <a href="{{ d.gdrive_url }}" target="_blank" rel="noopener">(Drive)</a>{% endif %}
+        <div class="muted" style="font-size:0.8rem;">
+          {{ d.document_type.value|replace('_',' ')|title }}
+          {% if d.translation_language %} · Translate from {{ d.translation_language.value|title }}{% endif %}
+        </div>
+      </div>
+      {{ crm_badge(d.status) }}
+    </div>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:8px;">
+      <form method="post" action="{{ url_for('crm_ops.document_status_update', document_id=d.id) }}" style="display:flex;gap:4px;align-items:center;">
+        <select name="status" style="font-size:0.78rem;">
+          {% for st in document_statuses %}
+          <option value="{{ st.value }}" {{ 'selected' if d.status == st }}>{{ st.value|replace('_',' ')|title }}</option>
+          {% endfor %}
+        </select>
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:3px 8px;">Save status</button>
+      </form>
+      <span class="muted" style="font-size:0.8rem;">Requested: {{ d.requested_at.strftime('%m/%d/%Y') if d.requested_at else '—' }}</span>
+      {% if d.received_at %}
+      <span class="muted" style="font-size:0.8rem;">Received: {{ d.received_at.strftime('%m/%d/%Y') }}</span>
+      {% else %}
+      <form method="post" action="{{ url_for('crm_ops.document_receive', document_id=d.id) }}">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Mark received</button>
+      </form>
+      {% endif %}
+    </div>
+
+    {% set totals = translation_totals.get(d.id) %}
+    <details style="margin-top:10px;">
+      <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--accent);">
+        Translation details
+        {% if totals and totals.client_total_cents is not none %} — client: ${{ '%.2f'|format(totals.client_total_cents / 100) }}{% endif %}
+        {% if totals and totals.payout_usd_cents is not none %} · payout: ${{ '%.2f'|format(totals.payout_usd_cents / 100) }}{% endif %}
+      </summary>
+      <form method="post" action="{{ url_for('crm_ops.document_translation_save', document_id=d.id) }}"
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px;">
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Translator</label><br>
+          <select name="translator_id" style="font-size:0.82rem;">
+            <option value="">—</option>
+            {% for tr in translators %}
+            <option value="{{ tr.id }}" {{ 'selected' if d.translation and d.translation.translator_id == tr.id }}>{{ tr.full_name }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Speed tier (client price)</label><br>
+          <select name="speed_tier" style="font-size:0.82rem;">
+            <option value="">—</option>
+            {% for tier in speed_tiers %}
+            <option value="{{ tier.value }}" {{ 'selected' if d.translation and d.translation.speed_tier == tier }}>
+              {{ 'Rush ($32/page, 1-2 business days)' if tier.value == 'rush' else 'Standard ($30/page, 3-4 business days)' }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Requested on</label><br>
+          <input type="date" name="requested_at" value="{{ d.translation.requested_at.isoformat() if d.translation and d.translation.requested_at else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Delivered on</label><br>
+          <input type="date" name="delivered_at" value="{{ d.translation.delivered_at.isoformat() if d.translation and d.translation.delivered_at else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Deadline</label><br>
+          <input type="date" name="deadline" value="{{ d.translation.deadline.isoformat() if d.translation and d.translation.deadline else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Pages</label><br>
+          <input type="number" min="0" name="page_count" value="{{ d.translation.page_count if d.translation and d.translation.page_count is not none else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Price/page — translator's currency ({{ d.translation.translator.currency.value|upper if d.translation and d.translation.translator else '—' }})</label><br>
+          <input type="text" name="price_per_page_translator_currency" placeholder="0.00"
+                 value="{{ '%.2f'|format(d.translation.price_per_page_translator_currency_cents / 100) if d.translation and d.translation.price_per_page_translator_currency_cents is not none else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Price/page — USD</label><br>
+          <input type="text" name="price_per_page_usd" placeholder="0.00"
+                 value="{{ '%.2f'|format(d.translation.price_per_page_usd_cents / 100) if d.translation and d.translation.price_per_page_usd_cents is not none else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;">Save translation</button>
+        </div>
+      </form>
+
+      {% if totals %}
+      <div class="muted" style="font-size:0.82rem;margin-top:8px;padding:8px 10px;background:var(--accent-soft);border-radius:var(--radius-sm);">
+        Client total: {% if totals.client_total_cents is not none %}${{ '%.2f'|format(totals.client_total_cents / 100) }}{% else %}—{% endif %}
+        (pages × {% if totals.client_price_per_page_cents is not none %}${{ '%.2f'|format(totals.client_price_per_page_cents / 100) }}{% else %}—{% endif %}/page)
+        · Translator payout: {% if totals.payout_translator_currency_cents is not none %}{{ '%.2f'|format(totals.payout_translator_currency_cents / 100) }} {{ d.translation.translator.currency.value|upper if d.translation.translator else '' }}{% else %}—{% endif %}
+        {% if totals.payout_usd_cents is not none %}/ ${{ '%.2f'|format(totals.payout_usd_cents / 100) }}{% endif %}
+      </div>
+      {% endif %}
+
+      {% if d.translation %}
+      <form method="post" action="{{ url_for('crm_ops.document_translation_finish', document_id=d.id) }}" style="margin-top:8px;">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:4px 8px;">Finish review (mark document completed)</button>
+      </form>
+      {% endif %}
+    </details>
   </div>
+  {% endfor %}
   {% else %}
-  <p class="muted">Nenhum documento cadastrado ainda para este caso.</p>
+  <p class="muted">No documents registered for this case yet.</p>
   {% endif %}
 </div>
 {% endblock %}

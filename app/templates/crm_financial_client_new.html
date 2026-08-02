@@ -1,38 +1,38 @@
 {% extends "staff_base.html" %}
-{% block title %}Staff — Novo cliente de coaching{% endblock %}
+{% block title %}Staff — New Coaching Client{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Novo cliente de coaching financeiro</h1>
+  <h1>New financial coaching client</h1>
 </div>
 <div class="card">
   <form method="post" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
     <div>
-      <label class="muted">Nome</label><br>
+      <label class="muted">Name</label><br>
       <input type="text" name="full_name" required>
     </div>
     <div>
-      <label class="muted">E-mail</label><br>
+      <label class="muted">Email</label><br>
       <input type="email" name="email">
     </div>
     <div>
-      <label class="muted">Telefone</label><br>
+      <label class="muted">Phone</label><br>
       <input type="text" name="phone_number">
     </div>
     <div>
-      <label class="muted">Tipo de programa</label><br>
+      <label class="muted">Program type</label><br>
       <select name="program_type">
         <option value="">—</option>
         {% for p in program_types %}<option value="{{ p.value }}">{{ p.value|replace('_',' ')|title }}</option>{% endfor %}
       </select>
     </div>
     <div>
-      <label class="muted">Origem</label><br>
+      <label class="muted">Source</label><br>
       <select name="lead_source_id">
         <option value="">—</option>
         {% for s in sources %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
       </select>
     </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Cadastrar</button>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
   </form>
 </div>
 {% endblock %}

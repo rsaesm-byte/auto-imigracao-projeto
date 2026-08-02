@@ -1,13 +1,14 @@
 {% extends "staff_base.html" %}
 {% from "_staff_payments_table.html" import payments_table %}
-{% block title %}Staff — Solicitar Review{% endblock %}
+{% block title %}Staff — Request Review{% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Solicitar Review</h1>
-  <p style="opacity:0.92;margin:0;">Casos finalizados que ainda não receberam o pedido de avaliação. Ao clicar em "Solicitar review", o caso sai desta lista e o WhatsApp do cliente abre com uma mensagem pronta pedindo a avaliação.</p>
+  <h1>Request Review</h1>
+  <p style="opacity:0.92;margin:0;">Finalized cases that haven't received a review request yet. Clicking "Request review" removes the case from this list and opens the client's WhatsApp with a ready-made message asking for a review.</p>
 </div>
 
 <div class="card">
-  {{ payments_table(payments, "finalized_at", "Finalizado em", show_review=True, empty_message="Nenhum caso pendente de solicitação de review.") }}
+  {{ payments_table(payments, "finalized_at", "Finalized on", show_review=True, empty_message="No cases pending a review request.") }}
 </div>
 {% endblock %}

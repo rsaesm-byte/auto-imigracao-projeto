@@ -114,7 +114,7 @@ def save(client_id: int):
     try:
         service = CredentialService(request.form.get("service", ""))
     except ValueError:
-        flash("Serviço inválido.", "error")
+        flash("Invalid service.", "error")
         return redirect(url_for("crm_credentials.detail", client_id=client_id))
 
     credential = (
@@ -142,11 +142,11 @@ def save(client_id: int):
             credential.backup_code_encrypted = encrypt(backup_code)
     except CredentialsKeyNotConfigured:
         SessionLocal.rollback()
-        flash("Chave de criptografia não configurada (CRM_CREDENTIALS_KEY) -- "
-              "avise o administrador. Nenhuma credencial foi salva.", "error")
+        flash("Encryption key not configured (CRM_CREDENTIALS_KEY) -- "
+              "notify the administrator. No credential was saved.", "error")
         return redirect(url_for("crm_credentials.detail", client_id=client_id))
 
     credential.updated_by_user_id = current_user.id
     SessionLocal.commit()
-    flash("Credencial salva.", "success")
+    flash("Credential saved.", "success")
     return redirect(url_for("crm_credentials.detail", client_id=client_id))

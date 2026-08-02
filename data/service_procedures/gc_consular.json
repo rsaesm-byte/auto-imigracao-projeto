@@ -1,0 +1,240 @@
+{
+  "service_id": "gc_consular",
+  "name": "Green Card — Consular Processing (Family-Based)",
+  "name_pt": "Green Card — Processamento Consular (Baseado em Família)",
+  "name_es": "Green Card — Proceso Consular (Basado en Familia)",
+  "forms": [
+    "I-130",
+    "DS-260",
+    "I-864"
+  ],
+  "channel": "uscis_to_nvc_to_consular",
+  "actor_blocks": [],
+  "phases": [
+    {
+      "name": "Document Collection",
+      "documents": [
+        "U.S. passport or Green Card copy (petitioner)",
+        "Birth certificate (petitioner, if applicable)",
+        "Naturalization certificate (petitioner, if applicable)",
+        "Government-issued ID (petitioner)",
+        "Proof of domicile in the U.S. (petitioner)",
+        "Valid passport (beneficiary)",
+        "Birth certificate (beneficiary)",
+        "Previous passports (beneficiary, if any)",
+        "Marriage certificate (if applicable)",
+        "Divorce decree(s) (if applicable)",
+        "Death certificate of former spouse (if applicable)",
+        "Photos together",
+        "Proof of relationship history",
+        "Joint documents (if applicable)",
+        "Affidavits from friends/family (if applicable)",
+        "Form I-864 (Affidavit of Support)",
+        "Most recent tax return",
+        "W-2 / 1099 forms",
+        "Employment verification letter",
+        "Recent pay stubs",
+        "Bank statements",
+        "Police certificate(s) (all required countries)",
+        "Court records (if applicable)",
+        "Military records (if applicable)"
+      ],
+      "documents_pt": [
+        "Passaporte americano ou cópia do Green Card (peticionário)",
+        "Certidão de nascimento (peticionário, se aplicável)",
+        "Certidão de naturalização (peticionário, se aplicável)",
+        "Identidade oficial (peticionário)",
+        "Comprovante de domicílio nos EUA (peticionário)",
+        "Passaporte válido (beneficiário)",
+        "Certidão de nascimento (beneficiário)",
+        "Passaportes anteriores (beneficiário, se houver)",
+        "Certidão de casamento (se aplicável)",
+        "Sentença(s) de divórcio (se aplicável)",
+        "Certidão de óbito do ex-cônjuge (se aplicável)",
+        "Fotos do casal juntos",
+        "Provas do histórico do relacionamento",
+        "Documentos conjuntos (se aplicável)",
+        "Declarações de amigos/família (se aplicável)",
+        "Formulário I-864 (Declaração de Apoio Financeiro)",
+        "Declaração de imposto de renda mais recente",
+        "Formulários W-2/1099",
+        "Carta de verificação de emprego",
+        "Holerites recentes",
+        "Extratos bancários",
+        "Certidão(ões) de antecedentes criminais (todos os países exigidos)",
+        "Registros judiciais (se aplicável)",
+        "Registros militares (se aplicável)"
+      ],
+      "documents_es": [
+        "Pasaporte estadounidense o copia del Green Card (peticionario)",
+        "Acta de nacimiento (peticionario, si aplica)",
+        "Certificado de naturalización (peticionario, si aplica)",
+        "Identificación oficial (peticionario)",
+        "Comprobante de domicilio en EE. UU. (peticionario)",
+        "Pasaporte válido (beneficiario)",
+        "Acta de nacimiento (beneficiario)",
+        "Pasaportes anteriores (beneficiario, si los hay)",
+        "Acta de matrimonio (si aplica)",
+        "Sentencia(s) de divorcio (si aplica)",
+        "Acta de defunción del excónyuge (si aplica)",
+        "Fotos de la pareja juntos",
+        "Pruebas del historial de la relación",
+        "Documentos conjuntos (si aplica)",
+        "Declaraciones de amigos/familiares (si aplica)",
+        "Formulario I-864 (Declaración de Sostenimiento Económico)",
+        "Declaración de impuestos más reciente",
+        "Formularios W-2/1099",
+        "Carta de verificación de empleo",
+        "Recibos de pago recientes",
+        "Estados de cuenta bancarios",
+        "Certificado(s) de antecedentes penales (todos los países requeridos)",
+        "Registros judiciales (si aplica)",
+        "Registros militares (si aplica)"
+      ],
+      "steps": [
+        "Define relationship timeline",
+        "Explain how the couple met"
+      ]
+    },
+    {
+      "name": "Case Preparation",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Explain relationship development",
+        "Review and translate civil documents",
+        "Confirm consistency across all evidence",
+        "Confirm financial eligibility (income requirements)",
+        "Confirm no missing documentation",
+        "Confirm relationship is genuine and well documented",
+        "Confirm timeline is consistent across documents",
+        "Confirm financial requirements met (or joint sponsor secured)",
+        "Confirm no inconsistencies in history",
+        "Confirm documents aligned with NVC requirements",
+        "Confirm no red flags (fraud suspicion)",
+        "Identify and mitigate risks",
+        "Practice relationship story",
+        "Confirm consistency between petitioner and beneficiary",
+        "Memorize key dates naturally",
+        "Organize supporting documents"
+      ]
+    },
+    {
+      "name": "Execution",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Form I-130 prepared",
+        "Supporting documents organized",
+        "Petition reviewed (1st review)",
+        "Petition reviewed (final review)",
+        "Petition submitted to USCIS",
+        "Case received by NVC",
+        "Case number assigned",
+        "CEAC account created",
+        "Affidavit of Support (I-864) submitted",
+        "Civil documents uploaded",
+        "Fees paid (AOS + IV fees)",
+        "Documents reviewed (DQ -- Documentarily Qualified)",
+        "Interview scheduled",
+        "Medical exam completed",
+        "Required documents prepared for interview",
+        "Interview instructions sent to client"
+      ]
+    },
+    {
+      "name": "Finalization",
+      "documents": [],
+      "documents_pt": [],
+      "documents_es": [],
+      "steps": [
+        "Interview attended",
+        "Outcome recorded (Approved / Denied)",
+        "Passport with visa received",
+        "Visa packet instructions explained",
+        "USCIS immigrant fee paid",
+        "Entry instructions explained",
+        "Port-of-entry guidance provided",
+        "Green Card delivery explained",
+        "Social Security guidance provided",
+        "Follow-up completed"
+      ]
+    }
+  ],
+  "free_consultation_minutes": 15,
+  "pricing": {
+    "standard_usd": 1000,
+    "plus_usd": 1800,
+    "plus_paper_usd": null,
+    "notes": "No online/paper split (consular processing doesn't have a USCIS-online-account filing path the way domestic status changes do).",
+    "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
+  },
+  "standard_includes": [
+    "Service agreement",
+    "Complete document checklist",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "Petition/application preparation based on 18 years of experience",
+    "Discount on document translation"
+  ],
+  "standard_excludes": [
+    "Certified translations (charged separately)",
+    "Case monitoring (client's responsibility)",
+    "NVC/consular fees"
+  ],
+  "plus_includes": [
+    "All items from Standard",
+    "Translation of supporting letters",
+    "Full case tracking through NVC and consular interview",
+    "Interview preparation support"
+  ],
+  "plus_excludes": [
+    "Certified translations (charged separately)"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Preparação da petição/solicitação baseada em 18 anos de experiência",
+    "Desconto na tradução de documentos"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Preparación de la petición/solicitud basada en 18 años de experiencia",
+    "Descuento en la traducción de documentos"
+  ],
+  "standard_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)",
+    "Acompanhamento do caso (responsabilidade do cliente)",
+    "Taxas do NVC/consulares"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)",
+    "Seguimiento del caso (responsabilidad del cliente)",
+    "Tarifas del NVC/consulares"
+  ],
+  "plus_includes_pt": [
+    "Todos os itens do Standard",
+    "Tradução das cartas de apoio",
+    "Acompanhamento completo do caso pelo NVC e entrevista consular",
+    "Apoio na preparação da entrevista"
+  ],
+  "plus_includes_es": [
+    "Todos los elementos del Standard",
+    "Traducción de las cartas de respaldo",
+    "Seguimiento completo del caso a través del NVC y la entrevista consular",
+    "Apoyo en la preparación de la entrevista"
+  ],
+  "plus_excludes_pt": [
+    "Traduções juramentadas/certificadas (cobradas separadamente)"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas (cobradas por separado)"
+  ]
+}

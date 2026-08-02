@@ -9,6 +9,25 @@
   <p class="hero-subtitle">{{ t('packages_index_subtitle') }}</p>
 </section>
 
+{# Duas formas de contratar -- pedido do usuário (2026-08-02): cartões
+   grandes de seleção, clique/toque leva pra seção correspondente abaixo
+   (funciona em desktop com hover e em touch com tap, sem esconder nenhum
+   conteúdo caso o clique não role a página por algum motivo). #}
+<div class="services-grid" style="margin-bottom:8px;">
+  <a href="#diy" class="card service-card" style="text-decoration:none;color:inherit;transition:transform 0.15s ease;">
+    <h2 class="service-card-name">{{ t('packages_path_diy_title') }}</h2>
+    <p class="muted" style="font-weight:700;color:var(--accent);margin:0 0 8px;">{{ t('packages_path_diy_tagline') }}</p>
+    <p class="muted service-card-desc">{{ t('packages_path_diy_desc') }}</p>
+  </a>
+  <a href="#professional" class="card service-card" style="text-decoration:none;color:inherit;transition:transform 0.15s ease;">
+    <h2 class="service-card-name">{{ t('packages_path_pro_title') }}</h2>
+    <p class="muted" style="font-weight:700;color:var(--cta-dark);margin:0 0 8px;">{{ t('packages_path_pro_tagline') }}</p>
+    <p class="muted service-card-desc">{{ t('packages_path_pro_desc') }}</p>
+  </a>
+</div>
+
+<h2 id="diy" style="margin:32px 0 4px;scroll-margin-top:20px;">{{ t('packages_path_diy_title') }}</h2>
+<p class="muted" style="margin:0 0 16px;">{{ t('packages_path_diy_tagline') }} — {{ t('packages_path_diy_desc') }}</p>
 <div class="services-grid">
   {% for pkg in packages %}
   <div class="card service-card">
@@ -20,6 +39,29 @@
     <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_includes') }}</p>
     <p class="muted" style="font-size:0.85rem;margin-bottom:16px;">{{ pkg.form_names|join(" · ") }}</p>
     <a class="btn secondary" href="{{ url_for('packages.detail', slug=pkg.slug) }}">{{ t('packages_cta_view') }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+<h2 id="professional" style="margin:40px 0 4px;scroll-margin-top:20px;">{{ t('packages_path_pro_title') }}</h2>
+<p class="muted" style="margin:0 0 4px;">{{ t('packages_path_pro_tagline') }} — {{ t('packages_path_pro_desc') }}</p>
+<p class="muted" style="margin:0 0 4px;font-size:0.9rem;">{{ t('packages_tier_explainer') }}</p>
+<p class="muted" style="margin:0 0 16px;font-size:0.85rem;">{{ t('services_communication_policy') }}</p>
+<div class="services-grid">
+  {% for svc in professional_services %}
+  <div class="card service-card">
+    <div class="service-card-head">
+      {% if svc.free_consultation_minutes %}
+      <span class="badge completed">{{ t('services_free_consultation_badge', minutes=svc.free_consultation_minutes) }}</span>
+      {% else %}
+      <span class="badge in_progress">{{ t('badge_done_by_team') }}</span>
+      {% endif %}
+    </div>
+    <h2 class="service-card-name">{{ svc.name }}</h2>
+    <p class="muted service-card-desc">{{ t('packages_pro_card_desc') }}</p>
+    <a class="btn secondary" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer">
+      {{ t('services_cta_free_consultation') if svc.free_consultation_minutes else t('services_cta_contact_team') }}
+    </a>
   </div>
   {% endfor %}
 </div>

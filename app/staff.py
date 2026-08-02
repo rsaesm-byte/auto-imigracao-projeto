@@ -38,12 +38,12 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
-from flask import Blueprint, abort, flash, redirect, render_template, request, send_file, url_for
+from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, send_file, url_for
 from flask_login import current_user, login_required
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.db import SessionLocal
-from app.models import FormSubmission, Payment, User
+from app.models import FormSubmission, Payment, PostPaymentOnboarding, RequiredDocument, User
 
 staff_bp = Blueprint("staff", __name__, url_prefix="/staff")
 
@@ -60,15 +60,29 @@ def _require_staff():
         abort(403)
 
 
+@staff_bp.context_processor
+def _inject_pending_documents_count():
+    """Contador usado no badge da aba "Documentos" (ver staff_base.html) --
+    é assim que a equipe é "notificada" de novo documento enviado (pedido
+    do usuário: "os colaboradores sejam notificados"), sem WhatsApp/e-mail
+    automático."""
+    count = SessionLocal.query(RequiredDocument).filter_by(status="uploaded").count()
+    return {"pending_documents_count": count}
+
+
 def _case_label(payment: Payment) -> str:
+    # lang="en" sempre -- este rótulo só aparece no painel staff (sempre
+    # inglês, ver memory/feedback_staff_interface_english.md) ou na
+    # mensagem de WhatsApp pro cliente (já em inglês por padrão, ver
+    # confirm_payment/request_review abaixo), nunca numa tela do cliente.
     from app.services.pricing import package_display_name
     from app.wizard import _form_display_name
     if payment.package_slug:
-        return package_display_name(payment.package_slug)
+        return package_display_name(payment.package_slug, lang="en")
     if payment.submission_id:
         sub = SessionLocal.get(FormSubmission, payment.submission_id)
         if sub is not None:
-            return _form_display_name(sub.form_slug)
+            return _form_display_name(sub.form_slug, lang="en")
     return "—"
 
 
@@ -112,10 +126,10 @@ def _to_view_items(payment_rows: list[Payment]) -> list[dict]:
 
 
 RANGE_LABELS = {
-    "15": "Últimos 15 dias",
-    "30": "Últimos 30 dias",
-    "month": "Este mês",
-    "all": "Todos",
+    "15": "Last 15 days",
+    "30": "Last 30 days",
+    "month": "This month",
+    "all": "All",
 }
 
 
@@ -246,6 +260,7 @@ def submission_answers(submission_id: int):
     pagamento ser aprovado (ver app/wizard.py::generate()); é assim que a
     equipe acessa "os formulários preenchidos" pra conferir antes de
     aprovar (pedido do usuário)."""
+    from flask import session as flask_session
     from scripts.run_questionnaire import active_questions
     from app.wizard import _display_value, _load_questionnaire, _form_display_name
 
@@ -253,16 +268,32 @@ def submission_answers(submission_id: int):
     if submission is None:
         abort(404)
     answers = submission.get_answers()
-    qdata = _load_questionnaire(submission.form_slug)
-    active = active_questions(qdata["questions"], answers)
-    answered = []
-    for q in active:
-        if q["id"] not in answers:
-            continue
-        answered.append((q, _display_value(q, answers[q["id"]])))
+
+    # _load_questionnaire/_display_value/_form_display_name are client-facing
+    # helpers that follow the browser session's language (see app/i18n.py::
+    # get_lang) -- the staff panel is always English (see memory/feedback_
+    # staff_interface_english.md), so force it here regardless of whatever
+    # language the staff member's own session happens to have, then restore.
+    original_lang = flask_session.get("lang")
+    flask_session["lang"] = "en"
+    try:
+        qdata = _load_questionnaire(submission.form_slug)
+        active = active_questions(qdata["questions"], answers)
+        answered = []
+        for q in active:
+            if q["id"] not in answers:
+                continue
+            answered.append((q, _display_value(q, answers[q["id"]])))
+        form_name = _form_display_name(submission.form_slug)
+    finally:
+        if original_lang is None:
+            flask_session.pop("lang", None)
+        else:
+            flask_session["lang"] = original_lang
+
     return render_template(
         "staff_submission_answers.html", submission=submission,
-        form_name=_form_display_name(submission.form_slug), answered=answered)
+        form_name=form_name, answered=answered)
 
 
 @staff_bp.route("/pagamentos/<int:payment_id>/confirmar", methods=["POST"])
@@ -275,6 +306,42 @@ def confirm_payment(payment_id: int):
     payment.confirmed_by_user_id = current_user.id
     case_label = _case_label(payment)
     amount_display = f"${payment.amount_cents / 100:,.2f}"
+
+    # Garante um Client+Case do CRM pra TODO pagamento confirmado, não só
+    # pra quem já veio de um Lead convertido ou já teve um serviço
+    # atribuído manualmente -- sem isso, "Meu Caso" (app/crm_client.py)
+    # nunca aparece pra um cliente self-service comum. Pedido do usuário,
+    # 2026-08-02. Idempotente: só cria quando este pagamento ainda não tem
+    # um caso vinculado (payments antigos já linkados, ou de um fluxo que
+    # já cria o caso antes, como o Lead, não são tocados aqui).
+    if payment.case_id is None:
+        from app.services import crm_service as svc
+        new_case = svc.get_or_create_case_for_payment(payment, case_title=case_label)
+        payment.case_id = new_case.id
+
+    # Abre a etapa de onboarding (endereço nos EUA + checklist de
+    # documentos, ver app/onboarding.py) assim que o pagamento é
+    # confirmado -- vazia até o staff cadastrar os itens do checklist;
+    # idempotente (nunca cria uma segunda linha pro mesmo Payment).
+    if SessionLocal.query(PostPaymentOnboarding).filter_by(payment_id=payment.id).first() is None:
+        SessionLocal.add(PostPaymentOnboarding(payment_id=payment.id))
+    SessionLocal.flush()
+
+    # Se o caso já tem um serviço "Pacote Completo" atribuído (ver
+    # app/crm_staff_ops.py::case_service_update), popula o checklist de
+    # documentos da Fase 1 automaticamente a partir do template (pedido do
+    # usuário, 2026-08-01) -- idempotente, ver
+    # crm_service.py::apply_service_procedure_checklist. O flush() acima é
+    # necessário: sem ele, a query por status="confirmed" dentro dessa
+    # função não veria a mudança feita em memória logo acima (a sessão
+    # roda com autoflush=False, ver app/db.py).
+    if payment.case_id is not None:
+        from app.crm_models import Case
+        from app.services import crm_service as svc
+        case = SessionLocal.get(Case, payment.case_id)
+        if case is not None:
+            svc.apply_service_procedure_checklist(case)
+
     SessionLocal.commit()
 
     # Pedido do usuário (2026-07-31): ao aprovar, abrir o WhatsApp DIRETO
@@ -284,8 +351,8 @@ def confirm_payment(payment_id: int):
     # existir (client_phone vazio), não tem pra quem abrir -- só volta pro
     # painel com um aviso.
     if not payment.client_phone:
-        flash("Pagamento aprovado, mas este caso não tem telefone do cliente "
-              "cadastrado (comprovante enviado antes desse campo existir).", "success")
+        flash("Payment approved, but this case has no client phone number "
+              "on file (proof submitted before this field existed).", "success")
         return redirect(request.referrer or url_for("staff.pending"))
 
     digits = re.sub(r"\D", "", payment.client_phone)
@@ -307,7 +374,7 @@ def finalize_payment(payment_id: int):
         abort(400)
     payment.finalized_at = datetime.now(timezone.utc)
     SessionLocal.commit()
-    flash("Caso marcado como finalizado.", "success")
+    flash("Case marked as finalized.", "success")
     return redirect(request.referrer or url_for("staff.approved"))
 
 
@@ -325,7 +392,7 @@ def request_review(payment_id: int):
     SessionLocal.commit()
 
     if not payment.client_phone:
-        flash("Marcado como solicitado, mas este caso não tem telefone do cliente cadastrado.", "success")
+        flash("Marked as requested, but this case has no client phone number on file.", "success")
         return redirect(request.referrer or url_for("staff.review_queue"))
 
     digits = re.sub(r"\D", "", payment.client_phone)
@@ -362,14 +429,50 @@ def submission_pdf(submission_id: int):
 
 @staff_bp.route("/precos")
 def prices():
+    from app.crm_models import ServiceCatalog
     from app.services.pricing import all_fees, package_display_name
     from app.wizard import _form_display_name
 
+    # Staff panel is always English (see memory/feedback_staff_interface_
+    # english.md) -- force lang="en" regardless of the staff member's own
+    # session language, unlike the public /servicos and /pacotes pages
+    # that call these same helpers without a lang override.
     grouped: dict[str, list[dict]] = {"individual": [], "in_package": [], "package": []}
+    priced_fees_json = []
     for fee in all_fees():
-        label = package_display_name(fee.slug) if fee.kind == "package" else _form_display_name(fee.slug)
+        label = (package_display_name(fee.slug, lang="en") if fee.kind == "package"
+                 else _form_display_name(fee.slug, lang="en"))
         grouped[fee.kind].append({"fee": fee, "label": label})
-    return render_template("staff_prices.html", active_tab="prices", grouped=grouped)
+        if fee.price_cents is not None:
+            priced_fees_json.append({"id": fee.id, "label": label, "price_cents": fee.price_cents})
+
+    # "Pacotes Completos" (Saes Standard/Plus full-service packages,
+    # app/crm_models.py::ServiceCatalog) -- pedido do usuário 2026-08-02:
+    # a mesma última-preço/última-mudança/porcentagem-em-massa que já
+    # existia só pra ServiceFee acima passa a cobrir estes 15 também.
+    full_packages = (
+        SessionLocal.query(ServiceCatalog)
+        .filter(ServiceCatalog.slug.is_not(None))
+        .order_by(ServiceCatalog.name)
+        .all()
+    )
+    for service in full_packages:
+        # Cada tier com preço definido vira sua própria linha no preview
+        # da porcentagem em massa -- pedido do usuário 2026-08-02: os
+        # contratos reais mostraram que Standard/Plus Online/Plus Paper
+        # são 3 valores independentes, não um preço só.
+        for tier_label, cents in (
+            ("Standard", service.base_price_cents),
+            ("Plus (Online)", service.plus_price_cents),
+            ("Plus (Paper)", service.plus_price_paper_cents),
+        ):
+            if cents is not None:
+                priced_fees_json.append(
+                    {"id": service.id, "label": f"{service.name} — {tier_label}", "price_cents": cents})
+
+    return render_template(
+        "staff_prices.html", active_tab="prices", grouped=grouped, priced_fees_json=priced_fees_json,
+        full_packages=full_packages)
 
 
 @staff_bp.route("/precos/<int:fee_id>/atualizar", methods=["POST"])
@@ -386,13 +489,191 @@ def update_price(fee_id: int):
         try:
             price_cents = round(float(raw.replace(",", ".")) * 100)
         except ValueError:
-            flash("Valor inválido.", "error")
+            flash("Invalid amount.", "error")
             return redirect(url_for("staff.prices"))
     row.price_cents = price_cents
     row.updated_by_user_id = current_user.id
     SessionLocal.commit()
-    flash("Preço atualizado.", "success")
+    flash("Price updated.", "success")
     return redirect(url_for("staff.prices"))
+
+
+def _parse_dollars_or_none(raw: str) -> tuple[int | None, bool]:
+    """Retorna (price_cents, ok) -- ok=False só quando o campo não estava
+    vazio E não era um número válido (campo vazio é um None válido, "não
+    definido")."""
+    raw = raw.strip()
+    if raw == "":
+        return None, True
+    try:
+        return round(float(raw.replace(",", ".")) * 100), True
+    except ValueError:
+        return None, False
+
+
+@staff_bp.route("/precos/pacote/<int:service_id>/atualizar", methods=["POST"])
+def update_package_price(service_id: int):
+    """Mesmo padrão de update_price() acima, para um "Pacote Completo"
+    (ServiceCatalog) -- pedido do usuário 2026-08-02. Estes 15 serviços
+    nunca tiveram uma tela de preço antes (base_price_cents sempre None
+    desde o seed, ver app/__init__.py::_seed_saes_procedure_services).
+    Três campos independentes (Standard / Plus Online / Plus Paper) --
+    os contratos reais mostraram que nem todo serviço tem os 3 (alguns só
+    têm Standard, outros têm Plus só quando o processo é feito em papel
+    vs. online tem preços diferentes)."""
+    from app.crm_models import ServiceCatalog
+
+    row = SessionLocal.get(ServiceCatalog, service_id)
+    if row is None or row.slug is None:
+        abort(404)
+
+    standard_cents, standard_ok = _parse_dollars_or_none(request.form.get("price_dollars_standard", ""))
+    plus_cents, plus_ok = _parse_dollars_or_none(request.form.get("price_dollars_plus", ""))
+    plus_paper_cents, plus_paper_ok = _parse_dollars_or_none(request.form.get("price_dollars_plus_paper", ""))
+    if not (standard_ok and plus_ok and plus_paper_ok):
+        flash("Invalid amount.", "error")
+        return redirect(url_for("staff.prices"))
+
+    row.base_price_cents = standard_cents
+    row.plus_price_cents = plus_cents
+    row.plus_price_paper_cents = plus_paper_cents
+    row.updated_by_user_id = current_user.id
+    row.updated_at = datetime.now(timezone.utc)
+    SessionLocal.commit()
+    flash("Price updated.", "success")
+    return redirect(url_for("staff.prices"))
+
+
+@staff_bp.route("/precos/aplicar-porcentagem", methods=["POST"])
+def apply_price_percentage():
+    """Bulk price adjustment -- pedido do usuário 2026-08-02: informa uma
+    porcentagem (ex. 10 = +10%, -5 = -5%), o staff revisa o preview
+    (calculado no JS a partir de `priced_fees_json`) e só quando confirma
+    aqui é que todo `ServiceFee` E todo `ServiceCatalog` ("Pacotes
+    Completos") com preço definido são recalculados e persistidos de uma
+    vez ("aplica em tudo" -- pedido do usuário, estender a mesma lógica
+    pros pacotes). Recalcula no servidor (não confia nos valores
+    computados no preview do cliente) -- a porcentagem em si é o único
+    dado que atravessa a rede."""
+    from app.crm_models import ServiceCatalog
+    from app.models import ServiceFee
+
+    raw = request.form.get("percentage", "").strip()
+    try:
+        percentage = float(raw.replace(",", "."))
+    except ValueError:
+        flash("Invalid percentage.", "error")
+        return redirect(url_for("staff.prices"))
+
+    fee_rows = SessionLocal.query(ServiceFee).filter(ServiceFee.price_cents.is_not(None)).all()
+    for row in fee_rows:
+        row.price_cents = round(row.price_cents * (1 + percentage / 100))
+        row.updated_by_user_id = current_user.id
+
+    package_rows = SessionLocal.query(ServiceCatalog).filter(
+        ServiceCatalog.base_price_cents.is_not(None) | ServiceCatalog.plus_price_cents.is_not(None)
+        | ServiceCatalog.plus_price_paper_cents.is_not(None)
+    ).all()
+    package_tiers_touched = 0
+    for row in package_rows:
+        if row.base_price_cents is not None:
+            row.base_price_cents = round(row.base_price_cents * (1 + percentage / 100))
+            package_tiers_touched += 1
+        if row.plus_price_cents is not None:
+            row.plus_price_cents = round(row.plus_price_cents * (1 + percentage / 100))
+            package_tiers_touched += 1
+        if row.plus_price_paper_cents is not None:
+            row.plus_price_paper_cents = round(row.plus_price_paper_cents * (1 + percentage / 100))
+            package_tiers_touched += 1
+        row.updated_by_user_id = current_user.id
+        row.updated_at = datetime.now(timezone.utc)
+
+    SessionLocal.commit()
+    total = len(fee_rows) + package_tiers_touched
+    flash(f"Applied {percentage:+.1f}% to {total} price(s).", "success")
+    return redirect(url_for("staff.prices"))
+
+
+@staff_bp.route("/documentos")
+def documents_list():
+    """Um card por caso com onboarding pós-pagamento aberto (ver
+    app/onboarding.py, criado automaticamente em confirm_payment() acima)
+    -- ordenado pelos que têm documento aguardando revisão primeiro, pra
+    equipe bater o olho e já ver o que precisa de atenção."""
+    onboardings = SessionLocal.query(PostPaymentOnboarding).all()
+    items = []
+    for o in onboardings:
+        payment = SessionLocal.get(Payment, o.payment_id)
+        client = SessionLocal.get(User, payment.user_id) if payment is not None else None
+        items.append({
+            "onboarding": o,
+            "payment": payment,
+            "client_email": client.email if client is not None else "—",
+            "case_label": _case_label(payment) if payment is not None else "—",
+            "pending_review": sum(1 for d in o.documents if d.status == "uploaded"),
+            "total_docs": len(o.documents),
+        })
+    items.sort(key=lambda item: item["pending_review"], reverse=True)
+    return render_template("staff_documents.html", active_tab="documents", items=items)
+
+
+@staff_bp.route("/documentos/<int:payment_id>")
+def document_case_detail(payment_id: int):
+    payment = SessionLocal.get(Payment, payment_id)
+    if payment is None:
+        abort(404)
+    onboarding = SessionLocal.query(PostPaymentOnboarding).filter_by(payment_id=payment.id).first()
+    if onboarding is None:
+        abort(404)
+    client = SessionLocal.get(User, payment.user_id)
+    return render_template(
+        "staff_document_case_detail.html", active_tab="documents", payment=payment,
+        onboarding=onboarding, client_email=client.email if client is not None else "—",
+        case_label=_case_label(payment))
+
+
+@staff_bp.route("/documentos/<int:payment_id>/adicionar", methods=["POST"])
+def document_item_new(payment_id: int):
+    payment = SessionLocal.get(Payment, payment_id)
+    if payment is None:
+        abort(404)
+    onboarding = SessionLocal.query(PostPaymentOnboarding).filter_by(payment_id=payment.id).first()
+    if onboarding is None:
+        abort(404)
+    label = request.form.get("label", "").strip()
+    if not label:
+        flash("Enter the document name.", "error")
+        return redirect(url_for("staff.document_case_detail", payment_id=payment.id))
+    SessionLocal.add(RequiredDocument(onboarding_id=onboarding.id, label=label))
+    SessionLocal.commit()
+    flash("Document added to the checklist.", "success")
+    return redirect(url_for("staff.document_case_detail", payment_id=payment.id))
+
+
+@staff_bp.route("/documentos/item/<int:document_id>/arquivo")
+def document_item_file(document_id: int):
+    document = SessionLocal.get(RequiredDocument, document_id)
+    if document is None or not document.file_path:
+        abort(404)
+    return send_file(document.file_path, as_attachment=True)
+
+
+@staff_bp.route("/documentos/item/<int:document_id>/revisar", methods=["POST"])
+def document_item_review(document_id: int):
+    document = SessionLocal.get(RequiredDocument, document_id)
+    if document is None:
+        abort(404)
+    action = request.form.get("action")
+    if action not in ("approve", "reject"):
+        abort(400)
+    onboarding = SessionLocal.get(PostPaymentOnboarding, document.onboarding_id)
+    document.status = "approved" if action == "approve" else "rejected"
+    document.staff_notes = request.form.get("staff_notes", "").strip() or None
+    document.reviewed_by_id = current_user.id
+    document.reviewed_at = datetime.now(timezone.utc)
+    SessionLocal.commit()
+    flash("Document approved." if action == "approve" else "Document rejected.", "success")
+    return redirect(url_for("staff.document_case_detail", payment_id=onboarding.payment_id))
 
 
 @staff_bp.route("/perfil")
@@ -415,7 +696,7 @@ def update_profile():
     if photo is not None and photo.filename:
         ext = Path(photo.filename).suffix.lower()
         if ext not in ALLOWED_PHOTO_EXTENSIONS:
-            flash("Foto inválida -- envie um PNG, JPG ou WEBP.", "error")
+            flash("Invalid photo -- upload a PNG, JPG, or WEBP.", "error")
             return redirect(url_for("staff.profile"))
         # Remove qualquer foto antiga com extensão diferente antes de
         # salvar a nova -- senão ficaria lixo acumulado em instance/.
@@ -426,7 +707,7 @@ def update_profile():
         user.photo_path = str(dest)
 
     SessionLocal.commit()
-    flash("Perfil atualizado.", "success")
+    flash("Profile updated.", "success")
     return redirect(url_for("staff.profile"))
 
 
@@ -438,18 +719,18 @@ def change_password():
     new_password_confirm = request.form.get("new_password_confirm", "")
 
     if not check_password_hash(user.password_hash, current_password):
-        flash("Senha atual incorreta.", "error")
+        flash("Incorrect current password.", "error")
         return redirect(url_for("staff.profile"))
     if len(new_password) < 8:
-        flash("A nova senha precisa ter pelo menos 8 caracteres.", "error")
+        flash("The new password must be at least 8 characters long.", "error")
         return redirect(url_for("staff.profile"))
     if new_password != new_password_confirm:
-        flash("As senhas não coincidem.", "error")
+        flash("Passwords don't match.", "error")
         return redirect(url_for("staff.profile"))
 
     user.password_hash = generate_password_hash(new_password)
     SessionLocal.commit()
-    flash("Senha alterada com sucesso.", "success")
+    flash("Password changed successfully.", "success")
     return redirect(url_for("staff.profile"))
 
 
@@ -462,3 +743,38 @@ def profile_photo(user_id: int):
     if user is None or not user.photo_path:
         abort(404)
     return send_file(user.photo_path)
+
+
+@staff_bp.route("/nav/salvar", methods=["POST"])
+def nav_save():
+    """"Edit navigation" mode (staff_base.html) posts the whole new layout
+    here as JSON (fetch, not a plain form -- the payload is a nested list
+    of slots, not flat form fields) whenever the collaborator drags a tab
+    to reorder it or drops one tab onto another to group them.
+    `scope` ("personal", default, or "global") decides whether this only
+    affects the poster's own nav or becomes the org-wide default for
+    every collaborator without their own override -- user request
+    2026-08-02 ("Salvar para todos colaboradores ou Salvar apenas para
+    mim")."""
+    from app.staff_nav import save_layout
+
+    payload = request.get_json(silent=True)
+    scope = payload.get("scope") if payload else None
+    scope = scope if scope in ("personal", "global") else "personal"
+    if payload is None or not save_layout(current_user.id, payload.get("layout"), scope=scope):
+        return jsonify({"ok": False, "error": "Invalid layout."}), 400
+    SessionLocal.commit()
+    return jsonify({"ok": True})
+
+
+@staff_bp.route("/nav/resetar", methods=["POST"])
+def nav_reset():
+    """Reverts this collaborator's nav back to the default order/no groups
+    -- just deletes their StaffNavLayout row, same convention as "no row"
+    meaning "use the default" everywhere else in app/staff_nav.py."""
+    from app.staff_nav import reset_layout
+
+    reset_layout(current_user.id)
+    SessionLocal.commit()
+    flash("Navigation reset to default.", "success")
+    return redirect(request.referrer or url_for("staff.pending"))
