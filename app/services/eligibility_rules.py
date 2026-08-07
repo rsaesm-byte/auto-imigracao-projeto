@@ -35,7 +35,7 @@ def _add_years(d: date, years: int) -> date:
 
 
 def _fmt(d: date, lang: str) -> str:
-    return d.strftime("%m/%d/%Y") if lang == "en" else d.strftime("%d/%m/%Y")
+    return d.strftime("%m/%d/%Y")
 
 
 def _msg(tone: str, text_pt: str, text_en: str, text_es: str) -> dict:

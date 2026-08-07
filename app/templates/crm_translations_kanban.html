@@ -1,0 +1,84 @@
+{% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import kanban_col_count, view_switcher, table_view, list_view, calendar_view %}
+{% block title %}Staff — Translations Kanban (CRM){% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Translations</h1>
+  <p style="opacity:0.92;margin:0;">Translation pipeline — from document received to delivered. Drag a card to move it to a different stage.</p>
+</div>
+
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <a href="{{ url_for('crm_translations.dashboard') }}" class="muted" style="font-size:0.85rem;">Dashboard view (by period) →</a>
+  {% if view == 'kanban' %}
+  <div class="list-filter-box">
+    <input type="text" class="list-filter-input" placeholder="Filter translations…">
+    <kbd>/</kbd>
+  </div>
+  {% endif %}
+  {{ view_switcher(view, url_for('crm_translations.kanban')) }}
+  <a href="{{ url_for('crm_translations.find_case') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New translation</a>
+</div>
+
+{% if view == 'kanban' %}
+<div class="crm-kanban" data-draggable="true">
+  {% for status in statuses %}
+  <div class="crm-kanban-col" data-status-field="status" data-status-value="{{ status.value }}"
+       data-action-template="{{ url_for('crm_ops.document_status_update', document_id=999999) }}"
+       {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
+    <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
+    {% for doc in by_status[status] %}
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ doc.id }}">
+      <h4>{{ doc.name }}</h4>
+      <div class="muted">{{ doc.client.full_name }}</div>
+      <div class="muted">{{ doc.translation_language.value|title if doc.translation_language else '—' }}</div>
+      {% if doc.translation and doc.translation.translator %}
+      <div class="muted">Translator: {{ doc.translation.translator.full_name }}</div>
+      {% endif %}
+      {% if doc.translation and doc.translation.deadline %}
+      <div class="muted">Deadline: {{ doc.translation.deadline.strftime('%m/%d/%Y') }}</div>
+      {% endif %}
+      {% set total = totals.get(doc.id) %}
+      {% if total is not none %}
+      <div class="muted">Total: {{ total|usd }}</div>
+      {% set approval = doc.translation.client_approval_status %}
+      {% if approval.value != 'pending' %}
+      {% set approval_color = {'approved': '#16a34a', 'changes_requested': '#AE8A50', 'rejected': '#991b1b'}[approval.value] %}
+      <span style="display:inline-block;margin-top:3px;padding:2px 7px;border-radius:999px;font-size:0.7rem;font-weight:600;color:#fff;background:{{ approval_color }};">
+        Client: {{ approval.value|replace('_',' ')|title }}
+      </span>
+      {% endif %}
+      {% endif %}
+      {% if doc.translation and doc.translation.notes %}
+      <div class="muted" style="font-style:italic;">"{{ doc.translation.notes }}"</div>
+      {% endif %}
+      <div style="margin-top:6px;">
+        <a href="{{ url_for('crm_ops.case_documents', case_id=doc.case_id) }}" class="muted" style="font-size:0.8rem;">Open document →</a>
+      </div>
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <div class="empty-state-icon">·</div>
+      <div class="empty-state-hint">No documents in this stage</div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endfor %}
+</div>
+<script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
+<script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+
+{% elif view == 'table' %}
+<div class="card">{{ table_view(all_rows, columns) }}</div>
+
+{% elif view == 'list' %}
+<div class="card">{{ list_view(statuses, by_status, stage_labels, columns) }}</div>
+
+{% elif view == 'calendar' %}
+<div class="card">
+  {{ calendar_view(calendar_grid, url_for('crm_translations.kanban'), columns[0].value, columns[0].url) }}
+</div>
+{% endif %}
+{% endblock %}

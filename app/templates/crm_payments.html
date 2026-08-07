@@ -1,6 +1,7 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
 {% block title %}Staff — Payments (CRM){% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>Payments</h1>
@@ -31,12 +32,19 @@
       </select>
     </div>
     <div>
+      <label class="muted">Case (optional)</label><br>
+      <select name="case_id">
+        <option value="">—</option>
+        {% for c in cases_list %}<option value="{{ c.id }}">{{ c.client.full_name }} — {{ c.title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
       <label class="muted">Description</label><br>
       <input type="text" name="description" required>
     </div>
     <div>
       <label class="muted">Amount (USD)</label><br>
-      <input type="number" step="0.01" min="0" name="amount_dollars" required style="max-width:120px;">
+      <input type="text" inputmode="decimal" name="amount_dollars" required style="max-width:120px;">
     </div>
     <div>
       <label class="muted">Currency</label><br>
@@ -52,7 +60,7 @@
     </div>
     <div>
       <label class="muted">Due date</label><br>
-      <input type="date" name="due_date">
+      <input type="date" lang="en-US" name="due_date">
     </div>
     <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
   </form>
@@ -77,26 +85,31 @@
       </select>
     </div>
     <a href="{{ url_for('crm_ops.payment_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New entry</a>
+    <div class="list-filter-box" style="margin-left:auto;">
+      <input type="text" class="list-filter-input" placeholder="Filter…" data-filter-target="#payments-table tbody" data-filter-item="tr">
+      <kbd>/</kbd>
+    </div>
   </form>
 </div>
 
 <div class="card">
   {% if payments %}
   <div style="overflow-x:auto;">
-  <table class="submissions">
+  <table class="data-table" id="payments-table">
     <thead>
-      <tr><th>Description</th><th>Client</th><th>Amount</th><th>Direction</th><th>Status</th><th>Due</th><th>Paid on</th></tr>
+      <tr><th>Description</th><th>Client</th><th>Case</th><th>Amount</th><th>Direction</th><th>Status</th><th>Due</th><th>Paid on</th></tr>
     </thead>
     <tbody>
       {% for p in payments %}
       <tr>
-        <td>{{ p.description }}</td>
+        <td><a href="{{ url_for('crm_ops.payment_detail', payment_id=p.id) }}">{{ p.description }}</a></td>
         <td class="muted">
           {% if p.client_id in clients %}{{ clients[p.client_id].full_name }}
           {% elif p.financial_client_id in financial_clients %}{{ financial_clients[p.financial_client_id].full_name }} (coaching)
           {% else %}—{% endif %}
         </td>
-        <td>{{ '$%.2f'|format(p.amount_cents / 100) }} {{ p.currency.value|upper }}</td>
+        <td class="muted">{{ cases[p.case_id].title if p.case_id in cases else '—' }}</td>
+        <td>{{ p.amount_cents|usd }} {{ p.currency.value|upper }}</td>
         <td>{{ crm_badge(p.direction, 'Receivable' if p.direction.value == 'receivable' else 'Payable') }}</td>
         <td>
           <form method="post" action="{{ url_for('crm_ops.payment_update_status', payment_id=p.id) }}" style="display:inline-flex;gap:4px;">
@@ -118,5 +131,36 @@
   <p class="muted">No entries found with these filters.</p>
   {% endif %}
 </div>
+
+<div class="card">
+  <h2>Payment methods</h2>
+  <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Rename an existing method without losing its history, or add a new one.</p>
+  {% for m in payment_methods %}
+  <form method="post" action="{{ url_for('crm_ops.payment_method_rename', method_id=m.id) }}" style="display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
+    <input type="text" name="name" value="{{ m.name }}" style="flex:1;min-width:180px;">
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.76rem;padding:4px 10px;">Save</button>
+  </form>
+  {% endfor %}
+  <form method="post" action="{{ url_for('crm_ops.payment_method_new') }}" style="display:flex;gap:8px;align-items:center;padding-top:10px;">
+    <input type="text" name="name" placeholder="New payment method" required style="flex:1;min-width:180px;">
+    <button type="submit" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.76rem;padding:4px 10px;">+ Add</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Fee types (Type of Fee Payment)</h2>
+  <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Rename an existing fee type, or add a new one — shows up on every Payable payment.</p>
+  {% for ft in fee_types %}
+  <form method="post" action="{{ url_for('crm_ops.fee_type_rename', fee_type_id=ft.id) }}" style="display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
+    <input type="text" name="name" value="{{ ft.name }}" style="flex:1;min-width:180px;">
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.76rem;padding:4px 10px;">Save</button>
+  </form>
+  {% endfor %}
+  <form method="post" action="{{ url_for('crm_ops.fee_type_new') }}" style="display:flex;gap:8px;align-items:center;padding-top:10px;">
+    <input type="text" name="name" placeholder="New fee type" required style="flex:1;min-width:180px;">
+    <button type="submit" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.76rem;padding:4px 10px;">+ Add</button>
+  </form>
+</div>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
 {% endif %}
 {% endblock %}

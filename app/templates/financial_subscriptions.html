@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% block title %}Subscriptions — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Subscriptions</h1>
+  <p style="opacity:0.92;margin:0;">What's charging you automatically, and whether you still want it. <a href="{{ url_for('financial_workspace.recurring') }}" style="color:#fff;text-decoration:underline;">← Recurring transactions</a></p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Active subscriptions — monthly equivalent</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.total_active_monthly_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Potential savings if you cancel what's flagged</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;color:#166534;">{{ summary.potential_monthly_savings_cents|usd }}/mo</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">To review</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.by_status.review.count }}</p>
+  </div>
+</div>
+{% if summary.excluded_custom_count %}
+<p class="muted" style="font-size:0.76rem;">{{ summary.excluded_custom_count }} subscription(s) with a custom frequency aren't included in the monthly totals above (no fixed cadence to normalize).</p>
+{% endif %}
+
+<div class="card">
+  <h2 style="font-size:1rem;">Subscriptions</h2>
+  {% if debit_list %}
+  <table class="submissions">
+    <thead><tr><th>Merchant</th><th>Amount</th><th>Frequency</th><th>Next charge</th><th>Autopay</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for d in debit_list %}
+      <tr {% if not d.active %}style="opacity:0.55;"{% endif %}>
+        <td>{{ d.merchant }}{% if d.description %} <span class="muted">— {{ d.description }}</span>{% endif %}</td>
+        <td>{{ d.amount_cents|usd }}</td>
+        <td class="muted">{{ d.frequency.value|title }}</td>
+        <td class="muted">{{ d.next_charge_date.strftime('%m/%d/%Y') if d.next_charge_date else '—' }}</td>
+        <td class="muted">{{ 'Yes' if d.autopay else 'No' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.subscription_status', debit_id=d.id) }}" style="display:inline-flex;gap:4px;align-items:center;">
+            <select name="review_status" style="font-size:0.78rem;
+              {% if d.review_status.value == 'cancel' %}color:#991b1b;{% elif d.review_status.value == 'review' %}color:#854d0e;{% else %}color:#166534;{% endif %}">
+              {% for s in review_statuses %}<option value="{{ s.value }}" {% if s == d.review_status %}selected{% endif %}>{{ s.value|title }}</option>{% endfor %}
+            </select>
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.76rem;">Save</button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.subscription_delete', debit_id=d.id) }}"
+                onsubmit="return confirm('Remove this subscription from your list?');" style="display:inline;">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No subscriptions tracked yet — add one below.</p>
+  {% endif %}
+
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add subscription</summary>
+    <form method="post" action="{{ url_for('financial_workspace.subscription_new') }}"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <input type="text" name="merchant" required placeholder="Merchant/service (e.g. Netflix)" style="min-width:160px;">
+      <input type="text" name="description" placeholder="Description — optional" style="min-width:160px;">
+      <input type="text" name="amount" required placeholder="Amount $" style="width:120px;">
+      <select name="frequency">
+        {% for f in frequencies %}<option value="{{ f.value }}" {% if f.value == 'monthly' %}selected{% endif %}>{{ f.value|title }}</option>{% endfor %}
+      </select>
+      <input type="date" lang="en-US" name="next_charge_date" title="Next charge date — optional">
+      <select name="budget_category_id">
+        <option value="">Category — optional</option>
+        {% for c in categories %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+      </select>
+      <select name="account_id">
+        <option value="">Account — optional</option>
+        {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+      </select>
+      <label class="muted" style="font-size:0.8rem;display:flex;align-items:center;gap:4px;">
+        <input type="checkbox" name="autopay" checked> Autopay
+      </label>
+      <input type="text" name="notes" placeholder="Notes — optional" style="min-width:160px;">
+      <button type="submit" class="btn">Add</button>
+    </form>
+    <p class="muted" style="font-size:0.74rem;margin-top:8px;">This is a tracking list, not a live feed from your bank — it doesn't post transactions on its own. Marking one "Cancel" flags your intent and stops it from counting toward the active total; it doesn't cancel the subscription with the provider.</p>
+  </details>
+</div>
+{% endblock %}

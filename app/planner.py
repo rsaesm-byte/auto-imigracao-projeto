@@ -12,6 +12,7 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, u
 from flask_login import current_user, login_required
 
 from app.crm_models import Case, Client, Priority
+from app.crm_staff_pipeline import OPEN_CASE_STATUSES
 from app.db import SessionLocal
 from app.models import User
 from app.planner_models import PlannerBlock, Project, ProjectStatus, TimeEntry, TimeEntrySource
@@ -212,6 +213,13 @@ def time_list():
     clients = {c.id: c for c in SessionLocal.query(Client).all()}
     projects = {p.id: p for p in SessionLocal.query(Project).all()}
     cases = {c.id: c for c in SessionLocal.query(Case).all()}
+    # Só casos ABERTOS no seletor de atribuição -- pedido do usuário
+    # 2026-08-06 ("atribuir a um caso EM ABERTO"). `cases` acima continua
+    # com TODOS (fechados inclusive), usado por label_for()/total_by_label
+    # pra uma entrada antiga ainda mostrar o nome certo mesmo se o caso já
+    # tiver fechado depois.
+    open_cases = [c for c in cases.values() if c.case_status in OPEN_CASE_STATUSES]
+    open_cases.sort(key=lambda c: c.title)
 
     def label_for(entry: TimeEntry) -> str:
         if entry.client_id and entry.client_id in clients:
@@ -232,7 +240,7 @@ def time_list():
         duration=planner_svc.entry_duration_seconds, format_duration=planner_svc.format_duration,
         total_by_label=sorted(total_by_label.items(), key=lambda kv: kv[1], reverse=True),
         range_from=range_from.isoformat(), range_to=range_to.isoformat(),
-        clients=clients.values(), projects=projects.values(), cases=cases.values(),
+        clients=clients.values(), projects=projects.values(), cases=open_cases,
         running=planner_svc.running_entry_for(current_user.id))
 
 
@@ -272,3 +280,32 @@ def time_manual():
     SessionLocal.commit()
     flash("Time entry logged.", "success")
     return redirect(url_for("planner.time_list"))
+
+
+@planner_bp.route("/time/<int:entry_id>/salvar", methods=["POST"])
+def time_entry_update(entry_id: int):
+    """Edita uma entrada já existente -- pedido do usuário 2026-08-06:
+    "possível clicar e editar e atribuir a um caso em aberto". Só o dono
+    da entrada pode editar (mesmo padrão de isolamento de
+    _owned_case/_owned_contract em app/crm_client.py, adaptado pra
+    Time Entries -- cada colaborador só edita as próprias)."""
+    entry = SessionLocal.get(TimeEntry, entry_id)
+    if entry is None or entry.user_id != current_user.id:
+        abort(404)
+
+    started_at = _parse_datetime_local(request.form.get("started_at"))
+    ended_at_raw = request.form.get("ended_at", "").strip()
+    ended_at = _parse_datetime_local(ended_at_raw) if ended_at_raw else None
+    if started_at is None or (ended_at is not None and ended_at <= started_at):
+        flash("Enter a valid start (and, if set, a later end) time.", "error")
+        return redirect(url_for("planner.time_list"))
+
+    entry.description = request.form.get("description", "").strip() or None
+    entry.client_id = svc.parse_int(request.form.get("client_id"))
+    entry.case_id = svc.parse_int(request.form.get("case_id"))
+    entry.project_id = svc.parse_int(request.form.get("project_id"))
+    entry.started_at = started_at
+    entry.ended_at = ended_at
+    SessionLocal.commit()
+    flash("Time entry updated.", "success")
+    return redirect(request.referrer or url_for("planner.time_list"))

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Emergency Fund — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Emergency Fund</h1>
+  <p style="opacity:0.92;margin:0;">How many months of essential expenses you have saved up. <a href="{{ url_for('financial_workspace.goals') }}" style="color:#fff;text-decoration:underline;">← Financial Goals</a></p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Settings</h2>
+  <form method="post" action="{{ url_for('financial_workspace.emergency_fund_save') }}"
+        style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <label class="muted" style="font-size:0.85rem;">Target coverage
+      <input type="number" name="target_months" min="1" max="24" value="{{ summary.target_months or '' }}" style="width:70px;"> months
+    </label>
+    <select name="account_id">
+      <option value="">Which account is your emergency fund? —</option>
+      {% for a in accounts %}<option value="{{ a.id }}" {{ 'selected' if a.id == summary.account_id }}>{{ a.nickname or a.account_name }}</option>{% endfor %}
+    </select>
+    <button type="submit" class="btn">Save</button>
+  </form>
+  <p class="muted" style="font-size:0.76rem;margin-top:8px;">Target and progress are calculated live from your average monthly "Needs" spending and the balance of the account you pick above — nothing is stored as a fixed number, so it stays accurate as your spending or balance changes.</p>
+</div>
+
+{% if summary.target_months and summary.account_id %}
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Average monthly essential spending</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.avg_needs_expenses_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Target ({{ summary.target_months }} months)</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.target_cents|usd if summary.target_cents is not none else '—' }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Current balance</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.current_cents|usd if summary.current_cents is not none else '—' }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Months covered</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ '%.1f'|format(summary.months_covered) if summary.months_covered is not none else '—' }}</p>
+  </div>
+</div>
+
+{% if summary.target_cents and summary.current_cents is not none %}
+{% set pct_raw = ((summary.current_cents / summary.target_cents * 100) if summary.target_cents else 0)|round(1) %}
+{% set pct = 100 if pct_raw > 100 else pct_raw %}
+<div class="card">
+  <div style="display:flex;justify-content:space-between;font-size:0.85rem;margin-bottom:4px;">
+    <span>Progress toward target</span><span class="muted">{{ pct }}%</span>
+  </div>
+  <div style="background:var(--border);border-radius:999px;height:10px;">
+    <div style="width:{{ pct }}%;background:#16a34a;height:10px;border-radius:999px;min-width:{{ '6px' if summary.current_cents else '0' }};"></div>
+  </div>
+</div>
+{% endif %}
+{% else %}
+<div class="card">
+  <p class="muted">Set a target (in months of essential spending) and pick the account that holds your emergency fund above to see your progress.</p>
+</div>
+{% endif %}
+{% endblock %}

@@ -10,11 +10,11 @@
   <form method="get" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
     <div>
       <label class="muted">From</label><br>
-      <input type="date" name="from" value="{{ range_from }}">
+      <input type="date" lang="en-US" name="from" value="{{ range_from }}">
     </div>
     <div>
       <label class="muted">To</label><br>
-      <input type="date" name="to" value="{{ range_to }}">
+      <input type="date" lang="en-US" name="to" value="{{ range_to }}">
     </div>
     <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Filter</button>
   </form>
@@ -72,21 +72,37 @@
 
 <div class="card">
   <h2>Entries ({{ entries|length }})</h2>
+  <p class="muted" style="margin-top:-8px;font-size:0.8rem;">Click any field below to edit it (description, case, or start/end time) and hit Save -- pedido do usuário 2026-08-06.</p>
   {% if entries %}
+  {# Forms ficam FORA da tabela (form="..." em cada campo) -- não é HTML
+     válido aninhar <form> direto dentro de <tr>/<td>, mesmo padrão já
+     usado em staff_prices.html pro mesmo problema. #}
+  {% for e in entries %}
+  <form method="post" action="{{ url_for('planner.time_entry_update', entry_id=e.id) }}" id="time-entry-form-{{ e.id }}"></form>
+  {% endfor %}
+  <div style="overflow-x:auto;">
   <table class="submissions">
-    <thead><tr><th>Description</th><th>Client/Case/Project</th><th>Start</th><th>Duration</th><th>Source</th></tr></thead>
+    <thead><tr><th>Description</th><th>Case</th><th>Start</th><th>End</th><th>Duration</th><th>Source</th><th></th></tr></thead>
     <tbody>
       {% for e in entries %}
       <tr>
-        <td>{{ e.description or '—' }}</td>
-        <td class="muted">{{ label_for(e) }}</td>
-        <td class="muted">{{ e.started_at.strftime('%m/%d/%Y %H:%M') }}</td>
-        <td>{{ format_duration(duration(e)) }}{{ ' (running)' if not e.ended_at }}</td>
+        <td><input form="time-entry-form-{{ e.id }}" type="text" name="description" value="{{ e.description or '' }}" placeholder="—" style="font-size:0.82rem;width:140px;"></td>
+        <td>
+          <select form="time-entry-form-{{ e.id }}" name="case_id" style="font-size:0.8rem;max-width:160px;">
+            <option value="">—</option>
+            {% for c in cases %}<option value="{{ c.id }}" {{ 'selected' if e.case_id == c.id }}>{{ c.title }}</option>{% endfor %}
+          </select>
+        </td>
+        <td><input form="time-entry-form-{{ e.id }}" type="datetime-local" name="started_at" value="{{ e.started_at.strftime('%Y-%m-%dT%H:%M') }}" style="font-size:0.76rem;"></td>
+        <td><input form="time-entry-form-{{ e.id }}" type="datetime-local" name="ended_at" value="{{ e.ended_at.strftime('%Y-%m-%dT%H:%M') if e.ended_at else '' }}" style="font-size:0.76rem;"></td>
+        <td class="muted">{{ format_duration(duration(e)) }}{{ ' (running)' if not e.ended_at }}</td>
         <td class="muted">{{ e.source.value|title }}</td>
+        <td><button form="time-entry-form-{{ e.id }}" type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:4px 10px;">Save</button></td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
+  </div>
   {% else %}
   <p class="muted">No time entries in this period.</p>
   {% endif %}

@@ -1,4 +1,5 @@
 {% extends "staff_base.html" %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — {{ case_label }}{% endblock %}
 {% block content %}
 <p style="margin-bottom:18px;">
@@ -7,10 +8,14 @@
 
 <div class="card hero">
   <h1>{{ case_label }}</h1>
-  <p style="opacity:0.92;margin:0;">Client (login): {{ client_email }} — Amount: ${{ "%.2f"|format(payment.amount_cents / 100) }} — Method: {{ payment.method or '—' }}</p>
+  <p style="opacity:0.92;margin:0;">Client (login): {{ client_email }} — Amount: {{ payment.amount_cents|usd }} — Method: {{ payment.method or '—' }}</p>
   {% if payment.client_name or payment.client_phone %}
   <p style="opacity:0.92;margin:6px 0 0;">Contact info from checkout: {{ payment.client_name or '—' }}{% if payment.client_email %} — {{ payment.client_email }}{% endif %}{% if payment.client_phone %} — {{ payment.client_phone }}{% endif %}</p>
   {% endif %}
+</div>
+
+<div class="card" style="display:flex;justify-content:flex-end;">
+  {{ history_widget('payment-history-drawer', 'History — ' + case_label, history, history_users, empty_hint='Changes to this payment will show up here.') }}
 </div>
 
 <div class="card">

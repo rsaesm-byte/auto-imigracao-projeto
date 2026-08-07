@@ -71,7 +71,7 @@
         {% endif %}
         </td>
         <td class="muted">
-          {{ s.updated_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else s.updated_at.strftime("%d/%m/%Y %H:%M") }}
+          {{ s.updated_at.strftime("%m/%d/%Y %I:%M %p") }}
         </td>
         <td>
           {% if s.status == "completed" %}
@@ -238,7 +238,7 @@
     {% for item in news_items %}
     <a class="news-item" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">
       <div class="news-date">
-        {% if item.pub_date %}{{ item.pub_date.strftime("%m/%d/%Y") if get_lang() == "en" else item.pub_date.strftime("%d/%m/%Y") }}{% endif %}
+        {% if item.pub_date %}{{ item.pub_date.strftime("%m/%d/%Y") }}{% endif %}
       </div>
       <div class="news-title">{{ item.title }}</div>
       <div class="news-link">{{ t('news_read_more') }}</div>

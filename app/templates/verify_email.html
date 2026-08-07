@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% from "_illustrations.html" import auth_illustration %}
+{% block title %}{{ t('email_verify_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="auth-shell">
+  <div class="auth-art-panel">
+    {{ auth_illustration() }}
+    <h2>{{ t('email_verify_panel_title') }}</h2>
+    <p>{{ t('email_verify_panel_body') }}</p>
+  </div>
+  <div class="auth-form-panel">
+    <div class="auth-icon">{{ icon('lock', 22) }}</div>
+    <h1>{{ t('email_verify_heading') }}</h1>
+    <p class="muted">{{ t('email_verify_subtitle', email=current_user.email) }}</p>
+    <form method="post">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <label for="code">{{ t('email_verify_code_label') }}</label>
+      <input type="text" id="code" name="code" inputmode="numeric" pattern="[0-9]{6}" maxlength="6"
+             autocomplete="one-time-code" required autofocus
+             style="letter-spacing:0.4em;font-size:1.4rem;text-align:center;">
+      <button type="submit" class="btn block">{{ t('email_verify_submit') }}</button>
+    </form>
+    <form method="post" action="{{ url_for('auth.resend_verification') }}" style="margin-top:16px;text-align:center;">
+      <input type="hidden" name="next" value="{{ next_url }}">
+      <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--accent);cursor:pointer;text-decoration:underline;">
+        {{ t('email_verify_resend_link') }}
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}

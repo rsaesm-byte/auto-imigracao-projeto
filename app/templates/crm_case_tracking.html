@@ -1,4 +1,5 @@
 {% extends "staff_base.html" %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Case Tracking — {{ case.title }}{% endblock %}
 {% block content %}
 <div class="card hero">
@@ -24,6 +25,31 @@
   </form>
 </div>
 
+<div class="card">
+  <h2>Field offices</h2>
+  <p class="muted" style="font-size:0.82rem;margin-top:-6px;">Every field office added here shows up in the dropdown below, on every case — no need to re-add it next time.</p>
+  {% if field_offices %}
+  <ul style="margin:0 0 12px;padding-left:18px;">
+    {% for fo in field_offices %}
+    <li class="muted" style="font-size:0.85rem;">{{ fo.name }}{% if fo.address %} — {{ fo.address }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No field offices added yet.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('crm_tracking.field_office_new') }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;">
+    <div>
+      <label class="muted">Name</label><br>
+      <input type="text" name="name" placeholder="e.g. SCOPS Texas Facility" required style="min-width:220px;">
+    </div>
+    <div>
+      <label class="muted">Address (optional)</label><br>
+      <input type="text" name="address" placeholder="Full mailing address" style="min-width:280px;">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">+ Add field office</button>
+  </form>
+</div>
+
 {% if not case.tracked_forms %}
 <div class="card"><p class="muted">No forms are being tracked on this case yet — add one above.</p></div>
 {% endif %}
@@ -38,6 +64,7 @@
     <div style="display:flex;gap:8px;align-items:center;">
       {% if t.rfe_received %}<span class="badge status-warning">RFE/NOID received</span>{% endif %}
       {% if t.next_check_at %}<span class="badge {{ 'status-negative' if is_overdue(t) else 'status-neutral' }}">Next check: {{ t.next_check_at.strftime('%m/%d/%Y') }}</span>{% endif %}
+      {{ history_widget('tracked-history-' ~ t.id, 'History — ' ~ t.form_number, tracked_history.get(t.id, []), history_users, empty_hint='Changes to this tracked form will show up here.') }}
     </div>
   </div>
 
@@ -74,19 +101,19 @@
       </div>
       <div>
         <label class="muted">Receipt date</label><br>
-        <input type="date" name="receipt_date" value="{{ t.receipt_date.isoformat() if t.receipt_date else '' }}">
+        <input type="date" lang="en-US" name="receipt_date" value="{{ t.receipt_date.isoformat() if t.receipt_date else '' }}">
       </div>
       <div>
         <label class="muted">Finalized on</label><br>
-        <input type="date" name="finalized_at" value="{{ t.finalized_at.isoformat() if t.finalized_at else '' }}">
+        <input type="date" lang="en-US" name="finalized_at" value="{{ t.finalized_at.isoformat() if t.finalized_at else '' }}">
       </div>
       <div>
         <label class="muted">Monitoring started on</label><br>
-        <input type="date" name="monitoring_started_at" value="{{ t.monitoring_started_at.isoformat() if t.monitoring_started_at else '' }}">
+        <input type="date" lang="en-US" name="monitoring_started_at" value="{{ t.monitoring_started_at.isoformat() if t.monitoring_started_at else '' }}">
       </div>
       <div>
         <label class="muted">Approval date</label><br>
-        <input type="date" name="approval_date" value="{{ t.approval_date.isoformat() if t.approval_date else '' }}">
+        <input type="date" lang="en-US" name="approval_date" value="{{ t.approval_date.isoformat() if t.approval_date else '' }}">
       </div>
       <div>
         <label class="muted">Processing time</label><br>
@@ -105,15 +132,15 @@
     <div class="tracking-paper-fields" data-tracked-id="{{ t.id }}" style="display:{{ 'grid' if t.filing_method.value == 'paper' else 'none' }};grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-top:14px;padding-top:14px;border-top:1px solid var(--border);">
       <div>
         <label class="muted">USCIS received the package on</label><br>
-        <input type="date" name="uscis_received_at" value="{{ t.uscis_received_at.isoformat() if t.uscis_received_at else '' }}">
+        <input type="date" lang="en-US" name="uscis_received_at" value="{{ t.uscis_received_at.isoformat() if t.uscis_received_at else '' }}">
       </div>
       <div>
         <label class="muted">Expected arrival at USCIS</label><br>
-        <input type="date" name="expected_arrival_at" value="{{ t.expected_arrival_at.isoformat() if t.expected_arrival_at else '' }}">
+        <input type="date" lang="en-US" name="expected_arrival_at" value="{{ t.expected_arrival_at.isoformat() if t.expected_arrival_at else '' }}">
       </div>
       <div>
         <label class="muted">Actual arrival at USCIS</label><br>
-        <input type="date" name="actual_arrival_at" value="{{ t.actual_arrival_at.isoformat() if t.actual_arrival_at else '' }}">
+        <input type="date" lang="en-US" name="actual_arrival_at" value="{{ t.actual_arrival_at.isoformat() if t.actual_arrival_at else '' }}">
       </div>
       <div>
         <label class="muted">USPS tracking number</label><br>

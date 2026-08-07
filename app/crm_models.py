@@ -35,7 +35,7 @@ from sqlalchemy import Date, DateTime, ForeignKey, SmallInteger, Text, UniqueCon
 from sqlalchemy import Enum as SAEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.db import Base
+from app.db import Base, VersionedMixin
 
 
 def _utcnow() -> datetime:
@@ -243,6 +243,19 @@ class TranslationSpeedTier(str, enum.Enum):
     standard = "standard"
 
 
+class ClientApprovalStatus(str, enum.Enum):
+    """Cliente pode Aprovar/Solicitar alteração/Recusar um orçamento de
+    tradução já cotado (staff preencheu speed_tier + page_count) -- pedido
+    do Prompt Mestre (Fase 7), implementado 2026-08-06. Independente de
+    DocumentStatus/pipeline: aprovar o orçamento não move o documento
+    sozinho no kanban, é só o cliente confirmando o preço (o staff decide
+    quando avançar o estágio, vendo esse status)."""
+    pending = "pending"
+    approved = "approved"
+    changes_requested = "changes_requested"
+    rejected = "rejected"
+
+
 class ProgressCategory(str, enum.Enum):
     """What kind of work item a CaseProgressItem ("Acompanhamento") tracks
     -- user request 2026-08-02: "formulários, cartas, organização dos
@@ -445,9 +458,16 @@ class CloseLossReason(Base):
 
 
 class IncomeSourceType(Base):
+    """`sort_order`/`deleted_at` (2026-08-07, pedido do usuário) --
+    checkbox editável pelo painel na ficha do cliente de coaching
+    (reordenar/renomear/adicionar/apagar). Apagar é sempre exclusão
+    lógica, mesma disciplina de `FinancialGoal`/`FinancialChallenge`
+    (app/crm_financial_models.py)."""
     __tablename__ = "crm_income_source_types"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(unique=True)
+    sort_order: Mapped[int] = mapped_column(default=0)
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
 
 class PaymentMethodLookup(Base):
@@ -460,11 +480,16 @@ class PaymentMethodLookup(Base):
 # Núcleo
 # --------------------------------------------------------------------------
 
-class Client(Base):
+class Client(Base, VersionedMixin):
     """Cadastro central de cliente. `user_id` só é preenchido quando o
     cliente também tem login no site (fluxo self_service de hoje) --
     permanece NULL para um lead/cliente cadastrado só pela equipe no
-    fluxo full_service, antes (ou sem nunca ter) uma conta própria."""
+    fluxo full_service, antes (ou sem nunca ter) uma conta própria.
+
+    `VersionedMixin` (app/db.py): detecção de edição simultânea, hoje só
+    checada por `crm_pipeline.client_update` (o formulário grande "Client
+    info" -- ver app/services/concurrency_service.py). As rotas menores
+    (dependentes, custom fields) ainda não checam a versão."""
     __tablename__ = "crm_clients"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -473,11 +498,19 @@ class Client(Base):
 
     full_name: Mapped[str]
     email: Mapped[str | None] = mapped_column(default=None, index=True)
+    personal_email_verified: Mapped[bool] = mapped_column(default=False)
     us_phone: Mapped[str | None] = mapped_column(default=None)
     us_phone_has: Mapped[bool] = mapped_column(default=False)
+    us_phone_verified: Mapped[bool] = mapped_column(default=False)
     home_phone: Mapped[str | None] = mapped_column(default=None)
     home_phone_has: Mapped[bool] = mapped_column(default=False)
     us_address: Mapped[str | None] = mapped_column(default=None)
+    # Marcado manualmente pelo staff quando confirma aquele dado direto com
+    # o cliente (telefone, endereço nos EUA, e-mail pessoal) -- pedido do
+    # usuário 2026-08-06: um "check mark" ao lado de cada um na ficha do
+    # cliente. Não reabre sozinho quando o valor muda (fica a critério do
+    # staff perceber e desmarcar de novo).
+    us_address_verified: Mapped[bool] = mapped_column(default=False)
     home_address: Mapped[str | None] = mapped_column(default=None)
     city_country: Mapped[str | None] = mapped_column(default=None)
     country_of_origin: Mapped[str | None] = mapped_column(default=None)
@@ -499,11 +532,11 @@ class Client(Base):
     gc_expiration: Mapped[date | None] = mapped_column(Date, default=None)
 
     tier: Mapped[ClientTier | None] = mapped_column(SAEnum(ClientTier), default=None)
-    # Códigos internos de identificação/segurança usados pela equipe hoje
-    # (5 Letters / Key Word no Notion) -- mantidos como estavam, sem
-    # inventar um uso novo pra eles.
-    five_letters: Mapped[str | None] = mapped_column(default=None)
-    key_word: Mapped[str | None] = mapped_column(default=None)
+    # five_letters/key_word (5 Letters / Key Word do Notion) viviam aqui em
+    # texto puro até 2026-08-06 -- movidos e criptografados pra
+    # ClientCredential.five_letters_encrypted/key_word_encrypted
+    # (service=embassy), pedido do usuário: são códigos de verificação de
+    # segurança usados com a Embaixada, não dado de identificação geral.
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
@@ -551,6 +584,17 @@ class ClientCredential(Base):
     email_encrypted: Mapped[str | None] = mapped_column(Text, default=None)
     password_encrypted: Mapped[str | None] = mapped_column(Text, default=None)
     backup_code_encrypted: Mapped[str | None] = mapped_column(Text, default=None)
+    # "5 Letters" / "Key Word" do Notion -- códigos de verificação de
+    # segurança usados em ligações com a Embaixada, não com o USCIS.
+    # Viviam como coluna de texto puro em Client (five_letters/key_word)
+    # até 2026-08-06 -- movidos pra cá e criptografados a pedido do
+    # usuário ("devem ir dentro de credentials em embassy"), mesmo
+    # tratamento de segurança do resto desta tabela. Só usados/exibidos
+    # quando service=embassy (ver app/crm_credentials.py), mas moram aqui
+    # (não num par de colunas só-embassy) pra reusar a mesma estrutura
+    # genérica de reveal/audit-log de qualquer outra credencial.
+    five_letters_encrypted: Mapped[str | None] = mapped_column(Text, default=None)
+    key_word_encrypted: Mapped[str | None] = mapped_column(Text, default=None)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
     updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
 
@@ -634,6 +678,16 @@ class Lead(Base):
     # "Cidade/Região" -- texto livre (não é um lookup fechado como
     # ContactChannel/LeadSource, região não é vocabulário fixo do produto).
     city_region: Mapped[str | None] = mapped_column(default=None)
+    # "Melhor horário para contato" -- pedido do usuário 2026-08-06, campo
+    # do formulário público de interesse inicial (ver app/lead_intake.py).
+    best_contact_time: Mapped[str | None] = mapped_column(default=None)
+    # Lista crua dos serviços marcados no formulário público de interesse
+    # (app/lead_intake.py) -- inclui os SEM ServiceCatalog correspondente
+    # (Tradução Juramentada, E-REQUEST etc., ver
+    # app/services/service_interests.py), que por isso não viram
+    # LeadInterestedService nenhum. Campo próprio, distinto de `notes`
+    # (que é anotação livre do STAFF, não o que o próprio lead preencheu).
+    interest_notes: Mapped[str | None] = mapped_column(Text, default=None)
     # "Anotações" -- markdown livre, mesmo conversor hand-rolled já usado em
     # CaseTrackedForm.notes_markdown (app/services/text_format.py).
     notes: Mapped[str | None] = mapped_column(Text, default=None)
@@ -645,6 +699,22 @@ class Lead(Base):
     interested_service_mode: Mapped[ServiceMode | None] = mapped_column(SAEnum(ServiceMode), default=None)
     # "Lead Tier" (1 a 5 estrelas) -- ver LeadTier acima.
     tier: Mapped[LeadTier | None] = mapped_column(SAEnum(LeadTier), default=None)
+    # Conta de login que gerou este lead automaticamente ao selecionar um
+    # pacote (ver app/packages.py) -- None para leads criados manualmente
+    # pelo staff, como sempre foi até aqui. É como achamos "o lead aberto
+    # deste cliente" pra não duplicar em cliques repetidos e pra promover
+    # pro Case certo quando o pagamento é enviado (app/payment_gate.py).
+    user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None, index=True)
+    # Pacote "Faça Você Mesmo" (data/packages.json) que gerou este lead --
+    # paralelo a LeadInterestedService abaixo, que cobre os pacotes
+    # profissionais (ServiceCatalog). Os dois nunca coexistem no mesmo lead.
+    interested_package_slug: Mapped[str | None] = mapped_column(default=None)
+    # Preço exato (em centavos) que o cliente escolheu ao confirmar um
+    # pacote profissional -- Standard/Plus/Plus-Papel resolvem pro mesmo
+    # `interested_service_mode` (saes_plus cobre Plus online E Plus papel),
+    # então isso é o que desambigua qual dos dois preços cobrar no checkout
+    # (ver app/payment_gate.py::checkout_lead). None para leads de pacote DIY.
+    selected_price_cents: Mapped[int | None] = mapped_column(default=None)
     assigned_to_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None, index=True)
     close_loss_reason_id: Mapped[int | None] = mapped_column(ForeignKey("crm_close_loss_reasons.id"), default=None)
     # Preenchido quando o lead vira cliente de fato -- é a "conversão" que
@@ -655,6 +725,28 @@ class Lead(Base):
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
 
     cases: Mapped[list["Case"]] = relationship(back_populates="lead")
+    follow_ups: Mapped[list["LeadFollowUp"]] = relationship(
+        back_populates="lead", cascade="all, delete-orphan", order_by="LeadFollowUp.follow_up_number")
+
+
+class LeadFollowUp(Base):
+    """Follow-up numerado por lead -- pedido do usuário 2026-08-06, dentro
+    do card do Lead: "Follow up Number, Date, Channel, Notes". Não existia
+    antes (Communication já cobre comunicação por Case/Client, mas não por
+    Lead ainda não convertido). `follow_up_number` é sequencial por lead
+    (1, 2, 3...), calculado na criação (ver crm_staff_pipeline.py), não
+    editável depois -- é só a ordem em que os follow-ups aconteceram."""
+    __tablename__ = "crm_lead_follow_ups"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    lead_id: Mapped[int] = mapped_column(ForeignKey("crm_leads.id"), index=True)
+    follow_up_number: Mapped[int]
+    follow_up_date: Mapped[date] = mapped_column(Date, default=date.today)
+    contact_channel_id: Mapped[int | None] = mapped_column(ForeignKey("crm_contact_channels.id"), default=None)
+    notes: Mapped[str | None] = mapped_column(Text, default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+    lead: Mapped[Lead] = relationship(back_populates="follow_ups")
 
 
 class LeadInterestedService(Base):
@@ -725,12 +817,20 @@ class ServicePaymentPlan(Base):
     service: Mapped[ServiceCatalog] = relationship(back_populates="payment_plans")
 
 
-class Case(Base):
+class Case(Base, VersionedMixin):
     """Hub central -- um caso/processo imigratório. `service_mode` marca se
     é um cliente self_service (conduz o próprio processo, produto
     Auto-Imigração de hoje) ou full_service (a equipe conduz do início ao
     fim). `FormSubmission`/`Payment` (app/models.py) linkam aqui via
-    `case_id` opcional -- nenhum dos dois é duplicado ou substituído."""
+    `case_id` opcional -- nenhum dos dois é duplicado ou substituído.
+
+    `VersionedMixin` (app/db.py): detecção de edição simultânea, hoje só
+    checada por `crm_ops.case_details_update` (o formulário "Case
+    details" -- ver app/services/concurrency_service.py). As outras
+    rotas que escrevem em Case (notas, resumo, custom fields, mudança de
+    status, ...) ainda não checam nem incrementam a versão -- escopo
+    definido pelo usuário 2026-08-07 como só o formulário principal por
+    entidade nesta primeira passada."""
     __tablename__ = "crm_cases"
 
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -955,6 +1055,14 @@ class DocumentTranslation(Base):
     price_per_page_usd_cents: Mapped[int | None] = mapped_column(default=None)
 
     deadline: Mapped[date | None] = mapped_column(Date, default=None)
+    notes: Mapped[str | None] = mapped_column(Text, default=None)
+
+    # Aprovação do cliente sobre o orçamento cotado (ver ClientApprovalStatus
+    # acima) -- pedido do Prompt Mestre (Fase 7), 2026-08-06.
+    client_approval_status: Mapped[ClientApprovalStatus] = mapped_column(
+        SAEnum(ClientApprovalStatus), default=ClientApprovalStatus.pending)
+    client_approval_note: Mapped[str | None] = mapped_column(Text, default=None)
+    client_approval_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
     document: Mapped[Document] = relationship(back_populates="translation")
     translator: Mapped[Translator | None] = relationship(back_populates="translations")
@@ -990,7 +1098,13 @@ class PaymentLedgerEntry(Base):
     direction: Mapped[PaymentDirection] = mapped_column(SAEnum(PaymentDirection), index=True)
     status: Mapped[PaymentStatus] = mapped_column(SAEnum(PaymentStatus), default=PaymentStatus.pending, index=True)
     payment_method_id: Mapped[int | None] = mapped_column(ForeignKey("crm_payment_methods.id"), default=None)
-    package_id: Mapped[int | None] = mapped_column(ForeignKey("crm_services_catalog.id"), default=None)
+    # "Pacote" pedido do usuário 2026-08-06 (Accessible/Saes Standard/Saes
+    # Plus) -- era `package_id` (FK morta pra ServiceCatalog, nunca usada
+    # por nenhuma rota, 0 linhas reais preenchidas, ver git history) até
+    # essa data. Vira enum porque é o mesmo nível de atendimento já
+    # modelado em Case.service_mode/Lead.interested_service_mode em todo
+    # o resto do CRM -- não é o catálogo de serviços específico.
+    package: Mapped[ServiceMode | None] = mapped_column(SAEnum(ServiceMode), default=None)
 
     invoice_date: Mapped[date | None] = mapped_column(Date, default=None)
     due_date: Mapped[date | None] = mapped_column(Date, default=None, index=True)
@@ -998,7 +1112,16 @@ class PaymentLedgerEntry(Base):
     approved_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
     reviewed_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
     discount_cents: Mapped[int | None] = mapped_column(default=None)
-    notes: Mapped[str | None] = mapped_column(Text, default=None)
+    notes: Mapped[str | None] = mapped_column(Text, default=None)  # notas gerais/desconto ("valor do desconto, etc")
+    # Campos de confirmação de pagamento -- pedido do usuário 2026-08-06,
+    # nenhum dos quatro existia antes. `confirmation_notes` é distinto de
+    # `notes` acima de propósito (pedido explícito: "Notes para desconto"
+    # separado de "Payment Additional Notes").
+    confirmation_id: Mapped[str | None] = mapped_column(default=None)
+    confirmation_notes: Mapped[str | None] = mapped_column(Text, default=None)
+    paid_by: Mapped[str | None] = mapped_column(default=None)  # nome de quem pagou -- texto livre, não é um User/staff
+    receipt_file_path: Mapped[str | None] = mapped_column(default=None)
+    receipt_file_name: Mapped[str | None] = mapped_column(default=None)  # nome original do arquivo, pro download (ver app/services/payment_receipts.py)
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
@@ -1123,11 +1246,23 @@ class Task(Base):
     received_date: Mapped[date | None] = mapped_column(Date, default=None)
 
     notes: Mapped[str | None] = mapped_column(Text, default=None)
+    # Recorrência (Prompt Mestre, Seção 11), 2026-08-06 -- de propósito o
+    # jeito mais simples possível: "repete a cada N dias", sem cron
+    # nenhum. Quando uma tarefa com isto preenchido é marcada `done`
+    # (ver crm_staff_ops.py::task_update_status), a PRÓXIMA ocorrência é
+    # criada na hora, disparada pelo próprio evento -- não por um
+    # scheduler rodando em segundo plano (mesma decisão consciente de
+    # não adicionar infraestrutura de cron só pra isso, ver Automations).
+    recurrence_interval_days: Mapped[int | None] = mapped_column(default=None)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
 
     case: Mapped[Case | None] = relationship(back_populates="tasks")
     attendees: Mapped[list["TaskAttendee"]] = relationship(back_populates="task", cascade="all, delete-orphan")
+    checklist_items: Mapped[list["TaskChecklistItem"]] = relationship(
+        back_populates="task", cascade="all, delete-orphan", order_by="TaskChecklistItem.position")
+    comments: Mapped[list["TaskComment"]] = relationship(
+        back_populates="task", cascade="all, delete-orphan", order_by="TaskComment.created_at")
 
 
 class TaskAttendee(Base):
@@ -1137,6 +1272,44 @@ class TaskAttendee(Base):
     user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
 
     task: Mapped[Task] = relationship(back_populates="attendees")
+
+
+class TaskChecklistItem(Base):
+    """Subtarefa/item de checklist dentro de uma Task -- pedido do Prompt
+    Mestre (Seção 11, "subtarefas, checklists... por tarefa"), 2026-08-06.
+    Deliberadamente simples (só título + feito/não feito + posição) --
+    não é uma segunda Task recursiva, é só um passo dentro de uma."""
+    __tablename__ = "crm_task_checklist_items"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    task_id: Mapped[int] = mapped_column(ForeignKey("crm_tasks.id"), index=True)
+    title: Mapped[str]
+    done: Mapped[bool] = mapped_column(default=False)
+    position: Mapped[int] = mapped_column(default=0)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+    task: Mapped[Task] = relationship(back_populates="checklist_items")
+
+
+class TaskComment(Base):
+    """Thread de comentários de uma Task (Prompt Mestre, Seção 11:
+    "Comentários... Anexos"), 2026-08-06. Staff-only, igual à Task em si
+    (nunca visível pro cliente -- diferente de `CaseMessage`, que é a
+    thread cliente/staff de um Case). Anexo opcional reusa a mesma
+    infraestrutura de upload já usada em CaseMessage (ver
+    app/services/case_messages.py::save_attachment -- mesma pasta,
+    mesmas extensões permitidas, sem duplicar código)."""
+    __tablename__ = "crm_task_comments"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    task_id: Mapped[int] = mapped_column(ForeignKey("crm_tasks.id"), index=True)
+    author_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    body: Mapped[str] = mapped_column(Text)
+    attachment_path: Mapped[str | None] = mapped_column(default=None)
+    attachment_name: Mapped[str | None] = mapped_column(default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+    task: Mapped[Task] = relationship(back_populates="comments")
 
 
 class CaseTrackedForm(Base):
@@ -1288,3 +1461,330 @@ class CompanyContractTerms(Base):
 
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
     updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+
+
+class Notification(Base):
+    """Notificação em tempo real (quase) pro painel do colaborador --
+    widget estilo "Dynamic Island" (app/templates/_notification_widget.html,
+    app/static/notifications.js) que consulta app/staff_notifications.py
+    por polling. `kind` é texto livre de propósito (não enum): a lista de
+    eventos que disparam notificação cresce com o tempo (hoje: lead_new,
+    payment_submitted, document_received, message_new -- ver
+    app/services/notification_service.py::notify), então travar num enum
+    forçaria uma migração de schema a cada novo tipo de evento. `read_at`
+    é global (compartilhado pela equipe toda, não por usuário) -- decisão
+    deliberada pra não precisar de tabela de junção numa equipe pequena."""
+    __tablename__ = "notifications"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    kind: Mapped[str] = mapped_column(index=True)
+    title: Mapped[str]
+    body: Mapped[str | None] = mapped_column(Text, default=None)
+    url: Mapped[str | None] = mapped_column(default=None)
+    # None (padrão) = aviso pra equipe toda, comportamento original acima.
+    # Preenchido = privado para ESSE usuário (pedido do usuário 2026-08-06:
+    # cliente recebe notificação -- ex. tradução disponível -- no mesmo
+    # widget da equipe, mas só ele pode ver/ler a dele). app/staff_notifications.py
+    # e o novo app/client_notifications.py filtram cada um pro seu escopo
+    # (staff: recipient_user_id IS NULL; cliente: == current_user.id) --
+    # nunca vazam entre si.
+    recipient_user_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id"), default=None, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, index=True)
+    read_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+
+
+class AuditSource(str, enum.Enum):
+    manual = "manual"
+    automatic = "automatic"
+    integration = "integration"
+
+
+class AuditLog(Base):
+    """Histórico/auditoria genérico por registro (reforma do CRM, Fase 0 --
+    ver pedido do usuário seção 11 "Histórico e Auditoria"). Uma linha por
+    mudança de campo (ou por ação sem campo específico, ex.: criação,
+    exclusão, mudança de etapa do kanban, comentário, upload).
+
+    Deliberadamente separado de `Notification` (que é sobre avisar alguém
+    agora) e de `CaseStepLog`/`CredentialAccessLog` (que são históricos
+    especializados de um fluxo específico, e continuam existindo como
+    estão) -- este é o log cross-entidade genérico que faltava (ver
+    auditoria da Fase 1 da reforma: só existiam os dois casos pontuais
+    acima).
+
+    `entity_type` é o nome da classe do modelo (ex.: "Lead", "Case",
+    "Client") como string, não FK -- um log de auditoria precisa
+    sobreviver mesmo que o registro referenciado seja excluído
+    (exclusão lógica é o padrão preferido, mas nem toda tabela tem isso
+    ainda). `field=None` representa uma ação sobre o registro inteiro
+    (criação, exclusão, mudança de etapa) em vez de um campo específico;
+    nesse caso `description` carrega o resumo legível (ex.: "moveu de
+    Novo para Qualificado"). `user_id` é nulo quando a mudança veio de
+    uma automação sem usuário associado (`source=automatic`).
+
+    Escrita apenas -- nenhuma rota edita ou apaga uma linha de AuditLog.
+    `services/audit_service.py::log_change()` nunca chama commit() (mesma
+    convenção do resto de app/services/): quem chama decide."""
+    __tablename__ = "crm_audit_log"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    entity_type: Mapped[str] = mapped_column(index=True)
+    entity_id: Mapped[int] = mapped_column(index=True)
+    action: Mapped[str] = mapped_column(index=True)
+    field: Mapped[str | None] = mapped_column(default=None)
+    old_value: Mapped[str | None] = mapped_column(Text, default=None)
+    new_value: Mapped[str | None] = mapped_column(Text, default=None)
+    description: Mapped[str | None] = mapped_column(Text, default=None)
+    source: Mapped[AuditSource] = mapped_column(SAEnum(AuditSource), default=AuditSource.manual)
+    user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, index=True)
+
+
+class CustomFieldType(str, enum.Enum):
+    """Prompt Mestre, Fase 5 ("Tipos de propriedades") -- subconjunto dos
+    23 tipos listados no documento. De propósito: só os que dá pra
+    implementar bem com um único `value_text` (ver CustomFieldValue) sem
+    precisar de infraestrutura nova (upload de arquivo, motor de fórmula,
+    relação com outra tabela) -- esses ficam fora desta primeira versão."""
+    short_text = "short_text"
+    long_text = "long_text"
+    number = "number"
+    currency = "currency"
+    percent = "percent"
+    date = "date"
+    checkbox = "checkbox"
+    single_select = "single_select"
+    multi_select = "multi_select"
+
+
+class CustomFieldDefinition(Base):
+    """Campo personalizado definido pelo staff (Prompt Mestre, Fase 5),
+    2026-08-06 -- "criar uma área administrativa para gerenciar
+    propriedades dos bancos de dados". `entity_type` é texto livre (mesma
+    convenção do AuditLog acima) -- hoje só "Case" tem UI ligada, mas o
+    modelo já é genérico o bastante pra outras entidades no futuro sem
+    migração nova. `key` é o identificador interno estável (nunca muda
+    depois de criado, mesmo se `label` for renomeado) -- é o que
+    `CustomFieldValue.field_id` referencia via FK, então não precisa
+    duplicar aqui; existe como coluna própria só pra facilitar achar o
+    campo certo por código/relatório futuro sem depender do id numérico.
+    `options_json` só é usado por single_select/multi_select (lista de
+    strings). Exclusão lógica antes da permanente (pedido explícito do
+    documento): `archived=True` primeiro, exclusão de verdade só depois
+    (ver crm_custom_fields.py::field_delete, que recusa apagar sem estar
+    arquivado)."""
+    __tablename__ = "crm_custom_field_definitions"
+    __table_args__ = (UniqueConstraint("entity_type", "key"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    entity_type: Mapped[str] = mapped_column(index=True)
+    key: Mapped[str]
+    label: Mapped[str]
+    field_type: Mapped[CustomFieldType] = mapped_column(SAEnum(CustomFieldType))
+    required: Mapped[bool] = mapped_column(default=False)
+    default_value: Mapped[str | None] = mapped_column(Text, default=None)
+    options_json: Mapped[str | None] = mapped_column(Text, default=None)
+    client_visible: Mapped[bool] = mapped_column(default=False)
+    archived: Mapped[bool] = mapped_column(default=False, index=True)
+    position: Mapped[int] = mapped_column(default=0)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+    created_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+
+
+class CustomFieldValue(Base):
+    """Valor de um campo personalizado pra um registro específico --
+    padrão EAV (entity-attribute-value) de propósito: cada `CaseStatus`/
+    `Client`/etc. real continua sem nenhuma coluna nova no banco por campo
+    criado -- criar/apagar um campo personalizado nunca é uma migração.
+    `entity_id` aponta pro registro (hoje só `Case.id`, mesma convenção de
+    `entity_type` do AuditLog -- não é FK de verdade de propósito, pra não
+    prender este model a uma tabela só). Sempre texto (`value_text`) --
+    number/currency/percent/date guardam a representação em string e são
+    convertidos na leitura (app/services/custom_fields_service.py), multi_select
+    guarda um JSON de lista; nunca uma coluna tipada por tipo (impediria um
+    campo mudar de tipo sem migração, o oposto do que essa feature promete)."""
+    __tablename__ = "crm_custom_field_values"
+    __table_args__ = (UniqueConstraint("field_id", "entity_type", "entity_id"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    field_id: Mapped[int] = mapped_column(ForeignKey("crm_custom_field_definitions.id"), index=True)
+    entity_type: Mapped[str] = mapped_column(index=True)
+    entity_id: Mapped[int] = mapped_column(index=True)
+    value_text: Mapped[str | None] = mapped_column(Text, default=None)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+    field: Mapped[CustomFieldDefinition] = relationship()
+
+
+class AutomationTriggerField(str, enum.Enum):
+    """Qual data do Case o gatilho observa -- subconjunto dos "eventos do
+    ciclo" citados no Prompt Mestre (Seção 7), os 4 mais acionáveis:
+    prazo do serviço contratado, vencimento do status atual (ex.: EAD),
+    data de aprovação, data de submissão."""
+    service_deadline = "service_deadline"
+    status_expire_on = "status_expire_on"
+    approval_date = "approval_date"
+    submission_date = "submission_date"
+
+
+class AutomationActionType(str, enum.Enum):
+    """As 2 ações da lista "Automações possíveis" do documento que dão
+    pra fazer sem infraestrutura nova (sem envio de e-mail em massa, sem
+    sistema de campanha/segmento) -- ver docstring de AutomationRule."""
+    create_task = "create_task"
+    notify_responsible = "notify_responsible"
+
+
+class AutomationRunStatus(str, enum.Enum):
+    success = "success"
+    error = "error"
+
+
+class AutomationRule(Base):
+    """Regra de automação de ciclo de vida (Prompt Mestre, Seção 7:
+    "acompanhamento pós-venda baseado no ciclo de cada serviço... não
+    deixar prazos legais fixos diretamente no código, criar modelos
+    configuráveis"), 2026-08-06. Escopo reduzido de propósito frente ao
+    documento inteiro (que pede templates de e-mail, segmentos de
+    marketing, sugestão de próximo serviço -- nenhum desses tem
+    infraestrutura no projeto ainda): aqui só "dispare uma ação X dias
+    antes/depois de uma data do caso", com 2 ações possíveis.
+
+    `offset_days` negativo = X dias ANTES de `trigger_field`; positivo =
+    X dias DEPOIS. `service_catalog_id=None` -- regra vale pra qualquer
+    Case; preenchido -- só pros casos com esse serviço como atual
+    (CaseService.role=current). `action_text` é o título da tarefa ou da
+    notificação -- aceita o placeholder literal "{case}" (substituído
+    pelo título do Case na hora de disparar, ver automation_service.py).
+
+    "Interromper quando o cliente já tiver contratado o próximo serviço"
+    (pedido do documento) é tratado de forma simples: a regra só
+    considera casos com `case_status` numa lista de status "ativos" (não
+    approved/denied/gave_up/lost) -- ver `_ACTIVE_STATUSES` em
+    automation_service.py."""
+    __tablename__ = "crm_automation_rules"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    name: Mapped[str]
+    service_catalog_id: Mapped[int | None] = mapped_column(ForeignKey("crm_services_catalog.id"), default=None)
+    trigger_field: Mapped[AutomationTriggerField] = mapped_column(SAEnum(AutomationTriggerField))
+    offset_days: Mapped[int] = mapped_column(default=0)
+    action_type: Mapped[AutomationActionType] = mapped_column(SAEnum(AutomationActionType))
+    action_text: Mapped[str]
+    active: Mapped[bool] = mapped_column(default=True, index=True)
+
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+    created_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+
+    service: Mapped["ServiceCatalog | None"] = relationship()
+    runs: Mapped[list["AutomationRun"]] = relationship(
+        back_populates="rule", cascade="all, delete-orphan", order_by="AutomationRun.executed_at.desc()")
+
+
+class AutomationRun(Base):
+    """Histórico de execução (pedido explícito do documento: "Toda
+    automação deve possuir: Histórico; Status; Data da execução;
+    Resultado; Erros"). Uma linha por (regra, caso) que de fato disparou
+    -- `status=success` aqui é o que impede a regra de disparar de novo
+    pro mesmo caso (ver automation_service.py::_already_ran); uma linha
+    `error` NÃO bloqueia nova tentativa, pra não travar a regra pra
+    sempre por causa de uma falha pontual."""
+    __tablename__ = "crm_automation_runs"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    rule_id: Mapped[int] = mapped_column(ForeignKey("crm_automation_rules.id"), index=True)
+    case_id: Mapped[int] = mapped_column(ForeignKey("crm_cases.id"), index=True)
+    executed_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, index=True)
+    status: Mapped[AutomationRunStatus] = mapped_column(SAEnum(AutomationRunStatus))
+    result_text: Mapped[str | None] = mapped_column(Text, default=None)
+    error_text: Mapped[str | None] = mapped_column(Text, default=None)
+
+    rule: Mapped[AutomationRule] = relationship(back_populates="runs")
+    case: Mapped[Case] = relationship()
+
+
+class PipelineStageConfig(Base):
+    """Metadados administráveis por etapa de um pipeline (Fase 4 da reforma
+    do CRM: "colunas visualmente identificáveis", "definir cor",
+    "descrição"). Deliberadamente NÃO substitui o `enum.Enum` que cada
+    pipeline usa como vocabulário fechado (CaseStatus, LeadStage,
+    TaskStatus, DocumentStatus, FinancialClientStatus) -- isso exigiria
+    reescrever toda a lógica de negócio, automações e gates que comparam
+    contra esses enums (ex.: o gate de DS-160 em app/crm_staff_pipeline.py
+    depende de `case.ds160_visa_type`, não do texto do status), risco alto
+    demais pra essa fase. Esta tabela é só uma camada de personalização
+    visual/documental POR CIMA do enum: uma linha aqui pode existir ou não
+    para cada `(pipeline, stage_value)`; quando não existe, a UI cai de
+    volta pra cor automática por posição (ver .crm-kanban-col:nth-of-type
+    em app/static/style.css) e nenhuma descrição.
+
+    `active=False` é só informativo por enquanto (mostra um aviso na tela
+    de administração) -- não impede ninguém de mover um card pra essa
+    etapa, porque isso exigiria validar contra esta tabela em cada uma das
+    4 rotas de mudança de status, o que effectivamente tornaria esta
+    tabela uma segunda fonte de verdade sobre vocabulário válido, correndo
+    o risco de os dois (enum + esta tabela) ficarem dessincronizados. Ver
+    app/crm_pipeline_settings.py."""
+    __tablename__ = "crm_pipeline_stage_config"
+    __table_args__ = (UniqueConstraint("pipeline", "stage_value", name="uq_pipeline_stage"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    pipeline: Mapped[str] = mapped_column(index=True)
+    stage_value: Mapped[str]
+    color: Mapped[str | None] = mapped_column(default=None)
+    label: Mapped[str | None] = mapped_column(default=None)  # sobrescreve o texto exibido (crm_badge label=); o stage_value/enum em si não muda
+    description: Mapped[str | None] = mapped_column(Text, default=None)
+    active: Mapped[bool] = mapped_column(default=True)
+    sort_order: Mapped[int | None] = mapped_column(default=None)  # posição customizada (drag-and-drop na tela de admin); None = ordem original do enum
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+    updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+
+
+class ServiceInterestOption(Base):
+    """Item (ou cabeçalho de seção) da lista "qual desses serviços você
+    tem interesse" do formulário público de interesse inicial
+    (_lead_intake_form.html, app/lead_intake.py) -- pedido do usuário
+    2026-08-07: reordenar, renomear, adicionar e apagar pelo painel do
+    colaborador. Substitui a constante `SERVICE_INTEREST_OPTIONS` que
+    existia hardcoded em app/services/service_interests.py (esse módulo
+    virou só um conjunto de leituras por cima desta tabela).
+
+    `key` é o valor do checkbox (`<input name="services"
+    value="{{ opt.key }}">`) e o sufixo da chave de tradução
+    (`service_interest_{key}`, ver app/translations/*.json) -- gerado
+    uma vez ao criar o item (a partir do slug do serviço vinculado, ou
+    de um slug do rótulo se nenhum serviço for vinculado) e nunca mais
+    editável depois: Leads antigos guardam essas chaves em
+    `Lead.interest_notes`/`session["lead_intake"]["keys"]" durante o
+    fluxo de cadastro, então trocar `key` depois de criado quebraria um
+    fluxo em andamento no meio do carrinho. O RÓTULO (o texto mostrado)
+    continua morando nos arquivos de tradução, não numa coluna aqui --
+    ver app/i18n.py::set_translation/delete_translation.
+
+    `slug`, se preenchido, precisa bater com um `ServiceCatalog.slug`
+    real -- é o que liga a resposta do visitante a um serviço de verdade
+    (ver app/lead_intake.py::start(), LeadInterestedService). Itens sem
+    correspondência no catálogo ainda (ex.: "Planejamento Financeiro",
+    que é outra linha de negócio inteira) ficam com slug=None -- o texto
+    de interesse ainda é gravado, só não vira um relacionamento
+    estruturado.
+
+    `is_group`: linha é só um cabeçalho visual de seção (sem checkbox
+    próprio), ex. "Mudança de Status" agrupando F1/F2/B2 logo abaixo
+    (marcados com `indent=True`). `sort_order` é uma lista única e FLAT
+    -- cabeçalhos e itens juntos, na ordem visual real (mesma ideia de
+    PipelineStageConfig.sort_order acima)."""
+    __tablename__ = "crm_service_interest_options"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    key: Mapped[str] = mapped_column(unique=True, index=True)
+    slug: Mapped[str | None] = mapped_column(default=None, index=True)
+    is_group: Mapped[bool] = mapped_column(default=False)
+    indent: Mapped[bool] = mapped_column(default=False)
+    sort_order: Mapped[int] = mapped_column(default=0, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)

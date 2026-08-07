@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 {% block title %}{{ t('services_title') }} — {{ t('app_name') }}{% endblock %}
 {% block page_class %}wide bg-blobs{% endblock %}
 {% block content %}
@@ -7,40 +8,202 @@
   <p class="eyebrow">{{ t('services_hero_eyebrow') }}</p>
   <h1 class="hero-title" style="font-size:2rem;">{{ t('services_hero_title') }}</h1>
   <p class="hero-subtitle">{{ t('services_hero_subtitle') }}</p>
-  <p class="hero-subtitle" style="margin-top:6px;">{{ t('services_see_packages_hint') }} <a href="{{ url_for('packages.index') }}" style="color:inherit;text-decoration:underline;">{{ t('nav_packages') }}</a>.</p>
 </section>
 
-<div class="services-grid">
-  {% for form in catalog %}
-  <div class="card service-card">
-    <div class="service-card-head">
-      <span class="slug">{{ form.slug|upper }}</span>
-      {% if form.enabled %}
-        <span class="badge completed">{{ t('badge_available') }}</span>
-      {% elif form.contact_only %}
-        <span class="badge in_progress">{{ t('badge_done_by_team') }}</span>
+{# Navegação rápida no topo da página unificada -- pedido do usuário
+   2026-08-06: "Serviços e Pacotes você deverá juntar os dois [em] algo
+   completo... esta nova aba... deve ser mto bem feita e estruturada".
+   Duas seções na mesma página agora (antes eram /servicos e /pacotes
+   separadas): "todos os serviços" primeiro, "pacotes" (Faça Você Mesmo
+   vs. Pacote Completo Standard/Plus) depois -- estes dois links de
+   âncora deixam a estrutura óbvia de cara, sem precisar rolar às cegas. #}
+<div class="services-grid" style="margin-bottom:8px;">
+  <a href="#todos-servicos" class="card service-card" style="text-decoration:none;color:inherit;transition:transform 0.15s ease;">
+    <h2 class="service-card-name">{{ t('services_quicknav_all_title') }}</h2>
+    <p class="muted service-card-desc">{{ t('services_quicknav_all_desc') }}</p>
+  </a>
+  <a href="#pacotes" class="card service-card" style="text-decoration:none;color:inherit;transition:transform 0.15s ease;">
+    <h2 class="service-card-name">{{ t('services_quicknav_packages_title') }}</h2>
+    <p class="muted service-card-desc">{{ t('services_quicknav_packages_desc') }}</p>
+  </a>
+</div>
+
+<h2 id="todos-servicos" style="margin-top:36px;">{{ t('services_all_heading') }}</h2>
+
+{# Duas abas -- pedido do usuário (2026-08-03): "Faça Você Mesmo" (Auto
+   Imigração, acessível) vs. "Pacotes" (Assessoria Completa). Alternância
+   por JS puro (mesmo padrão hand-rolled do resto do site, sem framework),
+   só uma aba de conteúdo visível por vez. #}
+<div class="services-tabs" role="tablist">
+  <button type="button" class="services-tab active" data-tab="diy" role="tab" aria-selected="true">
+    <span class="services-tab-title">{{ t('services_tab_diy_title') }}</span>
+    <span class="services-tab-subtitle">{{ t('services_tab_diy_subtitle') }}</span>
+  </button>
+  <button type="button" class="services-tab" data-tab="package" role="tab" aria-selected="false">
+    <span class="services-tab-title">{{ t('services_tab_package_title') }}</span>
+    <span class="services-tab-subtitle">{{ t('services_tab_package_subtitle') }}</span>
+  </button>
+</div>
+
+{% for tab_kind in ["diy", "package"] %}
+<div class="services-tab-panel" data-tab-panel="{{ tab_kind }}" {% if tab_kind != "diy" %}hidden{% endif %}>
+  <div class="services-grid">
+    {% for form in catalog if form.kind == tab_kind %}
+    <div class="card service-card">
+      <div class="service-card-head">
+        <span class="slug">{{ form.slug|upper }}</span>
+        {% if form.enabled %}
+          <span class="badge completed">{{ t('badge_available') }}</span>
+        {% elif form.contact_only %}
+          <span class="badge in_progress">{{ t('badge_done_by_team') }}</span>
+        {% else %}
+          <span class="badge in_progress">{{ t('badge_soon') }}</span>
+        {% endif %}
+      </div>
+      <h2 class="service-card-name">{{ form.name }}</h2>
+      {% if form.has_detail_page %}
+      <p class="muted service-card-desc">{{ t('svc_desc_' ~ form.slug) }}</p>
+      <a class="icon-btn" style="font-weight:600;font-size:0.9rem;text-decoration:none;margin-bottom:10px;" href="{{ url_for('wizard.service_detail', slug=form.slug) }}">{{ t('services_learn_more') }}</a>
       {% else %}
-        <span class="badge in_progress">{{ t('badge_soon') }}</span>
+      <p class="muted service-card-desc">{{ t('services_full_service_desc') }}</p>
+      {% endif %}
+      {% if form.enabled %}
+        {% if current_user.is_authenticated %}
+          <a class="btn secondary" href="{{ url_for('wizard.start', slug=form.slug) }}">{{ t('services_cta_start') }}</a>
+        {% else %}
+          <a class="btn secondary" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
+        {% endif %}
+      {% elif form.contact_only %}
+        <a class="btn secondary" href="#pacotes-professional">{{ t('services_cta_see_packages') }}</a>
       {% endif %}
     </div>
-    <h2 class="service-card-name">{{ form.name }}</h2>
-    {% if form.has_detail_page %}
-    <p class="muted service-card-desc">{{ t('svc_desc_' ~ form.slug) }}</p>
-    <a class="icon-btn" style="font-weight:600;font-size:0.9rem;text-decoration:none;margin-bottom:10px;" href="{{ url_for('wizard.service_detail', slug=form.slug) }}">{{ t('services_learn_more') }}</a>
-    {% else %}
-    <p class="muted service-card-desc">{{ t('services_full_service_desc') }}</p>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+
+{# ---- Segunda metade da página: "como contratar" (ex-/pacotes) ------- #}
+<h2 id="pacotes" style="margin-top:48px;">{{ t('packages_index_title') }}</h2>
+<p class="hero-subtitle" style="margin:-8px 0 20px;max-width:760px;">{{ t('packages_index_subtitle') }}</p>
+
+<div class="services-grid" style="margin-bottom:8px;">
+  <a href="#pacotes-diy" class="card service-card" style="text-decoration:none;color:inherit;transition:transform 0.15s ease;">
+    <h2 class="service-card-name">{{ t('packages_path_diy_title') }}</h2>
+    <p class="muted" style="font-weight:700;color:var(--accent);margin:0 0 8px;">{{ t('packages_path_diy_tagline') }}</p>
+    <p class="muted service-card-desc">{{ t('packages_path_diy_desc') }}</p>
+  </a>
+  <a href="#pacotes-professional" class="card service-card" style="text-decoration:none;color:inherit;transition:transform 0.15s ease;">
+    <h2 class="service-card-name">{{ t('packages_path_pro_title') }}</h2>
+    <p class="muted" style="font-weight:700;color:var(--cta-dark);margin:0 0 8px;">{{ t('packages_path_pro_tagline') }}</p>
+    <p class="muted service-card-desc">{{ t('packages_path_pro_desc') }}</p>
+  </a>
+</div>
+
+<div id="pacotes-diy" class="path-section-banner diy">
+  <h2>{{ t('packages_path_diy_title') }}</h2>
+  <p>{{ t('packages_path_diy_tagline') }} — {{ t('packages_path_diy_desc') }}</p>
+</div>
+<div class="explainer-callout">
+  {{ icon('sparkle', 20) }}
+  <div>
+    <p class="explainer-callout-title">{{ t('packages_diy_discount_title') }}</p>
+    <p class="explainer-callout-body">{{ t('packages_diy_discount_body') }}</p>
+  </div>
+</div>
+<div class="services-grid">
+  {% for pkg in packages %}
+  <div class="card service-card">
+    <h2 class="service-card-name">{{ pkg.name }}</h2>
+    {% if pkg.price_cents is not none %}
+    <p style="font-size:1.3rem;font-weight:800;margin:2px 0 8px;">{{ pkg.price_cents|usd }}</p>
     {% endif %}
-    {% if form.enabled %}
-      {% if current_user.is_authenticated %}
-        <a class="btn secondary" href="{{ url_for('wizard.start', slug=form.slug) }}">{{ t('services_cta_start') }}</a>
+    <p class="muted service-card-desc">{{ pkg.description }}</p>
+    <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_includes') }}</p>
+    <p class="muted" style="font-size:0.85rem;margin-bottom:16px;">{{ pkg.form_names|join(" · ") }}</p>
+    <a class="btn secondary" href="{{ url_for('packages.detail', slug=pkg.slug) }}">{{ t('packages_cta_view') }}</a>
+  </div>
+  {% endfor %}
+</div>
+
+<div id="pacotes-professional" class="path-section-banner pro">
+  <h2>{{ t('packages_path_pro_title') }}</h2>
+  <p>{{ t('packages_path_pro_tagline') }} — {{ t('packages_path_pro_desc') }}</p>
+  <p style="font-size:0.85rem;">{{ t('services_communication_policy') }}</p>
+</div>
+<div class="tier-compare">
+  <p class="tier-compare-title">{{ t('packages_tier_table_title') }}</p>
+  <div class="tier-compare-grid">
+    <div class="tier-compare-col">
+      <p class="tier-compare-col-title">{{ t('packages_tier_table_standard_title') }}</p>
+      <ul class="tier-compare-list">
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_standard_item1') }}</li>
+      </ul>
+    </div>
+    <div class="tier-compare-col tier-compare-col-plus">
+      <p class="tier-compare-col-title">{{ t('packages_tier_table_plus_title') }}</p>
+      <p class="tier-compare-col-intro">{{ t('packages_tier_table_plus_intro') }}</p>
+      <ul class="tier-compare-list">
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item1') }}</li>
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item2') }}</li>
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item3') }}</li>
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item4') }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="services-grid">
+  {% for svc in professional_services %}
+  <div class="card service-card">
+    <div class="service-card-head">
+      {% if svc.free_consultation_minutes %}
+      <span class="badge completed">{{ t('services_free_consultation_badge', minutes=svc.free_consultation_minutes) }}</span>
       {% else %}
-        <a class="btn secondary" href="{{ url_for('auth.signup') }}">{{ t('services_cta_signup') }}</a>
+      <span class="badge in_progress">{{ t('badge_done_by_team') }}</span>
       {% endif %}
-    {% elif form.contact_only %}
-      <a class="btn secondary" href="{{ url_for('packages.index') }}#professional">{{ t('services_cta_see_packages') }}</a>
+    </div>
+    <h2 class="service-card-name">{{ svc.name }}</h2>
+    <p class="muted service-card-desc">{{ t('packages_pro_card_desc') }}</p>
+    {% if svc.standard_price_cents is not none or svc.plus_price_cents is not none %}
+    <ul class="muted" style="font-size:0.85rem;list-style:none;padding:0;margin:0 0 16px;">
+      {% if svc.standard_price_cents is not none %}
+      <li><strong>{{ t('packages_pro_tier_standard') }}:</strong> {{ svc.standard_price_cents|usd }}</li>
+      {% endif %}
+      {% if svc.plus_price_cents is not none %}
+      <li><strong>{{ t('packages_pro_tier_plus') }}:</strong> {{ svc.plus_price_cents|usd }}</li>
+      {% endif %}
+      {% if svc.plus_price_paper_cents is not none %}
+      <li><strong>{{ t('packages_pro_tier_plus_paper') }}:</strong> {{ svc.plus_price_paper_cents|usd }}</li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    {% if svc.standard_price_cents is not none or svc.plus_price_cents is not none %}
+    <a class="btn" href="{{ url_for('packages.service_confirm', slug=svc.slug) }}">{{ t('packages_cta_start') }}</a>
+    <a class="btn secondary" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer" style="margin-top:8px;">
+      {{ t('services_cta_free_consultation') if svc.free_consultation_minutes else t('services_cta_contact_team') }}
+    </a>
+    {% else %}
+    <a class="btn secondary" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer">
+      {{ t('services_cta_free_consultation') if svc.free_consultation_minutes else t('services_cta_contact_team') }}
+    </a>
     {% endif %}
   </div>
   {% endfor %}
 </div>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll(".services-tab");
+  var panels = document.querySelectorAll(".services-tab-panel");
+  tabs.forEach(function (tab) {
+    tab.addEventListener("click", function () {
+      tabs.forEach(function (t) { t.classList.remove("active"); t.setAttribute("aria-selected", "false"); });
+      tab.classList.add("active");
+      tab.setAttribute("aria-selected", "true");
+      var target = tab.dataset.tab;
+      panels.forEach(function (p) { p.hidden = p.dataset.tabPanel !== target; });
+    });
+  });
+})();
+</script>
 
 {% endblock %}

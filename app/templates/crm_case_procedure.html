@@ -1,11 +1,118 @@
 {% extends "staff_base.html" %}
+{% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Case Procedure{% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>Procedure — {{ case.title }}</h1>
-  <p style="opacity:0.92;margin:0;">Client: {{ case.client.full_name }}</p>
+  <p style="opacity:0.92;margin:0;">
+    Client: <a href="{{ url_for('crm_pipeline.client_detail', client_id=case.client_id) }}" style="color:#fff;">{{ case.client.full_name }}</a>
+    {% if case.lead %} · From lead: <a href="{{ url_for('crm_pipeline.lead_detail', lead_id=case.lead_id) }}" style="color:#fff;">{{ case.lead.name }}</a>{% endif %}
+  </p>
   <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">View document tracker (CRM) →</a>
   · <a href="{{ url_for('crm_ops.case_messages', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">Messages →</a>
+</div>
+
+<div class="card" style="display:flex;justify-content:flex-end;">
+  {{ history_widget('case-history-drawer-' ~ case.id, 'History — ' + case.title, history, history_users, empty_hint='Changes to this case will show up here.') }}
+</div>
+
+{% set other_cases = case.client.cases|rejectattr('id', 'equalto', case.id)|list %}
+{% if other_cases %}
+<div class="card">
+  <h2>Other cases for {{ case.client.full_name }}</h2>
+  {% for oc in other_cases %}
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
+    <div>
+      <strong>{{ oc.title }}</strong> {{ crm_badge(oc.case_status) }}
+    </div>
+    <a href="{{ url_for('crm_ops.case_procedure', case_id=oc.id) }}" class="muted" style="font-size:0.8rem;">Open procedure →</a>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>Payments in this case</h2>
+  {% if case_payments %}
+  {% set total_receivable = case_payments|selectattr('direction.value', 'equalto', 'receivable')|sum(attribute='amount_cents') %}
+  <p class="muted" style="font-size:0.85rem;">Total billed to client: {{ total_receivable|usd }}</p>
+  {% for p in case_payments %}
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
+    <div>
+      <strong>{{ p.description }}</strong>
+      <div class="muted" style="font-size:0.8rem;">
+        {{ p.amount_cents|usd }} {{ p.currency.value|upper }} · {{ p.direction.value|title }}
+        {% if p.payment_date %} · {{ p.payment_date.strftime('%m/%d/%Y') }}{% endif %}
+      </div>
+    </div>
+    {{ crm_badge(p.status) }}
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">No payments recorded for this case yet.</p>
+  {% endif %}
+  <a href="{{ url_for('crm_ops.payments') }}" class="muted" style="font-size:0.8rem;">View full payments ledger →</a>
+</div>
+
+<div class="card">
+  <h2>Case details</h2>
+  <form method="post" action="{{ url_for('crm_ops.case_details_update', case_id=case.id) }}">
+    <input type="hidden" name="version" value="{{ case.version }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div>
+        <label class="muted">Priority</label><br>
+        <select name="priority" style="width:100%;">
+          {% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if case.priority == p }}>{{ p.value|title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Responsible</label><br>
+        <select name="responsible_id" style="width:100%;">
+          <option value="">—</option>
+          {% for u in staff_users %}<option value="{{ u.id }}" {{ 'selected' if case.responsible_id == u.id }}>{{ u.email }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Field office</label><br>
+        <select name="field_office_id" style="width:100%;">
+          <option value="">—</option>
+          {% for fo in field_offices %}<option value="{{ fo.id }}" {{ 'selected' if case.field_office_id == fo.id }}>{{ fo.name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div><label class="muted">Receipt number</label><br><input type="text" name="receipt_number" value="{{ case.receipt_number or '' }}" style="width:100%;"></div>
+      <div><label class="muted">Receipt date</label><br><input type="date" lang="en-US" name="receipt_date" value="{{ case.receipt_date.isoformat() if case.receipt_date else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Service deadline</label><br><input type="date" lang="en-US" name="service_deadline" value="{{ case.service_deadline.isoformat() if case.service_deadline else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Google Drive folder</label><br><input type="url" name="google_drive_url" value="{{ case.google_drive_url or '' }}" placeholder="https://drive.google.com/..." style="width:100%;"></div>
+      <div style="display:flex;align-items:end;padding-bottom:6px;">
+        <label class="muted" style="display:flex;align-items:center;gap:6px;"><input type="checkbox" name="rfe_received" {{ 'checked' if case.rfe_received }}> Received an RFE/NOID</label>
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <label class="muted">Notes</label><br>
+      <textarea name="notes" rows="3" style="width:100%;font-family:inherit;">{{ case.notes or '' }}</textarea>
+    </div>
+    <button type="submit" class="icon-btn" style="margin-top:12px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Save details</button>
+  </form>
+
+  <div class="muted" style="font-size:0.8rem;margin-top:14px;padding-top:12px;border-top:1px dashed var(--border);">
+    Last checked: {{ case.last_checked_at.strftime('%m/%d/%Y') if case.last_checked_at else '—' }}
+    · Next check: {{ case.next_check_at.strftime('%m/%d/%Y') if case.next_check_at else '—' }}
+    · Submitted: {{ case.submission_date.strftime('%m/%d/%Y') if case.submission_date else '—' }}
+    · Approved: {{ case.approval_date.strftime('%m/%d/%Y') if case.approval_date else '—' }}
+  </div>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+    <form method="post" action="{{ url_for('crm_ops.case_status_check_confirm', case_id=case.id) }}">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;">Confirm status check</button>
+    </form>
+    <form method="post" action="{{ url_for('crm_ops.case_submit_application', case_id=case.id) }}" onsubmit="return confirm('Mark this case as submitted today?');">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;">Submit application</button>
+    </form>
+    <form method="post" action="{{ url_for('crm_ops.case_register_approval', case_id=case.id) }}" onsubmit="return confirm('Register this case as approved today?');">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;">Register approval</button>
+    </form>
+  </div>
 </div>
 
 <div class="card">
@@ -44,12 +151,12 @@
   <h2>Pricing &amp; what's included</h2>
   <p class="muted" style="font-size:0.78rem;margin-top:-8px;">From the signed Saes Professional Services contract for this service.</p>
   <div style="display:flex;gap:24px;flex-wrap:wrap;margin-bottom:12px;">
-    <div><span class="muted" style="font-size:0.8rem;">Standard</span><br><strong style="font-size:1.1rem;">{{ '$%.2f'|format(template.pricing.standard_usd) if template.pricing.standard_usd is not none else '—' }}</strong></div>
+    <div><span class="muted" style="font-size:0.8rem;">Standard</span><br><strong style="font-size:1.1rem;">{{ (template.pricing.standard_usd * 100)|usd if template.pricing.standard_usd is not none else '—' }}</strong></div>
     {% if template.pricing.plus_usd is not none %}
-    <div><span class="muted" style="font-size:0.8rem;">Plus (Online)</span><br><strong style="font-size:1.1rem;">${{ '%.2f'|format(template.pricing.plus_usd) }}</strong></div>
+    <div><span class="muted" style="font-size:0.8rem;">Plus (Online)</span><br><strong style="font-size:1.1rem;">{{ (template.pricing.plus_usd * 100)|usd }}</strong></div>
     {% endif %}
     {% if template.pricing.plus_paper_usd is not none %}
-    <div><span class="muted" style="font-size:0.8rem;">Plus (Paper)</span><br><strong style="font-size:1.1rem;">${{ '%.2f'|format(template.pricing.plus_paper_usd) }}</strong></div>
+    <div><span class="muted" style="font-size:0.8rem;">Plus (Paper)</span><br><strong style="font-size:1.1rem;">{{ (template.pricing.plus_paper_usd * 100)|usd }}</strong></div>
     {% endif %}
   </div>
   {% if template.pricing.notes %}
@@ -84,8 +191,29 @@
 <div class="card">
   <h2>{{ phase.name }}</h2>
 
-  {% if phase.documents %}
-  <p class="muted" style="margin-bottom:4px;">Documents (client checklist{% if payment %} -- <a href="{{ url_for('staff.document_case_detail', payment_id=payment.id) }}">view in /staff/documents →</a>{% endif %}):</p>
+  {% if loop.first and onboarding and onboarding.documents %}
+  {# Fase 1 tem linhas de verdade no banco (RequiredDocument, criadas por
+     apply_service_procedure_checklist a partir desta mesma lista) -- pedido
+     do usuário 2026-08-06: aqui o staff marca quais precisam de tradução,
+     ligado ao item real (não ao texto solto do template), pra poder rotear
+     pra aba Translations do cliente automaticamente. #}
+  <p class="muted" style="margin-bottom:4px;">Documents (client checklist -- <a href="{{ url_for('onboarding.detail', payment_id=payment.id) }}">view in /pendencias →</a>):</p>
+  <ul style="margin-top:0;list-style:none;padding:0;">
+    {% for doc in onboarding.documents %}
+    <li style="padding:4px 0;display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+      <span class="muted">{{ doc.label }}</span>
+      <form method="post" action="{{ url_for('crm_ops.required_document_translation_toggle', document_id=doc.id) }}" style="display:inline-flex;">
+        <label style="display:flex;align-items:center;gap:4px;font-size:0.78rem;cursor:pointer;" title="Needs translation">
+          <input type="checkbox" onchange="this.form.submit()" {{ 'checked' if doc.needs_translation }}>
+          Needs translation
+        </label>
+      </form>
+      {% if doc.needs_translation %}<span class="badge status-warning" style="font-size:0.7rem;">Flagged for translation</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+  {% elif phase.documents %}
+  <p class="muted" style="margin-bottom:4px;">Documents (client checklist):</p>
   <ul style="margin-top:0;">
     {% for doc in phase.documents %}<li class="muted">{{ doc }}</li>{% endfor %}
   </ul>

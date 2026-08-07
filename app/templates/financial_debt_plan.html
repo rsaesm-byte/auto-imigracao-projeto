@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block title %}Debt Payoff Plan — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Debt Payoff Plan</h1>
+  <p style="opacity:0.92;margin:0;">Which debt to attack first, and how long it'll take at your current pace. <a href="{{ url_for('financial_workspace.debts') }}" style="color:#fff;text-decoration:underline;">← Debts</a></p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;">
+    {% for s in strategies %}
+    <a href="{{ url_for('financial_workspace.debt_plan', strategy=s.value) }}"
+       class="icon-btn" style="text-decoration:none;font-size:0.82rem;padding:7px 14px;border-radius:999px;
+       {% if strategy == s %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">
+      {{ 'Snowball (smallest balance first)' if s.value == 'snowball' else 'Avalanche (highest APR first)' if s.value == 'avalanche' else 'Custom order' }}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  {% if ordered_debts %}
+  <table class="submissions">
+    <thead><tr><th>#</th><th>Debt</th><th>Balance</th><th>APR</th><th>Payment/mo</th><th>Payoff projection</th></tr></thead>
+    <tbody>
+      {% for d in ordered_debts %}
+      {% set proj = projections[d.id] %}
+      <tr>
+        <td class="muted">{{ loop.index }}</td>
+        <td><strong>{{ d.debt_name }}</strong></td>
+        <td>{{ d.current_balance_cents|usd }}</td>
+        <td class="muted">{{ '%.2f'|format(d.apr_bps / 100) ~ '%' if d.apr_bps else '—' }}</td>
+        <td class="muted">{{ ((d.minimum_payment_cents or 0) + (d.extra_monthly_payment_cents or 0))|usd }}</td>
+        <td>
+          {% if proj is none %}
+          <span class="muted">Add a minimum/extra payment to project a payoff date.</span>
+          {% elif proj.months_to_payoff == 0 %}
+          <span class="badge" style="background:var(--success-bg);color:var(--success);">Paid off</span>
+          {% else %}
+          {{ proj.payoff_date.strftime('%m/%d/%Y') }} <span class="muted">({{ proj.months_to_payoff }} mo · {{ proj.total_interest_cents|usd }} interest)</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <p class="muted" style="font-size:0.76rem;margin-top:10px;">Each row is its own independent projection at its current minimum + extra payment. This plan doesn't yet roll a paid-off debt's freed-up payment into the next one in line (a true snowball/avalanche cash-flow simulation) — it shows you the priority order and each debt's own timeline.</p>
+  {% else %}
+  <p class="muted">No active debts to plan around.</p>
+  {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,148 @@
+{# Componentes reutilizáveis de UI do CRM (Fase 2 da reforma, 2026-08-06):
+   tooltip, modal, drawer, contador de coluna de kanban.
+
+   Convenção de import (mesma de _crm_badge.html):
+   {% from "_crm_ui.html" import tooltip, modal, drawer, kanban_col_count %}
+
+   modal()/drawer() usam <dialog> nativo (sem lib externa, ver
+   app/static/ui-components.js pra abrir/fechar) -- foco, Esc-pra-fechar e
+   backdrop já vêm de graça do browser. #}
+
+{% macro tooltip(text, label=None) %}
+<span class="has-tooltip" data-tooltip="{{ text }}" tabindex="0">{{ label if label is not none else '?' }}</span>
+{%- endmacro %}
+
+{% macro kanban_col_count(n) %}
+<span class="crm-kanban-col-count">{{ n }}</span>
+{%- endmacro %}
+
+{% macro modal(id, title) %}
+<dialog class="modal" id="{{ id }}">
+  <div class="modal-header">
+    <h3>{{ title }}</h3>
+    <button type="button" class="modal-close" data-close-dialog="{{ id }}" aria-label="Fechar">&times;</button>
+  </div>
+  <div class="modal-body">
+    {{ caller() }}
+  </div>
+</dialog>
+{%- endmacro %}
+
+{% macro drawer(id, title) %}
+<dialog class="drawer" id="{{ id }}">
+  <div class="drawer-header">
+    <h3>{{ title }}</h3>
+    <button type="button" class="drawer-close" data-close-dialog="{{ id }}" aria-label="Fechar">&times;</button>
+  </div>
+  <div class="drawer-body">
+    {{ caller() }}
+  </div>
+</dialog>
+{%- endmacro %}
+
+{# Botão "History (N)" + drawer prontos, num só macro -- pedido do usuário
+   2026-08-06: histórico de alterações em todos os módulos do CRM (Cases,
+   Documents, Translations, Contracts, Prices, Financial Coaching,
+   Payments, Leads, Case Tracking, Communications, Tasks), não só Leads
+   (único lugar que já tinha isso). Reaproveita drawer() acima -- existe
+   só pra não repetir o mesmo botão+loop em ~10 templates diferentes.
+   `history`/`history_users` vêm de audit_service.get_history(...) e de
+   {u.id: u for u in SessionLocal.query(User).all()} na rota, mesmo padrão
+   já usado em crm_lead_detail.html. `empty_hint` é o texto mostrado
+   quando ainda não há nada no histórico. #}
+{% macro history_widget(id, title, history, history_users, empty_hint='Changes to this record will show up here.') %}
+<button type="button" class="icon-btn" data-open-dialog="{{ id }}" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.82rem;padding:6px 12px;flex-shrink:0;">History ({{ history|length }})</button>
+{% call drawer(id, title) %}
+  {% if history %}
+  {% for h in history %}
+  <div style="padding:10px 0;border-bottom:1px solid var(--border);">
+    <div style="font-size:0.85rem;">{{ h.description or (h.field ~ ': ' ~ (h.old_value or '—') ~ ' → ' ~ (h.new_value or '—')) }}</div>
+    <div class="muted" style="font-size:0.76rem;margin-top:2px;">
+      {{ history_users[h.user_id].email if h.user_id in history_users else 'System' }} · {{ h.created_at.strftime('%Y-%m-%d %H:%M') }}
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-state-icon">·</div>
+    <div class="empty-state-title">No history yet</div>
+    <div class="empty-state-hint">{{ empty_hint }}</div>
+  </div>
+  {% endif %}
+{% endcall %}
+{%- endmacro %}
+
+{# ---- Alternância Kanban/Tabela/Lista/Calendário (Prompt Mestre, Fase 4),
+   2026-08-06 -- 4 macros genéricas reusadas pelos 5 boards do CRM (Leads/
+   Cases/Traduções/Tarefas/Financial Coaching). `columns` é uma lista de
+   dicts {label, value: callable(row)->str, url: callable(row)->str|None
+   (opcional)} montada em Python na própria rota -- cada board tem campos
+   diferentes, então as colunas nunca são hardcoded aqui. #}
+
+{% macro view_switcher(current_view, base_url) %}
+<div style="display:flex;gap:6px;">
+  {% for v, label in [('kanban','Kanban'), ('table','Table'), ('list','List'), ('calendar','Calendar')] %}
+  <a href="{{ base_url }}?view={{ v }}"
+     style="padding:6px 12px;border-radius:999px;font-size:0.8rem;text-decoration:none;
+            {% if current_view == v %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">{{ label }}</a>
+  {% endfor %}
+</div>
+{%- endmacro %}
+
+{% macro table_view(rows, columns) %}
+<div style="overflow-x:auto;">
+<table class="data-table">
+  <thead><tr>{% for col in columns %}<th>{{ col.label }}</th>{% endfor %}</tr></thead>
+  <tbody>
+    {% for row in rows %}
+    <tr>
+      {% for col in columns %}
+      <td>{% set href = col.url(row) if col.url else None %}{% if href %}<a href="{{ href }}">{{ col.value(row) }}</a>{% else %}{{ col.value(row) }}{% endif %}</td>
+      {% endfor %}
+    </tr>
+    {% else %}
+    <tr><td colspan="{{ columns|length }}" class="muted">No records.</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{%- endmacro %}
+
+{% macro list_view(stages, by_status, stage_labels, columns) %}
+{% for status in stages %}
+{% set rows = by_status.get(status, []) %}
+{% if rows %}
+<div style="margin-bottom:20px;">
+  <h3 style="font-size:0.85rem;margin:0 0 8px;">{{ stage_labels.get(status.value, status.value|replace('_',' ')|title) }} ({{ rows|length }})</h3>
+  {{ table_view(rows, columns) }}
+</div>
+{% endif %}
+{% endfor %}
+{%- endmacro %}
+
+{% macro calendar_view(grid, base_url, title_fn, url_fn, color_fn=None) %}
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+  <a href="{{ base_url }}?view=calendar&year={{ grid.prev_year }}&month={{ grid.prev_month }}" class="icon-btn" style="text-decoration:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:5px 12px;font-size:0.82rem;">← Prev</a>
+  <strong>{{ grid.month_label }}</strong>
+  <a href="{{ base_url }}?view=calendar&year={{ grid.next_year }}&month={{ grid.next_month }}" class="icon-btn" style="text-decoration:none;border:1px solid var(--border);border-radius:var(--radius-sm);padding:5px 12px;font-size:0.82rem;">Next →</a>
+</div>
+<table class="calendar-grid">
+  <thead><tr>{% for wd in grid.weekday_labels %}<th>{{ wd }}</th>{% endfor %}</tr></thead>
+  <tbody>
+    {% for week in grid.weeks %}
+    <tr>
+      {% for day in week %}
+      <td class="{% if not day %}calendar-empty{% endif %}">
+        {% if day %}
+        <div class="calendar-daynum">{{ day.day }}</div>
+        {% for item in grid.items_by_date.get(day, []) %}
+        <a href="{{ url_fn(item) }}" class="calendar-item" style="{% if color_fn %}border-left-color:{{ color_fn(item) }};{% endif %}">{{ title_fn(item) }}</a>
+        {% endfor %}
+        {% endif %}
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{%- endmacro %}

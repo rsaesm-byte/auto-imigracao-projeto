@@ -16,14 +16,14 @@
   </p>
   {% if completion_pct is not none %}
   <p class="muted" style="margin:0 0 10px;">
-    {{ completion_pct }}% · {{ t('my_financial_plan_sessions_completed') }}: {{ sessions_completed }}
+    {{ completion_pct|pct }} · {{ t('my_financial_plan_sessions_completed') }}: {{ sessions_completed }}
     {% if sessions_remaining is not none %} · {{ t('my_financial_plan_sessions_remaining') }}: {{ sessions_remaining }}{% endif %}
   </p>
   {% endif %}
   <p class="muted" style="margin:0 0 10px;">
     <strong>{{ t('my_financial_plan_next_session') }}:</strong>
     {% if next_session_at %}
-      {{ next_session_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else next_session_at.strftime("%d/%m/%Y %H:%M") }}
+      {{ next_session_at.strftime("%m/%d/%Y %I:%M %p") }}
     {% else %}
       {{ t('my_financial_plan_no_next_session') }}
     {% endif %}
@@ -31,16 +31,26 @@
   {% if last_session_at %}
   <p class="muted" style="margin:0;">
     <strong>{{ t('my_financial_plan_last_session') }}:</strong>
-    {{ last_session_at.strftime("%m/%d/%Y") if get_lang() == "en" else last_session_at.strftime("%d/%m/%Y") }}
+    {{ last_session_at.strftime("%m/%d/%Y") }}
   </p>
   {% endif %}
 </div>
+
+{% if fc.financial_planning_enabled %}
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <div>
+    <h2 style="font-size:1rem;margin:0 0 4px;">Financial Workspace</h2>
+    <p class="muted" style="margin:0;">Track your own accounts, income and expenses.</p>
+  </div>
+  <a class="btn" href="{{ url_for('financial_workspace.dashboard') }}">Open workspace</a>
+</div>
+{% endif %}
 
 {% if fc.package_value_cents %}
 <div class="card">
   <p class="muted" style="margin:0;">
     <strong>{{ t('my_financial_plan_balance_label') }}:</strong>
-    ${{ '%.2f'|format((remaining_balance_cents or 0) / 100) }}
+    {{ (remaining_balance_cents or 0)|usd }}
   </p>
 </div>
 {% endif %}
@@ -56,7 +66,7 @@
         <td>{{ task.task_name }}</td>
         <td class="muted">
           {% if task.due_date %}
-            {{ task.due_date.strftime("%m/%d/%Y") if get_lang() == "en" else task.due_date.strftime("%d/%m/%Y") }}
+            {{ task.due_date.strftime("%m/%d/%Y") }}
           {% else %}—{% endif %}
         </td>
       </tr>

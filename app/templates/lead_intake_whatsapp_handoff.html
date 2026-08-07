@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ t('lead_intake_whatsapp_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('lead_intake_whatsapp_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:640px;">{{ t('lead_intake_whatsapp_subtitle') }}</p>
+</section>
+
+<div class="card" style="text-align:center;">
+  <a href="{{ whatsapp_url }}" target="_blank" rel="noopener noreferrer" class="btn" id="lead-whatsapp-link" style="display:inline-block;">
+    {{ t('lead_intake_whatsapp_open_cta') }}
+  </a>
+  <p class="muted" style="font-size:0.85rem;margin:12px 0 0;">{{ t('lead_intake_whatsapp_hint') }}</p>
+</div>
+
+<div class="card" style="text-align:center;">
+  <a href="{{ url_for('crm_client.meu_caso') }}" class="btn" style="background:none;border:1px solid var(--accent);color:var(--accent);">
+    {{ t('lead_intake_whatsapp_my_case_cta') }}
+  </a>
+</div>
+
+<script>
+  (function () {
+    var url = document.getElementById('lead-whatsapp-link').href;
+    window.open(url, '_blank', 'noopener');
+  })();
+</script>
+{% endblock %}

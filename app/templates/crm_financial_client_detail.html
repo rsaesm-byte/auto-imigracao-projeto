@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — {{ fc.full_name }} (Coaching){% endblock %}
 {% block content %}
 <div class="card hero">
@@ -10,24 +11,54 @@
   </p>
 </div>
 
+<div class="card" style="display:flex;justify-content:flex-end;">
+  {{ history_widget('financial-history-drawer', 'History — ' + fc.full_name, history, history_users, empty_hint='Changes to this coaching client will show up here.') }}
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Financial Planning (self-service module)</h2>
+  <p class="muted">
+    {% if fc.financial_planning_enabled %}
+      {{ crm_badge(fc.financial_planning_status) }} — enabled
+      {% if fc.financial_planning_enabled_at %}on {{ fc.financial_planning_enabled_at.strftime('%m/%d/%Y') }}{% endif %}
+    {% else %}
+      Not enabled
+      {% if fc.financial_planning_disabled_at %}(disabled on {{ fc.financial_planning_disabled_at.strftime('%m/%d/%Y') }}){% endif %}
+    {% endif %}
+  </p>
+  {% if current_user.financial_planning_manage_access %}
+  {% if fc.financial_planning_enabled %}
+  <form method="post" action="{{ url_for('crm_financial.financial_planning_disable', financial_client_id=fc.id) }}">
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Disable access</button>
+  </form>
+  {% else %}
+  <form method="post" action="{{ url_for('crm_financial.financial_planning_enable', financial_client_id=fc.id) }}">
+    <button type="submit" class="btn">Enable access</button>
+  </form>
+  {% endif %}
+  {% else %}
+  <p class="muted" style="font-size:0.78rem;">You don't have permission to manage Financial Planning access.</p>
+  {% endif %}
+</div>
+
 <div class="card">
   <h2>Profile <a href="{{ url_for('crm_financial.client_profile_edit', financial_client_id=fc.id) }}" style="font-size:0.78rem;font-weight:600;">Edit full profile</a></h2>
   <p class="muted">Email: {{ fc.email or '—' }} · Phone: {{ fc.phone_number or '—' }}</p>
   <p class="muted">Progress: {{ crm_badge(fc.progress_status) }}
-    {% if completion_pct is not none %}· {{ completion_pct }}% of program ({{ sessions_completed }}/{{ fc.total_sessions_purchased }} sessions){% endif %}
+    {% if completion_pct is not none %}· {{ completion_pct|pct }} of program ({{ sessions_completed }}/{{ fc.total_sessions_purchased }} sessions){% endif %}
   </p>
-  {% if next_session_at %}<p class="muted">Next session: {{ next_session_at.strftime('%m/%d/%Y %H:%M') }}</p>{% endif %}
+  {% if next_session_at %}<p class="muted">Next session: {{ next_session_at.strftime('%m/%d/%Y %I:%M %p') }}</p>{% endif %}
   {% if last_session_at %}<p class="muted">Last session: {{ last_session_at.strftime('%m/%d/%Y') }}</p>{% endif %}
-  {% if net_worth_cents is not none %}<p class="muted">Net worth: ${{ '%.2f'|format(net_worth_cents / 100) }}</p>{% endif %}
+  {% if net_worth_cents is not none %}<p class="muted">Net worth: {{ net_worth_cents|usd }}</p>{% endif %}
 </div>
 
 <div class="card">
   <h2>Payment</h2>
   {% if fc.package_value_cents %}
   <p class="muted">
-    Package: ${{ '%.2f'|format(fc.package_value_cents / 100) }} ·
-    Paid: ${{ '%.2f'|format(amount_paid_cents / 100) }} ·
-    Balance: ${{ '%.2f'|format((remaining_balance_cents or 0) / 100) }}
+    Package: {{ fc.package_value_cents|usd }} ·
+    Paid: {{ amount_paid_cents|usd }} ·
+    Balance: {{ (remaining_balance_cents or 0)|usd }}
     {% if payment_status %}· {{ crm_badge(payment_status) }}{% endif %}
   </p>
   <p class="muted">Detailed entries in the <a href="{{ url_for('crm_ops.payments') }}">Payments (CRM)</a> tab (filter by client).</p>
@@ -47,7 +78,7 @@
         <td>{{ s.session_number }}</td>
         <td>{{ s.session_type.value|replace('_',' ')|title if s.session_type else '—' }}</td>
         <td class="muted">{{ s.session_date.strftime('%m/%d/%Y %H:%M') if s.session_date else '—' }}</td>
-        <td class="muted">{% set hw = homework_completion_pct(s) %}{{ hw ~ '%' if hw is not none else '—' }}</td>
+        <td class="muted">{% set hw = homework_completion_pct(s) %}{{ hw|pct if hw is not none else '—' }}</td>
         <td>{{ 'Completed' if s.completed else 'Scheduled' }}</td>
         <td>
           {% if not s.completed %}
@@ -145,7 +176,7 @@
       </div>
       <div>
         <label class="muted">Due date</label><br>
-        <input type="date" name="due_date">
+        <input type="date" lang="en-US" name="due_date">
       </div>
       <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Add</button>
     </form>

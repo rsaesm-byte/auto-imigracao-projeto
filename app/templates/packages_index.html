@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% from "_icons.html" import icon %}
 {% block title %}{{ t('packages_index_title') }} — {{ t('app_name') }}{% endblock %}
 {% block page_class %}wide bg-blobs{% endblock %}
 {% block content %}
@@ -30,12 +31,19 @@
   <h2>{{ t('packages_path_diy_title') }}</h2>
   <p>{{ t('packages_path_diy_tagline') }} — {{ t('packages_path_diy_desc') }}</p>
 </div>
+<div class="explainer-callout">
+  {{ icon('sparkle', 20) }}
+  <div>
+    <p class="explainer-callout-title">{{ t('packages_diy_discount_title') }}</p>
+    <p class="explainer-callout-body">{{ t('packages_diy_discount_body') }}</p>
+  </div>
+</div>
 <div class="services-grid">
   {% for pkg in packages %}
   <div class="card service-card">
     <h2 class="service-card-name">{{ pkg.name }}</h2>
     {% if pkg.price_cents is not none %}
-    <p style="font-size:1.3rem;font-weight:800;margin:2px 0 8px;">${{ '%.0f'|format(pkg.price_cents / 100) }}</p>
+    <p style="font-size:1.3rem;font-weight:800;margin:2px 0 8px;">{{ pkg.price_cents|usd }}</p>
     {% endif %}
     <p class="muted service-card-desc">{{ pkg.description }}</p>
     <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_includes') }}</p>
@@ -48,8 +56,28 @@
 <div id="professional" class="path-section-banner pro">
   <h2>{{ t('packages_path_pro_title') }}</h2>
   <p>{{ t('packages_path_pro_tagline') }} — {{ t('packages_path_pro_desc') }}</p>
-  <p style="font-size:0.9rem;">{{ t('packages_tier_explainer') }}</p>
   <p style="font-size:0.85rem;">{{ t('services_communication_policy') }}</p>
+</div>
+<div class="tier-compare">
+  <p class="tier-compare-title">{{ t('packages_tier_table_title') }}</p>
+  <div class="tier-compare-grid">
+    <div class="tier-compare-col">
+      <p class="tier-compare-col-title">{{ t('packages_tier_table_standard_title') }}</p>
+      <ul class="tier-compare-list">
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_standard_item1') }}</li>
+      </ul>
+    </div>
+    <div class="tier-compare-col tier-compare-col-plus">
+      <p class="tier-compare-col-title">{{ t('packages_tier_table_plus_title') }}</p>
+      <p class="tier-compare-col-intro">{{ t('packages_tier_table_plus_intro') }}</p>
+      <ul class="tier-compare-list">
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item1') }}</li>
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item2') }}</li>
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item3') }}</li>
+        <li>{{ icon('check-circle', 15) }} {{ t('packages_tier_table_plus_item4') }}</li>
+      </ul>
+    </div>
+  </div>
 </div>
 <div class="services-grid">
   {% for svc in professional_services %}
@@ -63,9 +91,29 @@
     </div>
     <h2 class="service-card-name">{{ svc.name }}</h2>
     <p class="muted service-card-desc">{{ t('packages_pro_card_desc') }}</p>
+    {% if svc.standard_price_cents is not none or svc.plus_price_cents is not none %}
+    <ul class="muted" style="font-size:0.85rem;list-style:none;padding:0;margin:0 0 16px;">
+      {% if svc.standard_price_cents is not none %}
+      <li><strong>{{ t('packages_pro_tier_standard') }}:</strong> {{ svc.standard_price_cents|usd }}</li>
+      {% endif %}
+      {% if svc.plus_price_cents is not none %}
+      <li><strong>{{ t('packages_pro_tier_plus') }}:</strong> {{ svc.plus_price_cents|usd }}</li>
+      {% endif %}
+      {% if svc.plus_price_paper_cents is not none %}
+      <li><strong>{{ t('packages_pro_tier_plus_paper') }}:</strong> {{ svc.plus_price_paper_cents|usd }}</li>
+      {% endif %}
+    </ul>
+    {% endif %}
+    {% if svc.standard_price_cents is not none or svc.plus_price_cents is not none %}
+    <a class="btn" href="{{ url_for('packages.service_confirm', slug=svc.slug) }}">{{ t('packages_cta_start') }}</a>
+    <a class="btn secondary" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer" style="margin-top:8px;">
+      {{ t('services_cta_free_consultation') if svc.free_consultation_minutes else t('services_cta_contact_team') }}
+    </a>
+    {% else %}
     <a class="btn secondary" href="https://wa.me/17815209935" target="_blank" rel="noopener noreferrer">
       {{ t('services_cta_free_consultation') if svc.free_consultation_minutes else t('services_cta_contact_team') }}
     </a>
+    {% endif %}
   </div>
   {% endfor %}
 </div>

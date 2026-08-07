@@ -187,6 +187,23 @@ class TaskResponsibleParty(str, enum.Enum):
     coach = "coach"
 
 
+class FinancialPlanningStatus(str, enum.Enum):
+    """Status do módulo self-service "Financial Planning" (Fase 1 do
+    SAES_Financial_Planning_Master_Spec, 2026-08-07) -- distinto de
+    `FinancialClientStatus` acima, que é o FUNIL DE VENDA do coaching
+    (lead -> proposta -> onboarding -> ...). Este enum descreve só o
+    ACESSO ao workspace self-service (contas/orçamento/dívidas/metas
+    que o próprio cliente alimenta, Fase 2 em diante) -- alguém pode
+    estar `active` no funil de coaching e ainda `not_eligible` aqui, se
+    o pacote contratado não incluir o módulo de tracking próprio."""
+    not_eligible = "not_eligible"
+    eligible = "eligible"
+    active = "active"
+    paused = "paused"
+    completed = "completed"
+    cancelled = "cancelled"
+
+
 # --------------------------------------------------------------------------
 # Vocabulário aberto -> lookup NOVO (só quando não existe equivalente já
 # reusável em app/crm_models.py -- LeadSource/CloseLossReason/
@@ -195,15 +212,27 @@ class TaskResponsibleParty(str, enum.Enum):
 # --------------------------------------------------------------------------
 
 class FinancialGoal(Base):
+    """`sort_order`/`deleted_at` (2026-08-07, pedido do usuário) --
+    checkbox editável pelo painel (reordenar, renomear, adicionar,
+    apagar) na ficha do cliente de coaching. Apagar é sempre exclusão
+    LÓGICA -- clientes que já têm essa meta marcada continuam com o
+    vínculo intacto (`FinancialClientGoal`), só some da lista de novas
+    seleções."""
     __tablename__ = "crm_financial_goals"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(unique=True)
+    sort_order: Mapped[int] = mapped_column(default=0)
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
 
 class FinancialChallenge(Base):
+    """Ver `FinancialGoal` -- mesma decisão (editável pelo painel,
+    exclusão lógica)."""
     __tablename__ = "crm_financial_challenges"
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(unique=True)
+    sort_order: Mapped[int] = mapped_column(default=0)
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
 
 class FinancialTaskCategory(Base):
@@ -308,6 +337,25 @@ class FinancialClient(Base):
     # porque é o valor negociado/contratado -- um fato, não uma derivação.
     package_value_cents: Mapped[int | None] = mapped_column(default=None)
 
+    # Acesso ao módulo self-service "Financial Planning" (Fase 1 do
+    # SAES_Financial_Planning_Master_Spec, 2026-08-07) -- controla só se
+    # o cliente VÊ o workspace no portal e pode alimentar seus próprios
+    # dados (contas/orçamento/dívidas/metas, Fase 2 em diante). Nunca
+    # apaga o workspace/dado financeiro ao desabilitar -- só esconde (ver
+    # app/services/financial_planning_service.py::disable_access).
+    financial_planning_enabled: Mapped[bool] = mapped_column(default=False, index=True)
+    financial_planning_status: Mapped[FinancialPlanningStatus] = mapped_column(
+        SAEnum(FinancialPlanningStatus), default=FinancialPlanningStatus.not_eligible)
+    financial_planning_plan: Mapped[str | None] = mapped_column(default=None)
+    financial_planning_started_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    financial_planning_ends_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    financial_planning_enabled_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    financial_planning_enabled_by_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id"), default=None)
+    financial_planning_disabled_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+    financial_planning_disabled_by_id: Mapped[int | None] = mapped_column(
+        ForeignKey("users.id"), default=None)
+
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
 
@@ -322,6 +370,8 @@ class FinancialClient(Base):
     tasks: Mapped[list["FinancialTask"]] = relationship(back_populates="financial_client")
     sessions: Mapped[list["CoachingSession"]] = relationship(
         back_populates="financial_client", order_by="CoachingSession.session_number")
+    workspace: Mapped["FinancialWorkspace | None"] = relationship(
+        back_populates="financial_client", uselist=False, cascade="all, delete-orphan")
 
 
 class FinancialClientMeetingPlatform(Base):
@@ -422,3 +472,65 @@ class CoachingSession(Base):
 
     financial_client: Mapped[FinancialClient] = relationship(back_populates="sessions")
     tasks: Mapped[list[FinancialTask]] = relationship(back_populates="coaching_session")
+
+
+class FinancialWorkspace(Base):
+    """Container 1:1 por FinancialClient com acesso habilitado ao módulo
+    self-service "Financial Planning" (Fase 1 do
+    SAES_Financial_Planning_Master_Spec, 2026-08-07) -- criado na hora em
+    que um funcionário autorizado habilita o acesso
+    (ver app/services/financial_planning_service.py::enable_access).
+    Tabelas futuras (Fase 2 em diante -- accounts, financial_transactions,
+    bills, debts, financial_goals etc.) apontam pra
+    `financial_workspace_id`, não direto pro FinancialClient, seguindo o
+    schema do documento mestre. `deleted_at` existe pro caso raro de
+    precisar desfazer uma ativação por engano -- o fluxo normal de
+    "parar de usar o módulo" é `status=cancelled`/`disable_access`, nunca
+    apagar a linha (mesma disciplina de exclusão lógica já usada em
+    app/document_storage_models.py)."""
+    __tablename__ = "financial_workspaces"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    financial_client_id: Mapped[int] = mapped_column(
+        ForeignKey("crm_financial_clients.id"), unique=True, index=True)
+
+    status: Mapped[FinancialPlanningStatus] = mapped_column(
+        SAEnum(FinancialPlanningStatus), default=FinancialPlanningStatus.active)
+    default_currency: Mapped[str] = mapped_column(default="USD")
+    timezone: Mapped[str | None] = mapped_column(default=None)
+    # Dia do mês em que o período de orçamento "vira" (Fase 4) -- 1-28
+    # pra sempre existir em todo mês, mesmo fevereiro.
+    budget_month_start_day: Mapped[int] = mapped_column(SmallInteger, default=1)
+
+    # Fundo de Emergência (Fase 7) -- o documento define a fórmula
+    # ("target = média de gastos Needs mensais × meses-alvo",
+    # "months_covered = saldo atual / média Needs") mas NÃO define uma
+    # tabela própria pra isto (só `financial_goals`/`sinking_funds`
+    # existem) -- por isso vira 2 configurações aqui no workspace, não
+    # uma tabela nova: quantos meses de gasto essencial o cliente quer
+    # cobrir, e qual conta representa a reserva de emergência. O valor
+    # (target/months_covered) é sempre CALCULADO na hora
+    # (goals_service.emergency_fund_summary), nunca gravado -- se
+    # recalcula sozinho conforme a média de gastos ou o saldo da conta
+    # mudam, nunca fica desatualizado.
+    #
+    # `emergency_fund_account_id` É PROPOSITALMENTE sem `ForeignKey(...)`
+    # -- `financial_accounts.financial_workspace_id` já referencia ESTA
+    # tabela (`financial_workspaces`), então uma FK de volta daqui pra
+    # `financial_accounts` criaria uma dependência circular entre as
+    # duas tabelas (confirmado ao tentar: SQLAlchemy avisa "Cannot
+    # correctly sort tables ... unresolvable cycles" e some com a
+    # garantia de integridade referencial no create_all/migração).
+    # Validado no service (`goals_service._check_account_ownership`)
+    # antes de gravar, mesma disciplina já usada em
+    # `app/crm_models.py::AuditLog.entity_type` (também sem FK, por
+    # motivo parecido: referência que não pode travar o dono da tabela).
+    emergency_fund_target_months: Mapped[int | None] = mapped_column(default=None)
+    emergency_fund_account_id: Mapped[int | None] = mapped_column(default=None)
+
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+
+    financial_client: Mapped[FinancialClient] = relationship(back_populates="workspace")

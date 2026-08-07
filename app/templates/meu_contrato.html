@@ -24,7 +24,7 @@
       {% else %}{{ t('contract_tier_plus_paper') }}{% endif %}
     </span>
   </p>
-  <p style="font-size:1.3rem;font-weight:700;">{{ t('contract_price_label') }}: {% if price_cents is not none %}${{ '%.2f'|format(price_cents / 100) }}{% else %}—{% endif %}</p>
+  <p style="font-size:1.3rem;font-weight:700;">{{ t('contract_price_label') }}: {% if price_cents is not none %}{{ price_cents|usd }}{% else %}—{% endif %}</p>
 
   {% if tier_includes %}
   <h3 style="font-size:0.95rem;">{{ t('contract_includes_title') }}</h3>
@@ -48,7 +48,7 @@
 
 {% if contract.status.value == 'signed' %}
 <div class="card">
-  <p><strong>{{ t('contract_already_signed') }} {{ contract.signed_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else contract.signed_at.strftime("%d/%m/%Y %H:%M") }}</strong></p>
+  <p><strong>{{ t('contract_already_signed') }} {{ contract.signed_at.strftime("%m/%d/%Y %I:%M %p") }}</strong></p>
 </div>
 {% elif contract.status.value == 'rejected' %}
 <div class="card">

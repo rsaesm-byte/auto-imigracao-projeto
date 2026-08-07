@@ -38,14 +38,27 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from urllib.parse import quote
 
-from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, send_file, url_for
+from flask import Blueprint, abort, flash, jsonify, redirect, render_template, request, send_file, session, url_for
 from flask_login import current_user, login_required
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.db import SessionLocal
 from app.models import FormSubmission, Payment, PostPaymentOnboarding, RequiredDocument, User
+from app.services import audit_service
 
 staff_bp = Blueprint("staff", __name__, url_prefix="/staff")
+
+
+@staff_bp.app_context_processor
+def _inject_staff_whatsapp_popup():
+    # app_context_processor (não route_context_processor) porque o
+    # colaborador pode ser mandado de volta pra QUALQUER página do painel
+    # (request.referrer, ver confirm_payment() abaixo) -- staff_base.html
+    # (usado por toda tela /staff) lê esta variável pra abrir o WhatsApp
+    # numa nova aba. .pop() -- é um aviso de uso único, some no próximo
+    # request mesmo que essa página específica não seja recarregada.
+    return {"staff_open_whatsapp_url": session.pop("staff_open_whatsapp", None)}
+
 
 ROOT = Path(__file__).resolve().parent.parent
 PROFILE_PHOTOS_DIR = ROOT / "instance" / "staff_photos"
@@ -165,7 +178,12 @@ def _filter_by_range(payment_rows: list[Payment], date_attr: str, range_key: str
 
 @staff_bp.route("/")
 def dashboard():
-    return redirect(url_for("staff.pending"))
+    # Landing page pós-login da equipe -- pedido do Prompt Mestre (Fase 3,
+    # 2026-08-06): "Dashboard" é a primeira "área principal" listada, e
+    # login() (app/auth.py) já redireciona pra este endpoint desde antes
+    # dessa reforma. Era um redirect direto pra "Pending Approvals";
+    # agora aponta pro dashboard de widgets de verdade.
+    return redirect(url_for("crm_dashboard.dashboard"))
 
 
 @staff_bp.route("/pendentes")
@@ -204,17 +222,22 @@ def approved():
 
 @staff_bp.route("/finalizados")
 def finalized():
-    range_key = request.args.get("range", "all")
-    payment_rows = (
-        SessionLocal.query(Payment)
-        .filter(Payment.finalized_at.is_not(None))
-        .order_by(Payment.finalized_at.desc())
+    """"Completed" (ex-"Finalized") -- pedido do usuário 2026-08-06: não
+    é mais sobre Payment.finalized_at (o gate de pagamento antigo, que
+    exigia um clique manual à parte em "Mark as finalized"); agora reflete
+    direto a ETAPA do Case no pipeline de Cases -- só aparece aqui quando
+    o caso já está em Follow Up, Approved ou Denied (as 3 etapas "de
+    encerramento" do funil, ver CaseStatus em app/crm_models.py)."""
+    from app.crm_models import Case, CaseStatus
+
+    target_statuses = [CaseStatus.follow_up, CaseStatus.approved, CaseStatus.denied]
+    cases = (
+        SessionLocal.query(Case)
+        .filter(Case.case_status.in_(target_statuses))
+        .order_by(Case.updated_at.desc())
         .all()
     )
-    payment_rows = _filter_by_range(payment_rows, "finalized_at", range_key)
-    return render_template(
-        "staff_finalized.html", active_tab="finalized", range_key=range_key,
-        range_labels=RANGE_LABELS, payments=_to_view_items(payment_rows))
+    return render_template("staff_finalized.html", active_tab="finalized", cases=cases)
 
 
 @staff_bp.route("/solicitar-review")
@@ -246,10 +269,13 @@ def payment_detail(payment_id: int):
     if payment is None:
         abort(404)
     client = SessionLocal.get(User, payment.user_id)
+    history = audit_service.get_history("Payment", payment.id)
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
     return render_template(
         "staff_payment_detail.html", payment=payment,
         client_email=client.email if client is not None else "—",
-        case_label=_case_label(payment), submissions=_case_submissions(payment))
+        case_label=_case_label(payment), submissions=_case_submissions(payment),
+        history=history, history_users=history_users)
 
 
 @staff_bp.route("/formulario/<int:submission_id>/respostas")
@@ -306,6 +332,9 @@ def confirm_payment(payment_id: int):
     payment.confirmed_by_user_id = current_user.id
     case_label = _case_label(payment)
     amount_display = f"${payment.amount_cents / 100:,.2f}"
+    audit_service.log_change("Payment", payment.id, "confirmed",
+                              description=f"Payment confirmed — {case_label} ({amount_display})",
+                              user_id=current_user.id)
 
     # Garante um Client+Case do CRM pra TODO pagamento confirmado, não só
     # pra quem já veio de um Lead convertido ou já teve um serviço
@@ -362,7 +391,13 @@ def confirm_payment(payment_id: int):
         f"We've confirmed your payment for {case_label} ({amount_display}). "
         f"You can now log in to generate and download your document(s). Thank you!"
     )
-    return redirect(f"https://wa.me/{digits}?text={quote(message)}")
+    # Pedido do usuário 2026-08-06: não navegar o colaborador pra fora do
+    # painel -- fica em staff.pending/o referrer, e o WhatsApp abre sozinho
+    # numa NOVA aba (ver staff_base.html + _inject_staff_whatsapp_popup
+    # abaixo), mesmo tratamento dado ao cliente em app/payment_gate.py.
+    session["staff_open_whatsapp"] = f"https://wa.me/{digits}?text={quote(message)}"
+    flash(f"Payment approved — opening WhatsApp for {payment.client_name or 'the client'} in a new tab.", "success")
+    return redirect(request.referrer or url_for("staff.pending"))
 
 
 @staff_bp.route("/pagamentos/<int:payment_id>/finalizar", methods=["POST"])
@@ -373,6 +408,8 @@ def finalize_payment(payment_id: int):
     if payment.status != "confirmed":
         abort(400)
     payment.finalized_at = datetime.now(timezone.utc)
+    audit_service.log_change("Payment", payment.id, "finalized",
+                              description="Case marked as finalized", user_id=current_user.id)
     SessionLocal.commit()
     flash("Case marked as finalized.", "success")
     return redirect(request.referrer or url_for("staff.approved"))
@@ -389,6 +426,8 @@ def request_review(payment_id: int):
         abort(404)
     payment.review_requested = True
     case_label = _case_label(payment)
+    audit_service.log_change("Payment", payment.id, "review_requested",
+                              description="Review requested from client", user_id=current_user.id)
     SessionLocal.commit()
 
     if not payment.client_phone:
@@ -470,9 +509,26 @@ def prices():
                 priced_fees_json.append(
                     {"id": service.id, "label": f"{service.name} — {tier_label}", "price_cents": cents})
 
+    from app.crm_models import AuditLog
+
+    # Feed único combinando ServiceFee + ServiceCatalog -- pedido do
+    # usuário 2026-08-06 (histórico de alterações em Prices). Uma tabela
+    # com potencialmente dezenas de linhas (individual/in_package/package
+    # + 15 pacotes completos) não comporta um botão de histórico por
+    # linha sem reescrever _staff_price_table.html; um feed combinado no
+    # topo da página cobre o mesmo pedido sem essa reforma.
+    history = (
+        SessionLocal.query(AuditLog)
+        .filter(AuditLog.entity_type.in_(["ServiceFee", "ServiceCatalog"]))
+        .order_by(AuditLog.created_at.desc())
+        .limit(100)
+        .all()
+    )
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
+
     return render_template(
         "staff_prices.html", active_tab="prices", grouped=grouped, priced_fees_json=priced_fees_json,
-        full_packages=full_packages)
+        full_packages=full_packages, history=history, history_users=history_users)
 
 
 @staff_bp.route("/precos/<int:fee_id>/atualizar", methods=["POST"])
@@ -491,8 +547,15 @@ def update_price(fee_id: int):
         except ValueError:
             flash("Invalid amount.", "error")
             return redirect(url_for("staff.prices"))
+    old_cents = row.price_cents
     row.price_cents = price_cents
     row.updated_by_user_id = current_user.id
+    if old_cents != price_cents:
+        audit_service.log_change(
+            "ServiceFee", row.id, "field_update", field="price_cents",
+            old_value=None if old_cents is None else f"${old_cents / 100:.2f}",
+            new_value=None if price_cents is None else f"${price_cents / 100:.2f}",
+            user_id=current_user.id)
     SessionLocal.commit()
     flash("Price updated.", "success")
     return redirect(url_for("staff.prices"))
@@ -534,11 +597,20 @@ def update_package_price(service_id: int):
         flash("Invalid amount.", "error")
         return redirect(url_for("staff.prices"))
 
+    def _fmt(cents):
+        return None if cents is None else f"${cents / 100:.2f}"
+
+    changes = {
+        "base_price_cents": (_fmt(row.base_price_cents), _fmt(standard_cents)),
+        "plus_price_cents": (_fmt(row.plus_price_cents), _fmt(plus_cents)),
+        "plus_price_paper_cents": (_fmt(row.plus_price_paper_cents), _fmt(plus_paper_cents)),
+    }
     row.base_price_cents = standard_cents
     row.plus_price_cents = plus_cents
     row.plus_price_paper_cents = plus_paper_cents
     row.updated_by_user_id = current_user.id
     row.updated_at = datetime.now(timezone.utc)
+    audit_service.log_field_changes("ServiceCatalog", row.id, changes, user_id=current_user.id)
     SessionLocal.commit()
     flash("Price updated.", "success")
     return redirect(url_for("staff.prices"))
@@ -567,8 +639,13 @@ def apply_price_percentage():
 
     fee_rows = SessionLocal.query(ServiceFee).filter(ServiceFee.price_cents.is_not(None)).all()
     for row in fee_rows:
+        old_cents = row.price_cents
         row.price_cents = round(row.price_cents * (1 + percentage / 100))
         row.updated_by_user_id = current_user.id
+        audit_service.log_change(
+            "ServiceFee", row.id, "field_update", field="price_cents",
+            old_value=f"${old_cents / 100:.2f}", new_value=f"${row.price_cents / 100:.2f}",
+            description=f"Bulk {percentage:+.1f}% price adjustment", user_id=current_user.id)
 
     package_rows = SessionLocal.query(ServiceCatalog).filter(
         ServiceCatalog.base_price_cents.is_not(None) | ServiceCatalog.plus_price_cents.is_not(None)
@@ -576,17 +653,28 @@ def apply_price_percentage():
     ).all()
     package_tiers_touched = 0
     for row in package_rows:
+        tier_changes = {}
         if row.base_price_cents is not None:
+            old = row.base_price_cents
             row.base_price_cents = round(row.base_price_cents * (1 + percentage / 100))
+            tier_changes["base_price_cents"] = (f"${old / 100:.2f}", f"${row.base_price_cents / 100:.2f}")
             package_tiers_touched += 1
         if row.plus_price_cents is not None:
+            old = row.plus_price_cents
             row.plus_price_cents = round(row.plus_price_cents * (1 + percentage / 100))
+            tier_changes["plus_price_cents"] = (f"${old / 100:.2f}", f"${row.plus_price_cents / 100:.2f}")
             package_tiers_touched += 1
         if row.plus_price_paper_cents is not None:
+            old = row.plus_price_paper_cents
             row.plus_price_paper_cents = round(row.plus_price_paper_cents * (1 + percentage / 100))
+            tier_changes["plus_price_paper_cents"] = (f"${old / 100:.2f}", f"${row.plus_price_paper_cents / 100:.2f}")
             package_tiers_touched += 1
         row.updated_by_user_id = current_user.id
         row.updated_at = datetime.now(timezone.utc)
+        for field, (old_v, new_v) in tier_changes.items():
+            audit_service.log_change(
+                "ServiceCatalog", row.id, "field_update", field=field, old_value=old_v, new_value=new_v,
+                description=f"Bulk {percentage:+.1f}% price adjustment", user_id=current_user.id)
 
     SessionLocal.commit()
     total = len(fee_rows) + package_tiers_touched

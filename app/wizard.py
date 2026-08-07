@@ -156,23 +156,20 @@ DS160_DISPLAY_NAME = {
     "es": "Borrador — Visa Americana (DS-160)",
 }
 
-# Vistos de não-imigrante vendidos pela Saes -- listados em /servicos a
-# pedido do usuário, mas SEM botão de autoatendimento (diferente de todo
-# outro item de FORM_SLUGS_ORDER): o processo é conduzido pela equipe do
-# início ao fim (contrata -> equipe abre o Case no CRM -> só then o
-# rascunho de DS-160 é liberado, ver AUXILIARY_FORM_SLUGS/_ds160_gate_case
-# acima). "Começar" aqui vira "Fale com a equipe" no template, nunca
-# wizard.start -- por isso NÃO entram em FORM_SLUGS_ORDER/ENABLED_FORMS.
-VISA_SERVICE_SLUGS = ["visto-b1-b2", "visto-f1-f2"]
-
-VISA_SERVICE_DISPLAY_NAME = {
-    "visto-b1-b2": {"pt": "Visto B1/B2 — Turismo e Negócios",
-                     "en": "B1/B2 Visa — Tourism and Business",
-                     "es": "Visa B1/B2 — Turismo y Negocios"},
-    "visto-f1-f2": {"pt": "Visto F1/F2 — Estudante",
-                     "en": "F1/F2 Visa — Student",
-                     "es": "Visa F1/F2 — Estudiante"},
-}
+# Vistos de não-imigrante vendidos pela Saes -- o processo em si é
+# conduzido pela equipe do início ao fim (contrata -> equipe abre o Case
+# no CRM -> só então o rascunho de DS-160 é liberado, ver
+# AUXILIARY_FORM_SLUGS/_ds160_gate_case acima), mas SEM formulário próprio
+# na wizard (não entram em FORM_SLUGS_ORDER/ENABLED_FORMS). Estes 2 slugs
+# são os únicos do ServiceCatalog (app/crm_models.py) que têm página de
+# conteúdo própria em /servicos (data/service_pages/<slug>.json) -- os
+# outros 13 "Pacotes Completos" ainda não têm (ver services() abaixo).
+# Até 2026-08-03 estes serviços tinham slugs próprios ("visto-b1-b2"/
+# "visto-f1-f2") desconectados do ServiceCatalog, duplicando o card em
+# /pacotes e /servicos (um sem preço/compra, outro sem conteúdo) --
+# unificados nos slugs reais do ServiceCatalog (visa_b1b2/visa_f1) pedido
+# do usuário, ver redirects logo abaixo de service_detail().
+VISA_SERVICE_SLUGS = ["visa_b1b2", "visa_f1"]
 
 
 def _load_questionnaire(slug: str) -> dict:
@@ -257,9 +254,6 @@ def _form_display_name(slug: str, lang: str | None = None) -> str:
         return CARTAS_DISPLAY_NAME.get(lang, CARTAS_DISPLAY_NAME[DEFAULT_LANG])
     if slug == "ds160":
         return DS160_DISPLAY_NAME.get(lang, DS160_DISPLAY_NAME[DEFAULT_LANG])
-    if slug in VISA_SERVICE_DISPLAY_NAME:
-        names = VISA_SERVICE_DISPLAY_NAME[slug]
-        return names.get(lang, names[DEFAULT_LANG])
     if slug in CARTA_LETTER_DISPLAY_NAME:
         names = CARTA_LETTER_DISPLAY_NAME[slug]
         return names.get(lang, names[DEFAULT_LANG])
@@ -399,36 +393,35 @@ def index():
 
 @wizard_bp.route("/servicos")
 def services():
-    """Vitrine com TODOS os serviços que a Saes oferece, sejam eles
-    "Faça Você Mesmo" (o cliente preenche sozinho) ou conduzidos por um
-    profissional da equipe -- pedido do usuário (2026-08-02): "em
-    serviços você deverá mostrar todos os serviços que a Saes
-    professional oferece". A DECISÃO de como contratar (sozinho vs. com
-    a equipe, e em qual nível -- Standard/Plus) fica em /pacotes, não
-    aqui -- esta página é só "o que existe", não "como comprar"."""
+    """Vitrine única "Serviços e Pacotes" -- pedido do usuário 2026-08-06:
+    "Serviços e Pacotes você deverá juntar os dois [em] algo completo,
+    primeiro você mostrará todos os serviços que oferecemos, e depois os
+    pacotes, separados em Faça Você Mesmo e Pacote Completo (Standard e
+    Plus, explicando as diferenças)". Antes disso eram 2 páginas
+    (/servicos = "o que existe", /pacotes = "como comprar", ver git
+    history) -- agora é uma página só, com a segunda parte (packages_context,
+    ver app/packages.py) aparecendo embaixo da primeira, sob a âncora
+    #pacotes. /pacotes continua existindo só como redirect pra cá
+    (packages.index), pra não quebrar link antigo."""
     catalog = [
-        {"slug": slug, "name": _form_display_name(slug),
+        {"slug": slug, "name": _form_display_name(slug), "kind": "diy",
          "enabled": slug in ENABLED_FORMS, "contact_only": False, "has_detail_page": True}
         for slug in FORM_SLUGS_ORDER
-    ]
-    catalog += [
-        {"slug": slug, "name": _form_display_name(slug), "enabled": False,
-         "contact_only": True, "has_detail_page": True}
-        for slug in VISA_SERVICE_SLUGS
     ]
 
     from app.crm_models import ServiceCatalog
     from app.i18n import get_lang
+    from app.packages import packages_context
     from app.services.service_procedures import service_display_name
     procedure_services = SessionLocal.query(ServiceCatalog).filter(
         ServiceCatalog.slug.is_not(None)).order_by(ServiceCatalog.name).all()
     lang = get_lang()
     catalog += [
-        {"slug": s.slug, "name": service_display_name(s.slug, lang), "enabled": False,
-         "contact_only": True, "has_detail_page": False}
+        {"slug": s.slug, "name": service_display_name(s.slug, lang), "kind": "package",
+         "enabled": False, "contact_only": True, "has_detail_page": s.slug in VISA_SERVICE_SLUGS}
         for s in procedure_services
     ]
-    return render_template("services.html", catalog=catalog)
+    return render_template("services.html", catalog=catalog, **packages_context(lang))
 
 
 _SERVICE_CONTENT_FIELDS = [
@@ -493,10 +486,17 @@ def service_detail(slug: str):
 
     from app.services.pricing import in_package_price_cents, individual_price_cents
 
+    if slug in VISA_SERVICE_SLUGS:
+        from app.i18n import get_lang
+        from app.services.service_procedures import service_display_name
+        display_name = service_display_name(slug, get_lang())
+    else:
+        display_name = _form_display_name(slug)
+
     return render_template(
         "service_detail.html",
         slug=slug,
-        name=_form_display_name(slug),
+        name=display_name,
         content=content,
         registry=registry_entry,
         related_catalog=related_catalog,

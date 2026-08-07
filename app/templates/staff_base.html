@@ -17,21 +17,23 @@
       <img class="brand-logo" src="{{ url_for('static', filename='logo-full.png') }}" alt="Saes Professional Services">
     </a>
     <div class="topbar-right">
-      <span class="badge in_progress">Saes Professional Team</span>
+      <span class="badge in_progress" style="box-sizing:border-box;height:24px;line-height:22px;padding:0 10px;display:inline-flex;align-items:center;">Saes Professional Team</span>
+      <button type="button" class="search-trigger" id="global-search-trigger" style="box-sizing:border-box;height:24px;line-height:22px;padding:0 10px;">🔍 Search <kbd>Ctrl K</kbd></button>
+      {% include "_notification_widget.html" %}
       <div id="timer-widget" style="display:flex;align-items:center;gap:6px;font-size:0.82rem;">
         {% if planner_running_entry %}
         <span style="color:var(--success, #16a34a);font-weight:700;" id="timer-elapsed" data-started="{{ planner_running_entry.started_at.isoformat() }}Z">00:00:00</span>
         <span class="muted" style="max-width:120px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">{{ planner_running_entry.description or 'Untitled' }}</span>
         <form method="post" action="{{ url_for('planner.time_stop') }}">
-          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 8px;">⏹ Stop</button>
+          <button type="submit" class="icon-btn" style="box-sizing:border-box;height:24px;line-height:22px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:0 8px;">⏹ Stop</button>
         </form>
         {% else %}
         <form method="post" action="{{ url_for('planner.time_start') }}" style="display:flex;gap:4px;align-items:center;">
-          <input type="text" name="description" placeholder="What are you working on?" style="font-size:0.78rem;padding:4px 6px;width:190px;min-width:0;">
-          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 8px;white-space:nowrap;">▶ Start</button>
+          <input type="text" name="description" placeholder="What are you working on?" style="box-sizing:border-box;height:24px;line-height:22px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);font-size:0.72rem;padding:0 8px;width:190px;min-width:0;">
+          <button type="submit" class="icon-btn" style="box-sizing:border-box;height:24px;line-height:22px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:0 8px;white-space:nowrap;">▶ Start</button>
         </form>
         {% endif %}
-        <button type="button" id="pomodoro-btn" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 8px;" title="Start a 25-minute Pomodoro focus timer">🍅 <span id="pomodoro-label">Pomodoro</span></button>
+        <button type="button" id="pomodoro-btn" class="icon-btn" style="box-sizing:border-box;height:24px;line-height:22px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:0 8px;" title="Start a 25-minute Pomodoro focus timer">🍅 <span id="pomodoro-label">Pomodoro</span></button>
       </div>
       <a href="{{ url_for('staff.profile') }}" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);">
         {% if current_user.photo_path %}
@@ -50,6 +52,11 @@
      rótulo aqui é texto fixo, não t(). #}
   {% set label = "Time zones" %}
   {% include "_world_clocks.html" %}
+
+  {# Pedido do usuário 2026-08-06: todas as datas do sistema (staff e
+     cliente) estão em mm/dd/yyyy -- aviso fixo aqui porque staff_base.html
+     é o layout de TODA tela do colaborador. #}
+  <p class="muted" style="text-align:center;font-size:0.74rem;padding:4px 20px 0;">All dates on this panel are shown in month/day/year format (mm/dd/yyyy).</p>
 
   {# Nav order/groups are per-collaborator (app/staff_nav.py::resolve_nav_layout,
      StaffNavLayout in app/models.py) -- "Edit navigation" below lets a
@@ -106,6 +113,21 @@
         <div class="flash {{ category }}">{{ message }}</div>
       {% endfor %}
     {% endwith %}
+
+    {# Pedido do usuário 2026-08-06: ao confirmar um pagamento, o colaborador
+       fica no painel (não navega pra fora) e o WhatsApp do cliente abre
+       sozinho numa nova aba -- staff_open_whatsapp_url vem de
+       app/staff.py::_inject_staff_whatsapp_popup (aviso de uso único). O
+       link de fallback cobre o caso de o navegador bloquear o popup. #}
+    {% if staff_open_whatsapp_url %}
+    <div class="flash success">
+      Opening WhatsApp… if it didn't open,
+      <a href="{{ staff_open_whatsapp_url }}" target="_blank" rel="noopener noreferrer">click here</a>.
+    </div>
+    <script>
+      window.open({{ staff_open_whatsapp_url|tojson }}, '_blank', 'noopener');
+    </script>
+    {% endif %}
 
     {% block content %}{% endblock %}
   </div>
@@ -439,5 +461,27 @@
       savePersonalBtn.addEventListener('click', function () { saveLayout('personal'); });
     })();
   </script>
+  {# Abre/fecha modal()/drawer() de app/templates/_crm_ui.html -- carregado
+     globalmente (não só nas páginas de kanban) porque qualquer tela do
+     staff pode passar a usar esses componentes daqui pra frente. #}
+  <script src="{{ url_for('static', filename='ui-components.js') }}" defer></script>
+
+  {# Busca global (Ctrl+K) -- pedido do usuário 2026-08-06. Markup fica
+     aqui (disponível em toda tela do staff) pra abrir de qualquer lugar,
+     não só de uma página específica. Ver app/static/global-search.js e
+     app/crm_global_search.py (endpoint JSON). #}
+  <dialog class="modal" id="global-search-modal">
+    <div class="modal-header">
+      <h3>Search</h3>
+      <button type="button" class="modal-close" data-close-dialog="global-search-modal" aria-label="Fechar">&times;</button>
+    </div>
+    <div class="modal-body">
+      <input type="text" id="global-search-input" placeholder="Search clients, leads, cases, tasks, documents, translators…" autocomplete="off">
+      <div id="global-search-results"></div>
+      <div id="global-search-empty" hidden></div>
+    </div>
+  </dialog>
+  <script src="{{ url_for('static', filename='global-search.js') }}" defer></script>
+  <script src="{{ url_for('static', filename='date-format-label.js') }}" defer></script>
 </body>
 </html>

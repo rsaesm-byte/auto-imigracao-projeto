@@ -1,0 +1,77 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Service Interest Options (CRM){% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Service interest options</h1>
+  <p style="opacity:0.92;margin:0;">The list of services a visitor can select on the "What are you interested in?" form on the homepage. Reorder, rename, link to a real service, add new items, or delete — this list is data now, not code.</p>
+</div>
+
+<div class="card">
+  <p class="muted" style="font-size:0.8rem;margin:-4px 0 12px;">Drag <span style="cursor:grab;">⠿</span> to reorder — section headers and items share one list, in the exact order shown on the public form.</p>
+  <div class="option-reorder-list" data-reorder-url="{{ url_for('crm_pipeline_settings.service_interest_options_reorder') }}">
+    {% for row in rows %}
+    {% set opt = row.option %}
+    <div class="option-reorder-row" draggable="true" data-option-id="{{ opt.id }}"
+         style="display:flex;gap:10px;align-items:flex-start;padding:10px 6px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--card);">
+      <span class="muted" style="cursor:grab;font-size:1.1rem;line-height:1.8;" title="Drag to reorder">⠿</span>
+
+      <form method="post" action="{{ url_for('crm_pipeline_settings.service_interest_option_save', option_id=opt.id) }}"
+            style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;flex:1;">
+        <div style="min-width:130px;font-size:0.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.02em;word-break:break-all;">{{ opt.key }}</div>
+
+        <input type="text" name="label_pt" value="{{ row.label_pt }}" required placeholder="Label (Portuguese)" style="min-width:200px;flex:1;">
+        <input type="text" name="label_en" value="{{ row.label_en }}" placeholder="Label (English) — optional" style="min-width:160px;flex:1;">
+        <input type="text" name="label_es" value="{{ row.label_es }}" placeholder="Label (Spanish) — optional" style="min-width:160px;flex:1;">
+
+        <select name="slug" style="min-width:170px;">
+          <option value="">— no linked service —</option>
+          {% for slug in catalog_slugs %}
+          <option value="{{ slug }}" {{ 'selected' if opt.slug == slug }}>{{ slug }}</option>
+          {% endfor %}
+        </select>
+
+        <label class="muted" style="font-size:0.78rem;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+          <input type="checkbox" name="is_group" {{ 'checked' if opt.is_group }}> Section header
+        </label>
+        <label class="muted" style="font-size:0.78rem;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+          <input type="checkbox" name="indent" {{ 'checked' if opt.indent }}> Indented
+        </label>
+
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Save</button>
+      </form>
+
+      <form method="post" action="{{ url_for('crm_pipeline_settings.service_interest_option_delete', option_id=opt.id) }}"
+            onsubmit="return confirm('Delete this service interest option? This cannot be undone.');">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:#991b1b;cursor:pointer;font-size:0.78rem;padding:5px 10px;">Delete</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Add a new option</h2>
+  <form method="post" action="{{ url_for('crm_pipeline_settings.service_interest_option_new') }}"
+        style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
+    <input type="text" name="label_pt" required placeholder="Label (Portuguese)" style="min-width:200px;flex:1;">
+    <input type="text" name="label_en" placeholder="Label (English) — optional" style="min-width:160px;flex:1;">
+    <input type="text" name="label_es" placeholder="Label (Spanish) — optional" style="min-width:160px;flex:1;">
+    <select name="slug" style="min-width:170px;">
+      <option value="">— no linked service —</option>
+      {% for slug in catalog_slugs %}
+      <option value="{{ slug }}">{{ slug }}</option>
+      {% endfor %}
+    </select>
+    <label class="muted" style="font-size:0.78rem;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+      <input type="checkbox" name="is_group"> Section header
+    </label>
+    <label class="muted" style="font-size:0.78rem;display:flex;align-items:center;gap:4px;white-space:nowrap;">
+      <input type="checkbox" name="indent"> Indented
+    </label>
+    <button type="submit" class="btn">Add</button>
+  </form>
+  <p class="muted" style="font-size:0.76rem;margin-top:10px;">New items are added at the end of the list — drag to reposition after saving. Leave English/Spanish blank to fall back to the Portuguese label until someone translates it.</p>
+</div>
+<script src="{{ url_for('static', filename='service-interest-options-reorder.js') }}"></script>
+{% endblock %}

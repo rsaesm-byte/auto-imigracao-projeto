@@ -1,4 +1,5 @@
 {% extends "staff_base.html" %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Terms & Conditions{% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -7,8 +8,9 @@
   <p style="opacity:0.92;margin:0;">Shared text shown on every contract the client signs — "General Terms" (all contracts), the payment-fees clause (service contracts only), and the intro paragraph for the standalone Terms &amp; Conditions document. Markdown supported (headings, bullets, **bold**). Changes apply immediately.</p>
 </div>
 
-<div class="card">
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;">
   <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="muted" style="font-size:0.85rem;">← All templates</a>
+  {{ history_widget('terms-history-drawer', 'History — Terms & Conditions', history, history_users, empty_hint='Changes to the Terms & Conditions will show up here.') }}
 </div>
 
 <form method="post" action="{{ url_for('crm_contracts.terms_edit') }}">

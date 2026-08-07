@@ -1,5 +1,6 @@
 __pycache__/
 *.pyc
+.pytest_cache/
 instance/
 output/users/
 .env
@@ -7,4 +8,6 @@ output/users/
 waitress.out.log
 waitress.err.log
 waitress.log
+waitress-lan.log
 cloudflared.log
+cloudflared.err.log

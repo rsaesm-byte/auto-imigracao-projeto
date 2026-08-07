@@ -8,6 +8,31 @@
 </div>
 
 <div class="card">
+  <h2>{{ t('translations_flagged_title') }}</h2>
+  <p class="muted" style="margin-top:-6px;">{{ t('translations_flagged_subtitle') }}</p>
+  {% if flagged_checklist_items %}
+  <table class="submissions">
+    <thead>
+      <tr>
+        <th>{{ t('translations_table_document') }}</th>
+        <th>{{ t('translations_flagged_case') }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for item in flagged_checklist_items %}
+      <tr>
+        <td>{{ item.doc.label }}</td>
+        <td class="muted">{{ item.case.title }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">{{ t('translations_flagged_none') }}</p>
+  {% endif %}
+</div>
+
+<div class="card">
   {% if documents %}
   <table class="submissions">
     <thead>
@@ -17,6 +42,7 @@
         <th>{{ t('translations_table_pages') }}</th>
         <th>{{ t('translations_table_price_per_page') }}</th>
         <th>{{ t('translations_table_total') }}</th>
+        <th>{{ t('translations_table_approval') }}</th>
       </tr>
     </thead>
     <tbody>
@@ -27,9 +53,32 @@
         <td>{{ d.name }}</td>
         <td class="muted">{% if d.translation.speed_tier %}{{ t('translation_tier_' ~ d.translation.speed_tier.value) }}{% else %}—{% endif %}</td>
         <td class="muted">{{ d.translation.page_count if d.translation.page_count is not none else '—' }}</td>
-        <td class="muted">{% if price is not none %}${{ '%.2f'|format(price / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% if price is not none %}{{ price|usd }}{% else %}—{% endif %}</td>
         <td>
-          {% if total is not none %}${{ '%.2f'|format(total / 100) }}{% else %}<span class="muted" style="font-size:0.82rem;">{{ t('translations_pending_pricing') }}</span>{% endif %}
+          {% if total is not none %}{{ total|usd }}{% else %}<span class="muted" style="font-size:0.82rem;">{{ t('translations_pending_pricing') }}</span>{% endif %}
+        </td>
+        <td>
+          {% if total is none %}
+          <span class="muted" style="font-size:0.8rem;">—</span>
+          {% elif d.translation.client_approval_status.value == 'pending' %}
+          <details>
+            <summary style="cursor:pointer;font-size:0.8rem;color:var(--accent);font-weight:600;">{{ t('translations_approval_pending') }}</summary>
+            <form method="post" action="{{ url_for('crm_client.translation_approval', document_id=d.id) }}" style="margin-top:8px;min-width:220px;">
+              <input type="text" name="note" placeholder="{{ t('translations_note_placeholder') }}" style="width:100%;font-size:0.8rem;margin-bottom:6px;">
+              <div style="display:flex;gap:6px;flex-wrap:wrap;">
+                <button type="submit" name="action" value="approve" class="btn" style="font-size:0.78rem;padding:5px 10px;">{{ t('translations_approve_btn') }}</button>
+                <button type="submit" name="action" value="changes" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 10px;">{{ t('translations_request_changes_btn') }}</button>
+                <button type="submit" name="action" value="reject" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:#b91c1c;cursor:pointer;font-size:0.78rem;padding:5px 10px;">{{ t('translations_reject_btn') }}</button>
+              </div>
+            </form>
+          </details>
+          {% else %}
+          {% set badge_color = {'approved': '#16a34a', 'changes_requested': '#AE8A50', 'rejected': '#991b1b'}[d.translation.client_approval_status.value] %}
+          <span style="display:inline-block;padding:3px 9px;border-radius:999px;font-size:0.76rem;font-weight:600;color:#fff;background:{{ badge_color }};">
+            {{ t('translations_approval_' ~ d.translation.client_approval_status.value) }}
+          </span>
+          {% if d.translation.client_approval_note %}<div class="muted" style="font-size:0.76rem;margin-top:4px;max-width:220px;">{{ d.translation.client_approval_note }}</div>{% endif %}
+          {% endif %}
         </td>
       </tr>
       {% endfor %}

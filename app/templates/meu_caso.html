@@ -6,7 +6,28 @@
 <div class="card hero">
   <h1>{{ t('my_case_title') }}</h1>
   <p style="opacity:0.92;margin:0;">{{ t('my_case_subtitle') }}</p>
+  <p style="opacity:0.78;margin:6px 0 0;font-size:0.78rem;">{{ t('date_format_note') }}</p>
 </div>
+
+{% if pending_client_communications %}
+<div class="card" style="background:#fef3c7;border-color:#f5cb63;">
+  <h2 style="font-size:1rem;">{{ t('my_case_pending_with_you_title') }}</h2>
+  {% for c in pending_client_communications %}
+  <p style="margin:6px 0;">
+    <strong>{{ c.subject }}</strong>
+    {% if c.summary %}<br><span style="font-size:0.9rem;">{{ c.summary }}</span>{% endif %}
+  </p>
+  {% endfor %}
+</div>
+{% endif %}
+
+{% if account_custom_fields %}
+<div class="card">
+  {% for cf in account_custom_fields %}
+  <p class="muted" style="margin:2px 0;"><strong>{{ cf.label }}:</strong> {{ cf.value }}</p>
+  {% endfor %}
+</div>
+{% endif %}
 
 {% if not cases %}
 <div class="card">
@@ -25,7 +46,7 @@
   <p class="muted" style="margin:0 0 {{ '4px' if client.status_expiration else '16px' }};">
     <strong>{{ t('my_case_deadline_label') }}:</strong>
     {% if case.service_deadline %}
-      {{ case.service_deadline.strftime("%m/%d/%Y") if get_lang() == "en" else case.service_deadline.strftime("%d/%m/%Y") }}
+      {{ case.service_deadline.strftime("%m/%d/%Y") }}
     {% else %}
       {{ t('my_case_no_deadline') }}
     {% endif %}
@@ -33,8 +54,23 @@
   {% if client.status_expiration %}
   <p class="muted" style="margin:0 0 16px;">
     <strong>{{ t('my_case_status_expiration_label') }}:</strong>
-    {{ client.status_expiration.strftime("%m/%d/%Y") if get_lang() == "en" else client.status_expiration.strftime("%d/%m/%Y") }}
+    {{ client.status_expiration.strftime("%m/%d/%Y") }}
   </p>
+  {% endif %}
+
+  {% if item.custom_fields %}
+  <div style="margin:0 0 16px;">
+    {% for cf in item.custom_fields %}
+    <p class="muted" style="margin:2px 0;"><strong>{{ cf.label }}:</strong> {{ cf.value }}</p>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if item.gate_payment_pending %}
+  <div style="background:#fef3c7;border-radius:var(--radius-sm);padding:12px 16px;margin:0 0 16px;">
+    <h3 style="font-size:1rem;margin-top:0;">{{ t('my_case_gate_payment_pending_title') }}</h3>
+    <p class="muted" style="font-size:0.82rem;margin:4px 0 0;">{{ t('my_case_gate_payment_pending_note') }}</p>
+  </div>
   {% endif %}
 
   {% set pending_payments = case.payments|selectattr('status.value', 'in', ['pending', 'invoice_sent'])|list %}
@@ -42,7 +78,7 @@
   <div style="background:#fef3c7;border-radius:var(--radius-sm);padding:12px 16px;margin:0 0 16px;">
     <h3 style="font-size:1rem;margin-top:0;">{{ t('my_case_payment_due_title') }}</h3>
     {% for p in pending_payments %}
-    <p style="margin:4px 0;">{{ p.description }} — <strong>${{ '%.2f'|format(p.amount_cents / 100) }}</strong></p>
+    <p style="margin:4px 0;">{{ p.description }} — <strong>{{ p.amount_cents|usd }}</strong></p>
     {% endfor %}
     <p class="muted" style="font-size:0.82rem;margin:4px 0 0;">{{ t('my_case_payment_due_note') }}</p>
   </div>
@@ -84,7 +120,7 @@
   {% if item.pending_documents %}
   <table class="submissions" style="margin:0 0 16px;">
     <thead>
-      <tr><th>{{ t('my_case_table_document') }}</th><th>{{ t('my_case_doc_requested_on') }}</th></tr>
+      <tr><th>{{ t('my_case_table_document') }}</th><th>{{ t('my_case_doc_requested_on') }}</th><th></th></tr>
     </thead>
     <tbody>
       {% for doc in item.pending_documents %}
@@ -92,10 +128,16 @@
         <td>{{ doc.name }} <span class="muted">({{ t('my_case_doctype_' ~ doc.document_type.value) }})</span></td>
         <td class="muted">
           {% if doc.requested_at %}
-            {{ doc.requested_at.strftime("%m/%d/%Y") if get_lang() == "en" else doc.requested_at.strftime("%d/%m/%Y") }}
+            {{ doc.requested_at.strftime("%m/%d/%Y") }}
           {% else %}
             —
           {% endif %}
+        </td>
+        <td>
+          <form method="post" action="{{ url_for('crm_client.document_upload', document_id=doc.id) }}" enctype="multipart/form-data" style="display:flex;gap:6px;align-items:center;">
+            <input type="file" name="file" required style="font-size:0.78rem;">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:4px 10px;">{{ t('onboarding_upload_btn') }}</button>
+          </form>
         </td>
       </tr>
       {% endfor %}
@@ -103,6 +145,46 @@
   </table>
   {% else %}
   <p class="muted" style="margin:0 0 16px;">{{ t('my_case_no_pending_documents') }}</p>
+  {% endif %}
+
+  {% if item.onboarding %}
+  <h3 style="font-size:1rem;">{{ t('onboarding_documents_heading') }}</h3>
+  {% if item.onboarding_documents %}
+  <table class="submissions" style="margin:0 0 16px;">
+    <thead>
+      <tr><th>{{ t('onboarding_doc_col_name') }}</th><th>{{ t('onboarding_doc_col_status') }}</th><th>{{ t('onboarding_doc_col_notes') }}</th><th></th></tr>
+    </thead>
+    <tbody>
+      {% for row in item.onboarding_documents %}
+      {% set doc = row.doc %}
+      <tr>
+        <td>{{ row.label }}</td>
+        <td>
+          {% if doc.status == 'pending' %}<span class="badge in_progress">{{ t('onboarding_status_pending') }}</span>
+          {% elif doc.status == 'uploaded' %}<span class="badge in_progress">{{ t('onboarding_status_uploaded') }}</span>
+          {% elif doc.status == 'approved' %}<span class="badge completed">{{ t('onboarding_status_approved') }}</span>
+          {% elif doc.status == 'rejected' %}<span class="badge" style="background:#fee2e2;color:#991b1b;">{{ t('onboarding_status_rejected') }}</span>
+          {% endif %}
+        </td>
+        <td class="muted">{{ doc.staff_notes or '—' }}</td>
+        <td>
+          {% if doc.file_path %}
+          <a href="{{ url_for('onboarding.document_file', document_id=doc.id) }}" style="font-size:0.82rem;">{{ t('onboarding_view_file') }}</a><br>
+          {% endif %}
+          {% if doc.status in ('pending', 'rejected') %}
+          <form method="post" action="{{ url_for('onboarding.upload_document', document_id=doc.id) }}" enctype="multipart/form-data" style="margin-top:4px;display:flex;gap:6px;align-items:center;">
+            <input type="file" name="file" required style="font-size:0.78rem;">
+            <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:4px 10px;">{{ t('onboarding_upload_btn') }}</button>
+          </form>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted" style="margin:0 0 16px;">{{ t('onboarding_no_documents_yet') }}</p>
+  {% endif %}
   {% endif %}
 
   <h3 style="font-size:1rem;">{{ t('my_case_messages_title') }}</h3>
@@ -120,8 +202,8 @@
       </p>
       <p style="margin:0 0 4px;white-space:pre-wrap;">{{ msg.body }}</p>
       <p class="muted" style="margin:0;font-size:0.8rem;">
-        {{ msg.created_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else msg.created_at.strftime("%d/%m/%Y %H:%M") }}
-        {% if msg.due_at %} · {{ t('my_case_msg_due') }}: {{ msg.due_at.strftime("%m/%d/%Y") if get_lang() == "en" else msg.due_at.strftime("%d/%m/%Y") }}{% endif %}
+        {{ msg.created_at.strftime("%m/%d/%Y %I:%M %p") }}
+        {% if msg.due_at %} · {{ t('my_case_msg_due') }}: {{ msg.due_at.strftime("%m/%d/%Y") }}{% endif %}
         {% if msg.attachment_path %} · <a href="{{ url_for('crm_client.message_attachment', message_id=msg.id) }}">{{ t('my_case_msg_attachment') }}</a>{% endif %}
       </p>
     </div>
@@ -144,7 +226,7 @@
       </div>
       <div>
         <label class="muted">{{ t('my_case_msg_field_due') }}</label><br>
-        <input type="date" name="due_at">
+        <input type="date" lang="en-US" name="due_at">
       </div>
       <div style="flex-basis:100%;">
         <label class="muted">{{ t('my_case_msg_field_body') }}</label><br>
@@ -176,7 +258,7 @@
           {% if comm.summary %}<div class="muted" style="font-size:0.86rem;">{{ comm.summary }}</div>{% endif %}
         </td>
         <td class="muted">
-          {{ comm.occurred_at.strftime("%m/%d/%Y %I:%M %p") if get_lang() == "en" else comm.occurred_at.strftime("%d/%m/%Y %H:%M") }}
+          {{ comm.occurred_at.strftime("%m/%d/%Y %I:%M %p") }}
         </td>
       </tr>
       {% endfor %}

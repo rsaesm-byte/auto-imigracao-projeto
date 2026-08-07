@@ -331,6 +331,57 @@ def _seed_crm_lookups() -> None:
     SessionLocal.commit()
 
 
+def _seed_service_interest_options() -> None:
+    """Semeia crm_service_interest_options (app/crm_models.py::
+    ServiceInterestOption) com os itens que até 2026-08-07 eram a
+    constante hardcoded SERVICE_INTEREST_OPTIONS em
+    app/services/service_interests.py -- só roda por tabela vazia (mesmo
+    padrão de _seed_crm_lookups acima), pra nunca sobrescrever uma
+    reordenação/edição que a equipe já tenha feito pelo painel depois do
+    seed inicial. Os RÓTULOS não entram aqui -- já existem em
+    app/translations/*.json sob a chave `service_interest_{key}` de
+    antes desta mudança, intocados; só a estrutura (quais itens, ordem,
+    cabeçalhos de grupo) é que estava em código e virou dado."""
+    from app.crm_models import ServiceInterestOption
+
+    if SessionLocal.query(ServiceInterestOption).first() is not None:
+        return
+
+    # (key, slug, is_group, indent) -- mesma ordem/estrutura da antiga
+    # SERVICE_INTEREST_OPTIONS.
+    rows = [
+        ("eos_b2", "eos_b2", False, False),
+        ("cos_group", None, True, False),
+        ("cos_to_f1", "cos_to_f1", False, True),
+        ("cos_to_f2", "cos_to_f2", False, True),
+        ("cos_to_b2", "cos_to_b2", False, True),
+        ("financial_coaching", None, False, False),
+        ("immigration_forms_group", None, True, False),
+        ("gc_aos", "gc_aos", False, True),
+        ("gc_consular", "gc_consular", False, True),
+        ("gc_i751", "gc_i751", False, True),
+        ("citizenship_n400", "citizenship_n400", False, True),
+        ("ead_renewal", None, False, True),
+        ("gc_i90", "gc_i90", False, True),
+        ("sworn_translation", None, False, False),
+        ("visa_f1", "visa_f1", False, False),
+        ("visa_b1b2", "visa_b1b2", False, False),
+        ("k1_visa", "k1_visa", False, False),
+        ("sevis_transfer", "sevis_transfer", False, False),
+        ("rfe_noid_response", "rfe_noid_response", False, False),
+        ("address_change", None, False, False),
+        ("reinstatement_f1", "reinstatement_f1", False, False),
+        ("i290b_appeal_motion", "i290b_appeal_motion", False, False),
+        ("i824_action_request", "i824_action_request", False, False),
+        ("e_request", None, False, False),
+        ("school_enrollment", None, False, False),
+    ]
+    for index, (key, slug, is_group, indent) in enumerate(rows):
+        SessionLocal.add(ServiceInterestOption(
+            key=key, slug=slug, is_group=is_group, indent=indent, sort_order=index))
+    SessionLocal.commit()
+
+
 def _seed_crm_financial_lookups() -> None:
     """Semeia os lookups novos do Coaching Financeiro (Fase 2) a partir de
     data/crm_financial_lookups.json. As tabelas totalmente novas
@@ -399,6 +450,61 @@ def _ensure_lead_columns() -> None:
             conn.execute(text("ALTER TABLE crm_leads ADD COLUMN interested_service_mode VARCHAR"))
         if "tier" not in cols:
             conn.execute(text("ALTER TABLE crm_leads ADD COLUMN tier VARCHAR"))
+        conn.commit()
+
+
+def _ensure_user_email_verification_columns() -> None:
+    """Colunas de verificação de e-mail por código (ver
+    app/services/email_verification_service.py) -- contas já existentes
+    antes desta feature são marcadas email_verified=1 de uma vez só, pra
+    ninguém que já usava o sistema ficar bloqueado pelo novo gate global
+    (app/__init__.py::create_app -- before_request)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(users)"))]
+        first_time = "email_verified" not in cols
+        if first_time:
+            conn.execute(text("ALTER TABLE users ADD COLUMN email_verified BOOLEAN DEFAULT 0"))
+        if "email_verification_code_hash" not in cols:
+            conn.execute(text("ALTER TABLE users ADD COLUMN email_verification_code_hash VARCHAR"))
+        if "email_verification_expires_at" not in cols:
+            conn.execute(text("ALTER TABLE users ADD COLUMN email_verification_expires_at DATETIME"))
+        if "email_verification_attempts" not in cols:
+            conn.execute(text("ALTER TABLE users ADD COLUMN email_verification_attempts INTEGER DEFAULT 0"))
+        if first_time:
+            # Backfill: contas criadas antes desta feature existir nunca
+            # passaram por verificação nenhuma -- marcá-las verificadas evita
+            # bloquear clientes/staff que já usavam o sistema.
+            conn.execute(text("UPDATE users SET email_verified = 1"))
+        conn.commit()
+
+
+def _ensure_lead_purchase_columns() -> None:
+    """Novos campos de Lead pra ligar um lead criado automaticamente (via
+    seleção de pacote self-service, ver app/packages.py) à conta que
+    o criou e ao pacote/preço escolhido -- ver plano de compra self-service
+    (2026-08-03)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(crm_leads)"))]
+        if "user_id" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN user_id INTEGER REFERENCES users(id)"))
+        if "interested_package_slug" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN interested_package_slug VARCHAR"))
+        if "selected_price_cents" not in cols:
+            conn.execute(text("ALTER TABLE crm_leads ADD COLUMN selected_price_cents INTEGER"))
+        conn.commit()
+
+
+def _ensure_payment_lead_column() -> None:
+    """Payment.lead_id -- paralelo a package_slug/submission_id, pro
+    checkout de pacote profissional (sem FormSubmission), ver
+    app/payment_gate.py::checkout_lead."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(payments)"))]
+        if "lead_id" not in cols:
+            conn.execute(text("ALTER TABLE payments ADD COLUMN lead_id INTEGER REFERENCES crm_leads(id)"))
         conn.commit()
 
 
@@ -573,6 +679,8 @@ def create_app() -> Flask:
     from app import crm_financial_models  # noqa: F401
     from app import planner_models  # noqa: F401
     from app import models  # noqa: F401
+    from app import document_storage_models  # noqa: F401
+    from app import financial_planning_models  # noqa: F401
     Base.metadata.create_all(engine)
     _ensure_cartas_zip_path_column()
     _ensure_package_columns()
@@ -593,8 +701,12 @@ def create_app() -> Flask:
     _ensure_onboarding_applicant_columns()
     _ensure_document_status_column()
     _ensure_lead_columns()
+    _ensure_user_email_verification_columns()
+    _ensure_lead_purchase_columns()
+    _ensure_payment_lead_column()
     _seed_service_fees()
     _seed_crm_lookups()
+    _seed_service_interest_options()
     _seed_crm_financial_lookups()
     _seed_saes_procedure_services()
     _seed_translators()
@@ -610,6 +722,30 @@ def create_app() -> Flask:
         from app.models import User
         return SessionLocal.get(User, int(user_id))
 
+    # Gate global de verificação de e-mail (pedido do usuário 2026-08-03,
+    # ver plano de compra self-service): todo cliente logado e não
+    # verificado é redirecionado pra completar a verificação antes de
+    # continuar usando o site, em qualquer rota. Contas de staff nunca
+    # passam por aqui, independente do valor de email_verified -- elas não
+    # são criadas pelo cadastro público (app/auth.py::signup), então nunca
+    # tiveram um código gerado pra começo de conversa.
+    _EMAIL_VERIFY_GATE_ALLOWLIST = {
+        "auth.verify_email", "auth.resend_verification", "auth.logout", "static",
+    }
+
+    @app.before_request
+    def _require_email_verified():
+        from flask import redirect, request, url_for
+        from flask_login import current_user
+
+        if request.endpoint in _EMAIL_VERIFY_GATE_ALLOWLIST or request.endpoint is None:
+            return None
+        if not current_user.is_authenticated:
+            return None
+        if current_user.is_staff or current_user.email_verified:
+            return None
+        return redirect(url_for("auth.verify_email", next=request.url))
+
     from app.auth import auth_bp
     from app.wizard import wizard_bp
     from app.eligibility import eligibility_bp
@@ -623,15 +759,25 @@ def create_app() -> Flask:
     from app.payment_methods import payment_methods_bp
     from app.payment_gate import payment_gate_bp
     from app.staff import staff_bp
+    from app.staff_notifications import staff_notifications_bp
     from app.crm_staff_pipeline import crm_pipeline_bp
     from app.crm_staff_ops import crm_ops_bp
     from app.crm_client import crm_client_bp
+    from app.client_notifications import client_notifications_bp
+    from app.lead_intake import lead_intake_bp
     from app.crm_credentials import crm_credentials_bp
     from app.crm_case_tracking import crm_tracking_bp
     from app.crm_translations import crm_translations_bp
     from app.crm_contracts import crm_contracts_bp
     from app.crm_financial_staff import crm_financial_bp
     from app.crm_financial_client import crm_financial_client_bp
+    from app.financial_workspace_client import financial_workspace_bp
+    from app.crm_pipeline_settings import crm_pipeline_settings_bp
+    from app.crm_global_search import crm_search_bp
+    from app.crm_reports import crm_reports_bp
+    from app.crm_dashboard import crm_dashboard_bp
+    from app.crm_custom_fields import crm_custom_fields_bp
+    from app.crm_automations import crm_automations_bp
     from app.onboarding import onboarding_bp
     from app.planner import planner_bp
     app.register_blueprint(auth_bp)
@@ -647,15 +793,25 @@ def create_app() -> Flask:
     app.register_blueprint(payment_methods_bp)
     app.register_blueprint(payment_gate_bp)
     app.register_blueprint(staff_bp)
+    app.register_blueprint(staff_notifications_bp)
     app.register_blueprint(crm_pipeline_bp)
     app.register_blueprint(crm_ops_bp)
     app.register_blueprint(crm_client_bp)
+    app.register_blueprint(client_notifications_bp)
+    app.register_blueprint(lead_intake_bp)
     app.register_blueprint(crm_credentials_bp)
     app.register_blueprint(crm_tracking_bp)
     app.register_blueprint(crm_translations_bp)
     app.register_blueprint(crm_contracts_bp)
     app.register_blueprint(crm_financial_bp)
     app.register_blueprint(crm_financial_client_bp)
+    app.register_blueprint(financial_workspace_bp)
+    app.register_blueprint(crm_pipeline_settings_bp)
+    app.register_blueprint(crm_search_bp)
+    app.register_blueprint(crm_reports_bp)
+    app.register_blueprint(crm_dashboard_bp)
+    app.register_blueprint(crm_custom_fields_bp)
+    app.register_blueprint(crm_automations_bp)
     app.register_blueprint(onboarding_bp)
     app.register_blueprint(planner_bp)
 
@@ -695,6 +851,12 @@ def create_app() -> Flask:
     from app.wizard import _form_display_name, _payment_status_for
     app.jinja_env.globals["form_display_name"] = _form_display_name
     app.jinja_env.globals["payment_status_for"] = _payment_status_for
+
+    from app.services.formatting import format_number, format_percent, format_usd, format_usd_input
+    app.jinja_env.filters["usd"] = format_usd
+    app.jinja_env.filters["usd_input"] = format_usd_input
+    app.jinja_env.filters["num"] = format_number
+    app.jinja_env.filters["pct"] = format_percent
 
     @app.teardown_appcontext
     def remove_session(exception=None):

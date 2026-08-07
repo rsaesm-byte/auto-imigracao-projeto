@@ -92,7 +92,7 @@ class PaymentCase:
     usado só na mensagem do WhatsApp (app/payment_gate.py::_whatsapp_url)
     -- decisão do usuário de 2026-07-31: a mensagem pro WhatsApp da equipe
     tem que ficar em inglês mesmo com o site em português/espanhol."""
-    kind: str  # "package" | "form"
+    kind: str  # "package" | "form" | "professional"
     key: str
     price_cents: int
     label: str
@@ -103,6 +103,8 @@ def find_payment_for_case(case: PaymentCase) -> Payment | None:
     query = SessionLocal.query(Payment).filter_by(user_id=current_user.id)
     if case.kind == "package":
         query = query.filter_by(package_slug=case.key)
+    elif case.kind == "professional":
+        query = query.filter_by(lead_id=int(case.key))
     else:
         query = query.filter_by(submission_id=int(case.key))
     return query.order_by(Payment.id.desc()).first()

@@ -31,7 +31,7 @@
 
 <div class="card">
   <h2>{{ service_name }}</h2>
-  <p style="font-size:1.3rem;font-weight:700;">{% if price_cents is not none %}${{ '%.2f'|format(price_cents / 100) }}{% else %}—{% endif %}</p>
+  <p style="font-size:1.3rem;font-weight:700;">{% if price_cents is not none %}{{ price_cents|usd }}{% else %}—{% endif %}</p>
   {% if tier_includes %}
   <h3 style="font-size:0.95rem;">Includes</h3>
   <ul>{% for item in tier_includes %}<li class="muted">{{ item }}</li>{% endfor %}</ul>

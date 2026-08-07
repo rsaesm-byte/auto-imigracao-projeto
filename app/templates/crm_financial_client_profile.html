@@ -13,7 +13,7 @@
       <div><label class="muted">Name</label><br><input type="text" name="full_name" value="{{ fc.full_name }}" required></div>
       <div><label class="muted">Email</label><br><input type="email" name="email" value="{{ fc.email or '' }}"></div>
       <div><label class="muted">Phone</label><br><input type="text" name="phone_number" value="{{ fc.phone_number or '' }}"></div>
-      <div><label class="muted">Date of birth</label><br><input type="date" name="dob" value="{{ fc.dob.isoformat() if fc.dob else '' }}"></div>
+      <div><label class="muted">Date of birth</label><br><input type="date" lang="en-US" name="dob" value="{{ fc.dob.isoformat() if fc.dob else '' }}"></div>
       <div>
         <label class="muted">Marital status</label><br>
         <select name="marital_status"><option value="">—</option>
@@ -40,11 +40,11 @@
   <div class="card">
     <h2>Program and progress</h2>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
-      <div><label class="muted">Package value (USD)</label><br><input type="number" step="0.01" min="0" name="package_value_dollars" value="{{ '%.2f'|format(fc.package_value_cents / 100) if fc.package_value_cents else '' }}"></div>
+      <div><label class="muted">Package value (USD)</label><br><input type="text" inputmode="decimal" name="package_value_dollars" value="{{ fc.package_value_cents|usd_input }}"></div>
       <div><label class="muted">Sessions purchased</label><br><input type="number" min="0" name="total_sessions_purchased" value="{{ fc.total_sessions_purchased or '' }}"></div>
-      <div><label class="muted">Enrollment</label><br><input type="date" name="enrollment_at" value="{{ fc.enrollment_at.isoformat() if fc.enrollment_at else '' }}"></div>
-      <div><label class="muted">Diagnostic</label><br><input type="date" name="diagnostic_at" value="{{ fc.diagnostic_at.isoformat() if fc.diagnostic_at else '' }}"></div>
-      <div><label class="muted">Target completion</label><br><input type="date" name="target_completion_at" value="{{ fc.target_completion_at.isoformat() if fc.target_completion_at else '' }}"></div>
+      <div><label class="muted">Enrollment</label><br><input type="date" lang="en-US" name="enrollment_at" value="{{ fc.enrollment_at.isoformat() if fc.enrollment_at else '' }}"></div>
+      <div><label class="muted">Diagnostic</label><br><input type="date" lang="en-US" name="diagnostic_at" value="{{ fc.diagnostic_at.isoformat() if fc.diagnostic_at else '' }}"></div>
+      <div><label class="muted">Target completion</label><br><input type="date" lang="en-US" name="target_completion_at" value="{{ fc.target_completion_at.isoformat() if fc.target_completion_at else '' }}"></div>
       <div>
         <label class="muted">Progress status</label><br>
         <select name="progress_status">{% for s in progress_statuses %}<option value="{{ s.value }}" {{ 'selected' if fc.progress_status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}</select>
@@ -85,27 +85,28 @@
 
   <div class="card">
     <h2>Financial profile</h2>
+    <p class="muted" style="font-size:0.78rem;margin-top:-6px;"><a href="{{ url_for('crm_pipeline_settings.financial_coaching_options') }}">Manage Income sources / Financial goals / Main challenges options →</a></p>
     <div style="display:flex;gap:10px;flex-wrap:wrap;">
       <div>
         <label class="muted">Household income range</label><br>
-        <select name="household_income_range"><option value="">—</option>{% for r in income_ranges %}<option value="{{ r.value }}" {{ 'selected' if fc.household_income_range == r }}>{{ r.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="household_income_range"><option value="">—</option>{% for r in income_ranges %}<option value="{{ r.value }}" {{ 'selected' if fc.household_income_range == r }}>{{ income_range_labels[r] }}</option>{% endfor %}</select>
       </div>
-      <div><label class="muted">Monthly income (USD)</label><br><input type="number" step="0.01" min="0" name="monthly_household_income_dollars" value="{{ '%.2f'|format(fc.monthly_household_income_cents / 100) if fc.monthly_household_income_cents else '' }}"></div>
-      <div><label class="muted">Monthly expenses (USD)</label><br><input type="number" step="0.01" min="0" name="monthly_expenses_dollars" value="{{ '%.2f'|format(fc.monthly_expenses_cents / 100) if fc.monthly_expenses_cents else '' }}"></div>
+      <div><label class="muted">Monthly income (USD)</label><br><input type="text" inputmode="decimal" name="monthly_household_income_dollars" value="{{ fc.monthly_household_income_cents|usd_input }}"></div>
+      <div><label class="muted">Monthly expenses (USD)</label><br><input type="text" inputmode="decimal" name="monthly_expenses_dollars" value="{{ fc.monthly_expenses_cents|usd_input }}"></div>
       <div>
         <label class="muted">Emergency fund</label><br>
-        <select name="emergency_fund_status"><option value="">—</option>{% for e in emergency_fund_statuses %}<option value="{{ e.value }}" {{ 'selected' if fc.emergency_fund_status == e }}>{{ e.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="emergency_fund_status"><option value="">—</option>{% for e in emergency_fund_statuses %}<option value="{{ e.value }}" {{ 'selected' if fc.emergency_fund_status == e }}>{{ emergency_fund_labels[e] }}</option>{% endfor %}</select>
       </div>
       <div><label class="muted">Credit Score</label><br><input type="number" min="300" max="850" name="credit_score" value="{{ fc.credit_score if fc.credit_score is not none else '' }}"></div>
-      <div><label class="muted">Total assets (USD)</label><br><input type="number" step="0.01" min="0" name="total_assets_dollars" value="{{ '%.2f'|format(fc.total_assets_cents / 100) if fc.total_assets_cents else '' }}"></div>
-      <div><label class="muted">Total liabilities (USD)</label><br><input type="number" step="0.01" min="0" name="total_liabilities_dollars" value="{{ '%.2f'|format(fc.total_liabilities_cents / 100) if fc.total_liabilities_cents else '' }}"></div>
-      <div><label class="muted">Cash/banking (USD)</label><br><input type="number" step="0.01" min="0" name="cash_banking_dollars" value="{{ '%.2f'|format(fc.cash_banking_cents / 100) if fc.cash_banking_cents else '' }}"></div>
-      <div><label class="muted">Investments (USD)</label><br><input type="number" step="0.01" min="0" name="investments_dollars" value="{{ '%.2f'|format(fc.investments_cents / 100) if fc.investments_cents else '' }}"></div>
-      <div><label class="muted">Real estate (USD)</label><br><input type="number" step="0.01" min="0" name="real_estate_dollars" value="{{ '%.2f'|format(fc.real_estate_cents / 100) if fc.real_estate_cents else '' }}"></div>
-      <div><label class="muted">Vehicles (USD)</label><br><input type="number" step="0.01" min="0" name="vehicles_dollars" value="{{ '%.2f'|format(fc.vehicles_cents / 100) if fc.vehicles_cents else '' }}"></div>
-      <div><label class="muted">Retirement (USD)</label><br><input type="number" step="0.01" min="0" name="retirement_dollars" value="{{ '%.2f'|format(fc.retirement_cents / 100) if fc.retirement_cents else '' }}"></div>
-      <div><label class="muted">Business ownership value (USD)</label><br><input type="number" step="0.01" min="0" name="business_ownership_value_dollars" value="{{ '%.2f'|format(fc.business_ownership_value_cents / 100) if fc.business_ownership_value_cents else '' }}"></div>
-      <div><label class="muted">Credit card debt (USD)</label><br><input type="number" step="0.01" min="0" name="credit_card_debt_dollars" value="{{ '%.2f'|format(fc.credit_card_debt_cents / 100) if fc.credit_card_debt_cents else '' }}"></div>
+      <div><label class="muted">Total assets (USD)</label><br><input type="text" inputmode="decimal" name="total_assets_dollars" value="{{ fc.total_assets_cents|usd_input }}"></div>
+      <div><label class="muted">Total liabilities (USD)</label><br><input type="text" inputmode="decimal" name="total_liabilities_dollars" value="{{ fc.total_liabilities_cents|usd_input }}"></div>
+      <div><label class="muted">Cash/banking (USD)</label><br><input type="text" inputmode="decimal" name="cash_banking_dollars" value="{{ fc.cash_banking_cents|usd_input }}"></div>
+      <div><label class="muted">Investments (USD)</label><br><input type="text" inputmode="decimal" name="investments_dollars" value="{{ fc.investments_cents|usd_input }}"></div>
+      <div><label class="muted">Real estate (USD)</label><br><input type="text" inputmode="decimal" name="real_estate_dollars" value="{{ fc.real_estate_cents|usd_input }}"></div>
+      <div><label class="muted">Vehicles (USD)</label><br><input type="text" inputmode="decimal" name="vehicles_dollars" value="{{ fc.vehicles_cents|usd_input }}"></div>
+      <div><label class="muted">Retirement (USD)</label><br><input type="text" inputmode="decimal" name="retirement_dollars" value="{{ fc.retirement_cents|usd_input }}"></div>
+      <div><label class="muted">Business ownership value (USD)</label><br><input type="text" inputmode="decimal" name="business_ownership_value_dollars" value="{{ fc.business_ownership_value_cents|usd_input }}"></div>
+      <div><label class="muted">Credit card debt (USD)</label><br><input type="text" inputmode="decimal" name="credit_card_debt_dollars" value="{{ fc.credit_card_debt_cents|usd_input }}"></div>
     </div>
 
     <p class="muted" style="margin:14px 0 4px;">Income sources</p>

@@ -29,11 +29,16 @@
     </div>
     <div>
       <label class="muted">Next follow-up</label><br>
-      <input type="date" name="next_followup_at">
+      <input type="date" lang="en-US" name="next_followup_at">
     </div>
     <div style="flex-basis:100%;">
-      <label class="muted">Summary</label><br>
-      <textarea name="summary" rows="2" style="width:100%;"></textarea>
+      <label class="muted">Summary / what's pending</label><br>
+      <textarea name="summary" rows="2" style="width:100%;" placeholder="What was discussed, and what's still pending (if anything)"></textarea>
+    </div>
+    <div style="flex-basis:100%;">
+      <label style="display:flex;align-items:center;gap:6px;font-size:0.85rem;">
+        <input type="checkbox" name="notify_client"> Notify the client (shows in their notification widget, if they have a login)
+      </label>
     </div>
     <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Log</button>
   </form>
@@ -49,16 +54,23 @@
   {% if communications %}
   <div style="overflow-x:auto;">
   <table class="submissions">
-    <thead><tr><th>Subject</th><th>Client</th><th>Date</th><th>Direction</th><th>Channel</th><th>Follow-up</th></tr></thead>
+    <thead><tr><th>Subject</th><th>Client</th><th>Date</th><th>Direction</th><th>Channel</th><th>Follow-up</th><th>Status</th></tr></thead>
     <tbody>
       {% for c in communications %}
       <tr>
-        <td>{{ c.subject }}{% if c.summary %}<br><span class="muted">{{ c.summary }}</span>{% endif %}</td>
+        <td>{{ c.subject }}{% if c.summary %}<br><span class="muted">{{ c.summary }}</span>{% endif %}{% if c.notify_client %}<br><span class="badge status-neutral" style="font-size:0.7rem;">Client notified</span>{% endif %}</td>
         <td class="muted">{{ clients[c.client_id].full_name if c.client_id in clients else '—' }}</td>
         <td class="muted">{{ c.occurred_at.strftime('%m/%d/%Y %H:%M') }}</td>
         <td>{{ crm_badge(c.direction, 'Outbound' if c.direction.value == 'outbound' else 'Inbound') }}</td>
         <td class="muted">{{ channels[c.channel_id].name if c.channel_id in channels else '—' }}</td>
         <td class="muted">{{ c.next_followup_at.strftime('%m/%d/%Y') if c.next_followup_at else '—' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('crm_ops.communication_status_update', communication_id=c.id) }}" style="display:flex;gap:4px;align-items:center;">
+            <select name="status" onchange="this.form.submit()" style="font-size:0.78rem;">
+              {% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if c.status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}
+            </select>
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </tbody>

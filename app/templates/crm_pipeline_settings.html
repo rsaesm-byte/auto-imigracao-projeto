@@ -1,0 +1,37 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Pipeline Settings (CRM){% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Pipeline Settings</h1>
+  <p style="opacity:0.92;margin:0;">Customize the color, display name, description and order of each stage across every kanban board. This does not create or remove stages — the underlying stage list is fixed in code; this only personalizes how each one looks and is ordered.</p>
+  <p style="margin:10px 0 0;"><a href="{{ url_for('crm_pipeline_settings.service_interest_options') }}" style="color:#fff;text-decoration:underline;">Manage the "Service interest options" list (homepage form) →</a> · <a href="{{ url_for('crm_pipeline_settings.financial_coaching_options') }}" style="color:#fff;text-decoration:underline;">Manage Financial Coaching profile options →</a></p>
+</div>
+
+{% for pipeline in board %}
+<div class="card">
+  <h2>{{ pipeline.label }}</h2>
+  <p class="muted" style="font-size:0.8rem;margin:-6px 0 12px;">Drag <span style="cursor:grab;">⠿</span> to reorder — the board's column order updates immediately.</p>
+  <div class="stage-reorder-list" data-reorder-url="{{ pipeline.reorder_url }}">
+    {% for stage in pipeline.stages %}
+    <form class="stage-reorder-row" draggable="true" data-stage-value="{{ stage.value }}"
+          method="post" action="{{ url_for('crm_pipeline_settings.stage_save', pipeline=pipeline.key, stage_value=stage.value) }}"
+          style="display:flex;gap:10px;align-items:center;padding:10px 6px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--card);">
+      <span class="muted" style="cursor:grab;font-size:1.1rem;line-height:1;" title="Drag to reorder">⠿</span>
+      <div style="min-width:120px;font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.02em;">{{ stage.value }}</div>
+      <input type="text" name="label" value="{{ stage.config.label if stage.config and stage.config.label else '' }}"
+             placeholder="Display name (default: &quot;{{ stage.value|replace('_', ' ')|title }}&quot;)" style="min-width:180px;flex:1;">
+      <input type="color" name="color" value="{{ stage.config.color if stage.config and stage.config.color else '#205B5B' }}" style="width:40px;height:28px;padding:0;border:1px solid var(--border);border-radius:4px;">
+      <input type="text" name="description" value="{{ stage.config.description if stage.config else '' }}" placeholder="What does this stage mean?" style="flex:1;min-width:200px;">
+      <label class="muted" style="font-size:0.8rem;display:flex;align-items:center;gap:4px;">
+        <input type="checkbox" name="active" {{ 'checked' if not stage.config or stage.config.active }}> Active
+      </label>
+      <span class="muted" style="font-size:0.78rem;min-width:90px;">{{ stage.usage_count }} record{{ 's' if stage.usage_count != 1 }}</span>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Save</button>
+    </form>
+    {% endfor %}
+  </div>
+</div>
+{% endfor %}
+<script src="{{ url_for('static', filename='pipeline-stage-reorder.js') }}"></script>
+{% endblock %}

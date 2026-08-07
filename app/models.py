@@ -46,6 +46,28 @@ class User(Base, UserMixin):
     personal_phone: Mapped[str | None] = mapped_column(default=None)
     work_phone: Mapped[str | None] = mapped_column(default=None)
     work_hours: Mapped[str | None] = mapped_column(default=None)
+    # Verificação de e-mail por código de 6 dígitos (ver
+    # app/services/email_verification_service.py) -- exigida antes de
+    # contratar um pacote (gate global em app/__init__.py::create_app()).
+    # Contas já existentes antes desta feature são migradas com
+    # email_verified=True (ver _ensure_user_email_verification_columns) para
+    # não bloquear ninguém que já usava o sistema; contas de staff nunca
+    # passam por este gate independente do valor aqui.
+    email_verified: Mapped[bool] = mapped_column(default=False)
+    email_verification_code_hash: Mapped[str | None] = mapped_column(default=None)
+    email_verification_expires_at: Mapped[datetime | None] = mapped_column(default=None)
+    email_verification_attempts: Mapped[int] = mapped_column(default=0)
+    # Permissão `financial_planning.manage_access` do
+    # SAES_Financial_Planning_Master_Spec (Fase 1, 2026-08-07) -- quem
+    # pode habilitar/desabilitar o módulo self-service "Financial
+    # Planning" pra um cliente de coaching (ver
+    # app/services/financial_planning_service.py). Flag booleana simples
+    # (mesmo padrão de `is_staff` acima), não um sistema de papéis/
+    # permissões completo -- isso é a Seção 13 do Prompt Mestre do CRM,
+    # ainda pendente. Concedida manualmente por linha (nunca checado por
+    # e-mail/nome hardcoded em rota nenhuma -- pedido explícito do
+    # documento: "Never hard-code Alessandra").
+    financial_planning_manage_access: Mapped[bool] = mapped_column(default=False)
 
     submissions: Mapped[list["FormSubmission"]] = relationship(
         back_populates="user", cascade="all, delete-orphan")
@@ -192,6 +214,12 @@ class Payment(Base):
     # inversa (o ledger financeiro completo do CRM aponta pra cá quando é
     # a mesma transação, em vez de duplicar o registro).
     case_id: Mapped[int | None] = mapped_column(ForeignKey("crm_cases.id"), default=None, index=True)
+    # Paralelo a package_slug/submission_id acima, mas para a compra de um
+    # "Pacote Completo" profissional (Saes Standard/Plus) -- esses não têm
+    # FormSubmission (o cliente não preenche PDF, a equipe conduz o caso),
+    # então o "caso de pagamento" nasce de um Lead em vez de uma submissão
+    # (ver app/payment_gate.py::checkout_lead, app/services/pricing.py).
+    lead_id: Mapped[int | None] = mapped_column(ForeignKey("crm_leads.id"), default=None, index=True)
 
 
 class ServiceFee(Base):
@@ -283,6 +311,12 @@ class RequiredDocument(Base):
     onboarding_id: Mapped[int] = mapped_column(ForeignKey("post_payment_onboarding.id"), index=True)
     label: Mapped[str]
     status: Mapped[str] = mapped_column(default="pending", index=True)  # pending | uploaded | approved | rejected
+    # Marcado pelo staff em /staff/crm/casos/<id>/procedimento -- pedido do
+    # usuário 2026-08-06: quando marcado, o item passa a aparecer na aba
+    # "Translations" do cliente (app/crm_client.py::translations()) e
+    # dispara uma notificação pro cliente (ver app/services/
+    # notification_service.py, Notification.recipient_user_id).
+    needs_translation: Mapped[bool] = mapped_column(default=False)
     file_path: Mapped[str | None] = mapped_column(default=None)
     uploaded_at: Mapped[datetime | None] = mapped_column(default=None)
     staff_notes: Mapped[str | None] = mapped_column(Text, default=None)
@@ -324,3 +358,21 @@ class StaffNavGlobalLayout(Base):
     layout_json: Mapped[str] = mapped_column(Text)
     updated_at: Mapped[datetime] = mapped_column(default=_utcnow, onupdate=_utcnow)
     updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+
+
+class StaffDashboardLayout(Base):
+    """Personalização por colaborador da aba Dashboard (Prompt Mestre,
+    Fase 3, 2026-08-06: "Reorganizar widgets; Ocultar widgets; ... Salvar
+    preferências"). `visible_widgets_json` é uma lista JSON de chaves de
+    widget (ver app/services/dashboard_service.py::WIDGETS) NA ORDEM em
+    que devem aparecer -- um widget ausente da lista está oculto; não há
+    coluna separada de "ocultos" (a própria ausência já é o sinal, mesma
+    convenção around de "sem linha = usa o padrão" do StaffNavLayout
+    acima). Deliberadamente só pessoal (sem StaffDashboardGlobalLayout) --
+    diferente da navegação, o documento não pediu um "salvar pra todo
+    mundo" aqui."""
+    __tablename__ = "staff_dashboard_layouts"
+
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), primary_key=True)
+    visible_widgets_json: Mapped[str] = mapped_column(Text)
+    updated_at: Mapped[datetime] = mapped_column(default=_utcnow, onupdate=_utcnow)

@@ -15,6 +15,8 @@ from flask_login import current_user, login_required
 from app.crm_models import (Case, CaseContract, ContractDocumentType,
                              ContractStatus, ContractTier, ServiceCatalog)
 from app.db import SessionLocal
+from app.models import User
+from app.services import audit_service
 from app.services import crm_service as svc
 
 crm_contracts_bp = Blueprint("crm_contracts", __name__, url_prefix="/staff/crm/contratos")
@@ -49,10 +51,13 @@ def case_contracts(case_id: int):
     services = SessionLocal.query(ServiceCatalog).filter(ServiceCatalog.slug.is_not(None)).order_by(
         ServiceCatalog.name).all()
     current_service = next((cs.service for cs in case.services if cs.role.value == "current"), None)
+    contract_history = {c.id: audit_service.get_history("Contract", c.id) for c in case.contracts}
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
     return render_template(
         "crm_case_contracts.html", case=case, services=services, current_service=current_service,
         tiers=list(ContractTier), document_types=list(ContractDocumentType),
-        price_cents=svc.contract_price_cents)
+        price_cents=svc.contract_price_cents,
+        contract_history=contract_history, history_users=history_users)
 
 
 @crm_contracts_bp.route("/casos/<int:case_id>/novo", methods=["POST"])
@@ -79,6 +84,11 @@ def contract_new(case_id: int):
         case_id=case.id, document_type=document_type, service_catalog_id=service_id, tier=tier,
         requested_by_id=current_user.id)
     SessionLocal.add(contract)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "Contract", contract.id, "create",
+        description=f"Signature requested ({document_type.value}{' — ' + tier.value if tier else ''})",
+        user_id=current_user.id)
     SessionLocal.commit()
     flash("Signature requested.", "success")
     return redirect(url_for("crm_contracts.case_contracts", case_id=case_id))
@@ -103,6 +113,8 @@ def contract_cancel(contract_id: int):
         flash("A signed contract can't be cancelled.", "error")
         return redirect(url_for("crm_contracts.case_contracts", case_id=contract.case_id))
     case_id = contract.case_id
+    audit_service.log_change("Contract", contract.id, "delete",
+                              description="Signature request cancelled", user_id=current_user.id)
     SessionLocal.delete(contract)
     SessionLocal.commit()
     flash("Signature request cancelled.", "success")
@@ -149,6 +161,10 @@ def template_edit(slug: str):
                 raw = request.form.get(key, "")
                 updates[key] = [line.strip() for line in raw.splitlines() if line.strip()]
         save_service_procedure_lists(slug, updates)
+        audit_service.log_change(
+            "ContractTemplate", service.id, "field_update",
+            description=f"Includes/Excludes updated for '{service.name}'", user_id=current_user.id)
+        SessionLocal.commit()
         flash("Contract template updated.", "success")
         return redirect(url_for("crm_contracts.template_edit", slug=slug))
 
@@ -156,8 +172,11 @@ def template_edit(slug: str):
         f"{field}{lang_suffix}": "\n".join(template.get(f"{field}{lang_suffix}", []))
         for field in fields for lang_suffix in langs
     }
+    history = audit_service.get_history("ContractTemplate", service.id)
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
     return render_template(
-        "crm_contract_template_edit.html", slug=slug, service=service, template=template, lists=lists)
+        "crm_contract_template_edit.html", slug=slug, service=service, template=template, lists=lists,
+        history=history, history_users=history_users)
 
 
 @crm_contracts_bp.route("/modelos/<slug>/previa")
@@ -213,6 +232,8 @@ def terms_edit():
                     request.form.get(f"payment_separate_{lang_suffix}", "").strip())
             setattr(terms, f"tc_intro_{lang_suffix}", request.form.get(f"tc_intro_{lang_suffix}", "").strip())
         terms.updated_by_user_id = current_user.id
+        audit_service.log_change("ContractTerms", terms.id, "field_update",
+                                  description="Terms & Conditions updated", user_id=current_user.id)
         SessionLocal.commit()
         flash("Terms & Conditions updated.", "success")
         return redirect(url_for("crm_contracts.terms_edit"))
@@ -222,4 +243,7 @@ def terms_edit():
         for section in ("general_terms", "payment_separate", "tc_intro")
         for lang_suffix in ("en", "pt", "es")
     }
-    return render_template("crm_contract_terms_edit.html", fields=fields)
+    history = audit_service.get_history("ContractTerms", terms.id)
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
+    return render_template("crm_contract_terms_edit.html", fields=fields,
+                            history=history, history_users=history_users)

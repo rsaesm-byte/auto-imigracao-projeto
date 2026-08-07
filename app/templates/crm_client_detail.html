@@ -1,36 +1,378 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
 {% block title %}Staff — {{ client.full_name }} (CRM){% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
+{% set primary_case = client.cases[0] if client.cases else None %}
 <div class="card hero">
   <h1>{{ client.full_name }}</h1>
   <p style="opacity:0.92;margin:0;">
     {{ client.email or 'No email on file' }}
     {% if client.tier %} · Tier {{ client.tier.value }}{% endif %}
   </p>
+  {# Pedido do usuário 2026-08-06: título do caso + status + plano contratado
+     -- que antes só apareciam lá embaixo, dentro do loop de Cases -- agora
+     também aqui no topo, junto do nome/e-mail. #}
+  {% if primary_case %}
+  <p style="margin:10px 0 0;font-size:1.1rem;font-weight:700;">{{ primary_case.title }}</p>
+  <p style="opacity:0.92;margin:2px 0 0;font-size:0.9rem;">
+    {{ {'self_service': 'Self-service', 'saes_standard': 'Saes Standard', 'saes_plus': 'Saes Plus'}[primary_case.service_mode.value] }}
+  </p>
+  {# Pedido do usuário 2026-08-06: não só o nome cru da etapa -- mostrar
+     "Current stage" (com o badge, cor/label já customizáveis via
+     crm_badge) e "Next stage" (calculado por _next_case_status() na
+     rota, mesma ordem do kanban). Sem "next" = última etapa do funil. #}
+  <div style="margin-top:10px;display:flex;gap:18px;flex-wrap:wrap;">
+    <div>
+      <span class="muted" style="font-size:0.76rem;color:rgba(255,255,255,0.75);">Current stage</span><br>
+      {{ crm_badge(primary_case.case_status, label=case_stage_labels.get(primary_case.case_status.value)) }}
+    </div>
+    <div>
+      <span class="muted" style="font-size:0.76rem;color:rgba(255,255,255,0.75);">Next stage</span><br>
+      {% set next_status = next_status_by_case.get(primary_case.id) %}
+      {% if next_status %}
+      {{ crm_badge(next_status, label=case_stage_labels.get(next_status.value)) }}
+      {% else %}
+      <span class="badge status-neutral">— (last stage)</span>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
 </div>
 
 <div class="card">
-  <h2>Identification and contact</h2>
-  <p class="muted" style="margin:2px 0;">Phone (US): {{ client.us_phone or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Phone (home country): {{ client.home_phone or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Address (US): {{ client.us_address or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Country of origin: {{ client.country_of_origin or '—' }}</p>
-  <p class="muted" style="margin:2px 0;">Preferred language: {{ client.preferred_language.value if client.preferred_language else '—' }}</p>
-  <p style="margin-top:10px;"><a href="{{ url_for('crm_credentials.detail', client_id=client.id) }}">View credentials (USCIS/Embassy)</a></p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('crm_pipeline.clients_list') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to Clients</a>
+    {% if primary_case %}
+    <a href="{{ url_for('crm_pipeline.cases_kanban') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">View in Kanban</a>
+    <a href="{{ url_for('crm_ops.case_documents', case_id=primary_case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Documents</a>
+    <a href="{{ url_for('crm_ops.case_procedure', case_id=primary_case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Procedure</a>
+    <a href="{{ url_for('crm_ops.case_messages', case_id=primary_case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Messages</a>
+    <a href="{{ url_for('crm_tracking.case_tracking', case_id=primary_case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Tracking</a>
+    <a href="{{ url_for('crm_contracts.case_contracts', case_id=primary_case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Contracts</a>
+    {% if primary_case.lead_id %}
+    <a href="{{ url_for('crm_pipeline.lead_detail', lead_id=primary_case.lead_id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">From Lead</a>
+    {% endif %}
+    {% endif %}
+  </div>
+  {% if client.cases|length > 1 %}
+  <p class="muted" style="font-size:0.78rem;margin:8px 0 0;">Shortcuts above are for "{{ primary_case.title }}" -- this client has {{ client.cases|length }} cases; see each one's own links in the Cases section below.</p>
+  {% endif %}
 </div>
 
-{% if client.dependents %}
+{# Último contato + pendências -- pedido do usuário 2026-08-06: "registrar
+   o último contato com o cliente, se tiver algo pendente com o cliente,
+   que ambas as partes sejam notificadas, que mostre o que está
+   pendente". Communication.notify_client/status já existiam no modelo,
+   só nunca eram lidos/mostrados em lugar nenhum -- ver
+   crm_ops.communication_new/communication_status_update. #}
 <div class="card">
-  <h2>Dependents</h2>
-  <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Filled in by the client themselves on the post-payment onboarding screen.</p>
-  <ul style="margin:0;">
-    {% for dep in client.dependents %}
-    <li>{{ dep.full_name }} — {{ dep.email or '—' }} · {{ dep.us_phone or '—' }}</li>
+  <h2 style="font-size:1rem;">Last contact &amp; pending items</h2>
+  {% if last_contact %}
+  <p style="margin:6px 0;">
+    <strong>{{ last_contact.subject }}</strong>
+    <span class="muted" style="font-size:0.82rem;">— {{ last_contact.occurred_at.strftime('%m/%d/%Y %H:%M') }} · {{ 'Outbound' if last_contact.direction.value == 'outbound' else 'Inbound' }}</span>
+  </p>
+  {% if last_contact.summary %}<p class="muted" style="font-size:0.85rem;margin:0 0 10px;">{{ last_contact.summary }}</p>{% endif %}
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No communications logged with this client yet.</p>
+  {% endif %}
+
+  {% if pending_communications %}
+  <div style="background:#fef3c7;border-radius:var(--radius-sm);padding:10px 14px;margin-top:8px;">
+    <div class="muted" style="font-size:0.78rem;font-weight:600;margin-bottom:6px;">Pending with this client ({{ pending_communications|length }})</div>
+    {% for c in pending_communications %}
+    <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:4px 0;">
+      <span style="font-size:0.85rem;">{{ c.subject }}{% if c.summary %} — <span class="muted">{{ c.summary }}</span>{% endif %}{% if c.notify_client %} <span class="badge status-neutral" style="font-size:0.68rem;">Client notified</span>{% endif %}</span>
+      <form method="post" action="{{ url_for('crm_ops.communication_status_update', communication_id=c.id) }}">
+        <input type="hidden" name="status" value="done">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:3px 8px;">Mark resolved</button>
+      </form>
+    </div>
     {% endfor %}
-  </ul>
+  </div>
+  {% endif %}
+
+  <a href="{{ url_for('crm_ops.communication_new') }}" class="muted" style="font-size:0.82rem;display:inline-block;margin-top:10px;">+ Log a new communication →</a>
+</div>
+
+{% if primary_case %}
+<div class="card">
+  <h2 style="font-size:1rem;">Case at a glance — {{ primary_case.title }}</h2>
+
+  {# Pedido do usuário 2026-08-06: estes 4 campos logo no topo da ficha do
+     cliente -- rota própria (case_glance_update), só toca esses 4, não os
+     outros 5 de case_details_update (mesmo motivo de case_notes_update). #}
+  <form method="post" action="{{ url_for('crm_ops.case_glance_update', case_id=primary_case.id) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:10px;">
+    <div>
+      <label class="muted" style="font-size:0.8rem;">Service deadline</label><br>
+      <input type="date" lang="en-US" name="service_deadline" value="{{ primary_case.service_deadline.isoformat() if primary_case.service_deadline else '' }}" style="width:100%;font-size:0.85rem;">
+    </div>
+    <div>
+      <label class="muted" style="font-size:0.8rem;">Responsible</label><br>
+      <select name="responsible_id" style="width:100%;font-size:0.85rem;">
+        <option value="">—</option>
+        {% for u in staff_users %}<option value="{{ u.id }}" {{ 'selected' if primary_case.responsible_id == u.id }}>{{ u.email }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted" style="font-size:0.8rem;">Priority</label><br>
+      <select name="priority" style="width:100%;font-size:0.85rem;">
+        {% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if primary_case.priority == p }}>{{ p.value|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted" style="font-size:0.8rem;">Google Drive folder</label><br>
+      <input type="url" name="google_drive_url" value="{{ primary_case.google_drive_url or '' }}" placeholder="https://drive.google.com/..." style="width:100%;font-size:0.85rem;">
+    </div>
+    <div style="align-self:end;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;">Save</button>
+    </div>
+  </form>
+
+  {# Registro de dias/horários/tempo trabalhado no caso -- pedido do
+     usuário 2026-08-06, a partir das Time Entries (Time Tracking) que
+     apontam pra este caso. #}
+  {% if time_summary %}
+  <details style="margin-bottom:10px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">Time worked on this case: {{ time_summary.total_display }} ({{ time_summary.count }} entr{{ 'y' if time_summary.count == 1 else 'ies' }})</summary>
+    <table class="submissions" style="margin-top:8px;">
+      <thead><tr><th>Date</th><th>Start</th><th>End</th><th>Duration</th><th>Description</th></tr></thead>
+      <tbody>
+        {% for e in time_summary.entries %}
+        <tr>
+          <td class="muted">{{ e.started_at.strftime('%m/%d/%Y') }}</td>
+          <td class="muted">{{ e.started_at.strftime('%H:%M') }}</td>
+          <td class="muted">{{ e.ended_at.strftime('%H:%M') if e.ended_at else '(running)' }}</td>
+          <td class="muted">{{ format_duration(entry_duration(e)) }}</td>
+          <td class="muted">{{ e.description or '—' }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </details>
+  {% endif %}
+
+  <form method="post" action="{{ url_for('crm_pipeline.case_ds160_gate_update', case_id=primary_case.id) }}" style="margin-top:8px;display:inline-flex;gap:6px;align-items:center;">
+    <label class="muted" style="font-size:0.8rem;">DS-160 draft:</label>
+    <select name="ds160_visa_type" style="font-size:0.8rem;">
+      <option value="" {{ 'selected' if not primary_case.ds160_visa_type }}>None (not contracted)</option>
+      <option value="b1_b2" {{ 'selected' if primary_case.ds160_visa_type and primary_case.ds160_visa_type.value == 'b1_b2' }}>B1/B2 — Tourism/Business</option>
+      <option value="f1_f2" {{ 'selected' if primary_case.ds160_visa_type and primary_case.ds160_visa_type.value == 'f1_f2' }}>F1/F2 — Student</option>
+    </select>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:2px 8px;">Save</button>
+  </form>
+
+  {% set primary_pending = pending_by_case.get(primary_case.id, []) %}
+  {% if primary_pending %}
+  <div class="muted" style="margin-top:10px;font-size:0.82rem;">
+    Pending documents:
+    {% for doc in primary_pending %}<a href="{{ url_for('crm_ops.case_documents', case_id=primary_case.id) }}#doc-{{ doc.id }}">{{ doc.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
+  </div>
+  {% endif %}
+
+  <div style="margin-top:14px;padding-top:10px;border-top:1px dashed var(--border);">
+    <div class="muted" style="font-size:0.8rem;font-weight:600;margin-bottom:6px;">Progress tracking</div>
+    {% if primary_case.progress_items %}
+    <ul style="margin:0 0 8px;padding-left:0;list-style:none;">
+      {% for item in primary_case.progress_items %}
+      <li style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:4px 0;font-size:0.82rem;">
+        <span style="min-width:160px;">{{ item.title }}</span>
+        <span class="muted" style="font-size:0.75rem;">{{ item.category.value|replace('_',' ')|title }}</span>
+        <form method="post" action="{{ url_for('crm_ops.case_progress_status_update', item_id=item.id) }}" style="display:inline-flex;gap:4px;">
+          <select name="status" style="font-size:0.75rem;">
+            {% for s in progress_statuses %}
+            <option value="{{ s.value }}" {{ 'selected' if item.status == s }}>{{ s.value|replace('_',' ')|title }}</option>
+            {% endfor %}
+          </select>
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:2px 6px;">Save</button>
+        </form>
+        <form method="post" action="{{ url_for('crm_ops.case_progress_delete', item_id=item.id) }}">
+          <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.72rem;">Remove</button>
+        </form>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post" action="{{ url_for('crm_ops.case_progress_new', case_id=primary_case.id) }}" style="display:flex;gap:6px;flex-wrap:wrap;align-items:center;">
+      <input type="text" name="title" placeholder="New progress item (e.g. I-130 form)" style="font-size:0.78rem;min-width:220px;">
+      <select name="category" style="font-size:0.78rem;">
+        {% for c in progress_categories %}
+        <option value="{{ c.value }}">{{ c.value|replace('_',' ')|title }}</option>
+        {% endfor %}
+      </select>
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:3px 10px;">+ Add</button>
+    </form>
+  </div>
 </div>
 {% endif %}
+
+<form method="post" action="{{ url_for('crm_pipeline.client_update', client_id=client.id) }}">
+  <input type="hidden" name="version" value="{{ client.version }}">
+  <div class="card">
+    <h2 style="font-size:1rem;">Identification</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div><label class="muted">Full name</label><br><input type="text" name="full_name" value="{{ client.full_name }}" required style="width:100%;"></div>
+      <div>
+        <label class="muted">Tier</label><br>
+        <select name="tier" style="width:100%;">
+          <option value="">—</option>
+          {% for t in tiers %}<option value="{{ t.value }}" {{ 'selected' if client.tier == t }}>{{ t.value }}</option>{% endfor %}
+        </select>
+      </div>
+    </div>
+    <p class="muted" style="font-size:0.8rem;margin-top:10px;margin-bottom:0;">5 Letters / Key Word (embassy verification codes) moved to <a href="{{ url_for('crm_credentials.detail', client_id=client.id) }}">Credentials →</a></p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1rem;">Contact</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div>
+        <label class="muted">Email</label><br>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <input type="email" name="email" value="{{ client.email or '' }}" style="width:100%;">
+          <label title="Verified with client" style="display:flex;align-items:center;gap:3px;font-size:0.78rem;white-space:nowrap;flex-shrink:0;">
+            <input type="checkbox" name="personal_email_verified" {{ 'checked' if client.personal_email_verified }}> ✔
+          </label>
+        </div>
+      </div>
+      <div>
+        <label class="muted">Phone (US)</label><br>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <input type="text" name="us_phone" value="{{ client.us_phone or '' }}" style="width:100%;">
+          <label title="Verified with client" style="display:flex;align-items:center;gap:3px;font-size:0.78rem;white-space:nowrap;flex-shrink:0;">
+            <input type="checkbox" name="us_phone_verified" {{ 'checked' if client.us_phone_verified }}> ✔
+          </label>
+        </div>
+      </div>
+      <div><label class="muted">Phone (home country)</label><br><input type="text" name="home_phone" value="{{ client.home_phone or '' }}" style="width:100%;"></div>
+      <div>
+        <label class="muted">Address (US)</label><br>
+        <div style="display:flex;gap:6px;align-items:center;">
+          <input type="text" name="us_address" value="{{ client.us_address or '' }}" style="width:100%;">
+          <label title="Verified with client" style="display:flex;align-items:center;gap:3px;font-size:0.78rem;white-space:nowrap;flex-shrink:0;">
+            <input type="checkbox" name="us_address_verified" {{ 'checked' if client.us_address_verified }}> ✔
+          </label>
+        </div>
+      </div>
+      <div><label class="muted">Address (home country)</label><br><input type="text" name="home_address" value="{{ client.home_address or '' }}" style="width:100%;"></div>
+      <div><label class="muted">City/Country</label><br><input type="text" name="city_country" value="{{ client.city_country or '' }}" style="width:100%;"></div>
+      <div><label class="muted">Country of origin</label><br><input type="text" name="country_of_origin" value="{{ client.country_of_origin or '' }}" style="width:100%;"></div>
+      <div>
+        <label class="muted">Preferred language</label><br>
+        <select name="preferred_language" style="width:100%;">
+          <option value="">—</option>
+          {% for l in preferred_languages %}<option value="{{ l.value }}" {{ 'selected' if client.preferred_language == l }}>{{ l.value|title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div><label class="muted">Best contact time</label><br><input type="text" name="best_contact_time" value="{{ client.best_contact_time or '' }}" style="width:100%;"></div>
+    </div>
+    <p style="margin-top:10px;"><a href="{{ url_for('crm_credentials.detail', client_id=client.id) }}">View credentials (USCIS/Embassy)</a></p>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1rem;">Personal &amp; family</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div><label class="muted">Date of birth</label><br><input type="date" lang="en-US" name="dob" value="{{ client.dob.isoformat() if client.dob else '' }}" style="width:100%;"></div>
+      <div>
+        <label class="muted">Marital status</label><br>
+        <select name="marital_status" style="width:100%;">
+          <option value="">—</option>
+          {% for m in marital_statuses %}<option value="{{ m.value }}" {{ 'selected' if client.marital_status == m }}>{{ m.value|title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div><label class="muted">Marriage date</label><br><input type="date" lang="en-US" name="marriage_date" value="{{ client.marriage_date.isoformat() if client.marriage_date else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Number of dependents</label><br><input type="number" min="0" name="n_dependents" value="{{ client.n_dependents if client.n_dependents is not none else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Passport expiration</label><br><input type="date" lang="en-US" name="passport_expiration" value="{{ client.passport_expiration.isoformat() if client.passport_expiration else '' }}" style="width:100%;"></div>
+      <div style="display:flex;align-items:end;padding-bottom:6px;">
+        <label class="muted" style="display:flex;align-items:center;gap:6px;"><input type="checkbox" name="has_dependents" {{ 'checked' if client.has_dependents }}> Has dependents</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1rem;">Immigration status</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div><label class="muted">Current status/visa</label><br><input type="text" name="current_status_visa" value="{{ client.current_status_visa or '' }}" style="width:100%;"></div>
+      <div><label class="muted">Current status expiration</label><br><input type="date" lang="en-US" name="status_expiration" value="{{ client.status_expiration.isoformat() if client.status_expiration else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Resident since (LPR)</label><br><input type="date" lang="en-US" name="resident_since" value="{{ client.resident_since.isoformat() if client.resident_since else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Green Card expiration</label><br><input type="date" lang="en-US" name="gc_expiration" value="{{ client.gc_expiration.isoformat() if client.gc_expiration else '' }}" style="width:100%;"></div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn" style="padding:10px 20px;">Save client</button>
+</form>
+
+{% if client_custom_fields %}
+<div class="card">
+  <h2 style="font-size:1rem;">
+    Custom fields · <a href="{{ url_for('crm_custom_fields.index', entity='Client') }}" style="font-weight:400;font-size:0.85rem;">Manage fields</a>
+  </h2>
+  <form method="post" action="{{ url_for('crm_pipeline.client_custom_fields_save', client_id=client.id) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+    {% for f in client_custom_fields %}
+    {% set raw = client_custom_values.get(f.id) %}
+    <div>
+      <label class="muted" style="font-size:0.78rem;">{{ f.label }}{% if f.required %} *{% endif %}{% if f.client_visible %} <span class="badge completed" style="font-size:0.65rem;">Client-visible</span>{% endif %}</label><br>
+      {% if f.field_type.value == 'long_text' %}
+      <textarea name="custom_{{ f.id }}" rows="2" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ raw or '' }}</textarea>
+      {% elif f.field_type.value == 'checkbox' %}
+      <input type="checkbox" name="custom_{{ f.id }}" value="1" {{ 'checked' if raw == '1' }}>
+      {% elif f.field_type.value == 'single_select' %}
+      <select name="custom_{{ f.id }}" style="width:100%;">
+        <option value="">—</option>
+        {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if raw == opt }}>{{ opt }}</option>{% endfor %}
+      </select>
+      {% elif f.field_type.value == 'multi_select' %}
+      {% set selected = cf_multi_selected(raw) %}
+      <select name="custom_{{ f.id }}" multiple style="width:100%;min-height:64px;">
+        {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if opt in selected }}>{{ opt }}</option>{% endfor %}
+      </select>
+      {% elif f.field_type.value == 'date' %}
+      <input type="date" lang="en-US" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+      {% else %}
+      <input type="text" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div style="grid-column:1/-1;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save custom fields</button>
+    </div>
+  </form>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2>Dependents</h2>
+  <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Usually filled in by the client on the post-payment onboarding screen — editable here too.</p>
+  {% if client.dependents %}
+  {% for dep in client.dependents %}
+  <div style="display:flex;gap:10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;">
+    <form method="post" action="{{ url_for('crm_pipeline.client_dependent_update', dependent_id=dep.id) }}"
+          style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;flex:1;">
+      <input type="text" name="full_name" value="{{ dep.full_name }}" required placeholder="Full name" style="min-width:160px;flex:1;">
+      <input type="email" name="email" value="{{ dep.email or '' }}" placeholder="Email" style="min-width:160px;flex:1;">
+      <input type="text" name="us_phone" value="{{ dep.us_phone or '' }}" placeholder="Phone (US)" style="min-width:140px;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Save</button>
+    </form>
+    <form method="post" action="{{ url_for('crm_pipeline.client_dependent_delete', dependent_id=dep.id) }}"
+          onsubmit="return confirm('Remove this dependent?');">
+      <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Remove</button>
+    </form>
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No dependents on file.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('crm_pipeline.client_dependent_new', client_id=client.id) }}"
+        style="display:flex;gap:10px;align-items:center;padding-top:12px;flex-wrap:wrap;">
+    <input type="text" name="full_name" required placeholder="New dependent — full name" style="min-width:160px;flex:1;">
+    <input type="email" name="email" placeholder="Email" style="min-width:160px;flex:1;">
+    <input type="text" name="us_phone" placeholder="Phone (US)" style="min-width:140px;">
+    <button type="submit" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">+ Add dependent</button>
+  </form>
+</div>
 
 <div class="card">
   <h2>Cases</h2>
@@ -49,11 +391,18 @@
       · <a href="{{ url_for('crm_ops.case_messages', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Messages →</a>
       · <a href="{{ url_for('crm_tracking.case_tracking', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Tracking{% if case.tracked_forms %} ({{ case.tracked_forms|length }}){% endif %} →</a>
       · <a href="{{ url_for('crm_contracts.case_contracts', case_id=case.id) }}" class="muted" style="font-size:0.8rem;">Contracts{% if case.contracts %} ({{ case.contracts|length }}){% endif %} →</a>
+      {% if case.lead_id %} · <a href="{{ url_for('crm_pipeline.lead_detail', lead_id=case.lead_id) }}" class="muted" style="font-size:0.8rem;">From lead →</a>{% endif %}
     </div>
+    {% if not loop.first %}
+    {# Caso principal (loop.first) já mostra isso tudo lá em cima, no card
+       "Case at a glance" -- pedido do usuário 2026-08-06 ("mova para o
+       top"). Casos adicionais (2º, 3º...) deste cliente não têm um slot
+       no topo, então continuam com a versão completa aqui. #}
     {% set pending = pending_by_case.get(case.id, []) %}
     {% if pending %}
     <div class="muted" style="margin-top:6px;font-size:0.82rem;">
-      Pending documents: {{ pending|map(attribute='name')|join(', ') }}
+      Pending documents:
+      {% for doc in pending %}<a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}#doc-{{ doc.id }}">{{ doc.name }}</a>{% if not loop.last %}, {% endif %}{% endfor %}
     </div>
     {% endif %}
     <form method="post" action="{{ url_for('crm_pipeline.case_ds160_gate_update', case_id=case.id) }}" style="margin-top:8px;display:inline-flex;gap:6px;align-items:center;">
@@ -103,10 +452,83 @@
         <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.75rem;padding:3px 10px;">+ Add</button>
       </form>
     </div>
+    {% endif %}
+
+    {# Notas e informações adicionais -- pedido do usuário 2026-08-06, no
+       final da seção de cada caso. Rota própria (case_notes_update) que
+       só grava este campo -- ver docstring da rota. #}
+    <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">
+      <div class="muted" style="font-size:0.8rem;font-weight:600;margin-bottom:6px;">Notes &amp; additional information</div>
+      <form method="post" action="{{ url_for('crm_ops.case_notes_update', case_id=case.id) }}" style="display:flex;flex-direction:column;gap:6px;">
+        <textarea name="notes" rows="3" style="width:100%;font-family:inherit;font-size:0.85rem;" placeholder="Notes and additional information about this case...">{{ case.notes or '' }}</textarea>
+        <button type="submit" class="icon-btn" style="align-self:flex-start;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save notes</button>
+      </form>
+    </div>
+
+    {# Custom Fields (Prompt Mestre, Fase 5, 2026-08-06) -- só aparece
+       quando existe pelo menos um campo ativo criado em
+       /staff/crm/campos-personalizados. #}
+    {% if custom_fields %}
+    <div style="margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);">
+      <div class="muted" style="font-size:0.8rem;font-weight:600;margin-bottom:6px;">
+        Custom fields · <a href="{{ url_for('crm_custom_fields.index') }}" style="font-weight:400;">Manage fields</a>
+      </div>
+      {% set values = custom_values_by_case.get(case.id, {}) %}
+      <form method="post" action="{{ url_for('crm_ops.case_custom_fields_save', case_id=case.id) }}"
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+        {% for f in custom_fields %}
+        {% set raw = values.get(f.id) %}
+        <div>
+          <label class="muted" style="font-size:0.78rem;">{{ f.label }}{% if f.required %} *{% endif %}</label><br>
+          {% if f.field_type.value == 'long_text' %}
+          <textarea name="custom_{{ f.id }}" rows="2" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ raw or '' }}</textarea>
+          {% elif f.field_type.value == 'checkbox' %}
+          <input type="checkbox" name="custom_{{ f.id }}" value="1" {{ 'checked' if raw == '1' }}>
+          {% elif f.field_type.value == 'single_select' %}
+          <select name="custom_{{ f.id }}" style="width:100%;">
+            <option value="">—</option>
+            {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if raw == opt }}>{{ opt }}</option>{% endfor %}
+          </select>
+          {% elif f.field_type.value == 'multi_select' %}
+          {% set selected = cf_multi_selected(raw) %}
+          <select name="custom_{{ f.id }}" multiple style="width:100%;min-height:64px;">
+            {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if opt in selected }}>{{ opt }}</option>{% endfor %}
+          </select>
+          {% elif f.field_type.value == 'date' %}
+          <input type="date" lang="en-US" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+          {% else %}
+          <input type="text" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+          {% endif %}
+        </div>
+        {% endfor %}
+        <div style="grid-column:1/-1;">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save custom fields</button>
+        </div>
+      </form>
+    </div>
+    {% endif %}
   </div>
   {% endfor %}
   {% else %}
   <p class="muted">No open cases for this client yet.</p>
+  {% endif %}
+</div>
+
+<div class="card" style="border:1px solid #991b1b;">
+  <h2 style="font-size:1rem;color:#991b1b;">Danger zone</h2>
+  {% if client.cases or client.communications %}
+  <p class="muted" style="font-size:0.85rem;">
+    This client can't be deleted -- it still has
+    {% if client.cases %}{{ client.cases|length }} case(s){% if client.communications %} and {% endif %}{% endif %}
+    {% if client.communications %}{{ client.communications|length }} communication(s){% endif %}
+    linked to it. Remove/reassign those first.
+  </p>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No cases or communications on file -- this record can be safely deleted.</p>
+  <form method="post" action="{{ url_for('crm_pipeline.client_delete', client_id=client.id) }}"
+        onsubmit="return confirm('Permanently delete {{ client.full_name }}? This cannot be undone.');">
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid #991b1b;border-radius:var(--radius-sm);color:#991b1b;cursor:pointer;font-size:0.82rem;padding:7px 16px;">Delete client</button>
+  </form>
   {% endif %}
 </div>
 {% endblock %}

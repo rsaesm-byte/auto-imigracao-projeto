@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Sinking Funds — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Sinking Funds</h1>
+  <p style="opacity:0.92;margin:0;">Set aside money for known future expenses — a tire replacement, property tax, an annual bill. <a href="{{ url_for('financial_workspace.goals') }}" style="color:#fff;text-decoration:underline;">← Financial Goals</a></p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Funds</h2>
+  {% if fund_list %}
+  <table class="submissions">
+    <thead><tr><th>Fund</th><th>Progress</th><th>Target date</th><th></th></tr></thead>
+    <tbody>
+      {% for f in fund_list %}
+      {% set pct_raw = ((f.current_amount_cents / f.target_amount_cents * 100) if f.target_amount_cents else 0)|round(1) %}
+      {% set pct = 100 if pct_raw > 100 else pct_raw %}
+      <tr>
+        <td><strong>{{ f.name }}</strong></td>
+        <td style="min-width:220px;">
+          <div style="font-size:0.8rem;margin-bottom:3px;">{{ f.current_amount_cents|usd }} of {{ f.target_amount_cents|usd }}</div>
+          <div style="background:var(--border);border-radius:999px;height:8px;margin-bottom:6px;">
+            <div style="width:{{ pct }}%;background:#7c3aed;height:8px;border-radius:999px;min-width:{{ '4px' if f.current_amount_cents else '0' }};"></div>
+          </div>
+          <form method="post" action="{{ url_for('financial_workspace.sinking_fund_balance_update', fund_id=f.id) }}" style="display:flex;gap:4px;align-items:center;">
+            <input type="text" name="current_amount" inputmode="decimal" placeholder="Update balance $" value="{{ f.current_amount_cents|usd_input }}" style="width:120px;font-size:0.76rem;">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.76rem;">Save</button>
+          </form>
+        </td>
+        <td class="muted">{{ f.target_date.strftime('%m/%d/%Y') if f.target_date else '—' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.sinking_fund_delete', fund_id=f.id) }}"
+                onsubmit="return confirm('Remove this sinking fund?');">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No sinking funds yet — add one below.</p>
+  {% endif %}
+
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add sinking fund</summary>
+    <form method="post" action="{{ url_for('financial_workspace.sinking_fund_new') }}"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <input type="text" name="name" required placeholder="Fund name (e.g. Property tax)" style="min-width:200px;flex:1;">
+      <input type="text" name="target_amount" required inputmode="decimal" placeholder="Target $" style="width:120px;">
+      <input type="text" name="current_amount" inputmode="decimal" placeholder="Current $ — optional" style="width:140px;">
+      <input type="date" lang="en-US" name="target_date" title="Target date — optional">
+      <input type="text" name="monthly_contribution" inputmode="decimal" placeholder="Monthly $ — optional" style="width:150px;">
+      <select name="account_id">
+        <option value="">Linked account — optional</option>
+        {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+      </select>
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </details>
+</div>
+{% endblock %}

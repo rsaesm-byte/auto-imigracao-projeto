@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}Bills — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Bills</h1>
+  <p style="opacity:0.92;margin:0;">What you have to pay regularly, and this month's payments. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.bills_calendar') }}" style="color:#fff;text-decoration:underline;">Calendar →</a> · <a href="{{ url_for('financial_workspace.recurring') }}" style="color:#fff;text-decoration:underline;">Recurring →</a></p>
+</div>
+
+{% if upcoming %}
+{% set total_cents = upcoming|sum(attribute='payment.amount_cents') %}
+<div class="card" style="border-left:4px solid #eb6834;">
+  <h2 style="font-size:1rem;margin-top:0;">Due soon</h2>
+  <p class="muted" style="font-size:0.85rem;">Bills totaling {{ total_cents|usd }} are due within the next 7 days (or already overdue).</p>
+  <ul style="margin:0;padding-left:18px;">
+    {% for row in upcoming %}
+    <li style="font-size:0.85rem;margin-bottom:4px;">
+      {{ row.bill.bill_name }} — {{ row.payment.amount_cents|usd }}
+      <span class="muted">· due {{ row.payment.due_date.strftime('%m/%d/%Y') }}{% if display_status(row.payment) == 'overdue' %} · <strong style="color:#991b1b;">overdue</strong>{% endif %}</span>
+    </li>
+    {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2 style="font-size:1rem;">This month's payments</h2>
+  {% if payments %}
+  <table class="submissions">
+    <thead><tr><th>Due</th><th>Bill</th><th>Amount</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for row in payments %}
+      {% set st = display_status(row.payment) %}
+      <tr>
+        <td class="muted">{{ row.payment.due_date.strftime('%m/%d/%Y') }}</td>
+        <td>{{ row.bill.bill_name }}</td>
+        <td>{{ row.payment.amount_cents|usd }}</td>
+        <td>
+          <span class="badge" style="
+            {% if st == 'paid' %}background:#dcfce7;color:#166534;
+            {% elif st == 'overdue' %}background:#fee2e2;color:#991b1b;
+            {% elif st == 'skipped' or st == 'cancelled' %}background:var(--border);color:var(--text);
+            {% else %}background:#fef9c3;color:#854d0e;{% endif %}">{{ st|replace('_',' ')|title }}</span>
+        </td>
+        <td>
+          {% if st not in ('paid', 'skipped', 'cancelled') %}
+          <form method="post" action="{{ url_for('financial_workspace.bill_payment_pay', payment_id=row.payment.id) }}" style="display:inline-flex;gap:4px;align-items:center;">
+            <select name="paid_from_account_id" style="font-size:0.76rem;">
+              <option value="">Paid from…</option>
+              {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+            </select>
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#166534;cursor:pointer;font-size:0.78rem;">Mark paid</button>
+          </form>
+          <form method="post" action="{{ url_for('financial_workspace.bill_payment_skip', payment_id=row.payment.id) }}" style="display:inline;" onsubmit="return confirm('Skip this bill for this month?');">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.78rem;">Skip</button>
+          </form>
+          {% elif st == 'paid' %}
+          <span class="muted" style="font-size:0.78rem;">Paid {{ row.payment.paid_date.strftime('%m/%d/%Y') if row.payment.paid_date else '' }}</span>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No bills due this month yet — add a recurring bill below.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Recurring bills</h2>
+  {% if bill_list %}
+  <table class="submissions">
+    <thead><tr><th>Bill</th><th>Category</th><th>Default amount</th><th>Due day</th><th>Frequency</th><th>Autopay</th><th></th></tr></thead>
+    <tbody>
+      {% for b in bill_list %}
+      <tr>
+        <td>{{ b.bill_name }}</td>
+        <td class="muted">{{ categories|selectattr('id', 'equalto', b.budget_category_id)|map(attribute='name')|first or '—' }}</td>
+        <td>{% if b.default_amount_cents %}{{ b.default_amount_cents|usd }}{% else %}—{% endif %}</td>
+        <td class="muted">{{ b.due_day or '—' }}</td>
+        <td class="muted">{{ b.frequency.value|title }}</td>
+        <td class="muted">{{ 'Yes' if b.autopay else 'No' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.bill_delete', bill_id=b.id) }}"
+                onsubmit="return confirm('Remove this bill? Past payment history is kept.');" style="display:inline;">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No recurring bills yet.</p>
+  {% endif %}
+
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add bill</summary>
+    <form method="post" action="{{ url_for('financial_workspace.bill_new') }}"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <input type="text" name="bill_name" required placeholder="Bill name (e.g. Rent)" style="min-width:180px;flex:1;">
+      <select name="budget_category_id">
+        <option value="">Category — optional</option>
+        {% for c in categories %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+      </select>
+      <input type="text" name="default_amount" placeholder="Default amount $" style="width:150px;">
+      <input type="number" name="due_day" min="1" max="31" placeholder="Due day (1-31)" style="width:130px;">
+      <select name="frequency">
+        {% for f in frequencies %}<option value="{{ f.value }}" {% if f.value == 'monthly' %}selected{% endif %}>{{ f.value|title }}</option>{% endfor %}
+      </select>
+      <select name="default_payment_account_id">
+        <option value="">Default payment account — optional</option>
+        {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+      </select>
+      <label class="muted" style="font-size:0.8rem;display:flex;align-items:center;gap:4px;">
+        <input type="checkbox" name="autopay"> Autopay
+      </label>
+      <input type="date" lang="en-US" name="start_date" title="Start date — optional">
+      <input type="text" name="notes" placeholder="Notes — optional" style="min-width:160px;">
+      <button type="submit" class="btn">Add bill</button>
+    </form>
+    <p class="muted" style="font-size:0.74rem;margin-top:8px;">Weekly/biweekly bills are tracked at monthly granularity here — one payment per month. Quarterly/semiannual/annual bills only generate a payment in their due months.</p>
+  </details>
+</div>
+{% endblock %}

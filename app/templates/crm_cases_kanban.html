@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import kanban_col_count, view_switcher, table_view, list_view, calendar_view %}
 {% block title %}Staff — Cases (CRM){% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -8,11 +9,23 @@
   <p style="opacity:0.92;margin:0;">CRM central hub — one card per immigration case, grouped by the funnel's macro stage. Drag a card to move it to a different stage.</p>
 </div>
 
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  {% if view == 'kanban' %}
+  <div class="list-filter-box">
+    <input type="text" class="list-filter-input" placeholder="Filter cases…">
+    <kbd>/</kbd>
+  </div>
+  {% else %}<span></span>{% endif %}
+  {{ view_switcher(view, url_for('crm_pipeline.cases_kanban')) }}
+</div>
+
+{% if view == 'kanban' %}
 <div class="crm-kanban" data-draggable="true">
   {% for status in statuses %}
   <div class="crm-kanban-col" data-status-field="case_status" data-status-value="{{ status.value }}"
-       data-action-template="{{ url_for('crm_pipeline.case_status_update', case_id=999999) }}">
-    <h3>{{ crm_badge(status) }} ({{ by_status[status]|length }})</h3>
+       data-action-template="{{ url_for('crm_pipeline.case_status_update', case_id=999999) }}"
+       {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
+    <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for c in by_status[status] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ c.id }}">
       <h4>{{ c.title }}</h4>
@@ -28,6 +41,7 @@
       {% endif %}
       <div style="margin-top:6px;">
         <a href="{{ url_for('crm_pipeline.client_detail', client_id=c.client_id) }}" class="muted" style="font-size:0.8rem;">View client →</a>
+        {% if c.lead_id %} · <a href="{{ url_for('crm_pipeline.lead_detail', lead_id=c.lead_id) }}" class="muted" style="font-size:0.8rem;">From lead →</a>{% endif %}
       </div>
     </div>
     {% endfor %}
@@ -35,4 +49,18 @@
   {% endfor %}
 </div>
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
+<script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+
+{% elif view == 'table' %}
+<div class="card">{{ table_view(all_rows, columns) }}</div>
+
+{% elif view == 'list' %}
+<div class="card">{{ list_view(statuses, by_status, stage_labels, columns) }}</div>
+
+{% elif view == 'calendar' %}
+<div class="card">
+  {{ calendar_view(calendar_grid, url_for('crm_pipeline.cases_kanban'), columns[0].value, columns[0].url) }}
+</div>
+{% endif %}
 {% endblock %}

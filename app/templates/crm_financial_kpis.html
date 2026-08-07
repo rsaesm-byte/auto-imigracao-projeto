@@ -20,14 +20,14 @@
     <tbody>
       <tr><td class="muted">New leads this month</td><td>{{ kpis.number_of_leads }}</td></tr>
       <tr><td class="muted">Converted leads (closed this month)</td><td>{{ kpis.leads_converted }}</td></tr>
-      <tr><td class="muted">Conversion rate</td><td>{{ (kpis.conversion_rate_pct ~ '%') if kpis.conversion_rate_pct is not none else '—' }}</td></tr>
+      <tr><td class="muted">Conversion rate</td><td>{{ kpis.conversion_rate_pct|pct if kpis.conversion_rate_pct is not none else '—' }}</td></tr>
       <tr><td class="muted">Active clients (now)</td><td>{{ kpis.active_clients }}</td></tr>
-      <tr><td class="muted">Revenue received this month</td><td>${{ '%.2f'|format(kpis.total_revenue_cents / 100) }}</td></tr>
-      <tr><td class="muted">Average deal size (closed this month)</td><td>{{ '$%.2f'|format(kpis.average_deal_size_cents / 100) if kpis.average_deal_size_cents is not none else '—' }}</td></tr>
+      <tr><td class="muted">Revenue received this month</td><td>{{ kpis.total_revenue_cents|usd }}</td></tr>
+      <tr><td class="muted">Average deal size (closed this month)</td><td>{{ kpis.average_deal_size_cents|usd if kpis.average_deal_size_cents is not none else '—' }}</td></tr>
       <tr><td class="muted">Average days to close</td><td>{{ kpis.average_days_to_close if kpis.average_days_to_close is not none else '—' }}</td></tr>
       <tr><td class="muted">Average NPS (closed this month)</td><td>{{ kpis.nps_average if kpis.nps_average is not none else '—' }}</td></tr>
-      <tr><td class="muted">High homework adherence (%)</td><td>{{ (kpis.avg_homework_adherence_pct ~ '%') if kpis.avg_homework_adherence_pct is not none else '—' }}</td></tr>
-      <tr><td class="muted">Continuity adoption (completed programs)</td><td>{{ (kpis.continuity_adoption_rate_pct ~ '%') if kpis.continuity_adoption_rate_pct is not none else '—' }}</td></tr>
+      <tr><td class="muted">High homework adherence (%)</td><td>{{ kpis.avg_homework_adherence_pct|pct if kpis.avg_homework_adherence_pct is not none else '—' }}</td></tr>
+      <tr><td class="muted">Continuity adoption (completed programs)</td><td>{{ kpis.continuity_adoption_rate_pct|pct if kpis.continuity_adoption_rate_pct is not none else '—' }}</td></tr>
     </tbody>
   </table>
 </div>

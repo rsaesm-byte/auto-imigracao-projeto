@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}Net Worth — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Net Worth</h1>
+  <p style="opacity:0.92;margin:0;">What you own minus what you owe. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a></p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Assets</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.assets_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Liabilities</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;{% if summary.liabilities_cents %}color:#991b1b;{% endif %}">{{ summary.liabilities_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Net Worth</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;{% if summary.net_worth_cents < 0 %}color:#991b1b;{% endif %}">{{ summary.net_worth_cents|usd }}</p>
+  </div>
+</div>
+
+<div class="card">
+  <p class="muted" style="font-size:0.78rem;margin:0;">Assets = balances of accounts marked "include in net worth". Liabilities = active/delinquent debts (planned debts not yet incurred, and paid-off debts, aren't counted). Both are calculated live from current data — nothing here is stored as a fixed number.</p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">History</h2>
+  {% if history %}
+  <p class="muted" style="font-size:0.78rem;margin-top:-6px;">One point per date you (or a month close) recorded an account balance. Past liabilities are reconstructed from recorded debt payments — a debt with no payment history is shown at its current balance for every past date, since there's nothing on file to reconstruct a different one.</p>
+  {% set nw_max = (history|map(attribute='assets_cents')|list + history|map(attribute='liabilities_cents')|list)|max %}
+  {% for row in history %}
+  <div style="margin-bottom:14px;">
+    <div style="font-size:0.82rem;font-weight:600;margin-bottom:4px;">{{ row.label }} <span class="muted" style="font-weight:400;">· net worth {{ row.net_worth_cents|usd }}</span></div>
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
+      <div style="width:90px;text-align:right;font-size:0.76rem;" class="muted">{{ row.assets_cents|usd }}</div>
+      <div style="flex:1;background:var(--border);border-radius:999px;height:10px;">
+        <div style="width:{{ ((row.assets_cents / nw_max * 100) if nw_max else 0)|round(1) }}%;background:#16a34a;height:10px;border-radius:999px;min-width:{{ '6px' if row.assets_cents else '0' }};"></div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:8px;">
+      <div style="width:90px;text-align:right;font-size:0.76rem;" class="muted">{{ row.liabilities_cents|usd }}</div>
+      <div style="flex:1;background:var(--border);border-radius:999px;height:10px;">
+        <div style="width:{{ ((row.liabilities_cents / nw_max * 100) if nw_max else 0)|round(1) }}%;background:#dc2626;height:10px;border-radius:999px;min-width:{{ '6px' if row.liabilities_cents else '0' }};"></div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  <div style="display:flex;gap:14px;align-items:center;font-size:0.8rem;">
+    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#16a34a;display:inline-block;"></span> Assets</span>
+    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#dc2626;display:inline-block;"></span> Liabilities</span>
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No history yet — record a balance snapshot below, or close a budget month, to start tracking net worth over time.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Record a balance snapshot</h2>
+  <form method="post" action="{{ url_for('financial_workspace.net_worth_snapshot_new') }}"
+        style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <select name="account_id" required>
+      <option value="">Account…</option>
+      {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+    </select>
+    <input type="text" name="balance" required inputmode="decimal" placeholder="Balance $" style="width:150px;">
+    <input type="date" name="snapshot_date" value="{{ today.isoformat() }}">
+    <button type="submit" class="btn">Save</button>
+  </form>
+
+  {% for a in accounts %}
+  {% set snaps = snapshots_by_account[a.id] %}
+  {% if snaps %}
+  <details style="margin-top:12px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">{{ a.nickname or a.account_name }} — {{ snaps|length }} snapshot(s)</summary>
+    <table class="submissions" style="margin-top:8px;">
+      <thead><tr><th>Date</th><th>Balance</th><th>Source</th></tr></thead>
+      <tbody>
+        {% for s in snaps %}
+        <tr><td>{{ s.snapshot_date.strftime('%m/%d/%Y') }}</td><td>{{ s.balance_cents|usd }}</td><td class="muted">{{ s.source.value|replace('_',' ')|title }}</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </details>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{% if debt_list %}
+<div class="card">
+  <h2 style="font-size:1rem;">Active liabilities</h2>
+  <table class="submissions">
+    <thead><tr><th>Debt</th><th>Balance</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for d in debt_list %}
+      <tr><td>{{ d.debt_name }}</td><td>{{ d.current_balance_cents|usd }}</td><td><span class="badge">{{ d.status.value|replace('_',' ')|title }}</span></td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import kanban_col_count, view_switcher, table_view, list_view, calendar_view %}
 {% block title %}Staff — Tasks{% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -34,25 +35,47 @@
     </div>
     <div>
       <label class="muted">Due date</label><br>
-      <input type="date" name="due_date">
+      <input type="date" lang="en-US" name="due_date">
     </div>
     <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
   </form>
 </div>
 {% else %}
 
-<div class="card">
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
   <a href="{{ url_for('crm_ops.task_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New task</a>
+  {% if view == 'kanban' %}
+  <div class="list-filter-box">
+    <input type="text" class="list-filter-input" placeholder="Filter tasks…">
+    <kbd>/</kbd>
+  </div>
+  {% endif %}
+  {{ view_switcher(view, url_for('crm_ops.tasks')) }}
 </div>
 
+{# Visualizações rápidas (Prompt Mestre, Seção 11: "Minhas tarefas; Hoje;
+   Próximas; Vencidas"), 2026-08-06 -- troca o filtro, sempre volta pra
+   visão Kanban (mesma simplificação do view_switcher: os dois controles
+   não tentam preservar um ao outro na URL). #}
+<div class="card" style="display:flex;gap:6px;flex-wrap:wrap;">
+  <a href="{{ url_for('crm_ops.tasks') }}" style="padding:6px 12px;border-radius:999px;font-size:0.8rem;text-decoration:none;
+     {% if not quick_filter %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">All</a>
+  {% for fk, label in [('mine', 'My tasks'), ('today', 'Today'), ('upcoming', 'Upcoming'), ('overdue', 'Overdue')] %}
+  <a href="{{ url_for('crm_ops.tasks', filter=fk) }}" style="padding:6px 12px;border-radius:999px;font-size:0.8rem;text-decoration:none;
+     {% if quick_filter == fk %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">{{ label }}</a>
+  {% endfor %}
+</div>
+
+{% if view == 'kanban' %}
 <div class="crm-kanban" data-draggable="true">
   {% for status in statuses %}
   <div class="crm-kanban-col" data-status-field="status" data-status-value="{{ status.value }}"
-       data-action-template="{{ url_for('crm_ops.task_update_status', task_id=999999) }}">
-    <h3>{{ crm_badge(status) }} ({{ by_status[status]|length }})</h3>
+       data-action-template="{{ url_for('crm_ops.task_update_status', task_id=999999) }}"
+       {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
+    <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for t in by_status[status] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ t.id }}">
-      <h4>{{ t.title }}</h4>
+      <h4><a href="{{ url_for('crm_ops.task_detail', task_id=t.id) }}" style="color:inherit;text-decoration:none;">{{ t.title }}</a></h4>
       {% if t.case_id in cases %}<div class="muted">{{ cases[t.case_id].title }}</div>{% endif %}
       {% if t.responsible_id in users %}<div class="muted">{{ users[t.responsible_id].email }}</div>{% endif %}
       <div class="muted">Priority: {{ t.priority.value|title }}{% if t.due_date %} · Due: {{ t.due_date.strftime('%m/%d/%Y') }}{% endif %}</div>
@@ -62,5 +85,19 @@
   {% endfor %}
 </div>
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
+<script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+
+{% elif view == 'table' %}
+<div class="card">{{ table_view(all_rows, columns) }}</div>
+
+{% elif view == 'list' %}
+<div class="card">{{ list_view(statuses, by_status, stage_labels, columns) }}</div>
+
+{% elif view == 'calendar' %}
+<div class="card">
+  {{ calendar_view(calendar_grid, url_for('crm_ops.tasks'), columns[0].value, columns[0].url) }}
+</div>
+{% endif %}
 {% endif %}
 {% endblock %}

@@ -5,6 +5,8 @@
 {% block page_class %}wide{% endblock %}
 {% block content %}
 
+{% include "_lead_intake_form.html" %}
+
 <div class="flight-scene">
   {{ flight_plane() }}
 
@@ -192,7 +194,7 @@
     {% for item in news_items %}
     <a class="news-item reveal" style="transition-delay:{{ (loop.index0 % 6) * 45 }}ms;" href="{{ item.link }}" target="_blank" rel="noopener noreferrer">
       <div class="news-date">
-        {% if item.pub_date %}{{ item.pub_date.strftime("%m/%d/%Y") if get_lang() == "en" else item.pub_date.strftime("%d/%m/%Y") }}{% endif %}
+        {% if item.pub_date %}{{ item.pub_date.strftime("%m/%d/%Y") }}{% endif %}
       </div>
       <div class="news-title">{{ item.title }}</div>
       <div class="news-link">{{ t('news_read_more') }}</div>

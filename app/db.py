@@ -6,7 +6,7 @@ circular entre app/models.py e a app factory.
 from pathlib import Path
 
 from sqlalchemy import create_engine, event
-from sqlalchemy.orm import DeclarativeBase, scoped_session, sessionmaker
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, scoped_session, sessionmaker
 
 INSTANCE_DIR = Path(__file__).resolve().parent.parent / "instance"
 INSTANCE_DIR.mkdir(exist_ok=True)
@@ -31,3 +31,19 @@ SessionLocal = scoped_session(sessionmaker(bind=engine, autoflush=False, autocom
 
 class Base(DeclarativeBase):
     pass
+
+
+class VersionedMixin:
+    """Controle de edição simultânea (optimistic concurrency) -- Seção
+    16/17. Toda entidade que herda isto ganha uma coluna `version`
+    (começa em 1, incrementada a cada update bem-sucedido pela própria
+    rota via app/services/concurrency_service.py::bump_versao).
+
+    O formulário de edição carrega a versão atual num campo oculto
+    (`<input type="hidden" name="version">`); no POST, a rota chama
+    `concurrency_service.checar_versao(registro, request.form.get(
+    "version"))` ANTES de aplicar qualquer mudança de campo -- se a
+    versão enviada não bater com a que está no banco agora, alguém mais
+    editou o registro nesse meio-tempo e a rota aborta em vez de
+    sobrescrever silenciosamente o que essa outra pessoa salvou."""
+    version: Mapped[int] = mapped_column(default=1, nullable=False)

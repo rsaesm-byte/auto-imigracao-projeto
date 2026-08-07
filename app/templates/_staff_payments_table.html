@@ -30,7 +30,7 @@
         {% if p.client_phone %}<span class="muted" style="font-size:0.82rem;">{{ p.client_phone }}</span>{% endif %}
       </td>
       <td>{{ item.case_label }}</td>
-      <td>${{ "%.2f"|format(p.amount_cents / 100) }}</td>
+      <td>{{ p.amount_cents|usd }}</td>
       <td>{{ p.method or '—' }}</td>
       <td class="muted">{{ p[date_field].strftime("%m/%d/%Y %H:%M") if p[date_field] else '—' }}</td>
       <td style="white-space:nowrap;">

@@ -1,0 +1,39 @@
+{# Widget de notificação -- ícone circular com o símbolo oficial da Saes,
+   fixo no topo, sempre visível. Enquanto houver notificação não lida, o
+   ícone roda entre 5 versões (app/static/notif-symbol-{color,green,brown,
+   black,red}.png -- as 3 últimas são o símbolo monocromático tingido nas
+   cores da marca via PIL, ver sessão 2026-08-03) num efeito de transição
+   pra chamar atenção; sem pendências, fica parado na versão colorida.
+   Clicável -- abre um painel com a lista de notificações recentes
+   (app/static/notifications.js).
+
+   Pedido do usuário 2026-08-06: o MESMO widget também serve o cliente
+   (app/client_notifications.py), não só a equipe -- `poll_url`/
+   `mark_read_url` (passados por quem inclui este template, ver base.html
+   vs. staff_base.html) viram data-attributes que notifications.js lê,
+   com fallback pras rotas da equipe se nenhum dos dois for passado (não
+   quebra nenhuma tela existente). #}
+<div id="notif-widget" class="notif-widget"
+     data-poll-url="{{ poll_url or url_for('staff_notifications.poll') }}"
+     data-mark-read-url="{{ mark_read_url or url_for('staff_notifications.mark_read') }}">
+  <button type="button" id="notif-icon-btn" class="notif-icon-btn" aria-haspopup="true" aria-expanded="false" aria-label="Notifications">
+    <img src="{{ url_for('static', filename='notif-symbol-color.png') }}" class="notif-symbol-img active" data-variant="color" alt="">
+    <img src="{{ url_for('static', filename='notif-symbol-green.png') }}" class="notif-symbol-img" data-variant="green" alt="">
+    <img src="{{ url_for('static', filename='notif-symbol-brown.png') }}" class="notif-symbol-img" data-variant="brown" alt="">
+    <img src="{{ url_for('static', filename='notif-symbol-black.png') }}" class="notif-symbol-img" data-variant="black" alt="">
+    <img src="{{ url_for('static', filename='notif-symbol-red.png') }}" class="notif-symbol-img" data-variant="red" alt="">
+    <span class="notif-count" id="notif-count" style="display:none;"></span>
+  </button>
+  <div class="notif-panel" id="notif-panel" hidden>
+    <div class="notif-panel-head">
+      <span>Notifications</span>
+      <button type="button" id="notif-mark-read-btn" class="notif-mark-read-btn">Mark all read</button>
+    </div>
+    <div class="notif-panel-list" id="notif-panel-list">
+      <p class="notif-panel-empty" id="notif-panel-empty">No notifications yet.</p>
+    </div>
+  </div>
+</div>
+
+<audio id="notif-sound" preload="auto" src="{{ url_for('static', filename='sounds/notification.wav') }}"></audio>
+<script src="{{ url_for('static', filename='notifications.js') }}?v=2" defer></script>

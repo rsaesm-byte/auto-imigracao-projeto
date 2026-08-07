@@ -70,10 +70,10 @@
   {% set filing = registry.fees.filing %}
   <div class="service-fee-grid">
     {% if filing.online is not none and filing.online != filing.paper %}
-      <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(filing.online) }}</span><span class="muted">{{ t('svc_fee_online') }}</span></div>
-      <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(filing.paper) }}</span><span class="muted">{{ t('svc_fee_paper') }}</span></div>
+      <div class="service-fee-item"><span class="service-fee-amount">{{ (filing.online * 100)|usd }}</span><span class="muted">{{ t('svc_fee_online') }}</span></div>
+      <div class="service-fee-item"><span class="service-fee-amount">{{ (filing.paper * 100)|usd }}</span><span class="muted">{{ t('svc_fee_paper') }}</span></div>
     {% else %}
-      <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(filing.default) }}</span><span class="muted">{{ t('svc_fee_flat') }}</span></div>
+      <div class="service-fee-item"><span class="service-fee-amount">{{ (filing.default * 100)|usd }}</span><span class="muted">{{ t('svc_fee_flat') }}</span></div>
     {% endif %}
   </div>
   <p class="muted" style="margin-top:12px;font-size:0.85rem;">
@@ -92,10 +92,10 @@
   <h2>{{ t('svc_h_our_fee') }}</h2>
   <div class="service-fee-grid">
     {% if our_fee_individual is not none %}
-    <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(our_fee_individual / 100) }}</span><span class="muted">{{ t('svc_our_fee_individual_label') }}</span></div>
+    <div class="service-fee-item"><span class="service-fee-amount">{{ our_fee_individual|usd }}</span><span class="muted">{{ t('svc_our_fee_individual_label') }}</span></div>
     {% endif %}
     {% if our_fee_package is not none %}
-    <div class="service-fee-item"><span class="service-fee-amount">${{ '%.0f'|format(our_fee_package / 100) }}</span><span class="muted">{{ t('svc_our_fee_package_label') }}</span></div>
+    <div class="service-fee-item"><span class="service-fee-amount">{{ our_fee_package|usd }}</span><span class="muted">{{ t('svc_our_fee_package_label') }}</span></div>
     {% endif %}
   </div>
   {% if our_fee_individual is none and our_fee_package is not none %}
@@ -134,7 +134,7 @@
   {% elif calc_result and calc_result.type == "i751" %}
     <div class="elig-msg tone-{{ 'success' if calc_result.can_file_now else 'info' }}" style="margin-top:14px;">
       {{ t('i751_calc_result_prefix') }}
-      <strong>{{ calc_result.earliest_filing_date.strftime("%m/%d/%Y") if get_lang() == "en" else calc_result.earliest_filing_date.strftime("%d/%m/%Y") }}</strong>.
+      <strong>{{ calc_result.earliest_filing_date.strftime("%m/%d/%Y") }}</strong>.
       {% if calc_result.can_file_now %}{{ t('i751_calc_already_open') }}{% endif %}
     </div>
     <p class="elig-msg tone-warning">{{ t('i751_calc_warning') }}</p>
@@ -186,9 +186,9 @@
   {% elif calc_result and calc_result.type == "n400" %}
     <div class="elig-msg tone-{{ 'success' if calc_result.can_file_now else 'info' }}" style="margin-top:14px;">
       {{ t('n400_calc_result_prefix') }}
-      <strong>{{ calc_result.window_start.strftime("%m/%d/%Y") if get_lang() == "en" else calc_result.window_start.strftime("%d/%m/%Y") }}</strong>
+      <strong>{{ calc_result.window_start.strftime("%m/%d/%Y") }}</strong>
       {{ t('n400_calc_result_middle') }}
-      <strong>{{ calc_result.eligible_date.strftime("%m/%d/%Y") if get_lang() == "en" else calc_result.eligible_date.strftime("%d/%m/%Y") }}</strong>).
+      <strong>{{ calc_result.eligible_date.strftime("%m/%d/%Y") }}</strong>).
       {% if calc_result.can_file_now %}{{ t('n400_calc_already_open') }}{% endif %}
     </div>
   {% endif %}

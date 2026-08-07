@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Contracts — {{ case.title }}{% endblock %}
 {% block content %}
 <div class="card hero">
@@ -47,14 +48,14 @@
   {% if case.contracts %}
   <div style="overflow-x:auto;">
   <table class="submissions">
-    <thead><tr><th>Document</th><th>Price</th><th>Status</th><th>Requested</th><th>Signed / Rejected</th><th>Signature</th><th></th></tr></thead>
+    <thead><tr><th>Document</th><th>Price</th><th>Status</th><th>Requested</th><th>Signed / Rejected</th><th>Signature</th><th></th><th></th></tr></thead>
     <tbody>
       {% for c in case.contracts %}
       <tr>
         <td>
           {% if c.document_type.value == 'service_contract' %}{{ c.service.name if c.service else '—' }}<div class="muted" style="font-size:0.78rem;">{{ c.tier.value|replace('_',' ')|title if c.tier else '' }}</div>{% else %}Terms &amp; Conditions{% endif %}
         </td>
-        <td class="muted">{% set p = price_cents(c) %}{% if p is not none %}${{ '%.2f'|format(p / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% set p = price_cents(c) %}{% if p is not none %}{{ p|usd }}{% else %}—{% endif %}</td>
         <td>{{ crm_badge(c.status) }}</td>
         <td class="muted">{{ c.requested_at.strftime('%m/%d/%Y') }}</td>
         <td class="muted">
@@ -72,6 +73,7 @@
           </form>
           {% endif %}
         </td>
+        <td>{{ history_widget('contract-history-' ~ c.id, 'History — contract #' ~ c.id, contract_history.get(c.id, []), history_users, empty_hint='Changes to this contract will show up here.') }}</td>
       </tr>
       {% endfor %}
     </tbody>

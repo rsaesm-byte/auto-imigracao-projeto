@@ -1,16 +1,38 @@
 {% extends "staff_base.html" %}
-{% from "_staff_payments_table.html" import payments_table %}
-{% from "_staff_range_pills.html" import range_pills %}
-{% block title %}Staff — Finalized{% endblock %}
+{% block title %}Staff — Completed{% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
-  <h1>Finalized</h1>
-  <p style="opacity:0.92;margin:0;">Closed cases. See the "Request Review" tab for the ones still awaiting a review request.</p>
+  <h1>Completed</h1>
+  <p style="opacity:0.92;margin:0;">Cases currently in Follow Up, Approved, or Denied -- the 3 closing stages of the Cases pipeline. Click a stage to open that case.</p>
 </div>
 
 <div class="card">
-  {{ range_pills('staff.finalized', range_key, range_labels) }}
-  {{ payments_table(payments, "finalized_at", "Finalized on", show_review=True, empty_message="No finalized cases in this period.") }}
+  {% if cases %}
+  <div style="overflow-x:auto;">
+  <table class="submissions">
+    <thead><tr><th>Client</th><th>Case</th><th>Stage</th><th>Last updated</th></tr></thead>
+    <tbody>
+      {% for case in cases %}
+      {% set stage_style = {
+        'follow_up': ('#AE8A50', 'Follow Up'),
+        'approved': ('#16a34a', 'Approved'),
+        'denied': ('#991b1b', 'Denied'),
+      }[case.case_status.value] %}
+      <tr>
+        <td><a href="{{ url_for('crm_pipeline.client_detail', client_id=case.client_id) }}">{{ case.client.full_name }}</a></td>
+        <td>{{ case.title }}</td>
+        <td>
+          <a href="{{ url_for('crm_ops.case_procedure', case_id=case.id) }}" class="badge" style="background:{{ stage_style[0] }};color:#fff;text-decoration:none;">{{ stage_style[1] }}</a>
+        </td>
+        <td class="muted">{{ case.updated_at.strftime('%m/%d/%Y') }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  </div>
+  {% else %}
+  <p class="muted">No cases in Follow Up, Approved, or Denied right now.</p>
+  {% endif %}
 </div>
 {% endblock %}

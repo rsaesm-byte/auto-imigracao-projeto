@@ -38,14 +38,14 @@ GLOBAL_LAYOUT_ID = 1  # StaffNavGlobalLayout is a singleton -- always this id.
 # Case Tracking) -- same two conventions staff_base.html's old hardcoded
 # nav already used per-link.
 _NAV_ITEMS_LIST = [
+    {"id": "crm_dashboard", "label": "Dashboard", "endpoint": "crm_dashboard.dashboard",
+     "match_blueprint": "crm_dashboard"},
     {"id": "pending", "label": "Pending Approvals", "endpoint": "staff.pending",
      "match": ["staff.pending"]},
     {"id": "approved", "label": "Approved", "endpoint": "staff.approved",
      "match": ["staff.approved"]},
-    {"id": "finalized", "label": "Finalized", "endpoint": "staff.finalized",
+    {"id": "finalized", "label": "Completed", "endpoint": "staff.finalized",
      "match": ["staff.finalized"]},
-    {"id": "review", "label": "Request Review", "endpoint": "staff.review_queue",
-     "match": ["staff.review_queue"]},
     {"id": "prices", "label": "Prices", "endpoint": "staff.prices",
      "match": ["staff.prices"]},
     {"id": "documents", "label": "Documents", "endpoint": "staff.documents_list",
@@ -70,13 +70,41 @@ _NAV_ITEMS_LIST = [
      "match_blueprint": "crm_contracts"},
     {"id": "financial", "label": "Financial Coaching", "endpoint": "crm_financial.clients_kanban",
      "match_blueprint": "crm_financial"},
+    {"id": "crm_pipeline_settings", "label": "Pipeline Settings", "endpoint": "crm_pipeline_settings.pipelines",
+     "match_blueprint": "crm_pipeline_settings"},
+    {"id": "crm_custom_fields", "label": "Custom Fields", "endpoint": "crm_custom_fields.index",
+     "match_blueprint": "crm_custom_fields"},
+    {"id": "crm_automations", "label": "Automations", "endpoint": "crm_automations.index",
+     "match_blueprint": "crm_automations"},
+    {"id": "crm_reports", "label": "Reports", "endpoint": "crm_reports.dashboard",
+     "match_blueprint": "crm_reports"},
     {"id": "planner_week", "label": "Weekly Planner", "endpoint": "planner.planner_week",
      "match": ["planner.planner_week", "planner.planner_team", "planner.projects_list"]},
     {"id": "time_tracking", "label": "Time Tracking", "endpoint": "planner.time_list",
      "match": ["planner.time_list"]},
 ]
 NAV_ITEMS: dict[str, dict] = {item["id"]: item for item in _NAV_ITEMS_LIST}
-DEFAULT_LAYOUT: list[dict] = [{"kind": "item", "id": item["id"]} for item in _NAV_ITEMS_LIST]
+
+# Pedido do usuário 2026-08-06: "Pending Approvals"/"Approved" (o gate de
+# pagamento antigo, ver app/staff.py) agrupados dentro de um "Payments" só
+# com "Payments (CRM)" -- e "Completed" (ex-"Finalized") dentro do grupo
+# "CRM", por último (a aba "Request Review" separada saiu de NAV_ITEMS
+# acima: a própria tela de Completed já termina com a ação de pedir
+# review, então virou redundante). Qualquer id de NAV_ITEMS que não
+# apareça aqui embaixo (ex.: crm_contracts, crm_pipeline_settings,
+# crm_reports) continua aparecendo sozinho no fim, via o fallback de
+# resolve_nav_layout() que já existia (nunca esconde uma aba nova).
+DEFAULT_LAYOUT: list[dict] = [
+    {"kind": "item", "id": "crm_dashboard"},
+    {"kind": "group", "label": "Payments", "items": ["pending", "approved", "crm_payments"]},
+    {"kind": "group", "label": "CRM", "items": [
+        "crm_cases", "crm_tracking", "documents", "crm_leads", "crm_clients",
+        "crm_comms", "crm_tasks", "prices", "finalized",
+    ]},
+    {"kind": "item", "id": "financial"},
+    {"kind": "group", "label": "Time Management", "items": ["time_tracking", "planner_week"]},
+    {"kind": "item", "id": "crm_translations"},
+]
 
 
 def validate_layout(raw) -> list[dict] | None:
@@ -211,6 +239,19 @@ def save_layout(user_id: int, raw, scope: str = "personal") -> bool:
         else:
             global_row.layout_json = json.dumps(cleaned)
             global_row.updated_by_user_id = user_id
+        # Quem salva "pra todos" enquanto já tem uma personalização própria
+        # (StaffNavLayout) continuaria vendo a personalização antiga --
+        # `resolve_nav_layout` sempre checa a pessoal primeiro, então o
+        # global novo ficaria escondido até da PRÓPRIA pessoa que acabou de
+        # editar e salvar (bug real, reportado pelo usuário 2026-08-07: "eu
+        # mudo a ordem ou crio grupos... não está salvando" -- reproduzido:
+        # o global gravava certinho, só não refletia pra quem editou porque
+        # a linha pessoal dela, criada num save "só pra mim" de antes,
+        # blindava a mudança). Sincroniza a pessoal também, pro que a
+        # pessoa acabou de montar no editor aparecer pra ela imediatamente.
+        personal_row = SessionLocal.get(StaffNavLayout, user_id)
+        if personal_row is not None:
+            personal_row.layout_json = json.dumps(cleaned)
         return True
 
     row = SessionLocal.get(StaffNavLayout, user_id)

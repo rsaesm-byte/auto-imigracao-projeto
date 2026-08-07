@@ -2,18 +2,39 @@
 from __future__ import annotations
 
 from flask import (Blueprint, current_app, flash, redirect, render_template,
-                    request, url_for)
-from flask_login import login_required, login_user, logout_user
+                    request, session, url_for)
+from flask_login import current_user, login_required, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from app.db import SessionLocal
 from app.models import User
-from app.services.email_service import send_password_reset_email
+from app.services.email_service import (send_password_reset_email,
+                                          send_verification_code_email)
+from app.services.email_verification_service import (
+    generate_verification_code, is_resend_rate_limited, verify_code)
 from app.services.password_reset_service import (generate_reset_token,
                                                    is_rate_limited,
                                                    verify_reset_token)
 
 auth_bp = Blueprint("auth", __name__)
+
+
+def _post_login_redirect(next_url: str):
+    """Destino padrão pós-login/verificação pro CLIENTE (nunca pra staff,
+    ver login() abaixo) -- pedido do usuário 2026-08-06: quando a conta
+    nasceu do formulário público de interesse inicial
+    (app/lead_intake.py::start()), o próximo passo é o WhatsApp da Saes
+    (nova aba), não direto "Meu Caso". `next_url` explícito (ex.: alguém
+    tentando abrir uma página específica antes de logar) sempre ganha de
+    qualquer um dos dois."""
+    if next_url:
+        return redirect(next_url)
+    from app.lead_intake import pop_pending_lead_whatsapp_url
+    whatsapp_url = pop_pending_lead_whatsapp_url()
+    if whatsapp_url:
+        session["lead_intake_whatsapp_url"] = whatsapp_url
+        return redirect(url_for("lead_intake.whatsapp_handoff"))
+    return redirect(url_for("crm_client.meu_caso"))
 
 
 @auth_bp.route("/signup", methods=["GET", "POST"])
@@ -37,12 +58,56 @@ def signup():
 
         user = User(email=email, password_hash=generate_password_hash(password))
         SessionLocal.add(user)
+        SessionLocal.flush()  # precisa do user.id antes de gravar o código
+        code = generate_verification_code(user)
         SessionLocal.commit()
+        send_verification_code_email(user, code)
 
         login_user(user)
-        return redirect(next_url or url_for("wizard.dashboard"))
+        return redirect(url_for("auth.verify_email", next=next_url) if next_url
+                         else url_for("auth.verify_email"))
 
     return render_template("signup.html", email="", next_url=request.args.get("next") or "")
+
+
+@auth_bp.route("/verificar-email", methods=["GET", "POST"])
+@login_required
+def verify_email():
+    from app.i18n import t
+
+    next_url = request.form.get("next") or request.args.get("next") or ""
+
+    if current_user.email_verified:
+        return _post_login_redirect(next_url)
+
+    if request.method == "POST":
+        code = request.form.get("code", "").strip()
+        if verify_code(current_user, code):
+            SessionLocal.commit()
+            flash(t("email_verify_success"), "success")
+            return _post_login_redirect(next_url)
+
+        SessionLocal.commit()  # grava a tentativa incrementada mesmo em erro
+        flash(t("email_verify_invalid_code"), "error")
+
+    return render_template("verify_email.html", next_url=next_url)
+
+
+@auth_bp.route("/verificar-email/reenviar", methods=["POST"])
+@login_required
+def resend_verification():
+    from app.i18n import t
+
+    next_url = request.form.get("next") or ""
+    if not current_user.email_verified and not is_resend_rate_limited(current_user.id):
+        code = generate_verification_code(current_user)
+        SessionLocal.commit()
+        send_verification_code_email(current_user, code)
+        flash(t("email_verify_resent"), "success")
+    else:
+        flash(t("email_verify_resend_rate_limited"), "error")
+    return redirect(url_for("auth.verify_email", next=next_url) if next_url
+                     else url_for("auth.verify_email"))
 
 
 @auth_bp.route("/login", methods=["GET", "POST"])
@@ -80,7 +145,7 @@ def login():
         login_user(user)
         if login_as == "staff":
             return redirect(url_for("staff.dashboard"))
-        return redirect(next_url or url_for("wizard.dashboard"))
+        return _post_login_redirect(next_url)
 
     login_as = request.args.get("login_as", "client")
     return render_template("login.html", email="", next_url=request.args.get("next") or "", login_as=login_as)

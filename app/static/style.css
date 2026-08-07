@@ -188,6 +188,26 @@ header.topbar a.logout:hover, header.topbar button.logout:hover { color: var(--t
 }
 .nav-dropdown-menu a:hover { background: var(--accent-soft); color: var(--accent); }
 
+/* Submenu aninhado (ex.: "Ferramentas Gratuitas" dentro de "Início", cliente
+   logado -- ver base.html) -- reaproveita as mesmas classes acima, só
+   ajusta o toggle pra ocupar a linha toda (como as outras <a> do menu pai)
+   e o submenu pra abrir pro lado (flyout) em vez de embaixo. */
+.nav-dropdown-menu .nav-dropdown-nested { width: 100%; }
+.nav-dropdown-menu .nav-dropdown-nested > .nav-dropdown-toggle {
+  width: 100%;
+  justify-content: space-between;
+  color: var(--text);
+  font-size: 0.88rem;
+  padding: 9px 12px;
+  border-radius: var(--radius-sm);
+}
+.nav-dropdown-menu .nav-dropdown-nested > .nav-dropdown-toggle:hover { background: var(--accent-soft); color: var(--accent); }
+.nav-dropdown-menu .nav-dropdown-nested .nav-dropdown-menu {
+  top: -8px;
+  left: calc(100% + 6px);
+  transform: none;
+}
+
 /* ---- Headings ---- */
 h1, h2, h3, .brand, .step-num, .form-tile .name, .service-card-name {
   font-family: 'NeoSans', -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -608,10 +628,40 @@ table.submissions a:hover { text-decoration: underline; }
   padding: 10px; transition: outline-color 0.12s ease, background-color 0.12s ease;
 }
 .crm-kanban-col.drag-over { outline: 2px dashed var(--accent); background: var(--accent-soft); }
-.crm-kanban-col h3 { font-size: 0.85rem; margin: 0 0 10px; padding: 0 4px; }
+.crm-kanban-col h3 { font-size: 0.85rem; margin: 0 0 10px; padding: 0 4px; display: flex; align-items: center; gap: 4px; }
+/* Colunas recolhíveis (Prompt Mestre, Fase 4, 2026-08-06) -- app/static/
+   kanban-collapse.js injeta o botão de recolher em toda coluna de todo
+   board (Leads/Cases/Traduções/Tarefas/Financial Coaching) sem precisar
+   editar cada template; o estado (por coluna, por board) persiste em
+   localStorage. */
+.kanban-collapse-toggle {
+  background: none; border: none; cursor: pointer; color: var(--muted);
+  font-size: 0.85rem; line-height: 1; padding: 2px; flex-shrink: 0;
+}
+.kanban-collapse-toggle:hover { color: var(--text); }
+.crm-kanban-col.collapsed {
+  flex: 0 0 40px; padding: 10px 4px; overflow: hidden; cursor: pointer;
+}
+.crm-kanban-col.collapsed > *:not(h3) { display: none; }
+.crm-kanban-col.collapsed h3 {
+  writing-mode: vertical-rl; text-orientation: mixed; height: 100%;
+  margin: 0; white-space: nowrap; justify-content: flex-start;
+}
+.crm-kanban-col.collapsed h3 .kanban-collapse-toggle { writing-mode: horizontal-tb; }
 .crm-kanban-card {
   background: var(--card); border: 1px solid var(--border); border-radius: var(--radius-sm);
   padding: 10px; margin-bottom: 8px; font-size: 0.85rem;
+  /* Sombra leve tintada na cor da coluna (herdada via --col-accent, ver
+     .crm-kanban-col acima) em vez do branco liso -- pedido do usuário
+     2026-08-06. box-shadow duplicado de propósito: a 1ª linha é o
+     fallback plano (--shadow-sm) pra navegadores sem color-mix(), a 2ª
+     sobrescreve com a versão tintada onde há suporte. */
+  box-shadow: var(--shadow-sm);
+  box-shadow: 0 2px 10px color-mix(in srgb, var(--col-accent, var(--accent)) 22%, transparent);
+  transition: box-shadow 0.15s ease, transform 0.1s ease;
+}
+.crm-kanban-card:hover {
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--col-accent, var(--accent)) 36%, transparent);
 }
 .crm-kanban-card[draggable="true"] { cursor: grab; }
 .crm-kanban-card[draggable="true"]:active { cursor: grabbing; }
@@ -949,6 +999,137 @@ table.submissions a:hover { text-decoration: underline; }
 .path-section-banner h2 { color: white; margin: 0 0 4px; }
 .path-section-banner p { color: rgba(255, 255, 255, 0.92); margin: 0; }
 .path-section-banner p + p { margin-top: 4px; }
+
+/* ---- Pacotes: explicação da diferença entre "pacote DIY" (desconto por
+   combo), "Standard" e "Saes Plus" (níveis de atendimento) -- pedido do
+   usuário (2026-08-03): a mesma palavra "pacote" cobre 3 conceitos
+   diferentes, isso deixa explícito cada um sem repetir em cada card. */
+.explainer-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  margin: 0 0 20px;
+  color: var(--accent-dark);
+}
+.explainer-callout-title {
+  font-weight: 800;
+  margin: 0 0 2px;
+}
+.explainer-callout-body {
+  margin: 0;
+  font-size: 0.88rem;
+  opacity: 0.92;
+}
+.tier-compare {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  padding: 18px 20px;
+  margin: 0 0 20px;
+}
+.tier-compare-title {
+  font-weight: 800;
+  margin: 0 0 12px;
+  color: var(--text);
+}
+.tier-compare-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+@media (max-width: 640px) {
+  .tier-compare-grid { grid-template-columns: 1fr; }
+}
+.tier-compare-col {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 14px 16px;
+}
+.tier-compare-col-plus {
+  border-color: var(--cta-dark, var(--cta));
+  background: rgba(226, 174, 83, 0.08);
+}
+.tier-compare-col-title {
+  font-weight: 800;
+  font-size: 1rem;
+  margin: 0 0 6px;
+  color: var(--text);
+}
+.tier-compare-col-intro {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0 0 8px;
+}
+.tier-compare-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.tier-compare-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.86rem;
+  color: var(--text);
+}
+.tier-compare-list li svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--accent);
+}
+
+/* ---- Serviços: abas "Faça Você Mesmo" / "Pacotes" -- pedido do usuário
+   (2026-08-03), mesma ideia de duas cores por caminho que /pacotes já usa
+   (--accent pro DIY, --cta pro pacote), mas aqui como abas de verdade
+   (só um painel visível por vez, ver services.html) em vez de scroll. */
+.services-tabs {
+  display: flex;
+  gap: 10px;
+  margin: 28px 0 24px;
+  flex-wrap: wrap;
+}
+.services-tab {
+  flex: 1;
+  min-width: 220px;
+  text-align: left;
+  background: #fff;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px 18px;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+.services-tab:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.services-tab.active {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-md);
+}
+.services-tab[data-tab="package"].active {
+  border-color: var(--cta-dark, var(--cta));
+}
+.services-tab-title {
+  display: block;
+  font-weight: 800;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+.services-tab-subtitle {
+  display: block;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-top: 2px;
+}
 
 /* ---- About page: team + founder ---- */
 .team-grid {
@@ -1362,19 +1543,9 @@ table.submissions a:hover { text-decoration: underline; }
   transition: transform 0.15s ease;
   overflow: hidden;
 }
-.chat-fab::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-image: url('img/symbol-black.png');
-  background-size: 72%;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0.32;
-}
 .chat-fab svg {
-  position: relative;
-  z-index: 1;
+  display: block;
+  margin: auto;
   filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
 }
 .chat-fab:hover { transform: scale(1.06); }
@@ -1466,4 +1637,407 @@ table.submissions a:hover { text-decoration: underline; }
 .chat-input-row .btn {
   padding: 9px 16px;
   font-size: 0.88rem;
+}
+
+/* Widget de notificação (app/templates/_notification_widget.html,
+   app/static/notifications.js) -- ícone circular no topbar (dentro de
+   .topbar-right, junto do resto dos controles do staff) com o símbolo
+   oficial da Saes. Enquanto há notificação não lida, o JS alterna a
+   classe "active" entre os 5 <img> empilhados (color/green/brown/black/
+   red) -- este CSS só cuida do crossfade entre eles. Clicável, abre
+   notif-panel. */
+.notif-widget {
+  position: relative;
+  z-index: 9999;
+}
+.notif-icon-btn {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  padding: 6px;
+  display: block;
+  transition: transform 0.15s ease, box-shadow 0.3s ease, background 0.5s ease;
+}
+.notif-icon-btn:hover {
+  transform: translateY(1px) scale(1.04);
+}
+.notif-icon-btn.cycling {
+  box-shadow: var(--shadow-lg), 0 0 0 3px rgba(226, 174, 83, 0.35);
+}
+.notif-symbol-img {
+  position: absolute;
+  inset: 6px;
+  width: calc(100% - 12px);
+  height: calc(100% - 12px);
+  object-fit: contain;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.notif-symbol-img.active {
+  opacity: 1;
+}
+.notif-count {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  background: var(--cta, #E2AE53);
+  color: var(--text);
+  font-size: 0.66rem;
+  font-weight: 800;
+  border-radius: 999px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+}
+.notif-panel {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  width: min(340px, calc(100vw - 32px));
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+.notif-panel-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--text);
+}
+.notif-mark-read-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
+.notif-panel-list {
+  padding: 6px;
+}
+.notif-panel-empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 0.85rem;
+  margin: 0;
+}
+.notif-panel-item {
+  display: block;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  color: var(--text);
+}
+.notif-panel-item:hover {
+  background: var(--accent-soft);
+}
+.notif-panel-item.unread {
+  background: rgba(226, 174, 83, 0.12);
+}
+.notif-panel-item-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  margin: 0 0 2px;
+}
+.notif-panel-item-body {
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin: 0 0 2px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.notif-panel-item-time {
+  font-size: 0.7rem;
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   DESIGN SYSTEM -- Fase 2 da reforma do CRM (2026-08-06)
+
+   Tokens e componentes novos, todos aditivos: nenhuma regra acima foi
+   removida ou renomeada, então nenhum template existente quebra. A ideia
+   é migrar os templates para usar isso *gradualmente* (Fase 2, item
+   "migrar templates"), não trocar tudo de uma vez.
+   ========================================================================== */
+
+:root {
+  /* Estados visuais pedidos (hover/seleção/carregamento/sucesso/erro/aviso/
+     desabilitado/vazio) -- alguns já existiam via --success/--error, o que
+     faltava era loading/seleção/disabled/empty como token nomeado. */
+  --state-hover-bg: var(--accent-soft);
+  --state-selected-bg: rgba(226, 174, 83, 0.14);
+  --state-selected-border: var(--cta);
+  --state-disabled-bg: #F1F2F3;
+  --state-disabled-text: #9CA3AF;
+  --state-empty-text: var(--muted);
+  --state-warning: #92400E;
+  --state-warning-bg: #FEF3C7;
+  --state-warning-border: #FDE7A8;
+
+  /* Paleta por-posição para colunas de kanban/pipeline (não por
+     significado, como .badge.status-*, mas por posição no funil -- pedido
+     do usuário: "colunas visualmente identificáveis"). 8 cores, cicla se
+     houver mais estágios que isso. Derivadas da paleta oficial da marca
+     (--accent, --cta) + variações compatíveis, não são cores genéricas de
+     biblioteca de UI. */
+  --kanban-1: #205B5B; /* accent (marca) */
+  --kanban-2: #55A891; /* accent-grad-b (marca) */
+  --kanban-3: #E2AE53; /* cta/dourado (marca) */
+  --kanban-4: #5B7FA6;
+  --kanban-5: #8A6BAE;
+  --kanban-6: #C17A4B;
+  --kanban-7: #4B9B9B;
+  --kanban-8: #B3555C;
+}
+
+/* ---- Cor por posição de coluna no kanban ----
+   Aplica automaticamente por ordem das colunas dentro de CADA
+   `.crm-kanban` (não precisa tocar em nenhum dos 4 templates de kanban
+   existentes -- Leads, Casos, Tarefas, Financeiro herdam isso de graça).
+   `:nth-of-type` conta entre irmãos do mesmo container, então cada board
+   recomeça a contagem do zero. */
+.crm-kanban-col { border-top: 3px solid var(--col-accent, var(--accent)); }
+.crm-kanban-col:nth-of-type(8n+1) { --col-accent: var(--kanban-1); }
+.crm-kanban-col:nth-of-type(8n+2) { --col-accent: var(--kanban-2); }
+.crm-kanban-col:nth-of-type(8n+3) { --col-accent: var(--kanban-3); }
+.crm-kanban-col:nth-of-type(8n+4) { --col-accent: var(--kanban-4); }
+.crm-kanban-col:nth-of-type(8n+5) { --col-accent: var(--kanban-5); }
+.crm-kanban-col:nth-of-type(8n+6) { --col-accent: var(--kanban-6); }
+.crm-kanban-col:nth-of-type(8n+7) { --col-accent: var(--kanban-7); }
+.crm-kanban-col:nth-of-type(8n+8) { --col-accent: var(--kanban-8); }
+.crm-kanban-col h3 { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
+.crm-kanban-col.drag-over { outline-color: var(--col-accent, var(--accent)); }
+
+/* Contador de cards por coluna, como pílula na cor da coluna (ver
+   _crm_kanban_col_count macro em app/templates/_crm_ui.html). Opcional --
+   se um template não usar a macro, o `({{ n }})` antigo continua
+   funcionando sem quebrar nada. */
+.crm-kanban-col-count {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 20px; height: 20px; padding: 0 6px; border-radius: 999px;
+  background: var(--col-accent, var(--accent)); color: white;
+  font-size: 0.7rem; font-weight: 700; line-height: 1;
+}
+
+/* ---- Estado "carregando" (skeleton) genérico ----
+   Aplicar `.skeleton` num bloco (ou `<span class="skeleton">` inline) pra
+   um retângulo cinza pulsante -- pra usar enquanto uma lista/kanban ainda
+   não populou via fetch, ou em qualquer novo carregamento assíncrono. */
+.skeleton {
+  display: block; border-radius: var(--radius-sm);
+  background: linear-gradient(90deg, var(--border) 25%, #F5F5F6 37%, var(--border) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-shimmer 1.4s ease infinite;
+}
+@keyframes skeleton-shimmer {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---- Estado "sem dados" genérico ----
+   Bloco central com ícone/texto discreto pra listas, tabelas e colunas de
+   kanban vazias -- em vez de simplesmente não mostrar nada (o que hoje
+   acontece na maioria das telas do CRM). */
+.empty-state {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; padding: 28px 16px; text-align: center; color: var(--state-empty-text);
+}
+.empty-state .empty-state-icon { font-size: 1.6rem; opacity: 0.6; }
+.empty-state .empty-state-title { font-weight: 700; color: var(--text); font-size: 0.9rem; }
+.empty-state .empty-state-hint { font-size: 0.82rem; }
+
+/* ---- Linha/card "selecionado" genérico (tabelas, listas, kanban) ---- */
+.is-selected {
+  background: var(--state-selected-bg) !important;
+  outline: 1px solid var(--state-selected-border);
+}
+
+/* ---- Campo/botão desabilitado (reforça o disabled nativo, que já é
+   meio transparente por padrão no browser -- deixa consistente) ---- */
+input:disabled, select:disabled, textarea:disabled, button:disabled {
+  background: var(--state-disabled-bg); color: var(--state-disabled-text);
+  cursor: not-allowed; opacity: 1;
+}
+
+/* ---- Tooltip (ajuda contextual) ----
+   Uso: <span class="has-tooltip" data-tooltip="Texto explicativo">rótulo</span>
+   Puramente CSS (::after), sem dependência de JS -- ver macro `tooltip()`
+   em app/templates/_crm_ui.html pra não repetir esse HTML na mão toda
+   vez. Pra explicações mais longas, usar o drawer (`.drawer`) abaixo em
+   vez do tooltip. */
+.has-tooltip { position: relative; cursor: help; border-bottom: 1px dotted var(--muted); }
+.has-tooltip::after {
+  content: attr(data-tooltip);
+  position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px);
+  background: var(--accent-dark); color: white; padding: 7px 10px; border-radius: var(--radius-sm);
+  font-size: 0.76rem; font-weight: 400; white-space: normal; width: max-content; max-width: 240px;
+  line-height: 1.4; box-shadow: var(--shadow-md);
+  opacity: 0; pointer-events: none; transition: opacity 0.12s ease, transform 0.12s ease;
+  z-index: 40;
+}
+.has-tooltip::before {
+  content: ""; position: absolute; bottom: calc(100% + 3px); left: 50%; transform: translateX(-50%);
+  border: 5px solid transparent; border-top-color: var(--accent-dark);
+  opacity: 0; pointer-events: none; transition: opacity 0.12s ease;
+}
+.has-tooltip:hover::after, .has-tooltip:focus-visible::after,
+.has-tooltip:hover::before, .has-tooltip:focus-visible::before { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---- Modal (via <dialog> nativo -- sem lib externa) ----
+   Uso: ver app/templates/_crm_ui.html macro `modal()`, e
+   app/static/ui-components.js pra abrir/fechar. `<dialog>` já cuida de
+   focus trap, Esc pra fechar e do backdrop -- só precisa de estilo. */
+dialog.modal {
+  border: none; border-radius: var(--radius); padding: 0; box-shadow: var(--shadow-lg);
+  width: min(560px, calc(100vw - 32px)); max-height: calc(100vh - 64px);
+}
+dialog.modal::backdrop { background: rgba(37, 38, 41, 0.45); backdrop-filter: blur(1px); }
+dialog.modal .modal-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; border-bottom: 1px solid var(--border);
+}
+dialog.modal .modal-header h3 { margin: 0; font-size: 1.05rem; }
+dialog.modal .modal-close {
+  background: none; border: none; font-size: 1.1rem; line-height: 1; cursor: pointer;
+  color: var(--muted); padding: 4px 6px; border-radius: 999px;
+}
+dialog.modal .modal-close:hover { background: var(--state-hover-bg); color: var(--text); }
+dialog.modal .modal-body { padding: 20px 22px; overflow-y: auto; }
+dialog.modal .modal-footer {
+  display: flex; justify-content: flex-end; gap: 10px;
+  padding: 16px 22px; border-top: 1px solid var(--border);
+}
+
+/* ---- Drawer lateral (via <dialog> também, só que ancorado à direita) ----
+   Uso: menus de filtro avançado, ficha rápida de um registro, ajuda
+   contextual mais longa que um tooltip. */
+dialog.drawer {
+  border: none; padding: 0; margin: 0 0 0 auto; height: 100vh; max-height: 100vh;
+  width: min(420px, 100vw); box-shadow: var(--shadow-lg);
+  animation: drawer-slide-in 0.18s ease;
+}
+dialog.drawer::backdrop { background: rgba(37, 38, 41, 0.35); }
+dialog.drawer .drawer-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 22px; border-bottom: 1px solid var(--border);
+}
+dialog.drawer .drawer-header h3 { margin: 0; font-size: 1.05rem; }
+dialog.drawer .drawer-close {
+  background: none; border: none; font-size: 1.1rem; line-height: 1; cursor: pointer;
+  color: var(--muted); padding: 4px 6px; border-radius: 999px;
+}
+dialog.drawer .drawer-close:hover { background: var(--state-hover-bg); color: var(--text); }
+dialog.drawer .drawer-body { padding: 20px 22px; overflow-y: auto; height: calc(100vh - 68px); }
+@keyframes drawer-slide-in { from { transform: translateX(24px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+
+/* ---- Tabela reutilizável (ver macro `data_table()` em
+   app/templates/_crm_ui.html) -- muitas listagens do CRM hoje montam uma
+   <table> à mão com estilo inline repetido; esta classe padroniza sem
+   forçar migração imediata de nenhuma tabela existente. ---- */
+.data-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+.data-table th {
+  text-align: left; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--muted); padding: 8px 10px; border-bottom: 2px solid var(--border);
+}
+.data-table td { padding: 10px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.data-table tbody tr:hover { background: var(--state-hover-bg); }
+.data-table tbody tr.is-selected { background: var(--state-selected-bg); }
+
+/* ---- Visão Calendário (Prompt Mestre, Fase 4: "Alternância entre
+   Kanban/Tabela/Lista/Calendário"), 2026-08-06 -- grade de mês genérica
+   reusada por todo board (Leads/Cases/Traduções/Tarefas/Financial
+   Coaching), ver _crm_ui.html::calendar_view. ---- */
+.calendar-grid { width: 100%; border-collapse: collapse; table-layout: fixed; }
+.calendar-grid th {
+  text-align: center; font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.03em;
+  color: var(--muted); padding: 6px; border-bottom: 2px solid var(--border);
+}
+.calendar-grid td {
+  border: 1px solid var(--border); vertical-align: top; padding: 4px;
+  height: 90px; width: 14.28%; overflow: hidden;
+}
+.calendar-grid td.calendar-empty { background: var(--accent-soft); }
+.calendar-daynum { font-size: 0.76rem; color: var(--muted); margin-bottom: 3px; }
+.calendar-item {
+  display: block; font-size: 0.74rem; padding: 2px 5px; margin-bottom: 2px;
+  border-radius: 3px; background: var(--card); border-left: 3px solid var(--accent);
+  color: var(--text); text-decoration: none; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.calendar-item:hover { background: var(--state-hover-bg); }
+
+/* ---- Busca global (Ctrl+K, estilo Notion) -- pedido do usuário
+   2026-08-06. Reusa <dialog class="modal"> de app/templates/_crm_ui.html,
+   com override de posição (perto do topo, não centralizado) e um pouco
+   mais largo -- ver app/templates/staff_base.html (markup) e
+   app/static/global-search.js (fetch + navegação). ---- */
+.search-trigger {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: none; border: 1px solid var(--border); border-radius: var(--radius-sm);
+  color: var(--muted); cursor: pointer; font-size: 0.78rem; padding: 5px 10px;
+}
+.search-trigger kbd {
+  font-family: inherit; font-size: 0.68rem; border: 1px solid var(--border);
+  border-radius: 4px; padding: 1px 5px; background: var(--bg);
+}
+dialog.modal#global-search-modal {
+  width: min(560px, calc(100vw - 32px)); margin-top: 10vh;
+}
+#global-search-modal .modal-body { padding: 0; }
+#global-search-input {
+  width: 100%; border: none; border-bottom: 1px solid var(--border); padding: 16px 20px;
+  font-size: 1rem; border-radius: 0;
+}
+#global-search-input:focus { outline: none; }
+#global-search-results { max-height: 50vh; overflow-y: auto; padding: 8px; }
+#global-search-results .search-group-label {
+  font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.03em; color: var(--muted);
+  padding: 8px 10px 4px;
+}
+#global-search-results .search-result {
+  display: block; padding: 8px 10px; border-radius: var(--radius-sm);
+  text-decoration: none; color: var(--text);
+}
+#global-search-results .search-result:hover,
+#global-search-results .search-result.is-active { background: var(--state-hover-bg); }
+#global-search-results .search-result-label { font-weight: 600; font-size: 0.88rem; }
+#global-search-results .search-result-sublabel { font-size: 0.76rem; color: var(--muted); }
+#global-search-empty { padding: 24px 20px; text-align: center; color: var(--muted); font-size: 0.85rem; }
+
+/* ---- Filtro instantâneo de lista/kanban (pedido "algo como Ctrl+F"
+   2026-08-06) -- caixa de filtro client-side, sem round-trip ao servidor.
+   Não amarrada ao atalho Ctrl+F de propósito (o navegador já reserva
+   esse atalho pra busca nativa na página, que continua útil por cima
+   disso) -- "/" foca a caixa em vez disso, convenção comum
+   (GitHub/Slack/Linear). Ver app/static/list-filter.js. ---- */
+.list-filter-box { display: flex; align-items: center; gap: 6px; }
+.list-filter-box input {
+  /* width:auto pra sobrescrever a regra global input[type=text]{width:100%}
+     (app/static/style.css, pensada pra formulários empilhados) -- aqui é
+     uma caixa de filtro pequena, não um campo de formulário de largura
+     total. */
+  width: 130px; font-size: 0.85rem; padding: 5px 8px; margin-bottom: 0;
+}
+.list-filter-box kbd {
+  font-family: inherit; font-size: 0.68rem; border: 1px solid var(--border);
+  border-radius: 4px; padding: 1px 5px; color: var(--muted); background: var(--bg);
 }

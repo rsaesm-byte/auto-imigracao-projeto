@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Lead: {{ lead.name }}{% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -8,11 +9,17 @@
   <p style="opacity:0.92;margin:0;">{{ crm_badge(lead.stage) }} — stage changes on the Leads kanban board (drag the card, or right-click → Edit to come back here).</p>
 </div>
 
-<div class="card">
-  <a href="{{ url_for('crm_pipeline.leads_kanban') }}" class="muted" style="font-size:0.85rem;">← Back to Leads</a>
-  {% if lead.converted_client_id %}
-  <span class="muted" style="font-size:0.85rem;margin-left:16px;">Converted to client → <a href="{{ url_for('crm_pipeline.client_detail', client_id=lead.converted_client_id) }}">open client record</a></span>
-  {% endif %}
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
+  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+    <a href="{{ url_for('crm_pipeline.leads_kanban') }}" class="muted" style="font-size:0.85rem;">← Back to Leads</a>
+    {% if lead.converted_client_id %}
+    <span class="muted" style="font-size:0.85rem;">Converted to client → <a href="{{ url_for('crm_pipeline.client_detail', client_id=lead.converted_client_id) }}">open client record</a></span>
+    {% endif %}
+    {% if related_case %}
+    <span class="muted" style="font-size:0.85rem;">Case → <a href="{{ url_for('crm_pipeline.client_detail', client_id=related_case.client_id) }}">{{ related_case.title }}</a> {{ crm_badge(related_case.case_status) }}</span>
+    {% endif %}
+  </div>
+  {{ history_widget('lead-history-drawer', 'History — ' + lead.name, history, history_users, empty_hint='Changes to this lead will show up here.') }}
 </div>
 
 <form method="post" action="{{ url_for('crm_pipeline.lead_update', lead_id=lead.id) }}">
@@ -22,7 +29,7 @@
       <div><label class="muted">Full name</label><br><input type="text" name="name" value="{{ lead.name }}" required style="width:100%;"></div>
       <div><label class="muted">Phone</label><br><input type="text" name="contact_phone" value="{{ lead.contact_phone or '' }}" style="width:100%;"></div>
       <div><label class="muted">Email</label><br><input type="email" name="contact_email" value="{{ lead.contact_email or '' }}" style="width:100%;"></div>
-      <div><label class="muted">City / Region</label><br><input type="text" name="city_region" value="{{ lead.city_region or '' }}" style="width:100%;"></div>
+      <div><label class="muted">Place (City-State)</label><br><input type="text" name="city_region" value="{{ lead.city_region or '' }}" style="width:100%;"></div>
       <div>
         <label class="muted">Contact channel</label><br>
         <select name="contact_channel_id" style="width:100%;">
@@ -35,6 +42,13 @@
         <select name="lead_source_id" style="width:100%;">
           <option value="">—</option>
           {% for s in lead_sources %}<option value="{{ s.id }}" {{ 'selected' if lead.lead_source_id == s.id }}>{{ s.name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Ad source</label><br>
+        <select name="ad_source_id" style="width:100%;">
+          <option value="">—</option>
+          {% for a in ad_sources %}<option value="{{ a.id }}" {{ 'selected' if lead.ad_source_id == a.id }}>{{ a.name }}</option>{% endfor %}
         </select>
       </div>
     </div>
@@ -64,7 +78,7 @@
           {% for tr in tiers %}<option value="{{ tr.value }}" {{ 'selected' if lead.tier == tr }}>{{ '⭐' * (loop.index) }}</option>{% endfor %}
         </select>
       </div>
-      <div><label class="muted">Deal value (USD)</label><br><input type="number" step="0.01" min="0" name="deal_value_dollars" value="{{ '%.2f'|format(lead.deal_value_cents / 100) if lead.deal_value_cents else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Deal value (USD)</label><br><input type="text" inputmode="decimal" name="deal_value_dollars" value="{{ lead.deal_value_cents|usd_input }}" style="width:100%;"></div>
       <div><label class="muted">Number of contact attempts</label><br><input type="number" min="0" name="contact_attempts" value="{{ lead.contact_attempts if lead.contact_attempts is not none else '' }}" style="width:100%;"></div>
     </div>
     <label class="muted">Service(s) interested in</label>
@@ -80,10 +94,10 @@
   <div class="card">
     <h2 style="font-size:1rem;">Dates</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
-      <div><label class="muted">First contact</label><br><input type="date" name="first_contact_at" value="{{ lead.first_contact_at.isoformat() if lead.first_contact_at else '' }}" style="width:100%;"></div>
-      <div><label class="muted">Proposal sent</label><br><input type="date" name="proposal_at" value="{{ lead.proposal_at.isoformat() if lead.proposal_at else '' }}" style="width:100%;"></div>
-      <div><label class="muted">Closed (won)</label><br><input type="date" name="closed_at" value="{{ lead.closed_at.isoformat() if lead.closed_at else '' }}" style="width:100%;"></div>
-      <div><label class="muted">Gave up (lost)</label><br><input type="date" name="lost_at" value="{{ lead.lost_at.isoformat() if lead.lost_at else '' }}" style="width:100%;"></div>
+      <div><label class="muted">First contact</label><br><input type="date" lang="en-US" name="first_contact_at" value="{{ lead.first_contact_at.isoformat() if lead.first_contact_at else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Proposal sent</label><br><input type="date" lang="en-US" name="proposal_at" value="{{ lead.proposal_at.isoformat() if lead.proposal_at else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Closed (won)</label><br><input type="date" lang="en-US" name="closed_at" value="{{ lead.closed_at.isoformat() if lead.closed_at else '' }}" style="width:100%;"></div>
+      <div><label class="muted">Gave up (lost)</label><br><input type="date" lang="en-US" name="lost_at" value="{{ lead.lost_at.isoformat() if lead.lost_at else '' }}" style="width:100%;"></div>
     </div>
     <p class="muted" style="font-size:0.85rem;margin-top:10px;">Days to close (first contact → closed): <strong>{{ days_to_close if days_to_close is not none else '—' }}</strong></p>
     <div style="margin-top:10px;">
@@ -102,6 +116,78 @@
 
   <button type="submit" class="btn" style="padding:10px 20px;">Save lead</button>
 </form>
+
+{% if custom_fields %}
+<div class="card">
+  <h2 style="font-size:1rem;">
+    Custom fields · <a href="{{ url_for('crm_custom_fields.index', entity='Lead') }}" style="font-weight:400;font-size:0.85rem;">Manage fields</a>
+  </h2>
+  <form method="post" action="{{ url_for('crm_pipeline.lead_custom_fields_save', lead_id=lead.id) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+    {% for f in custom_fields %}
+    {% set raw = custom_values.get(f.id) %}
+    <div>
+      <label class="muted" style="font-size:0.78rem;">{{ f.label }}{% if f.required %} *{% endif %}</label><br>
+      {% if f.field_type.value == 'long_text' %}
+      <textarea name="custom_{{ f.id }}" rows="2" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ raw or '' }}</textarea>
+      {% elif f.field_type.value == 'checkbox' %}
+      <input type="checkbox" name="custom_{{ f.id }}" value="1" {{ 'checked' if raw == '1' }}>
+      {% elif f.field_type.value == 'single_select' %}
+      <select name="custom_{{ f.id }}" style="width:100%;">
+        <option value="">—</option>
+        {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if raw == opt }}>{{ opt }}</option>{% endfor %}
+      </select>
+      {% elif f.field_type.value == 'multi_select' %}
+      {% set selected = cf_multi_selected(raw) %}
+      <select name="custom_{{ f.id }}" multiple style="width:100%;min-height:64px;">
+        {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if opt in selected }}>{{ opt }}</option>{% endfor %}
+      </select>
+      {% elif f.field_type.value == 'date' %}
+      <input type="date" lang="en-US" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+      {% else %}
+      <input type="text" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div style="grid-column:1/-1;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save custom fields</button>
+    </div>
+  </form>
+</div>
+{% endif %}
+
+<div class="card">
+  <h2 style="font-size:1rem;">Follow-ups</h2>
+  {% if lead.follow_ups %}
+  {% for f in lead.follow_ups %}
+  <div style="padding:8px 0;border-bottom:1px solid var(--border);">
+    <strong>Follow-up #{{ f.follow_up_number }}</strong> — {{ f.follow_up_date.strftime('%m/%d/%Y') }}
+    {% if f.contact_channel_id in contact_channels_by_id %} · {{ contact_channels_by_id[f.contact_channel_id].name }}{% endif %}
+    {% if f.notes %}<div class="muted" style="font-size:0.85rem;margin-top:2px;">{{ f.notes }}</div>{% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No follow-ups logged yet.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('crm_pipeline.lead_follow_up_new', lead_id=lead.id) }}" style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;padding-top:12px;">
+    <div>
+      <label class="muted">Date</label><br>
+      <input type="date" lang="en-US" name="follow_up_date" value="{{ today_iso }}">
+    </div>
+    <div>
+      <label class="muted">Channel</label><br>
+      <select name="contact_channel_id">
+        <option value="">—</option>
+        {% for c in contact_channels %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div style="flex:1;min-width:220px;">
+      <label class="muted">Notes</label><br>
+      <input type="text" name="notes" placeholder="What happened on this follow-up?" style="width:100%;">
+    </div>
+    <button type="submit" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.82rem;padding:8px 14px;">+ Add follow-up</button>
+  </form>
+</div>
 
 <div class="card">
   <h2 style="font-size:1rem;">Danger zone</h2>

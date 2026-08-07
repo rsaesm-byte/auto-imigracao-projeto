@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{{ t('lead_intake_next_step_title', first_name=full_name.split(' ')[0]) }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+{% set interest_labels = [] %}
+{% for key in keys %}{% set _ = interest_labels.append(t('service_interest_' ~ key)) %}{% endfor %}
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('lead_intake_next_step_title', first_name=full_name.split(' ')[0]) }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:640px;">
+    {{ t('lead_intake_next_step_subtitle', interest=interest_labels|join(', ')) }}
+  </p>
+</section>
+
+<div class="card">
+  <p>{{ t('lead_intake_next_step_body_1') }}</p>
+  <p>{{ t('lead_intake_next_step_body_2') }}</p>
+  <a href="{{ url_for('auth.signup') }}" class="btn" style="display:inline-block;margin-top:10px;">{{ t('lead_intake_next_step_cta') }}</a>
+</div>
+{% endblock %}

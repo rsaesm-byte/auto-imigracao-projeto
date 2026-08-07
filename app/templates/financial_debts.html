@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block title %}Debts — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Debts</h1>
+  <p style="opacity:0.92;margin:0;">Everything you owe, in one place. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.debt_plan') }}" style="color:#fff;text-decoration:underline;">Payoff Plan →</a></p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Total debt</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.total_balance_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Total minimum payments/mo</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.total_minimum_payment_cents|usd }}</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Debts</h2>
+  {% if debt_list %}
+  <table class="submissions">
+    <thead><tr><th>Debt</th><th>Balance</th><th>APR</th><th>Min. payment</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for d in debt_list %}
+      {% set p = progress_by_debt[d.id] %}
+      <tr {% if d.status.value == 'paid_off' %}style="opacity:0.6;"{% endif %}>
+        <td>
+          <strong>{{ d.debt_name }}</strong>{% if d.lender_name %} <span class="muted">— {{ d.lender_name }}</span>{% endif %}
+          <div class="muted" style="font-size:0.74rem;">{{ d.debt_type.value|replace('_',' ')|title }}</div>
+          {% if p.progress is not none %}
+          <div style="background:var(--border);border-radius:999px;height:6px;margin-top:4px;max-width:160px;">
+            <div style="width:{{ (p.progress * 100)|round(1) }}%;background:#dc2626;height:6px;border-radius:999px;"></div>
+          </div>
+          <div class="muted" style="font-size:0.7rem;">{{ p.paid_amount_cents|usd }} paid of {{ d.original_balance_cents|usd }}</div>
+          {% endif %}
+        </td>
+        <td>{{ d.current_balance_cents|usd }}</td>
+        <td class="muted">{{ '%.2f'|format(d.apr_bps / 100) ~ '%' if d.apr_bps else '—' }}</td>
+        <td class="muted">{{ d.minimum_payment_cents|usd if d.minimum_payment_cents else '—' }}</td>
+        <td><span class="badge">{{ d.status.value|replace('_',' ')|title }}</span></td>
+        <td>
+          {% if d.status.value != 'paid_off' %}
+          <form method="post" action="{{ url_for('financial_workspace.debt_payment_new', debt_id=d.id) }}" style="display:flex;gap:4px;align-items:center;">
+            <input type="text" name="amount" inputmode="decimal" placeholder="Pay $" style="width:80px;font-size:0.76rem;">
+            <select name="paid_from_account_id" style="font-size:0.76rem;">
+              <option value="">From…</option>
+              {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+            </select>
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#166534;cursor:pointer;font-size:0.76rem;">Pay</button>
+          </form>
+          {% endif %}
+          <form method="post" action="{{ url_for('financial_workspace.debt_delete', debt_id=d.id) }}"
+                onsubmit="return confirm('Remove this debt? Payment history is kept.');" style="margin-top:4px;">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.76rem;">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No debts tracked yet — add one below.</p>
+  {% endif %}
+
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add debt</summary>
+    <form method="post" action="{{ url_for('financial_workspace.debt_new') }}"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <input type="text" name="debt_name" required placeholder="Debt name (e.g. Chase Visa)" style="min-width:180px;flex:1;">
+      <input type="text" name="lender_name" placeholder="Lender — optional" style="min-width:140px;">
+      <select name="debt_type">
+        {% for dt in debt_types %}<option value="{{ dt.value }}">{{ dt.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+      <input type="text" name="current_balance" required inputmode="decimal" placeholder="Current balance $" style="width:150px;">
+      <input type="text" name="original_balance" inputmode="decimal" placeholder="Original balance $ — optional" style="width:180px;">
+      <input type="text" name="apr" inputmode="decimal" placeholder="APR % — optional" style="width:120px;">
+      <input type="text" name="minimum_payment" inputmode="decimal" placeholder="Min. payment $ — optional" style="width:170px;">
+      <input type="text" name="extra_payment" inputmode="decimal" placeholder="Extra $/mo — optional" style="width:150px;">
+      <input type="number" name="due_day" min="1" max="31" placeholder="Due day — optional" style="width:130px;">
+      <input type="date" lang="en-US" name="target_payoff_date" title="Target payoff date — optional">
+      <input type="text" name="notes" placeholder="Notes — optional" style="min-width:160px;">
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </details>
+</div>
+{% endblock %}

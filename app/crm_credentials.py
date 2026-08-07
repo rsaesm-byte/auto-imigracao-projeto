@@ -93,6 +93,8 @@ def reveal(credential_id: int):
         "email": decrypt(credential.email_encrypted),
         "password": decrypt(credential.password_encrypted),
         "backup_code": decrypt(credential.backup_code_encrypted),
+        "five_letters": decrypt(credential.five_letters_encrypted),
+        "key_word": decrypt(credential.key_word_encrypted),
     }
 
     SessionLocal.add(CredentialAccessLog(
@@ -129,6 +131,12 @@ def save(client_id: int):
     email = request.form.get("email", "").strip()
     password = request.form.get("password", "").strip()
     backup_code = request.form.get("backup_code", "").strip()
+    # Só existem pro serviço Embassy (verificação por telefone com a
+    # Embaixada) -- o form só manda esses campos no card de Embassy, mas a
+    # rota não precisa validar isso: salvar em branco pra USCIS é inofensivo
+    # (fica None, igual não ter enviado).
+    five_letters = request.form.get("five_letters", "").strip()
+    key_word = request.form.get("key_word", "").strip()
 
     try:
         # Só sobrescreve um campo se o form mandou algo novo -- deixar o
@@ -140,6 +148,10 @@ def save(client_id: int):
             credential.password_encrypted = encrypt(password)
         if backup_code:
             credential.backup_code_encrypted = encrypt(backup_code)
+        if five_letters:
+            credential.five_letters_encrypted = encrypt(five_letters)
+        if key_word:
+            credential.key_word_encrypted = encrypt(key_word)
     except CredentialsKeyNotConfigured:
         SessionLocal.rollback()
         flash("Encryption key not configured (CRM_CREDENTIALS_KEY) -- "

@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+{% block title %}Budget — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Budget</h1>
+  <p style="opacity:0.92;margin:0;">{{ period.period_start.strftime('%B %Y') }} · <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.bills') }}" style="color:#fff;text-decoration:underline;">Bills →</a></p>
+</div>
+
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <p class="muted" style="margin:0;">
+    Status: <span class="badge">{{ period.status.value|title }}</span>
+    {% if period.closed_at %} · closed {{ period.closed_at.strftime('%m/%d/%Y') }}{% endif %}
+    {% if period.reopened_at %} · reopened {{ period.reopened_at.strftime('%m/%d/%Y') }}{% endif %}
+  </p>
+  {% if period.status.value == 'open' %}
+  <form method="post" action="{{ url_for('financial_workspace.budget_period_close') }}"
+        onsubmit="return confirm('Close this month? A protected snapshot will be saved and you can still reopen it later.');">
+    <button type="submit" class="btn">Close month</button>
+  </form>
+  {% else %}
+  <form method="post" action="{{ url_for('financial_workspace.budget_period_reopen') }}">
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Reopen month</button>
+  </form>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Budget method</h2>
+  <form method="post" action="{{ url_for('financial_workspace.budget_rule_save') }}"
+        style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <select name="rule_type" required>
+      {% for rt in rule_types %}
+      <option value="{{ rt.value }}" {{ 'selected' if rule and rule.rule_type == rt }}>
+        {% if rt.value == 'fifty_thirty_twenty' %}50/30/20{% elif rt.value == 'custom_percentage' %}Custom Percentage{% elif rt.value == 'category_budget' %}Category Budget{% else %}No Rule Yet{% endif %}
+      </option>
+      {% endfor %}
+    </select>
+    <input type="number" name="needs_percent" placeholder="Needs %" min="0" max="100" style="width:110px;" value="{{ rule.needs_percent if rule and rule.needs_percent is not none else '' }}">
+    <input type="number" name="wants_percent" placeholder="Wants %" min="0" max="100" style="width:110px;" value="{{ rule.wants_percent if rule and rule.wants_percent is not none else '' }}">
+    <input type="number" name="savings_percent" placeholder="Savings %" min="0" max="100" style="width:110px;" value="{{ rule.savings_percent if rule and rule.savings_percent is not none else '' }}">
+    <button type="submit" class="btn">Save</button>
+  </form>
+  <p class="muted" style="font-size:0.76rem;margin-top:8px;">Needs/Wants/Savings percentages are only used with "Custom Percentage" — they must add up to 100%.</p>
+</div>
+
+{% if targets_cents %}
+<div class="card">
+  <h2 style="font-size:1rem;">Needs / Wants / Savings — target vs. actual</h2>
+  <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Targets are based on this month's income ({{ income_cents|usd }}) and your budget method.</p>
+  {% for key, color in [('needs', '#2a78d6'), ('wants', '#eb6834'), ('savings', '#16a34a')] %}
+  {% set target = targets_cents[key] %}
+  {% set actual = needs_wants_savings[key] %}
+  {% set raw_pct = ((actual / target * 100) if target else 0)|round(1) %}
+  {% set bar_pct = 100 if raw_pct > 100 else raw_pct %}
+  <div style="margin-bottom:10px;">
+    <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:3px;">
+      <span>{{ key|title }}</span>
+      <span class="muted">{{ actual|usd }} of {{ target|usd }} target</span>
+    </div>
+    <div style="background:var(--border);border-radius:999px;height:10px;">
+      <div style="width:{{ bar_pct }}%;background:{{ color }};height:10px;border-radius:999px;min-width:{{ '6px' if actual else '0' }};"></div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <h2 style="font-size:1rem;">Budget vs. actual — by category</h2>
+  {% if budget_rows %}
+  <table class="submissions">
+    <thead><tr><th>Category</th><th>Planned</th><th>Actual</th><th>Remaining</th><th>Status</th></tr></thead>
+    <tbody>
+      {% for row in budget_rows %}
+      <tr>
+        <td>{{ row.category.name if row.category else '—' }}</td>
+        <td>{{ row.planned_cents|usd }}</td>
+        <td>{{ row.actual_cents|usd }}</td>
+        <td style="{% if row.remaining_cents < 0 %}color:#991b1b;{% endif %}">{{ row.remaining_cents|usd }}</td>
+        <td>
+          {% if row.threshold == 'over_budget' %}<span class="badge" style="background:#fee2e2;color:#991b1b;">Over budget</span>
+          {% elif row.threshold == 'attention' %}<span class="badge" style="background:#fef3c7;color:#92400e;">Attention</span>
+          {% elif row.threshold == 'healthy' %}<span class="badge" style="background:var(--success-bg);color:var(--success);">Healthy</span>
+          {% else %}—{% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No budget allocations for this month yet — add one below.</p>
+  {% endif %}
+
+  {% if unallocated_categories %}
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add a category budget</summary>
+    <form method="post" action="{{ url_for('financial_workspace.budget_allocation_save') }}"
+          style="display:flex;gap:8px;align-items:center;margin-top:10px;flex-wrap:wrap;">
+      <select name="budget_category_id" required>
+        <option value="">Category…</option>
+        {% for c in unallocated_categories %}<option value="{{ c.id }}">{{ c.name }}</option>{% endfor %}
+      </select>
+      <input type="text" name="planned_amount" required placeholder="Planned amount $" style="width:160px;">
+      <label class="muted" style="font-size:0.8rem;display:flex;align-items:center;gap:4px;">
+        <input type="checkbox" name="rollover_enabled"> Roll over unused amount next month
+      </label>
+      <button type="submit" class="btn">Save</button>
+    </form>
+  </details>
+  {% endif %}
+</div>
+{% endblock %}

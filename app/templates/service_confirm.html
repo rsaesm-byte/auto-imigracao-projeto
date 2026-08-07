@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% from "_icons.html" import icon %}
+{% block title %}{{ name }} — {{ t('packages_index_title') }} — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<p style="margin-bottom:18px;">
+  <a href="{{ url_for('wizard.services') }}#pacotes-professional" class="icon-btn" style="text-decoration:none;color:var(--muted);font-size:0.88rem;">
+    {{ icon('arrow-left', 14) }} {{ t('packages_back_to_index') }}
+  </a>
+</p>
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ name }}</h1>
+  {% if free_consultation_minutes %}
+  <p class="muted" style="margin:4px 0 0;">{{ t('packages_pro_free_consult', minutes=free_consultation_minutes) }}</p>
+  {% endif %}
+</section>
+
+<div class="card">
+  <h2>{{ t('packages_pro_confirm_choose') }}</h2>
+
+  {% if not tiers %}
+  <p class="muted">{{ t('packages_pro_tier_invalid') }}</p>
+  {% else %}
+
+  {% if current_user.is_authenticated %}
+  <form method="post" class="services-grid" style="align-items:stretch;">
+    {% for tier in tiers %}
+    <label class="card service-card" style="margin-bottom:0;cursor:pointer;display:block;">
+      <input type="radio" name="tier" value="{{ tier.key }}" required {% if loop.first %}checked{% endif %} style="margin-bottom:8px;">
+      <h3 class="service-card-name">{{ tier.label }}</h3>
+      <p style="font-size:1.4rem;font-weight:800;margin:2px 0 10px;">{{ tier.price_cents|usd }}</p>
+      {% if tier.includes %}
+      <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_pro_confirm_includes') }}</p>
+      <ul class="muted" style="font-size:0.85rem;padding-left:18px;margin:0;">
+        {% for item in tier.includes %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </label>
+    {% endfor %}
+    <div style="grid-column:1/-1;">
+      <button type="submit" class="btn">{{ t('packages_pro_confirm_cta') }}</button>
+    </div>
+  </form>
+  {% else %}
+  <div class="services-grid">
+    {% for tier in tiers %}
+    <div class="card service-card" style="margin-bottom:0;">
+      <h3 class="service-card-name">{{ tier.label }}</h3>
+      <p style="font-size:1.4rem;font-weight:800;margin:2px 0 10px;">{{ tier.price_cents|usd }}</p>
+      {% if tier.includes %}
+      <p class="muted" style="font-size:0.82rem;font-weight:600;margin:0 0 6px;">{{ t('packages_pro_confirm_includes') }}</p>
+      <ul class="muted" style="font-size:0.85rem;padding-left:18px;margin:0;">
+        {% for item in tier.includes %}
+        <li>{{ item }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  <div class="hero-ctas" style="justify-content:flex-start;margin-top:18px;">
+    <a class="btn" href="{{ url_for('auth.signup', next=request.url) }}">{{ t('packages_cta_signup') }}</a>
+  </div>
+  {% endif %}
+
+  {% endif %}
+</div>
+
+{% endblock %}

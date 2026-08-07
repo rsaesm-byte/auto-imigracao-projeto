@@ -7,13 +7,13 @@
     {% set fee = item.fee %}
     <tr>
       <td>{{ item.label }}</td>
-      <td class="muted">{{ '$%.2f'|format(fee.price_cents / 100) if fee.price_cents is not none else 'Not sold separately' }}</td>
+      <td class="muted">{{ fee.price_cents|usd if fee.price_cents is not none else 'Not sold separately' }}</td>
       <td class="muted">{{ fee.updated_at.strftime('%m/%d/%Y') }}</td>
       <td colspan="2">
         <form method="post" action="{{ url_for('staff.update_price', fee_id=fee.id) }}" style="display:flex;gap:8px;align-items:center;">
           <span class="muted">$</span>
-          <input type="number" step="0.01" min="0" name="price_dollars"
-                 value="{{ '%.2f'|format(fee.price_cents / 100) if fee.price_cents is not none else '' }}"
+          <input type="text" inputmode="decimal" name="price_dollars"
+                 value="{{ fee.price_cents|usd_input }}"
                  placeholder="—" style="max-width:120px;">
           <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:4px 10px;white-space:nowrap;">Save</button>
         </form>

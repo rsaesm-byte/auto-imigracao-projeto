@@ -20,6 +20,8 @@ from flask_login import current_user, login_required
 from app.crm_models import (Case, CaseTrackedForm, ClientCredential,
                              CredentialService, FieldOffice, FilingMethod)
 from app.db import SessionLocal
+from app.models import User
+from app.services import audit_service
 from app.services import crm_service as svc
 from app.services.text_format import markdown_lite_to_html
 
@@ -75,6 +77,8 @@ def case_tracking(case_id: int):
     )
     notes_html = {t.id: markdown_lite_to_html(t.notes_markdown) for t in case.tracked_forms}
     processing_time = {t.id: svc.tracked_form_processing_time_days(t) for t in case.tracked_forms}
+    tracked_history = {t.id: audit_service.get_history("CaseTrackedForm", t.id) for t in case.tracked_forms}
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
 
     return render_template(
         "crm_case_tracking.html", case=case, field_offices=field_offices,
@@ -83,7 +87,37 @@ def case_tracking(case_id: int):
         uscis_case_status_url=USCIS_CASE_STATUS_URL,
         uscis_processing_times_url=USCIS_PROCESSING_TIMES_URL,
         uscis_field_office_url=USCIS_FIELD_OFFICE_LOCATOR_URL,
-        usps_tracking_url=USPS_TRACKING_URL)
+        usps_tracking_url=USPS_TRACKING_URL,
+        tracked_history=tracked_history, history_users=history_users)
+
+
+@crm_tracking_bp.route("/field-offices/novo", methods=["POST"])
+def field_office_new():
+    """"Adicionar field office além dos já listados" (pedido do usuário
+    2026-08-06) -- FieldOffice é tabela de lookup aberta (não enum), mas
+    até agora só era populada pelo seed inicial (data/crm_lookups.json),
+    sem UI nenhuma pra crescer. Cada nova entrada fica salva na lista de
+    verdade (nome único) e passa a aparecer no <select> de toda tela que
+    usa field office (aqui, no dashboard de tracking, e futuramente em
+    Case details -- ver app/crm_staff_ops.py::case_details_update)."""
+    name = request.form.get("name", "").strip()
+    if not name:
+        flash("Field office name is required.", "error")
+        return redirect(request.referrer or url_for("crm_tracking.dashboard"))
+
+    existing = SessionLocal.query(FieldOffice).filter_by(name=name).first()
+    if existing is not None:
+        flash(f'"{name}" is already in the list.', "error")
+        return redirect(request.referrer or url_for("crm_tracking.dashboard"))
+
+    office = FieldOffice(name=name, address=request.form.get("address", "").strip() or None)
+    SessionLocal.add(office)
+    SessionLocal.flush()
+    audit_service.log_change("FieldOffice", office.id, "create",
+                              description=f"Field office '{name}' added", user_id=current_user.id)
+    SessionLocal.commit()
+    flash(f'"{name}" added to field offices.', "success")
+    return redirect(request.referrer or url_for("crm_tracking.dashboard"))
 
 
 def _apply_form(tracked: CaseTrackedForm) -> None:
@@ -137,9 +171,20 @@ def tracking_new(case_id: int):
         (previous.application_type if previous else None),
     )
     SessionLocal.add(tracked)
+    SessionLocal.flush()
+    audit_service.log_change("CaseTrackedForm", tracked.id, "create",
+                              description=f"Now tracking {tracked.form_number}", user_id=current_user.id)
     SessionLocal.commit()
     flash(f"Now tracking {tracked.form_number}.", "success")
     return redirect(url_for("crm_tracking.case_tracking", case_id=case_id))
+
+
+TRACKED_FORM_TRACKED_FIELDS = [
+    "form_number", "application_type", "filing_method", "field_office_id", "receipt_number",
+    "receipt_date", "finalized_at", "monitoring_started_at", "approval_date", "rfe_received",
+    "uscis_received_at", "expected_arrival_at", "actual_arrival_at", "usps_tracking_number",
+    "notes_markdown",
+]
 
 
 @crm_tracking_bp.route("/<int:tracked_id>/salvar", methods=["POST"])
@@ -147,7 +192,10 @@ def tracking_save(tracked_id: int):
     tracked = SessionLocal.get(CaseTrackedForm, tracked_id)
     if tracked is None:
         abort(404)
+    before = {f: getattr(tracked, f) for f in TRACKED_FORM_TRACKED_FIELDS}
     _apply_form(tracked)
+    changes = {f: (before[f], getattr(tracked, f)) for f in TRACKED_FORM_TRACKED_FIELDS}
+    audit_service.log_field_changes("CaseTrackedForm", tracked.id, changes, user_id=current_user.id)
     SessionLocal.commit()
     flash(f"{tracked.form_number} updated.", "success")
     return redirect(url_for("crm_tracking.case_tracking", case_id=tracked.case_id))
@@ -162,6 +210,8 @@ def tracking_check(tracked_id: int):
     if tracked is None:
         abort(404)
     svc.register_tracked_form_check(tracked, now=datetime.now(timezone.utc))
+    audit_service.log_change("CaseTrackedForm", tracked.id, "status_check",
+                              description="Check registered — next check in 7 days", user_id=current_user.id)
     SessionLocal.commit()
     flash(f"Check registered for {tracked.form_number}. Next check in 7 days.", "success")
     return redirect(request.referrer or url_for("crm_tracking.case_tracking", case_id=tracked.case_id))
@@ -173,6 +223,8 @@ def tracking_delete(tracked_id: int):
     if tracked is None:
         abort(404)
     case_id = tracked.case_id
+    audit_service.log_change("CaseTrackedForm", tracked.id, "delete",
+                              description=f"{tracked.form_number} removed", user_id=current_user.id)
     SessionLocal.delete(tracked)
     SessionLocal.commit()
     flash("Tracked form removed.", "success")

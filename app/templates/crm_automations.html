@@ -1,0 +1,157 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Automations (CRM){% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Automations</h1>
+  <p style="opacity:0.92;margin:0;">Post-sale follow-up based on each case's timeline — create a task or notify the responsible collaborator a number of days before/after a case date. Only active (open) cases are considered.</p>
+</div>
+
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <p class="muted" style="font-size:0.82rem;margin:0;">Automatic daily execution needs to be scheduled outside the app (see <code>scripts/run_automations.py</code>). Use the button below to run everything right now.</p>
+  <form method="post" action="{{ url_for('crm_automations.run_all') }}">
+    <button type="submit" class="btn" style="padding:8px 16px;font-size:0.85rem;">Run all active automations now</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Rules ({{ rules|length }})</h2>
+  {% if rules %}
+  {% for rule in rules %}
+  <div style="border-bottom:1px solid var(--border);padding:14px 0;">
+    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+      <strong style="min-width:160px;">{{ rule.name }}</strong>
+      {% if rule.active %}<span class="badge completed">Active</span>{% else %}<span class="badge in_progress">Paused</span>{% endif %}
+      {% set offset_abs = -rule.offset_days if rule.offset_days < 0 else rule.offset_days %}
+      <span class="muted" style="font-size:0.78rem;">
+        {{ offset_abs }} day{{ 's' if offset_abs != 1 }} {{ 'before' if rule.offset_days < 0 else 'after' if rule.offset_days > 0 else 'on' }}
+        {{ rule.trigger_field.value|replace('_',' ') }}
+        → {{ 'Create task' if rule.action_type.value == 'create_task' else 'Notify responsible' }}
+      </span>
+      {% if rule.service %}<span class="muted" style="font-size:0.78rem;">· {{ rule.service.name }}</span>{% else %}<span class="muted" style="font-size:0.78rem;">· All services</span>{% endif %}
+      <span class="muted" style="font-size:0.78rem;margin-left:auto;">{{ run_counts[rule.id].success }} ran · {{ run_counts[rule.id].error }} error{{ 's' if run_counts[rule.id].error != 1 }}</span>
+    </div>
+
+    <form method="post" action="{{ url_for('crm_automations.rule_save', rule_id=rule.id) }}"
+          style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:10px;">
+      <div>
+        <label class="muted" style="font-size:0.78rem;">Name</label><br>
+        <input type="text" name="name" value="{{ rule.name }}" required style="width:100%;">
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.78rem;">Service (optional)</label><br>
+        <select name="service_catalog_id" style="width:100%;">
+          <option value="">All services</option>
+          {% for s in services %}<option value="{{ s.id }}" {{ 'selected' if rule.service_catalog_id == s.id }}>{{ s.name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.78rem;">Trigger date</label><br>
+        <select name="trigger_field" style="width:100%;">
+          {% for tf in trigger_fields %}<option value="{{ tf.value }}" {{ 'selected' if rule.trigger_field == tf }}>{{ tf.value|replace('_',' ')|title }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.78rem;">Offset (days, negative = before)</label><br>
+        <input type="number" name="offset_days" value="{{ rule.offset_days }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted" style="font-size:0.78rem;">Action</label><br>
+        <select name="action_type" style="width:100%;">
+          {% for at in action_types %}<option value="{{ at.value }}" {{ 'selected' if rule.action_type == at }}>{{ 'Create task' if at.value == 'create_task' else 'Notify responsible' }}</option>{% endfor %}
+        </select>
+      </div>
+      <div style="grid-column:1/-1;">
+        <label class="muted" style="font-size:0.78rem;">Task title / notification text — use <code>{case}</code> for the case title</label><br>
+        <input type="text" name="action_text" value="{{ rule.action_text }}" required style="width:100%;">
+      </div>
+      <div style="grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save</button>
+      </div>
+    </form>
+
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;">
+      <form method="post" action="{{ url_for('crm_automations.rule_test', rule_id=rule.id) }}">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Test mode (no changes made)</button>
+      </form>
+      <form method="post" action="{{ url_for('crm_automations.rule_run', rule_id=rule.id) }}">
+        <button type="submit" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.78rem;padding:5px 12px;">Run now</button>
+      </form>
+      {% if rule.active %}
+      <form method="post" action="{{ url_for('crm_automations.rule_pause', rule_id=rule.id) }}">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Pause</button>
+      </form>
+      {% else %}
+      <form method="post" action="{{ url_for('crm_automations.rule_resume', rule_id=rule.id) }}">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Resume</button>
+      </form>
+      {% endif %}
+      <form method="post" action="{{ url_for('crm_automations.rule_delete', rule_id=rule.id) }}"
+            onsubmit="return confirm('Permanently delete \'{{ rule.name }}\'? This also removes its run history.');">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid #b91c1c;border-radius:var(--radius-sm);color:#b91c1c;cursor:pointer;font-size:0.78rem;padding:5px 12px;">Delete</button>
+      </form>
+    </div>
+
+    {% if rule.runs %}
+    <details style="margin-top:8px;">
+      <summary style="cursor:pointer;font-size:0.8rem;color:var(--accent);">History ({{ rule.runs|length }})</summary>
+      <div style="margin-top:6px;">
+        {% for run in rule.runs[:10] %}
+        <div style="font-size:0.8rem;padding:4px 0;border-bottom:1px solid var(--border);">
+          {{ run.executed_at.strftime('%m/%d/%Y %I:%M %p') }} —
+          {% if run.status.value == 'success' %}<span style="color:#16a34a;">✓ {{ run.result_text }}</span>
+          {% else %}<span style="color:#991b1b;">✗ {{ run.error_text }}</span>{% endif %}
+          <span class="muted">({{ run.case.title }})</span>
+        </div>
+        {% endfor %}
+      </div>
+    </details>
+    {% endif %}
+  </div>
+  {% endfor %}
+  {% else %}
+  <p class="muted">No automations yet — add one below.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Add an automation</h2>
+  <form method="post" action="{{ url_for('crm_automations.rule_new') }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px;">
+    <div>
+      <label class="muted">Name</label><br>
+      <input type="text" name="name" required style="width:100%;">
+    </div>
+    <div>
+      <label class="muted">Service (optional)</label><br>
+      <select name="service_catalog_id" style="width:100%;">
+        <option value="">All services</option>
+        {% for s in services %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Trigger date</label><br>
+      <select name="trigger_field" required style="width:100%;">
+        {% for tf in trigger_fields %}<option value="{{ tf.value }}">{{ tf.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Offset (days, negative = before)</label><br>
+      <input type="number" name="offset_days" value="-30" style="width:100%;">
+    </div>
+    <div>
+      <label class="muted">Action</label><br>
+      <select name="action_type" required style="width:100%;">
+        {% for at in action_types %}<option value="{{ at.value }}">{{ 'Create task' if at.value == 'create_task' else 'Notify responsible' }}</option>{% endfor %}
+      </select>
+    </div>
+    <div style="grid-column:1/-1;">
+      <label class="muted">Task title / notification text — use <code>{case}</code> for the case title</label><br>
+      <input type="text" name="action_text" required style="width:100%;" placeholder="e.g. Renewal window opening soon for {case}">
+    </div>
+    <div>
+      <button type="submit" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.82rem;padding:8px 16px;">Create automation</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

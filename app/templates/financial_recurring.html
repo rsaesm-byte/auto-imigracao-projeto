@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% block title %}Recurring Transactions — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Recurring Transactions</h1>
+  <p style="opacity:0.92;margin:0;">Income, expenses and savings contributions that repeat — posted to your transaction ledger automatically. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.subscriptions') }}" style="color:#fff;text-decoration:underline;">Subscriptions →</a></p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Schedules</h2>
+  {% if recurring_list %}
+  <table class="submissions">
+    <thead><tr><th>Name</th><th>Kind</th><th>Amount</th><th>Frequency</th><th>Next</th><th>Account</th><th></th></tr></thead>
+    <tbody>
+      {% for r in recurring_list %}
+      <tr>
+        <td>{{ r.name }}</td>
+        <td class="muted">{{ r.transaction_kind.value|replace('_',' ')|title }}</td>
+        <td>{{ r.amount_cents|usd }}</td>
+        <td class="muted">{{ r.frequency.value|title }}</td>
+        <td class="muted">{{ r.next_occurrence.strftime('%m/%d/%Y') if r.next_occurrence else '—' }}</td>
+        <td class="muted">{{ accounts|selectattr('id', 'equalto', r.account_id)|map(attribute='account_name')|first or '—' }}</td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.recurring_delete', recurring_id=r.id) }}"
+                onsubmit="return confirm('Remove this recurring schedule? Transactions already posted are kept.');" style="display:inline;">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No recurring schedules yet — add one below (e.g. your paycheck, a subscription, an automatic savings transfer).</p>
+  {% endif %}
+
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add recurring schedule</summary>
+    <form method="post" action="{{ url_for('financial_workspace.recurring_new') }}"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <select name="transaction_kind" required>
+        <option value="">Kind…</option>
+        {% for k in kinds %}<option value="{{ k.value }}">{{ k.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+      <input type="text" name="name" required placeholder="Name (e.g. Paycheck, Netflix)" style="min-width:180px;flex:1;">
+      <input type="text" name="amount" required placeholder="Amount $" style="width:120px;">
+      <select name="frequency">
+        {% for f in frequencies %}<option value="{{ f.value }}" {% if f.value == 'monthly' %}selected{% endif %}>{{ f.value|title }}</option>{% endfor %}
+      </select>
+      <select name="account_id" required>
+        <option value="">Account…</option>
+        {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+      </select>
+      <input type="date" lang="en-US" name="start_date" value="{{ today }}" required>
+      <input type="date" lang="en-US" name="end_date" title="End date — optional">
+      <input type="text" name="notes" placeholder="Notes — optional" style="min-width:160px;">
+      <button type="submit" class="btn">Add</button>
+    </form>
+    <p class="muted" style="font-size:0.74rem;margin-top:8px;">Custom frequency schedules never post automatically — add those transactions manually.</p>
+  </details>
+</div>
+{% endblock %}

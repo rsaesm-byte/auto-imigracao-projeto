@@ -1,9 +1,14 @@
 Flask>=3.1
 Flask-Login>=0.6.3
 SQLAlchemy>=2.0
+alembic>=1.19
 waitress>=3.0
 pypdf>=6.13
 reportlab>=5.0
 python-dotenv>=1.2
 requests>=2.31
 cryptography>=43.0
+
+# testes (dev-only -- não precisa em produção, mas fica num requirements
+# só pra não inventar um segundo arquivo/convenção pra 1 pacote)
+pytest>=9.1

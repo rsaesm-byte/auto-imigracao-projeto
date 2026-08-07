@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import kanban_col_count, view_switcher, table_view, list_view, calendar_view %}
 {% block title %}Staff — Financial Coaching{% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -8,21 +9,32 @@
   <p style="opacity:0.92;margin:0;">Client funnel for the financial coaching program (6 sessions). Payment ledger reuses the same "Payments (CRM)" tab from the immigration module.</p>
 </div>
 
-<div class="card" style="display:flex;gap:10px;">
-  <a href="{{ url_for('crm_financial.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New client</a>
-  <a href="{{ url_for('crm_financial.kpis') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">View monthly KPIs</a>
+<div class="card" style="display:flex;gap:10px;justify-content:space-between;align-items:center;flex-wrap:wrap;">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;">
+    <a href="{{ url_for('crm_financial.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New client</a>
+    <a href="{{ url_for('crm_financial.kpis') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">View monthly KPIs</a>
+  </div>
+  {% if view == 'kanban' %}
+  <div class="list-filter-box">
+    <input type="text" class="list-filter-input" placeholder="Filter clients…">
+    <kbd>/</kbd>
+  </div>
+  {% endif %}
+  {{ view_switcher(view, url_for('crm_financial.clients_kanban')) }}
 </div>
 
+{% if view == 'kanban' %}
 <div class="crm-kanban" data-draggable="true">
   {% for status in statuses %}
   <div class="crm-kanban-col" data-status-field="client_status" data-status-value="{{ status.value }}"
-       data-action-template="{{ url_for('crm_financial.client_status_update', financial_client_id=999999) }}">
-    <h3>{{ crm_badge(status) }} ({{ by_status[status]|length }})</h3>
+       data-action-template="{{ url_for('crm_financial.client_status_update', financial_client_id=999999) }}"
+       {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
+    <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for fc in by_status[status] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ fc.id }}">
       <h4><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}">{{ fc.full_name }}</a></h4>
       {% if fc.package_value_cents %}
-      <div class="muted">Balance: ${{ '%.2f'|format((remaining_balance_cents(fc) or 0) / 100) }}</div>
+      <div class="muted">Balance: {{ (remaining_balance_cents(fc) or 0)|usd }}</div>
       {% endif %}
       {% set remaining = sessions_remaining(fc) %}
       {% if remaining is not none %}<div class="muted">{{ remaining }} sessions remaining</div>{% endif %}
@@ -32,4 +44,18 @@
   {% endfor %}
 </div>
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
+<script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+
+{% elif view == 'table' %}
+<div class="card">{{ table_view(all_rows, columns) }}</div>
+
+{% elif view == 'list' %}
+<div class="card">{{ list_view(statuses, by_status, stage_labels, columns) }}</div>
+
+{% elif view == 'calendar' %}
+<div class="card">
+  {{ calendar_view(calendar_grid, url_for('crm_financial.clients_kanban'), columns[0].value, columns[0].url) }}
+</div>
+{% endif %}
 {% endblock %}

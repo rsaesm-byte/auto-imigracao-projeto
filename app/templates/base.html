@@ -16,36 +16,81 @@
       <img class="brand-logo" src="{{ url_for('static', filename='logo-full.png') }}" alt="{{ t('app_name') }}">
     </a>
     <div class="topbar-right">
-      <a class="logout" href="{{ url_for('wizard.dashboard') if current_user.is_authenticated else url_for('wizard.index') }}">{{ t('nav_home') }}</a>
-      <a class="logout" href="{{ url_for('wizard.services') }}">{{ t('nav_services') }}</a>
-      <a class="logout" href="{{ url_for('packages.index') }}">{{ t('nav_packages') }}</a>
-      <a class="logout" href="{{ url_for('about.index') }}">{{ t('nav_about') }}</a>
-      <a class="logout" href="{{ url_for('payment_methods.index') }}">{{ t('nav_payment_methods') }}</a>
-      <a class="logout" href="https://saesprofessional.com/" target="_blank" rel="noopener noreferrer">{{ t('nav_website') }}</a>
-      <div class="nav-dropdown">
-        <button type="button" class="logout nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
-          {{ t('nav_free_tools') }}
-          <svg class="nav-dropdown-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <div class="nav-dropdown-menu" hidden>
-          <a href="{{ url_for('visa_bulletin.index') }}">{{ t('nav_visa_bulletin') }}</a>
-          <a href="{{ url_for('income_calculator.index') }}">{{ t('nav_income_calc') }}</a>
-          <a href="{{ url_for('medical_exam.index') }}">{{ t('nav_medical_exam') }}</a>
-          <a href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
-          <a href="{{ url_for('eligibility.index') }}">{{ t('nav_eligibility') }}</a>
-        </div>
-      </div>
       {% if current_user.is_authenticated %}
+        {# Pedido do usuário 2026-08-06: cliente logado vê uma interface mais
+           enxuta -- os links institucionais (Home/Serviços/Pacotes/Sobre/
+           Formas de Pagamento/Website/Ferramentas Gratuitas) somem atrás de
+           UM dropdown "Início", e "Meu Caso" fica como aba própria e
+           destacada (não escondida dentro do menu). Visitante deslogado
+           continua vendo tudo direto na barra, sem essa mudança (ver bloco
+           else abaixo). #}
+        <div class="nav-dropdown">
+          <button type="button" class="logout nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            {{ t('nav_home') }}
+            <svg class="nav-dropdown-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" hidden>
+            <a href="{{ url_for('wizard.dashboard') }}">{{ t('nav_home_page') }}</a>
+            <a href="{{ url_for('wizard.services') }}">{{ t('nav_services') }}</a>
+            <a href="{{ url_for('about.index') }}">{{ t('nav_about') }}</a>
+            <a href="{{ url_for('payment_methods.index') }}">{{ t('nav_payment_methods') }}</a>
+            <a href="https://saesprofessional.com/" target="_blank" rel="noopener noreferrer">{{ t('nav_website') }}</a>
+            <div class="nav-dropdown nav-dropdown-nested">
+              <button type="button" class="nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+                {{ t('nav_free_tools') }}
+                <svg class="nav-dropdown-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <div class="nav-dropdown-menu" hidden>
+                <a href="{{ url_for('visa_bulletin.index') }}">{{ t('nav_visa_bulletin') }}</a>
+                <a href="{{ url_for('income_calculator.index') }}">{{ t('nav_income_calc') }}</a>
+                <a href="{{ url_for('medical_exam.index') }}">{{ t('nav_medical_exam') }}</a>
+                <a href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
+                <a href="{{ url_for('eligibility.index') }}">{{ t('nav_eligibility') }}</a>
+              </div>
+            </div>
+          </div>
+        </div>
         {% if has_crm_case %}
-        <a class="logout" href="{{ url_for('crm_client.meu_caso') }}">{{ t('nav_my_case') }}</a>
+        <a class="logout" href="{{ url_for('crm_client.meu_caso') }}" style="font-weight:700;">{{ t('nav_my_case') }}</a>
         <a class="logout" href="{{ url_for('crm_client.translations') }}">{{ t('nav_translations') }}</a>
         {% endif %}
         {% if has_financial_plan %}
         <a class="logout" href="{{ url_for('crm_financial_client.meu_plano') }}">{{ t('nav_financial_plan') }}</a>
         {% endif %}
+        {% if financial_planning_enabled %}
+        <a class="logout" href="{{ url_for('financial_workspace.dashboard') }}">Financial Workspace</a>
+        {% endif %}
+        {# Pedido do usuário 2026-08-06: mesmo widget de notificação da
+           equipe (símbolo da Saes piscando quando há aviso não lido, ver
+           _notification_widget.html) -- aqui escopado só pras
+           notificações PRIVADAS deste cliente (app/client_notifications.py).
+           poll_url/mark_read_url via {% set %} porque {% include %} não
+           aceita kwargs -- "with context" só compartilha o que já está no
+           contexto deste template, então precisam existir aqui antes. #}
+        {% set poll_url = url_for('client_notifications.poll') %}
+        {% set mark_read_url = url_for('client_notifications.mark_read') %}
+        {% include "_notification_widget.html" with context %}
         <span class="muted">{{ current_user.email }}</span>
         <a class="logout" href="{{ url_for('auth.logout') }}">{{ t('nav_logout') }}</a>
       {% else %}
+        <a class="logout" href="{{ url_for('wizard.index') }}">{{ t('nav_home') }}</a>
+        <a class="logout" href="{{ url_for('wizard.services') }}">{{ t('nav_services') }}</a>
+        <a class="logout" href="{{ url_for('about.index') }}">{{ t('nav_about') }}</a>
+        <a class="logout" href="{{ url_for('payment_methods.index') }}">{{ t('nav_payment_methods') }}</a>
+        <a class="logout" href="https://saesprofessional.com/" target="_blank" rel="noopener noreferrer">{{ t('nav_website') }}</a>
+        <div class="nav-dropdown">
+          <button type="button" class="logout nav-dropdown-toggle" aria-haspopup="true" aria-expanded="false">
+            {{ t('nav_free_tools') }}
+            <svg class="nav-dropdown-caret" width="10" height="6" viewBox="0 0 10 6" aria-hidden="true"><path d="M1 1l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <div class="nav-dropdown-menu" hidden>
+            <a href="{{ url_for('visa_bulletin.index') }}">{{ t('nav_visa_bulletin') }}</a>
+            <a href="{{ url_for('income_calculator.index') }}">{{ t('nav_income_calc') }}</a>
+            <a href="{{ url_for('medical_exam.index') }}">{{ t('nav_medical_exam') }}</a>
+            <a href="{{ url_for('civics.index') }}">{{ t('nav_civics') }}</a>
+            <a href="{{ url_for('eligibility.index') }}">{{ t('nav_eligibility') }}</a>
+          </div>
+        </div>
         <a class="logout" href="{{ url_for('auth.login') }}">{{ t('nav_login') }}</a>
         <a class="btn" style="padding:7px 16px;font-size:0.88rem;" href="{{ url_for('auth.signup') }}">{{ t('nav_signup') }}</a>
       {% endif %}
@@ -134,31 +179,42 @@
 
   <script>
     (function () {
-      var wrap = document.querySelector('.nav-dropdown');
-      if (!wrap) return;
-      var toggle = wrap.querySelector('.nav-dropdown-toggle');
-      var menu = wrap.querySelector('.nav-dropdown-menu');
-      function close() {
-        menu.hidden = true;
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-      function open() {
-        menu.hidden = false;
-        toggle.setAttribute('aria-expanded', 'true');
-      }
-      toggle.addEventListener('click', function (e) {
-        e.stopPropagation();
-        if (menu.hidden) { open(); } else { close(); }
-      });
-      document.addEventListener('click', function (e) {
-        if (!menu.hidden && !wrap.contains(e.target)) close();
-      });
-      document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') close();
+      // querySelectorAll (não querySelector) -- pedido do usuário
+      // 2026-08-06: cliente logado agora tem um dropdown "Início" com um
+      // segundo dropdown ANINHADO dentro ("Ferramentas Gratuitas", ver
+      // base.html/style.css .nav-dropdown-nested) -- cada wrap resolve seu
+      // PRÓPRIO toggle/menu via wrap.querySelector porque esses são os
+      // primeiros descendentes em ordem de documento (o do dropdown aninhado
+      // vem depois, mais fundo na árvore), e o stopPropagation abaixo evita
+      // que um clique no toggle aninhado borbulhe e seja lido como "clique
+      // fora" pelo dropdown externo.
+      document.querySelectorAll('.nav-dropdown').forEach(function (wrap) {
+        var toggle = wrap.querySelector('.nav-dropdown-toggle');
+        var menu = wrap.querySelector('.nav-dropdown-menu');
+        if (!toggle || !menu) return;
+        function close() {
+          menu.hidden = true;
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+        function open() {
+          menu.hidden = false;
+          toggle.setAttribute('aria-expanded', 'true');
+        }
+        toggle.addEventListener('click', function (e) {
+          e.stopPropagation();
+          if (menu.hidden) { open(); } else { close(); }
+        });
+        document.addEventListener('click', function (e) {
+          if (!menu.hidden && !wrap.contains(e.target)) close();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') close();
+        });
       });
     })();
   </script>
 
   {% include "_chat_widget.html" %}
+  <script src="{{ url_for('static', filename='date-format-label.js') }}" defer></script>
 </body>
 </html>

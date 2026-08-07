@@ -25,7 +25,19 @@ def _financial_client_for_current_user() -> FinancialClient | None:
 
 @crm_financial_client_bp.app_context_processor
 def _inject_has_financial_plan():
-    return {"has_financial_plan": _financial_client_for_current_user() is not None}
+    fc = _financial_client_for_current_user()
+    return {
+        "has_financial_plan": fc is not None,
+        # Distinto de `has_financial_plan` acima (que só checa se a
+        # pessoa é cliente de coaching, gate já em produção pra
+        # /meu-plano-financeiro) -- este é o gate do módulo self-service
+        # NOVO (Fase 1 do SAES_Financial_Planning_Master_Spec,
+        # 2026-08-07). Ainda sem nenhuma página própria pra mostrar
+        # (isso é Fase 2 em diante -- contas/orçamento/dívidas/metas);
+        # existe aqui só pra já ficar pronto pro nav item real quando
+        # essas telas existirem, sem precisar mexer neste arquivo de novo.
+        "financial_planning_enabled": bool(fc and fc.financial_planning_enabled),
+    }
 
 
 @crm_financial_client_bp.route("/meu-plano-financeiro")

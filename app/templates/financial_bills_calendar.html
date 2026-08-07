@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% from "_crm_ui.html" import calendar_view %}
+{% block title %}Bills Calendar — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Bills Calendar</h1>
+  <p style="opacity:0.92;margin:0;"><a href="{{ url_for('financial_workspace.bills') }}" style="color:#fff;text-decoration:underline;">← Back to Bills</a></p>
+</div>
+
+<div class="card">
+  {{ calendar_view(calendar_grid, url_for('financial_workspace.bills_calendar'), title_fn, url_fn, color_fn) }}
+</div>
+{% endblock %}

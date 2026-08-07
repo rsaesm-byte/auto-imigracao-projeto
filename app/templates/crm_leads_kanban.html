@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import tooltip, kanban_col_count, view_switcher, table_view, list_view, calendar_view %}
 {% block title %}Staff — Leads (CRM){% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -9,6 +10,30 @@
 </div>
 
 {% if convert_lead %}
+{% if duplicate_clients %}
+<div class="card" style="border:1px solid #b45309;background:#fffbeb;">
+  <h2 style="margin-top:0;color:#92400e;">⚠ Possible duplicate client</h2>
+  <p class="muted">This lead's name, e-mail or phone matches an existing client. If it's the same person, attach this as a new case to their record instead of creating a duplicate:</p>
+  {% for c in duplicate_clients %}
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:end;padding:10px 0;border-top:1px solid #fde68a;">
+    <div style="min-width:200px;">
+      <a href="{{ url_for('crm_pipeline.client_detail', client_id=c.id) }}" target="_blank">{{ c.full_name }}</a>
+      <div class="muted" style="font-size:0.78rem;">{{ c.email or '—' }} · {{ c.us_phone or '—' }}</div>
+    </div>
+    <form method="post" action="{{ url_for('crm_pipeline.lead_attach_to_client', lead_id=convert_lead.id, client_id=c.id) }}" style="display:flex;gap:8px;flex-wrap:wrap;align-items:end;">
+      <select name="service_mode" required>
+        {% for m in service_modes %}
+        <option value="{{ m.value }}">{{ {'self_service': 'Self-service', 'saes_standard': 'Saes Standard', 'saes_plus': 'Saes Plus'}[m.value] }}</option>
+        {% endfor %}
+      </select>
+      <input type="text" name="case_title" value="{{ suggested_title }}" required style="min-width:220px;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid #b45309;border-radius:var(--radius-sm);color:#92400e;cursor:pointer;font-size:0.8rem;padding:6px 12px;">Attach as new case to {{ c.full_name.split(' ')[0] }}</button>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
 <div class="card">
   <h2>Convert lead — {{ convert_lead.name }}</h2>
   <p class="muted">Closing this lead creates a new Client and Case. Choose the service tier and the case title.</p>
@@ -25,6 +50,11 @@
       <label class="muted">Case title</label><br>
       <input type="text" name="case_title" value="{{ suggested_title }}" required style="width:100%;">
     </div>
+    {% if duplicate_clients %}
+    <label class="muted" style="font-size:0.82rem;display:flex;align-items:center;gap:6px;">
+      <input type="checkbox" name="confirm_duplicate" value="1" required> This is a different person — create a new client anyway
+    </label>
+    {% endif %}
     <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Convert</button>
     <a href="{{ url_for('crm_pipeline.leads_kanban') }}" class="muted">Cancel</a>
   </form>
@@ -56,7 +86,7 @@
     </div>
     <div>
       <label class="muted">Deal value (USD)</label><br>
-      <input type="number" step="0.01" min="0" name="deal_value_dollars" style="max-width:120px;">
+      <input type="text" inputmode="decimal" name="deal_value_dollars" style="max-width:120px;">
     </div>
     <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Create</button>
   </form>
@@ -64,29 +94,58 @@
 
 {% else %}
 
-<div class="card">
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
   <a href="{{ url_for('crm_pipeline.lead_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New lead</a>
+  {% if view == 'kanban' %}
+  <div class="list-filter-box">
+    <input type="text" class="list-filter-input" placeholder="Filter leads…">
+    <kbd>/</kbd>
+  </div>
+  {% endif %}
+  {{ view_switcher(view, url_for('crm_pipeline.leads_kanban')) }}
 </div>
 
+{% if view == 'kanban' %}
 <div class="crm-kanban" data-draggable="true">
   {% for stage in stages %}
   <div class="crm-kanban-col" data-status-field="stage" data-status-value="{{ stage.value }}"
-       data-action-template="{{ url_for('crm_pipeline.lead_stage_update', lead_id=999999) }}">
-    <h3>{{ crm_badge(stage) }} ({{ by_stage[stage]|length }})</h3>
+       data-action-template="{{ url_for('crm_pipeline.lead_stage_update', lead_id=999999) }}"
+       {% if stage_colors.get(stage.value) %}style="--col-accent: {{ stage_colors[stage.value] }};"{% endif %}>
+    <h3>{{ crm_badge(stage, label=stage_labels.get(stage.value)) }} {{ kanban_col_count(by_stage[stage]|length) }}</h3>
     {% for lead in by_stage[stage] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ lead.id }}" data-lead-context-menu="true">
-      <h4>{{ lead.name }}</h4>
-      {% if lead.tier %}<div class="muted">{{ '⭐' * (lead.tier.value[-1]|int) }}</div>{% endif %}
+      <h4><a href="{{ url_for('crm_pipeline.lead_detail', lead_id=lead.id) }}" style="color:inherit;text-decoration:none;">{{ lead.name }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
+      {% if lead.tier %}<div class="muted">{{ '⭐' * (lead.tier.value[-1]|int) }} {{ tooltip('Lead Tier: classificação de 1 a 5 estrelas da qualidade/prioridade deste lead. Editável na ficha do lead.') }}</div>{% endif %}
       {% if lead.quality %}<div class="muted">Quality: {{ lead.quality.value|title }}</div>{% endif %}
       <div class="muted">Source: {{ sources[lead.lead_source_id].name if lead.lead_source_id in sources else '—' }}</div>
-      {% if lead.deal_value_cents %}<div class="muted">Value: {{ '$%.2f'|format(lead.deal_value_cents / 100) }}</div>{% endif %}
+      {% if lead.stage.value == 'closed_lost' %}<div class="muted">Reason: {{ reasons[lead.close_loss_reason_id].name if lead.close_loss_reason_id in reasons else 'No reason on file' }}</div>{% endif %}
+      {% if lead.deal_value_cents %}<div class="muted">Value: {{ lead.deal_value_cents|usd }}</div>{% endif %}
       {% if lead.assigned_to_id in users %}<div class="muted">Owner: {{ users[lead.assigned_to_id].email }}</div>{% endif %}
+    </div>
+    {% else %}
+    <div class="empty-state">
+      <div class="empty-state-icon">·</div>
+      <div class="empty-state-hint">No leads in this stage</div>
     </div>
     {% endfor %}
   </div>
   {% endfor %}
 </div>
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
+<script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+
+{% elif view == 'table' %}
+<div class="card">{{ table_view(all_rows, columns) }}</div>
+
+{% elif view == 'list' %}
+<div class="card">{{ list_view(stages, by_stage, stage_labels, columns) }}</div>
+
+{% elif view == 'calendar' %}
+<div class="card">
+  {{ calendar_view(calendar_grid, url_for('crm_pipeline.leads_kanban'), columns[0].value, columns[0].url) }}
+</div>
+{% endif %}
 
 {# Menu de botão direito (Editar/Excluir) -- pedido do usuário 2026-08-02:
    "ser possível clicar com botão direito e deletar, editar". Só nos
@@ -144,10 +203,24 @@
 </div>
 
 <div class="card">
+  <h2>Leads by ad source</h2>
+  {% for name, count in ad_source_counts %}
+  <div style="margin-bottom:8px;">
+    <div class="muted" style="font-size:0.8rem;">{{ name }} ({{ count }})</div>
+    <div style="background:var(--border);border-radius:999px;height:8px;">
+      <div style="width:{{ (count / max_ad_source_count * 100)|round }}%;background:var(--cta);height:8px;border-radius:999px;"></div>
+    </div>
+  </div>
+  {% else %}
+  <p class="muted">No leads registered yet.</p>
+  {% endfor %}
+</div>
+
+<div class="card">
   <h2>Conversion rate by source</h2>
   {% for name, pct in source_conversion %}
   <div style="margin-bottom:8px;">
-    <div class="muted" style="font-size:0.8rem;">{{ name }} ({{ pct }}%)</div>
+    <div class="muted" style="font-size:0.8rem;">{{ name }} ({{ pct|pct }})</div>
     <div style="background:var(--border);border-radius:999px;height:8px;">
       <div style="width:{{ pct }}%;background:var(--success);height:8px;border-radius:999px;"></div>
     </div>
@@ -155,6 +228,21 @@
   {% else %}
   <p class="muted">No leads registered yet.</p>
   {% endfor %}
+</div>
+
+<div class="card">
+  <h2>Reasons for not closing</h2>
+  <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Rename an existing reason, or add a new one — shows up on every lead's "Reason for not closing" field.</p>
+  {% for r in close_loss_reasons %}
+  <form method="post" action="{{ url_for('crm_pipeline.close_loss_reason_rename', reason_id=r.id) }}" style="display:flex;gap:8px;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);">
+    <input type="text" name="name" value="{{ r.name }}" style="flex:1;min-width:180px;">
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.76rem;padding:4px 10px;">Save</button>
+  </form>
+  {% endfor %}
+  <form method="post" action="{{ url_for('crm_pipeline.close_loss_reason_new') }}" style="display:flex;gap:8px;align-items:center;padding-top:10px;">
+    <input type="text" name="name" placeholder="New reason" required style="flex:1;min-width:180px;">
+    <button type="submit" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.76rem;padding:4px 10px;">+ Add</button>
+  </form>
 </div>
 
 {% endif %}

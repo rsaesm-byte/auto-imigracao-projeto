@@ -1,0 +1,172 @@
+{% extends "staff_base.html" %}
+{% from "_crm_ui.html" import history_widget %}
+{% block title %}Staff — Payment #{{ p.id }}{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Payment — {{ p.description }}</h1>
+  <p style="opacity:0.92;margin:0;">
+    {% if p.client_id %}<a href="{{ url_for('crm_pipeline.client_detail', client_id=p.client_id) }}" style="color:#fff;">{{ p.client.full_name if p.client else 'Client' }}</a>{% endif %}
+    {% if p.case_id %} · <a href="{{ url_for('crm_ops.case_procedure', case_id=p.case_id) }}" style="color:#fff;">{{ p.case.title if p.case else 'Case' }}</a>{% endif %}
+  </p>
+</div>
+
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;">
+  <a href="{{ url_for('crm_ops.payments') }}" class="muted" style="font-size:0.85rem;">← Back to Payments</a>
+  {{ history_widget('paymentledger-history-drawer', 'History — Payment #' ~ p.id, history, history_users, empty_hint='Changes to this payment will show up here.') }}
+</div>
+
+<form method="post" action="{{ url_for('crm_ops.payment_update', payment_id=p.id) }}" enctype="multipart/form-data">
+  <div class="card">
+    <h2 style="font-size:1rem;">Linked to</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div>
+        <label class="muted">Client belongs to</label><br>
+        <select name="owner_type" id="owner_type" style="width:100%;"
+                onchange="document.getElementById('owner_client').hidden = this.value !== 'client'; document.getElementById('owner_financial').hidden = this.value !== 'financial_client';">
+          <option value="client" {{ 'selected' if p.client_id }}>Immigration</option>
+          <option value="financial_client" {{ 'selected' if p.financial_client_id }}>Financial Coaching</option>
+        </select>
+      </div>
+      <div id="owner_client" {{ 'hidden' if p.financial_client_id }}>
+        <label class="muted">Client (immigration)</label><br>
+        <select name="owner_id_client" style="width:100%;">
+          <option value="">—</option>
+          {% for c in clients_list %}<option value="{{ c.id }}" {{ 'selected' if p.client_id == c.id }}>{{ c.full_name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div id="owner_financial" {{ 'hidden' if not p.financial_client_id }}>
+        <label class="muted">Client (coaching)</label><br>
+        <select name="owner_id_financial" style="width:100%;">
+          <option value="">—</option>
+          {% for fc in financial_clients_list %}<option value="{{ fc.id }}" {{ 'selected' if p.financial_client_id == fc.id }}>{{ fc.full_name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Case (optional)</label><br>
+        <select name="case_id" style="width:100%;">
+          <option value="">—</option>
+          {% for c in cases_list %}<option value="{{ c.id }}" {{ 'selected' if p.case_id == c.id }}>{{ c.client.full_name }} — {{ c.title }}</option>{% endfor %}
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1rem;">Details</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div style="grid-column:1/-1;">
+        <label class="muted">Description</label><br>
+        <input type="text" name="description" value="{{ p.description }}" required style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Amount</label><br>
+        <input type="text" inputmode="decimal" name="amount_dollars" value="{{ p.amount_cents|usd_input }}" required style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Currency</label><br>
+        <select name="currency" style="width:100%;">{% for cur in currencies %}<option value="{{ cur.value }}" {{ 'selected' if p.currency == cur }}>{{ cur.value|upper }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Type of Payment</label><br>
+        <select name="direction" id="direction" style="width:100%;"
+                onchange="document.getElementById('fee-type-section').hidden = this.value !== 'payable';">
+          {% for d in directions %}<option value="{{ d.value }}" {{ 'selected' if p.direction == d }}>{{ 'Receivables' if d.value == 'receivable' else 'Payables' }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Status</label><br>
+        <select name="status" style="width:100%;">{% for s in statuses %}<option value="{{ s.value }}" {{ 'selected' if p.status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+      </div>
+      <div>
+        <label class="muted">Package</label><br>
+        <select name="package" style="width:100%;">
+          <option value="">—</option>
+          {% for pk in packages %}<option value="{{ pk.value }}" {{ 'selected' if p.package == pk }}>{{ 'Accessible' if pk.value == 'self_service' else ('Saes Standard' if pk.value == 'saes_standard' else 'Saes Plus') }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Payment request date</label><br>
+        <input type="date" lang="en-US" name="invoice_date" value="{{ p.invoice_date.isoformat() if p.invoice_date else '' }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Payment deadline</label><br>
+        <input type="date" lang="en-US" name="due_date" value="{{ p.due_date.isoformat() if p.due_date else '' }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Payment date</label><br>
+        <input type="date" lang="en-US" name="payment_date" value="{{ p.payment_date.isoformat() if p.payment_date else '' }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Discount</label><br>
+        <input type="text" inputmode="decimal" name="discount_dollars" value="{{ p.discount_cents|usd_input }}" style="width:100%;">
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <label class="muted">Notes (discount, special price, etc.)</label><br>
+      <textarea name="notes" rows="2" style="width:100%;font-family:inherit;">{{ p.notes or '' }}</textarea>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1rem;">Payment confirmation</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;">
+      <div>
+        <label class="muted">Confirmation ID</label><br>
+        <input type="text" name="confirmation_id" value="{{ p.confirmation_id or '' }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Payment method</label><br>
+        <select name="payment_method_id" style="width:100%;">
+          <option value="">—</option>
+          {% for m in payment_methods %}<option value="{{ m.id }}" {{ 'selected' if p.payment_method_id == m.id }}>{{ m.name }}</option>{% endfor %}
+        </select>
+        <p class="muted" style="font-size:0.76rem;margin:4px 0 0;">To add or rename a payment method, use the list on the Payments page.</p>
+      </div>
+      <div>
+        <label class="muted">Paid by (full name)</label><br>
+        <input type="text" name="paid_by" value="{{ p.paid_by or '' }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">Approved by</label><br>
+        <select name="approved_by_id" style="width:100%;">
+          <option value="">—</option>
+          {% for u in staff_users %}<option value="{{ u.id }}" {{ 'selected' if p.approved_by_id == u.id }}>{{ u.email }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Reviewed by</label><br>
+        <select name="reviewed_by_id" style="width:100%;">
+          <option value="">—</option>
+          {% for u in staff_users %}<option value="{{ u.id }}" {{ 'selected' if p.reviewed_by_id == u.id }}>{{ u.email }}</option>{% endfor %}
+        </select>
+      </div>
+      <div>
+        <label class="muted">Attach receipt</label><br>
+        <input type="file" name="receipt" accept=".pdf,.png,.jpg,.jpeg,.webp,.heic" style="width:100%;">
+        {% if p.receipt_file_path %}
+        <p style="margin:4px 0 0;font-size:0.82rem;"><a href="{{ url_for('crm_ops.payment_receipt_download', payment_id=p.id) }}">View current receipt →</a></p>
+        {% endif %}
+      </div>
+    </div>
+    <div style="margin-top:14px;">
+      <label class="muted">Payment additional notes</label><br>
+      <textarea name="confirmation_notes" rows="2" style="width:100%;font-family:inherit;">{{ p.confirmation_notes or '' }}</textarea>
+    </div>
+  </div>
+
+  <div class="card" id="fee-type-section" {{ 'hidden' if p.direction.value != 'payable' }}>
+    <h2 style="font-size:1rem;">Type of Fee Payment</h2>
+    <p class="muted" style="font-size:0.8rem;margin-top:-6px;">Only relevant for Payables. To add or rename a fee type, use the list on the Payments page.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:10px;">
+      {% for ft in fee_types %}
+      <label style="display:flex;align-items:center;gap:5px;font-size:0.85rem;border:1px solid var(--border);border-radius:999px;padding:5px 12px;">
+        <input type="checkbox" name="fee_type_ids" value="{{ ft.id }}" {{ 'checked' if ft.id in selected_fee_type_ids }}> {{ ft.name }}
+      </label>
+      {% endfor %}
+    </div>
+  </div>
+
+  <button type="submit" class="btn" style="padding:10px 20px;">Save payment</button>
+</form>
+{% endblock %}

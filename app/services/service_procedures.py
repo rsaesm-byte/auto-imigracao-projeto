@@ -68,6 +68,30 @@ def all_service_slugs() -> list[str]:
     return sorted(p.stem for p in PROCEDURES_DIR.glob("*.json"))
 
 
+# DIY package slug (data/service_fees.json "package" -- Payment.package_slug)
+# -> service procedure slug (this module's own templates, normally only
+# used by the "Pacote Completo" ServiceCatalog rows) -- pedido do usuário
+# 2026-08-06: "eu quero que o checklist fique disponivel para todos os
+# casos DYI, Saes Standard, Saes Plus", não só Standard/Plus. DIY nunca tem
+# um CaseService (ver app/payment_gate.py::_promote_lead_on_payment_submitted),
+# então app/services/crm_service.py::apply_service_procedure_checklist cai
+# aqui como segunda tentativa quando não acha um CaseService.
+# "i539-cos" é o único caso ambíguo: o pacote DIY cobre TANTO Change of
+# Status pra F-1 quanto pra B-2 num pacote só ("Student or Visitor"), mas
+# cada um tem um checklist de documentos diferente -- mapeado pro template
+# F-1 (mais comum/complexo) por padrão; a equipe pode editar o checklist
+# manualmente pra um caso B-2 específico se for o caso.
+DIY_PACKAGE_TO_PROCEDURE_SLUG: dict[str, str] = {
+    "gc-aos": "gc_aos",
+    "gc-consular": "gc_consular",
+    "gc-roc": "gc_i751",
+    "cidadania": "citizenship_n400",
+    "gc-replacement": "gc_i90",
+    "i539-eos": "eos_b2",
+    "i539-cos": "cos_to_f1",
+}
+
+
 def service_display_name(slug: str, lang: str) -> str:
     """Nome do serviço no idioma do CLIENTE -- usado só em telas
     client-facing (ex.: catálogo público /servicos). Nunca usar isto no

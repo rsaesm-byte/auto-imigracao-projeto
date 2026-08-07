@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% block title %}Staff — Clients (CRM){% endblock %}
+{% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>Clients</h1>
@@ -31,23 +32,20 @@
 </div>
 {% else %}
 
-<div class="card">
-  <form method="get" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
-    <div>
-      <label class="muted">Search (name or email)</label><br>
-      <input type="text" name="q" value="{{ q }}">
-    </div>
-    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Search</button>
-    <a href="{{ url_for('crm_pipeline.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New client</a>
-  </form>
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <a href="{{ url_for('crm_pipeline.client_new') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New client</a>
+  <div class="list-filter-box">
+    <input type="text" class="list-filter-input" placeholder="Filter clients…" data-filter-target="#clients-table tbody" data-filter-item="tr">
+    <kbd>/</kbd>
+  </div>
 </div>
 
 <div class="card">
   {% if clients %}
   <div style="overflow-x:auto;">
-  <table class="submissions">
+  <table class="data-table" id="clients-table">
     <thead>
-      <tr><th>Name</th><th>Email</th><th>Tier</th><th>Phone</th><th>Open cases</th><th></th></tr>
+      <tr><th>Name</th><th>Email</th><th>Tier</th><th>Phone</th><th>Open cases</th><th style="min-width:100px;"></th></tr>
     </thead>
     <tbody>
       {% for c in clients %}
@@ -57,7 +55,7 @@
         <td class="muted">{{ c.tier.value if c.tier else '—' }}</td>
         <td class="muted">{{ c.us_phone or c.home_phone or '—' }}</td>
         <td class="muted">{{ open_case_counts.get(c.id, 0) }}</td>
-        <td><a href="{{ url_for('crm_pipeline.client_detail', client_id=c.id) }}">View details</a></td>
+        <td style="white-space:nowrap;"><a href="{{ url_for('crm_pipeline.client_detail', client_id=c.id) }}">View details</a></td>
       </tr>
       {% endfor %}
     </tbody>
@@ -67,5 +65,6 @@
   <p class="muted">No clients found.</p>
   {% endif %}
 </div>
+<script src="{{ url_for('static', filename='list-filter.js') }}"></script>
 {% endif %}
 {% endblock %}

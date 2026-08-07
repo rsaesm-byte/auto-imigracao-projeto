@@ -1,0 +1,41 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — New Translation{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Add a translation</h1>
+  <p style="opacity:0.92;margin:0;">A translation is always attached to a case's document. Find the client's case below, then use "Add document" on that case's Documents page — pick a translation language there and the translation ficha (translator, pages, price, deadline) appears right under it.</p>
+</div>
+
+<div class="card">
+  <form method="get" style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;">
+    <div>
+      <label class="muted">Client name</label><br>
+      <input type="text" name="q" value="{{ q }}" autofocus style="min-width:260px;">
+    </div>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:8px 14px;">Search</button>
+  </form>
+</div>
+
+{% if q %}
+<div class="card">
+  <h2>Cases matching "{{ q }}"</h2>
+  {% if cases %}
+  {% for case in cases %}
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
+    <div>
+      <strong>{{ case.title }}</strong>
+      <div class="muted" style="font-size:0.85rem;">{{ case.client.full_name }}</div>
+    </div>
+    <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px 14px;text-decoration:none;font-size:0.82rem;">Open documents →</a>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="empty-state">
+    <div class="empty-state-icon">·</div>
+    <div class="empty-state-title">No cases found</div>
+    <div class="empty-state-hint">The client needs an open case before a document/translation can be added to it.</div>
+  </div>
+  {% endif %}
+</div>
+{% endif %}
+{% endblock %}

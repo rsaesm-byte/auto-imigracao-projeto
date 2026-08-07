@@ -1,0 +1,136 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Custom Fields (CRM){% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Custom Fields</h1>
+  <p style="opacity:0.92;margin:0;">Add fields to Cases, Leads, or Clients without a code change. Drag <span style="cursor:grab;">⠿</span> to reorder — the order here is the order they show up on the record.</p>
+</div>
+
+<div class="card" style="display:flex;gap:8px;">
+  {% for et in entity_types %}
+  <a href="{{ url_for('crm_custom_fields.index', entity=et) }}"
+     style="padding:6px 14px;border-radius:999px;font-size:0.82rem;text-decoration:none;
+            {% if entity_type == et %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">{{ et }}s</a>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h2>{{ entity_type }} fields ({{ fields|length }})</h2>
+  {% if fields %}
+  <div class="stage-reorder-list" data-reorder-url="{{ url_for('crm_custom_fields.field_reorder', entity=entity_type) }}">
+    {% for f in fields %}
+    <div class="stage-reorder-row" draggable="true" data-stage-value="{{ f.id }}"
+         style="border-bottom:1px solid var(--border);padding:12px 6px;">
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+        <span class="muted" style="cursor:grab;font-size:1.1rem;line-height:1;" title="Drag to reorder">⠿</span>
+        <strong style="min-width:160px;">{{ f.label }}</strong>
+        <span class="muted" style="font-size:0.78rem;">{{ f.field_type.value|replace('_',' ')|title }}</span>
+        <span class="muted" style="font-size:0.78rem;">key: {{ f.key }}</span>
+        {% if f.required %}<span class="badge in_progress">Required</span>{% endif %}
+        {% if f.client_visible %}<span class="badge completed">Client-visible</span>{% endif %}
+        <form method="post" action="{{ url_for('crm_custom_fields.field_archive', field_id=f.id) }}" style="margin-left:auto;">
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Archive</button>
+        </form>
+      </div>
+      <form method="post" action="{{ url_for('crm_custom_fields.field_save', field_id=f.id) }}"
+            style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:10px;">
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Label</label><br>
+          <input type="text" name="label" value="{{ f.label }}" required style="width:100%;">
+        </div>
+        <div>
+          <label class="muted" style="font-size:0.78rem;">Default value</label><br>
+          <input type="text" name="default_value" value="{{ f.default_value or '' }}" style="width:100%;">
+        </div>
+        {% if f.field_type.value in ('single_select', 'multi_select') %}
+        <div style="grid-column:1/-1;">
+          <label class="muted" style="font-size:0.78rem;">Options (one per line)</label><br>
+          <textarea name="options" rows="2" style="width:100%;font-family:inherit;">{{ options_for(f)|join('\n') }}</textarea>
+        </div>
+        {% endif %}
+        <label class="muted" style="font-size:0.8rem;display:flex;align-items:center;gap:6px;">
+          <input type="checkbox" name="required" value="1" {{ 'checked' if f.required }}> Required
+        </label>
+        {% if show_client_visible %}
+        <label class="muted" style="font-size:0.8rem;display:flex;align-items:center;gap:6px;">
+          <input type="checkbox" name="client_visible" value="1" {{ 'checked' if f.client_visible }}> Visible to client
+        </label>
+        {% endif %}
+        <div>
+          <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save</button>
+        </div>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">No custom fields yet — add one below.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Add a field</h2>
+  <form method="post" action="{{ url_for('crm_custom_fields.field_new', entity=entity_type) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;">
+    <div>
+      <label class="muted">Label</label><br>
+      <input type="text" name="label" required style="width:100%;">
+    </div>
+    <div>
+      <label class="muted">Type</label><br>
+      <select name="field_type" required style="width:100%;">
+        {% for t in field_types %}<option value="{{ t.value }}">{{ t.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Default value</label><br>
+      <input type="text" name="default_value" style="width:100%;">
+    </div>
+    <div style="grid-column:1/-1;">
+      <label class="muted">Options (one per line — only used by Single select / Multi select)</label><br>
+      <textarea name="options" rows="2" style="width:100%;font-family:inherit;"></textarea>
+    </div>
+    <label class="muted" style="font-size:0.85rem;display:flex;align-items:center;gap:6px;">
+      <input type="checkbox" name="required" value="1"> Required
+    </label>
+    {% if show_client_visible %}
+    <label class="muted" style="font-size:0.85rem;display:flex;align-items:center;gap:6px;">
+      <input type="checkbox" name="client_visible" value="1"> Visible to client
+    </label>
+    {% endif %}
+    <label class="muted" style="font-size:0.85rem;display:flex;align-items:center;gap:6px;">
+      <input type="checkbox" name="confirm_duplicate" value="1"> I confirm this isn't a duplicate of an existing field
+    </label>
+    <div>
+      <button type="submit" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.82rem;padding:8px 16px;">Create field</button>
+    </div>
+  </form>
+</div>
+
+{% if archived %}
+<div class="card">
+  <h2>Archived ({{ archived|length }})</h2>
+  <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Hidden from record pages. Delete permanently only once you're sure — this also removes every value ever saved for it.</p>
+  {% for f in archived %}
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:8px;">
+    <div>
+      <strong>{{ f.label }}</strong>
+      <span class="muted" style="font-size:0.78rem;"> · {{ f.field_type.value|replace('_',' ')|title }} · {{ affected_records_count(f) }} record(s) have a value saved</span>
+    </div>
+    <div style="display:flex;gap:8px;">
+      <form method="post" action="{{ url_for('crm_custom_fields.field_reactivate', field_id=f.id) }}">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Reactivate</button>
+      </form>
+      <form method="post" action="{{ url_for('crm_custom_fields.field_delete', field_id=f.id) }}"
+            onsubmit="return confirm('Permanently delete \'{{ f.label }}\'? This affects {{ affected_records_count(f) }} record(s) and cannot be undone.');">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid #b91c1c;border-radius:var(--radius-sm);color:#b91c1c;cursor:pointer;font-size:0.78rem;padding:5px 10px;">Delete permanently</button>
+      </form>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% endif %}
+
+<script src="{{ url_for('static', filename='pipeline-stage-reorder.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,153 @@
+{% extends "staff_base.html" %}
+{% from "_crm_ui.html" import history_widget %}
+{% from "_crm_badge.html" import crm_badge %}
+{% block title %}Staff — {{ task.title }} (Task){% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero" style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;">
+  <div>
+    <h1>{{ task.title }}</h1>
+    <p style="opacity:0.92;margin:0;">{{ crm_badge(task.status) }}</p>
+  </div>
+  <a href="{{ url_for('crm_ops.tasks') }}" class="muted" style="font-size:0.85rem;">← Back to Tasks</a>
+</div>
+
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <form method="post" action="{{ url_for('crm_ops.task_update_status', task_id=task.id) }}" style="display:flex;gap:8px;align-items:center;">
+    <select name="status" style="font-size:0.82rem;">
+      {% for st in statuses %}<option value="{{ st.value }}" {{ 'selected' if task.status == st }}>{{ st.value|replace('_',' ')|title }}</option>{% endfor %}
+    </select>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.8rem;padding:6px 12px;">Save status</button>
+  </form>
+  {{ history_widget('task-history-drawer', 'History — ' + task.title, history, history_users, empty_hint='Changes to this task will show up here.') }}
+</div>
+
+<div class="card">
+  <h2>Details</h2>
+  <form method="post" action="{{ url_for('crm_ops.task_save', task_id=task.id) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;">
+    <div>
+      <label class="muted">Title</label><br>
+      <input type="text" name="title" value="{{ task.title }}" required style="width:100%;">
+    </div>
+    <div>
+      <label class="muted">Case (optional)</label><br>
+      <select name="case_id" style="width:100%;">
+        <option value="">—</option>
+        {% for c in cases %}<option value="{{ c.id }}" {{ 'selected' if task.case_id == c.id }}>{{ c.title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Type</label><br>
+      <select name="task_type" style="width:100%;">
+        <option value="">—</option>
+        {% for t in task_types %}<option value="{{ t.value }}" {{ 'selected' if task.task_type == t }}>{{ t.value|replace('_',' ')|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Priority</label><br>
+      <select name="priority" style="width:100%;">
+        {% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if task.priority == p }}>{{ p.value|title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Owner</label><br>
+      <select name="responsible_id" style="width:100%;">
+        <option value="">—</option>
+        {% for u in staff_users %}<option value="{{ u.id }}" {{ 'selected' if task.responsible_id == u.id }}>{{ u.email }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label class="muted">Due date</label><br>
+      <input type="date" lang="en-US" name="due_date" value="{{ task.due_date.isoformat() if task.due_date else '' }}" style="width:100%;">
+    </div>
+    <div>
+      <label class="muted">Repeats every (days, blank = doesn't repeat)</label><br>
+      <input type="number" min="1" name="recurrence_interval_days" value="{{ task.recurrence_interval_days or '' }}" style="width:100%;">
+    </div>
+    <div style="grid-column:1/-1;">
+      <label class="muted">Notes</label><br>
+      <textarea name="notes" rows="3" style="width:100%;font-family:inherit;">{{ task.notes or '' }}</textarea>
+    </div>
+    <div style="grid-column:1/-1;">
+      <button type="submit" class="icon-btn" style="background:var(--accent);border:1px solid var(--accent);border-radius:var(--radius-sm);color:#fff;cursor:pointer;font-size:0.82rem;padding:8px 16px;">Save</button>
+    </div>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Checklist ({{ task.checklist_items|selectattr('done')|list|length }}/{{ task.checklist_items|length }})</h2>
+  {% if task.checklist_items %}
+  <div style="display:flex;flex-direction:column;gap:2px;margin-bottom:12px;">
+    {% for item in task.checklist_items %}
+    <div style="display:flex;align-items:center;gap:8px;padding:5px 0;border-bottom:1px solid var(--border);">
+      <form method="post" action="{{ url_for('crm_ops.task_checklist_toggle', item_id=item.id) }}" style="display:flex;align-items:center;">
+        <button type="submit" style="background:none;border:none;cursor:pointer;padding:0;font-size:1rem;line-height:1;" title="{{ 'Mark as not done' if item.done else 'Mark as done' }}">
+          {{ '☑' if item.done else '☐' }}
+        </button>
+      </form>
+      <span style="flex:1;{% if item.done %}text-decoration:line-through;color:var(--muted);{% endif %}font-size:0.88rem;">{{ item.title }}</span>
+      <form method="post" action="{{ url_for('crm_ops.task_checklist_delete', item_id=item.id) }}">
+        <button type="submit" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.85rem;">Remove</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">No checklist items yet.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('crm_ops.task_checklist_add', task_id=task.id) }}" style="display:flex;gap:8px;">
+    <input type="text" name="title" placeholder="Add a checklist item…" style="flex:1;" required>
+    <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:6px 14px;">Add</button>
+  </form>
+</div>
+
+<div class="card">
+  <h2>Time logged — {{ format_duration(total_seconds) }}</h2>
+  <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Log time against this task from the <a href="{{ url_for('planner.time_list') }}">Time Tracking</a> page — this is a read-only summary.</p>
+  {% if time_entries %}
+  <table class="submissions">
+    <thead><tr><th>Started</th><th>Duration</th><th>Description</th></tr></thead>
+    <tbody>
+      {% for e in time_entries %}
+      <tr>
+        <td class="muted">{{ e.started_at.strftime('%m/%d/%Y %I:%M %p') }}</td>
+        <td>{{ format_duration(entry_duration(e)) }}</td>
+        <td class="muted">{{ e.description or '—' }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No time logged against this task yet.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2>Comments ({{ task.comments|length }})</h2>
+  {% if task.comments %}
+  <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:14px;">
+    {% for c in task.comments %}
+    <div style="border-bottom:1px solid var(--border);padding-bottom:8px;">
+      <div style="font-size:0.85rem;white-space:pre-wrap;">{{ c.body }}</div>
+      {% if c.attachment_path %}
+      <a href="{{ url_for('crm_ops.task_comment_attachment', comment_id=c.id) }}" class="muted" style="font-size:0.78rem;">📎 {{ c.attachment_name }}</a><br>
+      {% endif %}
+      <span class="muted" style="font-size:0.76rem;">
+        {{ history_users[c.author_id].email if c.author_id in history_users else 'Unknown' }} · {{ c.created_at.strftime('%m/%d/%Y %I:%M %p') }}
+      </span>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">No comments yet.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('crm_ops.task_comment_new', task_id=task.id) }}" enctype="multipart/form-data" style="display:flex;flex-direction:column;gap:8px;">
+    <textarea name="body" rows="2" placeholder="Add a comment…" required style="width:100%;font-family:inherit;"></textarea>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <input type="file" name="attachment">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:6px 14px;">Comment</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

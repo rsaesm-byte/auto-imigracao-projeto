@@ -8,6 +8,11 @@
   <p style="opacity:0.92;margin:0;">Translator directory, payment history, and every translation job by period.</p>
 </div>
 
+<div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
+  <a href="{{ url_for('crm_translations.kanban') }}" class="muted" style="font-size:0.85rem;">Kanban view (by stage) →</a>
+  <a href="{{ url_for('crm_translations.find_case') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New translation</a>
+</div>
+
 <div class="card">
   <h2>Translators</h2>
   <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;">
@@ -41,11 +46,11 @@
     <td class="muted">{{ t.requested_at.strftime('%m/%d/%Y') if t.requested_at else '—' }}</td>
     <td class="muted">{{ t.delivered_at.strftime('%m/%d/%Y') if t.delivered_at else '—' }}</td>
     <td class="muted">{{ t.page_count if t.page_count is not none else '—' }}</td>
-    <td class="muted">{% set ct = client_total_cents(t) %}{% if ct is not none %}${{ '%.2f'|format(ct / 100) }}{% else %}—{% endif %}</td>
+    <td class="muted">{% set ct = client_total_cents(t) %}{% if ct is not none %}{{ ct|usd }}{% else %}—{% endif %}</td>
     <td class="muted">
       {% set pu = payout_usd_cents(t) %}{% set pt = payout_translator_currency_cents(t) %}
-      {% if pt is not none and t.translator %}{{ '%.2f'|format(pt / 100) }} {{ t.translator.currency.value|upper }}{% endif %}
-      {% if pu is not none %} / ${{ '%.2f'|format(pu / 100) }}{% endif %}
+      {% if pt is not none and t.translator %}{{ (pt / 100)|num }} {{ t.translator.currency.value|upper }}{% endif %}
+      {% if pu is not none %} / {{ pu|usd }}{% endif %}
       {% if pt is none and pu is none %}—{% endif %}
     </td>
     <td><a href="{{ url_for('crm_ops.case_documents', case_id=t.document.case_id) }}" style="font-size:0.8rem;">Open →</a></td>

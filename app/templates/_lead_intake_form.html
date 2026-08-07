@@ -1,0 +1,51 @@
+{# Formulário de interesse inicial -- pedido do usuário 2026-08-06: "logo
+   de cara" na página inicial, ele deve definir o tipo de serviço que
+   quer. Partial (sem {% extends %}) pra poder aparecer tanto no topo de
+   index.html quanto na página própria /interesse (app/lead_intake.py). #}
+<section class="card" style="margin-bottom:28px;">
+  <h2 style="margin-top:0;">{{ t('lead_intake_title') }}</h2>
+  <p class="muted" style="margin-top:-6px;">{{ t('lead_intake_subtitle') }}</p>
+
+  <form method="post" action="{{ url_for('lead_intake.start') }}">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:14px 0;">
+      {% for opt in lead_intake_options %}
+      {% if opt.is_group %}
+      <div style="grid-column:1/-1;font-weight:700;font-size:0.9rem;margin-top:10px;">{{ t('service_interest_' ~ opt.key) }}</div>
+      {% else %}
+      <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.9rem;padding:3px 0;{% if opt.indent %}padding-left:20px;{% endif %}">
+        <input type="checkbox" name="services" value="{{ opt.key }}" style="margin-top:3px;">
+        {{ t('service_interest_' ~ opt.key) }}
+      </label>
+      {% endif %}
+      {% endfor %}
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;border-top:1px solid var(--border);padding-top:16px;">
+      <div>
+        <label class="muted">{{ t('lead_intake_field_full_name') }}</label><br>
+        <input type="text" name="full_name" required style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">{{ t('lead_intake_field_email') }}</label><br>
+        <input type="email" name="email" required style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">{{ t('lead_intake_field_phone') }}</label><br>
+        <input type="tel" name="phone" required placeholder="+1 555 555 5555" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">{{ t('lead_intake_field_best_contact_time') }}</label><br>
+        <input type="text" name="best_contact_time" placeholder="{{ t('lead_intake_field_best_contact_time_placeholder') }}" style="width:100%;">
+      </div>
+      <div>
+        <label class="muted">{{ t('lead_intake_field_source') }}</label><br>
+        <select name="lead_source_id" style="width:100%;">
+          <option value="">—</option>
+          {% for s in lead_intake_sources %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn" style="margin-top:18px;">{{ t('lead_intake_submit') }}</button>
+  </form>
+</section>

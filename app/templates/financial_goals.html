@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% block title %}Financial Goals — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Financial Goals</h1>
+  <p style="opacity:0.92;margin:0;">What you're saving toward. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.sinking_funds') }}" style="color:#fff;text-decoration:underline;">Sinking Funds →</a> · <a href="{{ url_for('financial_workspace.emergency_fund') }}" style="color:#fff;text-decoration:underline;">Emergency Fund →</a></p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Goals</h2>
+  {% if goal_list %}
+  <table class="submissions">
+    <thead><tr><th>Goal</th><th>Progress</th><th>Target date</th><th>Priority</th><th>Status</th><th></th></tr></thead>
+    <tbody>
+      {% for g in goal_list %}
+      {% set p = progress_by_goal[g.id] %}
+      {% set pct_raw = ((g.current_amount_cents / g.target_amount_cents * 100) if g.target_amount_cents else 0)|round(1) %}
+      {% set pct = 100 if pct_raw > 100 else pct_raw %}
+      <tr {% if g.status.value in ('completed', 'cancelled') %}style="opacity:0.6;"{% endif %}>
+        <td>
+          <strong>{{ g.name }}</strong>{% if g.goal_type %} <span class="muted">({{ g.goal_type }})</span>{% endif %}
+          <form method="post" action="{{ url_for('financial_workspace.goal_contribution_new', goal_id=g.id) }}" style="display:flex;gap:4px;align-items:center;margin-top:4px;">
+            <input type="text" name="amount" inputmode="decimal" placeholder="Add $" style="width:80px;font-size:0.76rem;">
+            <select name="from_account_id" style="font-size:0.76rem;">
+              <option value="">From…</option>
+              {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+            </select>
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#166534;cursor:pointer;font-size:0.76rem;">Contribute</button>
+          </form>
+        </td>
+        <td style="min-width:180px;">
+          <div style="font-size:0.8rem;margin-bottom:3px;">{{ g.current_amount_cents|usd }} of {{ g.target_amount_cents|usd }}</div>
+          <div style="background:var(--border);border-radius:999px;height:8px;">
+            <div style="width:{{ pct }}%;background:var(--accent);height:8px;border-radius:999px;min-width:{{ '4px' if g.current_amount_cents else '0' }};"></div>
+          </div>
+          {% if p.required_monthly_contribution_cents %}<div class="muted" style="font-size:0.72rem;margin-top:2px;">Needs {{ p.required_monthly_contribution_cents|usd }}/mo to hit the date</div>{% endif %}
+          {% if p.estimated_completion_date %}<div class="muted" style="font-size:0.72rem;">At current pace: done {{ p.estimated_completion_date.strftime('%m/%d/%Y') }}</div>{% endif %}
+        </td>
+        <td class="muted">{{ g.target_date.strftime('%m/%d/%Y') if g.target_date else '—' }}</td>
+        <td class="muted">{{ g.priority.value|title }}</td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.goal_status_update', goal_id=g.id) }}" style="display:inline-flex;gap:4px;">
+            <select name="status" style="font-size:0.78rem;">
+              {% for s in statuses %}<option value="{{ s.value }}" {% if s == g.status %}selected{% endif %}>{{ s.value|title }}</option>{% endfor %}
+            </select>
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--muted);cursor:pointer;font-size:0.76rem;">Save</button>
+          </form>
+        </td>
+        <td>
+          <form method="post" action="{{ url_for('financial_workspace.goal_delete', goal_id=g.id) }}"
+                onsubmit="return confirm('Remove this goal?');">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.78rem;">Remove</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No goals yet — add one below.</p>
+  {% endif %}
+
+  <details style="margin-top:14px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add goal</summary>
+    <form method="post" action="{{ url_for('financial_workspace.goal_new') }}"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <input type="text" name="name" required placeholder="Goal name (e.g. Emergency trip fund)" style="min-width:200px;flex:1;">
+      <input type="text" name="goal_type" placeholder="Type — optional (e.g. vacation)" style="min-width:140px;">
+      <input type="text" name="target_amount" required inputmode="decimal" placeholder="Target $" style="width:120px;">
+      <input type="date" lang="en-US" name="target_date" title="Target date — optional">
+      <input type="text" name="monthly_contribution" inputmode="decimal" placeholder="Monthly $ — optional" style="width:150px;">
+      <select name="priority">
+        {% for p in priorities %}<option value="{{ p.value }}" {% if p.value == 'medium' %}selected{% endif %}>{{ p.value|title }}</option>{% endfor %}
+      </select>
+      <select name="account_id">
+        <option value="">Linked account — optional</option>
+        {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+      </select>
+      <input type="text" name="notes" placeholder="Notes — optional" style="min-width:160px;">
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </details>
+</div>
+{% endblock %}

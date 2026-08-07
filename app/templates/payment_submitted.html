@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{{ t('payment_submitted_title') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+
+<section class="hero-landing compact" style="padding:24px 28px 32px;">
+  <h1 class="hero-title" style="font-size:1.9rem;">{{ t('payment_submitted_title') }}</h1>
+  <p class="hero-subtitle" style="margin:0;max-width:640px;">
+    {{ t('payment_submitted_body', case_label=case_label, amount=amount_display) }}
+  </p>
+</section>
+
+<div class="card" style="text-align:center;">
+  <a href="{{ whatsapp_url }}" target="_blank" rel="noopener noreferrer" class="btn" id="payment-submitted-whatsapp-link" style="display:inline-block;">
+    {{ t('payment_submitted_whatsapp_cta') }}
+  </a>
+  <p class="muted" style="font-size:0.85rem;margin:12px 0 0;">{{ t('payment_submitted_whatsapp_note') }}</p>
+</div>
+
+<div class="card" style="text-align:center;">
+  {% if has_crm_case %}
+  <a href="{{ url_for('crm_client.meu_caso') }}" class="btn" style="background:none;border:1px solid var(--accent);color:var(--accent);">
+    {{ t('payment_submitted_go_to_case') }}
+  </a>
+  {% else %}
+  <a href="{{ url_for('wizard.dashboard') }}" class="btn" style="background:none;border:1px solid var(--accent);color:var(--accent);">
+    {{ t('payment_submitted_go_to_dashboard') }}
+  </a>
+  {% endif %}
+</div>
+
+<script>
+  (function () {
+    var url = document.getElementById('payment-submitted-whatsapp-link').href;
+    window.open(url, '_blank', 'noopener');
+  })();
+</script>
+{% endblock %}

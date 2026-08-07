@@ -1,0 +1,45 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Financial Coaching Options (CRM){% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Financial Coaching profile options</h1>
+  <p style="opacity:0.92;margin:0;">The checkbox lists on a coaching client's "Edit profile" screen (Income sources, Financial goals, Main challenges). Reorder, rename, add, or delete — removing an option never affects a client who already has it selected, it just stops appearing for new selections.</p>
+</div>
+
+{% for group in groups %}
+<div class="card">
+  <h2 style="font-size:1rem;">{{ group.label }}</h2>
+  <p class="muted" style="font-size:0.8rem;margin:-4px 0 12px;">Drag <span style="cursor:grab;">⠿</span> to reorder.</p>
+  <div class="option-reorder-list" data-reorder-url="{{ url_for('crm_pipeline_settings.financial_coaching_options_reorder', kind=group.kind) }}">
+    {% for item in group.options %}
+    <div class="option-reorder-row" draggable="true" data-option-id="{{ item.id }}"
+         style="display:flex;gap:10px;align-items:center;padding:8px 6px;border-bottom:1px solid var(--border);flex-wrap:wrap;background:var(--card);">
+      <span class="muted" style="cursor:grab;font-size:1.1rem;line-height:1;" title="Drag to reorder">⠿</span>
+
+      <form method="post" action="{{ url_for('crm_pipeline_settings.financial_coaching_option_save', kind=group.kind, option_id=item.id) }}"
+            style="display:flex;gap:8px;align-items:center;flex:1;">
+        <input type="text" name="name" value="{{ item.name }}" required style="min-width:220px;flex:1;">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.78rem;padding:5px 10px;">Save</button>
+      </form>
+
+      <form method="post" action="{{ url_for('crm_pipeline_settings.financial_coaching_option_delete', kind=group.kind, option_id=item.id) }}"
+            onsubmit="return confirm('Remove this option? Clients who already have it selected keep their record.');">
+        <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:#991b1b;cursor:pointer;font-size:0.78rem;padding:5px 10px;">Delete</button>
+      </form>
+    </div>
+    {% else %}
+    <p class="muted">No options yet.</p>
+    {% endfor %}
+  </div>
+
+  <form method="post" action="{{ url_for('crm_pipeline_settings.financial_coaching_option_new', kind=group.kind) }}"
+        style="display:flex;gap:8px;align-items:center;margin-top:12px;">
+    <input type="text" name="name" required placeholder="New option name" style="min-width:220px;flex:1;">
+    <button type="submit" class="btn">Add</button>
+  </form>
+</div>
+{% endfor %}
+
+<script src="{{ url_for('static', filename='service-interest-options-reorder.js') }}"></script>
+{% endblock %}

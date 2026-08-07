@@ -65,11 +65,18 @@ def today() -> date:
 
 
 def parse_dollars_to_cents(raw: str) -> int | None:
+    """Tolera o texto vir formatado como exibição en-US (Padronização
+    Global do Sistema, 2026-08-07 -- `$1,800.50`), não só número puro
+    (`1800.50`) -- `$` e separador de milhar (`,`) são removidos antes
+    de converter; `.` continua sendo sempre o separador decimal (nunca
+    mais tratado como vírgula europeia -- essa tolerância antiga foi
+    removida de propósito quando o sistema virou 100% en-US)."""
     raw = (raw or "").strip()
     if not raw:
         return None
+    raw = raw.replace("$", "").replace(",", "").strip()
     try:
-        return round(float(raw.replace(",", ".")) * 100)
+        return round(float(raw) * 100)
     except ValueError:
         return None
 
@@ -329,31 +336,46 @@ def apply_service_procedure_checklist(case: Case) -> None:
     (documentos, não os passos internos). Pedido do usuário (2026-08-01):
     "gerar automaticamente a partir de um template por serviço".
 
-    Só faz algo quando (a) o caso tem um `CaseService` atual ligado a um
-    `ServiceCatalog` com `slug` preenchido, (b) o `Payment` (app/models.py)
-    deste caso já está confirmado, e (c) o onboarding daquele pagamento
-    ainda não tem nenhum `RequiredDocument` -- essa última checagem é a
-    guarda de idempotência: nunca duplica nem sobrescreve um checklist que
-    a equipe já editou manualmente. Chamada em dois pontos: depois de
-    confirmar o pagamento (app/staff.py::confirm_payment) e depois de
-    atribuir/trocar o serviço do caso (app/crm_staff_ops.py::
-    case_service_update) -- cobre a ordem em que o staff decidir fazer as
-    duas coisas. Segue a convenção do módulo (não commita sozinha)."""
+    Acha o template de duas formas -- (a) o caso tem um `CaseService` atual
+    ligado a um `ServiceCatalog` com `slug` preenchido (Saes Standard/
+    Plus), ou (b), na falta de (a), o `Payment.package_slug` (app/models.py)
+    deste caso é um pacote DIY mapeado em
+    DIY_PACKAGE_TO_PROCEDURE_SLUG (app/services/service_procedures.py) --
+    pedido do usuário 2026-08-06: "checklist disponível para todos os
+    casos DIY, Saes Standard, Saes Plus", não só Standard/Plus. Só roda
+    quando, além disso, (c) o `Payment` já está confirmado, e (d) o
+    onboarding daquele pagamento ainda não tem nenhum `RequiredDocument`
+    -- essa última checagem é a guarda de idempotência: nunca duplica nem
+    sobrescreve um checklist que a equipe já editou manualmente. Chamada
+    em dois pontos: depois de confirmar o pagamento (app/staff.py::
+    confirm_payment) e depois de atribuir/trocar o serviço do caso
+    (app/crm_staff_ops.py::case_service_update) -- cobre a ordem em que o
+    staff decidir fazer as duas coisas. Segue a convenção do módulo (não
+    commita sozinha)."""
     from app.models import Payment, PostPaymentOnboarding, RequiredDocument
-    from app.services.service_procedures import phase1_documents
+    from app.services.service_procedures import (DIY_PACKAGE_TO_PROCEDURE_SLUG,
+                                                   phase1_documents)
+
+    payment = SessionLocal.query(Payment).filter_by(case_id=case.id, status="confirmed").first()
+    if payment is None:
+        return
 
     current_service = next(
         (cs.service for cs in case.services if cs.role == ServiceRole.current and cs.service.slug),
         None)
-    if current_service is None:
+    if current_service is not None:
+        procedure_slug = current_service.slug
+    elif payment.package_slug:
+        procedure_slug = DIY_PACKAGE_TO_PROCEDURE_SLUG.get(payment.package_slug)
+    else:
+        procedure_slug = None
+    if procedure_slug is None:
         return
-    payment = SessionLocal.query(Payment).filter_by(case_id=case.id, status="confirmed").first()
-    if payment is None:
-        return
+
     onboarding = SessionLocal.query(PostPaymentOnboarding).filter_by(payment_id=payment.id).first()
     if onboarding is None or onboarding.documents:
         return
-    for label in phase1_documents(current_service.slug):
+    for label in phase1_documents(procedure_slug):
         SessionLocal.add(RequiredDocument(onboarding_id=onboarding.id, label=label))
 
 
@@ -483,6 +505,56 @@ def create_payment_request_for_contract(contract: CaseContract) -> PaymentLedger
 # Conversão de Lead -> Client + Case (o "fechamento" do funil)
 # --------------------------------------------------------------------------
 
+def find_possible_duplicate_clients(lead: Lead) -> list[Client]:
+    """Checagem de duplicidade antes de converter um Lead (Prompt Mestre,
+    Fase 6, 2026-08-06) -- casa por e-mail (case-insensitive), telefone
+    (só os dígitos) ou nome completo (case-insensitive), exatos. De
+    propósito simples (sem fuzzy matching): um falso positivo aqui só
+    custa um clique a mais confirmando "é pessoa diferente mesmo"; um
+    falso negativo é silencioso (cria um cliente duplicado sem avisar
+    ninguém) -- melhor pecar por avisar demais."""
+    matches: dict[int, Client] = {}
+
+    if lead.contact_email:
+        email = lead.contact_email.strip().lower()
+        for c in SessionLocal.query(Client).filter(Client.email.isnot(None)).all():
+            if c.email.strip().lower() == email:
+                matches[c.id] = c
+
+    if lead.contact_phone:
+        phone_digits = "".join(ch for ch in lead.contact_phone if ch.isdigit())
+        if phone_digits:
+            for c in SessionLocal.query(Client).filter(Client.us_phone.isnot(None)).all():
+                if "".join(ch for ch in c.us_phone if ch.isdigit()) == phone_digits:
+                    matches[c.id] = c
+
+    if lead.name:
+        name = lead.name.strip().lower()
+        for c in SessionLocal.query(Client).filter(Client.full_name.isnot(None)).all():
+            if c.full_name.strip().lower() == name:
+                matches[c.id] = c
+
+    return list(matches.values())
+
+
+def attach_lead_to_existing_client(
+    lead: Lead, client: Client, *, service_mode: ServiceMode, case_title: str,
+) -> Case:
+    """Alternativa a `convert_lead_to_client_and_case` pro caso em que a
+    checagem de duplicidade acima achou que este lead já é um cliente
+    existente -- em vez de criar um Client novo (duplicado), só cria mais
+    um Case pro Client que já existe. Fecha o lead do mesmo jeito."""
+    case = Case(client_id=client.id, lead_id=lead.id, title=case_title, service_mode=service_mode)
+    SessionLocal.add(case)
+    SessionLocal.flush()  # precisa do case.id pro AuditLog do chamador (ver lead_attach_to_client)
+
+    lead.stage = LeadStage.closed_won
+    lead.closed_at = lead.closed_at or _today()
+    lead.converted_client_id = client.id
+
+    return case
+
+
 def convert_lead_to_client_and_case(
     lead: Lead, *, service_mode: ServiceMode, case_title: str,
     user_id: int | None = None,
@@ -490,14 +562,23 @@ def convert_lead_to_client_and_case(
     """Fecha o lead (`closed_at`/`stage`) e cria o Client + Case
     resultantes -- `user_id` é preenchido quando o cliente já tem (ou
     acabou de criar) uma conta de login no site; fica None para um
-    cliente full_service ainda sem conta própria."""
-    client = Client(
-        user_id=user_id, full_name=lead.name, email=lead.contact_email,
-        us_phone=lead.contact_phone, us_phone_has=bool(lead.contact_phone),
-        city_country=lead.city_region,
-    )
-    SessionLocal.add(client)
-    SessionLocal.flush()  # precisa do client.id antes de criar o Case abaixo
+    cliente full_service ainda sem conta própria. Quando `user_id` é
+    passado, reaproveita um Client já existente dessa conta (mesmo padrão
+    de get_or_create_case_for_payment abaixo) em vez de sempre criar um
+    novo -- importante agora que a compra self-service (app/packages.py,
+    app/payment_gate.py) pode converter mais de um lead pra mesma conta ao
+    longo do tempo (2 pacotes comprados = 2 conversões, mesmo cliente)."""
+    client = None
+    if user_id is not None:
+        client = SessionLocal.query(Client).filter_by(user_id=user_id).first()
+    if client is None:
+        client = Client(
+            user_id=user_id, full_name=lead.name, email=lead.contact_email,
+            us_phone=lead.contact_phone, us_phone_has=bool(lead.contact_phone),
+            city_country=lead.city_region,
+        )
+        SessionLocal.add(client)
+        SessionLocal.flush()  # precisa do client.id antes de criar o Case abaixo
 
     case = Case(
         client_id=client.id, lead_id=lead.id, title=case_title,

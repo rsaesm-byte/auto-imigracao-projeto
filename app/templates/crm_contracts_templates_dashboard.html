@@ -19,9 +19,9 @@
       {% for s in services %}
       <tr>
         <td>{{ s.name }}</td>
-        <td class="muted">{% if s.base_price_cents is not none %}${{ '%.2f'|format(s.base_price_cents / 100) }}{% else %}—{% endif %}</td>
-        <td class="muted">{% if s.plus_price_cents is not none %}${{ '%.2f'|format(s.plus_price_cents / 100) }}{% else %}—{% endif %}</td>
-        <td class="muted">{% if s.plus_price_paper_cents is not none %}${{ '%.2f'|format(s.plus_price_paper_cents / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% if s.base_price_cents is not none %}{{ s.base_price_cents|usd }}{% else %}—{% endif %}</td>
+        <td class="muted">{% if s.plus_price_cents is not none %}{{ s.plus_price_cents|usd }}{% else %}—{% endif %}</td>
+        <td class="muted">{% if s.plus_price_paper_cents is not none %}{{ s.plus_price_paper_cents|usd }}{% else %}—{% endif %}</td>
         <td><a href="{{ url_for('crm_contracts.template_edit', slug=s.slug) }}" style="font-size:0.8rem;">Edit →</a></td>
         <td><a href="{{ url_for('crm_contracts.template_preview', slug=s.slug) }}" style="font-size:0.8rem;">Preview →</a></td>
       </tr>

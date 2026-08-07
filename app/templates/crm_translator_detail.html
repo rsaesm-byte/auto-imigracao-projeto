@@ -1,10 +1,15 @@
 {% extends "staff_base.html" %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — {{ translator.full_name }} (Translator){% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>{{ translator.full_name }}</h1>
   <p style="opacity:0.92;margin:0;">Translator profile, payment history, and assigned jobs.</p>
+</div>
+
+<div class="card" style="display:flex;justify-content:flex-end;">
+  {{ history_widget('translator-history-drawer', 'History — ' + translator.full_name, history, history_users, empty_hint='Changes to this translator will show up here.') }}
 </div>
 
 <div class="card">
@@ -57,7 +62,7 @@
       {% for p in translator.payments %}
       <tr>
         <td class="muted">{{ p.paid_at.strftime('%m/%d/%Y') }}</td>
-        <td>{{ '%.2f'|format(p.amount_cents / 100) }} {{ p.currency.value|upper }}</td>
+        <td>{{ (p.amount_cents / 100)|num }} {{ p.currency.value|upper }}</td>
         <td class="muted">{{ p.notes or '—' }}</td>
       </tr>
       {% endfor %}
@@ -82,7 +87,7 @@
     </div>
     <div>
       <label class="muted" style="font-size:0.78rem;">Date paid</label><br>
-      <input type="date" name="paid_at" required>
+      <input type="date" lang="en-US" name="paid_at" required>
     </div>
     <div style="flex:1;min-width:180px;">
       <label class="muted" style="font-size:0.78rem;">Notes</label><br>
@@ -106,11 +111,11 @@
         <td class="muted">{{ t.requested_at.strftime('%m/%d/%Y') if t.requested_at else '—' }}</td>
         <td class="muted">{{ t.delivered_at.strftime('%m/%d/%Y') if t.delivered_at else '—' }}</td>
         <td class="muted">{{ t.page_count if t.page_count is not none else '—' }}</td>
-        <td class="muted">{% set ct = client_total_cents(t) %}{% if ct is not none %}${{ '%.2f'|format(ct / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% set ct = client_total_cents(t) %}{% if ct is not none %}{{ ct|usd }}{% else %}—{% endif %}</td>
         <td class="muted">
           {% set pu = payout_usd_cents(t) %}{% set pt = payout_translator_currency_cents(t) %}
-          {% if pt is not none %}{{ '%.2f'|format(pt / 100) }} {{ translator.currency.value|upper }}{% endif %}
-          {% if pu is not none %} / ${{ '%.2f'|format(pu / 100) }}{% endif %}
+          {% if pt is not none %}{{ (pt / 100)|num }} {{ translator.currency.value|upper }}{% endif %}
+          {% if pu is not none %} / {{ pu|usd }}{% endif %}
           {% if pt is none and pu is none %}—{% endif %}
         </td>
         <td><a href="{{ url_for('crm_ops.case_documents', case_id=t.document.case_id) }}" style="font-size:0.8rem;">Open →</a></td>

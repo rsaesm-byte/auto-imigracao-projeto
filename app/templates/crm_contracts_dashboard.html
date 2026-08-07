@@ -34,7 +34,7 @@
         <td class="muted">
           {% if c.document_type.value == 'service_contract' %}{{ c.service.name if c.service else '—' }} ({{ c.tier.value|replace('_',' ')|title if c.tier else '—' }}){% else %}Terms &amp; Conditions{% endif %}
         </td>
-        <td class="muted">{% set p = price_cents(c) %}{% if p is not none %}${{ '%.2f'|format(p / 100) }}{% else %}—{% endif %}</td>
+        <td class="muted">{% set p = price_cents(c) %}{% if p is not none %}{{ p|usd }}{% else %}—{% endif %}</td>
         <td>{{ crm_badge(c.status) }}</td>
         <td class="muted">{{ c.requested_at.strftime('%m/%d/%Y') }}</td>
         <td class="muted">

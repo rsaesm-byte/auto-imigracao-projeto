@@ -1,11 +1,16 @@
 {% extends "staff_base.html" %}
 {% from "_staff_price_table.html" import price_table %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Prices{% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>Prices</h1>
   <p style="opacity:0.92;margin:0;">Change the price charged for each form, package, or full-service package — the change appears immediately on the site's Services and Packages pages, no server restart needed. Leave the field blank to mark it as "not sold separately".</p>
+</div>
+
+<div class="card" style="display:flex;justify-content:flex-end;">
+  {{ history_widget('prices-history-drawer', 'Price change history', history, history_users, empty_hint='Price changes will show up here.') }}
 </div>
 
 <div class="card">
@@ -74,20 +79,20 @@
         <td class="muted">{{ service.updated_at.strftime('%m/%d/%Y') if service.updated_at else '—' }}</td>
         <td>
           <span class="muted">$</span>
-          <input type="number" step="0.01" min="0" name="price_dollars_standard" form="pkg-form-{{ service.id }}"
-                 value="{{ '%.2f'|format(service.base_price_cents / 100) if service.base_price_cents is not none else '' }}"
+          <input type="text" inputmode="decimal" name="price_dollars_standard" form="pkg-form-{{ service.id }}"
+                 value="{{ service.base_price_cents|usd_input }}"
                  placeholder="—" style="max-width:100px;">
         </td>
         <td>
           <span class="muted">$</span>
-          <input type="number" step="0.01" min="0" name="price_dollars_plus" form="pkg-form-{{ service.id }}"
-                 value="{{ '%.2f'|format(service.plus_price_cents / 100) if service.plus_price_cents is not none else '' }}"
+          <input type="text" inputmode="decimal" name="price_dollars_plus" form="pkg-form-{{ service.id }}"
+                 value="{{ service.plus_price_cents|usd_input }}"
                  placeholder="—" style="max-width:100px;">
         </td>
         <td>
           <span class="muted">$</span>
-          <input type="number" step="0.01" min="0" name="price_dollars_plus_paper" form="pkg-form-{{ service.id }}"
-                 value="{{ '%.2f'|format(service.plus_price_paper_cents / 100) if service.plus_price_paper_cents is not none else '' }}"
+          <input type="text" inputmode="decimal" name="price_dollars_plus_paper" form="pkg-form-{{ service.id }}"
+                 value="{{ service.plus_price_paper_cents|usd_input }}"
                  placeholder="—" style="max-width:100px;">
         </td>
         <td>

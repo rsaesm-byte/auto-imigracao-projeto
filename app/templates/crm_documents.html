@@ -1,5 +1,6 @@
 {% extends "staff_base.html" %}
 {% from "_crm_badge.html" import crm_badge %}
+{% from "_crm_ui.html" import history_widget %}
 {% block title %}Staff — Case Documents{% endblock %}
 {% block content %}
 <div class="card hero">
@@ -35,10 +36,11 @@
   <h2>Documents ({{ case.documents|length }})</h2>
   {% if case.documents %}
   {% for d in case.documents %}
-  <div style="border-top:1px solid var(--border);padding:12px 0;">
+  <div id="doc-{{ d.id }}" style="border-top:1px solid var(--border);padding:12px 0;">
     <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;align-items:start;">
       <div>
         <strong>{{ d.name }}</strong>
+        {% if d.file_path %} <a href="{{ url_for('crm_ops.document_file', document_id=d.id) }}" target="_blank">(View uploaded file)</a>{% endif %}
         {# Only becomes a real link if it starts with http(s):// -- no route writes
            gdrive_url today, but the field is free text and a value like
            "javascript:..." would execute on click (Jinja's autoescape protects the
@@ -49,7 +51,10 @@
           {% if d.translation_language %} · Translate from {{ d.translation_language.value|title }}{% endif %}
         </div>
       </div>
-      {{ crm_badge(d.status) }}
+      <div style="display:flex;align-items:center;gap:8px;">
+        {{ crm_badge(d.status) }}
+        {{ history_widget('doc-history-' ~ d.id, 'History — ' + d.name, document_history.get(d.id, []), history_users, empty_hint='Changes to this document will show up here.') }}
+      </div>
     </div>
 
     <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-top:8px;">
@@ -75,8 +80,8 @@
     <details style="margin-top:10px;">
       <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;color:var(--accent);">
         Translation details
-        {% if totals and totals.client_total_cents is not none %} — client: ${{ '%.2f'|format(totals.client_total_cents / 100) }}{% endif %}
-        {% if totals and totals.payout_usd_cents is not none %} · payout: ${{ '%.2f'|format(totals.payout_usd_cents / 100) }}{% endif %}
+        {% if totals and totals.client_total_cents is not none %} — client: {{ totals.client_total_cents|usd }}{% endif %}
+        {% if totals and totals.payout_usd_cents is not none %} · payout: {{ totals.payout_usd_cents|usd }}{% endif %}
       </summary>
       <form method="post" action="{{ url_for('crm_ops.document_translation_save', document_id=d.id) }}"
             style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-top:10px;">
@@ -102,15 +107,15 @@
         </div>
         <div>
           <label class="muted" style="font-size:0.78rem;">Requested on</label><br>
-          <input type="date" name="requested_at" value="{{ d.translation.requested_at.isoformat() if d.translation and d.translation.requested_at else '' }}" style="font-size:0.82rem;">
+          <input type="date" lang="en-US" name="requested_at" value="{{ d.translation.requested_at.isoformat() if d.translation and d.translation.requested_at else '' }}" style="font-size:0.82rem;">
         </div>
         <div>
           <label class="muted" style="font-size:0.78rem;">Delivered on</label><br>
-          <input type="date" name="delivered_at" value="{{ d.translation.delivered_at.isoformat() if d.translation and d.translation.delivered_at else '' }}" style="font-size:0.82rem;">
+          <input type="date" lang="en-US" name="delivered_at" value="{{ d.translation.delivered_at.isoformat() if d.translation and d.translation.delivered_at else '' }}" style="font-size:0.82rem;">
         </div>
         <div>
           <label class="muted" style="font-size:0.78rem;">Deadline</label><br>
-          <input type="date" name="deadline" value="{{ d.translation.deadline.isoformat() if d.translation and d.translation.deadline else '' }}" style="font-size:0.82rem;">
+          <input type="date" lang="en-US" name="deadline" value="{{ d.translation.deadline.isoformat() if d.translation and d.translation.deadline else '' }}" style="font-size:0.82rem;">
         </div>
         <div>
           <label class="muted" style="font-size:0.78rem;">Pages</label><br>
@@ -119,12 +124,16 @@
         <div>
           <label class="muted" style="font-size:0.78rem;">Price/page — translator's currency ({{ d.translation.translator.currency.value|upper if d.translation and d.translation.translator else '—' }})</label><br>
           <input type="text" name="price_per_page_translator_currency" placeholder="0.00"
-                 value="{{ '%.2f'|format(d.translation.price_per_page_translator_currency_cents / 100) if d.translation and d.translation.price_per_page_translator_currency_cents is not none else '' }}" style="font-size:0.82rem;">
+                 value="{{ d.translation.price_per_page_translator_currency_cents|usd_input if d.translation else '' }}" style="font-size:0.82rem;">
         </div>
         <div>
           <label class="muted" style="font-size:0.78rem;">Price/page — USD</label><br>
           <input type="text" name="price_per_page_usd" placeholder="0.00"
-                 value="{{ '%.2f'|format(d.translation.price_per_page_usd_cents / 100) if d.translation and d.translation.price_per_page_usd_cents is not none else '' }}" style="font-size:0.82rem;">
+                 value="{{ d.translation.price_per_page_usd_cents|usd_input if d.translation else '' }}" style="font-size:0.82rem;">
+        </div>
+        <div style="grid-column:1/-1;">
+          <label class="muted" style="font-size:0.78rem;">Notes</label><br>
+          <textarea name="notes" rows="2" style="width:100%;font-family:inherit;font-size:0.82rem;">{{ d.translation.notes or '' if d.translation else '' }}</textarea>
         </div>
         <div style="grid-column:1/-1;">
           <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:6px 12px;">Save translation</button>
@@ -133,10 +142,19 @@
 
       {% if totals %}
       <div class="muted" style="font-size:0.82rem;margin-top:8px;padding:8px 10px;background:var(--accent-soft);border-radius:var(--radius-sm);">
-        Client total: {% if totals.client_total_cents is not none %}${{ '%.2f'|format(totals.client_total_cents / 100) }}{% else %}—{% endif %}
-        (pages × {% if totals.client_price_per_page_cents is not none %}${{ '%.2f'|format(totals.client_price_per_page_cents / 100) }}{% else %}—{% endif %}/page)
-        · Translator payout: {% if totals.payout_translator_currency_cents is not none %}{{ '%.2f'|format(totals.payout_translator_currency_cents / 100) }} {{ d.translation.translator.currency.value|upper if d.translation.translator else '' }}{% else %}—{% endif %}
-        {% if totals.payout_usd_cents is not none %}/ ${{ '%.2f'|format(totals.payout_usd_cents / 100) }}{% endif %}
+        Client total: {% if totals.client_total_cents is not none %}{{ totals.client_total_cents|usd }}{% else %}—{% endif %}
+        (pages × {% if totals.client_price_per_page_cents is not none %}{{ totals.client_price_per_page_cents|usd }}{% else %}—{% endif %}/page)
+        · Translator payout: {% if totals.payout_translator_currency_cents is not none %}{{ (totals.payout_translator_currency_cents / 100)|num }} {{ d.translation.translator.currency.value|upper if d.translation.translator else '' }}{% else %}—{% endif %}
+        {% if totals.payout_usd_cents is not none %}/ {{ totals.payout_usd_cents|usd }}{% endif %}
+        {% if totals.client_total_cents is not none %}
+        {% set approval = d.translation.client_approval_status %}
+        {% set approval_color = {'pending': '#6b7280', 'approved': '#16a34a', 'changes_requested': '#AE8A50', 'rejected': '#991b1b'}[approval.value] %}
+        <br>
+        <span style="display:inline-block;margin-top:6px;padding:2px 8px;border-radius:999px;font-size:0.74rem;font-weight:600;color:#fff;background:{{ approval_color }};">
+          Client: {{ approval.value|replace('_',' ')|title }}
+        </span>
+        {% if d.translation.client_approval_note %}<span style="font-size:0.78rem;"> — "{{ d.translation.client_approval_note }}"</span>{% endif %}
+        {% endif %}
       </div>
       {% endif %}
 
