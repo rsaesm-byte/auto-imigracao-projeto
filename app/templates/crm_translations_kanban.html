@@ -16,20 +16,25 @@
     <input type="text" class="list-filter-input" placeholder="Filter translations…">
     <kbd>/</kbd>
   </div>
+  <div class="advanced-filter-mount" data-board-key="translations"></div>
   {% endif %}
   {{ view_switcher(view, url_for('crm_translations.kanban')) }}
   <a href="{{ url_for('crm_translations.find_case') }}" class="icon-btn" style="border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 14px;text-decoration:none;">+ New translation</a>
 </div>
 
 {% if view == 'kanban' %}
-<div class="crm-kanban" data-draggable="true">
+<div class="crm-kanban" data-draggable="true" data-board-key="translations" data-filter-fields='{{ filter_fields|tojson }}'>
   {% for status in statuses %}
   <div class="crm-kanban-col" data-status-field="status" data-status-value="{{ status.value }}"
        data-action-template="{{ url_for('crm_ops.document_status_update', document_id=999999) }}"
        {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
     <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for doc in by_status[status] %}
-    <div class="crm-kanban-card" draggable="true" data-item-id="{{ doc.id }}">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ doc.id }}"
+         data-field-status="{{ doc.status.value }}"
+         data-field-translator="{{ doc.translation.translator.full_name if doc.translation and doc.translation.translator else '' }}"
+         data-field-document="{{ doc.name }}" data-field-client="{{ doc.client.full_name }}"
+         data-field-deadline="{{ doc.translation.deadline.isoformat() if doc.translation and doc.translation.deadline else '' }}">
       <h4>{{ doc.name }}</h4>
       <div class="muted">{{ doc.client.full_name }}</div>
       <div class="muted">{{ doc.translation_language.value|title if doc.translation_language else '—' }}</div>
@@ -69,6 +74,7 @@
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
 <script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
 <script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+<script src="{{ url_for('static', filename='advanced-filter.js') }}"></script>
 
 {% elif view == 'table' %}
 <div class="card">{{ table_view(all_rows, columns) }}</div>

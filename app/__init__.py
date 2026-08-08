@@ -937,6 +937,7 @@ def create_app() -> Flask:
     from app.crm_custom_fields import crm_custom_fields_bp
     from app.crm_automations import crm_automations_bp
     from app.crm_staff_admin import crm_staff_admin_bp
+    from app.crm_saved_filters import crm_saved_filters_bp
     from app.onboarding import onboarding_bp
     from app.planner import planner_bp
     app.register_blueprint(auth_bp)
@@ -972,6 +973,7 @@ def create_app() -> Flask:
     app.register_blueprint(crm_custom_fields_bp)
     app.register_blueprint(crm_automations_bp)
     app.register_blueprint(crm_staff_admin_bp)
+    app.register_blueprint(crm_saved_filters_bp)
     app.register_blueprint(onboarding_bp)
     app.register_blueprint(planner_bp)
 

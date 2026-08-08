@@ -112,12 +112,25 @@ def kanban():
         calendar_grid = build_calendar_grid(
             rows, lambda d: (d.translation.deadline if d.translation else None), year, month)
 
+    translator_options = [t.full_name for t in SessionLocal.query(Translator).order_by(Translator.full_name).all()]
+    filter_fields = [
+        {"key": "status", "label": "Status", "type": "select",
+         "options": [{"value": s.value, "label": stage_labels.get(s.value, s.value.replace('_', ' ').title())}
+                     for s in DocumentStatus]},
+        {"key": "translator", "label": "Translator", "type": "select",
+         "options": [{"value": name, "label": name} for name in translator_options]},
+        {"key": "document", "label": "Document", "type": "text"},
+        {"key": "client", "label": "Client", "type": "text"},
+        {"key": "deadline", "label": "Deadline", "type": "date"},
+    ]
+
     return render_template(
         "crm_translations_kanban.html", by_status=by_status,
         statuses=pipeline_stage_service.ordered_members("document_status"),
         stage_colors=pipeline_stage_service.stage_colors("document_status"),
         stage_labels=stage_labels,
-        totals=totals, view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows)
+        totals=totals, view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows,
+        filter_fields=filter_fields)
 
 
 @crm_translations_bp.route("/nova")

@@ -15,19 +15,23 @@
     <input type="text" class="list-filter-input" placeholder="Filter cases…">
     <kbd>/</kbd>
   </div>
+  <div class="advanced-filter-mount" data-board-key="cases"></div>
   {% else %}<span></span>{% endif %}
   {{ view_switcher(view, url_for('crm_pipeline.cases_kanban')) }}
 </div>
 
 {% if view == 'kanban' %}
-<div class="crm-kanban" data-draggable="true">
+<div class="crm-kanban" data-draggable="true" data-board-key="cases" data-filter-fields='{{ filter_fields|tojson }}'>
   {% for status in statuses %}
   <div class="crm-kanban-col" data-status-field="case_status" data-status-value="{{ status.value }}"
        data-action-template="{{ url_for('crm_pipeline.case_status_update', case_id=999999) }}"
        {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
     <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for c in by_status[status] %}
-    <div class="crm-kanban-card" draggable="true" data-item-id="{{ c.id }}">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ c.id }}"
+         data-field-status="{{ c.case_status.value }}" data-field-priority="{{ c.priority.value }}"
+         data-field-title="{{ c.title }}" data-field-client="{{ c.client.full_name }}"
+         data-field-deadline="{{ c.service_deadline.isoformat() if c.service_deadline else '' }}">
       <h4><a href="{{ url_for('crm_ops.case_procedure', case_id=c.id) }}" style="color:inherit;text-decoration:none;">{{ c.title }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
       <div class="muted">{{ c.client.full_name }}</div>
       <div class="muted">
@@ -51,6 +55,7 @@
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
 <script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
 <script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+<script src="{{ url_for('static', filename='advanced-filter.js') }}"></script>
 
 {% elif view == 'table' %}
 <div class="card">{{ table_view(all_rows, columns) }}</div>

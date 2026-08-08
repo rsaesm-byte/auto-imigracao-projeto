@@ -1788,3 +1788,34 @@ class ServiceInterestOption(Base):
     sort_order: Mapped[int] = mapped_column(default=0, index=True)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)
+
+
+class CrmSavedFilterView(Base):
+    """Filtros avançados salvos (Prompt Mestre, Seção 14, item pendente,
+    2026-08-08: "é/não é/contém/E/OU" + "visualizações salvas") --
+    genérico pros 5 boards (Leads/Cases/Translations/Tasks/Financial
+    Coaching), discriminado por `board_key`, em vez de uma tabela por
+    board (mesma decisão de FinancialCoachingSelectOption mais cedo hoje:
+    o formato é idêntico entre boards, só o dado difere).
+
+    `filter_json` guarda `{"combinator": "AND"|"OR", "conditions": [
+    {"field": str, "operator": str, "value": str}, ...]}` -- avaliado
+    inteiramente no CLIENT (app/static/advanced-filter.js), contra
+    atributos `data-field-*` já presentes em cada card/linha, mesmo
+    espírito zero-round-trip de app/static/list-filter.js (o filtro
+    simples de texto que já existia) -- nunca uma query nova no backend.
+
+    `scope`: "personal" (só quem criou vê, padrão) ou "shared" (toda a
+    equipe vê) -- mesmo conceito de escopo já usado em
+    app/staff_nav.py::save_layout() pra "Salvar pra mim" vs "Salvar pra
+    todos", reaproveitado aqui em vez de inventar um terceiro modelo de
+    visibilidade."""
+    __tablename__ = "crm_saved_filter_views"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    board_key: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    filter_json: Mapped[str] = mapped_column(Text)
+    scope: Mapped[str] = mapped_column(default="personal")
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)

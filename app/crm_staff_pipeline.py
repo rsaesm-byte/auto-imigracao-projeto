@@ -85,13 +85,25 @@ def cases_kanban():
         month = svc.parse_int(request.args.get("month")) or today.month
         calendar_grid = build_calendar_grid(rows, lambda c: c.service_deadline, year, month)
 
+    filter_fields = [
+        {"key": "status", "label": "Status", "type": "select",
+         "options": [{"value": s.value, "label": stage_labels.get(s.value, s.value.replace('_', ' ').title())}
+                     for s in CaseStatus]},
+        {"key": "priority", "label": "Priority", "type": "select",
+         "options": [{"value": p.value, "label": p.value.title()} for p in Priority]},
+        {"key": "title", "label": "Title", "type": "text"},
+        {"key": "client", "label": "Client", "type": "text"},
+        {"key": "deadline", "label": "Deadline", "type": "date"},
+    ]
+
     return render_template(
         "crm_cases_kanban.html", by_status=by_status,
         statuses=pipeline_stage_service.ordered_members("case_status"),
         days_to_deadline=svc.days_to_deadline,
         stage_colors=pipeline_stage_service.stage_colors("case_status"),
         stage_labels=stage_labels,
-        view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows)
+        view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows,
+        filter_fields=filter_fields)
 
 
 @crm_pipeline_bp.route("/casos/<int:case_id>/status", methods=["POST"])
@@ -215,6 +227,24 @@ def leads_kanban():
         month = svc.parse_int(request.args.get("month")) or today.month
         calendar_grid = build_calendar_grid(rows, lambda l: l.created_at.date(), year, month)
 
+    # Filtro avançado (Prompt Mestre, Seção 14, 2026-08-08) -- registro de
+    # campos filtráveis do board de Leads, ver app/static/advanced-filter.js.
+    filter_fields = [
+        {"key": "stage", "label": "Stage", "type": "select",
+         "options": [{"value": s.value, "label": stage_labels.get(s.value, s.value.replace('_', ' ').title())}
+                     for s in LeadStage]},
+        {"key": "quality", "label": "Quality", "type": "select",
+         "options": [{"value": q.value, "label": q.value.title()} for q in LeadQuality]},
+        {"key": "source", "label": "Source", "type": "select",
+         "options": [{"value": s.name, "label": s.name} for s in sources.values()]},
+        {"key": "owner", "label": "Owner", "type": "select",
+         "options": [{"value": u.email, "label": u.email} for u in users.values() if u.is_staff]},
+        {"key": "name", "label": "Name", "type": "text"},
+        {"key": "email", "label": "Email", "type": "text"},
+        {"key": "value", "label": "Deal value ($)", "type": "number"},
+        {"key": "created_at", "label": "Created", "type": "date"},
+    ]
+
     return render_template(
         "crm_leads_kanban.html", by_stage=by_stage,
         stages=pipeline_stage_service.ordered_members("lead_stage"),
@@ -224,7 +254,8 @@ def leads_kanban():
         stage_colors=pipeline_stage_service.stage_colors("lead_stage"),
         stage_labels=stage_labels,
         close_loss_reasons=close_loss_reasons,
-        view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows)
+        view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows,
+        filter_fields=filter_fields)
 
 
 @crm_pipeline_bp.route("/leads/<int:lead_id>/stage", methods=["POST"])

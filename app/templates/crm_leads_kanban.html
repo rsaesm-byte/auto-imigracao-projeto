@@ -101,19 +101,26 @@
     <input type="text" class="list-filter-input" placeholder="Filter leads…">
     <kbd>/</kbd>
   </div>
+  <div class="advanced-filter-mount" data-board-key="leads"></div>
   {% endif %}
   {{ view_switcher(view, url_for('crm_pipeline.leads_kanban')) }}
 </div>
 
 {% if view == 'kanban' %}
-<div class="crm-kanban" data-draggable="true">
+<div class="crm-kanban" data-draggable="true" data-board-key="leads" data-filter-fields='{{ filter_fields|tojson }}'>
   {% for stage in stages %}
   <div class="crm-kanban-col" data-status-field="stage" data-status-value="{{ stage.value }}"
        data-action-template="{{ url_for('crm_pipeline.lead_stage_update', lead_id=999999) }}"
        {% if stage_colors.get(stage.value) %}style="--col-accent: {{ stage_colors[stage.value] }};"{% endif %}>
     <h3>{{ crm_badge(stage, label=stage_labels.get(stage.value)) }} {{ kanban_col_count(by_stage[stage]|length) }}</h3>
     {% for lead in by_stage[stage] %}
-    <div class="crm-kanban-card" draggable="true" data-item-id="{{ lead.id }}" data-lead-context-menu="true">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ lead.id }}" data-lead-context-menu="true"
+         data-field-stage="{{ lead.stage.value }}" data-field-quality="{{ lead.quality.value if lead.quality else '' }}"
+         data-field-source="{{ sources[lead.lead_source_id].name if lead.lead_source_id in sources else '' }}"
+         data-field-owner="{{ users[lead.assigned_to_id].email if lead.assigned_to_id in users else '' }}"
+         data-field-name="{{ lead.name }}" data-field-email="{{ lead.contact_email or '' }}"
+         data-field-value="{{ (lead.deal_value_cents / 100) if lead.deal_value_cents else '' }}"
+         data-field-created_at="{{ lead.created_at.date().isoformat() }}">
       <h4><a href="{{ url_for('crm_pipeline.lead_detail', lead_id=lead.id) }}" style="color:inherit;text-decoration:none;">{{ lead.name }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
       {% if lead.tier %}<div class="muted">{{ '⭐' * (lead.tier.value[-1]|int) }} {{ tooltip('Lead Tier: classificação de 1 a 5 estrelas da qualidade/prioridade deste lead. Editável na ficha do lead.') }}</div>{% endif %}
       {% if lead.quality %}<div class="muted">Quality: {{ lead.quality.value|title }}</div>{% endif %}
@@ -134,6 +141,7 @@
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
 <script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
 <script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+<script src="{{ url_for('static', filename='advanced-filter.js') }}"></script>
 
 {% elif view == 'table' %}
 <div class="card">{{ table_view(all_rows, columns) }}</div>

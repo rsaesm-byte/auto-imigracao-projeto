@@ -1145,13 +1145,25 @@ def tasks():
         month = svc.parse_int(request.args.get("month")) or today.month
         calendar_grid = build_calendar_grid(rows, lambda t: t.due_date, year, month)
 
+    filter_fields = [
+        {"key": "status", "label": "Status", "type": "select",
+         "options": [{"value": s.value, "label": stage_labels.get(s.value, s.value.replace('_', ' ').title())}
+                     for s in TaskStatus]},
+        {"key": "priority", "label": "Priority", "type": "select",
+         "options": [{"value": p.value, "label": p.value.title()} for p in Priority]},
+        {"key": "owner", "label": "Owner", "type": "select",
+         "options": [{"value": u.email, "label": u.email} for u in users.values() if u.is_staff]},
+        {"key": "title", "label": "Title", "type": "text"},
+        {"key": "due_date", "label": "Due date", "type": "date"},
+    ]
+
     return render_template(
         "crm_tasks.html", by_status=by_status,
         statuses=pipeline_stage_service.ordered_members("task_status"), cases=cases, users=users,
         stage_colors=pipeline_stage_service.stage_colors("task_status"),
         stage_labels=stage_labels,
         view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows,
-        quick_filter=quick_filter)
+        quick_filter=quick_filter, filter_fields=filter_fields)
 
 
 @crm_ops_bp.route("/tarefas/novo", methods=["GET", "POST"])

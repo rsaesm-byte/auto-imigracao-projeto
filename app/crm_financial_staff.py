@@ -98,6 +98,19 @@ def clients_kanban():
         month = svc.parse_int(request.args.get("month")) or today.month
         calendar_grid = build_calendar_grid(rows, lambda fc: fc.enrollment_at, year, month)
 
+    filter_fields = [
+        {"key": "status", "label": "Status", "type": "select",
+         "options": [{"value": s.value, "label": stage_labels.get(s.value, s.value.replace('_', ' ').title())}
+                     for s in FinancialClientStatus]},
+        {"key": "program", "label": "Program", "type": "select",
+         "options": [{"value": p.value, "label": p.value.replace('_', ' ').title()} for p in ProgramType]},
+        {"key": "priority", "label": "Priority", "type": "select",
+         "options": [{"value": o.name, "label": o.name.title()} for o in _select_options("priority_level")]},
+        {"key": "progress", "label": "Progress status", "type": "select",
+         "options": [{"value": o.name, "label": o.name.replace('_', ' ').title()} for o in _select_options("progress_status")]},
+        {"key": "name", "label": "Name", "type": "text"},
+    ]
+
     return render_template(
         "crm_financial_kanban.html", by_status=by_status,
         statuses=pipeline_stage_service.ordered_members("financial_client_status"),
@@ -105,7 +118,8 @@ def clients_kanban():
         sessions_remaining=fsvc.sessions_remaining,
         stage_colors=pipeline_stage_service.stage_colors("financial_client_status"),
         stage_labels=stage_labels,
-        view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows)
+        view=view, columns=columns, calendar_grid=calendar_grid, all_rows=rows,
+        filter_fields=filter_fields)
 
 
 @crm_financial_bp.route("/<int:financial_client_id>/status", methods=["POST"])

@@ -19,19 +19,23 @@
     <input type="text" class="list-filter-input" placeholder="Filter clients…">
     <kbd>/</kbd>
   </div>
+  <div class="advanced-filter-mount" data-board-key="financial_coaching"></div>
   {% endif %}
   {{ view_switcher(view, url_for('crm_financial.clients_kanban')) }}
 </div>
 
 {% if view == 'kanban' %}
-<div class="crm-kanban" data-draggable="true">
+<div class="crm-kanban" data-draggable="true" data-board-key="financial_coaching" data-filter-fields='{{ filter_fields|tojson }}'>
   {% for status in statuses %}
   <div class="crm-kanban-col" data-status-field="client_status" data-status-value="{{ status.value }}"
        data-action-template="{{ url_for('crm_financial.client_status_update', financial_client_id=999999) }}"
        {% if stage_colors.get(status.value) %}style="--col-accent: {{ stage_colors[status.value] }};"{% endif %}>
     <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for fc in by_status[status] %}
-    <div class="crm-kanban-card" draggable="true" data-item-id="{{ fc.id }}">
+    <div class="crm-kanban-card" draggable="true" data-item-id="{{ fc.id }}"
+         data-field-status="{{ fc.client_status.value }}" data-field-program="{{ fc.program_type.value if fc.program_type else '' }}"
+         data-field-priority="{{ fc.priority_level }}" data-field-progress="{{ fc.progress_status }}"
+         data-field-name="{{ fc.full_name }}">
       <h4><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}" style="color:inherit;text-decoration:none;">{{ fc.full_name }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
       {% if fc.package_value_cents %}
       <div class="muted">Balance: {{ (remaining_balance_cents(fc) or 0)|usd }}</div>
@@ -46,6 +50,7 @@
 <script src="{{ url_for('static', filename='kanban-dnd.js') }}"></script>
 <script src="{{ url_for('static', filename='kanban-collapse.js') }}"></script>
 <script src="{{ url_for('static', filename='list-filter.js') }}"></script>
+<script src="{{ url_for('static', filename='advanced-filter.js') }}"></script>
 
 {% elif view == 'table' %}
 <div class="card">{{ table_view(all_rows, columns) }}</div>
