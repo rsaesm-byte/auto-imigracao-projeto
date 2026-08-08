@@ -1,4 +1,5 @@
 {% extends "staff_base.html" %}
+{% from "_charts.html" import vertical_bar_chart, donut_chart %}
 {% block title %}Staff — Financial Coaching KPIs{% endblock %}
 {% block content %}
 <div class="card hero">
@@ -13,6 +14,26 @@
       <input type="month" name="mes" value="{{ mes }}" onchange="this.form.submit()">
     </div>
   </form>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;">
+  <div class="card">
+    <h2 style="font-size:1rem;margin-top:0;">Leads &amp; clients this month</h2>
+    {% set volume_rows = [
+      {'label': 'New leads', 'value': kpis.number_of_leads, 'color': 'var(--accent)'},
+      {'label': 'Converted', 'value': kpis.leads_converted, 'color': '#16a34a'},
+      {'label': 'Active clients', 'value': kpis.active_clients, 'color': '#E2AE53'}] %}
+    {{ vertical_bar_chart(volume_rows, is_money=False, height=140) }}
+  </div>
+  {% if kpis.number_of_leads %}
+  <div class="card">
+    <h2 style="font-size:1rem;margin-top:0;">Conversion this month</h2>
+    {% set conversion_rows = [
+      {'label': 'Converted', 'value': kpis.leads_converted, 'color': '#16a34a'},
+      {'label': 'Not converted (yet)', 'value': [kpis.number_of_leads - kpis.leads_converted, 0]|max, 'color': 'var(--border)'}] %}
+    {{ donut_chart(conversion_rows) }}
+  </div>
+  {% endif %}
 </div>
 
 <div class="card">

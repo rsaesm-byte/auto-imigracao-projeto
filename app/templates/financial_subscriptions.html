@@ -4,7 +4,13 @@
 {% block content %}
 <div class="card hero">
   <h1>Subscriptions</h1>
-  <p style="opacity:0.92;margin:0;">What's charging you automatically, and whether you still want it. <a href="{{ url_for('financial_workspace.recurring') }}" style="color:#fff;text-decoration:underline;">← Recurring transactions</a></p>
+  <p style="opacity:0.92;margin:0;">What's charging you automatically, and whether you still want it.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.recurring') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Recurring transactions</a>
+  </div>
 </div>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;">

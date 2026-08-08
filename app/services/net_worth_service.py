@@ -138,6 +138,44 @@ def _debt_balance_as_of(debt: Debt, as_of: date) -> int:
     return debt.current_balance_cents + principal_after_cents
 
 
+def net_worth_as_of(workspace: FinancialWorkspace, as_of: date) -> dict | None:
+    """Patrimônio líquido reconstruído numa data específica -- usado pelo
+    "Net Worth Change" do Relatório Mensal (Fase 11, §12). `None` quando
+    NENHUMA conta do workspace tem um snapshot em ou antes de `as_of`
+    (não dá pra reconstruir o lado dos ativos de jeito nenhum, nunca
+    finge um número) -- quando pelo menos uma tem, soma só as que têm
+    (mesmo "melhor esforço, disclosed" de `net_worth_history`)."""
+    accounts = (
+        SessionLocal.query(Account)
+        .filter_by(financial_workspace_id=workspace.id, include_in_net_worth=True)
+        .filter(Account.deleted_at.is_(None)).all()
+    )
+    assets_cents = 0
+    any_snapshot = False
+    for account in accounts:
+        snapshot = (
+            SessionLocal.query(AccountBalanceSnapshot)
+            .filter(AccountBalanceSnapshot.account_id == account.id,
+                    AccountBalanceSnapshot.snapshot_date <= as_of)
+            .order_by(AccountBalanceSnapshot.snapshot_date.desc()).first()
+        )
+        if snapshot is not None:
+            any_snapshot = True
+            assets_cents += snapshot.balance_cents
+    if not any_snapshot:
+        return None
+
+    debts = (
+        SessionLocal.query(Debt).filter_by(financial_workspace_id=workspace.id)
+        .filter(Debt.deleted_at.is_(None), Debt.status != DebtStatus.planned).all()
+    )
+    liabilities_cents = sum(_debt_balance_as_of(debt, as_of) for debt in debts)
+    return {
+        "assets_cents": assets_cents, "liabilities_cents": liabilities_cents,
+        "net_worth_cents": assets_cents - liabilities_cents,
+    }
+
+
 def net_worth_history(workspace: FinancialWorkspace, *, limit_points: int = 12) -> list[dict]:
     """Um ponto por data com pelo menos um snapshot de conta registrado
     (manual ou month_close) -- histórico só existe conforme snapshots vão

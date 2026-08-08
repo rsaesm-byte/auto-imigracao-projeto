@@ -3,7 +3,9 @@
 {% block content %}
 <div class="card hero">
   <h1>Edit profile — {{ fc.full_name }}</h1>
-  <p style="opacity:0.92;margin:0;"><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}" style="color:#fff;">← Back to details</a></p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+    <a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to details</a>
+  </div>
 </div>
 
 <form method="post">

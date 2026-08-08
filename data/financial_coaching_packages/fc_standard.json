@@ -1,0 +1,67 @@
+{
+  "package_id": "fc_standard",
+  "name": "Financial Coaching — Standard (New Clients)",
+  "name_pt": "Financial Coaching — Standard (Novos Clientes)",
+  "name_es": "Financial Coaching — Standard (Clientes Nuevos)",
+  "seed_price_usd": 4000,
+  "seed_sessions_summary": "5 sessions of 50 minutes + 2 follow-ups of 15 minutes",
+  "seed_sessions_summary_pt": "5 sessões de 50 minutos + 2 follow-ups de 15 minutos",
+  "seed_sessions_summary_es": "5 sesiones de 50 minutos + 2 seguimientos de 15 minutos",
+  "includes": [
+    "5 individual coaching sessions of 50 minutes each",
+    "2 follow-up sessions of 15 minutes each",
+    "Personalized assessment of the client's financial situation",
+    "Education on responsible credit use",
+    "Definition of short, medium, and long-term financial goals",
+    "Structured action plan tailored to the client",
+    "Scheduling through the official Calendly link",
+    "Sessions held via Zoom, Google Meet, or phone",
+    "Up to 3 reschedules for the package",
+    "Confidential handling of financial information, under a fiduciary standard"
+  ],
+  "excludes": [
+    "Investment advice",
+    "Legal advice",
+    "Tax advice",
+    "Guarantee of financial return or specific results",
+    "Sessions beyond the 5 + 2 included in this package"
+  ],
+  "includes_pt": [
+    "5 sessões individuais de coaching de 50 minutos cada",
+    "2 sessões de follow-up de 15 minutos cada",
+    "Avaliação personalizada da situação financeira do cliente",
+    "Educação sobre uso responsável de crédito",
+    "Definição de metas financeiras de curto, médio e longo prazo",
+    "Plano de ação estruturado e personalizado",
+    "Agendamento pelo link oficial do Calendly",
+    "Sessões realizadas por Zoom, Google Meet ou telefone",
+    "Até 3 reagendamentos por pacote",
+    "Tratamento confidencial das informações financeiras, sob padrão fiduciário"
+  ],
+  "excludes_pt": [
+    "Aconselhamento de investimentos",
+    "Aconselhamento jurídico",
+    "Aconselhamento tributário",
+    "Garantia de retorno financeiro ou resultado específico",
+    "Sessões além das 5 + 2 incluídas neste pacote"
+  ],
+  "includes_es": [
+    "5 sesiones individuales de coaching de 50 minutos cada una",
+    "2 sesiones de seguimiento de 15 minutos cada una",
+    "Evaluación personalizada de la situación financiera del cliente",
+    "Educación sobre el uso responsable del crédito",
+    "Definición de metas financieras a corto, mediano y largo plazo",
+    "Plan de acción estructurado y personalizado",
+    "Programación a través del enlace oficial de Calendly",
+    "Sesiones realizadas por Zoom, Google Meet o teléfono",
+    "Hasta 3 reprogramaciones por paquete",
+    "Manejo confidencial de la información financiera, bajo un estándar fiduciario"
+  ],
+  "excludes_es": [
+    "Asesoría de inversiones",
+    "Asesoría legal",
+    "Asesoría fiscal",
+    "Garantía de retorno financiero o resultado específico",
+    "Sesiones adicionales a las 5 + 2 incluidas en este paquete"
+  ]
+}

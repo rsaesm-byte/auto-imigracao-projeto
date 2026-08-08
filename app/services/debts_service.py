@@ -133,25 +133,28 @@ def debt_progress(debt: Debt) -> dict:
     return {"paid_amount_cents": paid_amount_cents, "progress": progress}
 
 
-def payoff_projection(debt: Debt, *, today: date | None = None) -> dict | None:
-    """`None` quando não dá pra projetar de verdade -- sem pagamento
-    mensal configurado, ou o pagamento nem cobre os juros (nunca quita
-    nesse ritmo). Nunca finge um número."""
+def simulate_payoff(*, balance_cents: int, apr_bps: int | None, monthly_payment_cents: int,
+                     today: date | None = None) -> dict | None:
+    """Núcleo puro da simulação de amortização -- extraído de
+    `payoff_projection` na Fase 12 pra ser reusado também pela calculadora
+    avulsa "what-if" (`financial_insights_service.debt_payoff_calculator`,
+    que simula um cenário hipotético sem precisar cadastrar uma `Debt` de
+    verdade primeiro). `None` quando não dá pra projetar de verdade -- sem
+    pagamento mensal, ou o pagamento nem cobre os juros (nunca quita nesse
+    ritmo). Nunca finge um número."""
     today = today or date.today()
-    if debt.current_balance_cents <= 0:
+    if balance_cents <= 0:
         return {"months_to_payoff": 0, "total_interest_cents": 0, "payoff_date": today}
-
-    monthly_payment = (debt.minimum_payment_cents or 0) + (debt.extra_monthly_payment_cents or 0)
-    if monthly_payment <= 0:
+    if monthly_payment_cents <= 0:
         return None
 
-    monthly_rate = (debt.apr_bps or 0) / 10_000 / 12  # bps (1999 = 19.99%) -> fração anual -> taxa mensal
-    balance = debt.current_balance_cents
+    monthly_rate = (apr_bps or 0) / 10_000 / 12  # bps (1999 = 19.99%) -> fração anual -> taxa mensal
+    balance = balance_cents
     total_interest_cents = 0
     months = 0
     while balance > 0 and months < _MAX_PROJECTION_MONTHS:
         interest = round(balance * monthly_rate)
-        payment = min(monthly_payment, balance + interest)
+        payment = min(monthly_payment_cents, balance + interest)
         principal = payment - interest
         if principal <= 0:
             return None  # pagamento não cobre nem os juros -- nunca quita nesse ritmo
@@ -166,6 +169,13 @@ def payoff_projection(debt: Debt, *, today: date | None = None) -> dict | None:
         "months_to_payoff": months, "total_interest_cents": total_interest_cents,
         "payoff_date": _add_months(today, months),
     }
+
+
+def payoff_projection(debt: Debt, *, today: date | None = None) -> dict | None:
+    monthly_payment = (debt.minimum_payment_cents or 0) + (debt.extra_monthly_payment_cents or 0)
+    return simulate_payoff(
+        balance_cents=debt.current_balance_cents, apr_bps=debt.apr_bps,
+        monthly_payment_cents=monthly_payment, today=today)
 
 
 def ordered_debts(workspace: FinancialWorkspace, *, strategy: PayoffStrategy = PayoffStrategy.snowball) -> list[Debt]:

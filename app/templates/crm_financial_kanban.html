@@ -32,7 +32,7 @@
     <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for fc in by_status[status] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ fc.id }}">
-      <h4><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}">{{ fc.full_name }}</a></h4>
+      <h4><a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}" style="color:inherit;text-decoration:none;">{{ fc.full_name }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
       {% if fc.package_value_cents %}
       <div class="muted">Balance: {{ (remaining_balance_cents(fc) or 0)|usd }}</div>
       {% endif %}

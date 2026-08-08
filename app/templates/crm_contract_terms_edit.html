@@ -9,7 +9,7 @@
 </div>
 
 <div class="card" style="display:flex;justify-content:space-between;align-items:center;">
-  <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="muted" style="font-size:0.85rem;">← All templates</a>
+  <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← All templates</a>
   {{ history_widget('terms-history-drawer', 'History — Terms & Conditions', history, history_users, empty_hint='Changes to the Terms & Conditions will show up here.') }}
 </div>
 

@@ -28,7 +28,7 @@
     <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for c in by_status[status] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ c.id }}">
-      <h4>{{ c.title }}</h4>
+      <h4><a href="{{ url_for('crm_ops.case_procedure', case_id=c.id) }}" style="color:inherit;text-decoration:none;">{{ c.title }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
       <div class="muted">{{ c.client.full_name }}</div>
       <div class="muted">
         {{ {'self_service': 'Self-service', 'saes_standard': 'Saes Standard', 'saes_plus': 'Saes Plus'}[c.service_mode.value] }}

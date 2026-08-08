@@ -172,69 +172,129 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete document checklist",
-    "Google Drive link for document uploads",
-    "Review and organization of supporting documents",
-    "Petition/application preparation based on 18 years of experience",
-    "Discount on document translation"
+    "Guidance on Form I-130/I-130A",
+    "Affidavit of Support (I-864)",
+    "DS-260",
+    "Digital case organization",
+    "Final package delivered by email",
+    "Google Drive link for document uploads"
   ],
   "standard_excludes": [
-    "Certified translations (charged separately)",
-    "Case monitoring (client's responsibility)",
-    "NVC/consular fees"
+    "Joint Sponsor documentation",
+    "RFE/rejection response",
+    "Interview preparation",
+    "Post-DQ (post-documentarily-qualified) monitoring",
+    "CEAC upload execution by SAES",
+    "USCIS/NVC fees",
+    "Medical examination",
+    "Translations",
+    "Courier/mailing",
+    "Credential evaluation"
   ],
   "plus_includes": [
-    "All items from Standard",
-    "Translation of supporting letters",
-    "Full case tracking through NVC and consular interview",
-    "Interview preparation support"
+    "I-130/I-130A",
+    "I-864, including Joint Sponsor when applicable",
+    "DS-260",
+    "Guidance on NVC fees, Immigrant Visa Fee, and Affidavit of Support Fee",
+    "Google Drive link for document uploads",
+    "Civil and financial document preparation",
+    "CEAC guidance",
+    "Upload monitoring",
+    "NVC RFE/document rejection assistance",
+    "Interview preparation",
+    "Post-DQ monitoring",
+    "Interview scheduling monitoring",
+    "General case follow-up"
   ],
   "plus_excludes": [
-    "Certified translations (charged separately)"
+    "USCIS/NVC fees",
+    "Medical examination",
+    "Translations",
+    "Courier/mailing",
+    "Credential evaluation"
   ],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Checklist completo de documentos",
-    "Link do Google Drive para envio de documentos",
-    "Revisão e organização dos documentos de apoio",
-    "Preparação da petição/solicitação baseada em 18 anos de experiência",
-    "Desconto na tradução de documentos"
+    "Orientação sobre o Formulário I-130/I-130A",
+    "Affidavit of Support (I-864)",
+    "DS-260",
+    "Organização digital do caso",
+    "Pacote final entregue por e-mail",
+    "Link do Google Drive para envio de documentos"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Lista completa de documentos",
-    "Enlace de Google Drive para subir documentos",
-    "Revisión y organización de los documentos de respaldo",
-    "Preparación de la petición/solicitud basada en 18 años de experiencia",
-    "Descuento en la traducción de documentos"
+    "Orientación sobre el Formulario I-130/I-130A",
+    "Affidavit of Support (I-864)",
+    "DS-260",
+    "Organización digital del caso",
+    "Paquete final entregado por correo electrónico",
+    "Enlace de Google Drive para subir documentos"
   ],
   "standard_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)",
-    "Acompanhamento do caso (responsabilidade do cliente)",
-    "Taxas do NVC/consulares"
+    "Documentação de Joint Sponsor",
+    "Resposta a RFE/rejeição",
+    "Preparação para entrevista",
+    "Acompanhamento pós-DQ (post-documentarily-qualified)",
+    "Execução do upload no CEAC pela SAES",
+    "Taxas da USCIS/NVC",
+    "Exame médico",
+    "Traduções",
+    "Correio/envio",
+    "Avaliação de diploma/credencial"
   ],
   "standard_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)",
-    "Seguimiento del caso (responsabilidad del cliente)",
-    "Tarifas del NVC/consulares"
+    "Documentación de Joint Sponsor",
+    "Respuesta a RFE/rechazo",
+    "Preparación para la entrevista",
+    "Seguimiento post-DQ (post-documentarily-qualified)",
+    "Ejecución de la carga en CEAC por parte de SAES",
+    "Tarifas de USCIS/NVC",
+    "Examen médico",
+    "Traducciones",
+    "Mensajería/envío",
+    "Evaluación de credenciales"
   ],
   "plus_includes_pt": [
-    "Todos os itens do Standard",
-    "Tradução das cartas de apoio",
-    "Acompanhamento completo do caso pelo NVC e entrevista consular",
-    "Apoio na preparação da entrevista"
+    "I-130/I-130A",
+    "I-864, incluindo Joint Sponsor quando aplicável",
+    "DS-260",
+    "Orientação sobre as taxas do NVC, Immigrant Visa Fee e Affidavit of Support Fee",
+    "Link do Google Drive para envio de documentos",
+    "Preparação de documentos civis e financeiros",
+    "Orientação sobre o CEAC",
+    "Acompanhamento dos uploads",
+    "Assistência em RFE/rejeição de documentos pelo NVC",
+    "Preparação para entrevista",
+    "Acompanhamento pós-DQ",
+    "Acompanhamento do agendamento da entrevista",
+    "Acompanhamento geral do caso"
   ],
   "plus_includes_es": [
-    "Todos los elementos del Standard",
-    "Traducción de las cartas de respaldo",
-    "Seguimiento completo del caso a través del NVC y la entrevista consular",
-    "Apoyo en la preparación de la entrevista"
+    "I-130/I-130A",
+    "I-864, incluyendo Joint Sponsor cuando aplique",
+    "DS-260",
+    "Orientación sobre las tarifas del NVC, Immigrant Visa Fee y Affidavit of Support Fee",
+    "Enlace de Google Drive para subir documentos",
+    "Preparación de documentos civiles y financieros",
+    "Orientación sobre CEAC",
+    "Seguimiento de las cargas de documentos",
+    "Asistencia en RFE/rechazo de documentos del NVC",
+    "Preparación para la entrevista",
+    "Seguimiento post-DQ",
+    "Seguimiento de la programación de la entrevista",
+    "Seguimiento general del caso"
   ],
   "plus_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)"
+    "Taxas da USCIS/NVC",
+    "Exame médico",
+    "Traduções",
+    "Correio/envio",
+    "Avaliação de diploma/credencial"
   ],
   "plus_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)"
+    "Tarifas de USCIS/NVC",
+    "Examen médico",
+    "Traducciones",
+    "Mensajería/envío",
+    "Evaluación de credenciales"
   ]
 }

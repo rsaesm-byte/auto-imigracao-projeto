@@ -1236,12 +1236,18 @@ def task_detail(task_id: int):
     history = audit_service.get_history("Task", task.id)
     history_users = {u.id: u for u in SessionLocal.query(User).all()}
 
+    from app.services import custom_fields_service as cfsvc
+    custom_fields = cfsvc.active_fields("Task")
+    custom_values = cfsvc.values_for_entity("Task", task.id)
+
     return render_template(
         "crm_task_detail.html", task=task, cases=SessionLocal.query(Case).order_by(Case.title).all(),
         staff_users=svc.staff_users(), task_types=list(TaskType), priorities=list(Priority),
         statuses=list(TaskStatus), time_entries=time_entries, total_seconds=total_seconds,
         entry_duration=planner_svc.entry_duration_seconds, format_duration=planner_svc.format_duration,
-        history=history, history_users=history_users)
+        history=history, history_users=history_users,
+        custom_fields=custom_fields, custom_values=custom_values,
+        cf_options_for=cfsvc.options_for, cf_multi_selected=cfsvc.parse_multi_select)
 
 
 _TASK_TRACKED_FIELDS = ["title", "case_id", "task_type", "priority", "responsible_id", "due_date", "notes",
@@ -1275,6 +1281,49 @@ def task_save(task_id: int):
     SessionLocal.commit()
     flash("Task updated.", "success")
     return redirect(url_for("crm_ops.task_detail", task_id=task.id))
+
+
+@crm_ops_bp.route("/tarefas/<int:task_id>/campos-personalizados", methods=["POST"])
+def task_custom_fields_save(task_id: int):
+    """Grava os valores dos Custom Fields pra esta tarefa -- rota própria,
+    mesmo padrão de crm_pipeline.lead_custom_fields_save (não reaproveita
+    task_save, que grava TODOS os campos padrão de uma vez)."""
+    from app.services import custom_fields_service as cfsvc
+
+    task = SessionLocal.get(Task, task_id)
+    if task is None:
+        abort(404)
+    fields = cfsvc.active_fields("Task")
+    before = cfsvc.values_for_entity("Task", task.id)
+    cfsvc.save_values("Task", task.id, fields, request.form)
+    SessionLocal.flush()
+    after = cfsvc.values_for_entity("Task", task.id)
+    for field in fields:
+        if before.get(field.id) != after.get(field.id):
+            audit_service.log_change(
+                "Task", task.id, "field_update", field=f"custom:{field.key}",
+                old_value=before.get(field.id), new_value=after.get(field.id),
+                description=f"Custom field '{field.label}' updated", user_id=current_user.id)
+    SessionLocal.commit()
+    flash("Custom fields updated.", "success")
+    return redirect(url_for("crm_ops.task_detail", task_id=task_id))
+
+
+@crm_ops_bp.route("/tarefas/<int:task_id>/excluir", methods=["POST"])
+def task_delete(task_id: int):
+    """Exclusão de verdade (mesmo padrão de crm_pipeline.lead_delete) --
+    Task não tem `deleted_at`; attendees/checklist_items/comments já têm
+    cascade="all, delete-orphan" no model, então SessionLocal.delete
+    limpa tudo sozinho."""
+    task = SessionLocal.get(Task, task_id)
+    if task is None:
+        abort(404)
+    audit_service.log_change("Task", task.id, "delete", description=f"Task '{task.title}' deleted",
+                              user_id=current_user.id)
+    SessionLocal.delete(task)
+    SessionLocal.commit()
+    flash("Task deleted.", "success")
+    return redirect(url_for("crm_ops.tasks"))
 
 
 @crm_ops_bp.route("/tarefas/<int:task_id>/checklist", methods=["POST"])

@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block title %}Import Bank Statement — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Import Bank Statement</h1>
+  <p style="opacity:0.92;margin:0;">Upload a CSV exported from your bank — you review and confirm everything before anything is created.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.tools') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Tools & Insights</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">1. Choose account and file</h2>
+  <form method="post" action="{{ url_for('financial_workspace.csv_import_new') }}" enctype="multipart/form-data"
+        style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <select name="account_id" required>
+      <option value="">Import into account…</option>
+      {% for a in accounts %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+    </select>
+    <input type="file" name="file" accept=".csv" required>
+    <button type="submit" class="btn">Upload</button>
+  </form>
+  <p class="muted" style="font-size:0.76rem;margin-top:10px;">Nothing is imported yet — the next steps let you map columns, preview every row, and pick exactly what to bring in.</p>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Past imports</h2>
+  {% if batches %}
+  <table class="submissions">
+    <thead><tr><th>File</th><th>Date</th><th>Status</th><th>Imported / Skipped / Duplicate / Error</th><th></th></tr></thead>
+    <tbody>
+      {% for b in batches %}
+      <tr>
+        <td>{{ b.original_filename }}</td>
+        <td class="muted">{{ b.created_at.strftime('%m/%d/%Y') }}</td>
+        <td><span class="badge">{{ b.status.value|title }}</span></td>
+        <td class="muted">{{ b.imported_count }} / {{ b.skipped_count }} / {{ b.duplicate_count }} / {{ b.error_count }}</td>
+        <td>
+          {% if b.status.value == 'completed' %}
+          <a href="{{ url_for('financial_workspace.csv_import_report', batch_id=b.id) }}">View report</a>
+          {% elif b.status.value == 'mapped' %}
+          <a href="{{ url_for('financial_workspace.csv_import_review', batch_id=b.id) }}">Continue review</a>
+          {% else %}
+          <a href="{{ url_for('financial_workspace.csv_import_map', batch_id=b.id) }}">Continue mapping</a>
+          {% endif %}
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No imports yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

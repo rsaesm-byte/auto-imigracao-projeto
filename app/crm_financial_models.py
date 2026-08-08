@@ -534,3 +534,35 @@ class FinancialWorkspace(Base):
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
     financial_client: Mapped[FinancialClient] = relationship(back_populates="workspace")
+
+
+class FinancialCoachingPackage(Base):
+    """Pacotes de Financial Coaching (2026-08-08, pedido do usuário) --
+    3 produtos fixos e distintos (Standard/Special/Semi-Annual), não
+    tiers Standard/Plus de UM serviço como no catálogo de imigração
+    (`app/crm_models.py::ServiceCatalog`). Deliberadamente uma tabela
+    própria e separada de `ServiceCatalog`, não reaproveitada -- aquele
+    catálogo é lido em vários lugares público-facing do lado de
+    imigração (packages.py, payment_gate.py, seletor de serviço de
+    Case) que não fazem sentido nenhum pra Financial Coaching (que não
+    tem Case). Conteúdo rico (includes/excludes EN/PT/ES) fica em
+    JSON próprio (`data/financial_coaching_packages/<slug>.json`,
+    ver app/services/financial_coaching_packages.py), mesma separação
+    preço-no-banco/conteúdo-em-JSON já usada pelos 15 "Pacotes
+    Completos" de imigração."""
+    __tablename__ = "crm_financial_coaching_packages"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    slug: Mapped[str] = mapped_column(unique=True)
+    name: Mapped[str]
+    name_pt: Mapped[str]
+    name_es: Mapped[str]
+    price_cents: Mapped[int | None] = mapped_column(default=None)
+    sessions_summary: Mapped[str | None] = mapped_column(default=None)
+    sessions_summary_pt: Mapped[str | None] = mapped_column(default=None)
+    sessions_summary_es: Mapped[str | None] = mapped_column(default=None)
+    sort_order: Mapped[int] = mapped_column(default=0)
+
+    updated_by_user_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    updated_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow, onupdate=_utcnow)

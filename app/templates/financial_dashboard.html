@@ -1,10 +1,26 @@
 {% extends "base.html" %}
+{% from "_charts.html" import donut_chart, vertical_bar_chart, horizontal_bar_chart, line_chart %}
 {% block title %}Financial Overview — {{ t('app_name') }}{% endblock %}
 {% block page_class %}wide bg-blobs{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>Financial Overview</h1>
-  <p style="opacity:0.92;margin:0;">Your income, spending and balances at a glance. <a href="{{ url_for('financial_workspace.index') }}" style="color:#fff;text-decoration:underline;">Manage accounts &amp; transactions →</a> · <a href="{{ url_for('financial_workspace.budget') }}" style="color:#fff;text-decoration:underline;">Budget →</a> · <a href="{{ url_for('financial_workspace.bills') }}" style="color:#fff;text-decoration:underline;">Bills →</a> · <a href="{{ url_for('financial_workspace.recurring') }}" style="color:#fff;text-decoration:underline;">Recurring →</a> · <a href="{{ url_for('financial_workspace.goals') }}" style="color:#fff;text-decoration:underline;">Goals →</a> · <a href="{{ url_for('financial_workspace.debts') }}" style="color:#fff;text-decoration:underline;">Debts →</a> · <a href="{{ url_for('financial_workspace.net_worth') }}" style="color:#fff;text-decoration:underline;">Net Worth →</a></p>
+  <p style="opacity:0.92;margin:0;">Your income, spending and balances at a glance.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.index') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Accounts &amp; Transactions</a>
+    <a href="{{ url_for('financial_workspace.budget') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Budget</a>
+    <a href="{{ url_for('financial_workspace.bills') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Bills</a>
+    <a href="{{ url_for('financial_workspace.recurring') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Recurring</a>
+    <a href="{{ url_for('financial_workspace.goals') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Goals</a>
+    <a href="{{ url_for('financial_workspace.debts') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Debts</a>
+    <a href="{{ url_for('financial_workspace.net_worth') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Net Worth</a>
+    <a href="{{ url_for('financial_workspace.motivation') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Motivation Board</a>
+    <a href="{{ url_for('financial_workspace.reports') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Reports</a>
+    <a href="{{ url_for('financial_workspace.tools') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Tools & Insights</a>
+  </div>
 </div>
 
 <div class="card">
@@ -45,76 +61,35 @@
   </div>
 </div>
 
-{% macro bar_chart(rows, value_key, color, is_money=True) %}
-  {% set max_val = rows|map(attribute=value_key)|max if rows else 1 %}
-  {% for row in rows %}
-  <div style="margin-bottom:10px;">
-    <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:3px;">
-      <span>{{ row.label }}</span>
-      <span class="muted">{% if is_money %}{{ row[value_key]|usd }}{% else %}{{ row[value_key] }}{% endif %}</span>
-    </div>
-    <div style="background:var(--border);border-radius:999px;height:10px;">
-      <div style="width:{{ ((row[value_key] / max_val * 100) if max_val else 0)|round(1) }}%;background:{{ color }};height:10px;border-radius:999px;min-width:6px;"></div>
-    </div>
-  </div>
-  {% else %}
-  <p class="muted" style="font-size:0.85rem;">No data in this period.</p>
-  {% endfor %}
-{% endmacro %}
-
 <div class="card">
   <h2>Cash Flow — last 6 months</h2>
-  <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;font-size:0.8rem;">
-    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#16a34a;display:inline-block;"></span> Income</span>
-    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#dc2626;display:inline-block;"></span> Expenses</span>
-  </div>
-  {% set max_month = (cash_flow_by_month|map(attribute='income_cents')|list + cash_flow_by_month|map(attribute='expenses_cents')|list)|max if cash_flow_by_month else 1 %}
-  {% for m in cash_flow_by_month %}
-  <div style="margin-bottom:14px;">
-    <div style="font-size:0.82rem;font-weight:600;margin-bottom:4px;">{{ m.label }} <span class="muted" style="font-weight:400;">· net {{ m.net_cents|usd }}</span></div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
-      <div style="width:90px;text-align:right;font-size:0.76rem;" class="muted">{{ m.income_cents|usd }}</div>
-      <div style="flex:1;background:var(--border);border-radius:999px;height:10px;">
-        <div style="width:{{ ((m.income_cents / max_month * 100) if max_month else 0)|round(1) }}%;background:#16a34a;height:10px;border-radius:999px;min-width:{{ '6px' if m.income_cents else '0' }};"></div>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="width:90px;text-align:right;font-size:0.76rem;" class="muted">{{ m.expenses_cents|usd }}</div>
-      <div style="flex:1;background:var(--border);border-radius:999px;height:10px;">
-        <div style="width:{{ ((m.expenses_cents / max_month * 100) if max_month else 0)|round(1) }}%;background:#dc2626;height:10px;border-radius:999px;min-width:{{ '6px' if m.expenses_cents else '0' }};"></div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
+  {{ line_chart([
+    {'name': 'Income', 'color': '#16a34a', 'points': cash_flow_by_month|map(attribute='income_cents')|list},
+    {'name': 'Expenses', 'color': '#dc2626', 'points': cash_flow_by_month|map(attribute='expenses_cents')|list}],
+    cash_flow_by_month|map(attribute='label')|list) }}
 </div>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px;">
   <div class="card">
     <h2>Spending by category</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Expenses in the selected period.</p>
-    {{ bar_chart(spending_by_category, 'amount_cents', 'var(--accent)') }}
+    {{ horizontal_bar_chart(spending_by_category, 'amount_cents', 'label', 'var(--accent)') }}
   </div>
 
   <div class="card">
     <h2>Needs / Wants / Savings</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Based on how you classified each expense — unclassified spending isn't counted here.</p>
-    {% set nws_max = [needs_wants_savings.needs, needs_wants_savings.wants, needs_wants_savings.savings]|max %}
-    {% for key, color in [('needs', '#2a78d6'), ('wants', '#eb6834'), ('savings', '#16a34a')] %}
-    <div style="margin-bottom:10px;">
-      <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:3px;">
-        <span>{{ key|title }}</span><span class="muted">{{ needs_wants_savings[key]|usd }}</span>
-      </div>
-      <div style="background:var(--border);border-radius:999px;height:10px;">
-        <div style="width:{{ ((needs_wants_savings[key] / nws_max * 100) if nws_max else 0)|round(1) }}%;background:{{ color }};height:10px;border-radius:999px;min-width:{{ '6px' if needs_wants_savings[key] else '0' }};"></div>
-      </div>
-    </div>
-    {% endfor %}
+    {% set nws_rows = [
+      {'label': 'Needs', 'value': needs_wants_savings.needs, 'color': '#2a78d6'},
+      {'label': 'Wants', 'value': needs_wants_savings.wants, 'color': '#eb6834'},
+      {'label': 'Savings', 'value': needs_wants_savings.savings, 'color': '#16a34a'}] %}
+    {{ donut_chart(nws_rows) }}
   </div>
 
   <div class="card">
     <h2>Account distribution</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Current balance per account.</p>
-    {{ bar_chart(account_distribution, 'amount_cents', '#7c3aed') }}
+    {{ vertical_bar_chart(account_distribution, 'amount_cents', 'label', '#7c3aed', height=170) }}
   </div>
 </div>
 

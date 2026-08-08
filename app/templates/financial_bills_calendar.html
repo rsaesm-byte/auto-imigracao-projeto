@@ -5,7 +5,12 @@
 {% block content %}
 <div class="card hero">
   <h1>Bills Calendar</h1>
-  <p style="opacity:0.92;margin:0;"><a href="{{ url_for('financial_workspace.bills') }}" style="color:#fff;text-decoration:underline;">← Back to Bills</a></p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.bills') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to Bills</a>
+  </div>
 </div>
 
 <div class="card">

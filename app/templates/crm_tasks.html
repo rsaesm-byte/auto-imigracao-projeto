@@ -75,7 +75,7 @@
     <h3>{{ crm_badge(status, label=stage_labels.get(status.value)) }} {{ kanban_col_count(by_status[status]|length) }}</h3>
     {% for t in by_status[status] %}
     <div class="crm-kanban-card" draggable="true" data-item-id="{{ t.id }}">
-      <h4><a href="{{ url_for('crm_ops.task_detail', task_id=t.id) }}" style="color:inherit;text-decoration:none;">{{ t.title }}</a></h4>
+      <h4><a href="{{ url_for('crm_ops.task_detail', task_id=t.id) }}" style="color:inherit;text-decoration:none;">{{ t.title }} <span class="muted" style="font-size:0.72rem;font-weight:400;">(open →)</span></a></h4>
       {% if t.case_id in cases %}<div class="muted">{{ cases[t.case_id].title }}</div>{% endif %}
       {% if t.responsible_id in users %}<div class="muted">{{ users[t.responsible_id].email }}</div>{% endif %}
       <div class="muted">Priority: {{ t.priority.value|title }}{% if t.due_date %} · Due: {{ t.due_date.strftime('%m/%d/%Y') }}{% endif %}</div>

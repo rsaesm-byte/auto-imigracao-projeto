@@ -637,6 +637,46 @@ def _seed_saes_procedure_services() -> None:
     SessionLocal.commit()
 
 
+def _seed_financial_coaching_packages() -> None:
+    """Cria uma linha em FinancialCoachingPackage (app/crm_financial_models.py)
+    por template em data/financial_coaching_packages/*.json -- os 3 pacotes
+    fixos (Standard/Special/Semi-Annual), pedido do usuário 2026-08-08.
+    Mesmo padrão de _seed_saes_procedure_services() acima: roda por `slug`
+    individualmente (permite adicionar um pacote novo depois sem duplicar
+    os já existentes), e NUNCA sobrescreve price_cents/sessions_summary se
+    a linha já existir (equipe pode já ter editado pela UI) -- só usa
+    seed_price_usd/seed_sessions_summary* do JSON na CRIAÇÃO inicial da
+    linha, nunca depois."""
+    import json
+    from app.crm_financial_models import FinancialCoachingPackage
+    from app.db import SessionLocal
+
+    dir_path = Path(__file__).resolve().parent.parent / "data" / "financial_coaching_packages"
+    if not dir_path.exists():
+        return
+    existing_by_slug = {
+        p.slug: p for p in SessionLocal.query(FinancialCoachingPackage).all()
+    }
+    for i, file_path in enumerate(sorted(dir_path.glob("*.json"))):
+        raw = json.loads(file_path.read_text(encoding="utf-8"))
+        slug = raw["package_id"]
+        existing = existing_by_slug.get(slug)
+        if existing is None:
+            seed_price = raw.get("seed_price_usd")
+            SessionLocal.add(FinancialCoachingPackage(
+                slug=slug, name=raw["name"], name_pt=raw["name_pt"], name_es=raw["name_es"],
+                price_cents=(seed_price * 100) if seed_price is not None else None,
+                sessions_summary=raw.get("seed_sessions_summary"),
+                sessions_summary_pt=raw.get("seed_sessions_summary_pt"),
+                sessions_summary_es=raw.get("seed_sessions_summary_es"),
+                sort_order=i))
+        elif existing.name != raw["name"]:
+            existing.name = raw["name"]
+            existing.name_pt = raw["name_pt"]
+            existing.name_es = raw["name_es"]
+    SessionLocal.commit()
+
+
 def _backfill_case_for_confirmed_payments() -> None:
     """Roda uma vez por boot: cria o Client+Case do CRM que faltava pra
     QUALQUER pagamento já confirmado antes desta migração existir (pedido
@@ -709,6 +749,7 @@ def create_app() -> Flask:
     _seed_service_interest_options()
     _seed_crm_financial_lookups()
     _seed_saes_procedure_services()
+    _seed_financial_coaching_packages()
     _seed_translators()
     _seed_company_contract_terms()
     _backfill_case_for_confirmed_payments()

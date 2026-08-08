@@ -1,0 +1,120 @@
+{
+  "service_id": "cos_to_f1_college_partnership",
+  "name": "Change of Status to F-1 — College (Partnership Pricing)",
+  "name_pt": "Mudança de Status para F-1 — College (Preço de Parceria)",
+  "name_es": "Cambio de Estatus a F-1 — College (Precio de Convenio)",
+  "forms": ["I-539"],
+  "channel": "uscis_domestic",
+  "actor_blocks": [],
+  "note": "Second, separately-priced COS-to-F1-College contract tied to a school partnership -- higher price than the general College product (cos_to_f1_college_general). The source PDF doesn't literally use the label \"partnership pricing\"; that framing is kept here (per the user's own instruction) to keep the two products distinct in the system. Never conflate with cos_to_f1_college_general -- see SAES_Master_Contratos_Servicos.md section 29.2.",
+  "phases": [],
+  "pricing": {
+    "standard_usd": 2150,
+    "plus_online_usd": 2525,
+    "plus_paper_usd": 2650,
+    "notes": "Partnership/special-pricing COS-to-F1-College contract.",
+    "source": "SAES_Master_Contratos_Servicos.md, section 6, extracted 2026-08-08."
+  },
+  "standard_includes": [
+    "Service Agreement",
+    "Complete checklist",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "Application letter",
+    "Discount on certified translations",
+    "Discount on RFE response, upon quote"
+  ],
+  "standard_excludes": [
+    "Certified translations",
+    "Case monitoring after submission",
+    "SEVIS fee",
+    "USCIS filing fees"
+  ],
+  "plus_includes": [
+    "Everything included in Standard",
+    "Translation of the proof of address letter, sponsorship letter, and employer letter",
+    "RFE included",
+    "Printing",
+    "Document assembly",
+    "Money order purchase",
+    "Mailing",
+    "Final review",
+    "Mailing instructions",
+    "Case monitoring through final decision",
+    "E-Requests",
+    "Address changes",
+    "$15 convenience fee waived for SEVIS, USCIS, or tuition payments made with the SAES card"
+  ],
+  "plus_excludes": [
+    "Certified translations",
+    "SEVIS fee"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Application letter",
+    "Desconto em traduções certificadas",
+    "Desconto na resposta a RFE, mediante orçamento"
+  ],
+  "standard_excludes_pt": [
+    "Traduções certificadas",
+    "Acompanhamento do caso após a submissão",
+    "Taxa SEVIS",
+    "Taxas da USCIS"
+  ],
+  "plus_includes_pt": [
+    "Tudo o que está incluído no Standard",
+    "Tradução da proof of address letter, sponsorship letter e employer letter",
+    "RFE incluída",
+    "Impressão",
+    "Montagem dos documentos",
+    "Compra de money order",
+    "Envio postal",
+    "Revisão final",
+    "Instruções de envio",
+    "Acompanhamento do caso até a decisão final",
+    "E-Requests",
+    "Alterações de endereço",
+    "Isenção da taxa de conveniência de $15 para pagamentos de SEVIS, USCIS ou mensalidade feitos com o cartão SAES"
+  ],
+  "plus_excludes_pt": [
+    "Traduções certificadas",
+    "Taxa SEVIS"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de verificación",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Application letter",
+    "Descuento en traducciones certificadas",
+    "Descuento en la respuesta a RFE, mediante cotización"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas",
+    "Seguimiento del caso después de la presentación",
+    "Tarifa SEVIS",
+    "Tarifas de USCIS"
+  ],
+  "plus_includes_es": [
+    "Todo lo incluido en Standard",
+    "Traducción de la proof of address letter, sponsorship letter y employer letter",
+    "RFE incluida",
+    "Impresión",
+    "Ensamblaje de documentos",
+    "Compra de money order",
+    "Envío postal",
+    "Revisión final",
+    "Instrucciones de envío",
+    "Seguimiento del caso hasta la decisión final",
+    "E-Requests",
+    "Cambios de dirección",
+    "Exención de la tarifa de conveniencia de $15 para pagos de SEVIS, USCIS o matrícula hechos con la tarjeta SAES"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas",
+    "Tarifa SEVIS"
+  ]
+}

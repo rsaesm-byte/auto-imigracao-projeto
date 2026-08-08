@@ -781,3 +781,174 @@ class AccountBalanceSnapshot(Base):
     source: Mapped[SnapshotSource] = mapped_column(SAEnum(SnapshotSource), default=SnapshotSource.manual)
 
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+
+# --------------------------------------------------------------------------
+# Fase 10 (Motivation Board) do SAES_Financial_Planning_Master_Spec, 2026-08-07
+# --------------------------------------------------------------------------
+
+class MotivationItemType(str, enum.Enum):
+    quote = "quote"
+    affirmation = "affirmation"
+    goal = "goal"
+    habit = "habit"
+    reminder = "reminder"
+
+
+class MotivationItem(Base):
+    """Item da galeria de motivação (§4 "Motivation Board") -- frase,
+    afirmação, foto de uma meta, hábito, lembrete. `categories` é
+    `multi_select` no schema do documento; guardado aqui como texto livre
+    separado por vírgula em vez de criar uma tabela de junção só pra este
+    campo -- mesma disciplina de simplicidade de `IncomeSource.type`
+    (Fase 2), que também é texto livre onde o documento sugeria um select.
+
+    `image_attachment_id` aponta pra `FinancialAttachment` (Fase 2,
+    reusando o StorageBackend plugável, Seção 10 do CRM) -- primeiro
+    consumidor de verdade daquela tabela (criada na Fase 2, só ficou
+    pronta esperando um uso; Bills, Fase 5, reusa o mesmo padrão só que
+    por `record_type`/`record_id` reverso em vez de FK direta, porque um
+    boleto pode ter N recibos ao longo do tempo -- aqui é 1 imagem por
+    item, então FK direta é mais simples e é exatamente o que o schema do
+    documento pede).
+
+    Sem `deleted_at`/`active` -- o único campo do documento que NÃO
+    inclui exclusão lógica entre todas as tabelas da Fase 1-10 (comparar
+    com `accounts`, `financial_goals`, `financial_debts`, todos com
+    `deleted_at`/`deleted_by` explícitos no schema). Consistente com isso:
+    excluir um item da galeria de motivação é DELETE de verdade (é
+    conteúdo inspiracional substituível, não dado financeiro do cliente
+    -- a regra "never silently delete financial data" é sobre saldos/
+    transações/pagamentos, não sobre uma citação ou foto de bem-estar)."""
+    __tablename__ = "financial_motivation_items"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    financial_workspace_id: Mapped[int] = mapped_column(
+        ForeignKey("financial_workspaces.id"), index=True)
+
+    title: Mapped[str]
+    item_type: Mapped[MotivationItemType | None] = mapped_column(SAEnum(MotivationItemType), default=None)
+    categories: Mapped[str | None] = mapped_column(default=None)
+    image_attachment_id: Mapped[int | None] = mapped_column(
+        ForeignKey("financial_attachments.id"), default=None)
+    favorite: Mapped[bool] = mapped_column(default=False)
+    pinned: Mapped[bool] = mapped_column(default=False)
+    sort_order: Mapped[int] = mapped_column(default=0)
+    source_url: Mapped[str | None] = mapped_column(default=None)
+    location: Mapped[str | None] = mapped_column(default=None)  # texto livre -- pedido do usuário 2026-08-07, fora do schema original do documento
+
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+
+
+# --------------------------------------------------------------------------
+# Fase 12 (Advanced Tools -- CSV Import) do SAES_Financial_Planning_Master_
+# Spec, 2026-08-07. Escopo confirmado com o usuário: importação de extrato
+# bancário PELO CLIENTE (não confundir com a "Notion Migration" do
+# documento, que é uma ferramenta administrativa separada, exclusiva pro
+# staff, e não foi construída aqui).
+# --------------------------------------------------------------------------
+
+class CsvImportStatus(str, enum.Enum):
+    uploaded = "uploaded"
+    mapped = "mapped"
+    completed = "completed"
+
+
+class CsvImportRowStatus(str, enum.Enum):
+    pending = "pending"
+    imported = "imported"
+    skipped = "skipped"
+    duplicate = "duplicate"
+    error = "error"
+
+
+class CsvImportBatch(Base):
+    """Um upload de CSV, do começo (upload) ao fim (relatório). Guarda o
+    CSV já PARSEADO linha por linha (`CsvImportRow.raw_data`) em vez do
+    arquivo bruto -- não precisa reler/reparsear em cada etapa do wizard,
+    e cada linha vira um registro auditável por si só (pedido explícito
+    do usuário: relatório de sucesso/ignorados/duplicados/erros + log de
+    auditoria). `column_mapping` fica salvo depois da etapa de
+    mapeamento, pra re-processar as linhas sem perder o que já foi
+    escolhido se o cliente quiser ajustar."""
+    __tablename__ = "financial_csv_import_batches"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    financial_workspace_id: Mapped[int] = mapped_column(
+        ForeignKey("financial_workspaces.id"), index=True)
+    account_id: Mapped[int] = mapped_column(ForeignKey("financial_accounts.id"))
+
+    original_filename: Mapped[str]
+    detected_columns: Mapped[list] = mapped_column(JSON)
+    column_mapping: Mapped[dict | None] = mapped_column(JSON, default=None)
+    status: Mapped[CsvImportStatus] = mapped_column(SAEnum(CsvImportStatus), default=CsvImportStatus.uploaded)
+
+    imported_count: Mapped[int] = mapped_column(default=0)
+    skipped_count: Mapped[int] = mapped_column(default=0)
+    duplicate_count: Mapped[int] = mapped_column(default=0)
+    error_count: Mapped[int] = mapped_column(default=0)
+
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)
+    completed_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+
+
+class CsvImportRow(Base):
+    """Uma linha do CSV enviado. `raw_data` guarda a linha original
+    inteira (cabeçalho->valor) -- nunca perdida, mesmo que o mapeamento
+    de colunas mude depois. `suggested_type`/`suggested_category_id` são
+    só SUGESTÕES calculadas no processamento (§13 do documento: "must not
+    make irreversible decisions automatically") -- o cliente confirma ou
+    troca na tela de revisão antes de qualquer `FinancialTransaction` ser
+    criada de verdade."""
+    __tablename__ = "financial_csv_import_rows"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    batch_id: Mapped[int] = mapped_column(ForeignKey("financial_csv_import_batches.id"), index=True)
+    row_number: Mapped[int]
+
+    raw_data: Mapped[dict] = mapped_column(JSON)
+    parsed_date: Mapped[date | None] = mapped_column(Date, default=None)
+    parsed_description: Mapped[str | None] = mapped_column(default=None)
+    parsed_amount_cents: Mapped[int | None] = mapped_column(default=None)
+    suggested_type: Mapped[TransactionType | None] = mapped_column(SAEnum(TransactionType), default=None)
+    suggested_category_id: Mapped[int | None] = mapped_column(
+        ForeignKey("financial_budget_categories.id"), default=None)
+
+    is_duplicate: Mapped[bool] = mapped_column(default=False)
+    duplicate_of_transaction_id: Mapped[int | None] = mapped_column(
+        ForeignKey("financial_transactions.id"), default=None)
+    parse_error: Mapped[str | None] = mapped_column(default=None)
+
+    status: Mapped[CsvImportRowStatus] = mapped_column(SAEnum(CsvImportRowStatus), default=CsvImportRowStatus.pending)
+    created_transaction_id: Mapped[int | None] = mapped_column(
+        ForeignKey("financial_transactions.id"), default=None)
+
+
+class SavedReportView(Base):
+    """Fase 12 (Advanced Tools) do SAES_Financial_Planning_Master_Spec --
+    item "saved views" (§19), que ficou esquecido quando o resto da Fase
+    12 foi implementado (só insights/forecasts/calculators/CSV import
+    saíram) e nunca foi escopado com o usuário -- §19 só cita o nome, sem
+    detalhe nenhum. Escopo decidido ao retomar isto: a única tela hoje
+    com um filtro que vale a pena nomear e reabrir é /relatorios (Monthly
+    Financial Summary), cujo único parâmetro variável é o período
+    (`period`, mais `custom_start`/`custom_end` quando period="custom") --
+    então uma "saved view" aqui é exatamente isso, um período nomeado.
+    Não é dado financeiro do cliente (é só um atalho de UI), então não
+    segue a convenção de `deleted_at` do resto deste arquivo -- exclusão
+    é de verdade (DELETE), sem histórico a preservar."""
+    __tablename__ = "financial_saved_report_views"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    financial_workspace_id: Mapped[int] = mapped_column(
+        ForeignKey("financial_workspaces.id"), index=True)
+
+    name: Mapped[str]
+    period: Mapped[str]
+    custom_start: Mapped[date | None] = mapped_column(Date, default=None)
+    custom_end: Mapped[date | None] = mapped_column(Date, default=None)
+
+    created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)

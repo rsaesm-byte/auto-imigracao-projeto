@@ -19,10 +19,20 @@ from urllib.parse import quote
 
 from flask import Blueprint, flash, redirect, render_template, request, session, url_for
 
+from app.crm_financial_models import FinancialClient
 from app.crm_models import Lead, LeadInterestedService, LeadSource, ServiceCatalog
 from app.db import SessionLocal
 from app.i18n import t_in
-from app.services.service_interests import all_options, labels_for_keys, slugs_for_keys
+from app.services.service_interests import (all_options, grouped_options, labels_for_keys,
+                                             slugs_for_keys, standalone_options)
+
+# Chave de app/crm_models.py::ServiceInterestOption pra "Planejamento
+# Financeiro (Financial Coaching)" -- não tem slug de ServiceCatalog
+# (não é serviço de imigração), então precisa de tratamento especial
+# aqui: pedido do usuário 2026-08-08, quem marca isso deve cair no
+# pipeline financeiro (app/crm_financial_staff.py, FinancialClient),
+# não no pipeline de Leads de imigração.
+FINANCIAL_COACHING_KEY = "financial_coaching"
 
 lead_intake_bp = Blueprint("lead_intake", __name__, url_prefix="/interesse")
 
@@ -40,6 +50,12 @@ def _inject_lead_intake_form_data():
         # descartava os cabeçalhos antes de chegarem lá, então eles
         # nunca apareciam (bug real, corrigido junto desta mudança).
         "lead_intake_options": all_options(),
+        # Redesign 2026-08-08 (Prompt Master 4): mesma lista acima, só que
+        # já organizada em categoria->itens (grouped_options) e os itens
+        # soltos fora de categoria (standalone_options, hoje só
+        # "não tenho certeza") -- ver app/services/service_interests.py.
+        "lead_intake_grouped_options": grouped_options(),
+        "lead_intake_standalone_options": standalone_options(),
         "lead_intake_sources": SessionLocal.query(LeadSource).order_by(LeadSource.name).all(),
     }
 
@@ -68,32 +84,66 @@ def start():
         except (TypeError, ValueError):
             lead_source_id = None
 
-        labels = labels_for_keys(selected_keys)
-        lead = Lead(
-            name=full_name,
-            contact_email=email,
-            contact_phone=phone,
-            best_contact_time=best_contact_time or None,
-            lead_source_id=lead_source_id,
-            interest_notes="Interesse inicial (site): " + "; ".join(labels),
-        )
-        SessionLocal.add(lead)
-        SessionLocal.flush()
+        situation_notes = request.form.get("situation_notes", "").strip()
 
-        for slug in slugs_for_keys(selected_keys):
-            service = SessionLocal.query(ServiceCatalog).filter_by(slug=slug).first()
-            if service is not None:
-                SessionLocal.add(LeadInterestedService(lead_id=lead.id, service_id=service.id))
+        labels = labels_for_keys(selected_keys)
+        wants_financial_coaching = FINANCIAL_COACHING_KEY in selected_keys
+        immigration_keys = [k for k in selected_keys if k != FINANCIAL_COACHING_KEY]
+
+        # Financial Coaching é uma linha de negócio separada (só a CEO
+        # atende, pedido do usuário 2026-08-08) com pipeline próprio
+        # (FinancialClient, não Lead). Se o visitante marcou SÓ isso,
+        # não cria Lead nenhum -- vai direto pro pipeline financeiro. Se
+        # marcou junto com serviço(s) de imigração, cria os dois (nenhum
+        # interesse se perde).
+        lead = None
+        financial_client = None
+
+        if immigration_keys:
+            interest_notes = "Interesse inicial (site): " + "; ".join(labels)
+            if situation_notes:
+                interest_notes += "\n\nDescrição da situação (formulário): " + situation_notes
+            lead = Lead(
+                name=full_name,
+                contact_email=email,
+                contact_phone=phone,
+                best_contact_time=best_contact_time or None,
+                lead_source_id=lead_source_id,
+                interest_notes=interest_notes,
+            )
+            SessionLocal.add(lead)
+            SessionLocal.flush()
+
+            for slug in slugs_for_keys(immigration_keys):
+                service = SessionLocal.query(ServiceCatalog).filter_by(slug=slug).first()
+                if service is not None:
+                    SessionLocal.add(LeadInterestedService(lead_id=lead.id, service_id=service.id))
+
+        if wants_financial_coaching:
+            financial_client = FinancialClient(
+                full_name=full_name, email=email, phone_number=phone,
+                lead_source_id=lead_source_id,
+            )
+            SessionLocal.add(financial_client)
+            SessionLocal.flush()
 
         SessionLocal.commit()
 
         from app.services.notification_service import notify
-        notify(
-            "lead_new",
-            title=f"New lead — {full_name}",
-            body="Interested in: " + ", ".join(labels),
-            url=url_for("crm_pipeline.lead_detail", lead_id=lead.id),
-        )
+        if lead is not None:
+            notify(
+                "lead_new",
+                title=f"New lead — {full_name}",
+                body="Interested in: " + ", ".join(labels_for_keys(immigration_keys)),
+                url=url_for("crm_pipeline.lead_detail", lead_id=lead.id),
+            )
+        if financial_client is not None:
+            notify(
+                "financial_lead_new",
+                title=f"New Financial Coaching lead — {full_name}",
+                body="Interested in Financial Coaching",
+                url=url_for("crm_financial.client_detail", financial_client_id=financial_client.id),
+            )
 
         # Sessão (não querystring) -- mesmo padrão já usado em
         # app/payment_gate.py::submitted() -- só a próxima página lê isso,
@@ -105,7 +155,9 @@ def start():
         # presas ao português independente do idioma escolhido pelo
         # visitante (pedido do usuário 2026-08-06: traduzir este formulário).
         session["lead_intake"] = {
-            "lead_id": lead.id, "full_name": full_name, "keys": selected_keys,
+            "lead_id": lead.id if lead is not None else None,
+            "financial_client_id": financial_client.id if financial_client is not None else None,
+            "full_name": full_name, "keys": selected_keys,
         }
         return redirect(url_for("lead_intake.next_step"))
 

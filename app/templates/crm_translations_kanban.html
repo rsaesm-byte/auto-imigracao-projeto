@@ -10,7 +10,7 @@
 </div>
 
 <div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
-  <a href="{{ url_for('crm_translations.dashboard') }}" class="muted" style="font-size:0.85rem;">Dashboard view (by period) →</a>
+  <a href="{{ url_for('crm_translations.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Dashboard view (by period) →</a>
   {% if view == 'kanban' %}
   <div class="list-filter-box">
     <input type="text" class="list-filter-input" placeholder="Filter translations…">

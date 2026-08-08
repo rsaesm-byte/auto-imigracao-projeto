@@ -177,69 +177,120 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete document checklist",
+    "Form I-751",
+    "USCIS account/email setup",
+    "Document review",
     "Google Drive link for document uploads",
-    "Review and organization of supporting evidence of bona fide marriage/relationship",
-    "I-751 petition letter based on 18 years of experience",
-    "Discount on document translation"
+    "Unlimited email support",
+    "Discount on translations",
+    "30-minute final review meeting",
+    "Paper filing: Form I-751, cover letter, checklist, printing/signature/assembly instructions, USCIS mailing address, payment guidance",
+    "Online filing: USCIS login, review/authorization instructions, upload instructions, payment instructions"
   ],
   "standard_excludes": [
-    "Certified translations (charged separately)",
-    "Case monitoring (client's responsibility)"
+    "Certified translations",
+    "USCIS filing fee",
+    "RFE/NOID response",
+    "Interview preparation",
+    "Case monitoring",
+    "I-290B appeal (separate)"
   ],
   "plus_includes": [
-    "All items from Standard",
-    "Translation of supporting letters",
-    "RFE response included",
-    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
-    "Full case tracking until USCIS decision"
+    "Form I-751, online or paper",
+    "Email/USCIS account setup",
+    "Detailed checklist",
+    "Google Drive link for document uploads",
+    "RFE/NOID response",
+    "Guidance on the filing fee",
+    "G-1650/G-1450 payment guidance",
+    "Assistance with online payment",
+    "No convenience fee when paying with the SAES card (Plus only)",
+    "Case monitoring",
+    "E-Request",
+    "AR-11",
+    "Interview preparation",
+    "Priority email support"
   ],
   "plus_excludes": [
-    "Certified translations (charged separately)"
+    "Certified translations",
+    "USCIS filing fee"
   ],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Checklist completo de documentos",
+    "Formulário I-751",
+    "Criação de conta USCIS/e-mail",
+    "Revisão de documentos",
     "Link do Google Drive para envio de documentos",
-    "Revisão e organização das provas de relacionamento/casamento genuíno",
-    "Carta da petição I-751 baseada em 18 anos de experiência",
-    "Desconto na tradução de documentos"
+    "Suporte por e-mail ilimitado",
+    "Desconto em traduções",
+    "Reunião final de revisão de 30 minutos",
+    "Envio em papel: I-751, cover letter, checklist, instruções de impressão/assinatura/montagem, endereço da USCIS, orientação de pagamento",
+    "Envio online: login da USCIS, instruções de revisão/autorização, instruções de upload, instruções de pagamento"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Lista completa de documentos",
+    "Formulario I-751",
+    "Creación de cuenta USCIS/correo electrónico",
+    "Revisión de documentos",
     "Enlace de Google Drive para subir documentos",
-    "Revisión y organización de las pruebas de matrimonio/relación de buena fe",
-    "Carta de la petición I-751 basada en 18 años de experiencia",
-    "Descuento en la traducción de documentos"
+    "Soporte ilimitado por correo electrónico",
+    "Descuento en traducciones",
+    "Reunión final de revisión de 30 minutos",
+    "Envío en papel: I-751, cover letter, lista de verificación, instrucciones de impresión/firma/ensamblaje, dirección de USCIS, orientación de pago",
+    "Envío en línea: inicio de sesión de USCIS, instrucciones de revisión/autorización, instrucciones de carga, instrucciones de pago"
   ],
   "standard_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)",
-    "Acompanhamento do caso (responsabilidade do cliente)"
+    "Traduções certificadas",
+    "Taxa de envio da USCIS",
+    "Resposta a RFE/NOID",
+    "Preparação para entrevista",
+    "Acompanhamento do caso",
+    "Recurso I-290B (separado)"
   ],
   "standard_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)",
-    "Seguimiento del caso (responsabilidad del cliente)"
+    "Traducciones certificadas",
+    "Tarifa de presentación de USCIS",
+    "Respuesta a RFE/NOID",
+    "Preparación para la entrevista",
+    "Seguimiento del caso",
+    "Apelación I-290B (por separado)"
   ],
   "plus_includes_pt": [
-    "Todos os itens do Standard",
-    "Tradução das cartas de apoio",
-    "Resposta a RFE inclusa",
-    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
-    "Acompanhamento completo do caso até a decisão da USCIS"
+    "Formulário I-751, online ou em papel",
+    "Criação de conta USCIS/e-mail",
+    "Checklist detalhado",
+    "Link do Google Drive para envio de documentos",
+    "Resposta a RFE/NOID",
+    "Orientação sobre a taxa de envio",
+    "Orientação de pagamento G-1650/G-1450",
+    "Assistência no pagamento online",
+    "Sem taxa de conveniência ao pagar com o cartão SAES (somente Plus)",
+    "Acompanhamento do caso",
+    "E-Request",
+    "AR-11",
+    "Preparação para entrevista",
+    "Suporte por e-mail prioritário"
   ],
   "plus_includes_es": [
-    "Todos los elementos del Standard",
-    "Traducción de las cartas de respaldo",
-    "Respuesta a RFE incluida",
-    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
-    "Seguimiento completo del caso hasta la decisión de USCIS"
+    "Formulario I-751, en línea o en papel",
+    "Creación de cuenta USCIS/correo electrónico",
+    "Lista de verificación detallada",
+    "Enlace de Google Drive para subir documentos",
+    "Respuesta a RFE/NOID",
+    "Orientación sobre la tarifa de presentación",
+    "Orientación de pago G-1650/G-1450",
+    "Asistencia con el pago en línea",
+    "Sin tarifa de conveniencia al pagar con la tarjeta SAES (solo Plus)",
+    "Seguimiento del caso",
+    "E-Request",
+    "AR-11",
+    "Preparación para la entrevista",
+    "Soporte prioritario por correo electrónico"
   ],
   "plus_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)"
+    "Traduções certificadas",
+    "Taxa de envio da USCIS"
   ],
   "plus_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)"
+    "Traducciones certificadas",
+    "Tarifa de presentación de USCIS"
   ]
 }

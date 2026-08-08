@@ -1,51 +1,182 @@
-{# Formulário de interesse inicial -- pedido do usuário 2026-08-06: "logo
-   de cara" na página inicial, ele deve definir o tipo de serviço que
-   quer. Partial (sem {% extends %}) pra poder aparecer tanto no topo de
-   index.html quanto na página própria /interesse (app/lead_intake.py). #}
-<section class="card" style="margin-bottom:28px;">
-  <h2 style="margin-top:0;">{{ t('lead_intake_title') }}</h2>
-  <p class="muted" style="margin-top:-6px;">{{ t('lead_intake_subtitle') }}</p>
+{# Formulário de interesse inicial -- redesenhado 2026-08-08 (Prompt
+   Master 4, SAES_Lead_Capture_UX_UI_Redesign_Prompt.md): categorias em
+   accordion nativo (<details>, zero JS pra abrir/fechar) -> cards de
+   serviço maiores -> resumo de selecionados -> dados de contato ->
+   revisão, tudo dentro de UM <form> só (sem rota nova, sem sessão de
+   wizard) -- app/static/lead-intake-form.js só mostra/esconde as 3
+   `data-step` e mantém o resumo em dia; sem JS, os 3 blocos aparecem
+   todos de uma vez (progressive enhancement, formulário continua
+   funcional). Partial (sem {% extends %}) pra aparecer tanto no topo de
+   index.html quanto na página própria /interesse
+   (app/lead_intake.py). #}
+{% from "_icons.html" import icon %}
+{% set group_icons = {
+  'cos_group': 'clock', 'visa_group': 'globe', 'immigration_forms_group': 'shield-check',
+  'students_group': 'users', 'uscis_extra_group': 'document', 'complementary_group': 'chat-dots',
+  'financial_group': 'headset-agent'
+} %}
+<section class="card lead-intake-card" id="lead-intake">
+  {# Sem JS, o formulário continua 100% funcional: as etapas 2/3 nascem
+     com o atributo `hidden` (progressive enhancement, ver
+     lead-intake-form.js), e este <noscript> desfaz isso mostrando tudo
+     de uma vez -- pedido explícito do Prompt Master 4 (§48/§53:
+     "preserve existing functionality" mesmo sem JS). #}
+  <noscript><style>.lead-intake-step[hidden]{display:block!important;} .lead-intake-progress,.lead-intake-step-actions [data-step-next],.lead-intake-step-actions [data-step-prev]{display:none!important;}</style></noscript>
+  <div class="lead-intake-progress" role="list" aria-label="{{ t('lead_intake_step1_label') }} / {{ t('lead_intake_step2_label') }} / {{ t('lead_intake_step3_label') }}">
+    <div class="lead-intake-progress-step is-active" data-step-dot="1" role="listitem">
+      <span class="lead-intake-progress-dot">1</span><span class="lead-intake-progress-label">{{ t('lead_intake_step1_label') }}</span>
+    </div>
+    <div class="lead-intake-progress-line"></div>
+    <div class="lead-intake-progress-step" data-step-dot="2" role="listitem">
+      <span class="lead-intake-progress-dot">2</span><span class="lead-intake-progress-label">{{ t('lead_intake_step2_label') }}</span>
+    </div>
+    <div class="lead-intake-progress-line"></div>
+    <div class="lead-intake-progress-step" data-step-dot="3" role="listitem">
+      <span class="lead-intake-progress-dot">3</span><span class="lead-intake-progress-label">{{ t('lead_intake_step3_label') }}</span>
+    </div>
+  </div>
 
-  <form method="post" action="{{ url_for('lead_intake.start') }}">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:6px 20px;margin:14px 0;">
-      {% for opt in lead_intake_options %}
-      {% if opt.is_group %}
-      <div style="grid-column:1/-1;font-weight:700;font-size:0.9rem;margin-top:10px;">{{ t('service_interest_' ~ opt.key) }}</div>
-      {% else %}
-      <label style="display:flex;align-items:flex-start;gap:8px;font-size:0.9rem;padding:3px 0;{% if opt.indent %}padding-left:20px;{% endif %}">
-        <input type="checkbox" name="services" value="{{ opt.key }}" style="margin-top:3px;">
-        {{ t('service_interest_' ~ opt.key) }}
-      </label>
-      {% endif %}
-      {% endfor %}
+  <form method="post" action="{{ url_for('lead_intake.start') }}" id="lead-intake-form-el" novalidate>
+    {# ---------------- STEP 1 — Services ---------------- #}
+    <div class="lead-intake-step" data-step="1">
+      <h2 style="margin-top:0;">{{ t('lead_intake_title') }}</h2>
+      <p class="muted" style="margin-top:-6px;">{{ t('lead_intake_subtitle') }}</p>
+
+      <div class="lead-intake-layout">
+        <div class="lead-intake-categories">
+          {% for cat in lead_intake_grouped_options %}
+          <details class="lead-intake-category">
+            <summary class="lead-intake-category-summary">
+              <span class="lead-intake-category-icon">{{ icon(group_icons.get(cat.group.key, 'document'), 20) }}</span>
+              <span class="lead-intake-category-text">
+                <strong>{{ t('service_interest_' ~ cat.group.key) }}</strong>
+                <span class="muted">{{ t('service_interest_category_summary_' ~ cat.group.key) }}</span>
+              </span>
+              <span class="lead-intake-category-count">{{ cat.options|length }}</span>
+              <span class="lead-intake-category-caret" aria-hidden="true">›</span>
+            </summary>
+            <div class="lead-intake-category-body">
+              {% for opt in cat.options %}
+              <label class="lead-intake-service-card">
+                <input type="checkbox" name="services" value="{{ opt.key }}" class="lead-intake-service-checkbox">
+                <span class="lead-intake-service-check" aria-hidden="true">{{ icon('check-circle', 20) }}</span>
+                <span class="lead-intake-service-text">
+                  <span class="lead-intake-service-name">{{ t('service_interest_' ~ opt.key) }}</span>
+                  {% set desc_key = 'service_interest_desc_' ~ opt.key %}
+                  {% set desc = t(desc_key) %}
+                  {% if desc != desc_key %}
+                  <span class="lead-intake-service-desc muted">{{ desc }}</span>
+                  {% endif %}
+                </span>
+              </label>
+              {% endfor %}
+            </div>
+          </details>
+          {% endfor %}
+
+          {% for opt in lead_intake_standalone_options %}
+          <label class="lead-intake-service-card lead-intake-not-sure-card">
+            <input type="checkbox" name="services" value="{{ opt.key }}" class="lead-intake-service-checkbox" id="lead-intake-not-sure-checkbox">
+            <span class="lead-intake-service-check" aria-hidden="true">{{ icon('check-circle', 20) }}</span>
+            <span class="lead-intake-service-text">
+              <span class="lead-intake-service-name">{{ t('service_interest_' ~ opt.key) }}</span>
+              <span class="lead-intake-service-desc muted">{{ t('lead_intake_not_sure_hint') }}</span>
+            </span>
+          </label>
+          {% endfor %}
+          <div class="lead-intake-not-sure-notes" id="lead-intake-not-sure-notes" hidden>
+            <label class="muted" for="lead-intake-situation-notes">{{ t('lead_intake_not_sure_label') }}</label>
+            <textarea name="situation_notes" id="lead-intake-situation-notes" rows="3"
+                      placeholder="{{ t('lead_intake_not_sure_placeholder') }}" style="width:100%;font-family:inherit;"></textarea>
+          </div>
+
+          <p class="lead-intake-validation-msg muted" id="lead-intake-services-error" hidden>{{ t('lead_intake_validation_services') }}</p>
+        </div>
+
+        <aside class="lead-intake-summary" id="lead-intake-summary" aria-live="polite">
+          <h3>{{ t('lead_intake_selected_title') }}</h3>
+          <ul class="lead-intake-summary-list" id="lead-intake-summary-list"></ul>
+          <p class="muted lead-intake-summary-empty" id="lead-intake-summary-empty">{{ t('lead_intake_selected_empty') }}</p>
+          <p class="lead-intake-summary-count" id="lead-intake-summary-count" data-template="{{ t('lead_intake_selected_count', count='__COUNT__') }}" hidden></p>
+        </aside>
+      </div>
+
+      <div class="lead-intake-step-actions">
+        <button type="button" class="btn" data-step-next="2">{{ t('lead_intake_continue') }} →</button>
+      </div>
     </div>
 
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;border-top:1px solid var(--border);padding-top:16px;">
-      <div>
-        <label class="muted">{{ t('lead_intake_field_full_name') }}</label><br>
-        <input type="text" name="full_name" required style="width:100%;">
+    {# ---------------- STEP 2 — Contact information ---------------- #}
+    <div class="lead-intake-step" data-step="2" hidden>
+      <h2 style="margin-top:0;">{{ t('lead_intake_step2_label') }}</h2>
+      <div class="lead-intake-contact-grid">
+        <div>
+          <label class="muted" for="lead-intake-full-name">{{ t('lead_intake_field_full_name') }}</label>
+          <input type="text" name="full_name" id="lead-intake-full-name" autocomplete="name" required style="width:100%;">
+          <p class="lead-intake-validation-msg muted" data-error-for="full_name" hidden>{{ t('lead_intake_validation_name') }}</p>
+        </div>
+        <div>
+          <label class="muted" for="lead-intake-email">{{ t('lead_intake_field_email') }}</label>
+          <input type="email" name="email" id="lead-intake-email" autocomplete="email" required style="width:100%;">
+          <p class="lead-intake-validation-msg muted" data-error-for="email" hidden>{{ t('lead_intake_validation_email') }}</p>
+        </div>
+        <div>
+          <label class="muted" for="lead-intake-phone">{{ t('lead_intake_field_phone') }}</label>
+          <div class="lead-intake-phone-field">
+            <span class="lead-intake-phone-prefix">+1</span>
+            <input type="tel" name="phone" id="lead-intake-phone" autocomplete="tel" required placeholder="(555) 555-5555">
+          </div>
+          <p class="lead-intake-validation-msg muted" data-error-for="phone" hidden>{{ t('lead_intake_validation_phone') }}</p>
+        </div>
+        <div>
+          <label class="muted" for="lead-intake-contact-time">{{ t('lead_intake_field_best_contact_time') }}</label>
+          <select name="best_contact_time_choice" id="lead-intake-contact-time" style="width:100%;">
+            <option value="">—</option>
+            <option value="{{ t('lead_intake_contact_time_morning') }}">{{ t('lead_intake_contact_time_morning') }}</option>
+            <option value="{{ t('lead_intake_contact_time_afternoon') }}">{{ t('lead_intake_contact_time_afternoon') }}</option>
+            <option value="{{ t('lead_intake_contact_time_evening') }}">{{ t('lead_intake_contact_time_evening') }}</option>
+            <option value="{{ t('lead_intake_contact_time_any') }}">{{ t('lead_intake_contact_time_any') }}</option>
+            <option value="__other__">{{ t('lead_intake_contact_time_other') }}</option>
+          </select>
+          <input type="text" id="lead-intake-contact-time-other" placeholder="{{ t('lead_intake_field_best_contact_time_placeholder') }}" style="width:100%;margin-top:8px;" hidden>
+          <input type="hidden" name="best_contact_time" id="lead-intake-contact-time-value">
+        </div>
+        <div>
+          <label class="muted" for="lead-intake-source">{{ t('lead_intake_field_source') }}</label>
+          <select name="lead_source_id" id="lead-intake-source" style="width:100%;">
+            <option value="">—</option>
+            {% for s in lead_intake_sources %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
+          </select>
+        </div>
       </div>
-      <div>
-        <label class="muted">{{ t('lead_intake_field_email') }}</label><br>
-        <input type="email" name="email" required style="width:100%;">
-      </div>
-      <div>
-        <label class="muted">{{ t('lead_intake_field_phone') }}</label><br>
-        <input type="tel" name="phone" required placeholder="+1 555 555 5555" style="width:100%;">
-      </div>
-      <div>
-        <label class="muted">{{ t('lead_intake_field_best_contact_time') }}</label><br>
-        <input type="text" name="best_contact_time" placeholder="{{ t('lead_intake_field_best_contact_time_placeholder') }}" style="width:100%;">
-      </div>
-      <div>
-        <label class="muted">{{ t('lead_intake_field_source') }}</label><br>
-        <select name="lead_source_id" style="width:100%;">
-          <option value="">—</option>
-          {% for s in lead_intake_sources %}<option value="{{ s.id }}">{{ s.name }}</option>{% endfor %}
-        </select>
+
+      <p class="muted lead-intake-privacy-note">{{ icon('lock', 14) }} {{ t('lead_intake_privacy_note') }}</p>
+
+      <div class="lead-intake-step-actions">
+        <button type="button" class="icon-btn lead-intake-back-btn" data-step-prev="1">{{ t('lead_intake_back') }}</button>
+        <button type="button" class="btn" data-step-next="3">{{ t('lead_intake_continue') }} →</button>
       </div>
     </div>
 
-    <button type="submit" class="btn" style="margin-top:18px;">{{ t('lead_intake_submit') }}</button>
+    {# ---------------- STEP 3 — Review ---------------- #}
+    <div class="lead-intake-step" data-step="3" hidden>
+      <h2 style="margin-top:0;">{{ t('lead_intake_review_title') }}</h2>
+      <div class="lead-intake-review-grid" id="lead-intake-review-grid">
+        <div>
+          <span class="muted lead-intake-review-label">{{ t('lead_intake_review_services_label') }}</span>
+          <ul class="lead-intake-review-services" id="lead-intake-review-services"></ul>
+        </div>
+        <div><span class="muted lead-intake-review-label">{{ t('lead_intake_review_name_label') }}</span><p id="lead-intake-review-name">—</p></div>
+        <div><span class="muted lead-intake-review-label">{{ t('lead_intake_review_email_label') }}</span><p id="lead-intake-review-email">—</p></div>
+        <div><span class="muted lead-intake-review-label">{{ t('lead_intake_review_phone_label') }}</span><p id="lead-intake-review-phone">—</p></div>
+        <div><span class="muted lead-intake-review-label">{{ t('lead_intake_review_contact_time_label') }}</span><p id="lead-intake-review-contact-time">—</p></div>
+      </div>
+
+      <div class="lead-intake-step-actions">
+        <button type="button" class="icon-btn lead-intake-back-btn" data-step-prev="2">{{ t('lead_intake_back') }}</button>
+        <button type="submit" class="btn lead-intake-submit-btn" id="lead-intake-submit-btn" data-submitting-text="{{ t('lead_intake_submitting') }}">{{ t('lead_intake_submit') }}</button>
+      </div>
+    </div>
   </form>
 </section>
+<script src="{{ url_for('static', filename='lead-intake-form.js') }}"></script>

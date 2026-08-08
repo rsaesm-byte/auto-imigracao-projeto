@@ -1,0 +1,32 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Financial Coaching Packages{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Financial Coaching</h1>
+  <p style="opacity:0.92;margin:0;">A separate line of business from immigration services — handled only by the CEO. Edit each package's price and what's included/excluded before quoting a client.</p>
+</div>
+
+<div class="card" style="display:flex;gap:10px;align-items:center;">
+  <a href="{{ url_for('crm_contracts.dashboard') }}" class="btn" style="padding:8px 16px;font-size:0.85rem;">← Back to Contracts</a>
+</div>
+
+<div class="card">
+  <table class="submissions">
+    <thead><tr><th>Package</th><th>Price</th><th>Sessions</th><th></th><th></th></tr></thead>
+    <tbody>
+      {% for p in packages %}
+      <tr>
+        <td>{{ p.name }}</td>
+        <td>{{ p.price_cents|usd if p.price_cents is not none else '—' }}</td>
+        <td class="muted">{{ p.sessions_summary or '—' }}</td>
+        <td><a href="{{ url_for('crm_contracts.financial_coaching_package_edit', slug=p.slug) }}" style="font-size:0.8rem;">Edit →</a></td>
+        <td><a href="{{ url_for('crm_contracts.financial_coaching_package_preview', slug=p.slug) }}" style="font-size:0.8rem;">Preview →</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="muted">No Financial Coaching packages yet.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

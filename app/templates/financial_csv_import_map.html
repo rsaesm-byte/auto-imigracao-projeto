@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Map Columns — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Map Columns</h1>
+  <p style="opacity:0.92;margin:0;">{{ batch.original_filename }} — tell us which column is which.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.csv_import_start') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Import Bank Statement</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">2-4. Confirm columns</h2>
+  <p class="muted" style="font-size:0.8rem;">Detected columns: {{ batch.detected_columns|join(', ') }}</p>
+  <form method="post" style="display:flex;flex-direction:column;gap:14px;max-width:480px;">
+    <label class="muted" style="font-size:0.85rem;">Date column
+      <select name="date_col" required>
+        <option value="">—</option>
+        {% for c in batch.detected_columns %}<option value="{{ c }}" {{ 'selected' if batch.column_mapping and batch.column_mapping.date == c }}>{{ c }}</option>{% endfor %}
+      </select>
+    </label>
+    <label class="muted" style="font-size:0.85rem;">Description column
+      <select name="description_col" required>
+        <option value="">—</option>
+        {% for c in batch.detected_columns %}<option value="{{ c }}" {{ 'selected' if batch.column_mapping and batch.column_mapping.description == c }}>{{ c }}</option>{% endfor %}
+      </select>
+    </label>
+
+    <div class="card" style="margin:0;background:var(--bg);">
+      <p class="muted" style="font-size:0.78rem;margin:0 0 8px;">Pick ONE of these two options:</p>
+      <label class="muted" style="font-size:0.85rem;display:block;margin-bottom:8px;">Option A — single Amount column (positive = money in, negative = money out)
+        <select name="amount_col">
+          <option value="">—</option>
+          {% for c in batch.detected_columns %}<option value="{{ c }}" {{ 'selected' if batch.column_mapping and batch.column_mapping.amount == c }}>{{ c }}</option>{% endfor %}
+        </select>
+      </label>
+      <label class="muted" style="font-size:0.85rem;display:block;">Option B — separate Debit / Credit columns
+        <div style="display:flex;gap:8px;margin-top:4px;">
+          <select name="debit_col" style="flex:1;">
+            <option value="">Debit column —</option>
+            {% for c in batch.detected_columns %}<option value="{{ c }}" {{ 'selected' if batch.column_mapping and batch.column_mapping.debit == c }}>{{ c }}</option>{% endfor %}
+          </select>
+          <select name="credit_col" style="flex:1;">
+            <option value="">Credit column —</option>
+            {% for c in batch.detected_columns %}<option value="{{ c }}" {{ 'selected' if batch.column_mapping and batch.column_mapping.credit == c }}>{{ c }}</option>{% endfor %}
+          </select>
+        </div>
+      </label>
+    </div>
+
+    <button type="submit" class="btn">Continue to preview</button>
+  </form>
+</div>
+{% endblock %}

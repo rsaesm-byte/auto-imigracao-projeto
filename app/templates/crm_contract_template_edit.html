@@ -10,8 +10,8 @@
 
 <div class="card" style="display:flex;gap:10px;align-items:center;justify-content:space-between;">
   <div style="display:flex;gap:10px;align-items:center;">
-    <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="muted" style="font-size:0.85rem;">← All templates</a>
-    <a href="{{ url_for('crm_contracts.template_preview', slug=slug) }}" class="btn secondary" style="padding:7px 14px;font-size:0.82rem;">Preview as client →</a>
+    <a href="{{ url_for('crm_contracts.templates_dashboard') }}" class="btn" style="padding:7px 14px;font-size:0.82rem;">← All templates</a>
+    <a href="{{ url_for('crm_contracts.template_preview', slug=slug) }}" class="btn" style="padding:7px 14px;font-size:0.82rem;">Preview as client →</a>
   </div>
   {{ history_widget('template-history-drawer', 'History — ' + service.name, history, history_users, empty_hint='Changes to this template will show up here.') }}
 </div>

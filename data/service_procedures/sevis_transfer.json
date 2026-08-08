@@ -96,39 +96,66 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete document checklist",
-    "Google Drive link for document uploads",
-    "Recommendation of two schools based on location, schedule, and cost",
-    "Transfer request coordination with both DSOs"
+    "Service Agreement",
+    "Checklist",
+    "Guidance on timeline and new I-20",
+    "Document review",
+    "Communication with the current school",
+    "Communication with the new school",
+    "Formalization of the transfer",
+    "Filing/next-step instructions",
+    "Monitoring through completion"
   ],
   "standard_excludes": [
-    "School application fees and SEVIS fee",
-    "Case monitoring (client's responsibility)"
+    "Certified translations",
+    "School fees",
+    "Application fees",
+    "SEVIS fees",
+    "Institutional charges",
+    "Guarantee of school acceptance",
+    "Immigration outcome guarantee"
   ],
   "plus_includes": [],
   "plus_excludes": [],
   "standard_includes_pt": [
     "Contrato de prestação de serviço",
-    "Checklist completo de documentos",
-    "Link do Google Drive para envio de documentos",
-    "Recomendação de duas escolas com base em localização, horário e custo",
-    "Coordenação da solicitação de transferência com ambos os DSOs"
+    "Checklist",
+    "Orientação sobre o cronograma e o novo I-20",
+    "Revisão de documentos",
+    "Comunicação com a escola atual",
+    "Comunicação com a nova escola",
+    "Formalização da transferência",
+    "Instruções sobre os próximos passos",
+    "Acompanhamento até a conclusão"
   ],
   "standard_includes_es": [
     "Acuerdo de servicio",
-    "Lista completa de documentos",
-    "Enlace de Google Drive para subir documentos",
-    "Recomendación de dos escuelas según ubicación, horario y costo",
-    "Coordinación de la solicitud de transferencia con ambos DSO"
+    "Lista de verificación",
+    "Orientación sobre el cronograma y el nuevo I-20",
+    "Revisión de documentos",
+    "Comunicación con la escuela actual",
+    "Comunicación con la nueva escuela",
+    "Formalización de la transferencia",
+    "Instrucciones sobre los próximos pasos",
+    "Seguimiento hasta la finalización"
   ],
   "standard_excludes_pt": [
-    "Taxas de inscrição escolar e taxa do SEVIS",
-    "Acompanhamento do caso (responsabilidade do cliente)"
+    "Traduções certificadas",
+    "Taxas escolares",
+    "Taxas de application",
+    "Taxas SEVIS",
+    "Cobranças institucionais",
+    "Garantia de aceitação pela escola",
+    "Garantia de resultado migratório"
   ],
   "standard_excludes_es": [
-    "Tarifas de inscripción escolar y tarifa de SEVIS",
-    "Seguimiento del caso (responsabilidad del cliente)"
+    "Traducciones certificadas",
+    "Tarifas escolares",
+    "Tarifas de solicitud",
+    "Tarifas SEVIS",
+    "Cargos institucionales",
+    "Garantía de aceptación por la escuela",
+    "Garantía de resultado migratorio"
   ],
   "plus_includes_pt": [],
   "plus_includes_es": [],

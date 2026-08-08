@@ -4,7 +4,9 @@
 {% block content %}
 <div class="card hero">
   <h1>Case Tracking — {{ case.title }}</h1>
-  <p style="opacity:0.92;margin:0;">Client: <a href="{{ url_for('crm_pipeline.client_detail', client_id=case.client_id) }}" style="color:#fff;">{{ case.client.full_name }}</a></p>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+    <a href="{{ url_for('crm_pipeline.client_detail', client_id=case.client_id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Client: {{ case.client.full_name }}</a>
+  </div>
 </div>
 
 <div class="card">

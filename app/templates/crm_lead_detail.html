@@ -10,13 +10,16 @@
 </div>
 
 <div class="card" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;">
-  <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
-    <a href="{{ url_for('crm_pipeline.leads_kanban') }}" class="muted" style="font-size:0.85rem;">← Back to Leads</a>
+  <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+    <a href="{{ url_for('crm_pipeline.leads_kanban') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to Leads</a>
     {% if lead.converted_client_id %}
-    <span class="muted" style="font-size:0.85rem;">Converted to client → <a href="{{ url_for('crm_pipeline.client_detail', client_id=lead.converted_client_id) }}">open client record</a></span>
+    <span class="muted" style="font-size:0.85rem;">Converted to client →</span>
+    <a href="{{ url_for('crm_pipeline.client_detail', client_id=lead.converted_client_id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">open client record</a>
     {% endif %}
     {% if related_case %}
-    <span class="muted" style="font-size:0.85rem;">Case → <a href="{{ url_for('crm_pipeline.client_detail', client_id=related_case.client_id) }}">{{ related_case.title }}</a> {{ crm_badge(related_case.case_status) }}</span>
+    <span class="muted" style="font-size:0.85rem;">Case →</span>
+    <a href="{{ url_for('crm_pipeline.client_detail', client_id=related_case.client_id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">{{ related_case.title }}</a>
+    {{ crm_badge(related_case.case_status) }}
     {% endif %}
   </div>
   {{ history_widget('lead-history-drawer', 'History — ' + lead.name, history, history_users, empty_hint='Changes to this lead will show up here.') }}

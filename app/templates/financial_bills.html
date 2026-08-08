@@ -4,7 +4,15 @@
 {% block content %}
 <div class="card hero">
   <h1>Bills</h1>
-  <p style="opacity:0.92;margin:0;">What you have to pay regularly, and this month's payments. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.bills_calendar') }}" style="color:#fff;text-decoration:underline;">Calendar →</a> · <a href="{{ url_for('financial_workspace.recurring') }}" style="color:#fff;text-decoration:underline;">Recurring →</a></p>
+  <p style="opacity:0.92;margin:0;">What you have to pay regularly, and this month's payments.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+    <a href="{{ url_for('financial_workspace.bills_calendar') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Calendar</a>
+    <a href="{{ url_for('financial_workspace.recurring') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Recurring</a>
+  </div>
 </div>
 
 {% if upcoming %}

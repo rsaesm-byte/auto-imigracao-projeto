@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Import Report — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Import Report</h1>
+  <p style="opacity:0.92;margin:0;">{{ batch.original_filename }} — completed {{ batch.completed_at.strftime('%m/%d/%Y %I:%M %p') if batch.completed_at else '' }}.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.csv_import_start') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Import Bank Statement</a>
+    <a href="{{ url_for('financial_workspace.index') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">View Transactions</a>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Imported</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;color:#166534;">{{ batch.imported_count }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Skipped</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ batch.skipped_count }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Duplicates</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ batch.duplicate_count }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Errors</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;{% if batch.error_count %}color:#991b1b;{% endif %}">{{ batch.error_count }}</p>
+  </div>
+</div>
+
+{% if error_rows %}
+<div class="card">
+  <h2 style="font-size:1rem;">Errors</h2>
+  <table class="submissions">
+    <thead><tr><th>Row</th><th>Description</th><th>Reason</th></tr></thead>
+    <tbody>
+      {% for row in error_rows %}
+      <tr><td>{{ row.row_number }}</td><td>{{ row.parsed_description or '—' }}</td><td class="muted">{{ row.parse_error }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+{% if duplicate_rows %}
+<div class="card">
+  <h2 style="font-size:1rem;">Duplicates not imported</h2>
+  <table class="submissions">
+    <thead><tr><th>Row</th><th>Date</th><th>Description</th><th>Amount</th></tr></thead>
+    <tbody>
+      {% for row in duplicate_rows %}
+      <tr><td>{{ row.row_number }}</td><td class="muted">{{ row.parsed_date.strftime('%m/%d/%Y') if row.parsed_date else '—' }}</td><td>{{ row.parsed_description or '—' }}</td><td>{{ row.parsed_amount_cents|usd if row.parsed_amount_cents is not none else '—' }}</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endif %}
+
+{% if skipped_rows %}
+<div class="card">
+  <h2 style="font-size:1rem;">Skipped (unchecked)</h2>
+  <p class="muted" style="font-size:0.78rem;">{{ skipped_rows|length }} row(s) you left unchecked in review.</p>
+</div>
+{% endif %}
+{% endblock %}

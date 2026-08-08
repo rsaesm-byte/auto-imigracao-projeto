@@ -129,33 +129,87 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "DS-160 preparation based on 18 years of experience",
-    "Interview preparation guidance",
-    "Google Drive link for document uploads"
+    "Profile analysis",
+    "Professional application preparation",
+    "Guidance on ties-to-home-country documentation",
+    "Sponsorship letter, when applicable",
+    "Invitation letter, when applicable",
+    "Free initial 15-minute consultation",
+    "Link to the DS-160 draft",
+    "Review and validation of supporting documents",
+    "Additional document requests per SAES strategy",
+    "Mailing instructions, when applicable",
+    "Application updates",
+    "DS-160 review",
+    "Interview scheduling",
+    "CASV/biometrics scheduling",
+    "One rescheduling by SAES, when possible",
+    "Email account creation",
+    "DS-160 online account setup",
+    "Completed and reviewed DS-160",
+    "Interview and CASV appointment confirmed",
+    "Free final 15-minute consultation"
   ],
   "standard_excludes": [
-    "MRV visa application fee ($185, paid directly to the consulate)"
+    "MRV visa application fee",
+    "Premium passport delivery",
+    "Additional rescheduling beyond the one included (client's responsibility)"
   ],
   "plus_includes": [],
   "plus_excludes": [],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Preenchimento do DS-160 baseado em 18 anos de experiência",
-    "Orientação para preparação da entrevista",
-    "Link do Google Drive para envio de documentos"
+    "Análise de perfil",
+    "Preparação profissional da aplicação",
+    "Orientação sobre documentação de vínculos com o país de origem",
+    "Sponsorship letter, quando aplicável",
+    "Invitation letter, quando aplicável",
+    "Consulta inicial gratuita de 15 minutos",
+    "Link para o rascunho do DS-160",
+    "Revisão e validação dos documentos de apoio",
+    "Pedidos adicionais de documentos conforme estratégia da SAES",
+    "Instruções de envio, quando aplicável",
+    "Atualizações sobre a aplicação",
+    "Revisão do DS-160",
+    "Agendamento da entrevista",
+    "Agendamento de CASV/biometria",
+    "Um reagendamento pela SAES, quando possível",
+    "Criação de e-mail",
+    "Criação da conta online do DS-160",
+    "DS-160 preenchido e revisado",
+    "Entrevista e CASV confirmados",
+    "Consulta final gratuita de 15 minutos"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Preparación del DS-160 basada en 18 años de experiencia",
-    "Orientación para la preparación de la entrevista",
-    "Enlace de Google Drive para subir documentos"
+    "Análisis de perfil",
+    "Preparación profesional de la solicitud",
+    "Orientación sobre documentación de vínculos con el país de origen",
+    "Sponsorship letter, cuando aplique",
+    "Invitation letter, cuando aplique",
+    "Consulta inicial gratuita de 15 minutos",
+    "Enlace al borrador del DS-160",
+    "Revisión y validación de los documentos de respaldo",
+    "Solicitudes adicionales de documentos según la estrategia de SAES",
+    "Instrucciones de envío, cuando aplique",
+    "Actualizaciones de la solicitud",
+    "Revisión del DS-160",
+    "Programación de la entrevista",
+    "Programación de CASV/biometría",
+    "Una reprogramación por parte de SAES, cuando sea posible",
+    "Creación de correo electrónico",
+    "Creación de la cuenta en línea del DS-160",
+    "DS-160 completado y revisado",
+    "Entrevista y CASV confirmados",
+    "Consulta final gratuita de 15 minutos"
   ],
   "standard_excludes_pt": [
-    "Taxa MRV de solicitação de visto ($185, paga diretamente ao consulado)"
+    "Taxa consular MRV",
+    "Entrega premium do passaporte",
+    "Reagendamentos adicionais além do incluído (responsabilidade do cliente)"
   ],
   "standard_excludes_es": [
-    "Tarifa MRV de solicitud de visa ($185, pagada directamente al consulado)"
+    "Tarifa consular MRV",
+    "Entrega premium del pasaporte",
+    "Reprogramaciones adicionales más allá de la incluida (responsabilidad del cliente)"
   ],
   "plus_includes_pt": [],
   "plus_includes_es": [],

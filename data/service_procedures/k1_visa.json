@@ -122,90 +122,126 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos, 'K1_VISA_CONTRACT_ENG.pdf'), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Completion of the Form I-129F",
-    "Standard checklist and document orientation",
-    "Creation, configuration, and organization of required online accounts (USCIS, CEAC, etc.)",
-    "Final package sent via email for client printing and mailing",
-    "Ongoing support via email or WhatsApp"
+    "Form I-129F",
+    "Checklist",
+    "Document orientation",
+    "USCIS/CEAC account setup",
+    "Final package delivered by email (client prints and mails)",
+    "Ongoing email/WhatsApp support"
   ],
   "standard_excludes": [
     "Interview preparation",
-    "Responses to RFEs or NOIDs",
-    "Printing and mailing by SAES",
-    "E-Request(s)",
-    "Change of address (Form AR-11)",
-    "Certified translations",
-    "Consular stage support (CEAC, DS-160, NVC document upload, etc.)"
+    "RFE/NOID response",
+    "Printing/mailing by SAES",
+    "E-Requests",
+    "AR-11",
+    "Use of the SAES card without a fee",
+    "Translations",
+    "Consular-stage support (CEAC, DS-160, NVC upload, etc.)"
   ],
   "plus_includes": [
-    "All items from Standard",
-    "Complete preparation and filing of the Form I-129F",
-    "Preparation and organization of all petitioner documentation",
-    "Response to RFEs/NOIDs from USCIS at no additional cost",
-    "Preparation for the consular interview for both Petitioner and Beneficiary",
-    "E-Requests, case follow-up and inquiries to USCIS",
-    "Change of Address (Form AR-11) submission when required",
-    "Printing and full assembly of the USCIS package, when applicable",
-    "Guidance on consular steps, including DS-160, financial evidence, and appointment instructions"
+    "Complete Form I-129F preparation and filing",
+    "USCIS/CEAC account setup",
+    "Petitioner document preparation",
+    "Checklist",
+    "RFE/NOID response at no additional cost",
+    "Interview preparation for petitioner and beneficiary",
+    "E-Requests",
+    "Case follow-up",
+    "USCIS inquiries",
+    "AR-11",
+    "Printing",
+    "Full document assembly",
+    "Consular-stage guidance for the beneficiary (DS-160, financial evidence, appointment instructions)",
+    "Ongoing support by email/WhatsApp"
   ],
-  "plus_excludes": [],
+  "plus_excludes": [
+    "USCIS and consular filing fees",
+    "Medical exam",
+    "Credential evaluation",
+    "Certified translations",
+    "Postage"
+  ],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Preenchimento do Formulário I-129F",
-    "Checklist padrão e orientação sobre documentos",
-    "Criação, configuração e organização das contas online necessárias (USCIS, CEAC, etc.)",
-    "Pacote final enviado por e-mail para impressão e envio pelo cliente",
-    "Suporte contínuo por e-mail ou WhatsApp"
+    "Formulário I-129F",
+    "Checklist",
+    "Orientação sobre documentos",
+    "Criação de conta USCIS/CEAC",
+    "Pacote final entregue por e-mail (cliente imprime e envia)",
+    "Suporte contínuo por e-mail/WhatsApp"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Preparación del Formulario I-129F",
-    "Lista de verificación estándar y orientación sobre documentos",
-    "Creación, configuración y organización de las cuentas en línea necesarias (USCIS, CEAC, etc.)",
-    "Paquete final enviado por correo electrónico para impresión y envío por el cliente",
-    "Apoyo continuo por correo electrónico o WhatsApp"
+    "Formulario I-129F",
+    "Lista de verificación",
+    "Orientación sobre documentos",
+    "Creación de cuenta USCIS/CEAC",
+    "Paquete final entregado por correo electrónico (el cliente imprime y envía)",
+    "Soporte continuo por correo electrónico/WhatsApp"
   ],
   "standard_excludes_pt": [
     "Preparação para entrevista",
-    "Respostas a RFE ou NOID",
-    "Impressão e envio pela SAES",
-    "E-Request(s)",
-    "Mudança de endereço (Formulário AR-11)",
-    "Traduções juramentadas/certificadas",
-    "Apoio na etapa consular (CEAC, DS-160, upload de documentos no NVC, etc.)"
+    "Resposta a RFE/NOID",
+    "Impressão/envio pela SAES",
+    "E-Requests",
+    "AR-11",
+    "Uso do cartão SAES sem taxa",
+    "Traduções",
+    "Suporte na fase consular (CEAC, DS-160, upload no NVC, etc.)"
   ],
   "standard_excludes_es": [
     "Preparación para la entrevista",
-    "Respuestas a RFE o NOID",
-    "Impresión y envío por SAES",
-    "E-Request(s)",
-    "Cambio de dirección (Formulario AR-11)",
-    "Traducciones certificadas",
-    "Apoyo en la etapa consular (CEAC, DS-160, carga de documentos en el NVC, etc.)"
+    "Respuesta a RFE/NOID",
+    "Impresión/envío por parte de SAES",
+    "E-Requests",
+    "AR-11",
+    "Uso de la tarjeta SAES sin tarifa",
+    "Traducciones",
+    "Soporte en la etapa consular (CEAC, DS-160, carga en NVC, etc.)"
   ],
   "plus_includes_pt": [
-    "Todos os itens do Standard",
-    "Preparação completa e protocolo do Formulário I-129F",
-    "Preparação e organização de toda a documentação do peticionário",
-    "Resposta a RFE/NOID da USCIS sem custo adicional",
-    "Preparação para a entrevista consular, tanto para o Peticionário quanto para o Beneficiário",
-    "E-Requests, acompanhamento do caso e consultas à USCIS",
-    "Protocolo de Mudança de Endereço (Formulário AR-11) quando necessário",
-    "Impressão e montagem completa do pacote da USCIS, quando aplicável",
-    "Orientação sobre as etapas consulares, incluindo DS-160, provas financeiras e instruções de agendamento"
+    "Preparação e envio completo do Formulário I-129F",
+    "Criação de conta USCIS/CEAC",
+    "Preparação dos documentos do peticionário",
+    "Checklist",
+    "Resposta a RFE/NOID sem custo adicional",
+    "Preparação para entrevista do peticionário e do beneficiário",
+    "E-Requests",
+    "Acompanhamento do caso",
+    "Consultas à USCIS",
+    "AR-11",
+    "Impressão",
+    "Montagem completa dos documentos",
+    "Orientação da fase consular ao beneficiário (DS-160, provas financeiras, instruções de agendamento)",
+    "Suporte contínuo por e-mail/WhatsApp"
   ],
   "plus_includes_es": [
-    "Todos los elementos del Standard",
-    "Preparación completa y presentación del Formulario I-129F",
-    "Preparación y organización de toda la documentación del peticionario",
-    "Respuesta a RFE/NOID de USCIS sin costo adicional",
-    "Preparación para la entrevista consular, tanto para el Peticionario como para el Beneficiario",
-    "E-Requests, seguimiento del caso y consultas a USCIS",
-    "Presentación de Cambio de Dirección (Formulario AR-11) cuando sea necesario",
-    "Impresión y ensamblaje completo del paquete de USCIS, cuando aplique",
-    "Orientación sobre los pasos consulares, incluyendo DS-160, evidencia financiera e instrucciones de la cita"
+    "Preparación y presentación completa del Formulario I-129F",
+    "Creación de cuenta USCIS/CEAC",
+    "Preparación de los documentos del peticionario",
+    "Lista de verificación",
+    "Respuesta a RFE/NOID sin costo adicional",
+    "Preparación para la entrevista del peticionario y del beneficiario",
+    "E-Requests",
+    "Seguimiento del caso",
+    "Consultas a USCIS",
+    "AR-11",
+    "Impresión",
+    "Ensamblaje completo de los documentos",
+    "Orientación de la etapa consular para el beneficiario (DS-160, evidencia financiera, instrucciones de la cita)",
+    "Soporte continuo por correo electrónico/WhatsApp"
   ],
-  "plus_excludes_pt": [],
-  "plus_excludes_es": []
+  "plus_excludes_pt": [
+    "Taxas da USCIS e consulares",
+    "Exame médico",
+    "Avaliação de diploma/credencial",
+    "Traduções certificadas",
+    "Postagem"
+  ],
+  "plus_excludes_es": [
+    "Tarifas de USCIS y consulares",
+    "Examen médico",
+    "Evaluación de credenciales",
+    "Traducciones certificadas",
+    "Franqueo"
+  ]
 }

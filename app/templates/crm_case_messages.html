@@ -5,8 +5,10 @@
 <div class="card hero">
   <h1>Messages — {{ case.title }}</h1>
   <p style="opacity:0.92;margin:0;">Client: {{ case.client.full_name }}</p>
-  <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">View document tracker (CRM) →</a>
-  · <a href="{{ url_for('crm_ops.case_procedure', case_id=case.id) }}" style="color:#fff;text-decoration:underline;font-size:0.85rem;">View procedure →</a>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
+    <a href="{{ url_for('crm_ops.case_documents', case_id=case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">View document tracker (CRM) →</a>
+    <a href="{{ url_for('crm_ops.case_procedure', case_id=case.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">View procedure →</a>
+  </div>
 </div>
 
 <div class="card">

@@ -82,33 +82,75 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Review of the RFE/NOID notice",
-    "RFE/NOID response letter based on 18 years of experience",
-    "Google Drive link for document uploads"
+    "Preparation of the RFE/NOID response",
+    "Review and organization of documents",
+    "Cover Letter",
+    "RFE/NOID response letter",
+    "Follow-up through submission",
+    "Final package review and organization",
+    "Mailing instructions",
+    "Status and timeline updates",
+    "Support through the USCIS final decision",
+    "Package delivered by email with printing/assembly/mailing instructions"
   ],
   "standard_excludes": [
-    "Certified translations (charged separately)"
+    "I-864 Joint Sponsor documentation",
+    "Form I-134",
+    "Printing",
+    "Mailing",
+    "USCIS fees",
+    "Credential evaluation",
+    "Certified translation",
+    "Medical exam",
+    "Case tracking (client's responsibility)"
   ],
   "plus_includes": [],
   "plus_excludes": [],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Revisão do aviso de RFE/NOID",
-    "Carta de resposta a RFE/NOID baseada em 18 anos de experiência",
-    "Link do Google Drive para envio de documentos"
+    "Preparação da resposta a RFE/NOID",
+    "Revisão e organização dos documentos",
+    "Cover Letter",
+    "Carta de resposta ao RFE/NOID",
+    "Acompanhamento até a submissão",
+    "Revisão final e organização do pacote",
+    "Instruções de envio",
+    "Atualizações de status e prazos",
+    "Suporte até a decisão final da USCIS",
+    "Pacote entregue por e-mail com instruções de impressão/montagem/envio"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Revisión del aviso de RFE/NOID",
-    "Carta de respuesta a RFE/NOID basada en 18 años de experiencia",
-    "Enlace de Google Drive para subir documentos"
+    "Preparación de la respuesta a RFE/NOID",
+    "Revisión y organización de documentos",
+    "Cover Letter",
+    "Carta de respuesta al RFE/NOID",
+    "Seguimiento hasta la presentación",
+    "Revisión final y organización del paquete",
+    "Instrucciones de envío",
+    "Actualizaciones de estado y plazos",
+    "Soporte hasta la decisión final de USCIS",
+    "Paquete entregado por correo electrónico con instrucciones de impresión/ensamblaje/envío"
   ],
   "standard_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)"
+    "Documentação de Joint Sponsor (I-864)",
+    "Formulário I-134",
+    "Impressão",
+    "Envio",
+    "Taxas da USCIS",
+    "Avaliação de diploma/credencial",
+    "Tradução certificada",
+    "Exame médico",
+    "Acompanhamento do caso (responsabilidade do cliente)"
   ],
   "standard_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)"
+    "Documentación de Joint Sponsor (I-864)",
+    "Formulario I-134",
+    "Impresión",
+    "Envío",
+    "Tarifas de USCIS",
+    "Evaluación de credenciales",
+    "Traducción certificada",
+    "Examen médico",
+    "Seguimiento del caso (responsabilidad del cliente)"
   ],
   "plus_includes_pt": [],
   "plus_includes_es": [],

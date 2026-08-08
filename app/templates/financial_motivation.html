@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% block title %}Motivation Board — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Motivation Board</h1>
+  <p style="opacity:0.92;margin:0;">Quotes, photos and reminders that keep you going.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+  </div>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;align-items:center;margin-bottom:14px;">
+    <a href="{{ url_for('financial_workspace.motivation') }}" class="icon-btn" style="text-decoration:none;font-size:0.82rem;padding:7px 14px;border-radius:999px;
+       {% if not favorites_only %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">All</a>
+    <a href="{{ url_for('financial_workspace.motivation', favoritos=1) }}" class="icon-btn" style="text-decoration:none;font-size:0.82rem;padding:7px 14px;border-radius:999px;
+       {% if favorites_only %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">★ Favorites</a>
+  </div>
+
+  {% if items %}
+  <p class="muted" style="font-size:0.78rem;margin-top:-6px;">Drag <span style="cursor:grab;">⠿</span> to reorder.</p>
+  <div class="motivation-reorder-list" data-reorder-url="{{ url_for('financial_workspace.motivation_reorder') }}"
+       style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:16px;">
+    {% for item in items %}
+    <div class="card motivation-reorder-row" draggable="true" data-item-id="{{ item.id }}"
+         style="margin:0;padding:0;overflow:hidden;{% if item.pinned %}outline:2px solid var(--accent);{% endif %}">
+      {% if item.image_attachment_id %}
+      <img src="{{ url_for('financial_workspace.motivation_image_file', attachment_id=item.image_attachment_id) }}"
+           alt="{{ item.title }}" style="width:100%;height:150px;object-fit:cover;display:block;">
+      {% else %}
+      <div style="width:100%;height:150px;background:var(--border);display:flex;align-items:center;justify-content:center;">
+        <span class="muted" style="font-size:0.78rem;">No image</span>
+      </div>
+      {% endif %}
+      <div style="padding:12px;">
+        <div style="display:flex;justify-content:space-between;align-items:start;gap:6px;">
+          <span class="muted" style="cursor:grab;font-size:0.9rem;" title="Drag to reorder">⠿</span>
+          <strong style="font-size:0.9rem;flex:1;">{{ item.title }}</strong>
+          {% if item.pinned %}<span title="Pinned">📌</span>{% endif %}
+        </div>
+        {% if item.item_type %}<div class="muted" style="font-size:0.74rem;">{{ item.item_type.value|title }}</div>{% endif %}
+        {% if item.categories %}<div class="muted" style="font-size:0.72rem;margin-top:2px;">{{ item.categories }}</div>{% endif %}
+        {% if item.location %}<div class="muted" style="font-size:0.72rem;margin-top:2px;">📍 {{ item.location }}</div>{% endif %}
+        {% if item.source_url %}<div style="margin-top:4px;"><a href="{{ item.source_url }}" target="_blank" rel="noopener" style="font-size:0.74rem;">Source ↗</a></div>{% endif %}
+
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px;">
+          <form method="post" action="{{ url_for('financial_workspace.motivation_favorite', item_id=item.id) }}">
+            <button type="submit" class="icon-btn" style="background:none;border:none;cursor:pointer;font-size:0.9rem;" title="Favorite">{{ '★' if item.favorite else '☆' }}</button>
+          </form>
+          <form method="post" action="{{ url_for('financial_workspace.motivation_pin', item_id=item.id) }}">
+            <button type="submit" class="icon-btn" style="background:none;border:none;cursor:pointer;font-size:0.9rem;" title="Pin to top">📌</button>
+          </form>
+          <form method="post" action="{{ url_for('financial_workspace.motivation_delete', item_id=item.id) }}" onsubmit="return confirm('Remove this item?');">
+            <button type="submit" class="icon-btn" style="background:none;border:none;color:#991b1b;cursor:pointer;font-size:0.76rem;">Remove</button>
+          </form>
+        </div>
+
+        <details style="margin-top:8px;">
+          <summary class="muted" style="cursor:pointer;font-size:0.72rem;">Edit</summary>
+          <form method="post" action="{{ url_for('financial_workspace.motivation_edit', item_id=item.id) }}"
+                style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+            <input type="text" name="title" required value="{{ item.title }}" style="font-size:0.76rem;min-width:140px;flex:1;">
+            <select name="item_type" style="font-size:0.76rem;">
+              <option value="">Type — optional</option>
+              {% for t in item_types %}<option value="{{ t.value }}" {% if item.item_type == t %}selected{% endif %}>{{ t.value|title }}</option>{% endfor %}
+            </select>
+            <input type="text" name="categories" value="{{ item.categories or '' }}" placeholder="Categories" style="font-size:0.76rem;min-width:120px;">
+            <input type="text" name="location" value="{{ item.location or '' }}" placeholder="Location" style="font-size:0.76rem;min-width:110px;">
+            <input type="url" name="source_url" value="{{ item.source_url or '' }}" placeholder="Source URL" style="font-size:0.76rem;min-width:120px;">
+            <button type="submit" class="icon-btn" style="font-size:0.72rem;">Save</button>
+          </form>
+        </details>
+
+        <details style="margin-top:6px;">
+          <summary class="muted" style="cursor:pointer;font-size:0.72rem;">{{ 'Replace image' if item.image_attachment_id else '+ Add image' }}</summary>
+          <form method="post" action="{{ url_for('financial_workspace.motivation_image', item_id=item.id) }}" enctype="multipart/form-data" style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+            <input type="file" name="image" accept="image/png,image/jpeg,image/webp,image/gif" style="font-size:0.72rem;max-width:160px;">
+            <button type="submit" class="icon-btn" style="font-size:0.72rem;">Upload</button>
+          </form>
+        </details>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted">{{ 'No favorites yet.' if favorites_only else 'Nothing here yet — add a quote, affirmation, or photo below to get started.' }}</p>
+  {% endif %}
+
+  <details style="margin-top:18px;">
+    <summary style="cursor:pointer;font-size:0.85rem;font-weight:600;">+ Add to Motivation Board</summary>
+    <form method="post" action="{{ url_for('financial_workspace.motivation_new') }}" enctype="multipart/form-data"
+          style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+      <input type="text" name="title" required placeholder="Title (e.g. Debt-free by 2028)" style="min-width:200px;flex:1;">
+      <select name="item_type">
+        <option value="">Type — optional</option>
+        {% for t in item_types %}<option value="{{ t.value }}">{{ t.value|title }}</option>{% endfor %}
+      </select>
+      <input type="text" name="categories" placeholder="Categories — optional (comma-separated)" style="min-width:160px;">
+      <input type="text" name="location" placeholder="Location — optional" style="min-width:140px;">
+      <input type="url" name="source_url" placeholder="Source URL — optional" style="min-width:160px;">
+      <input type="file" name="image" accept="image/png,image/jpeg,image/webp,image/gif" style="font-size:0.82rem;">
+      <button type="submit" class="btn">Add</button>
+    </form>
+  </details>
+</div>
+<script src="{{ url_for('static', filename='motivation-reorder.js') }}"></script>
+{% endblock %}

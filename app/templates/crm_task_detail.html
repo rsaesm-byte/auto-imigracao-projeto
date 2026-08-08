@@ -9,7 +9,7 @@
     <h1>{{ task.title }}</h1>
     <p style="opacity:0.92;margin:0;">{{ crm_badge(task.status) }}</p>
   </div>
-  <a href="{{ url_for('crm_ops.tasks') }}" class="muted" style="font-size:0.85rem;">← Back to Tasks</a>
+  <a href="{{ url_for('crm_ops.tasks') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to Tasks</a>
 </div>
 
 <div class="card" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px;">
@@ -74,6 +74,45 @@
     </div>
   </form>
 </div>
+
+{% if custom_fields %}
+<div class="card">
+  <h2 style="font-size:1rem;">
+    Custom fields · <a href="{{ url_for('crm_custom_fields.index', entity='Task') }}" style="font-weight:400;font-size:0.85rem;">Manage fields</a>
+  </h2>
+  <form method="post" action="{{ url_for('crm_ops.task_custom_fields_save', task_id=task.id) }}"
+        style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;">
+    {% for f in custom_fields %}
+    {% set raw = custom_values.get(f.id) %}
+    <div>
+      <label class="muted" style="font-size:0.78rem;">{{ f.label }}{% if f.required %} *{% endif %}</label><br>
+      {% if f.field_type.value == 'long_text' %}
+      <textarea name="custom_{{ f.id }}" rows="2" style="width:100%;font-family:inherit;font-size:0.85rem;">{{ raw or '' }}</textarea>
+      {% elif f.field_type.value == 'checkbox' %}
+      <input type="checkbox" name="custom_{{ f.id }}" value="1" {{ 'checked' if raw == '1' }}>
+      {% elif f.field_type.value == 'single_select' %}
+      <select name="custom_{{ f.id }}" style="width:100%;">
+        <option value="">—</option>
+        {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if raw == opt }}>{{ opt }}</option>{% endfor %}
+      </select>
+      {% elif f.field_type.value == 'multi_select' %}
+      {% set selected = cf_multi_selected(raw) %}
+      <select name="custom_{{ f.id }}" multiple style="width:100%;min-height:64px;">
+        {% for opt in cf_options_for(f) %}<option value="{{ opt }}" {{ 'selected' if opt in selected }}>{{ opt }}</option>{% endfor %}
+      </select>
+      {% elif f.field_type.value == 'date' %}
+      <input type="date" lang="en-US" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+      {% else %}
+      <input type="text" name="custom_{{ f.id }}" value="{{ raw or '' }}" style="width:100%;">
+      {% endif %}
+    </div>
+    {% endfor %}
+    <div style="grid-column:1/-1;">
+      <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.78rem;padding:5px 12px;">Save custom fields</button>
+    </div>
+  </form>
+</div>
+{% endif %}
 
 <div class="card">
   <h2>Checklist ({{ task.checklist_items|selectattr('done')|list|length }}/{{ task.checklist_items|length }})</h2>
@@ -148,6 +187,14 @@
       <input type="file" name="attachment">
       <button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.82rem;padding:6px 14px;">Comment</button>
     </div>
+  </form>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Danger zone</h2>
+  <form method="post" action="{{ url_for('crm_ops.task_delete', task_id=task.id) }}"
+        onsubmit="return confirm('Delete this task permanently? This cannot be undone.');">
+    <button type="submit" class="btn secondary" style="padding:8px 16px;font-size:0.85rem;border-color:var(--danger,#c0392b);color:var(--danger,#c0392b);">Delete task</button>
   </form>
 </div>
 {% endblock %}

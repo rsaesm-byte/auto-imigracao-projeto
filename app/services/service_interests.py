@@ -32,6 +32,37 @@ def selectable_options() -> list[ServiceInterestOption]:
     return [opt for opt in all_options() if not opt.is_group]
 
 
+def grouped_options() -> list[dict]:
+    """Categoria -> [itens], a partir da mesma lista flat
+    is_group/indent/sort_order que sempre existiu -- nunca precisou de
+    um campo "category" novo (redesign do formulário de interesse,
+    2026-08-08): um `is_group=True` seguido de um ou mais `indent=True`
+    já É a categoria. Cada dict tem `group` (o próprio
+    ServiceInterestOption cabeçalho) e `options` (seus filhos, na ordem)
+    -- deliberadamente NÃO chamado `items`: Jinja resolve `dict.items`
+    via getattr ANTES de tentar `dict["items"]`, e getattr acha o
+    método nativo `dict.items()` primeiro (mesma pegadinha de nunca usar
+    `g` como nome de variável de loop em template -- `flask.g` também é
+    injetado globalmente). Achado ao vivo: `{{ cat.items|length }}`
+    silenciosamente virava o método, não a lista."""
+    groups: list[dict] = []
+    current: dict | None = None
+    for opt in all_options():
+        if opt.is_group:
+            current = {"group": opt, "options": []}
+            groups.append(current)
+        elif opt.indent and current is not None:
+            current["options"].append(opt)
+    return groups
+
+
+def standalone_options() -> list[ServiceInterestOption]:
+    """Itens fora de qualquer categoria -- não são cabeçalho nem estão
+    indentados sob um. Hoje só "Não tenho certeza de qual serviço
+    preciso" (`not_sure_service`)."""
+    return [opt for opt in all_options() if not opt.is_group and not opt.indent]
+
+
 def labels_for_keys(keys: list[str], lang: str = "pt") -> list[str]:
     from app.i18n import t_in
     by_key = {o.key: o for o in all_options()}

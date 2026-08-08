@@ -4,7 +4,14 @@
 {% block content %}
 <div class="card hero">
   <h1>Debts</h1>
-  <p style="opacity:0.92;margin:0;">Everything you owe, in one place. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.debt_plan') }}" style="color:#fff;text-decoration:underline;">Payoff Plan →</a></p>
+  <p style="opacity:0.92;margin:0;">Everything you owe, in one place.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+    <a href="{{ url_for('financial_workspace.debt_plan') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Payoff Plan</a>
+  </div>
 </div>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">

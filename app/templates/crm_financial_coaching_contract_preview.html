@@ -1,0 +1,36 @@
+{% extends "staff_base.html" %}
+{% block title %}Staff — Financial Coaching Package Preview{% endblock %}
+{% block page_class %}crm-board{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Preview — {{ name }}</h1>
+  <p style="opacity:0.92;margin:0;">Exactly what a client would see for this package, in the selected preview language. This is a read-only preview — no real contract or signature request is created here.</p>
+</div>
+
+<div class="card" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
+  <a href="{{ url_for('crm_contracts.financial_coaching_package_edit', slug=slug) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Edit this package</a>
+  <div>
+    <span class="muted" style="font-size:0.8rem;margin-right:6px;">Language:</span>
+    {% for lang_code, lang_label in [('pt', 'Português'), ('en', 'English'), ('es', 'Español')] %}
+    <a href="{{ url_for('crm_contracts.financial_coaching_package_preview', slug=slug, lang=lang_code) }}"
+       style="padding:5px 12px;border-radius:999px;font-size:0.8rem;font-weight:600;text-decoration:none;border:1px solid var(--border);{{ 'background:var(--accent);color:#fff;border-color:var(--accent);' if preview_lang == lang_code else 'color:var(--text);' }}">
+      {{ lang_label }}
+    </a>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <h2>{{ name }}</h2>
+  <p style="font-size:1.3rem;font-weight:700;">{% if price_cents is not none %}{{ price_cents|usd }}{% else %}—{% endif %}</p>
+  {% if sessions_summary %}<p class="muted">{{ sessions_summary }}</p>{% endif %}
+  {% if includes %}
+  <h3 style="font-size:0.95rem;">Includes</h3>
+  <ul>{% for item in includes %}<li class="muted">{{ item }}</li>{% endfor %}</ul>
+  {% endif %}
+  {% if excludes %}
+  <h3 style="font-size:0.95rem;">Excludes</h3>
+  <ul>{% for item in excludes %}<li class="muted">{{ item }}</li>{% endfor %}</ul>
+  {% endif %}
+</div>
+{% endblock %}

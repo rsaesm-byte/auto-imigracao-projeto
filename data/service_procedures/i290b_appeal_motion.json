@@ -97,39 +97,66 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete document checklist",
-    "Google Drive link for document uploads",
-    "Review of the denial/decision and grounds for appeal or motion",
-    "I-290B preparation based on 18 years of experience"
+    "Mandatory initial consultation ($70, non-refundable, up to 3 reschedules)",
+    "Preparation and review of Form I-290B",
+    "Organization of the appeal/motion package",
+    "Supporting evidence guidance",
+    "Mailing instructions",
+    "Guidance on payment instruments/money orders"
   ],
   "standard_excludes": [
-    "Certified translations (charged separately)",
-    "Case monitoring (client's responsibility)"
+    "RFE/NOID response",
+    "Ongoing case monitoring",
+    "Regular USCIS updates",
+    "E-Requests",
+    "AR-11",
+    "USCIS filing fee",
+    "Postage/mailing costs",
+    "Credential evaluation",
+    "Certified translation",
+    "Medical exam, if applicable"
   ],
   "plus_includes": [],
   "plus_excludes": [],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Checklist completo de documentos",
-    "Link do Google Drive para envio de documentos",
-    "Revisão do indeferimento/decisão e dos fundamentos para recurso ou moção",
-    "Preparação do I-290B baseada em 18 anos de experiência"
+    "Consulta inicial obrigatória ($70, não reembolsável, até 3 reagendamentos)",
+    "Preparação e revisão do Formulário I-290B",
+    "Organização do pacote de appeal/motion",
+    "Orientação sobre provas de apoio",
+    "Instruções de envio",
+    "Orientação sobre instrumentos de pagamento/money orders"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Lista completa de documentos",
-    "Enlace de Google Drive para subir documentos",
-    "Revisión de la denegación/decisión y de los fundamentos para la apelación o moción",
-    "Preparación del I-290B basada en 18 años de experiencia"
+    "Consulta inicial obligatoria ($70, no reembolsable, hasta 3 reprogramaciones)",
+    "Preparación y revisión del Formulario I-290B",
+    "Organización del paquete de appeal/motion",
+    "Orientación sobre evidencia de respaldo",
+    "Instrucciones de envío",
+    "Orientación sobre instrumentos de pago/money orders"
   ],
   "standard_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)",
-    "Acompanhamento do caso (responsabilidade do cliente)"
+    "Resposta a RFE/NOID",
+    "Acompanhamento contínuo do caso",
+    "Atualizações regulares da USCIS",
+    "E-Requests",
+    "AR-11",
+    "Taxa de envio da USCIS",
+    "Custos de postagem/envio",
+    "Avaliação de diploma/credencial",
+    "Tradução certificada",
+    "Exame médico, se aplicável"
   ],
   "standard_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)",
-    "Seguimiento del caso (responsabilidad del cliente)"
+    "Respuesta a RFE/NOID",
+    "Seguimiento continuo del caso",
+    "Actualizaciones regulares de USCIS",
+    "E-Requests",
+    "AR-11",
+    "Tarifa de presentación de USCIS",
+    "Costos de franqueo/envío",
+    "Evaluación de credenciales",
+    "Traducción certificada",
+    "Examen médico, si aplica"
   ],
   "plus_includes_pt": [],
   "plus_includes_es": [],

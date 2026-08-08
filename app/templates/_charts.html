@@ -1,0 +1,155 @@
+{# Biblioteca de gráficos reutilizável (pedido do usuário 2026-08-08:
+   "gráficos no estilo donut, vertical chart, horizontal chart, line
+   chart e gráfico de gantt" em reports/dashboards + financial planning
+   cliente/colaborador) -- SVG inline puro via Jinja, zero dependência
+   externa (mesma convenção do resto do projeto: nunca adicionar libs
+   pesadas pra coisa cosmética). Cada macro recebe dados já prontos
+   (rows/series) -- nenhuma delas faz query, então funcionam com
+   qualquer dado que a view já tenha montado.
+   Uso: {% from "_charts.html" import donut_chart, vertical_bar_chart,
+   horizontal_bar_chart, line_chart, gantt_chart %} #}
+
+{% macro horizontal_bar_chart(rows, value_key='value', label_key='label', color='var(--accent)', is_money=True, drilldown_url=None) %}
+  {# Consolida o macro `bar_chart` que estava duplicado em crm_reports.html/
+     financial_dashboard.html/financial_reports.html/financial_net_worth.html. #}
+  {% set max_val = rows|map(attribute=value_key)|max if rows else 1 %}
+  {% set max_val = max_val if max_val else 1 %}
+  {% for row in rows %}
+  <div style="margin-bottom:10px;">
+    <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:3px;">
+      {% if drilldown_url %}<a href="{{ drilldown_url }}?q={{ row[label_key]|urlencode }}" title="See the underlying records">{{ row[label_key] }}</a>{% else %}<span>{{ row[label_key] }}</span>{% endif %}
+      <span class="muted">{% if is_money %}{{ row[value_key]|usd }}{% else %}{{ row[value_key] }}{% endif %}</span>
+    </div>
+    <div style="background:var(--border);border-radius:999px;height:10px;" title="{{ row[label_key] }}: {% if is_money %}{{ row[value_key]|usd }}{% else %}{{ row[value_key] }}{% endif %}">
+      <div style="width:{{ ((row[value_key] / max_val * 100) if max_val else 0)|round(1) }}%;background:{{ color }};height:10px;border-radius:999px;min-width:{{ '6px' if row[value_key] else '0' }};"></div>
+    </div>
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No data.</p>
+  {% endfor %}
+{% endmacro %}
+
+{% macro vertical_bar_chart(rows, value_key='value', label_key='label', color='var(--accent)', is_money=True, height=170) %}
+  {% set max_val = rows|map(attribute=value_key)|max if rows else 1 %}
+  {% set max_val = max_val if max_val else 1 %}
+  {% if rows %}
+  <div style="display:flex;align-items:flex-end;gap:14px;height:{{ height }}px;padding-top:20px;">
+    {% for row in rows %}
+    <div style="display:flex;flex-direction:column;align-items:center;flex:1;height:100%;justify-content:flex-end;min-width:0;">
+      <span class="muted" style="font-size:0.72rem;margin-bottom:4px;white-space:nowrap;">{% if is_money %}{{ row[value_key]|usd }}{% else %}{{ row[value_key] }}{% endif %}</span>
+      <div style="width:100%;max-width:44px;background:{{ row.color or color }};border-radius:6px 6px 2px 2px;
+                  height:{{ ((row[value_key] / max_val * 100) if max_val else 0)|round(1) }}%;
+                  min-height:{{ '4px' if row[value_key] else '0' }};" title="{{ row[label_key] }}"></div>
+      <span class="muted" style="font-size:0.72rem;margin-top:6px;text-align:center;">{{ row[label_key] }}</span>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No data.</p>
+  {% endif %}
+{% endmacro %}
+
+{% macro donut_chart(rows, value_key='value', label_key='label', size=160, colors=None) %}
+  {# Truque do "donut de 100 unidades": um círculo de raio 15.9155 tem
+     circunferência ~100, então stroke-dasharray pode usar porcentagem
+     direto como unidade, sem geometria de arco/path manual. #}
+  {% set palette = colors or ['#205B5B', '#E2AE53', '#2a78d6', '#eb6834', '#7c3aed', '#16a34a', '#dc2626', '#5B7FA6'] %}
+  {% set total = rows|sum(attribute=value_key) %}
+  {% if rows and total %}
+  <div style="display:flex;gap:20px;align-items:center;flex-wrap:wrap;">
+    <svg viewBox="0 0 42 42" width="{{ size }}" height="{{ size }}" role="img" aria-label="donut chart" style="flex-shrink:0;transform:rotate(-90deg);">
+      <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="var(--border)" stroke-width="7"></circle>
+      {% set ns = namespace(offset=0) %}
+      {% for row in rows %}
+      {% set pct = (row[value_key] / total * 100) %}
+      {% if pct > 0 %}
+      <circle cx="21" cy="21" r="15.9155" fill="transparent" stroke="{{ row.color or palette[loop.index0 % palette|length] }}" stroke-width="7"
+              stroke-dasharray="{{ pct|round(2) }} {{ (100 - pct)|round(2) }}" stroke-dashoffset="{{ (-ns.offset)|round(2) }}">
+        <title>{{ row[label_key] }}: {{ pct|round(1) }}%</title>
+      </circle>
+      {% endif %}
+      {% set ns.offset = ns.offset + pct %}
+      {% endfor %}
+    </svg>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      {% for row in rows %}
+      <div style="display:flex;align-items:center;gap:6px;font-size:0.8rem;">
+        <span style="width:10px;height:10px;border-radius:3px;background:{{ row.color or palette[loop.index0 % palette|length] }};display:inline-block;flex-shrink:0;"></span>
+        <span>{{ row[label_key] }}</span>
+        <span class="muted">{{ (row[value_key] / total * 100)|round(1) }}%{% if row.get('display') %} · {{ row.display }}{% endif %}</span>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No data.</p>
+  {% endif %}
+{% endmacro %}
+
+{% macro line_chart(series_list, x_labels, width=560, height=180) %}
+  {# series_list: [{name, color, values}] -- values alinhados por índice a x_labels. #}
+  {% set pad_l = 44 %}{% set pad_b = 22 %}{% set pad_t = 10 %}{% set pad_r = 10 %}
+  {% set plot_w = width - pad_l - pad_r %}
+  {% set plot_h = height - pad_t - pad_b %}
+  {% set all_vals = [] %}
+  {% for s in series_list %}{% for v in s.points %}{% set _ = all_vals.append(v) %}{% endfor %}{% endfor %}
+  {% set max_val = (all_vals|max) if all_vals else 1 %}
+  {% set max_val = max_val if max_val else 1 %}
+  {% set n = x_labels|length %}
+  {% if n > 0 %}
+  <svg viewBox="0 0 {{ width }} {{ height }}" width="100%" style="max-width:{{ width }}px;display:block;" role="img" aria-label="line chart">
+    {% for i in range(4) %}
+    {% set gy = (pad_t + plot_h * i / 3)|round(1) %}
+    <line x1="{{ pad_l }}" y1="{{ gy }}" x2="{{ width - pad_r }}" y2="{{ gy }}" stroke="var(--border)" stroke-width="1"></line>
+    {% set gval = (max_val - max_val * i / 3) %}
+    <text x="{{ pad_l - 6 }}" y="{{ gy + 3 }}" font-size="8" fill="var(--muted)" text-anchor="end">{{ gval|round|int }}</text>
+    {% endfor %}
+    {% for s in series_list %}
+    {% set pts = [] %}
+    {% for v in s.points %}
+      {% set x = (pad_l + (plot_w * loop.index0 / ((n - 1) if n > 1 else 1)))|round(1) %}
+      {% set y = (pad_t + plot_h - (plot_h * v / max_val if max_val else 0))|round(1) %}
+      {% set _ = pts.append(x|string ~ ',' ~ y|string) %}
+    {% endfor %}
+    <polyline points="{{ pts|join(' ') }}" fill="none" stroke="{{ s.color }}" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"></polyline>
+    {% for v in s.points %}
+      {% set x = (pad_l + (plot_w * loop.index0 / ((n - 1) if n > 1 else 1)))|round(1) %}
+      {% set y = (pad_t + plot_h - (plot_h * v / max_val if max_val else 0))|round(1) %}
+      <circle cx="{{ x }}" cy="{{ y }}" r="3" fill="{{ s.color }}"><title>{{ x_labels[loop.index0] }} — {{ s.name }}: {{ v }}</title></circle>
+    {% endfor %}
+    {% endfor %}
+    {% for label in x_labels %}
+    {% set x = (pad_l + (plot_w * loop.index0 / ((n - 1) if n > 1 else 1)))|round(1) %}
+    <text x="{{ x }}" y="{{ height - 6 }}" font-size="9" fill="var(--muted)" text-anchor="middle">{{ label }}</text>
+    {% endfor %}
+  </svg>
+  <div style="display:flex;gap:14px;margin-top:6px;font-size:0.8rem;flex-wrap:wrap;">
+    {% for s in series_list %}
+    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:{{ s.color }};display:inline-block;"></span> {{ s.name }}</span>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No data.</p>
+  {% endif %}
+{% endmacro %}
+
+{% macro gantt_chart(rows, label_width=150) %}
+  {# rows: [{label, start_pct, width_pct, tooltip, color}] -- posições
+     em % (0-100) já calculadas por quem chama (matemática de data fica
+     em Python, não no template). #}
+  {% if rows %}
+  <div>
+    {% for row in rows %}
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:9px;">
+      <div style="width:{{ label_width }}px;flex-shrink:0;font-size:0.8rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;" title="{{ row.label }}">{{ row.label }}</div>
+      <div style="flex:1;background:var(--border);border-radius:6px;height:18px;position:relative;min-width:0;">
+        <div style="position:absolute;left:{{ row.start_pct }}%;width:{{ row.width_pct }}%;min-width:6px;height:18px;
+                    background:{{ row.color or 'var(--accent)' }};border-radius:6px;" title="{{ row.tooltip }}"></div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.85rem;">No data.</p>
+  {% endif %}
+{% endmacro %}

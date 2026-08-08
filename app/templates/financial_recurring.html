@@ -4,7 +4,14 @@
 {% block content %}
 <div class="card hero">
   <h1>Recurring Transactions</h1>
-  <p style="opacity:0.92;margin:0;">Income, expenses and savings contributions that repeat — posted to your transaction ledger automatically. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.subscriptions') }}" style="color:#fff;text-decoration:underline;">Subscriptions →</a></p>
+  <p style="opacity:0.92;margin:0;">Income, expenses and savings contributions that repeat — posted to your transaction ledger automatically.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+    <a href="{{ url_for('financial_workspace.subscriptions') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Subscriptions</a>
+  </div>
 </div>
 
 <div class="card">

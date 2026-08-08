@@ -5,7 +5,11 @@
 <div class="card hero">
   <h1>Pipeline Settings</h1>
   <p style="opacity:0.92;margin:0;">Customize the color, display name, description and order of each stage across every kanban board. This does not create or remove stages — the underlying stage list is fixed in code; this only personalizes how each one looks and is ordered.</p>
-  <p style="margin:10px 0 0;"><a href="{{ url_for('crm_pipeline_settings.service_interest_options') }}" style="color:#fff;text-decoration:underline;">Manage the "Service interest options" list (homepage form) →</a> · <a href="{{ url_for('crm_pipeline_settings.financial_coaching_options') }}" style="color:#fff;text-decoration:underline;">Manage Financial Coaching profile options →</a></p>
+</div>
+
+<div class="card" style="display:flex;gap:10px;flex-wrap:wrap;">
+  <a href="{{ url_for('crm_pipeline_settings.service_interest_options') }}" class="btn">Manage Service interest options →</a>
+  <a href="{{ url_for('crm_pipeline_settings.financial_coaching_options') }}" class="btn">Manage Financial Coaching profile options →</a>
 </div>
 
 {% for pipeline in board %}

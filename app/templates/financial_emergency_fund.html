@@ -4,7 +4,13 @@
 {% block content %}
 <div class="card hero">
   <h1>Emergency Fund</h1>
-  <p style="opacity:0.92;margin:0;">How many months of essential expenses you have saved up. <a href="{{ url_for('financial_workspace.goals') }}" style="color:#fff;text-decoration:underline;">← Financial Goals</a></p>
+  <p style="opacity:0.92;margin:0;">How many months of essential expenses you have saved up.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.goals') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Financial Goals</a>
+  </div>
 </div>
 
 <div class="card">

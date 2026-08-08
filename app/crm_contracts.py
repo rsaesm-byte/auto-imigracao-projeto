@@ -12,12 +12,14 @@ from __future__ import annotations
 from flask import Blueprint, abort, flash, redirect, render_template, request, send_file, url_for
 from flask_login import current_user, login_required
 
+from app.crm_financial_models import FinancialCoachingPackage
 from app.crm_models import (Case, CaseContract, ContractDocumentType,
                              ContractStatus, ContractTier, ServiceCatalog)
 from app.db import SessionLocal
 from app.models import User
 from app.services import audit_service
 from app.services import crm_service as svc
+from app.services import financial_coaching_packages as fcpkg
 
 crm_contracts_bp = Blueprint("crm_contracts", __name__, url_prefix="/staff/crm/contratos")
 
@@ -247,3 +249,88 @@ def terms_edit():
     history_users = {u.id: u for u in SessionLocal.query(User).all()}
     return render_template("crm_contract_terms_edit.html", fields=fields,
                             history=history, history_users=history_users)
+
+
+# --------------------------------------------------------------------------
+# Financial Coaching -- aba própria (2026-08-08, pedido do usuário), separada
+# da tabela de imigração acima. 3 pacotes fixos (não tiers Standard/Plus de
+# um serviço só), preço em FinancialCoachingPackage
+# (app/crm_financial_models.py), conteúdo includes/excludes em
+# data/financial_coaching_packages/<slug>.json (app/services/
+# financial_coaching_packages.py) -- mesma separação preço-no-banco/
+# conteúdo-em-JSON da tabela de imigração, só que numa tabela/pasta próprias
+# pra não vazar estes 3 pacotes pras telas público-facing de imigração que
+# leem ServiceCatalog (packages.py, payment_gate.py, seletor de serviço de
+# Case).
+# --------------------------------------------------------------------------
+
+@crm_contracts_bp.route("/financeiro")
+def financial_coaching_dashboard():
+    packages = SessionLocal.query(FinancialCoachingPackage).order_by(
+        FinancialCoachingPackage.sort_order, FinancialCoachingPackage.id).all()
+    return render_template("crm_financial_coaching_contracts_dashboard.html", packages=packages)
+
+
+@crm_contracts_bp.route("/financeiro/<slug>", methods=["GET", "POST"])
+def financial_coaching_package_edit(slug: str):
+    package = SessionLocal.query(FinancialCoachingPackage).filter_by(slug=slug).first()
+    content = fcpkg.load_package_content(slug)
+    if package is None or content is None:
+        abort(404)
+
+    if request.method == "POST":
+        price_cents = svc.parse_dollars_to_cents(request.form.get("price_dollars", ""))
+        changes = {"price_cents": (package.price_cents, price_cents)}
+        package.price_cents = price_cents
+        package.sessions_summary = request.form.get("sessions_summary", "").strip() or None
+        package.sessions_summary_pt = request.form.get("sessions_summary_pt", "").strip() or None
+        package.sessions_summary_es = request.form.get("sessions_summary_es", "").strip() or None
+        package.updated_by_user_id = current_user.id
+        audit_service.log_field_changes("FinancialCoachingPackage", package.id, changes, user_id=current_user.id)
+
+        fields = ("includes", "excludes")
+        langs = ("", "_pt", "_es")
+        updates = {}
+        for field in fields:
+            for lang_suffix in langs:
+                key = f"{field}{lang_suffix}"
+                raw = request.form.get(key, "")
+                updates[key] = [line.strip() for line in raw.splitlines() if line.strip()]
+        fcpkg.save_package_content_lists(slug, updates)
+        audit_service.log_change(
+            "FinancialCoachingPackage", package.id, "field_update",
+            description=f"Includes/Excludes updated for '{package.name}'", user_id=current_user.id)
+        SessionLocal.commit()
+        flash("Financial Coaching package updated.", "success")
+        return redirect(url_for("crm_contracts.financial_coaching_package_edit", slug=slug))
+
+    lists = {f"{field}{lang}": "\n".join(content.get(f"{field}{lang}", []))
+             for field in ("includes", "excludes") for lang in ("", "_pt", "_es")}
+    history = audit_service.get_history("FinancialCoachingPackage", package.id)
+    history_users = {u.id: u for u in SessionLocal.query(User).all()}
+    return render_template(
+        "crm_financial_coaching_contract_edit.html", slug=slug, package=package, lists=lists,
+        history=history, history_users=history_users)
+
+
+@crm_contracts_bp.route("/financeiro/<slug>/previa")
+def financial_coaching_package_preview(slug: str):
+    package = SessionLocal.query(FinancialCoachingPackage).filter_by(slug=slug).first()
+    content = fcpkg.load_package_content(slug)
+    if package is None or content is None:
+        abort(404)
+
+    preview_lang = request.args.get("lang", "pt")
+    if preview_lang not in ("pt", "en", "es"):
+        preview_lang = "pt"
+    suffix = "" if preview_lang == "en" else f"_{preview_lang}"
+
+    name = content.get(f"name{suffix}", content["name"])
+    sessions_summary = getattr(package, f"sessions_summary{suffix}" if suffix else "sessions_summary")
+    includes = content.get(f"includes{suffix}", [])
+    excludes = content.get(f"excludes{suffix}", [])
+
+    return render_template(
+        "crm_financial_coaching_contract_preview.html", slug=slug, name=name,
+        price_cents=package.price_cents, sessions_summary=sessions_summary,
+        includes=includes, excludes=excludes, preview_lang=preview_lang)

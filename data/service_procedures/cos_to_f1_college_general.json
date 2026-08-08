@@ -1,0 +1,135 @@
+{
+  "service_id": "cos_to_f1_college_general",
+  "name": "Change of Status to F-1 — College (General)",
+  "name_pt": "Mudança de Status para F-1 — College (Geral)",
+  "name_es": "Cambio de Estatus a F-1 — College (General)",
+  "forms": ["I-539"],
+  "channel": "uscis_domestic",
+  "actor_blocks": [],
+  "note": "COS to F-1 for a college/university program (as opposed to a language school) -- a distinct pricing product from the F-1/F-2 Language School tier (cos_to_f1/cos_to_f2) even though all three share the same underlying I-539 filing type. Also distinct from the partnership-priced version (cos_to_f1_college_partnership) -- never conflate the two, per SAES_Master_Contratos_Servicos.md section 29.2.",
+  "phases": [],
+  "pricing": {
+    "standard_usd": 700,
+    "plus_online_usd": 1395,
+    "plus_paper_usd": 1520,
+    "notes": "General COS contract's College modality -- not the partnership-priced product.",
+    "source": "SAES_Master_Contratos_Servicos.md, section 5.2, extracted 2026-08-08."
+  },
+  "standard_includes": [
+    "Service Agreement",
+    "Complete checklist of documents and information",
+    "Google Drive link for document uploads",
+    "Review and organization of supporting documents",
+    "Preparation of the Change of Status Cover Letter, based on 18 years of experience",
+    "Discount on certified translations",
+    "Discount on RFE response (quoted separately)",
+    "Recommendation of two college options based on location, schedule, and cost"
+  ],
+  "standard_excludes": [
+    "Certified translations",
+    "Case monitoring after submission",
+    "School fees",
+    "Application fees",
+    "SEVIS fee",
+    "USCIS filing fees"
+  ],
+  "plus_includes": [
+    "Everything included in Standard",
+    "Translation of the address letter, sponsor/sponsorship letter, and employer letter",
+    "RFE response included",
+    "Printing",
+    "Document assembly",
+    "Money order purchase",
+    "Mailing",
+    "Client pays only the USCIS filing fee",
+    "Final review",
+    "Detailed filing instructions",
+    "Case monitoring through USCIS decision",
+    "Support for E-Requests",
+    "Support for address updates",
+    "$15 convenience fee waived when the SAES card is used to pay SEVIS, USCIS, or school fees"
+  ],
+  "plus_excludes": [
+    "Certified translations (in general)",
+    "SEVIS fee",
+    "School fees (registration, enrollment, change of status)"
+  ],
+  "standard_includes_pt": [
+    "Contrato de prestação de serviço",
+    "Checklist completo de documentos e informações",
+    "Link do Google Drive para envio de documentos",
+    "Revisão e organização dos documentos de apoio",
+    "Preparação da Cover Letter de Change of Status, baseada em 18 anos de experiência",
+    "Desconto em traduções certificadas",
+    "Desconto na resposta a RFE (orçado separadamente)",
+    "Recomendação de duas opções de faculdade conforme localização, horário e custo"
+  ],
+  "standard_excludes_pt": [
+    "Traduções certificadas",
+    "Acompanhamento do caso após a submissão",
+    "Taxas escolares",
+    "Taxas de application",
+    "Taxa SEVIS",
+    "Taxas da USCIS"
+  ],
+  "plus_includes_pt": [
+    "Tudo o que está incluído no Standard",
+    "Tradução da address letter, sponsor/sponsorship letter e employer letter",
+    "Resposta a RFE incluída",
+    "Impressão",
+    "Montagem dos documentos",
+    "Compra de money order",
+    "Envio postal",
+    "Cliente paga apenas a taxa da USCIS",
+    "Revisão final",
+    "Instruções detalhadas de envio",
+    "Acompanhamento do caso até a decisão da USCIS",
+    "Suporte para E-Requests",
+    "Suporte para atualização de endereço",
+    "Isenção da taxa de conveniência de $15 ao usar o cartão SAES para pagar SEVIS, USCIS ou taxas escolares"
+  ],
+  "plus_excludes_pt": [
+    "Traduções certificadas (em geral)",
+    "Taxa SEVIS",
+    "Taxas escolares (matrícula, inscrição, mudança de status)"
+  ],
+  "standard_includes_es": [
+    "Acuerdo de servicio",
+    "Lista completa de documentos e información",
+    "Enlace de Google Drive para subir documentos",
+    "Revisión y organización de los documentos de respaldo",
+    "Preparación de la Cover Letter de Change of Status, basada en 18 años de experiencia",
+    "Descuento en traducciones certificadas",
+    "Descuento en la respuesta a RFE (cotizado por separado)",
+    "Recomendación de dos opciones de universidad según ubicación, horario y costo"
+  ],
+  "standard_excludes_es": [
+    "Traducciones certificadas",
+    "Seguimiento del caso después de la presentación",
+    "Tarifas escolares",
+    "Tarifas de solicitud",
+    "Tarifa SEVIS",
+    "Tarifas de USCIS"
+  ],
+  "plus_includes_es": [
+    "Todo lo incluido en Standard",
+    "Traducción de la address letter, sponsor/sponsorship letter y employer letter",
+    "Respuesta a RFE incluida",
+    "Impresión",
+    "Ensamblaje de documentos",
+    "Compra de money order",
+    "Envío postal",
+    "El cliente paga únicamente la tarifa de USCIS",
+    "Revisión final",
+    "Instrucciones detalladas de envío",
+    "Seguimiento del caso hasta la decisión de USCIS",
+    "Soporte para E-Requests",
+    "Soporte para actualización de dirección",
+    "Exención de la tarifa de conveniencia de $15 al usar la tarjeta SAES para pagar SEVIS, USCIS o tarifas escolares"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas (en general)",
+    "Tarifa SEVIS",
+    "Tarifas escolares (matrícula, inscripción, cambio de estatus)"
+  ]
+}

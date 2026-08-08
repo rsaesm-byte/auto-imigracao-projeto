@@ -138,51 +138,105 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete document checklist",
+    "Form I-90, online or paper",
+    "Email/USCIS account setup, if needed",
+    "Checklist",
+    "Document review and organization",
     "Google Drive link for document uploads",
-    "Review and organization of supporting documents",
-    "I-90 preparation based on 18 years of experience"
+    "Support during preparation",
+    "Discount on translation",
+    "Final review meeting, up to 15 minutes",
+    "Online filing: filing receipt, USCIS account credentials, tracking instructions",
+    "Paper filing: package, printing instructions, USCIS mailing address, government fee payment guidance, tracking instructions"
   ],
   "standard_excludes": [
-    "Case monitoring (client's responsibility)"
+    "RFE/NOID response",
+    "AR-11",
+    "E-Request",
+    "Physical printing/mailing",
+    "Post-filing case monitoring",
+    "USCIS filing fee"
   ],
   "plus_includes": [
-    "All items from Standard",
-    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
-    "Full case tracking until USCIS decision"
+    "Everything included in Standard",
+    "RFE/NOID response at no additional cost",
+    "AR-11",
+    "E-Request",
+    "Case monitoring through final decision",
+    "Printing and assembly",
+    "Physical mailing for paper filings",
+    "Tracking"
   ],
-  "plus_excludes": [],
+  "plus_excludes": [
+    "Certified translations",
+    "USCIS filing fee"
+  ],
   "standard_includes_pt": [
-    "Contrato de prestação de serviço",
-    "Checklist completo de documentos",
+    "Formulário I-90, online ou em papel",
+    "Criação de conta USCIS/e-mail, se necessário",
+    "Checklist",
+    "Revisão e organização de documentos",
     "Link do Google Drive para envio de documentos",
-    "Revisão e organização dos documentos de apoio",
-    "Preparação do I-90 baseada em 18 anos de experiência"
+    "Suporte durante a preparação",
+    "Desconto em tradução",
+    "Reunião final de revisão, até 15 minutos",
+    "Envio online: recibo de protocolo, credenciais da conta USCIS, instruções de rastreamento",
+    "Envio em papel: pacote, instruções de impressão, endereço da USCIS, orientação de pagamento da taxa, instruções de rastreamento"
   ],
   "standard_includes_es": [
-    "Acuerdo de servicio",
-    "Lista completa de documentos",
+    "Formulario I-90, en línea o en papel",
+    "Creación de cuenta USCIS/correo electrónico, si es necesario",
+    "Lista de verificación",
+    "Revisión y organización de documentos",
     "Enlace de Google Drive para subir documentos",
-    "Revisión y organización de los documentos de respaldo",
-    "Preparación del I-90 basada en 18 años de experiencia"
+    "Soporte durante la preparación",
+    "Descuento en traducción",
+    "Reunión final de revisión, hasta 15 minutos",
+    "Envío en línea: recibo de presentación, credenciales de la cuenta USCIS, instrucciones de seguimiento",
+    "Envío en papel: paquete, instrucciones de impresión, dirección de USCIS, orientación de pago de la tarifa, instrucciones de seguimiento"
   ],
   "standard_excludes_pt": [
-    "Acompanhamento do caso (responsabilidade do cliente)"
+    "Resposta a RFE/NOID",
+    "AR-11",
+    "E-Request",
+    "Impressão/envio físico",
+    "Acompanhamento do caso após a submissão",
+    "Taxa de envio da USCIS"
   ],
   "standard_excludes_es": [
-    "Seguimiento del caso (responsabilidad del cliente)"
+    "Respuesta a RFE/NOID",
+    "AR-11",
+    "E-Request",
+    "Impresión/envío físico",
+    "Seguimiento del caso después de la presentación",
+    "Tarifa de presentación de USCIS"
   ],
   "plus_includes_pt": [
-    "Todos os itens do Standard",
-    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
-    "Acompanhamento completo do caso até a decisão da USCIS"
+    "Tudo o que está incluído no Standard",
+    "Resposta a RFE/NOID sem custo adicional",
+    "AR-11",
+    "E-Request",
+    "Acompanhamento do caso até a decisão final",
+    "Impressão e montagem",
+    "Envio físico para pacotes em papel",
+    "Rastreamento"
   ],
   "plus_includes_es": [
-    "Todos los elementos del Standard",
-    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
-    "Seguimiento completo del caso hasta la decisión de USCIS"
+    "Todo lo incluido en Standard",
+    "Respuesta a RFE/NOID sin costo adicional",
+    "AR-11",
+    "E-Request",
+    "Seguimiento del caso hasta la decisión final",
+    "Impresión y ensamblaje",
+    "Envío físico para paquetes en papel",
+    "Seguimiento"
   ],
-  "plus_excludes_pt": [],
-  "plus_excludes_es": []
+  "plus_excludes_pt": [
+    "Traduções certificadas",
+    "Taxa de envio da USCIS"
+  ],
+  "plus_excludes_es": [
+    "Traducciones certificadas",
+    "Tarifa de presentación de USCIS"
+  ]
 }

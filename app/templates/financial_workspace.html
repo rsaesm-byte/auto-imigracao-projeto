@@ -4,7 +4,15 @@
 {% block content %}
 <div class="card hero">
   <h1>Financial Workspace</h1>
-  <p style="opacity:0.92;margin:0;">Track your accounts and transactions. This is your own data — nothing here is shared automatically with your coach unless you choose to. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a> · <a href="{{ url_for('financial_workspace.budget') }}" style="color:#fff;text-decoration:underline;">Budget →</a> · <a href="{{ url_for('financial_workspace.bills') }}" style="color:#fff;text-decoration:underline;">Bills →</a></p>
+  <p style="opacity:0.92;margin:0;">Track your accounts and transactions. This is your own data — nothing here is shared automatically with your coach unless you choose to.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+    <a href="{{ url_for('financial_workspace.budget') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Budget</a>
+    <a href="{{ url_for('financial_workspace.bills') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Bills</a>
+  </div>
 </div>
 
 <div class="card">

@@ -125,78 +125,105 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete checklist of required documents",
+    "Service Agreement",
+    "Complete checklist of documents and information",
     "Google Drive link for document uploads",
     "Review and organization of supporting documents",
-    "COS cover letter based on 18 years of experience",
-    "Discount on document translation",
+    "Preparation of the Change of Status Cover Letter, based on 18 years of experience",
+    "Discount on certified translations",
     "Discount on RFE response (quoted separately)"
   ],
   "standard_excludes": [
-    "Certified translations (billed separately)",
-    "Case tracking after submission (client's responsibility)"
+    "Certified translations",
+    "Case monitoring after submission",
+    "USCIS filing fees"
   ],
   "plus_includes": [
-    "All items from Standard",
-    "Translation of address/sponsor/employer letters",
+    "Everything included in Standard",
+    "Translation of the address letter, sponsor/sponsorship letter, and employer letter",
     "RFE response included",
-    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
-    "Final review and detailed mailing instructions",
-    "Full case tracking until USCIS decision",
-    "Support with e-Requests and address changes"
+    "Printing",
+    "Document assembly",
+    "Money order purchase",
+    "Mailing",
+    "Client pays only the USCIS filing fee",
+    "Final review",
+    "Detailed filing instructions",
+    "Case monitoring through USCIS decision",
+    "Support for E-Requests",
+    "Support for address updates",
+    "$15 convenience fee waived when USCIS fees are paid with the SAES card"
   ],
   "plus_excludes": [
-    "Certified translations (billed separately)"
+    "Certified translations (in general)",
+    "USCIS filing fees"
   ],
   "standard_includes_pt": [
     "Contrato de prestação de serviço",
-    "Checklist completo dos documentos necessários",
+    "Checklist completo de documentos e informações",
     "Link do Google Drive para envio de documentos",
     "Revisão e organização dos documentos de apoio",
-    "Carta de apresentação do COS baseada em 18 anos de experiência",
-    "Desconto na tradução de documentos",
+    "Preparação da Cover Letter de Change of Status, baseada em 18 anos de experiência",
+    "Desconto em traduções certificadas",
     "Desconto na resposta a RFE (orçado separadamente)"
   ],
   "standard_includes_es": [
     "Acuerdo de servicio",
-    "Lista completa de los documentos necesarios",
+    "Lista completa de documentos e información",
     "Enlace de Google Drive para subir documentos",
     "Revisión y organización de los documentos de respaldo",
-    "Carta de presentación del COS basada en 18 años de experiencia",
-    "Descuento en la traducción de documentos",
+    "Preparación de la Cover Letter de Change of Status, basada en 18 años de experiencia",
+    "Descuento en traducciones certificadas",
     "Descuento en la respuesta a RFE (cotizado por separado)"
   ],
   "standard_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)",
-    "Acompanhamento do caso após o envio (responsabilidade do cliente)"
+    "Traduções certificadas",
+    "Acompanhamento do caso após a submissão",
+    "Taxas da USCIS"
   ],
   "standard_excludes_es": [
-    "Traducciones certificadas (facturadas por separado)",
-    "Seguimiento del caso después del envío (responsabilidad del cliente)"
+    "Traducciones certificadas",
+    "Seguimiento del caso después de la presentación",
+    "Tarifas de USCIS"
   ],
   "plus_includes_pt": [
-    "Todos os itens do Standard",
-    "Tradução das cartas de endereço/patrocinador/empregador",
-    "Resposta a RFE inclusa",
-    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
-    "Revisão final e instruções detalhadas de envio",
-    "Acompanhamento completo do caso até a decisão da USCIS",
-    "Apoio com e-Requests e mudanças de endereço"
+    "Tudo o que está incluído no Standard",
+    "Tradução da address letter, sponsor/sponsorship letter e employer letter",
+    "Resposta a RFE incluída",
+    "Impressão",
+    "Montagem dos documentos",
+    "Compra de money order",
+    "Envio postal",
+    "Cliente paga apenas a taxa da USCIS",
+    "Revisão final",
+    "Instruções detalhadas de envio",
+    "Acompanhamento do caso até a decisão da USCIS",
+    "Suporte para E-Requests",
+    "Suporte para atualização de endereço",
+    "Isenção da taxa de conveniência de $15 ao pagar taxas da USCIS com o cartão SAES"
   ],
   "plus_includes_es": [
-    "Todos los elementos del Standard",
-    "Traducción de las cartas de domicilio/patrocinador/empleador",
+    "Todo lo incluido en Standard",
+    "Traducción de la address letter, sponsor/sponsorship letter y employer letter",
     "Respuesta a RFE incluida",
-    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
-    "Revisión final e instrucciones detalladas de envío",
-    "Seguimiento completo del caso hasta la decisión de USCIS",
-    "Apoyo con e-Requests y cambios de dirección"
+    "Impresión",
+    "Ensamblaje de documentos",
+    "Compra de money order",
+    "Envío postal",
+    "El cliente paga únicamente la tarifa de USCIS",
+    "Revisión final",
+    "Instrucciones detalladas de envío",
+    "Seguimiento del caso hasta la decisión de USCIS",
+    "Soporte para E-Requests",
+    "Soporte para actualización de dirección",
+    "Exención de la tarifa de conveniencia de $15 al pagar tarifas de USCIS con la tarjeta SAES"
   ],
   "plus_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)"
+    "Traduções certificadas (em geral)",
+    "Taxas da USCIS"
   ],
   "plus_excludes_es": [
-    "Traducciones certificadas (facturadas por separado)"
+    "Traducciones certificadas (en general)",
+    "Tarifas de USCIS"
   ]
 }

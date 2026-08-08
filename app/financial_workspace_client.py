@@ -14,34 +14,44 @@ amigável (mesmo padrão de app/crm_financial_client.py::meu_plano quando
 """
 from __future__ import annotations
 
+import io
 from datetime import date
 
-from flask import Blueprint, flash, redirect, render_template, request, url_for
+from flask import Blueprint, Response, abort, flash, redirect, render_template, request, send_file, url_for
 from flask_login import current_user, login_required
 
 from app.crm_financial_models import FinancialClient
 from app.db import SessionLocal
 from app.financial_planning_models import (Account, AccountType, Bill, BillFrequency, BillPayment,
                                             BudgetCategory, BudgetCategoryGroup, BudgetPeriod,
-                                            BudgetRuleType, Debt, DebtStatus, DebtType, FinancialGoal,
-                                            GoalPriority, GoalStatus, PaymentMethodType,
-                                            PayoffStrategy, RecurringDebit, RecurringTransaction,
-                                            RecurringTransactionKind, ReviewStatus, SinkingFund,
-                                            SnapshotSource, TransactionClassification, TransactionType)
+                                            BudgetRuleType, CsvImportBatch, CsvImportRowStatus,
+                                            CsvImportStatus, Debt, DebtStatus, DebtType,
+                                            FinancialAttachment, FinancialGoal, GoalPriority,
+                                            GoalStatus, MotivationItem, MotivationItemType,
+                                            PaymentMethodType, PayoffStrategy, RecurringDebit,
+                                            RecurringTransaction, RecurringTransactionKind,
+                                            ReviewStatus, SavedReportView, SinkingFund, SnapshotSource,
+                                            TransactionClassification, TransactionType)
 from app.services import bills_service as bills_svc
 from app.services import budget_service as budget_svc
 from app.services import crm_service as svc
+from app.services import csv_import_service as csv_import_svc
 from app.services import debts_service as debts_svc
 from app.services import financial_accounts_service as accounts_svc
 from app.services import financial_dashboard_service as dash_svc
+from app.services import financial_insights_service as insights_svc
+from app.services import financial_reports_service as fin_reports_svc
 from app.services import financial_transactions_service as tx_svc
 from app.services import goals_service as goals_svc
+from app.services import motivation_service as motivation_svc
 from app.services import net_worth_service as networth_svc
 from app.services import recurring_service as recurring_svc
 from app.services.bills_service import BillValidationError
 from app.services.budget_service import BudgetValidationError
+from app.services.csv_import_service import CsvImportValidationError
 from app.services.debts_service import DebtValidationError
 from app.services.goals_service import GoalValidationError
+from app.services.motivation_service import MotivationValidationError
 from app.services import reports_service
 from app.services.financial_transactions_service import TransactionValidationError
 from app.services.recurring_service import RecurringValidationError
@@ -873,9 +883,35 @@ def debt_plan():
     strategy = svc.parse_enum(PayoffStrategy, request.args.get("strategy"), PayoffStrategy.snowball)
     ordered = debts_svc.ordered_debts(workspace, strategy=strategy)
     projections = {d.id: debts_svc.payoff_projection(d) for d in ordered}
+
+    # Gráfico de Gantt (pedido do usuário 2026-08-08) -- só entram dívidas
+    # com uma projeção real de quitação (months_to_payoff > 0); a janela
+    # do gráfico vai de hoje até a quitação mais distante entre elas, e a
+    # barra de cada dívida mostra o quanto falta dela nessa janela --
+    # matemática de data fica aqui (Python), o template só desenha % já
+    # prontos (ver app/templates/_charts.html::gantt_chart).
+    today = date.today()
+    payoff_rows = [
+        (d, projections[d.id]) for d in ordered
+        if projections[d.id] is not None and projections[d.id]["months_to_payoff"] > 0
+    ]
+    gantt_rows = []
+    if payoff_rows:
+        horizon_days = max((proj["payoff_date"] - today).days for _d, proj in payoff_rows)
+        horizon_days = horizon_days or 1
+        for d, proj in payoff_rows:
+            days_out = (proj["payoff_date"] - today).days
+            gantt_rows.append({
+                "label": d.debt_name,
+                "start_pct": 0,
+                "width_pct": round(days_out / horizon_days * 100, 1),
+                "tooltip": f"{d.debt_name} — payoff {proj['payoff_date'].strftime('%m/%d/%Y')} ({proj['months_to_payoff']} mo)",
+            })
+
     return render_template(
         "financial_debt_plan.html", workspace=workspace, strategy=strategy,
-        strategies=list(PayoffStrategy), ordered_debts=ordered, projections=projections)
+        strategies=list(PayoffStrategy), ordered_debts=ordered, projections=projections,
+        gantt_rows=gantt_rows)
 
 
 # --------------------------------------------------------------------------
@@ -919,3 +955,404 @@ def net_worth_snapshot_new():
         source=SnapshotSource.manual)
     flash("Balance snapshot recorded.", "success")
     return redirect(url_for("financial_workspace.net_worth"))
+
+
+# --------------------------------------------------------------------------
+# Fase 10 (Motivation Board)
+# --------------------------------------------------------------------------
+
+@financial_workspace_bp.route("/inspiracao")
+def motivation():
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    favorites_only = request.args.get("favoritos") == "1"
+    return render_template(
+        "financial_motivation.html", workspace=workspace,
+        items=motivation_svc.list_items(workspace, favorites_only=favorites_only),
+        favorites_only=favorites_only, item_types=list(MotivationItemType))
+
+
+@financial_workspace_bp.route("/inspiracao/novo", methods=["POST"])
+def motivation_new():
+    fc = _financial_client_for_current_user()
+    try:
+        item = motivation_svc.create_item(
+            fc.workspace, actor=current_user, title=request.form.get("title", "").strip(),
+            item_type=svc.parse_enum(MotivationItemType, request.form.get("item_type"), None),
+            categories=request.form.get("categories", "").strip() or None,
+            source_url=request.form.get("source_url", "").strip() or None,
+            location=request.form.get("location", "").strip() or None,
+        )
+    except MotivationValidationError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("financial_workspace.motivation"))
+
+    image = request.files.get("image")
+    if image is not None and image.filename:
+        try:
+            motivation_svc.set_image(
+                item, actor=current_user, filename=image.filename,
+                mime_type=image.mimetype, content=image.read())
+        except MotivationValidationError as exc:
+            flash(str(exc), "error")
+            return redirect(url_for("financial_workspace.motivation"))
+
+    flash("Added to your Motivation Board.", "success")
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+def _motivation_item_or_404(workspace, item_id: int) -> MotivationItem:
+    item = SessionLocal.get(MotivationItem, item_id)
+    if item is None or item.financial_workspace_id != workspace.id:
+        abort(404)
+    return item
+
+
+@financial_workspace_bp.route("/inspiracao/<int:item_id>/imagem", methods=["POST"])
+def motivation_image(item_id: int):
+    fc = _financial_client_for_current_user()
+    item = _motivation_item_or_404(fc.workspace, item_id)
+
+    image = request.files.get("image")
+    if image is None or not image.filename:
+        flash("Choose an image first.", "error")
+        return redirect(url_for("financial_workspace.motivation"))
+
+    try:
+        motivation_svc.set_image(
+            item, actor=current_user, filename=image.filename,
+            mime_type=image.mimetype, content=image.read())
+    except MotivationValidationError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("financial_workspace.motivation"))
+
+    flash("Image updated.", "success")
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+@financial_workspace_bp.route("/inspiracao/<int:item_id>/editar", methods=["POST"])
+def motivation_edit(item_id: int):
+    fc = _financial_client_for_current_user()
+    item = _motivation_item_or_404(fc.workspace, item_id)
+    try:
+        motivation_svc.update_item(
+            item, title=request.form.get("title", "").strip(),
+            item_type=svc.parse_enum(MotivationItemType, request.form.get("item_type"), None),
+            categories=request.form.get("categories", "").strip() or None,
+            source_url=request.form.get("source_url", "").strip() or None,
+            location=request.form.get("location", "").strip() or None,
+        )
+    except MotivationValidationError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("financial_workspace.motivation"))
+
+    flash("Updated.", "success")
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+@financial_workspace_bp.route("/inspiracao/reordenar", methods=["POST"])
+def motivation_reorder():
+    fc = _financial_client_for_current_user()
+    ordered_ids = [svc.parse_int(raw) for raw in request.form.getlist("item_id")]
+    motivation_svc.reorder_items(fc.workspace, [i for i in ordered_ids if i is not None])
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+@financial_workspace_bp.route("/inspiracao/<int:item_id>/favorito", methods=["POST"])
+def motivation_favorite(item_id: int):
+    fc = _financial_client_for_current_user()
+    item = _motivation_item_or_404(fc.workspace, item_id)
+    motivation_svc.toggle_favorite(item)
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+@financial_workspace_bp.route("/inspiracao/<int:item_id>/fixar", methods=["POST"])
+def motivation_pin(item_id: int):
+    fc = _financial_client_for_current_user()
+    item = _motivation_item_or_404(fc.workspace, item_id)
+    motivation_svc.toggle_pinned(item)
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+@financial_workspace_bp.route("/inspiracao/<int:item_id>/excluir", methods=["POST"])
+def motivation_delete(item_id: int):
+    fc = _financial_client_for_current_user()
+    item = _motivation_item_or_404(fc.workspace, item_id)
+    motivation_svc.delete_item(item)
+    flash("Removed from your Motivation Board.", "success")
+    return redirect(url_for("financial_workspace.motivation"))
+
+
+@financial_workspace_bp.route("/inspiracao/imagem/<int:attachment_id>")
+def motivation_image_file(attachment_id: int):
+    """Serve o bytes da imagem -- storage privado (`instance/document_storage/`
+    por trás do `StorageBackend`, nunca uma URL pública permanente, pedido
+    explícito do documento em "Attachments"). Checa que o anexo pertence
+    ao workspace do cliente logado antes de servir qualquer coisa."""
+    fc = _financial_client_for_current_user()
+    attachment = SessionLocal.get(FinancialAttachment, attachment_id)
+    if (attachment is None or attachment.financial_workspace_id != fc.workspace.id
+            or attachment.deleted_at is not None):
+        abort(404)
+
+    from app.services.storage import get_storage_backend
+    content = get_storage_backend().ler(attachment.storage_key)
+    return send_file(io.BytesIO(content), mimetype=attachment.mime_type, download_name=attachment.original_filename)
+
+
+# --------------------------------------------------------------------------
+# Fase 11 (Reports)
+# --------------------------------------------------------------------------
+
+def _report_range_from_request() -> tuple[str, date, date]:
+    """(period_key, start, end) -- "custom" lê `start`/`end` da query
+    string (validados, senão cai pro mês corrente); qualquer outro valor
+    (ou nenhum) usa `financial_reports_service.period_range`."""
+    period = request.args.get("period", "this_month")
+    if period == "custom":
+        start = svc.parse_date(request.args.get("start"))
+        end = svc.parse_date(request.args.get("end"))
+        if start and end and start <= end:
+            return period, start, end
+        period = "this_month"
+    start, end = fin_reports_svc.period_range(period)
+    return period, start, end
+
+
+@financial_workspace_bp.route("/relatorios")
+def reports():
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    period, start, end = _report_range_from_request()
+    return render_template(
+        "financial_reports.html", workspace=workspace, period=period, start=start, end=end,
+        periods=fin_reports_svc.PERIODS,
+        summary=fin_reports_svc.monthly_summary_with_comparison(workspace, start=start, end=end),
+        saved_views=fin_reports_svc.list_saved_views(workspace))
+
+
+@financial_workspace_bp.route("/relatorios/exportar.csv")
+def reports_export_csv():
+    fc = _financial_client_for_current_user()
+    _period, start, end = _report_range_from_request()
+    summary = fin_reports_svc.monthly_summary(fc.workspace, start=start, end=end)
+    csv_bytes = fin_reports_svc.to_csv_bytes(summary)
+    filename = f"monthly-summary-{start.isoformat()}-to-{end.isoformat()}.csv"
+    return Response(csv_bytes, mimetype="text/csv",
+                     headers={"Content-Disposition": f"attachment; filename={filename}"})
+
+
+@financial_workspace_bp.route("/relatorios/exportar.pdf")
+def reports_export_pdf():
+    fc = _financial_client_for_current_user()
+    _period, start, end = _report_range_from_request()
+    summary = fin_reports_svc.monthly_summary(fc.workspace, start=start, end=end)
+    pdf_bytes = fin_reports_svc.render_pdf_bytes(summary)
+    filename = f"monthly-summary-{start.isoformat()}-to-{end.isoformat()}.pdf"
+    return Response(pdf_bytes, mimetype="application/pdf",
+                     headers={"Content-Disposition": f"attachment; filename={filename}"})
+
+
+@financial_workspace_bp.route("/relatorios/visualizacoes", methods=["POST"])
+def reports_saved_view_new():
+    """Salva o período atualmente selecionado em /relatorios (name vem do
+    form; period/start/end vêm de hidden fields que espelham a query
+    string da própria tela, não de request.args -- este é um POST)."""
+    fc = _financial_client_for_current_user()
+    name = request.form.get("name", "").strip()
+    period = request.form.get("period", "this_month")
+    if period not in fin_reports_svc.PERIODS and period != "custom":
+        period = "this_month"
+    if not name:
+        flash("Give the saved view a name.", "error")
+        return redirect(url_for("financial_workspace.reports", period=period))
+
+    custom_start = svc.parse_date(request.form.get("start")) if period == "custom" else None
+    custom_end = svc.parse_date(request.form.get("end")) if period == "custom" else None
+    fin_reports_svc.create_saved_view(
+        fc.workspace, actor=current_user, name=name, period=period,
+        custom_start=custom_start, custom_end=custom_end)
+    flash("View saved.", "success")
+    return redirect(url_for("financial_workspace.reports", period=period,
+                             start=custom_start, end=custom_end))
+
+
+@financial_workspace_bp.route("/relatorios/visualizacoes/<int:view_id>/abrir")
+def reports_saved_view_open(view_id: int):
+    fc = _financial_client_for_current_user()
+    view = SessionLocal.get(SavedReportView, view_id)
+    if view is None or view.financial_workspace_id != fc.workspace.id:
+        flash("Saved view not found.", "error")
+        return redirect(url_for("financial_workspace.reports"))
+    return redirect(url_for("financial_workspace.reports", period=view.period,
+                             start=view.custom_start, end=view.custom_end))
+
+
+@financial_workspace_bp.route("/relatorios/visualizacoes/<int:view_id>/excluir", methods=["POST"])
+def reports_saved_view_delete(view_id: int):
+    fc = _financial_client_for_current_user()
+    view = SessionLocal.get(SavedReportView, view_id)
+    if view is None or view.financial_workspace_id != fc.workspace.id:
+        flash("Saved view not found.", "error")
+        return redirect(url_for("financial_workspace.reports"))
+    fin_reports_svc.delete_saved_view(view)
+    flash("Saved view removed.", "success")
+    return redirect(url_for("financial_workspace.reports"))
+
+
+# --------------------------------------------------------------------------
+# Fase 12 (Advanced Tools -- Insights, Forecasts, Calculators)
+# --------------------------------------------------------------------------
+
+@financial_workspace_bp.route("/ferramentas")
+def tools():
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+
+    debt_calc_result = None
+    if request.args.get("calc") == "debt":
+        try:
+            debt_calc_result = insights_svc.debt_payoff_calculator(
+                balance_cents=svc.parse_dollars_to_cents(request.args.get("balance")) or 0,
+                apr_bps=round(float(request.args["apr"]) * 100) if request.args.get("apr") else None,
+                monthly_payment_cents=svc.parse_dollars_to_cents(request.args.get("payment")) or 0,
+            )
+        except (ValueError, KeyError):
+            flash("Enter a valid balance, APR, and payment.", "error")
+
+    goal_calc_result = None
+    if request.args.get("calc") == "goal":
+        try:
+            goal_calc_result = insights_svc.goal_savings_calculator(
+                target_amount_cents=svc.parse_dollars_to_cents(request.args.get("target")) or 0,
+                current_amount_cents=svc.parse_dollars_to_cents(request.args.get("current")) or 0,
+                monthly_contribution_cents=svc.parse_dollars_to_cents(request.args.get("contribution")) or 0,
+            )
+        except (ValueError, KeyError):
+            flash("Enter valid amounts.", "error")
+
+    return render_template(
+        "financial_tools.html", workspace=workspace,
+        insights=insights_svc.all_insights(workspace),
+        forecast=insights_svc.cash_flow_forecast(workspace),
+        debt_calc_result=debt_calc_result, goal_calc_result=goal_calc_result,
+        debt_calc_form=request.args if request.args.get("calc") == "debt" else {},
+        goal_calc_form=request.args if request.args.get("calc") == "goal" else {})
+
+
+# --------------------------------------------------------------------------
+# Fase 12 (Advanced Tools -- CSV Import)
+# --------------------------------------------------------------------------
+
+def _csv_batch_or_404(workspace, batch_id: int) -> CsvImportBatch:
+    batch = SessionLocal.get(CsvImportBatch, batch_id)
+    if batch is None or batch.financial_workspace_id != workspace.id:
+        abort(404)
+    return batch
+
+
+@financial_workspace_bp.route("/importar-csv")
+def csv_import_start():
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    return render_template(
+        "financial_csv_import.html", workspace=workspace,
+        accounts=accounts_svc.list_accounts(workspace), batches=csv_import_svc.list_batches(workspace))
+
+
+@financial_workspace_bp.route("/importar-csv/novo", methods=["POST"])
+def csv_import_new():
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    account = SessionLocal.get(Account, svc.parse_int(request.form.get("account_id")))
+    file_storage = request.files.get("file")
+
+    if account is None or account.financial_workspace_id != workspace.id:
+        flash("Choose a valid account.", "error")
+        return redirect(url_for("financial_workspace.csv_import_start"))
+    if file_storage is None or not file_storage.filename:
+        flash("Choose a CSV file first.", "error")
+        return redirect(url_for("financial_workspace.csv_import_start"))
+
+    try:
+        batch = csv_import_svc.create_batch(
+            workspace, actor=current_user, account=account,
+            filename=file_storage.filename, content=file_storage.read())
+    except CsvImportValidationError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("financial_workspace.csv_import_start"))
+
+    return redirect(url_for("financial_workspace.csv_import_map", batch_id=batch.id))
+
+
+@financial_workspace_bp.route("/importar-csv/<int:batch_id>/mapear", methods=["GET", "POST"])
+def csv_import_map(batch_id: int):
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    batch = _csv_batch_or_404(workspace, batch_id)
+
+    if request.method == "POST":
+        try:
+            csv_import_svc.set_column_mapping(
+                workspace, batch, date_col=request.form.get("date_col", ""),
+                description_col=request.form.get("description_col", ""),
+                amount_col=request.form.get("amount_col") or None,
+                debit_col=request.form.get("debit_col") or None,
+                credit_col=request.form.get("credit_col") or None,
+            )
+        except CsvImportValidationError as exc:
+            flash(str(exc), "error")
+            return redirect(url_for("financial_workspace.csv_import_map", batch_id=batch.id))
+        return redirect(url_for("financial_workspace.csv_import_review", batch_id=batch.id))
+
+    return render_template("financial_csv_import_map.html", workspace=workspace, batch=batch)
+
+
+@financial_workspace_bp.route("/importar-csv/<int:batch_id>/revisar")
+def csv_import_review(batch_id: int):
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    batch = _csv_batch_or_404(workspace, batch_id)
+    return render_template(
+        "financial_csv_import_review.html", workspace=workspace, batch=batch,
+        rows=csv_import_svc.list_rows(batch), accounts=accounts_svc.list_accounts(workspace),
+        categories=SessionLocal.query(BudgetCategory).filter_by(financial_workspace_id=workspace.id, active=True).all(),
+        transaction_types=list(TransactionType))
+
+
+@financial_workspace_bp.route("/importar-csv/<int:batch_id>/confirmar", methods=["POST"])
+def csv_import_confirm(batch_id: int):
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    batch = _csv_batch_or_404(workspace, batch_id)
+
+    selections: dict[int, dict] = {}
+    for row in csv_import_svc.list_rows(batch):
+        prefix = f"row_{row.id}_"
+        selections[row.id] = {
+            "import": request.form.get(f"{prefix}import") == "1",
+            "type": svc.parse_enum(TransactionType, request.form.get(f"{prefix}type"), None),
+            "category_id": svc.parse_int(request.form.get(f"{prefix}category_id")),
+            "transfer_counterpart_account_id": svc.parse_int(request.form.get(f"{prefix}transfer_account_id")),
+        }
+
+    try:
+        csv_import_svc.confirm_import(workspace, batch, actor=current_user, selections=selections)
+    except CsvImportValidationError as exc:
+        flash(str(exc), "error")
+        return redirect(url_for("financial_workspace.csv_import_review", batch_id=batch.id))
+
+    return redirect(url_for("financial_workspace.csv_import_report", batch_id=batch.id))
+
+
+@financial_workspace_bp.route("/importar-csv/<int:batch_id>/relatorio")
+def csv_import_report(batch_id: int):
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    batch = _csv_batch_or_404(workspace, batch_id)
+    rows = csv_import_svc.list_rows(batch)
+    return render_template(
+        "financial_csv_import_report.html", workspace=workspace, batch=batch,
+        error_rows=[r for r in rows if r.status == CsvImportRowStatus.error],
+        duplicate_rows=[r for r in rows if r.status == CsvImportRowStatus.duplicate],
+        skipped_rows=[r for r in rows if r.status == CsvImportRowStatus.skipped])

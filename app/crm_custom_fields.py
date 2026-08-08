@@ -1,12 +1,13 @@
 """Blueprint do CRM (staff) -- área administrativa de Propriedades
-Personalizadas (Prompt Mestre, Fase 5), 2026-08-06. Suporta "Case" e,
-desde a extensão do mesmo dia, "Lead" também -- o model já era genérico
-o bastante (ver docstring de CustomFieldDefinition em app/crm_models.py)
-pra outra entidade sem migração nova, só faltava a UI reconhecer mais de
-um `entity_type`. Selecionado via `?entity=Case|Lead` (padrão "Case"),
-mesma aba única com um seletor no topo -- não duas páginas separadas,
-pra reusar tudo (criar/editar/reordenar/arquivar/excluir) sem duplicar
-rota nenhuma.
+Personalizadas (Prompt Mestre, Fase 5), 2026-08-06. Suporta "Case", "Lead"
+e "Client" desde o início/extensões do mesmo dia, e "Task" desde 2026-08-08
+(pedido do usuário via PDF de revisão de consistência) -- o model já era
+genérico o bastante (ver docstring de CustomFieldDefinition em
+app/crm_models.py) pra outra entidade sem migração nova, só faltava a UI
+reconhecer mais um `entity_type`. Selecionado via `?entity=Case|Lead|
+Client|Task` (padrão "Case"), mesma aba única com um seletor no topo --
+não uma página separada por entidade, pra reusar tudo (criar/editar/
+reordenar/arquivar/excluir) sem duplicar rota nenhuma.
 """
 from __future__ import annotations
 
@@ -23,7 +24,7 @@ from app.services import crm_service as svc
 
 crm_custom_fields_bp = Blueprint("crm_custom_fields", __name__, url_prefix="/staff/crm/campos-personalizados")
 
-SUPPORTED_ENTITY_TYPES = ["Case", "Lead", "Client"]
+SUPPORTED_ENTITY_TYPES = ["Case", "Lead", "Client", "Task"]
 
 # "Visible to client" só faz sentido em entidades que têm alguma tela
 # client-facing pra mostrar o valor -- Case (Meu Caso, por caso) e Client

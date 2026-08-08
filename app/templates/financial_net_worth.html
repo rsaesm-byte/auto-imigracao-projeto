@@ -1,10 +1,17 @@
 {% extends "base.html" %}
+{% from "_charts.html" import line_chart %}
 {% block title %}Net Worth — {{ t('app_name') }}{% endblock %}
 {% block page_class %}wide bg-blobs{% endblock %}
 {% block content %}
 <div class="card hero">
   <h1>Net Worth</h1>
-  <p style="opacity:0.92;margin:0;">What you own minus what you owe. <a href="{{ url_for('financial_workspace.dashboard') }}" style="color:#fff;text-decoration:underline;">← Back to overview</a></p>
+  <p style="opacity:0.92;margin:0;">What you own minus what you owe.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+  </div>
 </div>
 
 <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
@@ -25,6 +32,14 @@
 <div class="card">
   <p class="muted" style="font-size:0.78rem;margin:0;">Assets = balances of accounts marked "include in net worth". Liabilities = active/delinquent debts (planned debts not yet incurred, and paid-off debts, aren't counted). Both are calculated live from current data — nothing here is stored as a fixed number.</p>
 </div>
+
+{% if history|length > 1 %}
+<div class="card">
+  <h2 style="font-size:1rem;">Net Worth — trend</h2>
+  {{ line_chart([{'name': 'Net Worth', 'color': 'var(--accent)', 'points': history|map(attribute='net_worth_cents')|list}],
+    history|map(attribute='label')|list) }}
+</div>
+{% endif %}
 
 <div class="card">
   <h2 style="font-size:1rem;">History</h2>

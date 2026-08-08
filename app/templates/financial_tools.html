@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}Tools & Insights — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Tools & Insights</h1>
+  <p style="opacity:0.92;margin:0;">Smart insights from your real data, a cash flow estimate, and what-if calculators.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+    <a href="{{ url_for('financial_workspace.csv_import_start') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">Import bank statement (CSV)</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Insights</h2>
+  <p class="muted" style="font-size:0.76rem;margin-top:-6px;">Based only on your own real data — nothing here is invented.</p>
+
+  {% if insights.category_movers %}
+  {% for m in insights.category_movers %}
+  <p style="margin:6px 0;">📊 <strong>{{ m.label }}</strong> spending is {{ (m.pct_change|abs)|round(1) }}% {{ 'higher' if m.pct_change >= 0 else 'lower' }} than last month ({{ m.current_cents|usd }} vs {{ m.previous_cents|usd }}).</p>
+  {% endfor %}
+  {% endif %}
+
+  {% if insights.budget_alerts %}
+  {% for a in insights.budget_alerts %}
+  <p style="margin:6px 0;">⚠️ You've used {{ (a.progress * 100)|round(0) }}% of your {{ a.category.name if a.category else 'budget' }} budget this month.</p>
+  {% endfor %}
+  {% endif %}
+
+  {% if insights.bills_due_soon.count %}
+  <p style="margin:6px 0;">📅 {{ insights.bills_due_soon.count }} bill(s) totaling {{ insights.bills_due_soon.total_cents|usd }} due within 7 days.</p>
+  {% endif %}
+
+  {% if insights.goal_pace %}
+  {% for g in insights.goal_pace %}
+  <p style="margin:6px 0;">🎯 At your current contribution rate, <strong>{{ g.goal_name }}</strong> may be reached by {{ g.estimated_completion_date.strftime('%m/%d/%Y') }}.</p>
+  {% endfor %}
+  {% endif %}
+
+  {% if insights.subscriptions_annual_cost_cents %}
+  <p style="margin:6px 0;">🔁 Your active subscriptions total approximately {{ insights.subscriptions_annual_cost_cents|usd }}/year.</p>
+  {% endif %}
+
+  {% if not insights.category_movers and not insights.budget_alerts and not insights.bills_due_soon.count and not insights.goal_pace and not insights.subscriptions_annual_cost_cents %}
+  <p class="muted">Nothing to flag right now — check back as you add more data.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Cash flow forecast <span class="muted" style="font-size:0.72rem;font-weight:400;">(estimate)</span></h2>
+  <p class="muted" style="font-size:0.76rem;margin-top:-6px;">Based on your average income/expenses over the last {{ forecast.trailing_months }} closed months (avg income {{ forecast.avg_income_cents|usd }}, avg expenses {{ forecast.avg_expenses_cents|usd }}) — not a guarantee, just where things are headed if nothing changes.</p>
+  <table class="submissions">
+    <thead><tr><th>Month</th><th>Est. Income</th><th>Est. Expenses</th><th>Est. Net</th><th>Cumulative</th></tr></thead>
+    <tbody>
+      {% for m in forecast.months %}
+      <tr>
+        <td>{{ m.label }}</td>
+        <td>{{ m.income_cents|usd }}</td>
+        <td>{{ m.expenses_cents|usd }}</td>
+        <td style="{% if m.net_cents < 0 %}color:#991b1b;{% endif %}">{{ m.net_cents|usd }}</td>
+        <td style="{% if m.cumulative_net_cents < 0 %}color:#991b1b;{% endif %}">{{ m.cumulative_net_cents|usd }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;">
+  <div class="card">
+    <h2 style="font-size:1rem;">Debt payoff calculator</h2>
+    <p class="muted" style="font-size:0.76rem;margin-top:-6px;">What-if — doesn't need a saved debt.</p>
+    <form method="get" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <input type="hidden" name="calc" value="debt">
+      <input type="text" name="balance" inputmode="decimal" placeholder="Balance $" value="{{ debt_calc_form.balance or '' }}" style="width:110px;">
+      <input type="text" name="apr" inputmode="decimal" placeholder="APR %" value="{{ debt_calc_form.apr or '' }}" style="width:80px;">
+      <input type="text" name="payment" inputmode="decimal" placeholder="Monthly $" value="{{ debt_calc_form.payment or '' }}" style="width:100px;">
+      <button type="submit" class="btn">Calculate</button>
+    </form>
+    {% if debt_calc_result %}
+    <p style="margin-top:10px;">Payoff in <strong>{{ debt_calc_result.months_to_payoff }}</strong> months ({{ debt_calc_result.payoff_date.strftime('%m/%d/%Y') }}), paying <strong>{{ debt_calc_result.total_interest_cents|usd }}</strong> in interest.</p>
+    {% elif request.args.get('calc') == 'debt' %}
+    <p class="muted" style="margin-top:10px;">At that payment, this debt would never be paid off — try a higher monthly payment.</p>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h2 style="font-size:1rem;">Savings goal calculator</h2>
+    <p class="muted" style="font-size:0.76rem;margin-top:-6px;">What-if — doesn't need a saved goal.</p>
+    <form method="get" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+      <input type="hidden" name="calc" value="goal">
+      <input type="text" name="target" inputmode="decimal" placeholder="Target $" value="{{ goal_calc_form.target or '' }}" style="width:100px;">
+      <input type="text" name="current" inputmode="decimal" placeholder="Saved so far $" value="{{ goal_calc_form.current or '' }}" style="width:120px;">
+      <input type="text" name="contribution" inputmode="decimal" placeholder="Monthly $" value="{{ goal_calc_form.contribution or '' }}" style="width:100px;">
+      <button type="submit" class="btn">Calculate</button>
+    </form>
+    {% if goal_calc_result %}
+    <p style="margin-top:10px;">
+      {% if goal_calc_result.months_to_reach_target == 0 %}Already there!
+      {% else %}Reached in <strong>{{ goal_calc_result.months_to_reach_target }}</strong> months (needs {{ goal_calc_result.remaining_cents|usd }} more).{% endif %}
+    </p>
+    {% elif request.args.get('calc') == 'goal' %}
+    <p class="muted" style="margin-top:10px;">Enter a monthly contribution greater than $0 to estimate a timeline.</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

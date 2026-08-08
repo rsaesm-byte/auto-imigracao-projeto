@@ -9,6 +9,8 @@ from __future__ import annotations
 import csv
 import io
 
+from datetime import date
+
 from flask import Blueprint, Response, abort, render_template, request
 from flask_login import current_user, login_required
 
@@ -48,7 +50,11 @@ def dashboard():
         reasons=reasons, missing_source=missing_source, monthly=monthly,
         payable_total=sum(r["amount_cents"] for r in payable),
         receivable_total=sum(r["amount_cents"] for r in receivable),
-        translator_rows=translator_rows, overdue=overdue, renewals=renewals)
+        translator_rows=translator_rows, overdue=overdue, renewals=renewals,
+        # Só pra posicionar as barras do Gantt de renovações (% dentro da
+        # janela de 90 dias) -- os outros gráficos novos (donut/vertical/
+        # line) usam dado que a view já montava antes desta mudança.
+        today=date.today())
 
 
 _EXPORTABLE_REPORTS = {

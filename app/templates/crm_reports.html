@@ -1,4 +1,5 @@
 {% extends "staff_base.html" %}
+{% from "_charts.html" import donut_chart, vertical_bar_chart, horizontal_bar_chart, line_chart, gantt_chart %}
 {% block title %}Staff — Reports (CRM){% endblock %}
 {% block page_class %}crm-board{% endblock %}
 {% block content %}
@@ -18,48 +19,22 @@
   </form>
 </div>
 
-{% macro bar_chart(rows, value_key, color, total, is_money=True, drilldown_url=None) %}
-  {% set max_val = rows|map(attribute=value_key)|max if rows else 1 %}
-  {% for row in rows %}
-  <div style="margin-bottom:10px;">
-    <div style="display:flex;justify-content:space-between;font-size:0.82rem;margin-bottom:3px;">
-      {% if drilldown_url %}<a href="{{ drilldown_url }}?q={{ row.label|urlencode }}" title="See the underlying records">{{ row.label }}</a>{% else %}<span>{{ row.label }}</span>{% endif %}
-      <span class="muted">{% if is_money %}{{ row[value_key]|usd }}{% else %}{{ row[value_key] }}{% endif %}</span>
-    </div>
-    <div style="background:var(--border);border-radius:999px;height:10px;" title="{{ row.label }}: {% if is_money %}{{ row[value_key]|usd }}{% else %}{{ row[value_key] }}{% endif %}">
-      <div style="width:{{ ((row[value_key] / max_val * 100) if max_val else 0)|round(1) }}%;background:{{ color }};height:10px;border-radius:999px;min-width:6px;"></div>
-    </div>
-  </div>
-  {% else %}
-  <p class="muted" style="font-size:0.85rem;">No data in this period.</p>
-  {% endfor %}
-{% endmacro %}
+{% set payable_receivable_donut = [
+  {'label': 'Payable', 'value': payable_total, 'color': '#eb6834'},
+  {'label': 'Receivable', 'value': receivable_total, 'color': '#2a78d6'}] %}
+<div class="card">
+  <h2>Payable vs Receivable — composition</h2>
+  <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Share of total payment volume in the selected period.</p>
+  {{ donut_chart(payable_receivable_donut) }}
+</div>
 
 {% if period == 'last_6_months' %}
 <div class="card">
   <h2>Payable vs Receivable — last 6 months</h2>
-  <div style="display:flex;gap:14px;align-items:center;margin-bottom:14px;font-size:0.8rem;">
-    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#eb6834;display:inline-block;"></span> Payable</span>
-    <span style="display:flex;align-items:center;gap:5px;"><span style="width:10px;height:10px;border-radius:3px;background:#2a78d6;display:inline-block;"></span> Receivable</span>
-  </div>
-  {% set max_month = (monthly|map(attribute='payable_cents')|list + monthly|map(attribute='receivable_cents')|list)|max if monthly else 1 %}
-  {% for m in monthly %}
-  <div style="margin-bottom:14px;">
-    <div style="font-size:0.82rem;font-weight:600;margin-bottom:4px;">{{ m.label }}</div>
-    <div style="display:flex;align-items:center;gap:8px;margin-bottom:3px;">
-      <div style="width:90px;text-align:right;font-size:0.76rem;" class="muted">{{ m.payable_cents|usd }}</div>
-      <div style="flex:1;background:var(--border);border-radius:999px;height:10px;">
-        <div style="width:{{ ((m.payable_cents / max_month * 100) if max_month else 0)|round(1) }}%;background:#eb6834;height:10px;border-radius:999px;min-width:{{ '6px' if m.payable_cents else '0' }};"></div>
-      </div>
-    </div>
-    <div style="display:flex;align-items:center;gap:8px;">
-      <div style="width:90px;text-align:right;font-size:0.76rem;" class="muted">{{ m.receivable_cents|usd }}</div>
-      <div style="flex:1;background:var(--border);border-radius:999px;height:10px;">
-        <div style="width:{{ ((m.receivable_cents / max_month * 100) if max_month else 0)|round(1) }}%;background:#2a78d6;height:10px;border-radius:999px;min-width:{{ '6px' if m.receivable_cents else '0' }};"></div>
-      </div>
-    </div>
-  </div>
-  {% endfor %}
+  {{ line_chart([
+    {'name': 'Payable', 'color': '#eb6834', 'points': monthly|map(attribute='payable_cents')|list},
+    {'name': 'Receivable', 'color': '#2a78d6', 'points': monthly|map(attribute='receivable_cents')|list}],
+    monthly|map(attribute='label')|list) }}
 </div>
 {% endif %}
 
@@ -67,25 +42,25 @@
   <div class="card">
     <h2>Payments made (Payable) — by contracted service</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Total: {{ payable_total|usd }} · via the case linked to each payment · <a href="{{ url_for('crm_reports.export_csv', key='payable', period=period) }}" class="muted" style="text-decoration:underline;">Export CSV</a></p>
-    {{ bar_chart(payable, 'amount_cents', '#eb6834', payable_total) }}
+    {{ horizontal_bar_chart(payable, 'amount_cents', 'label', '#eb6834') }}
   </div>
 
   <div class="card">
     <h2>Receivables — by contracted service</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Total: {{ receivable_total|usd }} · via the case linked to each payment · <a href="{{ url_for('crm_reports.export_csv', key='receivable', period=period) }}" class="muted" style="text-decoration:underline;">Export CSV</a></p>
-    {{ bar_chart(receivable, 'amount_cents', '#2a78d6', receivable_total) }}
+    {{ horizontal_bar_chart(receivable, 'amount_cents', 'label', '#2a78d6') }}
   </div>
 
   <div class="card">
     <h2>Leads by source</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;"><a href="{{ url_for('crm_reports.export_csv', key='leads_sources', period=period) }}" class="muted" style="text-decoration:underline;">Export CSV</a></p>
-    {{ bar_chart(leads_sources, 'count', 'var(--accent)', None, is_money=False, drilldown_url=url_for('crm_pipeline.leads_kanban')) }}
+    {{ horizontal_bar_chart(leads_sources, 'count', 'label', 'var(--accent)', is_money=False, drilldown_url=url_for('crm_pipeline.leads_kanban')) }}
   </div>
 
   <div class="card">
     <h2>Reasons leads didn't close</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;"><a href="{{ url_for('crm_reports.export_csv', key='reasons', period=period) }}" class="muted" style="text-decoration:underline;">Export CSV</a></p>
-    {{ bar_chart(reasons, 'count', '#e34948', None, is_money=False, drilldown_url=url_for('crm_pipeline.leads_kanban')) }}
+    {{ horizontal_bar_chart(reasons, 'count', 'label', '#e34948', is_money=False, drilldown_url=url_for('crm_pipeline.leads_kanban')) }}
   </div>
 </div>
 
@@ -118,6 +93,11 @@
   <div class="card">
     <h2>Overdue</h2>
     <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Cases past their service deadline, open tasks past due, and translations past their delivery deadline — right now, not period-bound.</p>
+    {% set overdue_by_type = [
+      {'label': 'Cases', 'value': overdue.cases|length, 'color': '#eb6834'},
+      {'label': 'Tasks', 'value': overdue.tasks|length, 'color': '#2a78d6'},
+      {'label': 'Translations', 'value': overdue.translations|length, 'color': '#7c3aed'}] %}
+    {{ vertical_bar_chart(overdue_by_type, is_money=False, height=110) }}
     <p style="font-weight:600;font-size:0.85rem;margin:12px 0 4px;">Cases ({{ overdue.cases|length }})</p>
     {% for case in overdue.cases %}
     <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.85rem;">
@@ -145,7 +125,18 @@
 
   <div class="card">
     <h2>Renewals — next 90 days</h2>
-    <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Cases whose current status (e.g. EAD, green card) is coming up for renewal.</p>
+    <p class="muted" style="font-size:0.82rem;margin-top:-8px;">Cases whose current status (e.g. EAD, green card) is coming up for renewal. Bar shows how much of the 90-day window is left before it expires.</p>
+    {% if renewals %}
+    {% set renewals_gantt = [] %}
+    {% for case in renewals %}
+      {% set days_out = (case.status_expire_on - today).days %}
+      {% set _ = renewals_gantt.append({
+        'label': case.title, 'start_pct': 0, 'width_pct': ((days_out / 90 * 100)|round(1)),
+        'tooltip': case.title ~ ' — expires ' ~ case.status_expire_on.strftime('%m/%d/%Y') ~ ' (' ~ days_out ~ ' days)',
+        'color': '#dc2626' if days_out <= 14 else ('#eb6834' if days_out <= 45 else '#16a34a')}) %}
+    {% endfor %}
+    {{ gantt_chart(renewals_gantt) }}
+    {% endif %}
     {% for case in renewals %}
     <div style="display:flex;justify-content:space-between;padding:4px 0;border-bottom:1px solid var(--border);font-size:0.85rem;">
       <a href="{{ url_for('crm_pipeline.client_detail', client_id=case.client_id) }}">{{ case.title }}</a>

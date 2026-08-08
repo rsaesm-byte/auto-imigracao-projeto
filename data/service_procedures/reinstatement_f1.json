@@ -152,66 +152,114 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
-    "Complete document checklist",
+    "Service Agreement",
+    "Checklist",
     "Google Drive link for document uploads",
-    "Review and organization of supporting documents",
-    "Reinstatement request letter based on 18 years of experience",
-    "Discount on document translation"
+    "Document review",
+    "Organization of supporting documents",
+    "Reinstatement Request Letter",
+    "Discount on translations",
+    "Discount on RFE/NOID response",
+    "Mandatory initial consultation ($70, non-refundable, up to 3 reschedules)"
   ],
   "standard_excludes": [
-    "Certified translations (charged separately)",
-    "Case monitoring (client's responsibility)"
+    "Sworn/certified translations",
+    "Case monitoring after submission",
+    "School fees",
+    "Application fee",
+    "SEVIS fee",
+    "USCIS filing fee"
   ],
   "plus_includes": [
-    "All items from Standard",
-    "Translation of supporting letters",
-    "Printing, assembly, money order, and mailing (client pays only the USCIS fee)",
-    "Full case tracking until USCIS decision"
+    "Everything included in Standard (Affordable)",
+    "Translation of the proof of address letter, sponsorship letter, and employer letter",
+    "RFE/NOID response",
+    "Printing",
+    "Document assembly",
+    "Money order purchase",
+    "Mailing",
+    "Final review",
+    "Mailing instructions",
+    "Full case monitoring through final decision",
+    "E-Requests",
+    "Address changes"
   ],
   "plus_excludes": [
-    "Certified translations (charged separately)"
+    "Sworn/certified translations",
+    "School fees, when applicable"
   ],
   "standard_includes_pt": [
     "Contrato de prestação de serviço",
-    "Checklist completo de documentos",
+    "Checklist",
     "Link do Google Drive para envio de documentos",
-    "Revisão e organização dos documentos de apoio",
-    "Carta de solicitação de reintegração baseada em 18 anos de experiência",
-    "Desconto na tradução de documentos"
+    "Revisão de documentos",
+    "Organização dos documentos de apoio",
+    "Reinstatement Request Letter",
+    "Desconto em traduções",
+    "Desconto na resposta a RFE/NOID",
+    "Consulta inicial obrigatória ($70, não reembolsável, até 3 reagendamentos)"
   ],
   "standard_includes_es": [
     "Acuerdo de servicio",
-    "Lista completa de documentos",
+    "Lista de verificación",
     "Enlace de Google Drive para subir documentos",
-    "Revisión y organización de los documentos de respaldo",
-    "Carta de solicitud de restablecimiento basada en 18 años de experiencia",
-    "Descuento en la traducción de documentos"
+    "Revisión de documentos",
+    "Organización de los documentos de respaldo",
+    "Reinstatement Request Letter",
+    "Descuento en traducciones",
+    "Descuento en la respuesta a RFE/NOID",
+    "Consulta inicial obligatoria ($70, no reembolsable, hasta 3 reprogramaciones)"
   ],
   "standard_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)",
-    "Acompanhamento do caso (responsabilidade do cliente)"
+    "Traduções juramentadas/certificadas",
+    "Acompanhamento do caso após a submissão",
+    "Taxas escolares",
+    "Taxa de application",
+    "Taxa SEVIS",
+    "Taxa da USCIS"
   ],
   "standard_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)",
-    "Seguimiento del caso (responsabilidad del cliente)"
+    "Traducciones juradas/certificadas",
+    "Seguimiento del caso después de la presentación",
+    "Tarifas escolares",
+    "Tarifa de solicitud",
+    "Tarifa SEVIS",
+    "Tarifa de USCIS"
   ],
   "plus_includes_pt": [
-    "Todos os itens do Standard",
-    "Tradução das cartas de apoio",
-    "Impressão, montagem, money order e envio pelo correio (cliente paga apenas a taxa da USCIS)",
-    "Acompanhamento completo do caso até a decisão da USCIS"
+    "Tudo o que está incluído no Standard (Affordable)",
+    "Tradução da proof of address letter, sponsorship letter e employer letter",
+    "Resposta a RFE/NOID",
+    "Impressão",
+    "Montagem dos documentos",
+    "Compra de money order",
+    "Envio postal",
+    "Revisão final",
+    "Instruções de envio",
+    "Acompanhamento integral do caso até a decisão final",
+    "E-Requests",
+    "Alterações de endereço"
   ],
   "plus_includes_es": [
-    "Todos los elementos del Standard",
-    "Traducción de las cartas de respaldo",
-    "Impresión, ensamblaje, giro postal y envío por correo (el cliente paga solo la tarifa de USCIS)",
-    "Seguimiento completo del caso hasta la decisión de USCIS"
+    "Todo lo incluido en Standard (Affordable)",
+    "Traducción de la proof of address letter, sponsorship letter y employer letter",
+    "Respuesta a RFE/NOID",
+    "Impresión",
+    "Ensamblaje de documentos",
+    "Compra de money order",
+    "Envío postal",
+    "Revisión final",
+    "Instrucciones de envío",
+    "Seguimiento integral del caso hasta la decisión final",
+    "E-Requests",
+    "Cambios de dirección"
   ],
   "plus_excludes_pt": [
-    "Traduções juramentadas/certificadas (cobradas separadamente)"
+    "Traduções juramentadas/certificadas",
+    "Taxas escolares, quando aplicável"
   ],
   "plus_excludes_es": [
-    "Traducciones certificadas (cobradas por separado)"
+    "Traducciones juradas/certificadas",
+    "Tarifas escolares, cuando aplique"
   ]
 }

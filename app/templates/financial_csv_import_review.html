@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% block title %}Review Import — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Review Import</h1>
+  <p style="opacity:0.92;margin:0;">{{ batch.original_filename }} — {{ rows|length }} row(s) found. Nothing is imported until you confirm below.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.csv_import_map', batch_id=batch.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Re-map columns</a>
+  </div>
+</div>
+
+<div class="card">
+  <p class="muted" style="font-size:0.78rem;">Rows flagged <strong>Duplicate</strong> already look like a transaction you have — unchecked by default, but you can still import them if you know they're legit. Rows flagged <strong>Error</strong> couldn't be read with the current column mapping and can't be imported until you fix the mapping.</p>
+
+  <form method="post" action="{{ url_for('financial_workspace.csv_import_confirm', batch_id=batch.id) }}">
+    <div style="overflow-x:auto;">
+    <table class="submissions">
+      <thead><tr><th>Import?</th><th>Date</th><th>Description</th><th>Amount</th><th>Type</th><th>Category</th><th>Transfer to/from</th><th>Status</th></tr></thead>
+      <tbody>
+        {% for row in rows %}
+        <tr style="{% if row.status.value == 'error' %}opacity:0.6;{% endif %}">
+          <td>
+            <input type="checkbox" name="row_{{ row.id }}_import" value="1"
+                   {% if row.status.value in ('pending',) %}checked{% endif %}
+                   {% if row.status.value == 'error' %}disabled{% endif %}>
+          </td>
+          <td class="muted">{{ row.parsed_date.strftime('%m/%d/%Y') if row.parsed_date else '—' }}</td>
+          <td>{{ row.parsed_description or '—' }}</td>
+          <td>{{ row.parsed_amount_cents|usd if row.parsed_amount_cents is not none else '—' }}</td>
+          <td>
+            {% if row.status.value != 'error' %}
+            <select name="row_{{ row.id }}_type" style="font-size:0.78rem;">
+              {% for t in transaction_types %}
+              <option value="{{ t.value }}" {% if row.suggested_type == t %}selected{% endif %}>{{ t.value|title }}</option>
+              {% endfor %}
+            </select>
+            {% else %}—{% endif %}
+          </td>
+          <td>
+            {% if row.status.value != 'error' %}
+            <select name="row_{{ row.id }}_category_id" style="font-size:0.78rem;">
+              <option value="">Uncategorized</option>
+              {% for c in categories %}<option value="{{ c.id }}" {% if row.suggested_category_id == c.id %}selected{% endif %}>{{ c.name }}</option>{% endfor %}
+            </select>
+            {% endif %}
+          </td>
+          <td>
+            {% if row.status.value != 'error' %}
+            <select name="row_{{ row.id }}_transfer_account_id" style="font-size:0.78rem;">
+              <option value="">— only if Transfer —</option>
+              {% for a in accounts if a.id != batch.account_id %}<option value="{{ a.id }}">{{ a.nickname or a.account_name }}</option>{% endfor %}
+            </select>
+            {% endif %}
+          </td>
+          <td>
+            {% if row.status.value == 'duplicate' %}<span class="badge" style="background:#fde68a;">Duplicate</span>
+            {% elif row.status.value == 'error' %}<span class="badge" style="background:#fecaca;">Error: {{ row.parse_error }}</span>
+            {% else %}<span class="muted">New</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    </div>
+
+    <button type="submit" class="btn" style="margin-top:14px;" onclick="return confirm('Import the checked rows? This creates real transactions.');">9-10. Confirm and import selected rows</button>
+  </form>
+</div>
+{% endblock %}

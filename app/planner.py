@@ -103,6 +103,44 @@ def block_new():
     return redirect(url_for("planner.planner_week", week=planner_svc.week_start(start_at.date()).isoformat()))
 
 
+@planner_bp.route("/planner/blocks/<int:block_id>/salvar", methods=["POST"])
+def block_edit(block_id: int):
+    """Editar um bloco existente -- antes só dava pra completar/apagar,
+    tinha que apagar e recriar pra corrigir qualquer campo. Mesma
+    validação de block_new, mesma checagem de dono de block_complete/
+    block_delete."""
+    block = SessionLocal.get(PlannerBlock, block_id)
+    if block is None or block.user_id != current_user.id:
+        abort(404)
+
+    title = request.form.get("title", "").strip()
+    start_at = _parse_datetime_local(request.form.get("start_at"))
+    end_at = _parse_datetime_local(request.form.get("end_at"))
+    if not title or start_at is None or end_at is None or end_at <= start_at:
+        flash("Enter a title and a valid start/end time.", "error")
+        return redirect(url_for("planner.planner_week", week=request.form.get("week", "")))
+
+    block_type = planner_svc.resolve_block_type(
+        request.form.get("block_type", "").strip(),
+        request.form.get("custom_block_type"), current_user.id)
+    if block_type is None:
+        flash("Enter a name for the new type.", "error")
+        return redirect(url_for("planner.planner_week", week=request.form.get("week", "")))
+
+    block.title = title
+    block.block_type = block_type
+    block.priority = svc.parse_enum(Priority, request.form.get("priority"), default=block.priority)
+    block.client_id = svc.parse_int(request.form.get("client_id"))
+    block.case_id = svc.parse_int(request.form.get("case_id"))
+    block.project_id = svc.parse_int(request.form.get("project_id"))
+    block.start_at = start_at
+    block.end_at = end_at
+    block.notes = request.form.get("notes", "").strip() or None
+    SessionLocal.commit()
+    flash("Block updated.", "success")
+    return redirect(url_for("planner.planner_week", week=planner_svc.week_start(start_at.date()).isoformat()))
+
+
 @planner_bp.route("/planner/blocks/<int:block_id>/complete", methods=["POST"])
 def block_complete(block_id: int):
     block = SessionLocal.get(PlannerBlock, block_id)

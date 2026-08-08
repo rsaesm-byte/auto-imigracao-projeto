@@ -4,7 +4,9 @@
 <div class="card">
   <h1>{{ case_label }} — {{ client_email }}</h1>
   <p class="muted">Payment #{{ payment.id }}</p>
-  <a href="{{ url_for('staff.documents_list') }}">&larr; Back to Documents</a>
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px;">
+    <a href="{{ url_for('staff.documents_list') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to Documents</a>
+  </div>
 </div>
 
 <div class="card">

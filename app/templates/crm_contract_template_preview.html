@@ -8,7 +8,7 @@
 </div>
 
 <div class="card" style="display:flex;gap:16px;flex-wrap:wrap;align-items:center;">
-  <a href="{{ url_for('crm_contracts.template_edit', slug=slug) }}" class="muted" style="font-size:0.85rem;">← Edit this template</a>
+  <a href="{{ url_for('crm_contracts.template_edit', slug=slug) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Edit this template</a>
   <div>
     <span class="muted" style="font-size:0.8rem;margin-right:6px;">Tier:</span>
     {% for t in tiers %}

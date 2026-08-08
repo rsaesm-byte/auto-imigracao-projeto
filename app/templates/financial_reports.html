@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+{% from "_charts.html" import donut_chart, horizontal_bar_chart %}
+{% block title %}Reports — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Reports</h1>
+  <p style="opacity:0.92;margin:0;">Your Monthly Financial Summary, with a comparison to the period before.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <a href="{{ url_for('financial_workspace.dashboard') }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to overview</a>
+  </div>
+</div>
+
+<div class="card">
+  <form method="get" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    {% for key, label in periods.items() %}
+    <a href="{{ url_for('financial_workspace.reports', period=key) }}"
+       class="icon-btn" style="text-decoration:none;font-size:0.82rem;padding:7px 14px;border-radius:999px;
+       {% if period == key %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">{{ label }}</a>
+    {% endfor %}
+    <span class="muted" style="font-size:0.78rem;">|</span>
+    <input type="date" name="start" value="{% if period == 'custom' %}{{ start.isoformat() }}{% endif %}" style="font-size:0.8rem;">
+    <input type="date" name="end" value="{% if period == 'custom' %}{{ end.isoformat() }}{% endif %}" style="font-size:0.8rem;">
+    <input type="hidden" name="period" value="custom">
+    <button type="submit" class="icon-btn" style="font-size:0.8rem;padding:7px 14px;border-radius:999px;border:1px solid var(--border);">Custom</button>
+    <span class="muted" style="font-size:0.8rem;margin-left:auto;">{{ start.strftime('%m/%d/%Y') }} – {{ end.strftime('%m/%d/%Y') }}</span>
+  </form>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:8px;">
+    <a class="btn" href="{{ url_for('financial_workspace.reports_export_csv', period=period, start=start.isoformat(), end=end.isoformat()) }}">Export CSV</a>
+    <a class="btn" href="{{ url_for('financial_workspace.reports_export_pdf', period=period, start=start.isoformat(), end=end.isoformat()) }}">Export PDF</a>
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;margin-top:0;">Saved views</h2>
+  {% if saved_views %}
+  <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px;">
+    {% for view in saved_views %}
+    <div style="display:flex;align-items:center;gap:2px;border:1px solid var(--border);border-radius:999px;padding:2px 2px 2px 14px;">
+      <a href="{{ url_for('financial_workspace.reports_saved_view_open', view_id=view.id) }}"
+         style="text-decoration:none;font-size:0.82rem;color:var(--text);">{{ view.name }}</a>
+      <form method="post" action="{{ url_for('financial_workspace.reports_saved_view_delete', view_id=view.id) }}" style="margin:0;">
+        <button type="submit" class="icon-btn" title="Delete this saved view"
+                style="font-size:0.75rem;padding:5px 10px;border-radius:999px;border:none;color:var(--muted);">×</button>
+      </form>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="muted" style="font-size:0.78rem;margin:0 0 12px;">No saved views yet — pick a period above and save it to reopen it later without reconfiguring.</p>
+  {% endif %}
+  <form method="post" action="{{ url_for('financial_workspace.reports_saved_view_new') }}" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    <input type="text" name="name" placeholder="Name this view (e.g. \"Q1 review\")" required
+           style="font-size:0.82rem;padding:6px 10px;border:1px solid var(--border);border-radius:8px;flex:1;min-width:180px;">
+    <input type="hidden" name="period" value="{{ period }}">
+    <input type="hidden" name="start" value="{% if period == 'custom' %}{{ start.isoformat() }}{% endif %}">
+    <input type="hidden" name="end" value="{% if period == 'custom' %}{{ end.isoformat() }}{% endif %}">
+    <button type="submit" class="btn" style="padding:7px 16px;font-size:0.82rem;">Save current view</button>
+  </form>
+</div>
+
+{% macro compare(current_cents, previous_cents) %}
+  {% if previous_cents is not none and previous_cents != 0 %}
+  {% set delta_pct = ((current_cents - previous_cents) / previous_cents * 100) %}
+  <span class="muted" style="font-size:0.72rem;">{{ '+' if delta_pct >= 0 }}{{ delta_pct|round(1) }}% vs. previous period</span>
+  {% endif %}
+{% endmacro %}
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Income</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.income_cents|usd }}</p>
+    {{ compare(summary.income_cents, summary.previous.income_cents) }}
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Expenses</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.expenses_cents|usd }}</p>
+    {{ compare(summary.expenses_cents, summary.previous.expenses_cents) }}
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Savings</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;{% if summary.savings_cents < 0 %}color:#991b1b;{% endif %}">{{ summary.savings_cents|usd }}</p>
+    {{ compare(summary.savings_cents, summary.previous.savings_cents) }}
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Savings Rate</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ (summary.savings_rate * 100)|pct if summary.savings_rate is not none else '—' }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Debt Reduction</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.debt_reduction_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Goal Contributions</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.goal_contributions_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Net Worth Change</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.net_worth_change_cents|usd if summary.net_worth_change_cents is not none else '—' }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Bills Paid / Overdue</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ summary.bills_paid_count }} / {{ summary.bills_overdue_count }}</p>
+  </div>
+</div>
+
+{% if summary.net_worth_change_cents is none %}
+<div class="card">
+  <p class="muted" style="font-size:0.78rem;margin:0;">Net Worth Change needs at least one recorded account balance snapshot on or before the start of this period — record one on the <a href="{{ url_for('financial_workspace.net_worth') }}">Net Worth</a> page, or close a budget month, to start tracking it.</p>
+</div>
+{% endif %}
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px;">
+  <div class="card">
+    <h2 style="font-size:1rem;">Largest expense categories</h2>
+    {% if summary.largest_expense_categories %}
+    {{ horizontal_bar_chart(summary.largest_expense_categories, 'amount_cents', 'label', 'var(--accent)') }}
+    {% else %}
+    <p class="muted">No expenses in this period.</p>
+    {% endif %}
+  </div>
+  {% if summary.largest_expense_categories %}
+  <div class="card">
+    <h2 style="font-size:1rem;">Expense composition</h2>
+    {{ donut_chart(summary.largest_expense_categories, 'amount_cents', 'label') }}
+  </div>
+  {% endif %}
+</div>
+
+{% if summary.budget_performance is not none %}
+<div class="card">
+  <h2 style="font-size:1rem;">Budget performance</h2>
+  <table class="submissions">
+    <thead><tr><th>Category</th><th>Planned</th><th>Actual</th><th>Remaining</th></tr></thead>
+    <tbody>
+      {% for row in summary.budget_performance %}
+      <tr>
+        <td>{{ row.category.name if row.category else '—' }}</td>
+        <td>{{ row.planned_cents|usd }}</td>
+        <td>{{ row.actual_cents|usd }}</td>
+        <td style="{% if row.remaining_cents < 0 %}color:#991b1b;{% endif %}">{{ row.remaining_cents|usd }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% else %}
+<div class="card">
+  <p class="muted" style="font-size:0.78rem;margin:0;">Budget Performance only shows for a period that's exactly one calendar month with an existing <a href="{{ url_for('financial_workspace.budget') }}">Budget</a> period — pick "This Month" or "Last Month" above to see it.</p>
+</div>
+{% endif %}
+
+<div class="card">
+  <p class="muted" style="font-size:0.78rem;margin:0;">Comparing to the {{ summary.previous_period_label }} period ({{ (end - start).days + 1 }} days, same length as the one selected above).</p>
+</div>
+{% endblock %}

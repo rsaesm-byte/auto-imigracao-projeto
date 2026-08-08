@@ -1,0 +1,64 @@
+{
+  "package_id": "fc_semi_annual",
+  "name": "Financial Coaching — Semi-Annual Financial Check-Up",
+  "name_pt": "Financial Coaching — Revisão Financeira Semestral",
+  "name_es": "Financial Coaching — Revisión Financiera Semestral",
+  "seed_price_usd": 1000,
+  "seed_sessions_summary": "2 sessions of 90 minutes (January and July)",
+  "seed_sessions_summary_pt": "2 sessões de 90 minutos (janeiro e julho)",
+  "seed_sessions_summary_es": "2 sesiones de 90 minutos (enero y julio)",
+  "includes": [
+    "2 sessions of 90 minutes each — one in January, one in July",
+    "Review and update of the client's existing financial plan",
+    "Reassessment of progress toward previously set goals",
+    "Adjustments to the action plan as needed",
+    "Scheduling through the official Calendly link",
+    "Sessions held via Zoom, Google Meet, or phone",
+    "Up to 3 reschedules for the package",
+    "Confidential handling of financial information, under a fiduciary standard"
+  ],
+  "excludes": [
+    "Investment advice",
+    "Legal advice",
+    "Tax advice",
+    "Guarantee of financial return or specific results",
+    "Sessions beyond the 2 included in this package",
+    "Building a financial plan from scratch (intended for clients who already have one)"
+  ],
+  "includes_pt": [
+    "2 sessões de 90 minutos cada — uma em janeiro, uma em julho",
+    "Revisão e atualização do plano financeiro já existente do cliente",
+    "Reavaliação do progresso em relação às metas definidas anteriormente",
+    "Ajustes no plano de ação conforme necessário",
+    "Agendamento pelo link oficial do Calendly",
+    "Sessões realizadas por Zoom, Google Meet ou telefone",
+    "Até 3 reagendamentos por pacote",
+    "Tratamento confidencial das informações financeiras, sob padrão fiduciário"
+  ],
+  "excludes_pt": [
+    "Aconselhamento de investimentos",
+    "Aconselhamento jurídico",
+    "Aconselhamento tributário",
+    "Garantia de retorno financeiro ou resultado específico",
+    "Sessões além das 2 incluídas neste pacote",
+    "Construção de um plano financeiro do zero (destinado a clientes que já têm um)"
+  ],
+  "includes_es": [
+    "2 sesiones de 90 minutos cada una — una en enero, una en julio",
+    "Revisión y actualización del plan financiero ya existente del cliente",
+    "Reevaluación del progreso hacia las metas definidas anteriormente",
+    "Ajustes al plan de acción según sea necesario",
+    "Programación a través del enlace oficial de Calendly",
+    "Sesiones realizadas por Zoom, Google Meet o teléfono",
+    "Hasta 3 reprogramaciones por paquete",
+    "Manejo confidencial de la información financiera, bajo un estándar fiduciario"
+  ],
+  "excludes_es": [
+    "Asesoría de inversiones",
+    "Asesoría legal",
+    "Asesoría fiscal",
+    "Garantía de retorno financiero o resultado específico",
+    "Sesiones adicionales a las 2 incluidas en este paquete",
+    "Construcción de un plan financiero desde cero (pensado para clientes que ya tienen uno)"
+  ]
+}

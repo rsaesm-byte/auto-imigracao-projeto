@@ -110,13 +110,21 @@
     "source": "Real Saes Professional Services contract (Downloads/Contratos), extracted 2026-08-02."
   },
   "standard_includes": [
-    "Service agreement",
+    "Service Agreement",
     "Complete document checklist",
     "Google Drive link for document uploads",
-    "I-824 preparation based on 18 years of experience"
+    "Preparation and review of Form I-824, based on 18 years of experience",
+    "Organization of the filing package",
+    "Mailing instructions",
+    "Guidance on payment instruments (including money orders)",
+    "Supporting documents guidance"
   ],
   "standard_excludes": [
-    "Case monitoring (client's responsibility)"
+    "Case monitoring (client's responsibility)",
+    "USCIS filing fee",
+    "Postage/mailing costs",
+    "Credential evaluation",
+    "Certified translations"
   ],
   "plus_includes": [],
   "plus_excludes": [],
@@ -124,19 +132,35 @@
     "Contrato de prestação de serviço",
     "Checklist completo de documentos",
     "Link do Google Drive para envio de documentos",
-    "Preparação do I-824 baseada em 18 anos de experiência"
+    "Preparação e revisão do Formulário I-824, baseada em 18 anos de experiência",
+    "Organização do pacote de envio",
+    "Instruções de envio",
+    "Orientação sobre instrumentos de pagamento (incluindo money orders)",
+    "Orientação sobre documentos de apoio"
   ],
   "standard_includes_es": [
     "Acuerdo de servicio",
     "Lista completa de documentos",
     "Enlace de Google Drive para subir documentos",
-    "Preparación del I-824 basada en 18 años de experiencia"
+    "Preparación y revisión del Formulario I-824, basada en 18 años de experiencia",
+    "Organización del paquete de presentación",
+    "Instrucciones de envío",
+    "Orientación sobre instrumentos de pago (incluyendo money orders)",
+    "Orientación sobre documentos de respaldo"
   ],
   "standard_excludes_pt": [
-    "Acompanhamento do caso (responsabilidade do cliente)"
+    "Acompanhamento do caso (responsabilidade do cliente)",
+    "Taxa de envio da USCIS",
+    "Custos de postagem/envio",
+    "Avaliação de diploma/credencial",
+    "Traduções certificadas"
   ],
   "standard_excludes_es": [
-    "Seguimiento del caso (responsabilidad del cliente)"
+    "Seguimiento del caso (responsabilidad del cliente)",
+    "Tarifa de presentación de USCIS",
+    "Costos de franqueo/envío",
+    "Evaluación de credenciales",
+    "Traducciones certificadas"
   ],
   "plus_includes_pt": [],
   "plus_includes_es": [],
