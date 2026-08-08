@@ -563,7 +563,7 @@ def bill_delete(bill_id: int):
     if bill is None or bill.financial_workspace_id != fc.workspace.id:
         flash("Bill not found.", "error")
         return redirect(url_for("financial_workspace.bills"))
-    bills_svc.soft_delete_bill(bill)
+    bills_svc.soft_delete_bill(bill, actor=current_user)
     flash("Bill removed. Its payment history is kept.", "success")
     return redirect(url_for("financial_workspace.bills"))
 
@@ -659,7 +659,7 @@ def recurring_delete(recurring_id: int):
     if recurring is None or recurring.financial_workspace_id != fc.workspace.id:
         flash("Recurring schedule not found.", "error")
         return redirect(url_for("financial_workspace.recurring"))
-    recurring_svc.soft_delete_recurring_transaction(recurring)
+    recurring_svc.soft_delete_recurring_transaction(recurring, actor=current_user)
     flash("Recurring schedule removed. Already-posted transactions are kept.", "success")
     return redirect(url_for("financial_workspace.recurring"))
 
@@ -729,7 +729,7 @@ def subscription_delete(debit_id: int):
     if debit is None or debit.financial_workspace_id != fc.workspace.id:
         flash("Subscription not found.", "error")
         return redirect(url_for("financial_workspace.subscriptions"))
-    recurring_svc.soft_delete_recurring_debit(debit)
+    recurring_svc.soft_delete_recurring_debit(debit, actor=current_user)
     flash("Subscription removed.", "success")
     return redirect(url_for("financial_workspace.subscriptions"))
 
@@ -880,7 +880,7 @@ def sinking_fund_delete(fund_id: int):
     if fund is None or fund.financial_workspace_id != fc.workspace.id:
         flash("Sinking fund not found.", "error")
         return redirect(url_for("financial_workspace.sinking_funds"))
-    goals_svc.soft_delete_sinking_fund(fund)
+    goals_svc.soft_delete_sinking_fund(fund, actor=current_user)
     flash("Sinking fund removed.", "success")
     return redirect(url_for("financial_workspace.sinking_funds"))
 
@@ -1190,7 +1190,7 @@ def motivation_pin(item_id: int):
 def motivation_delete(item_id: int):
     fc = _financial_client_for_current_user()
     item = _motivation_item_or_404(fc.workspace, item_id)
-    motivation_svc.delete_item(item)
+    motivation_svc.delete_item(item, actor=current_user)
     flash("Removed from your Motivation Board.", "success")
     return redirect(url_for("financial_workspace.motivation"))
 

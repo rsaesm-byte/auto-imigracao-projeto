@@ -193,6 +193,10 @@ def create_sinking_fund(
         created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(fund)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "SinkingFund", fund.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Sinking fund \"{name}\" added.")
     SessionLocal.commit()
     return fund
 
@@ -205,9 +209,12 @@ def update_sinking_fund_balance(fund: SinkingFund, *, current_amount_cents: int)
     return fund
 
 
-def soft_delete_sinking_fund(fund: SinkingFund) -> None:
+def soft_delete_sinking_fund(fund: SinkingFund, *, actor=None) -> None:
     fund.deleted_at = datetime.now(timezone.utc)
     fund.active = False
+    audit_service.log_change(
+        "SinkingFund", fund.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Sinking fund \"{fund.name}\" removed.")
     SessionLocal.commit()
 
 

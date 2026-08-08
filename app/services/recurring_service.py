@@ -18,6 +18,7 @@ from app.financial_planning_models import (Account, BillFrequency, BudgetCategor
                                             RecurringDebit, RecurringTransaction,
                                             RecurringTransactionKind, ReviewStatus,
                                             TransactionClassification, TransactionType)
+from app.services import audit_service
 from app.services import financial_transactions_service as tx_svc
 from app.services.financial_transactions_service import TransactionValidationError
 
@@ -111,13 +112,20 @@ def create_recurring_transaction(
         created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(recurring)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "RecurringTransaction", recurring.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Recurring {transaction_kind.value} \"{name}\" added.")
     SessionLocal.commit()
     return recurring
 
 
-def soft_delete_recurring_transaction(recurring: RecurringTransaction) -> None:
+def soft_delete_recurring_transaction(recurring: RecurringTransaction, *, actor=None) -> None:
     recurring.deleted_at = _utcnow()
     recurring.active = False
+    audit_service.log_change(
+        "RecurringTransaction", recurring.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Recurring transaction \"{recurring.name}\" removed.")
     SessionLocal.commit()
 
 
@@ -209,6 +217,10 @@ def create_recurring_debit(
         notes=notes or None, created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(debit)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "RecurringDebit", debit.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Subscription/recurring debit \"{merchant}\" added.")
     SessionLocal.commit()
     return debit
 
@@ -229,9 +241,12 @@ def set_review_status(debit: RecurringDebit, review_status: ReviewStatus) -> Rec
     return debit
 
 
-def soft_delete_recurring_debit(debit: RecurringDebit) -> None:
+def soft_delete_recurring_debit(debit: RecurringDebit, *, actor=None) -> None:
     debit.deleted_at = _utcnow()
     debit.active = False
+    audit_service.log_change(
+        "RecurringDebit", debit.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Subscription/recurring debit \"{debit.merchant}\" removed.")
     SessionLocal.commit()
 
 

@@ -17,6 +17,7 @@ from pathlib import Path
 from app.crm_financial_models import FinancialWorkspace
 from app.db import SessionLocal
 from app.financial_planning_models import FinancialAttachment, MotivationItem, MotivationItemType
+from app.services import audit_service
 from app.services.financial_attachments_service import FinancialAttachmentService
 
 ALLOWED_MOTIVATION_IMAGE_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp", ".gif"}
@@ -61,6 +62,10 @@ def create_item(
         sort_order=_next_sort_order(workspace), created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(item)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "MotivationItem", item.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Motivation board item \"{title}\" added.")
     SessionLocal.commit()
     return item
 
@@ -134,11 +139,18 @@ def toggle_pinned(item: MotivationItem) -> MotivationItem:
     return item
 
 
-def delete_item(item: MotivationItem) -> None:
+def delete_item(item: MotivationItem, *, actor=None) -> None:
     """DELETE de verdade (não `deleted_at`) -- ver docstring do modelo em
     app/financial_planning_models.py sobre por que este é o único item da
     Fase 1-10 sem exclusão lógica. A imagem associada (se houver) é
-    excluída logicamente, mesma disciplina de todo `FinancialAttachment`."""
+    excluída logicamente, mesma disciplina de todo `FinancialAttachment`.
+    A linha de auditoria é gravada ANTES do delete de verdade -- depois
+    disso `item.id` deixa de apontar pra uma linha existente, mas
+    `AuditLog.entity_id` nunca teve FK pra `entity_type` de propósito
+    (registro de histórico sobrevive ao próprio registro apagado)."""
+    audit_service.log_change(
+        "MotivationItem", item.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Motivation board item \"{item.title}\" removed.")
     if item.image_attachment_id is not None:
         attachment = SessionLocal.get(FinancialAttachment, item.image_attachment_id)
         if attachment is not None:

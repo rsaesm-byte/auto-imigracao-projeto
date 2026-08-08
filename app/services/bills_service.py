@@ -87,16 +87,23 @@ def create_bill(
         created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(bill)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "Bill", bill.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Bill \"{bill_name}\" added.")
     SessionLocal.commit()
     return bill
 
 
-def soft_delete_bill(bill: Bill) -> None:
+def soft_delete_bill(bill: Bill, *, actor=None) -> None:
     """Exclusão lógica -- `BillPayment`s já gerados continuam intactos
     (histórico de pagamento não desaparece); só para de gerar cobranças
     novas dali pra frente."""
     bill.deleted_at = _utcnow()
     bill.active = False
+    audit_service.log_change(
+        "Bill", bill.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Bill \"{bill.bill_name}\" removed.")
     SessionLocal.commit()
 
 
