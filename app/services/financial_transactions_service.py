@@ -14,6 +14,7 @@ from app.db import SessionLocal
 from app.financial_planning_models import (Account, BudgetCategory, FinancialTransaction,
                                             PaymentMethodType, TransactionClassification,
                                             TransactionStatus, TransactionType)
+from app.services import audit_service
 
 
 def _utcnow() -> datetime:
@@ -87,6 +88,10 @@ def create_transaction(
         notes=notes or None, created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(transaction)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "FinancialTransaction", transaction.id, "created", user_id=getattr(actor, "id", None),
+        description=f"{transaction_type.value.title()} \"{name}\" added ({amount_cents / 100:.2f}).")
     SessionLocal.commit()
     return transaction
 
@@ -103,8 +108,11 @@ def list_transactions(
     return query.all()
 
 
-def soft_delete_transaction(transaction: FinancialTransaction) -> None:
+def soft_delete_transaction(transaction: FinancialTransaction, *, actor=None) -> None:
     transaction.deleted_at = _utcnow()
+    audit_service.log_change(
+        "FinancialTransaction", transaction.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"{transaction.transaction_type.value.title()} \"{transaction.name}\" removed.")
     SessionLocal.commit()
 
 

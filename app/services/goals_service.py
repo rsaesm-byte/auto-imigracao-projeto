@@ -24,6 +24,7 @@ from datetime import date, datetime, timedelta, timezone
 
 from app.crm_financial_models import FinancialWorkspace
 from app.db import SessionLocal
+from app.services import audit_service
 from app.financial_planning_models import (Account, FinancialGoal, GoalContribution,
                                             GoalPriority, GoalStatus, SinkingFund)
 from app.services import financial_dashboard_service as dash_svc
@@ -75,6 +76,10 @@ def create_goal(
         account_id=account_id, notes=notes or None, created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(goal)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "FinancialGoal", goal.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Goal \"{name}\" added.")
     SessionLocal.commit()
     return goal
 
@@ -85,8 +90,11 @@ def set_goal_status(goal: FinancialGoal, status: GoalStatus) -> FinancialGoal:
     return goal
 
 
-def soft_delete_goal(goal: FinancialGoal) -> None:
+def soft_delete_goal(goal: FinancialGoal, *, actor=None) -> None:
     goal.deleted_at = datetime.now(timezone.utc)
+    audit_service.log_change(
+        "FinancialGoal", goal.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Goal \"{goal.name}\" removed.")
     SessionLocal.commit()
 
 

@@ -12,6 +12,7 @@ from flask_login import current_user, login_required
 from app.db import SessionLocal
 from app.services import dashboard_service as dsvc
 from app.services import reports_service as rsvc
+from app.staff_permissions import require_area
 
 crm_dashboard_bp = Blueprint("crm_dashboard", __name__, url_prefix="/staff/dashboard")
 
@@ -21,6 +22,7 @@ crm_dashboard_bp = Blueprint("crm_dashboard", __name__, url_prefix="/staff/dashb
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("internal_management")
 
 
 @crm_dashboard_bp.route("/")

@@ -16,6 +16,7 @@ from flask_login import current_user, login_required
 
 from app.crm_models import PaymentDirection
 from app.services import reports_service as rsvc
+from app.staff_permissions import require_area
 
 crm_reports_bp = Blueprint("crm_reports", __name__, url_prefix="/staff/crm/reports")
 
@@ -25,6 +26,7 @@ crm_reports_bp = Blueprint("crm_reports", __name__, url_prefix="/staff/crm/repor
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("internal_management")
 
 
 @crm_reports_bp.route("/")

@@ -23,6 +23,7 @@ from app.services import audit_service
 from app.services import concurrency_service
 from app.services import crm_service as svc
 from app.services import pipeline_stage_service
+from app.staff_permissions import require_area
 
 crm_pipeline_bp = Blueprint("crm_pipeline", __name__, url_prefix="/staff/crm")
 
@@ -37,6 +38,7 @@ OPEN_CASE_STATUSES = [
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("crm")
 
 
 # --------------------------------------------------------------------------

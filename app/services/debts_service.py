@@ -22,6 +22,7 @@ from datetime import date, datetime, timezone
 
 from app.crm_financial_models import FinancialWorkspace
 from app.db import SessionLocal
+from app.services import audit_service
 from app.financial_planning_models import (Account, Debt, DebtPayment, DebtStatus, DebtType,
                                             PayoffStrategy)
 
@@ -86,12 +87,19 @@ def create_debt(
         notes=notes or None, created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(debt)
+    SessionLocal.flush()
+    audit_service.log_change(
+        "Debt", debt.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Debt \"{debt_name}\" added.")
     SessionLocal.commit()
     return debt
 
 
-def soft_delete_debt(debt: Debt) -> None:
+def soft_delete_debt(debt: Debt, *, actor=None) -> None:
     debt.deleted_at = datetime.now(timezone.utc)
+    audit_service.log_change(
+        "Debt", debt.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Debt \"{debt.debt_name}\" removed.")
     SessionLocal.commit()
 
 

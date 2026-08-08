@@ -17,7 +17,9 @@ from app.crm_financial_models import (ClientComplianceLevel, CoachingSession,
                                        FinancialClientGoal,
                                        FinancialClientIncomeSource,
                                        FinancialClientMeetingPlatform,
-                                       FinancialClientStatus, FinancialGoal,
+                                       FinancialClientStatus,
+                                       FinancialCoachingSelectOption,
+                                       FinancialGoal,
                                        FinancialProgressStatus, FinancialTask,
                                        FinancialTaskCategory, FocusArea,
                                        HomeworkAdherenceLevel,
@@ -33,8 +35,14 @@ from app.models import User
 from app.services import audit_service
 from app.services import crm_financial_service as fsvc
 from app.services import crm_service as svc
+from app.services import financial_accounts_service as accounts_svc
+from app.services import financial_dashboard_service as dash_svc
 from app.services import financial_planning_service as fp_svc
+from app.services import financial_transactions_service as tx_svc
+from app.services import net_worth_service as networth_svc
 from app.services import pipeline_stage_service
+from app.services import reports_service
+from app.staff_permissions import require_area
 
 crm_financial_bp = Blueprint("crm_financial", __name__, url_prefix="/staff/crm/financeiro")
 
@@ -44,6 +52,7 @@ crm_financial_bp = Blueprint("crm_financial", __name__, url_prefix="/staff/crm/f
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("financial_coaching")
 
 
 # --------------------------------------------------------------------------
@@ -258,6 +267,17 @@ EMERGENCY_FUND_STATUS_LABELS = {
 }
 
 
+def _select_options(kind: str) -> list[FinancialCoachingSelectOption]:
+    """Opções ativas de um dos 7 selects staff-editáveis (2026-08-08) --
+    ver app/crm_pipeline_settings.py::_FINANCIAL_SELECT_KINDS pra lista
+    completa de `kind` válidos e a tela de admin."""
+    return (
+        SessionLocal.query(FinancialCoachingSelectOption)
+        .filter_by(kind=kind).filter(FinancialCoachingSelectOption.deleted_at.is_(None))
+        .order_by(FinancialCoachingSelectOption.sort_order, FinancialCoachingSelectOption.name).all()
+    )
+
+
 @crm_financial_bp.route("/<int:financial_client_id>/perfil", methods=["GET", "POST"])
 def client_profile_edit(financial_client_id: int):
     fc = SessionLocal.get(FinancialClient, financial_client_id)
@@ -281,19 +301,20 @@ def client_profile_edit(financial_client_id: int):
         fc.enrollment_at = svc.parse_date(request.form.get("enrollment_at"))
         fc.diagnostic_at = svc.parse_date(request.form.get("diagnostic_at"))
         fc.target_completion_at = svc.parse_date(request.form.get("target_completion_at"))
-        fc.progress_status = svc.parse_enum(
-            FinancialProgressStatus, request.form.get("progress_status"),
-            default=FinancialProgressStatus.not_started)
-        fc.homework_adherence = svc.parse_enum(HomeworkAdherenceLevel, request.form.get("homework_adherence"))
-        fc.client_compliance = svc.parse_enum(ClientComplianceLevel, request.form.get("client_compliance"))
-        fc.review_90day_status = svc.parse_enum(
-            NinetyDayReviewStatus, request.form.get("review_90day_status"),
-            default=NinetyDayReviewStatus.not_scheduled)
-        fc.continuity_program = svc.parse_enum(
-            ContinuityProgram, request.form.get("continuity_program"), default=ContinuityProgram.none)
+        # Os 7 selects abaixo eram svc.parse_enum(SomeEnum, ...) -- viraram
+        # staff-editáveis (2026-08-08, item pendente do Prompt Mestre 1),
+        # então o valor vem direto do <select> (já restrito às opções
+        # cadastradas em FinancialCoachingSelectOption, ver
+        # app/crm_pipeline_settings.py) em vez de validado contra um enum
+        # Python fixo.
+        fc.progress_status = request.form.get("progress_status", "").strip() or FinancialProgressStatus.not_started.value
+        fc.homework_adherence = request.form.get("homework_adherence", "").strip() or None
+        fc.client_compliance = request.form.get("client_compliance", "").strip() or None
+        fc.review_90day_status = request.form.get("review_90day_status", "").strip() or NinetyDayReviewStatus.not_scheduled.value
+        fc.continuity_program = request.form.get("continuity_program", "").strip() or ContinuityProgram.none.value
         fc.nps_score = svc.parse_int(request.form.get("nps_score"))
-        fc.priority_level = svc.parse_enum(Priority, request.form.get("priority_level"), default=Priority.medium)
-        fc.current_focus_area = svc.parse_enum(FocusArea, request.form.get("current_focus_area"))
+        fc.priority_level = request.form.get("priority_level", "").strip() or Priority.medium.value
+        fc.current_focus_area = request.form.get("current_focus_area", "").strip() or None
         fc.wins_milestones = request.form.get("wins_milestones", "").strip() or None
         fc.action_plan = request.form.get("action_plan", "").strip() or None
         fc.recommended_solutions = request.form.get("recommended_solutions", "").strip() or None
@@ -352,10 +373,10 @@ def client_profile_edit(financial_client_id: int):
     return render_template(
         "crm_financial_client_profile.html", fc=fc,
         marital_statuses=list(MaritalStatus), languages=list(PreferredLanguage),
-        progress_statuses=list(FinancialProgressStatus),
-        homework_levels=list(HomeworkAdherenceLevel), compliance_levels=list(ClientComplianceLevel),
-        review_statuses=list(NinetyDayReviewStatus), continuity_programs=list(ContinuityProgram),
-        priorities=list(Priority), focus_areas=list(FocusArea),
+        progress_statuses=_select_options("progress_status"),
+        homework_levels=_select_options("homework_adherence"), compliance_levels=_select_options("client_compliance"),
+        review_statuses=_select_options("review_90day_status"), continuity_programs=_select_options("continuity_program"),
+        priorities=_select_options("priority_level"), focus_areas=_select_options("current_focus_area"),
         income_ranges=list(HouseholdIncomeRange), emergency_fund_statuses=list(EmergencyFundStatus),
         income_range_labels=HOUSEHOLD_INCOME_RANGE_LABELS, emergency_fund_labels=EMERGENCY_FUND_STATUS_LABELS,
         meeting_platforms=list(MeetingPlatform), selected_platforms=selected_platforms,
@@ -371,6 +392,47 @@ def client_profile_edit(financial_client_id: int):
             SessionLocal.query(FinancialChallenge).filter(FinancialChallenge.deleted_at.is_(None))
             .order_by(FinancialChallenge.sort_order, FinancialChallenge.name).all()),
         selected_challenges=selected_challenges)
+
+
+@crm_financial_bp.route("/<int:financial_client_id>/workspace")
+def client_workspace_view(financial_client_id: int):
+    """Visão SOMENTE LEITURA do Financial Workspace de verdade do cliente
+    (contas, transações recentes, orçamento, patrimônio) -- item pendente
+    do Prompt Mestre 2 (Fase 13, QA final): até 2026-08-08 a equipe só
+    conseguia habilitar/desabilitar o acesso do cliente, nunca ver os
+    dados em si sem mexer direto no banco. Nenhum form aqui -- edição
+    continua exclusiva do próprio cliente em /meu-plano-financeiro/
+    workspace (o dado é dele, a equipe só acompanha). Reusa exatamente os
+    mesmos serviços/gráficos (_charts.html) da Financial Overview do
+    cliente, pra não ter duas fontes de verdade pro mesmo número."""
+    fc = SessionLocal.get(FinancialClient, financial_client_id)
+    if fc is None:
+        abort(404)
+    if not fc.financial_planning_enabled or fc.workspace is None:
+        flash("This client hasn't been enabled for Financial Planning yet, or hasn't set up their workspace.", "error")
+        return redirect(url_for("crm_financial.client_detail", financial_client_id=fc.id))
+
+    workspace = fc.workspace
+    period = request.args.get("period", "month")
+    if period not in reports_service.PERIODS:
+        period = "month"
+    start, end = reports_service.period_range(period)
+
+    return render_template(
+        "crm_financial_client_workspace.html", fc=fc, periods=reports_service.PERIODS,
+        period=period, start=start, end=end,
+        accounts=accounts_svc.list_accounts(workspace),
+        transactions=tx_svc.list_transactions(workspace, limit=25),
+        income_cents=dash_svc.monthly_income_cents(workspace, start=start, end=end),
+        expenses_cents=dash_svc.monthly_expenses_cents(workspace, start=start, end=end),
+        savings_rate=dash_svc.savings_rate(workspace, start=start, end=end),
+        total_cash_cents=dash_svc.total_cash_cents(workspace),
+        net_worth_cents=dash_svc.net_worth_cents(workspace),
+        spending_by_category=dash_svc.spending_by_category(workspace, start=start, end=end),
+        needs_wants_savings=dash_svc.needs_wants_savings_breakdown(workspace, start=start, end=end),
+        account_distribution=dash_svc.account_distribution(workspace),
+        cash_flow_by_month=dash_svc.cash_flow_by_month(workspace, months=6),
+        net_worth_history=networth_svc.net_worth_history(workspace))
 
 
 @crm_financial_bp.route("/<int:financial_client_id>/sessoes/nova", methods=["POST"])

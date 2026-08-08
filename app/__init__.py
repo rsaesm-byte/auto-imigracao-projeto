@@ -213,6 +213,86 @@ def _ensure_staff_profile_columns() -> None:
         conn.commit()
 
 
+def _ensure_ceo_columns() -> None:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para
+    users.is_ceo / users.areas_provisioned (painel do CEO, 2026-08-08)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(users)"))]
+        for col in ("is_ceo", "areas_provisioned"):
+            if col not in cols:
+                conn.execute(text(f"ALTER TABLE users ADD COLUMN {col} BOOLEAN DEFAULT 0"))
+                conn.commit()
+
+
+def _provision_legacy_staff_areas() -> None:
+    """Roda em todo boot, mas só AGE em quem ainda não foi provisionado
+    (`areas_provisioned=False`) -- contas de staff já existentes no dia em
+    que o painel do CEO foi ao ar ganham TODAS as 6 áreas + is_ceo=True
+    automaticamente (pedido explícito do usuário: "ninguém perde acesso
+    hoje"). Daqui pra frente, toda conta nova nasce sem nenhuma área
+    (escolhida pelo CEO na hora de criar, ver app/crm_staff_admin.py) e já
+    marcada como provisionada na hora -- nunca cai neste "grandfather"."""
+    from app.models import StaffAreaAccess, User
+    from app.staff_permissions import AREAS
+
+    legacy_staff = SessionLocal.query(User).filter_by(is_staff=True, areas_provisioned=False).all()
+    for user in legacy_staff:
+        for area in AREAS:
+            exists = SessionLocal.query(StaffAreaAccess).filter_by(user_id=user.id, area=area).first()
+            if exists is None:
+                SessionLocal.add(StaffAreaAccess(user_id=user.id, area=area))
+        user.is_ceo = True
+        user.areas_provisioned = True
+    if legacy_staff:
+        SessionLocal.commit()
+
+
+def _ensure_financial_workspace_onboarding_columns() -> bool:
+    """Mesma lógica de _ensure_cartas_zip_path_column() acima, para as 3
+    colunas novas do onboarding guiado de 10 passos (financial_workspaces.
+    country / onboarding_current_step / onboarding_completed_at).
+    Devolve True só no boot em que `onboarding_completed_at` foi
+    ACRESCENTADA agora (coluna não existia antes) -- usado por
+    _backfill_financial_workspace_onboarding() logo abaixo pra rodar o
+    "grandfather" (ver lá) uma única vez, nunca de novo em boots
+    seguintes (senão todo workspace novo, ainda no meio do wizard de
+    verdade, seria marcado como concluído no próximo restart)."""
+    from sqlalchemy import text
+    with engine.connect() as conn:
+        cols = [row[1] for row in conn.execute(text("PRAGMA table_info(financial_workspaces)"))]
+        if "country" not in cols:
+            conn.execute(text("ALTER TABLE financial_workspaces ADD COLUMN country VARCHAR"))
+            conn.commit()
+        if "onboarding_current_step" not in cols:
+            conn.execute(text("ALTER TABLE financial_workspaces ADD COLUMN onboarding_current_step INTEGER DEFAULT 1"))
+            conn.commit()
+        just_added = "onboarding_completed_at" not in cols
+        if just_added:
+            conn.execute(text("ALTER TABLE financial_workspaces ADD COLUMN onboarding_completed_at DATETIME"))
+            conn.commit()
+    return just_added
+
+
+def _backfill_financial_workspace_onboarding(should_run: bool) -> None:
+    """Workspaces que já existiam ANTES do onboarding guiado (2026-08-08)
+    nascem com `onboarding_completed_at` já preenchido -- ninguém que já
+    usa o módulo é interrompido por um wizard "primeiro acesso" que não
+    existia quando começaram. `should_run` só é True no boot em que a
+    coluna acabou de ser criada (ver
+    _ensure_financial_workspace_onboarding_columns acima) -- garante que
+    isto roda uma vez só, nunca reclassificando um workspace novo criado
+    depois, ainda em andamento no wizard de verdade."""
+    if not should_run:
+        return
+    from app.crm_financial_models import FinancialWorkspace
+    workspaces = SessionLocal.query(FinancialWorkspace).filter_by(onboarding_completed_at=None).all()
+    for ws in workspaces:
+        ws.onboarding_completed_at = ws.created_at
+    if workspaces:
+        SessionLocal.commit()
+
+
 def _ensure_payment_contact_columns() -> None:
     """Mesma lógica de _ensure_cartas_zip_path_column() acima, para as três
     colunas novas de contato do cliente na tela de checkout (client_name,
@@ -637,6 +717,38 @@ def _seed_saes_procedure_services() -> None:
     SessionLocal.commit()
 
 
+def _seed_financial_coaching_select_options() -> None:
+    """Semeia os 7 selects de vocabulário fechado que viraram
+    staff-editáveis (2026-08-08, item pendente do Prompt Mestre 1) com os
+    MESMOS valores que os antigos enums Python tinham -- garante que
+    nenhum FinancialClient existente fica com um valor que não aparece
+    em nenhum <select> (ver app/crm_financial_models.py::FinancialClient,
+    coluna virou string livre, mas o dado gravado antes desta mudança
+    continua sendo exatamente um desses valores). Só roda por `kind`
+    vazio, mesmo padrão de sempre -- staff pode renomear/reordenar/
+    apagar/adicionar livremente depois sem que o boot desfaça."""
+    from app.crm_financial_models import (ClientComplianceLevel, ContinuityProgram,
+                                           FinancialCoachingSelectOption, FinancialProgressStatus,
+                                           FocusArea, HomeworkAdherenceLevel, NinetyDayReviewStatus)
+    from app.crm_models import Priority
+
+    seeds: dict[str, list[str]] = {
+        "progress_status": [m.value for m in FinancialProgressStatus],
+        "priority_level": [m.value for m in Priority],
+        "homework_adherence": [m.value for m in HomeworkAdherenceLevel],
+        "client_compliance": [m.value for m in ClientComplianceLevel],
+        "review_90day_status": [m.value for m in NinetyDayReviewStatus],
+        "continuity_program": [m.value for m in ContinuityProgram],
+        "current_focus_area": [m.value for m in FocusArea],
+    }
+    for kind, values in seeds.items():
+        if SessionLocal.query(FinancialCoachingSelectOption).filter_by(kind=kind).first() is not None:
+            continue
+        for index, value in enumerate(values):
+            SessionLocal.add(FinancialCoachingSelectOption(kind=kind, name=value, sort_order=index))
+    SessionLocal.commit()
+
+
 def _seed_financial_coaching_packages() -> None:
     """Cria uma linha em FinancialCoachingPackage (app/crm_financial_models.py)
     por template em data/financial_coaching_packages/*.json -- os 3 pacotes
@@ -728,6 +840,8 @@ def create_app() -> Flask:
     _ensure_receipt_number_column()
     _ensure_payment_columns()
     _ensure_staff_column()
+    _ensure_ceo_columns()
+    _financial_workspace_onboarding_col_just_added = _ensure_financial_workspace_onboarding_columns()
     _ensure_payment_contact_columns()
     _ensure_payment_lifecycle_columns()
     _ensure_staff_profile_columns()
@@ -744,10 +858,13 @@ def create_app() -> Flask:
     _ensure_user_email_verification_columns()
     _ensure_lead_purchase_columns()
     _ensure_payment_lead_column()
+    _provision_legacy_staff_areas()
+    _backfill_financial_workspace_onboarding(_financial_workspace_onboarding_col_just_added)
     _seed_service_fees()
     _seed_crm_lookups()
     _seed_service_interest_options()
     _seed_crm_financial_lookups()
+    _seed_financial_coaching_select_options()
     _seed_saes_procedure_services()
     _seed_financial_coaching_packages()
     _seed_translators()
@@ -819,6 +936,7 @@ def create_app() -> Flask:
     from app.crm_dashboard import crm_dashboard_bp
     from app.crm_custom_fields import crm_custom_fields_bp
     from app.crm_automations import crm_automations_bp
+    from app.crm_staff_admin import crm_staff_admin_bp
     from app.onboarding import onboarding_bp
     from app.planner import planner_bp
     app.register_blueprint(auth_bp)
@@ -853,6 +971,7 @@ def create_app() -> Flask:
     app.register_blueprint(crm_dashboard_bp)
     app.register_blueprint(crm_custom_fields_bp)
     app.register_blueprint(crm_automations_bp)
+    app.register_blueprint(crm_staff_admin_bp)
     app.register_blueprint(onboarding_bp)
     app.register_blueprint(planner_bp)
 
@@ -898,6 +1017,9 @@ def create_app() -> Flask:
     app.jinja_env.filters["usd_input"] = format_usd_input
     app.jinja_env.filters["num"] = format_number
     app.jinja_env.filters["pct"] = format_percent
+
+    from app.services.signed_urls import attachment_url
+    app.jinja_env.globals["attachment_url"] = attachment_url
 
     @app.teardown_appcontext
     def remove_session(exception=None):

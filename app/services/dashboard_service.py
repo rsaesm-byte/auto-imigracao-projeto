@@ -32,6 +32,7 @@ from app.db import SessionLocal
 from app.models import StaffDashboardLayout
 from app.services import reports_service as rsvc
 from app.services.crm_service import today, translation_client_total_cents
+from app.services.financial_reports_service import previous_period_range
 
 CASE_ACTIVE_STATUSES = [
     s for s in CaseStatus
@@ -274,17 +275,35 @@ DEFAULT_WIDGET_ORDER: list[str] = list(WIDGETS.keys())
 def compute_widgets(widget_keys: list[str], period: str) -> list[dict]:
     """Computa só os widgets pedidos (a ordem/visibilidade já resolvida
     pelo chamador), na ordem dada -- widgets "period" usam o período
-    escolhido, "live" ignoram (sempre "agora")."""
+    escolhido, "live" ignoram (sempre "agora").
+
+    Widgets "period" de kind stat/money/pct/days também ganham
+    `delta_pct` (redesign visual, 2026-08-08, referência: cards de KPI
+    com "+35,74% vs Mês Anterior") -- reusa a MESMA função `compute` do
+    widget, só que pra `previous_period_range(start, end)` (janela
+    imediatamente anterior, mesmo tamanho -- já usada nos Reports do
+    Financial Planning, mesma regra, não inventa uma nova). `None` quando
+    o valor atual ou anterior for `None`/zero (não dá pra calcular %
+    contra zero de forma que signifique algo -- mostra sem comparação em
+    vez de "+inf%"). "list"/"activity" nunca ganham delta (não fazem
+    sentido como um número só)."""
     start, end = rsvc.period_range(period)
+    prev_start, prev_end = previous_period_range(start, end)
     out = []
     for key in widget_keys:
         spec = WIDGETS.get(key)
         if spec is None:
             continue
         result = spec["compute"](start, end)
+        delta_pct = None
+        if spec["group"] == "period" and spec["kind"] in ("stat", "money", "pct", "days"):
+            current = result.get("value")
+            previous = spec["compute"](prev_start, prev_end).get("value")
+            if current is not None and previous:
+                delta_pct = round((current - previous) / previous * 100, 1)
         out.append({
             "key": key, "title": spec["title"], "kind": spec["kind"], "group": spec["group"],
-            "endpoint": spec["endpoint"], **result,
+            "endpoint": spec["endpoint"], "delta_pct": delta_pct, **result,
         })
     return out
 

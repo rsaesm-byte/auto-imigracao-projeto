@@ -20,6 +20,7 @@ from app.models import User
 from app.services import audit_service
 from app.services import crm_service as svc
 from app.services import financial_coaching_packages as fcpkg
+from app.staff_permissions import require_area
 
 crm_contracts_bp = Blueprint("crm_contracts", __name__, url_prefix="/staff/crm/contratos")
 
@@ -29,6 +30,7 @@ crm_contracts_bp = Blueprint("crm_contracts", __name__, url_prefix="/staff/crm/c
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("internal_management")
 
 
 @crm_contracts_bp.route("/")

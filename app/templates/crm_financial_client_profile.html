@@ -49,32 +49,32 @@
       <div><label class="muted">Target completion</label><br><input type="date" lang="en-US" name="target_completion_at" value="{{ fc.target_completion_at.isoformat() if fc.target_completion_at else '' }}"></div>
       <div>
         <label class="muted">Progress status</label><br>
-        <select name="progress_status">{% for s in progress_statuses %}<option value="{{ s.value }}" {{ 'selected' if fc.progress_status == s }}>{{ s.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="progress_status">{% for s in progress_statuses %}<option value="{{ s.name }}" {{ 'selected' if fc.progress_status == s.name }}>{{ s.name|replace('_',' ')|title }}</option>{% endfor %}</select>
       </div>
       <div>
         <label class="muted">Homework adherence</label><br>
-        <select name="homework_adherence"><option value="">—</option>{% for h in homework_levels %}<option value="{{ h.value }}" {{ 'selected' if fc.homework_adherence == h }}>{{ h.value|title }}</option>{% endfor %}</select>
+        <select name="homework_adherence"><option value="">—</option>{% for h in homework_levels %}<option value="{{ h.name }}" {{ 'selected' if fc.homework_adherence == h.name }}>{{ h.name|title }}</option>{% endfor %}</select>
       </div>
       <div>
         <label class="muted">Client compliance</label><br>
-        <select name="client_compliance"><option value="">—</option>{% for c in compliance_levels %}<option value="{{ c.value }}" {{ 'selected' if fc.client_compliance == c }}>{{ c.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="client_compliance"><option value="">—</option>{% for c in compliance_levels %}<option value="{{ c.name }}" {{ 'selected' if fc.client_compliance == c.name }}>{{ c.name|replace('_',' ')|title }}</option>{% endfor %}</select>
       </div>
       <div>
         <label class="muted">90-day review</label><br>
-        <select name="review_90day_status">{% for r in review_statuses %}<option value="{{ r.value }}" {{ 'selected' if fc.review_90day_status == r }}>{{ r.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="review_90day_status">{% for r in review_statuses %}<option value="{{ r.name }}" {{ 'selected' if fc.review_90day_status == r.name }}>{{ r.name|replace('_',' ')|title }}</option>{% endfor %}</select>
       </div>
       <div>
         <label class="muted">Continuity program</label><br>
-        <select name="continuity_program">{% for c in continuity_programs %}<option value="{{ c.value }}" {{ 'selected' if fc.continuity_program == c }}>{{ c.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="continuity_program">{% for c in continuity_programs %}<option value="{{ c.name }}" {{ 'selected' if fc.continuity_program == c.name }}>{{ c.name|replace('_',' ')|title }}</option>{% endfor %}</select>
       </div>
       <div><label class="muted">NPS</label><br><input type="number" min="0" max="10" name="nps_score" value="{{ fc.nps_score if fc.nps_score is not none else '' }}"></div>
       <div>
         <label class="muted">Priority</label><br>
-        <select name="priority_level">{% for p in priorities %}<option value="{{ p.value }}" {{ 'selected' if fc.priority_level == p }}>{{ p.value|title }}</option>{% endfor %}</select>
+        <select name="priority_level">{% for p in priorities %}<option value="{{ p.name }}" {{ 'selected' if fc.priority_level == p.name }}>{{ p.name|title }}</option>{% endfor %}</select>
       </div>
       <div>
         <label class="muted">Current focus</label><br>
-        <select name="current_focus_area"><option value="">—</option>{% for f in focus_areas %}<option value="{{ f.value }}" {{ 'selected' if fc.current_focus_area == f }}>{{ f.value|replace('_',' ')|title }}</option>{% endfor %}</select>
+        <select name="current_focus_area"><option value="">—</option>{% for f in focus_areas %}<option value="{{ f.name }}" {{ 'selected' if fc.current_focus_area == f.name }}>{{ f.name|replace('_',' ')|title }}</option>{% endfor %}</select>
       </div>
     </div>
     <div style="margin-top:12px;display:grid;gap:10px;max-width:600px;">

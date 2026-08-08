@@ -35,6 +35,9 @@
         {% endif %}
         <button type="button" id="pomodoro-btn" class="icon-btn" style="box-sizing:border-box;height:24px;line-height:22px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);cursor:pointer;font-size:0.72rem;padding:0 8px;" title="Start a 25-minute Pomodoro focus timer">🍅 <span id="pomodoro-label">Pomodoro</span></button>
       </div>
+      {% if current_user.is_ceo %}
+      <a href="{{ url_for('crm_staff_admin.list_staff') }}" class="icon-btn" style="box-sizing:border-box;height:24px;line-height:22px;background:none;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text);text-decoration:none;font-size:0.78rem;padding:0 10px;display:inline-flex;align-items:center;" title="Create/block staff accounts, grant area access">Team Accounts</a>
+      {% endif %}
       <a href="{{ url_for('staff.profile') }}" style="display:flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);">
         {% if current_user.photo_path %}
         <img src="{{ url_for('staff.profile_photo', user_id=current_user.id) }}" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1px solid var(--border);">

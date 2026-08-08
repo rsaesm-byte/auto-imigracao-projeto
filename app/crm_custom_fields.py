@@ -21,6 +21,7 @@ from app.db import SessionLocal
 from app.services import audit_service
 from app.services import custom_fields_service as cfsvc
 from app.services import crm_service as svc
+from app.staff_permissions import require_area
 
 crm_custom_fields_bp = Blueprint("crm_custom_fields", __name__, url_prefix="/staff/crm/campos-personalizados")
 
@@ -38,6 +39,7 @@ ENTITY_TYPES_WITH_CLIENT_VISIBILITY = ["Case", "Client"]
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("customize_system")
 
 
 def _entity_type() -> str:

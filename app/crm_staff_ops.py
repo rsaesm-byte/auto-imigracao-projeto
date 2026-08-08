@@ -30,8 +30,20 @@ from app.services import case_messages as case_messages_svc
 from app.services import concurrency_service
 from app.services import crm_service as svc
 from app.services import pipeline_stage_service
+from app.staff_permissions import require_area
 
 crm_ops_bp = Blueprint("crm_ops", __name__, url_prefix="/staff/crm")
+
+# Este blueprint junta rotas de 2 áreas do painel do CEO (ver
+# app/staff_permissions.py) por histórico do código -- toda rota de
+# "/pagamentos*" pertence a "Payments"; casos/documentos/mensagens/
+# comunicações/tarefas pertencem a "CRM" (ver o split idêntico em
+# app/staff.py).
+_CRM_OPS_PAYMENTS_ENDPOINTS = {
+    "payments", "payment_method_new", "payment_method_rename", "fee_type_new",
+    "fee_type_rename", "payment_new", "payment_update_status", "payment_detail",
+    "payment_update", "payment_receipt_download",
+}
 
 
 @crm_ops_bp.before_request
@@ -39,6 +51,9 @@ crm_ops_bp = Blueprint("crm_ops", __name__, url_prefix="/staff/crm")
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    endpoint = (request.endpoint or "").split(".")[-1]
+    area = "payments" if endpoint in _CRM_OPS_PAYMENTS_ENDPOINTS else "crm"
+    require_area(area)
 
 
 # --------------------------------------------------------------------------

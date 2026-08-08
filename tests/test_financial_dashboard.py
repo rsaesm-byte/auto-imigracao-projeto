@@ -174,6 +174,14 @@ def test_dashboard_route_renders_for_client_with_access(app, db, staff_user):
     db.add(fc)
     db.commit()
     fp_svc.enable_access(fc, actor=staff_user)
+    db.commit()
+    # Onboarding guiado (2026-08-08): um workspace novo cai no wizard no
+    # primeiro acesso -- marca como já concluído pra este teste continuar
+    # testando o dashboard em si, não o onboarding (ver
+    # tests/test_financial_onboarding.py pra esse fluxo).
+    from datetime import datetime, timezone
+    fc.workspace.onboarding_completed_at = datetime.now(timezone.utc)
+    db.commit()
     user_id = user.id
 
     client = app.test_client()

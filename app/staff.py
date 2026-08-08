@@ -45,6 +45,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from app.db import SessionLocal
 from app.models import FormSubmission, Payment, PostPaymentOnboarding, RequiredDocument, User
 from app.services import audit_service
+from app.staff_permissions import require_area
 
 staff_bp = Blueprint("staff", __name__, url_prefix="/staff")
 
@@ -66,11 +67,33 @@ PROFILE_PHOTOS_DIR.mkdir(parents=True, exist_ok=True)
 ALLOWED_PHOTO_EXTENSIONS = {".png", ".jpg", ".jpeg", ".webp"}
 
 
+# Este blueprint junta rotas de 2 áreas do painel do CEO (ver
+# app/staff_permissions.py) numa coisa só, por histórico do código --
+# "pending"/"approved"/os sub-passos de um pagamento pontual pertencem a
+# "Payments"; "documentos"/"preços"/"finalizados" pertencem a "CRM".
+# "dashboard" (a raiz "/", só um redirect) e "perfil"/"nav" (autoatendimento
+# de cada colaborador) não são uma área de negócio -- passam pra qualquer
+# staff autenticado, sem checar área nenhuma.
+_STAFF_BP_PAYMENTS_ENDPOINTS = {
+    "pending", "approved", "review_queue", "toggle_paid", "payment_detail",
+    "confirm_payment", "finalize_payment", "request_review", "payment_proof",
+}
+_STAFF_BP_UNGATED_ENDPOINTS = {
+    "dashboard", "profile", "update_profile", "change_password", "profile_photo",
+    "nav_save", "nav_reset",
+}
+
+
 @staff_bp.before_request
 @login_required
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    endpoint = (request.endpoint or "").split(".")[-1]
+    if endpoint in _STAFF_BP_UNGATED_ENDPOINTS:
+        return
+    area = "payments" if endpoint in _STAFF_BP_PAYMENTS_ENDPOINTS else "crm"
+    require_area(area)
 
 
 @staff_bp.context_processor

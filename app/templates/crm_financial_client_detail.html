@@ -39,6 +39,9 @@
   {% else %}
   <p class="muted" style="font-size:0.78rem;">You don't have permission to manage Financial Planning access.</p>
   {% endif %}
+  {% if fc.financial_planning_enabled and fc.workspace %}
+  <a href="{{ url_for('crm_financial.client_workspace_view', financial_client_id=fc.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;margin-top:10px;display:inline-block;">View workspace data (read-only)</a>
+  {% endif %}
 </div>
 
 <div class="card">

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% block title %}Welcome — {{ t('app_name') }}{% endblock %}
+{% block page_class %}wide bg-blobs{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>Set up your Financial Workspace</h1>
+  <p style="opacity:0.92;margin:0;">Step {{ step }} of {{ total_steps }} — you can skip ahead at any time and come back later.</p>
+</div>
+
+<div class="card">
+  <div style="display:flex;gap:6px;flex-wrap:wrap;">
+    {% for i in range(1, total_steps + 1) %}
+    <span style="width:26px;height:6px;border-radius:999px;background:{{ 'var(--accent)' if i <= step else 'var(--border)' }};"></span>
+    {% endfor %}
+  </div>
+</div>
+
+{% if step_key == 'welcome' %}
+<div class="card">
+  <h2>Welcome{{ ', ' + workspace.financial_client.full_name if workspace.financial_client else '' }}!</h2>
+  <p>This short setup walks you through the basics of your own Financial Workspace: your settings, income, accounts, bills, debts, budget, goals, and a few motivation board items. It takes a few minutes, and nothing here is shared with your coach automatically.</p>
+  <div style="display:flex;gap:10px;">
+    <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}"><button type="submit" class="btn">Get started →</button></form>
+    <form method="post" action="{{ url_for('financial_workspace.onboarding_activate') }}"><button type="submit" class="icon-btn" style="background:none;border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.85rem;padding:9px 16px;">Skip for now</button></form>
+  </div>
+</div>
+
+{% elif step_key == 'settings' %}
+<div class="card">
+  <h2>Basic financial settings</h2>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_settings_save') }}" style="display:flex;flex-direction:column;gap:12px;max-width:420px;">
+    <div><label class="muted">Preferred currency</label><br><input type="text" name="default_currency" value="{{ workspace.default_currency }}" maxlength="3" style="width:100%;"></div>
+    <div><label class="muted">Country</label><br><input type="text" name="country" value="{{ workspace.country or '' }}" style="width:100%;"></div>
+    <div><label class="muted">Timezone (optional)</label><br><input type="text" name="timezone" value="{{ workspace.timezone or '' }}" placeholder="e.g. America/New_York" style="width:100%;"></div>
+    <div><label class="muted">Budget month start day</label><br><input type="number" name="budget_month_start_day" min="1" max="28" value="{{ workspace.budget_month_start_day }}" style="width:100%;"></div>
+    <div style="display:flex;gap:10px;">
+      <button type="submit" class="btn">Save & continue →</button>
+      <a href="{{ url_for('financial_workspace.onboarding_step', step=3) }}" class="muted" style="align-self:center;font-size:0.85rem;">Skip this step</a>
+    </div>
+  </form>
+</div>
+
+{% elif step_key == 'income' %}
+<div class="card">
+  <h2>Add your income sources</h2>
+  <p class="muted">You currently have <strong>{{ counts.income }}</strong> income transaction(s) on file.</p>
+  <a href="{{ url_for('financial_workspace.index') }}" target="_blank" rel="noopener" class="btn">Open Accounts & Transactions →</a>
+  <p class="muted" style="font-size:0.8rem;">Add your income there (it opens in a new tab), then come back here and continue.</p>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'accounts' %}
+<div class="card">
+  <h2>Add your bank/cash accounts</h2>
+  <p class="muted">You currently have <strong>{{ counts.accounts }}</strong> account(s) on file.</p>
+  <a href="{{ url_for('financial_workspace.index') }}" target="_blank" rel="noopener" class="btn">Open Accounts & Transactions →</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'bills' %}
+<div class="card">
+  <h2>Add your monthly bills</h2>
+  <p class="muted">You currently have <strong>{{ counts.bills }}</strong> bill(s) on file.</p>
+  <a href="{{ url_for('financial_workspace.bills') }}" target="_blank" rel="noopener" class="btn">Open Bills →</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'debts' %}
+<div class="card">
+  <h2>Add your debts</h2>
+  <p class="muted">You currently have <strong>{{ counts.debts }}</strong> debt(s) on file.</p>
+  <a href="{{ url_for('financial_workspace.debts') }}" target="_blank" rel="noopener" class="btn">Open Debts →</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'budget' %}
+<div class="card">
+  <h2>Choose your budget strategy</h2>
+  <p class="muted">{% if counts.has_budget_rule %}You already have a budget method set.{% else %}No budget method chosen yet.{% endif %}</p>
+  <a href="{{ url_for('financial_workspace.budget') }}" target="_blank" rel="noopener" class="btn">Open Budget →</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'goals' %}
+<div class="card">
+  <h2>Add your first financial goal</h2>
+  <p class="muted">You currently have <strong>{{ counts.goals }}</strong> goal(s) on file.</p>
+  <a href="{{ url_for('financial_workspace.goals') }}" target="_blank" rel="noopener" class="btn">Open Goals →</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'motivation' %}
+<div class="card">
+  <h2>Add your first Motivation Board item</h2>
+  <p class="muted">You currently have <strong>{{ counts.motivation }}</strong> item(s) on your board.</p>
+  <a href="{{ url_for('financial_workspace.motivation') }}" target="_blank" rel="noopener" class="btn">Open Motivation Board →</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_advance', step=step) }}" style="margin-top:10px;"><button type="submit" class="btn">Continue →</button></form>
+</div>
+
+{% elif step_key == 'review' %}
+<div class="card">
+  <h2>Review your setup</h2>
+  <ul style="line-height:2;">
+    <li>Income transactions: <strong>{{ counts.income }}</strong></li>
+    <li>Accounts: <strong>{{ counts.accounts }}</strong></li>
+    <li>Bills: <strong>{{ counts.bills }}</strong></li>
+    <li>Debts: <strong>{{ counts.debts }}</strong></li>
+    <li>Budget method: <strong>{{ 'Set' if counts.has_budget_rule else 'Not set' }}</strong></li>
+    <li>Goals: <strong>{{ counts.goals }}</strong></li>
+    <li>Motivation board items: <strong>{{ counts.motivation }}</strong></li>
+  </ul>
+  <p class="muted">You can always add more or change anything later — nothing here is final.</p>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_activate') }}"><button type="submit" class="btn">Activate my dashboard →</button></form>
+</div>
+{% endif %}
+
+{% if step > 1 and step_key != 'review' %}
+<div class="card">
+  <a href="{{ url_for('financial_workspace.onboarding_step', step=step - 1) }}" class="muted" style="font-size:0.85rem;">← Back</a>
+  <form method="post" action="{{ url_for('financial_workspace.onboarding_activate') }}" style="display:inline;margin-left:14px;">
+    <button type="submit" class="icon-btn" style="background:none;border:none;color:var(--muted);text-decoration:underline;cursor:pointer;font-size:0.85rem;padding:0;">Skip the rest and go to my dashboard</button>
+  </form>
+</div>
+{% endif %}
+{% endblock %}

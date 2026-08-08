@@ -24,6 +24,7 @@ from app.models import User
 from app.services import audit_service
 from app.services import crm_service as svc
 from app.services.text_format import markdown_lite_to_html
+from app.staff_permissions import require_area
 
 crm_tracking_bp = Blueprint("crm_tracking", __name__, url_prefix="/staff/crm/tracking")
 
@@ -40,6 +41,7 @@ USPS_TRACKING_URL = "https://tools.usps.com/zip-code-lookup.htm"
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("crm")
 
 
 def _overdue(tracked: CaseTrackedForm) -> bool:

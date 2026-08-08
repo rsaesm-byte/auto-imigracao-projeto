@@ -14,6 +14,7 @@ from app.db import SessionLocal
 from app.services import audit_service
 from app.services import automation_service as autosvc
 from app.services import crm_service as svc
+from app.staff_permissions import require_area
 
 crm_automations_bp = Blueprint("crm_automations", __name__, url_prefix="/staff/crm/automacoes")
 
@@ -23,6 +24,7 @@ crm_automations_bp = Blueprint("crm_automations", __name__, url_prefix="/staff/c
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("customize_system")
 
 
 @crm_automations_bp.route("/")

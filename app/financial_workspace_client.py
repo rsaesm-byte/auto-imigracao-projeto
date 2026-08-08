@@ -15,7 +15,7 @@ amigável (mesmo padrão de app/crm_financial_client.py::meu_plano quando
 from __future__ import annotations
 
 import io
-from datetime import date
+from datetime import date, datetime, timezone
 
 from flask import Blueprint, Response, abort, flash, redirect, render_template, request, send_file, url_for
 from flask_login import current_user, login_required
@@ -32,6 +32,7 @@ from app.financial_planning_models import (Account, AccountType, Bill, BillFrequ
                                             RecurringTransaction, RecurringTransactionKind,
                                             ReviewStatus, SavedReportView, SinkingFund, SnapshotSource,
                                             TransactionClassification, TransactionType)
+from app.services import audit_service
 from app.services import bills_service as bills_svc
 from app.services import budget_service as budget_svc
 from app.services import crm_service as svc
@@ -75,6 +76,106 @@ def _require_access():
         return redirect(url_for("wizard.dashboard"))
 
 
+# --------------------------------------------------------------------------
+# Onboarding guiado de 10 passos (item pendente do Prompt Mestre 2, Fase 13
+# -- "Fluxo de onboarding" do documento mestre, seção 4): Welcome -> Basic
+# settings -> Income -> Accounts -> Bills -> Debts -> Budget strategy ->
+# Goals -> Motivation Board -> Review & activate. Passos 3-9 (checklist)
+# não duplicam os formulários "+ Add" que já existem em cada página --
+# cada passo mostra a contagem atual + um link pra ir adicionar na tela de
+# verdade (nova aba), e "Continue" só avança o contador; ninguém preenche
+# a mesma coisa duas vezes. "Skip for now" em qualquer passo marca
+# onboarding_completed_at igual a "Activate dashboard" -- nunca prende o
+# cliente no wizard (pedido implícito do doc: "Launch onboarding on first
+# access if incomplete", não "torna obrigatório pra sempre").
+# --------------------------------------------------------------------------
+_ONBOARDING_STEPS = [
+    "welcome", "settings", "income", "accounts", "bills",
+    "debts", "budget", "goals", "motivation", "review",
+]
+
+
+@financial_workspace_bp.route("/onboarding")
+def onboarding_index():
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    if workspace.onboarding_completed_at is not None:
+        return redirect(url_for("financial_workspace.dashboard"))
+    step = min(max(workspace.onboarding_current_step, 1), len(_ONBOARDING_STEPS))
+    return redirect(url_for("financial_workspace.onboarding_step", step=step))
+
+
+@financial_workspace_bp.route("/onboarding/<int:step>")
+def onboarding_step(step: int):
+    if step < 1 or step > len(_ONBOARDING_STEPS):
+        abort(404)
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+
+    counts = {}
+    if step in (3, 10):
+        all_tx = tx_svc.list_transactions(workspace)
+        counts["income"] = len([t for t in all_tx if t.transaction_type.value == "income"])
+    if step in (4, 10):
+        counts["accounts"] = len(accounts_svc.list_accounts(workspace))
+    if step in (5, 10):
+        counts["bills"] = len(bills_svc.list_bills(workspace))
+    if step in (6, 10):
+        counts["debts"] = len(debts_svc.list_debts(workspace))
+    if step in (7, 10):
+        counts["has_budget_rule"] = budget_svc.get_budget_rule(workspace) is not None
+    if step in (8, 10):
+        counts["goals"] = len(goals_svc.list_goals(workspace))
+    if step in (9, 10):
+        counts["motivation"] = len(motivation_svc.list_items(workspace))
+
+    return render_template(
+        "financial_onboarding.html", workspace=workspace, step=step,
+        step_key=_ONBOARDING_STEPS[step - 1], total_steps=len(_ONBOARDING_STEPS), counts=counts)
+
+
+@financial_workspace_bp.route("/onboarding/<int:step>/continuar", methods=["POST"])
+def onboarding_advance(step: int):
+    """Passos-checklist (3, 4, 5, 6, 8, 9) e Welcome (1) -- só avança o
+    contador, sem form próprio (ver docstring do bloco acima)."""
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    next_step = min(step + 1, len(_ONBOARDING_STEPS))
+    workspace.onboarding_current_step = next_step
+    SessionLocal.commit()
+    return redirect(url_for("financial_workspace.onboarding_step", step=next_step))
+
+
+@financial_workspace_bp.route("/onboarding/settings", methods=["POST"])
+def onboarding_settings_save():
+    """Passo 2 (Basic financial settings) -- único passo com form próprio,
+    porque os campos (moeda/timezone/país/dia de virada do orçamento) não
+    têm tela dedicada nenhuma fora do onboarding."""
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    workspace.default_currency = request.form.get("default_currency", "USD").strip().upper() or "USD"
+    workspace.timezone = request.form.get("timezone", "").strip() or None
+    workspace.country = request.form.get("country", "").strip() or None
+    budget_day = svc.parse_int(request.form.get("budget_month_start_day"))
+    workspace.budget_month_start_day = budget_day if budget_day and 1 <= budget_day <= 28 else 1
+    workspace.onboarding_current_step = 3
+    SessionLocal.commit()
+    return redirect(url_for("financial_workspace.onboarding_step", step=3))
+
+
+@financial_workspace_bp.route("/onboarding/ativar", methods=["POST"])
+def onboarding_activate():
+    """Passo 10 (Review setup and activate dashboard) -- e também o botão
+    "Skip for now" disponível em qualquer passo (mesmo destino: marca
+    concluído e manda pro dashboard de verdade)."""
+    fc = _financial_client_for_current_user()
+    workspace = fc.workspace
+    workspace.onboarding_completed_at = datetime.now(timezone.utc)
+    SessionLocal.commit()
+    flash("Welcome! Your Financial Workspace is ready.", "success")
+    return redirect(url_for("financial_workspace.dashboard"))
+
+
 @financial_workspace_bp.route("/resumo")
 def dashboard():
     """Fase 3 (Dashboard) -- Visão Geral: KPIs e gráficos calculados só
@@ -84,6 +185,8 @@ def dashboard():
     nunca mostrar zero/placeholder fingindo ser dado real."""
     fc = _financial_client_for_current_user()
     workspace = fc.workspace
+    if workspace.onboarding_completed_at is None:
+        return redirect(url_for("financial_workspace.onboarding_index"))
 
     period = request.args.get("period", "month")
     if period not in reports_service.PERIODS:
@@ -182,7 +285,7 @@ def account_delete(account_id: int):
     if account is None or account.financial_workspace_id != fc.workspace.id:
         flash("Account not found.", "error")
         return redirect(url_for("financial_workspace.index"))
-    accounts_svc.soft_delete_account(account)
+    accounts_svc.soft_delete_account(account, actor=current_user)
     flash("Account removed.", "success")
     return redirect(url_for("financial_workspace.index"))
 
@@ -230,7 +333,7 @@ def transaction_delete(transaction_id: int):
     if transaction is None or transaction.financial_workspace_id != fc.workspace.id:
         flash("Transaction not found.", "error")
         return redirect(url_for("financial_workspace.index"))
-    tx_svc.soft_delete_transaction(transaction)
+    tx_svc.soft_delete_transaction(transaction, actor=current_user)
     flash("Transaction removed.", "success")
     return redirect(url_for("financial_workspace.index"))
 
@@ -303,6 +406,15 @@ def budget_rule_save():
     except BudgetValidationError as exc:
         flash(str(exc), "error")
         return redirect(url_for("financial_workspace.budget"))
+
+    # Auditoria de rotina (item pendente do Prompt Mestre 2, Fase 13) --
+    # regra de orçamento é 1 por workspace (upsert, não create/delete),
+    # então loga aqui na rota em vez de dentro do service (evita passar
+    # `actor` por uma função que hoje não precisa dele pra mais nada).
+    audit_service.log_change(
+        "FinancialWorkspace", fc.workspace.id, "budget_rule_updated", user_id=current_user.id,
+        description=f"Budget method set to {rule_type.value.replace('_', ' ').title()}.")
+    SessionLocal.commit()
 
     flash("Budget method updated.", "success")
     return redirect(url_for("financial_workspace.budget"))
@@ -707,7 +819,7 @@ def goal_delete(goal_id: int):
     if goal is None or goal.financial_workspace_id != fc.workspace.id:
         flash("Goal not found.", "error")
         return redirect(url_for("financial_workspace.goals"))
-    goals_svc.soft_delete_goal(goal)
+    goals_svc.soft_delete_goal(goal, actor=current_user)
     flash("Goal removed.", "success")
     return redirect(url_for("financial_workspace.goals"))
 
@@ -871,7 +983,7 @@ def debt_delete(debt_id: int):
     if debt is None or debt.financial_workspace_id != fc.workspace.id:
         flash("Debt not found.", "error")
         return redirect(url_for("financial_workspace.debts"))
-    debts_svc.soft_delete_debt(debt)
+    debts_svc.soft_delete_debt(debt, actor=current_user)
     flash("Debt removed. Payment history is kept.", "success")
     return redirect(url_for("financial_workspace.debts"))
 
@@ -1087,8 +1199,20 @@ def motivation_delete(item_id: int):
 def motivation_image_file(attachment_id: int):
     """Serve o bytes da imagem -- storage privado (`instance/document_storage/`
     por trás do `StorageBackend`, nunca uma URL pública permanente, pedido
-    explícito do documento em "Attachments"). Checa que o anexo pertence
-    ao workspace do cliente logado antes de servir qualquer coisa."""
+    explícito do documento em "Attachments"). Duas camadas, nenhuma
+    dispensa a outra: (1) token assinado com validade curta na
+    querystring (`?token=`, Seção 14 do doc: "Signed temporary URLs" /
+    "Attachment URLs expire", ver app/services/signed_urls.py) -- link
+    velho/vazado para de funcionar sozinho depois de 1h; (2) checagem de
+    que o anexo pertence ao workspace do cliente LOGADO (session), que
+    continua obrigatória mesmo com um token válido -- um token não
+    autentica ninguém, só limita por quanto tempo um link específico
+    funciona."""
+    from app.services.signed_urls import verify_attachment_token
+    token = request.args.get("token", "")
+    if verify_attachment_token(token) != attachment_id:
+        abort(404)
+
     fc = _financial_client_for_current_user()
     attachment = SessionLocal.get(FinancialAttachment, attachment_id)
     if (attachment is None or attachment.financial_workspace_id != fc.workspace.id

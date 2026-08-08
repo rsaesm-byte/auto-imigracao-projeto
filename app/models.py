@@ -12,7 +12,7 @@ import json
 from datetime import datetime, timezone
 
 from flask_login import UserMixin
-from sqlalchemy import ForeignKey, Text
+from sqlalchemy import ForeignKey, Text, UniqueConstraint
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
 from app.db import Base
@@ -69,6 +69,26 @@ class User(Base, UserMixin):
     # documento: "Never hard-code Alessandra").
     financial_planning_manage_access: Mapped[bool] = mapped_column(default=False)
 
+    # Painel do CEO (Prompt Mestre 1, Seção 13, 2026-08-08) -- is_ceo é
+    # separado das áreas normais de StaffAreaAccess de propósito: gerenciar
+    # OUTRAS contas de colaborador (criar/bloquear/conceder área) é mais
+    # sensível do que qualquer área de trabalho do dia a dia, então nunca
+    # fica embutido em "Internal Management" nem em nenhuma outra área --
+    # só concedido linha a linha, nunca checado por e-mail/nome hardcoded
+    # em rota nenhuma (mesma regra já usada em
+    # financial_planning_manage_access acima). Contas de staff já
+    # existentes no dia em que este recurso foi ao ar ganharam is_ceo=True
+    # junto com todas as áreas (ver _provision_legacy_staff_areas() em
+    # app/__init__.py) -- ninguém perdeu acesso.
+    is_ceo: Mapped[bool] = mapped_column(default=False)
+    # Marca quem já passou pela concessão automática de "todas as áreas"
+    # (contas anteriores ao recurso) -- nunca reavaliado depois. Sem isso,
+    # um CEO que bloqueasse TODAS as áreas de alguém (0 linhas em
+    # StaffAreaAccess) veria essa pessoa ganhar tudo de volta sozinha no
+    # próximo boot, porque "zero áreas" ficaria indistinguível de "conta
+    # nova, nunca provisionada".
+    areas_provisioned: Mapped[bool] = mapped_column(default=False)
+
     submissions: Mapped[list["FormSubmission"]] = relationship(
         back_populates="user", cascade="all, delete-orphan")
 
@@ -76,6 +96,20 @@ class User(Base, UserMixin):
     @property
     def is_active(self) -> bool:  # type: ignore[override]
         return self.is_active_
+
+
+class StaffAreaAccess(Base):
+    """Perfis por ÁREA INTEIRA (Prompt Mestre 1, Seção 13) -- um colaborador
+    pode ter 0 ou mais áreas de app/staff_permissions.py::AREAS. Ausência
+    de linha = sem acesso àquela área (exceto is_ceo=True em User, que
+    sempre passa por tudo, ver app/staff_permissions.py::has_area)."""
+    __tablename__ = "staff_area_access"
+    __table_args__ = (UniqueConstraint("user_id", "area", name="uq_staff_area_access_user_area"),)
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[int] = mapped_column(ForeignKey("users.id"), index=True)
+    area: Mapped[str]
+    granted_at: Mapped[datetime] = mapped_column(default=_utcnow)
 
 
 class FormSubmission(Base):

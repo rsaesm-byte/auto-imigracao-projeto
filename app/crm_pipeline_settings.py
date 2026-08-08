@@ -18,11 +18,12 @@ from sqlalchemy import func
 from sqlalchemy.exc import IntegrityError
 
 from app import i18n
-from app.crm_financial_models import FinancialChallenge, FinancialGoal
+from app.crm_financial_models import FinancialChallenge, FinancialCoachingSelectOption, FinancialGoal
 from app.crm_models import IncomeSourceType, ServiceCatalog, ServiceInterestOption
 from app.db import SessionLocal
 from app.services import pipeline_stage_service as stage_svc
 from app.services import service_interests as si_svc
+from app.staff_permissions import require_area
 
 crm_pipeline_settings_bp = Blueprint(
     "crm_pipeline_settings", __name__, url_prefix="/staff/crm/configuracoes")
@@ -33,6 +34,7 @@ crm_pipeline_settings_bp = Blueprint(
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("customize_system")
 
 
 @crm_pipeline_settings_bp.route("/pipelines")
@@ -228,15 +230,18 @@ def service_interest_options_reorder():
 
 
 # --------------------------------------------------------------------------
-# Checkboxes da ficha do cliente de Financial Coaching (Income sources,
-# Financial goals, Main challenges) -- pedido do usuário 2026-08-07,
-# escopo confirmado: só estes 3 grupos (já eram tabelas no banco, só
-# faltava a tela de admin); os 8 selects de vocabulário fechado
-# (Household income range, Progress status, etc.) ficam pra uma rodada
-# seguinte -- transformá-los em editável exige tabela+migração nova pra
-# cada um. Mesmo padrão de reorder/add/edit/delete de "interesse-
-# serviços" acima, mas 3 grupos na mesma tela em vez de um só -- rotas
-# parametrizadas por `kind` em vez de tripicar o código.
+# Checkboxes/selects da ficha do cliente de Financial Coaching -- pedido
+# do usuário 2026-08-07 (Income sources/Financial goals/Main challenges,
+# multi-select via tabela de junção própria) + 2026-08-08 (os 7 selects
+# de vocabulário fechado que ficaram pendentes na rodada anterior:
+# Progress status, Priority, Homework adherence, Client compliance,
+# 90-day review, Continuity program, Current focus area -- single-select,
+# `FinancialClient` guarda o `name` escolhido direto como string, sem
+# tabela de junção). Os 3 primeiros são uma tabela dedicada cada
+# (_FINANCIAL_OPTION_MODELS); os 7 novos compartilham UMA tabela genérica
+# com `kind` como discriminador (_FINANCIAL_SELECT_KINDS) -- mesma tela
+# (`crm_financial_coaching_options.html`) e mesmas 4 rotas de sempre
+# (nova/salvar/excluir/reordenar) cobrem os dois formatos.
 # --------------------------------------------------------------------------
 
 _FINANCIAL_OPTION_MODELS = {
@@ -248,6 +253,17 @@ _FINANCIAL_OPTION_LABELS = {
     "income_source": "Income sources",
     "financial_goal": "Financial goals",
     "financial_challenge": "Main challenges",
+}
+# Os 7 selects de vocabulário fechado (2026-08-08) -- todos vivem na
+# mesma tabela FinancialCoachingSelectOption, filtrados por `kind`.
+_FINANCIAL_SELECT_KINDS = {
+    "progress_status": "Progress status",
+    "priority_level": "Priority",
+    "homework_adherence": "Homework adherence",
+    "client_compliance": "Client compliance",
+    "review_90day_status": "90-day review",
+    "continuity_program": "Continuity program",
+    "current_focus_area": "Current focus area",
 }
 
 
@@ -264,12 +280,34 @@ def financial_coaching_options():
             .order_by(model.sort_order, model.name).all()
         )
         groups.append({"kind": kind, "label": _FINANCIAL_OPTION_LABELS[kind], "options": options})
+    for kind, label in _FINANCIAL_SELECT_KINDS.items():
+        options = (
+            SessionLocal.query(FinancialCoachingSelectOption)
+            .filter_by(kind=kind).filter(FinancialCoachingSelectOption.deleted_at.is_(None))
+            .order_by(FinancialCoachingSelectOption.sort_order, FinancialCoachingSelectOption.name).all()
+        )
+        groups.append({"kind": kind, "label": label, "options": options})
     return render_template("crm_financial_coaching_options.html", groups=groups)
+
+
+def _financial_option_query(kind: str):
+    """Devolve (query_base, is_generic) -- `query_base` já filtrado por
+    `kind` quando for a tabela genérica, pronto pra .filter()/.get() em
+    cima. `None` se `kind` não existir em nenhum dos dois formatos."""
+    model = _FINANCIAL_OPTION_MODELS.get(kind)
+    if model is not None:
+        return SessionLocal.query(model), model, False
+    if kind in _FINANCIAL_SELECT_KINDS:
+        return (
+            SessionLocal.query(FinancialCoachingSelectOption).filter_by(kind=kind),
+            FinancialCoachingSelectOption, True,
+        )
+    return None, None, False
 
 
 @crm_pipeline_settings_bp.route("/coaching-financeiro-opcoes/<kind>/nova", methods=["POST"])
 def financial_coaching_option_new(kind: str):
-    model = _FINANCIAL_OPTION_MODELS.get(kind)
+    query, model, is_generic = _financial_option_query(kind)
     if model is None:
         abort(404)
 
@@ -278,8 +316,9 @@ def financial_coaching_option_new(kind: str):
         flash("Name is required.", "error")
         return redirect(url_for("crm_pipeline_settings.financial_coaching_options"))
 
-    next_order = (SessionLocal.query(func.max(model.sort_order)).scalar() or -1) + 1
-    SessionLocal.add(model(name=name, sort_order=next_order))
+    next_order = (query.with_entities(func.max(model.sort_order)).scalar() or -1) + 1
+    new_row = model(name=name, sort_order=next_order, kind=kind) if is_generic else model(name=name, sort_order=next_order)
+    SessionLocal.add(new_row)
     try:
         SessionLocal.commit()
     except IntegrityError:
@@ -292,10 +331,10 @@ def financial_coaching_option_new(kind: str):
 
 @crm_pipeline_settings_bp.route("/coaching-financeiro-opcoes/<kind>/<int:option_id>/salvar", methods=["POST"])
 def financial_coaching_option_save(kind: str, option_id: int):
-    model = _FINANCIAL_OPTION_MODELS.get(kind)
+    query, model, _is_generic = _financial_option_query(kind)
     if model is None:
         abort(404)
-    option = SessionLocal.get(model, option_id)
+    option = query.filter_by(id=option_id).first()
     if option is None:
         abort(404)
 
@@ -318,12 +357,13 @@ def financial_coaching_option_save(kind: str, option_id: int):
 @crm_pipeline_settings_bp.route("/coaching-financeiro-opcoes/<kind>/<int:option_id>/excluir", methods=["POST"])
 def financial_coaching_option_delete(kind: str, option_id: int):
     """Exclusão sempre LÓGICA -- clientes que já têm essa opção marcada
-    mantêm o vínculo (`FinancialClientGoal`/`...Challenge`/
-    `...IncomeSource`) intacto, só some da lista de novas seleções."""
-    model = _FINANCIAL_OPTION_MODELS.get(kind)
+    (seja o vínculo de junção dos 3 antigos, seja a string salva direto
+    de um dos 7 selects novos) mantêm o valor intacto, só some da lista
+    de novas seleções."""
+    query, model, _is_generic = _financial_option_query(kind)
     if model is None:
         abort(404)
-    option = SessionLocal.get(model, option_id)
+    option = query.filter_by(id=option_id).first()
     if option is None:
         abort(404)
 
@@ -335,11 +375,11 @@ def financial_coaching_option_delete(kind: str, option_id: int):
 
 @crm_pipeline_settings_bp.route("/coaching-financeiro-opcoes/<kind>/reordenar", methods=["POST"])
 def financial_coaching_options_reorder(kind: str):
-    model = _FINANCIAL_OPTION_MODELS.get(kind)
-    if model is None:
+    query, _model, _is_generic = _financial_option_query(kind)
+    if query is None:
         abort(404)
     ordered_ids = request.form.getlist("option_id")
-    items_by_id = {str(o.id): o for o in SessionLocal.query(model).all()}
+    items_by_id = {str(o.id): o for o in query.all()}
     for index, raw_id in enumerate(ordered_ids):
         item = items_by_id.get(raw_id)
         if item is None:

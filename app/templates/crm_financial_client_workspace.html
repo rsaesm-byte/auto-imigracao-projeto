@@ -1,0 +1,125 @@
+{% extends "staff_base.html" %}
+{% from "_charts.html" import donut_chart, vertical_bar_chart, horizontal_bar_chart, line_chart %}
+{% block title %}Staff — {{ fc.full_name }}'s Financial Workspace{% endblock %}
+{% block page_class %}wide{% endblock %}
+{% block content %}
+<div class="card hero">
+  <h1>{{ fc.full_name }} — Financial Workspace</h1>
+  <p style="opacity:0.92;margin:0;">Read-only view of the client's own data — editing stays exclusive to the client at their Financial Workspace. Nothing here is shared with the client automatically.</p>
+</div>
+
+<div class="card">
+  <a href="{{ url_for('crm_financial.client_detail', financial_client_id=fc.id) }}" class="btn" style="padding:7px 16px;font-size:0.85rem;">← Back to profile</a>
+</div>
+
+<div class="card">
+  <form method="get" style="display:flex;gap:8px;flex-wrap:wrap;align-items:center;">
+    {% for key, label in periods.items() %}
+    <a href="{{ url_for('crm_financial.client_workspace_view', financial_client_id=fc.id, period=key) }}"
+       class="icon-btn" style="text-decoration:none;font-size:0.82rem;padding:7px 14px;border-radius:999px;
+       {% if period == key %}background:var(--accent);color:#fff;{% else %}border:1px solid var(--border);color:var(--text);{% endif %}">{{ label }}</a>
+    {% endfor %}
+    <span class="muted" style="font-size:0.8rem;margin-left:auto;">{{ start.strftime('%m/%d/%Y') }} – {{ end.strftime('%m/%d/%Y') }}</span>
+  </form>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;">
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Income</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ income_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Expenses</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ expenses_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Savings Rate</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ (savings_rate * 100)|pct if savings_rate is not none else '—' }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Total Cash</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ total_cash_cents|usd }}</p>
+  </div>
+  <div class="card" style="margin:0;">
+    <p class="muted" style="margin:0;font-size:0.78rem;">Net Worth</p>
+    <p style="font-size:1.3rem;font-weight:700;margin:4px 0 0;">{{ net_worth_cents|usd }}</p>
+  </div>
+</div>
+
+<div class="card">
+  <h2>Cash Flow — last 6 months</h2>
+  {{ line_chart([
+    {'name': 'Income', 'color': '#16a34a', 'points': cash_flow_by_month|map(attribute='income_cents')|list},
+    {'name': 'Expenses', 'color': '#dc2626', 'points': cash_flow_by_month|map(attribute='expenses_cents')|list}],
+    cash_flow_by_month|map(attribute='label')|list) }}
+</div>
+
+{% if net_worth_history|length > 1 %}
+<div class="card">
+  <h2>Net Worth — trend</h2>
+  {{ line_chart([{'name': 'Net Worth', 'color': 'var(--accent)', 'points': net_worth_history|map(attribute='net_worth_cents')|list}],
+    net_worth_history|map(attribute='label')|list) }}
+</div>
+{% endif %}
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:20px;">
+  <div class="card">
+    <h2>Spending by category</h2>
+    {{ horizontal_bar_chart(spending_by_category, 'amount_cents', 'label', 'var(--accent)') }}
+  </div>
+  <div class="card">
+    <h2>Needs / Wants / Savings</h2>
+    {% set nws_rows = [
+      {'label': 'Needs', 'value': needs_wants_savings.needs, 'color': '#2a78d6'},
+      {'label': 'Wants', 'value': needs_wants_savings.wants, 'color': '#eb6834'},
+      {'label': 'Savings', 'value': needs_wants_savings.savings, 'color': '#16a34a'}] %}
+    {{ donut_chart(nws_rows) }}
+  </div>
+  <div class="card">
+    <h2>Account distribution</h2>
+    {{ vertical_bar_chart(account_distribution, 'amount_cents', 'label', '#7c3aed') }}
+  </div>
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Accounts</h2>
+  {% if accounts %}
+  <table class="submissions">
+    <thead><tr><th>Name</th><th>Type</th><th>Institution</th><th>Balance</th></tr></thead>
+    <tbody>
+      {% for a in accounts %}
+      <tr>
+        <td>{{ a.nickname or a.account_name }}</td>
+        <td class="muted">{{ a.account_type.value|replace('_',' ')|title }}</td>
+        <td class="muted">{{ a.institution_name or '—' }}</td>
+        <td>{{ a.current_balance_cents|usd }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No accounts on file yet.</p>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h2 style="font-size:1rem;">Recent transactions</h2>
+  {% if transactions %}
+  <table class="submissions">
+    <thead><tr><th>Date</th><th>Name</th><th>Type</th><th>Amount</th></tr></thead>
+    <tbody>
+      {% for t in transactions %}
+      <tr>
+        <td class="muted">{{ t.transaction_date.strftime('%m/%d/%Y') }}</td>
+        <td>{{ t.name }}</td>
+        <td class="muted">{{ t.transaction_type.value|title }}</td>
+        <td style="{% if t.transaction_type.value == 'expense' %}color:#991b1b;{% endif %}">{{ t.amount_cents|usd }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="muted">No transactions on file yet.</p>
+  {% endif %}
+</div>
+{% endblock %}

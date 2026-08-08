@@ -19,6 +19,7 @@ from app.crm_models import (Client, ClientCredential, CredentialAccessLog,
 from app.db import SessionLocal
 from app.models import User
 from app.services.crypto import CredentialsKeyNotConfigured, decrypt, encrypt
+from app.staff_permissions import require_area
 
 crm_credentials_bp = Blueprint("crm_credentials", __name__, url_prefix="/staff/crm/credenciais")
 
@@ -28,6 +29,7 @@ crm_credentials_bp = Blueprint("crm_credentials", __name__, url_prefix="/staff/c
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("internal_management")
 
 
 def _render_detail(client_id: int, *, revealed_credential_id: int | None = None,

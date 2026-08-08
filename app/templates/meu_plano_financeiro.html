@@ -12,7 +12,7 @@
   <p style="margin:0 0 10px;"><strong>{{ t('my_financial_plan_program_label') }}:</strong> {{ t('my_financial_plan_program_type_' ~ fc.program_type.value) }}</p>
   {% endif %}
   <p style="margin:0 0 10px;">
-    <span class="badge">{{ t('my_financial_plan_progress_status_' ~ fc.progress_status.value) }}</span>
+    <span class="badge">{{ t('my_financial_plan_progress_status_' ~ fc.progress_status) }}</span>
   </p>
   {% if completion_pct is not none %}
   <p class="muted" style="margin:0 0 10px;">

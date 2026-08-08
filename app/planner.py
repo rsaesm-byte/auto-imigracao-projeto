@@ -18,6 +18,7 @@ from app.models import User
 from app.planner_models import PlannerBlock, Project, ProjectStatus, TimeEntry, TimeEntrySource
 from app.services import crm_service as svc
 from app.services import planner_service as planner_svc
+from app.staff_permissions import require_area
 
 planner_bp = Blueprint("planner", __name__, url_prefix="/staff")
 
@@ -27,6 +28,7 @@ planner_bp = Blueprint("planner", __name__, url_prefix="/staff")
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("time_management")
 
 
 def _parse_week_param() -> date:

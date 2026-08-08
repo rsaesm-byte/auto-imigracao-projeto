@@ -15,6 +15,7 @@ from flask_login import current_user, login_required
 
 from app.crm_models import Case, Client, Document, Lead, Task, Translator
 from app.db import SessionLocal
+from app.staff_permissions import require_area
 
 crm_search_bp = Blueprint("crm_search", __name__, url_prefix="/staff")
 
@@ -27,6 +28,7 @@ _MIN_QUERY_LENGTH = 2
 def _require_staff():
     if not current_user.is_staff:
         abort(403)
+    require_area("crm")
 
 
 @crm_search_bp.route("/busca")

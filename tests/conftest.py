@@ -94,9 +94,18 @@ def staff_user(db):
     """Quase toda rota do CRM staff exige `current_user.is_staff` (ver
     `_require_staff` em app/crm_staff_ops.py e app/crm_staff_pipeline.py)
     e o gate global de e-mail verificado (app/__init__.py) só deixa
-    passar direto quem é staff."""
+    passar direto quem é staff.
+
+    `is_ceo=True` (painel do CEO, 2026-08-08): faz este fixture passar por
+    `require_area()` em toda área sem precisar popular StaffAreaAccess
+    linha a linha em cada teste -- mesmo espírito do "ninguém perde
+    acesso" já usado pra contas reais existentes (ver
+    app/__init__.py::_provision_legacy_staff_areas)."""
     from app.models import User
-    user = User(email="staff@example.com", password_hash="x", is_staff=True, email_verified=True)
+    user = User(
+        email="staff@example.com", password_hash="x", is_staff=True, email_verified=True,
+        is_ceo=True, areas_provisioned=True,
+    )
     db.add(user)
     db.commit()
     return user

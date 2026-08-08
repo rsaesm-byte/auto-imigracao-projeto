@@ -12,6 +12,7 @@ from datetime import datetime, timezone
 from app.crm_financial_models import FinancialWorkspace
 from app.db import SessionLocal
 from app.financial_planning_models import Account, AccountType
+from app.services import audit_service
 
 
 def _utcnow() -> datetime:
@@ -42,6 +43,15 @@ def create_account(
         notes=notes or None, created_by_id=getattr(actor, "id", None),
     )
     SessionLocal.add(account)
+    SessionLocal.flush()
+    # Cobertura de auditoria pro CRUD de rotina do módulo (item pendente
+    # do Prompt Mestre 2, Fase 13 -- antes só mudança de acesso/fechar-
+    # reabrir mês/importação CSV eram auditados). `actor` aqui é o
+    # PRÓPRIO cliente (self-service), não um colaborador -- AuditLog.
+    # user_id é genérico pra qualquer User, então funciona igual.
+    audit_service.log_change(
+        "Account", account.id, "created", user_id=getattr(actor, "id", None),
+        description=f"Account \"{account_name}\" added.")
     SessionLocal.commit()
     return account
 
@@ -53,10 +63,13 @@ def update_account(account: Account, **fields) -> Account:
     return account
 
 
-def soft_delete_account(account: Account) -> None:
+def soft_delete_account(account: Account, *, actor=None) -> None:
     """Nunca DELETE de verdade -- pedido explícito do documento ("Do not
     silently delete/overwrite financial data"). Uma conta excluída some
     das listagens padrão mas continua acessível pra histórico/auditoria."""
     account.deleted_at = _utcnow()
     account.active = False
+    audit_service.log_change(
+        "Account", account.id, "deleted", user_id=getattr(actor, "id", None),
+        description=f"Account \"{account.account_name}\" removed.")
     SessionLocal.commit()

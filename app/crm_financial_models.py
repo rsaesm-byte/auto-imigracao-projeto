@@ -40,7 +40,7 @@ from __future__ import annotations
 import enum
 from datetime import date, datetime, timezone
 
-from sqlalchemy import Date, DateTime, ForeignKey, SmallInteger, Text
+from sqlalchemy import Date, DateTime, ForeignKey, SmallInteger, Text, UniqueConstraint
 from sqlalchemy import Enum as SAEnum
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -235,6 +235,27 @@ class FinancialChallenge(Base):
     deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
 
+class FinancialCoachingSelectOption(Base):
+    """Os 7 selects de vocabulário fechado da ficha de coaching que
+    viraram editáveis pelo painel (2026-08-08, item pendente do Prompt
+    Mestre 1): Progress status, Priority, Homework adherence, Client
+    compliance, 90-day review, Continuity program, Current focus area.
+    Diferente de FinancialGoal/FinancialChallenge (uma tabela por lista,
+    com FK de outra tabela apontando pra cada linha), estes 7 são
+    single-select simples -- FinancialClient guarda o `name` escolhido
+    direto como string, sem tabela de junção nem FK -- então UMA tabela
+    genérica com `kind` como discriminador basta (evita 7 classes quase
+    idênticas). `kind` é uma das chaves de
+    app/crm_pipeline_settings.py::_FINANCIAL_SELECT_KINDS."""
+    __tablename__ = "crm_financial_coaching_select_options"
+    __table_args__ = (UniqueConstraint("kind", "name", name="uq_fc_select_option_kind_name"),)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    kind: Mapped[str] = mapped_column(index=True)
+    name: Mapped[str]
+    sort_order: Mapped[int] = mapped_column(default=0)
+    deleted_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
+
+
 class FinancialTaskCategory(Base):
     __tablename__ = "crm_financial_task_categories"
     id: Mapped[int] = mapped_column(primary_key=True)
@@ -292,21 +313,30 @@ class FinancialClient(Base):
     total_sessions_purchased: Mapped[int | None] = mapped_column(default=None)
     last_session_duration_minutes: Mapped[int | None] = mapped_column(default=None)
     target_completion_at: Mapped[date | None] = mapped_column(Date, default=None)
-    progress_status: Mapped[FinancialProgressStatus] = mapped_column(
-        SAEnum(FinancialProgressStatus), default=FinancialProgressStatus.not_started)
-    homework_adherence: Mapped[HomeworkAdherenceLevel | None] = mapped_column(
-        SAEnum(HomeworkAdherenceLevel), default=None)
-    client_compliance: Mapped[ClientComplianceLevel | None] = mapped_column(
-        SAEnum(ClientComplianceLevel), default=None)
-    review_90day_status: Mapped[NinetyDayReviewStatus] = mapped_column(
-        SAEnum(NinetyDayReviewStatus), default=NinetyDayReviewStatus.not_scheduled)
-    continuity_program: Mapped[ContinuityProgram] = mapped_column(
-        SAEnum(ContinuityProgram), default=ContinuityProgram.none)
+    # progress_status/homework_adherence/client_compliance/review_90day_status/
+    # continuity_program/priority_level/current_focus_area viraram string
+    # livre (2026-08-08, item pendente do Prompt Mestre 1) -- eram
+    # SAEnum(...) fixo em Python, agora validados contra
+    # FinancialCoachingSelectOption (staff-editável, ver
+    # app/crm_pipeline_settings.py::financial_coaching_options). Coluna já
+    # era VARCHAR no SQLite por baixo (Enum vira texto), então nenhum dado
+    # existente muda de valor com esta troca -- só o Python para de exigir
+    # um dos membros fixos do enum antigo. Os enums Python
+    # (FinancialProgressStatus etc., acima) continuam existindo só pra
+    # dar nome aos valores do seed inicial (_seed_financial_coaching_select_options
+    # em app/__init__.py), nunca mais usados como tipo de coluna aqui.
+    progress_status: Mapped[str] = mapped_column(default=FinancialProgressStatus.not_started.value)
+    homework_adherence: Mapped[str | None] = mapped_column(default=None)
+    client_compliance: Mapped[str | None] = mapped_column(default=None)
+    review_90day_status: Mapped[str] = mapped_column(default=NinetyDayReviewStatus.not_scheduled.value)
+    continuity_program: Mapped[str] = mapped_column(default=ContinuityProgram.none.value)
     nps_score: Mapped[int | None] = mapped_column(default=None)
-    # Reusa Priority (low/medium/high/urgent) em vez de um enum "Critical/
-    # High/Medium/Low" próprio -- Notion mapeado: Critical == urgent aqui.
-    priority_level: Mapped[Priority] = mapped_column(SAEnum(Priority), default=Priority.medium)
-    current_focus_area: Mapped[FocusArea | None] = mapped_column(SAEnum(FocusArea), default=None)
+    # Antes reusava o enum compartilhado Priority (low/medium/high/urgent) --
+    # agora é a própria lista editável "Priority" deste módulo (item
+    # pendente do Prompt Mestre 1), independente do Priority usado por
+    # Leads/Tasks em outras partes do CRM (aquele enum não foi tocado).
+    priority_level: Mapped[str] = mapped_column(default=Priority.medium.value)
+    current_focus_area: Mapped[str | None] = mapped_column(default=None)
     wins_milestones: Mapped[str | None] = mapped_column(Text, default=None)
     action_plan: Mapped[str | None] = mapped_column(Text, default=None)
     recommended_solutions: Mapped[str | None] = mapped_column(Text, default=None)
@@ -527,6 +557,19 @@ class FinancialWorkspace(Base):
     # motivo parecido: referência que não pode travar o dono da tabela).
     emergency_fund_target_months: Mapped[int | None] = mapped_column(default=None)
     emergency_fund_account_id: Mapped[int | None] = mapped_column(default=None)
+
+    country: Mapped[str | None] = mapped_column(default=None)
+    # Onboarding guiado de 10 passos (item pendente do Prompt Mestre 2,
+    # Fase 13 -- "Fluxo de onboarding" do documento mestre, seção 4):
+    # `onboarding_current_step` é 1-10, `onboarding_completed_at` marca
+    # quando o cliente terminou (ou pulou) -- ver
+    # app/financial_workspace_client.py::onboarding_*. Workspaces
+    # criados ANTES desta feature (2026-08-08) nascem já com
+    # `onboarding_completed_at` preenchido na migração (ver
+    # _backfill_financial_workspace_onboarding() em app/__init__.py) --
+    # ninguém que já usa o módulo é forçado a passar pelo wizard.
+    onboarding_current_step: Mapped[int] = mapped_column(SmallInteger, default=1)
+    onboarding_completed_at: Mapped[datetime | None] = mapped_column(DateTime, default=None)
 
     created_by_id: Mapped[int | None] = mapped_column(ForeignKey("users.id"), default=None)
     created_at: Mapped[datetime] = mapped_column(DateTime, default=_utcnow)

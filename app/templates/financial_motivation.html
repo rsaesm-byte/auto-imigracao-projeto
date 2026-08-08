@@ -29,7 +29,7 @@
     <div class="card motivation-reorder-row" draggable="true" data-item-id="{{ item.id }}"
          style="margin:0;padding:0;overflow:hidden;{% if item.pinned %}outline:2px solid var(--accent);{% endif %}">
       {% if item.image_attachment_id %}
-      <img src="{{ url_for('financial_workspace.motivation_image_file', attachment_id=item.image_attachment_id) }}"
+      <img src="{{ attachment_url('financial_workspace.motivation_image_file', item.image_attachment_id) }}"
            alt="{{ item.title }}" style="width:100%;height:150px;object-fit:cover;display:block;">
       {% else %}
       <div style="width:100%;height:150px;background:var(--border);display:flex;align-items:center;justify-content:center;">
